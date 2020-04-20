@@ -1,16 +1,31 @@
+let bubble;
+
 function setup() {
-    createCanvas(600, 400);
-    background(255, 255, 153);
+    createCanvas(windowWidth, windowHeight);
+    bubble = new Bubble(300,200,12);
+    print(bubble.x,bubble.y);
+}
+class Bubble {
+    constructor(x,y,r){
+        this.x = x;
+        this.y = y;
+        this.r = r;
+    }
+    move () {
+        this.x = this.x + random(-5,5);
+        this.y = this.y + random(-5,5);
+    }
+    show (){
+        stroke(255);
+        strokeWeight(4);
+        noFill();
+        ellipse(this.x,this.y,this.r*2);
+    }
 }
 
 function draw() {
-
+    background(0);
+    
+    bubble.move();
+    bubble.show();
 }
-setInterval(function() {
-noStroke();
-fill(255, 192, 203);
-ellipse(mouseX, mouseY, 30, 30);
-if (mouseIsPressed) {
-    background(255, 255, 153);
-}
-}, 0);
