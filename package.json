@@ -1,0 +1,42 @@
+{
+  "name": "nodejs-express-ajax-jquery-bootstrap-mongodb",
+  "version": "1.2.0",
+  "description": "RESTFUL API first step",
+  "main": "app.js",
+  "scripts": {
+    "static": "nodemon app",
+    "react": "npm start --prefix tictactoe",
+    "start": "concurrently \"npm run static\" \"npm run react\"",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "NodeJS",
+    "Express",
+    "MongoDB",
+    "Mongoose",
+    "JQuery",
+    "Bootstrap"
+  ],
+  "author": "JudaoZhong",
+  "license": "ISC",
+  "dependencies": {
+    "body-parser": "^1.18.2",
+    "concurrently": "^5.2.0",
+    "ejs": "^3.1.2",
+    "express": "^4.16.3",
+    "mongoose": "^5.0.17",
+    "nodemon": "^2.0.3"
+  },
+  "browserslist": {
+    "production": [
+      ">0.2%",
+      "not dead",
+      "not op_mini all"
+    ],
+    "development": [
+      "last 1 chrome version",
+      "last 1 firefox version",
+      "last 1 safari version"
+    ]
+  }
+}
