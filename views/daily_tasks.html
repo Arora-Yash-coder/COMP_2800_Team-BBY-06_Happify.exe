@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Daily tasks</title>
+    <style>
+        body {
+            text-align: center;
+        }
+        h1{
+            color: chocolate;
+            
+        }
+    
+    </style>
+</head>
+<body>
+  <h1>Daily tasks</h1>
+  <div id="dailytask1"></div>
+    <div>
+    <button type="button">I like it.</button>
+    <button type="button">This is lame.</button>
+    
+    </div>
+  <div id="dailytask2">
+    <h3>Did you eat thrice yesterday?</h3>
+    <p>Keeping a healthy schedule is important.</p>
+  </div>
+    <button type="button">Yes.</button>
+    <button type="button">No.</button>
+  <div id="dailytask3">
+    <h3>Did you sleep on time?</h3>
+    <p>Sleeping would get you repaired.</p>
+  </div>
+    <button type="button">Yes.</button>
+    <button type="button">No.</button>
+   <div id="dailytask4">
+    
+  </div> 
+    <button type="button">This is interesting.</button>
+    <button type="button">No I don't like it.</button>
+    
+  <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+  <script>
+    $.ajax({
+        url: "/getDailyTasks",
+        dataType: "json",
+        type: "GET",
+        success: function(data) {
+        var div = $("#dailytask1");                 
+        let seed = Math.floor(Math.random() * 11);
+
+        let htmlStr = "";
+                
+        htmlStr += "<h3>Joke of the Day</h3><p>" + data.result[seed].content
+           + "</p>";
+                    
+        div.html(htmlStr);
+
+        },
+            error: function(jqXHR, textStatus, errorThrown) {
+            $("#p1").text(textStatus + " " + errorThrown
+             + jqXHR.responseText);
+            }
+    });
+      
+    $.ajax({
+        url: "/getDailyKnowledge",
+        dataType: "json",
+        type: "GET",
+        success: function(data2) {
+        var div = $("#dailytask4");                 
+        let seed = Math.floor(Math.random() * 11);
+
+        let htmlStr2 = "";
+                
+        htmlStr2 += "<h3>Knowledge of the day</h3><p>" + data2.result[seed].content
+           + "</p>";
+                    
+        div.html(htmlStr2);
+
+        },
+            error: function(jqXHR, textStatus, errorThrown) {
+            $("#p1").text(textStatus + " " + errorThrown
+             + jqXHR.responseText);
+            }
+    });
+  </script>
+</body>
+</html>

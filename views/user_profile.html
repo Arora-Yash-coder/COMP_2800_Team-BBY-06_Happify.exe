@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Homepage</title>
+    <style>
+        body {
+            text-align: center;
+        }
+        h1{
+            color: chocolate;
+            
+        }
+        textarea {
+            
+        }
+    
+    </style>
+</head>
+<body>
+  <h1>User Profile</h1>
+  <div id="username"></div>
+    <textarea id="usernameinput" rows = "1";></textarea>
+  <div id="password">
+    
+  </div>
+    <textarea id="passwordinput" rows = "1";></textarea>
+    <div id="firstname">
+    
+  </div> 
+    <textarea id="firstnameinput" rows = "1";></textarea>
+    <div id="lastname">
+    
+  </div> 
+    <textarea id="lastnameinput" rows = "1";></textarea>
+  <div id="email">
+    
+  </div>
+    <textarea id="emailinput" rows = "1";></textarea>
+   <div id="phoneno">
+    
+  </div> 
+    <textarea id="phonenoinput" rows = "1";></textarea>
+    <br>
+    <button type="button">Save</button>
+    
+  <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+  <script>
+    $.ajax({
+        url: "/getProfile",
+        dataType: "json",
+        type: "GET",
+        success: function(data) {
+        var div = $("#username");                 
+        var text = $("#usernameinput");   
+            
+
+        let htmlStr = "";
+        let username = ""+data.result[0].username;
+        htmlStr += "<h3>Username</h3><p>"
+           + "</p>";
+        
+                    
+        div.html(htmlStr);
+            text.append(username);
+        },
+            error: function(jqXHR, textStatus, errorThrown) {
+            $("#p1").text(textStatus + " " + errorThrown
+             + jqXHR.responseText);
+            }
+    });
+      
+    $.ajax({
+        url: "/test",
+        dataType: "json",
+        type: "GET",
+        success: function(data) {
+        var div = $("#password");                 
+        
+            var text = $("#passwordinput");  
+        let htmlStr2 = "";
+        let password = ""+data.result[0].password;        
+        htmlStr2 += "<h3>Password</h3><p>"
+           + "</p>";
+                    
+        div.html(htmlStr2);
+            text.append(password);
+        },
+            error: function(jqXHR, textStatus, errorThrown) {
+            $("#p1").text(textStatus + " " + errorThrown
+             + jqXHR.responseText);
+            }
+    });
+       $.ajax({
+        url: "/test",
+        dataType: "json",
+        type: "GET",
+        success: function(data) {
+        var div = $("#firstname");      
+            var text = $("#firstnameinput"); 
+        let seed = Math.floor(Math.random() * 11);
+let firstname = ""+data.result[0].firstname;   
+        let htmlStr4 = "";
+                
+        htmlStr4 += "<h3>Firstname</h3><p>"
+           + "</p>";
+                    
+        div.html(htmlStr4);
+            text.append(firstname);
+        },
+            error: function(jqXHR, textStatus, errorThrown) {
+            $("#p1").text(textStatus + " " + errorThrown
+             + jqXHR.responseText);
+            }
+    });
+      
+      
+      $.ajax({
+        url: "/test",
+        dataType: "json",
+        type: "GET",
+        success: function(data) {
+        var div = $("#lastname");                 
+        let seed = Math.floor(Math.random() * 11);
+var text = $("#lastnameinput"); 
+        let htmlStr5 = "";
+   let lastname = ""+data.result[0].lastname;                
+        htmlStr5 += "<h3>Lastname</h3><p>"
+           + "</p>";
+                    
+        div.html(htmlStr5);
+text.append(lastname);
+        },
+            error: function(jqXHR, textStatus, errorThrown) {
+            $("#p1").text(textStatus + " " + errorThrown
+             + jqXHR.responseText);
+            }
+    });
+      
+      $.ajax({
+        url: "/test",
+        dataType: "json",
+        type: "GET",
+        success: function(data) {
+        var div = $("#email");
+            var text = $("#emailinput"); 
+        let seed = Math.floor(Math.random() * 11);
+
+        let htmlStr3 = "";
+            let email = ""+data.result[0].email;     
+        htmlStr3 += "<h3>Email</h3><p>"
+           + "</p>";
+                    
+        div.html(htmlStr3);
+text.append(email);
+        },
+            error: function(jqXHR, textStatus, errorThrown) {
+            $("#p1").text(textStatus + " " + errorThrown
+             + jqXHR.responseText);
+            }
+    });
+      
+     
+      
+      $.ajax({
+        url: "/test",
+        dataType: "json",
+        type: "GET",
+        success: function(data) {
+        var div = $("#phoneno"); 
+            var text = $("#phonenoinput"); 
+        let seed = Math.floor(Math.random() * 11);
+
+        let htmlStr6 = "";
+              let phoneno = ""+data.result[0].phoneno;   
+        htmlStr6 += "<h3>PhoneNo</h3><p>"
+           + "</p>";
+                    
+        div.html(htmlStr6);
+text.append(phoneno);
+        },
+            error: function(jqXHR, textStatus, errorThrown) {
+            $("#p1").text(textStatus + " " + errorThrown
+             + jqXHR.responseText);
+            }
+    });
+  </script>
+</body>
+</html>
