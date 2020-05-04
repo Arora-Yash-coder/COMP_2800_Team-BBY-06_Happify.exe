@@ -1,6 +1,26 @@
 var express = require('express');
 var app = express();
 var bodyParser = require('body-parser');
+
+
+	
+
+// const cookieParser = require("cookie-Parser");
+// const session = require("express-session");
+// app.use(cookieParser);
+// app.use(session({
+//   key:"user_id",
+//   secret:"work hard every day",
+//   resave:false,
+//   saveUninitialized: false,
+//   cookie: {
+//     expires: 600000
+//   }
+
+// }))
+
+
+
 app.use(bodyParser.json());
  
 app.use(express.static('resources'));
