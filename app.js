@@ -1,27 +1,9 @@
 var express = require('express');
 var app = express();
 var bodyParser = require('body-parser');
-
-
-	
-
-// const cookieParser = require("cookie-Parser");
-// const session = require("express-session");
-// app.use(cookieParser);
-// app.use(session({
-//   key:"user_id",
-//   secret:"work hard every day",
-//   resave:false,
-//   saveUninitialized: false,
-//   cookie: {
-//     expires: 600000
-//   }
-
-// }))
-
-
-
 app.use(bodyParser.json());
+var MongoClient = require('mongodb').MongoClient;
+
  
 app.use(express.static('resources'));
 
@@ -33,6 +15,7 @@ global.__basedir = __dirname;
 const dbConfig = require('./app/config/mongodb.config.js');
 const mongoose = require('mongoose');
  
+
 mongoose.Promise = global.Promise;
  
 // Connecting to the database
@@ -43,6 +26,10 @@ mongoose.connect(dbConfig.url)
     console.log('Could not connect to MongoDB.');
     process.exit();
 });
+
+MongoClient.connect(dbConfig.url, function(err, db) {
+  if (err) throw err;
+})
  
 require('./app/routes/user.route.js')(app);
  
