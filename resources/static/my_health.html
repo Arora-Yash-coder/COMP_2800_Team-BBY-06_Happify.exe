@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     
-  <title>Daily tasks</title>
+  <title>My health</title>
      <style>
 
         @media only screen and (max-width: 400px) {
@@ -81,7 +81,7 @@
             display: grid;
             grid-template-rows: 50% 50%;
         }
-        #dailytask{
+        #sleep{
             margin-left: 25px;
             margin-right: 25px;
             margin-top: 10px;
@@ -93,7 +93,7 @@
             grid-template-rows: 50% 50%;
              color: #EF629F;
         }
-        #dailytask1{
+        #sleep1{
             padding: 15px;
             margin-top: auto;
            margin-bottom: auto;
@@ -114,7 +114,7 @@
         }
         
         
-        #knowledge{
+        #eat{
             margin-left: 25px;
             margin-right: 25px;
             margin-top: 10px;
@@ -126,7 +126,7 @@
             grid-template-rows: 50% 50%;
             color: #3AB795;
         }
-        #knowledge1{
+        #eat1{
             padding: 30px;
             margin-top: auto;
            margin-bottom: auto;
@@ -226,7 +226,7 @@
             display: grid;
             grid-template-rows: 50% 50%;
         }
-        #dailytask{
+        #sleep{
             margin-left: 25px;
             margin-right: 25px;
             margin-top: 10px;
@@ -238,7 +238,7 @@
             grid-template-rows: 50% 50%;
              color: #EF629F;
         }
-        #dailytask1{
+        #sleep1{
             padding: 30px;
             margin-top: auto;
            margin-bottom: auto;
@@ -259,7 +259,7 @@
         }
         
         
-        #knowledge{
+        #eat{
             margin-left: 25px;
             margin-right: 25px;
             margin-top: 10px;
@@ -271,7 +271,7 @@
             grid-template-rows: 50% 50%;
             color: #3AB795;
         }
-        #knowledge1{
+        #eat1{
             padding: 30px;
             margin-top: auto;
            margin-bottom: auto;
@@ -376,7 +376,7 @@
             display: grid;
             grid-template-rows: 50% 50%;
         }
-        #dailytask{
+        #sleep{
             margin-left: 25px;
             margin-right: 25px;
             margin-top: 10px;
@@ -388,7 +388,7 @@
             grid-template-rows: 50% 50%;
              color: #EF629F;
         }
-        #dailytask1{
+        #sleep1{
             padding: 30px;
             margin-top: auto;
            margin-bottom: auto;
@@ -410,7 +410,7 @@
         }
         
         
-        #knowledge{
+        #eat{
             margin-left: 25px;
             margin-right: 25px;
             margin-top: 10px;
@@ -422,7 +422,7 @@
             grid-template-rows: 50% 50%;
             color: #3AB795;
         }
-        #knowledge1{
+        #eat1{
             padding: 30px;
             margin-top: auto;
            margin-bottom: auto;
@@ -528,7 +528,7 @@
             display: grid;
             grid-template-rows: 50% 50%;
         }
-        #dailytask{
+        #sleep{
             margin-left: 25px;
             margin-right: 25px;
             margin-top: 10px;
@@ -540,7 +540,7 @@
             grid-template-rows: 50% 50%;
              color: #EF629F;
         }
-        #dailytask1{
+        #sleep1{
             padding: 30px;
             margin-top: auto;
            margin-bottom: auto;
@@ -562,7 +562,7 @@
         }
         
         
-        #knowledge{
+        #eat{
             margin-left: 25px;
             margin-right: 25px;
             margin-top: 10px;
@@ -574,7 +574,7 @@
             grid-template-rows: 50% 50%;
             color: #3AB795;
         }
-        #knowledge1{
+        #eat1{
             padding: 30px;
             margin-top: auto;
            margin-bottom: auto;
@@ -612,27 +612,27 @@
             <nav>
             This is a nav bar!
             </nav>
-            <div id="greeting"><p class='top'>Daily tasks</p><p class='points'> Current Points: </p>
+            <div id="greeting"><p class='top'>My health</p><p class='points'> Current Points: </p>
             
             
             </div>
         
         </div>
         <div id='inner'>
-    <div id="dailytask">
-        <div id='dailytask1'></div>
+    <div id="sleep">
+        <div id='sleep1'><h1>Did you sleep well?</h1><p>Sleep repairs you.</p></div>
   <div id='selection'>
 
-      <a href="#" class="square_btn">I like it!</a>
-      <a href="#" class="square_btn">I don't like it!</a>
+      <a href="#" class="square_btn">Yes</a>
+      <a href="#" class="square_btn">No</a>
         </div>
         </div>
         
-    <div id="knowledge">
-        <div id='knowledge1'></div>
+    <div id="eat">
+        <div id='eat1'><h1>Did you eat well?</h1><p>Eat healthy foods.</p></div>
   <div id='selection2'>
-    <a href="#" class="square_btn_second">I like it!</a>
-      <a href="#" class="square_btn_second">I don't like it!</a>
+    <a href="#" class="square_btn_second">Yes</a>
+      <a href="#" class="square_btn_second">No</a>
         </div>
     </div>
     
@@ -641,42 +641,6 @@
         <div id='footer'>this is footer.</div>
     </div>
   <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
-  <script>
-    $.ajax({
-        url: "/getDailyTasks",
-        dataType: "json",
-        type: "GET",
-        success: function(data) {
-        var div = $("#dailytask1");                 
-        let seed = Math.floor(Math.random() * 11);
-
-        let htmlStr = "";
-                
-        htmlStr += "<h3>Joke of the Day</h3><p>" + data.result[seed].content
-           + "</p>";
-                    
-        div.html(htmlStr);
-            
-            var div4 = $("#knowledge1");                 
-        let seed2 = Math.floor(Math.random() * 11);
-
-        let htmlStr2 = "";
-                
-        htmlStr2 += "<h3>Knowledge of the day</h3><p>" + data.result[seed2].content
-           + "</p>";
-                    
-        div4.html(htmlStr2);
-            
-            
-
-        },
-            error: function(jqXHR, textStatus, errorThrown) {
-            $("#p1").text(textStatus + " " + errorThrown
-             + jqXHR.responseText);
-            }
-    });
-      
-
-  </script>
+  
 </body>
 </html>
