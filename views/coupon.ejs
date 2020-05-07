@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Coupon Page</title>
+    <style>
+         body {
+            text-align: center;
+            margin: 0;
+            
+        }
+
+
+        #container > div:nth-child(even){background-color: #FAC9B8;}
+
+        @media only screen and (max-width:400px){
+            .top{
+            color: #3AB795;
+            font-size: 13pt;
+            font-weight: bold;
+        }  
+
+
+        .points{
+            color: #EF629F;
+            margin-top: -10px;
+            font-weight: bold;
+            font-size: 13pt;
+        }
+
+        .description{
+             margin-left: 25px;
+            margin-right: 25px;
+            margin-top: 10px;
+            margin-bottom: 10px;
+            border-radius: 25px;
+            
+            grid-row: 1 / span 1;
+            display: grid;
+            grid-template-rows: 50% 50%;
+             color: #EF629F;
+        }
+
+        .title{
+            padding: 15px;
+            margin-top: auto;
+           margin-bottom: auto;
+            border-radius: 25px 0 0 25px;
+
+            
+        }   
+
+        .coupons{
+             margin-left: 25px;
+            margin-right: 25px;
+            margin-top: 10px;
+            margin-bottom: 10px;
+            border-radius: 25px;
+            background-color: #B8D8BA;
+           
+            display: block;
+            grid-template-rows: 50% 50%;
+             color: #EF629F;
+        }
+        }
+
+
+
+        @media only screen and (min-width: 401px) {
+
+            .top{
+            color: #3AB795;
+            font-size: 23pt;
+            font-weight: bold;
+        }
+        .points{
+            color: #EF629F;
+            margin-top: -10px;
+            font-weight: bold;
+            font-size: 23pt;
+        }
+
+        .coupons{
+            margin-left: 25px;
+            margin-right: 25px;
+            margin-top: 10px;
+            margin-bottom: 10px;
+            border-radius: 25px;
+            background-color: #B8D8BA;
+
+        
+             color: #EF629F;
+        }
+
+
+        }
+
+
+
+        @media only screen and (min-width: 1024px) {
+            .points{
+            color: #EF629F;
+            margin-top: -10px;
+            font-weight: bold;
+            font-size: 25pt;
+        }
+
+        .coupons{
+            margin-left: 25px;
+            margin-right: 25px;
+            margin-top: 10px;
+            margin-bottom: 10px;
+            border-radius: 25px;
+
+            grid-template-rows: 50% 50%;
+             color: #EF629F;
+        }
+
+        }
+    </style>
+</head>
+
+<body>
+    <nav>
+        This is a nav bar!
+    </nav>
+    <div id="greeting">
+        <p class='top'>Redeem Points</p>
+        <p class='points'> Current Points: </p>
+    </div>
+
+    <div id='container'>
+
+        
+        <% for (var i = 0; i < coupons.length;  i++ ) { %>
+        <div class="coupons">
+            <h1 class="title"><%= coupons[i].title %></h1> 
+            <p class="description"><%= coupons[i].description %></p>
+            <span class="points"><%= coupons[i].points %></span>
+        </div>
+        <% } %>
+
+
+    </div>
+
+
+
+
+    
+    <div id='footer'>this is footer.</div>
+    </div>
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+
+</body>
+
+</html>

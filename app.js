@@ -32,7 +32,22 @@ MongoClient.connect(dbConfig.url, function(err, db) {
 })
  
 require('./app/routes/user.route.js')(app);
+
+
+var fs =require('fs')
+const https = require('https');
+var options = {
+    key: fs.readFileSync('./privatekey.pem'),
+    cert: fs.readFileSync('./certificate.pem')
+};
+
+// var server = https.createServer(options, app);
+
+// server.listen(80, () => {
+//   console.log("server starting on port : " + 80)
+// });
  
+
 // Create a Server
 var server = app.listen(80, function () {
  

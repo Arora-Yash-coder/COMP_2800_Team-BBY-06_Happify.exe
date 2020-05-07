@@ -160,15 +160,20 @@ exports.dailyTasks = function(req, res) {
 	});
     }
     
+
+    var ObjectId = require('mongodb').ObjectID;
 exports.getProfile = function(req, res) {
     res.setHeader('Content-Type', 'application/json');
    MongoClient.connect(dbConfig.url, function(err, db) {
   if (err) throw err;
   var dbo = db.db("test");
   dbo.collection("users").find({
-     
-      
-  }).toArray(function(err, result) {
+      _id : ObjectId(req.session.user_sid)     
+}).toArray(function(err, result) {
+    console.log("req.session.result")
+    console.log(result)
+    console.log("req.session.user_sid")
+    console.log(req.session.user_sid)
     if (err) throw err;
     // console.log(result);
       
@@ -176,6 +181,26 @@ exports.getProfile = function(req, res) {
     db.close();
   });
 });
+}
+
+exports.getCoupon = (req, res) => {	
+    // res.setHeader('Content-Type', 'application/json');
+    MongoClient.connect(dbConfig.url, function(err, db) {
+   if (err) throw err;
+   var dbo = db.db("test");
+   dbo.collection("coupons_available").find().limit(5).toArray(function(err, result) {
+     if (err) throw err;
+     console.log(result);
+     db.close();
+     res.end(res.render(path + "coupon.ejs", {
+        coupons:result
+    }));
+    //    res.send( { result });
+     
+   });
+ });
+
+
 }
 
 

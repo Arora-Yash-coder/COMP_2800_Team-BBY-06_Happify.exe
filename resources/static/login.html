@@ -1,0 +1,280 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <title>Register/Login</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+  <!-- <script src="static/js/getrequest.js"></script> -->
+  <script src="static/js/postrequest.js"></script>
+  <style>
+    .container {
+      background-color: hsla(120, 60%, 2%, 0.6);
+      text-align: center;
+      width: 400px;
+      /* filter:alpha(opacity=50); */
+      z-index: -1;
+      /* opacity:0.8; */
+    }
+
+    #choice_tab {
+      display: inline;
+    }
+
+    #reg {
+background-color: rgb(0, 0, 0);
+      /* background-color:hsla(120, 60%, 2%, 0.6) ; */
+      float: right;
+    }
+
+    #log{
+      float: left;
+      margin: 0;
+      padding-top: 10px;
+      height: 50px;
+      width: 120px;
+      padding-right: 20px;
+      
+      
+    }
+
+
+    @import "bourbon";
+
+    a {
+      color: white;
+    }
+
+
+    @media only screen and (min-width: 1024px) {
+      body {
+        background-image: url(./img/background.jpg);
+        text-align: center;
+        background-size: cover;
+        height: 100vh;
+      }
+
+      #form-wrapper {
+        padding-top: 10%;
+      }
+
+      h1 {
+        color: white;
+        font-size: 40pt;
+      }
+
+      h3 {
+        color: white;
+        font-size: 30pt;
+      }
+
+      input[type="text"] {
+        margin-top: 20px;
+        margin-bottom: -1px;
+        border-bottom-left-radius: 0;
+        border-bottom-right-radius: 0;
+        font-size: 15pt;
+        height: 48px;
+        width: 400px;
+      }
+
+      input[type="password"] {
+        margin-bottom: 23px;
+        border-top-left-radius: 0;
+        border-top-right-radius: 0;
+        font-size: 15pt;
+        height: 48px;
+        width: 400px;
+
+      }
+
+      input[type="submit"] {
+        margin-bottom: 23px;
+        border-top-left-radius: 0;
+        border-top-right-radius: 0;
+        width: 400px;
+        font-size: 15pt;
+
+      }
+
+    }
+
+    @media only screen and (max-width: 1023px) {
+      body {
+        margin: 0;
+        background-image: url(./img/background.jpg);
+        text-align: center;
+        background-size: cover;
+        height: 100vh;
+      }
+
+      #form-wrapper {
+        padding-top: 30%;
+      }
+
+      h1 {
+        color: white;
+      }
+
+      h3 {
+        color: white;
+      }
+
+      input[type="text"] {
+        margin-bottom: -1px;
+        border-bottom-left-radius: 0;
+        border-bottom-right-radius: 0;
+        width: 300px;
+      }
+
+      input[type="password"] {
+        margin-bottom: 20px;
+        border-top-left-radius: 0;
+        border-top-right-radius: 0;
+        width: 300px;
+
+      }
+
+      input[type="submit"] {
+        margin-bottom: 20px;
+        border-top-left-radius: 0;
+        border-top-right-radius: 0;
+        /*      width: 300px;*/
+        width: 100%;
+      }
+
+    }
+
+
+    @media only screen and (max-width: 399px) {
+      body {
+        background-image: url(./img/background.jpg);
+        text-align: center;
+        background-size: cover;
+        height: 100vh;
+      }
+
+      #form-wrapper {
+        padding-top: 30%;
+      }
+
+      h1 {
+        color: white;
+      }
+
+      h3 {
+        color: white;
+      }
+
+      input[type="text"] {
+        margin-bottom: -1px;
+        border-bottom-left-radius: 0;
+        border-bottom-right-radius: 0;
+        width: 300px;
+      }
+
+      input[type="password"] {
+        margin-bottom: 20px;
+        border-top-left-radius: 0;
+        border-top-right-radius: 0;
+        width: 300px;
+      }
+
+      input[type="submit"] {
+        margin-bottom: 20px;
+        border-top-left-radius: 0;
+        border-top-right-radius: 0;
+        /*      width: 300px;*/
+        width: 100%;
+      }
+    }
+
+    /*        for iphone X*/
+    @media only screen and (device-width : 375px) and (device-height : 812px) and (-webkit-device-pixel-ratio : 3) {
+      body {
+        background-image: url(./img/background.jpg);
+        text-align: center;
+        background-size: cover;
+        height: 100vh;
+      }
+
+      #form-wrapper {
+        padding-top: 35%;
+      }
+
+      h1 {
+        color: white;
+      }
+
+      h3 {
+        color: white;
+      }
+
+      input[type="text"] {
+        margin-bottom: -1px;
+        border-bottom-left-radius: 0;
+        border-bottom-right-radius: 0;
+        width: 300px;
+      }
+
+      input[type="password"] {
+        margin-bottom: 20px;
+        border-top-left-radius: 0;
+        border-top-right-radius: 0;
+        width: 300px;
+      }
+
+      input[type="submit"] {
+        margin-bottom: 20px;
+        border-top-left-radius: 0;
+        border-top-right-radius: 0;
+        /*      width: 300px;*/
+        width: 100%;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <!--
+<div class="container"> 
+<div class="col-sm-4">
+-->
+  <div class="container">
+    <div id="choice_tab">
+      <h3 id="reg">Registration</h3>
+      <h3 id="log">Login</h3>
+    </div>
+
+    <div id="form-wrapper">
+      <form id="userForm" action="/api/users/verify" method="post" style="display: inline-block">
+        <h1 class="form-signin-heading">Welcome back!</h1>
+        <h3 class="form-signin-heading">Please login</h3>
+        <!--			<label for="username">Username:</label>-->
+        <input type="text" class="form-control" id="username" name="username" placeholder="Enter Username" />
+
+        <br>
+
+        <!--			<label for="password">Password:</label>-->
+        <input type="password" class="form-control" id="password" name="password" min="6" maxlength="16"
+          placeholder="Enter Password" />
+
+        <input id="login" type="submit" class="btn btn-default">
+
+      </form>
+    </div>
+    <div id="postResultDiv">
+    </div>
+    <br>
+    <a href="/register">Don't have an account? Click here!</a>
+  </div>
+  <script> $("#reg").on("click",()=>{
+    window.location.href="/register"
+})
+</script>
+</body>
+
+</html>

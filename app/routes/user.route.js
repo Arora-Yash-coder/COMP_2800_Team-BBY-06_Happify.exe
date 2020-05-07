@@ -1,5 +1,9 @@
 module.exports = function (app) {
 
+
+
+
+
 	var subs;
 	var vKey;
 	var pusher = require('web-push')
@@ -7,6 +11,14 @@ module.exports = function (app) {
 	const bcrypt = require("bcrypt");
 	//parse the body to the right format
 	bodyParser = require("body-parser")
+
+	// parse application/x-www-form-urlencoded
+	app.use(bodyParser.urlencoded({ extended: false }))
+	// parse application/json
+	app.use(bodyParser.json())
+
+
+
 	//needless to say
 	var express = require("express");
 	const { JSDOM } = require('jsdom');
@@ -23,6 +35,18 @@ module.exports = function (app) {
 	app.use(bodyParser.urlencoded({ extended: true }));
 	app.use(bodyParser.json());
 	var morgan = require('morgan');
+
+	//import stockfish
+	const stockfish = require('stockfish');
+	var stockfishes = [];
+	var id = 0;
+	var uci = [];
+	stockfishes[id] = stockfish();
+	uci[id] = "position startpos moves "
+
+
+
+
 
 
 
@@ -58,18 +82,70 @@ module.exports = function (app) {
 			//if it is there, it would redirect to homepage
 			res.redirect('/');
 		} else {
+			
+			//if the session is not there or the user_sid wasn't correct,
+			//then it would move to the login page
 			next();
 		}
 	};
 
-	//if the session is not there or the user_sid wasn't correct,
-	//then it would move to the login page
+	//======================Judao ChessGame================================================
 	app.get('/checkstatus', sessionChecker, (req, res) => {
 		res.redirect('/login');
 		res.end();
 	});
 
+	app.get("/game/chess", (req, res) => {
+		res.sendFile(__dirname + "/chessboard.html")
+	})
 
+	app.get('/coupon', users.getCoupon);
+
+	app.get("/restart",(req,res)=>{
+		uci[id] = "position startpos moves ";
+		stockfishes[id].postMessage(uci[id]);
+		res.redirect("/game/chess")
+	})
+
+
+	app.post("/game/chess", (req, res) => {
+		// console.log("req.body")
+		// console.log(req.body)
+		var next_move = []
+		console.log("uci-=================================================")
+		console.log(req.body["uci"])
+		stockfishes[id].postMessage(uci[id] + " " + req.body["uci"]);
+		uci[id] =  uci[id] + " " + req.body["uci"]
+		console.log("-=---------=-=-=-=-=-=-uic[id]-=-=-=-=-=-=-=-=-=-=-=-=");
+		console.log(uci[id]);
+		stockfishes[id].postMessage("go infinite");
+		setTimeout(() => {
+			stockfishes[id].postMessage("stop");
+			stockfishes[id].postMessage("d");
+		}, 100);
+	
+		
+		stockfishes[id].onmessage = function (message) {
+			if (message.startsWith("bestmove")) {
+	
+				next_move = message.split(" ")
+			   
+			}
+			if(next_move.length !=0 ){
+				console.log("msg");
+				console.log(next_move);
+				//1 is the position where the bestmove uci is
+				uci[id] =  uci[id] + " " + next_move[1]
+				res.send(next_move[1])
+			}
+			console.log(message)
+		}	
+	})
+	//^^^^^^^^^^^^^^^^^==Judao ChessGame==^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+
+
+	//==================WEB PUSH NOTIFICATION=======================================================================================================================
 	app.post("/push", (req, res) => {
 
 
@@ -111,8 +187,14 @@ module.exports = function (app) {
 
 	})
 
+
+	//sutff related to ejs rendering
 	var path = __basedir + '/views/';
 	global.path = path;
+
+	var staticPath = __basedir + '/resources/static/';
+	app.use(express.static(staticPath));
+	global.staticPath = staticPath;
 
 	router.use(function (req, res, next) {
 		console.log("/" + req.method);
@@ -125,11 +207,7 @@ module.exports = function (app) {
 	var toolbar_bottom = fs.readFileSync(path + "components/toolbar_bottom.ejs", 'utf-8');
 
 	app.get('/', (req, res) => {
-		res.end(res.render(path + "homepage.ejs", {
-			navbar: navbar_top_ejs,
-			body: body_ejs,
-			toolbar: toolbar_bottom,
-		}));
+		res.sendFile(staticPath + "landing_page.html");
 	});
 
 	app.get('/reminder', (req, res) => {
@@ -159,10 +237,10 @@ module.exports = function (app) {
 	});
 
 
-	//============DBwork===========================Tiffany=================================================
+	//============DBwork=====Tiffany=================================================
 
 	app.get('/daily_tasks', function (req, res) {
-		res.sendFile(path + "daily_tasks.html");
+		res.sendFile(staticPath+"daily_tasks.html");
 	});
 
 	app.route('/getDailyKnowledge').get(users.dailyKnowledge);
@@ -176,12 +254,14 @@ module.exports = function (app) {
 
 	app.route('/getProfile').get(users.getProfile);
 
-	//================================================
+	//^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 
+
+	//=====================REGISTER PAGE=================================================================================
 	app.route('/register')
 		.get(sessionChecker, (req, res) => {
-			res.render(path + "signup.ejs");
+			res.sendFile(staticPath + "signup.html");
 		})
 		.post((req, res) => {
 			//post to register
@@ -199,7 +279,7 @@ module.exports = function (app) {
 
 	app.route('/login')
 		.get(sessionChecker, (req, res) => {
-			res.sendFile(path + 'login.html');
+			res.sendFile(staticPath + 'login.html');
 		})
 	// .post(
 	// 	users.verify
@@ -207,7 +287,7 @@ module.exports = function (app) {
 
 
 	app.get('/:username', (req, res) => {
-		res.sendFile(path + "successful.html");
+		res.sendFile(staticPath + "successful.html");
 	});
 
 	// Save a User to MongoDB
@@ -215,19 +295,12 @@ module.exports = function (app) {
 
 	// Retrieve all Users
 	app.get('/api/users/all', users.findAll);
-
+	//check if the user is allowed to log in.
 	app.post('/api/users/verify', users.verify);
 
 
 
-
-
-	// app.get("/test", (req, res) => {
-	// 	res.sendFile(path + "test.html")
-	// });
-
-	// app.use("/success", router);
-
+	//tic tac toe connection, it runs on port 81
 	app.get("/game/ttt", (req, res) => {
 		res.status(301).redirect("http://localhost:81")
 	})
@@ -236,15 +309,8 @@ module.exports = function (app) {
 		res.send('BHzTemBBukw8OY7qXGqtXPPIGSr-TyACw3rNEcmsBTx2gEJQ2YECWff5oBMb9fRss7vhn3a6ATNxucmb52zHM2U')
 	})
 
+	//imported for dealing with submitted pictures
 	var formidable = require('formidable');
-
-
-
-
-	// app.use("*", (req, res) => {
-	// 	res.sendFile(path + "404.html");
-	// });
-
 
 	app.post('/upload_avatar', function (req, res) {
 		var form = new formidable.IncomingForm();
