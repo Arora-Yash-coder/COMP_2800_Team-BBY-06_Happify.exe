@@ -5,9 +5,19 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Daily tasks</title>
     <style>
+        @media only screen and (max-width: 350px) {
+        .top{
+            color: #3AB795;
+            font-size: 17pt;
+            font-weight: bold;
+        }    
+        .username{
+        font-size: 15pt;        
+        }
+        }
         @media only screen and (max-width: 400px) {
         
-         body {
+        body {
             text-align: center;
             margin: 0;
         }
@@ -44,7 +54,7 @@
             
         }
         #inner {
-            grid-row: 2 / span 1;
+                grid-row: 2 / span 1;
             display: grid;
             grid-template-rows: 25% 25% 25% 25%;
         }
@@ -64,7 +74,7 @@
             margin-top: auto;
            margin-bottom: auto;
             border-radius: 25px 0 0 25px;
-            
+            background-color: #B8D8BA;
            
             grid-column: 1 / span 1;
             
@@ -73,7 +83,7 @@
             margin-top: auto;
            margin-bottom: auto;
             border-radius: 0 25px 25px 0;
-            
+            background-color: #B8D8BA;
             
             grid-column: 2 / span 1;
             
@@ -541,11 +551,11 @@
         <div id='inner'>
     <div id="dailytask" onclick="window.location.href = 'http://google.ca';">
         <div id='dailytask1'>
-            <h1 class="first">Daily tasks</h1>
+            <h1 class="first">Chess Game</h1>
         </div>
   <div id='dailytask2'>
       <div id='image'>
-      <img src="img/task2.png">
+      <img src="static/img/chess2.png">
       </div>
   </div>
   
@@ -556,21 +566,21 @@
         
     <div id="games" onclick="window.location.href = 'http://google.ca';">
         <div id="games1">
-    <h1 class="second">Mini Games</h1>
+    <h1 class="second">Tic Tac Toe</h1>
             </div>
         <div id="games2">
             <div id='image'>
-    <img src="img/game.png">
+    <img src="static/img/tic1.png">
             </div>
         </div>
     </div>
     <div id="howdoyoufeeltoday" onclick="window.location.href = 'http://google.ca';">
         <div id="how1">
-    <h1 class="first">Your health</h1>
+    <h1 class="first">Snake Eater</h1>
             </div>
         <div id="how2">
             <div id='image'>
-    <img src="img/feel2.png">
+    <img src="static/img/snake2.png">
             </div>
         </div>
     
@@ -578,12 +588,12 @@
     <div id="redeem" onclick="window.location.href = 'http://google.ca';">
         
         <div id="redeem1">
-    <h1 class="second">Redeem?</h1>
+    <h1 class="second">Shooter Game</h1>
             </div>
         <div id="redeem2">
             <div id='image'>
             
-    <img src="img/coupon1.png">
+    <img src="static/img/game1.png">
                 </div>
             </div>
         
