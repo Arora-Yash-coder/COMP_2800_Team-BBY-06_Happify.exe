@@ -27,7 +27,10 @@ module.exports = function (app) {
 		}));
 	});
 	app.get('/AboutUs', (req, res) => {
-		res.render(path + "AboutUS.ejs");
+		res.end(res.render(path + "AboutUS.ejs", {
+			navbar: navbar_top_ejs,
+			toolbar: toolbar_bottom,
+		}));
 	});
 	app.get('/success', (req, res) => {
 		res.sendFile(path + "successful.html");
