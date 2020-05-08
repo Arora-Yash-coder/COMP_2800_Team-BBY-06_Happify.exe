@@ -1,0 +1,735 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+  <title>Tic-Tac-Toe</title>
+     <style>
+
+        @media only screen and (max-width: 330px) {
+       body {
+            text-align: center;
+            margin: 0;
+            
+        }
+        img {
+            object-fit: contain;
+            max-width: 90%;
+            max-height: 95px;
+            display: block;
+            margin-left: auto;
+            margin-right: auto;
+}
+        .first{
+            color: #EF629F;
+            
+        }
+        .second{
+            color: #3AB795;
+            
+        }
+        .top{
+            color: #3AB795;
+            font-size: 13pt;
+            font-weight: bold;
+        }
+        .points{
+            color: #EF629F;
+            margin-top: -10px;
+            font-weight: bold;
+            font-size: 13pt;
+        }
+        #container {
+            display: grid;
+            grid-template-rows: 20% 65% 1%;
+            height: 100vh;
+            
+        }
+        #header {
+            grid-row: 1 / span 1;        
+        }
+        #inner {
+            grid-row: 2 / span 1;
+            display: grid;
+            grid-template-rows: 33.3% 33.3% 33.3%;
+        }
+        #first{
+            margin-left: 25px;
+            margin-right: 25px;
+            margin-top: 10px;
+            margin-bottom: 10px;
+            border-radius: 25px;
+            background-color: #B8D8BA;
+            grid-row: 1 / span 1;
+            display: grid;
+            grid-template-columns: 50% 50%;
+            color: #EF629F;
+        }
+        #first1{
+            padding: 15px;
+            margin-top: auto;
+            margin-bottom: auto;
+            border-radius: 25px 0 0 25px;
+           
+           
+            grid-column: 1 / span 1;
+            
+        }   
+        #selection{
+            margin-top: auto;
+            margin-bottom: auto;
+            border-radius: 0 25px 25px 0;
+            
+            
+            grid-column: 2 / span 1;
+            
+        }
+        
+        
+        #second{
+            margin-left: 25px;
+            margin-right: 25px;
+            margin-top: 10px;
+            margin-bottom: 10px;
+            border-radius: 25px;
+            background-color: #FAC9B8;
+            grid-row: 2 / span 1;
+            display: grid;
+            grid-template-columns: 50% 50%;
+            color: #3AB795;
+        }
+        #second1{
+            padding: 15px;
+            margin-top: auto;
+           margin-bottom: auto;
+            border-radius: 25px 0 0 25px;
+           
+           
+            grid-column: 1 / span 1;
+            
+        }   
+        #selection2{
+            margin-top: auto;
+           margin-bottom: auto;
+            border-radius: 0 25px 25px 0;
+          
+            
+            grid-column: 2 / span 1;
+            
+        }
+        #third{
+            margin-left: 25px;
+            margin-right: 25px;
+            margin-top: 10px;
+            margin-bottom: 10px;
+            border-radius: 25px;
+            background-color: #B8D8BA;
+            grid-row: 3 / span 1;
+            display: grid;
+            grid-template-columns: 50% 50%;
+             color: #EF629F;
+        }
+        #third1{
+            padding: 15px;
+            margin-top: auto;
+           margin-bottom: auto;
+            border-radius: 25px 0 0 25px;
+           
+           
+            grid-column: 1 / span 1;
+            
+        }   
+        #selection3{
+            margin-top: auto;
+           margin-bottom: auto;
+            border-radius: 0 25px 25px 0;
+            
+            
+            grid-column: 2 / span 1;
+            
+        }
+             
+        
+
+        #header{
+            grid-row: 1 / span 1;
+        }
+        #greeting {
+            color: #EF629F;
+        }
+             #footer{
+                 grid-row: 3 / span 1;
+             }
+        }
+         @media only screen and (max-width: 400px) {
+        
+         body {
+            text-align: center;
+            margin: 0;
+            
+        }
+        img {
+            object-fit: contain;
+            max-width: 90%;
+            max-height: 95px;
+            display: block;
+            margin-left: auto;
+            margin-right: auto;
+}
+        .first{
+            color: #EF629F;
+            
+        }
+        .second{
+            color: #3AB795;
+            
+        }
+        .top{
+            color: #3AB795;
+            font-size: 15pt;
+            font-weight: bold;
+        }
+        .points{
+            color: #EF629F;
+            margin-top: -10px;
+            font-weight: bold;
+            font-size: 15pt;
+        }
+        #container {
+            display: grid;
+            grid-template-rows: 13% 70% 1%;
+            height: 100vh;
+            
+        }
+        #inner {
+                grid-row: 2 / span 1;
+            display: grid;
+            grid-template-rows: 33.3% 33.3% 33.3%;
+        }
+        #first{
+            margin-left: 25px;
+            margin-right: 25px;
+            margin-top: 10px;
+            margin-bottom: 10px;
+            border-radius: 25px;
+            background-color: #B8D8BA;
+            grid-row: 1 / span 1;
+            display: grid;
+            grid-template-columns: 50% 50%;
+             color: #EF629F;
+        }
+        #first1{
+            padding: 15px;
+            margin-top: auto;
+           margin-bottom: auto;
+            border-radius: 25px 0 0 25px;
+           
+           
+            grid-column: 1 / span 1;
+            
+        }   
+        #selection{
+            margin-top: auto;
+           margin-bottom: auto;
+            border-radius: 0 25px 25px 0;
+            
+            
+            grid-column: 2 / span 1;
+            
+        }
+        
+        
+        #second{
+             margin-left: 25px;
+            margin-right: 25px;
+            margin-top: 10px;
+            margin-bottom: 10px;
+            border-radius: 25px;
+            background-color: #FAC9B8;
+            grid-row: 2 / span 1;
+            display: grid;
+            grid-template-columns: 50% 50%;
+             color: #3AB795;
+        }
+        #second1{
+            padding: 15px;
+            margin-top: auto;
+           margin-bottom: auto;
+            border-radius: 25px 0 0 25px;
+           
+           
+            grid-column: 1 / span 1;
+            
+        }   
+        #selection2{
+            margin-top: auto;
+           margin-bottom: auto;
+            border-radius: 0 25px 25px 0;
+          
+            
+            grid-column: 2 / span 1;
+            
+        }
+        #third{
+            margin-left: 25px;
+            margin-right: 25px;
+            margin-top: 10px;
+            margin-bottom: 10px;
+            border-radius: 25px;
+            background-color: #B8D8BA;
+            grid-row: 3 / span 1;
+            display: grid;
+            grid-template-columns: 50% 50%;
+             color: #EF629F;
+        }
+        #third1{
+            padding: 15px;
+            margin-top: auto;
+           margin-bottom: auto;
+            border-radius: 25px 0 0 25px;
+           
+           
+            grid-column: 1 / span 1;
+            
+        }   
+        #selection3{
+            margin-top: auto;
+           margin-bottom: auto;
+            border-radius: 0 25px 25px 0;
+            
+            
+            grid-column: 2 / span 1;
+            
+        }
+         
+
+        #header{
+            grid-row: 1 / span 1;
+        }
+        #greeting {
+            color: #EF629F;
+        }
+             #footer{
+                 grid-row: 3 / span 1;
+             }
+        }
+        @media only screen and (min-width: 401px) {
+        body {
+            text-align: center;
+            margin: 0;
+            
+        }
+        img {
+            object-fit: contain;
+            max-width: 90%;
+            max-height: 95px;
+            display: block;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        .first{
+            color: #EF629F;
+            
+        }
+        .second{
+            color: #3AB795;
+            
+        }
+        .top{
+            color: #3AB795;
+            font-size: 23pt;
+            font-weight: bold;
+        }
+        .points{
+            color: #EF629F;
+            margin-top: -10px;
+            font-weight: bold;
+            font-size: 23pt;
+        }
+        #container {
+            display: grid;
+            grid-template-rows: 13% 65% 1%;
+            height: 100vh;
+            
+        }
+        #inner {
+            grid-row: 2 / span 1;
+            display: grid;
+            grid-template-rows: 33.3% 33.3% 33.3%;
+            font-size: 15pt;
+        }
+        #first{
+            margin-left: 25px;
+            margin-right: 25px;
+            margin-top: 10px;
+            margin-bottom: 10px;
+            border-radius: 25px;
+            background-color: #B8D8BA;
+            grid-row: 1 / span 1;
+            display: grid;
+            grid-template-columns: 50% 50%;
+             color: #EF629F;
+        }
+        #first1{
+            padding: 15px;
+            
+            margin-top: auto;
+            margin-bottom: auto;
+            border-radius: 25px 0 0 25px;
+           
+           
+            grid-row: 1 / span 1;
+            
+        }   
+        #selection{
+            margin-top: auto;
+            margin-bottom: auto;
+            border-radius: 0 25px 25px 0;
+            grid-column: 2 / span 1;
+            
+        }
+        
+        
+        #second{
+            margin-left: 25px;
+            margin-right: 25px;
+            margin-top: 10px;
+            margin-bottom: 10px;
+            border-radius: 25px;
+            background-color: #FAC9B8;
+            grid-row: 2 / span 1;
+            display: grid;
+            grid-template-columns: 50% 50%;
+             color: #3AB795;
+        }
+        #second1{
+            padding: 15px;
+            margin-top: auto;
+            margin-bottom: auto;
+            border-radius: 25px 0 0 25px;
+           
+           
+            grid-column: 1 / span 1;
+            
+        }   
+        #selection2{
+            margin-top: auto;
+            margin-bottom: auto;
+            border-radius: 0 25px 25px 0;
+          
+            
+            grid-column: 2 / span 1;
+            
+        }
+        #third{
+            margin-left: 25px;
+            margin-right: 25px;
+            margin-top: 10px;
+            margin-bottom: 10px;
+            border-radius: 25px;
+            background-color: #B8D8BA;
+            grid-row: 3 / span 1;
+            display: grid;
+            grid-template-columns: 50% 50%;
+             color: #EF629F;
+        }
+        #third1{
+            padding: 15px;
+            margin-top: auto;
+            margin-bottom: auto;
+            border-radius: 25px 0 0 25px;
+           
+           
+            grid-column: 1 / span 1;
+            
+        }   
+        #selection3{
+            margin-top: auto;
+            margin-bottom: auto;
+            border-radius: 0 25px 25px 0;
+            
+            
+            grid-column: 2 / span 1;
+            
+        }
+             
+        
+
+        #header{
+            grid-row: 1 / span 1;
+        }
+        #greeting {
+            color: #EF629F;
+        }
+        #footer{
+            grid-row: 3 / span 1;
+        }
+        }
+        @media only screen and (min-width: 1024px) {
+           
+        body {
+            text-align: center;
+            margin: 0;
+            
+        }
+        img {
+            object-fit: contain;
+            max-width: 90%;
+            max-height: 95px;
+            display: block;
+            margin-left: auto;
+            margin-right: auto;
+}
+        .first{
+            color: #EF629F;
+            
+        }
+        .second{
+            color: #3AB795;
+            
+        }
+        .top{
+            color: #3AB795;
+            font-size: 25pt;
+            font-weight: bold;
+        }
+        .points{
+            color: #EF629F;
+            margin-top: -10px;
+            font-weight: bold;
+            font-size: 25pt;
+        }
+        #container {
+            display: grid;
+            grid-template-rows: 12% 70% 1%;
+            height: 100vh;
+            
+        }
+        #inner {
+                grid-row: 2 / span 1;
+            display: grid;
+            grid-template-rows: 33.3% 33.3% 33.3%;
+            font-size: 20pt;
+        }
+        #first{
+            margin-left: 25px;
+            margin-right: 25px;
+            margin-top: 10px;
+            margin-bottom: 10px;
+            border-radius: 25px;
+            background-color: #B8D8BA;
+            grid-row: 1 / span 1;
+            display: grid;
+            grid-template-columns: 50% 50%;
+            color: #EF629F;
+        }
+        #first1{
+            padding: 15px;
+            margin-top: auto;
+            margin-bottom: auto;
+            border-radius: 25px 0 0 25px;
+           
+           
+            grid-column: 1 / span 1;
+            
+        }   
+        #selection{
+            margin-top: auto;
+           margin-bottom: auto;
+            border-radius: 0 25px 25px 0;
+            
+            
+            grid-column: 2 / span 1;
+            
+        }
+        
+        
+        #second{
+            margin-left: 25px;
+            margin-right: 25px;
+            margin-top: 10px;
+            margin-bottom: 10px;
+            border-radius: 25px;
+            background-color: #FAC9B8;
+            grid-row: 2 / span 1;
+            display: grid;
+            grid-template-columns: 50% 50%;
+             color: #3AB795;
+        }
+        #second1{
+            padding: 15px;
+            margin-top: auto;
+           margin-bottom: auto;
+            border-radius: 25px 0 0 25px;
+           
+           
+            grid-column: 1 / span 1;
+            
+        }   
+        #selection2{
+            margin-top: auto;
+           margin-bottom: auto;
+            border-radius: 0 25px 25px 0;
+          
+            
+            grid-column: 2 / span 1;
+            
+        }
+        #third{
+            margin-left: 25px;
+            margin-right: 25px;
+            margin-top: 10px;
+            margin-bottom: 10px;
+            border-radius: 25px;
+            background-color: #B8D8BA;
+            grid-row: 3 / span 1;
+            display: grid;
+            grid-template-columns: 50% 50%;
+             color: #EF629F;
+        }
+        #third1{
+            padding: 15px;
+            margin-top: auto;
+           margin-bottom: auto;
+            border-radius: 25px 0 0 25px;
+           
+           
+            grid-column: 1 / span 1;
+            
+        }   
+        #selection3{
+            margin-top: auto;
+           margin-bottom: auto;
+            border-radius: 0 25px 25px 0;
+            
+            
+            grid-column: 2 / span 1;
+            
+        }
+             
+        #fourth{
+            margin-left: 25px;
+            margin-right: 25px;
+            margin-top: 10px;
+            margin-bottom: 10px;
+            border-radius: 25px;
+            background-color: #FAC9B8;
+            grid-row: 4 / span 1;
+            display: grid;
+            grid-template-rows: 50% 50%;
+             color: #3AB795;
+        }
+        #fourth1{
+            padding: 15px;
+            margin-top: auto;
+           margin-bottom: auto;
+            border-radius: 25px 0 0 25px;
+           
+           
+            grid-row: 1 / span 1;
+            
+        }   
+        #selection4{
+            margin-top: auto;
+           margin-bottom: auto;
+            border-radius: 0 25px 25px 0;
+            
+            
+            grid-row: 2 / span 1;
+            
+        }
+        #fifth{
+            margin-left: 25px;
+            margin-right: 25px;
+            margin-top: 10px;
+            margin-bottom: 10px;
+            border-radius: 25px;
+            background-color: #B8D8BA;
+            grid-row: 5 / span 1;
+            display: grid;
+            grid-template-rows: 50% 50%;
+             color: #EF629F;
+        }
+        #fifth1{
+            padding: 15px;
+            margin-top: auto;
+           margin-bottom: auto;
+            border-radius: 25px 0 0 25px;
+           
+           
+            grid-row: 1 / span 1;
+            
+        }   
+        #selection5{
+            margin-top: auto;
+           margin-bottom: auto;
+            border-radius: 0 25px 25px 0;
+            
+            
+            grid-row: 2 / span 1;
+            
+        }
+
+        #header{
+            grid-row: 1 / span 1;
+        }
+        #greeting {
+            color: #EF629F;
+        }
+             #footer{
+                 grid-row: 3 / span 1;
+             }
+        }
+    
+    </style>
+</head>
+<body>
+    <div id='container'>
+        <div id="header">
+            <nav>
+            This is a nav bar!
+            </nav>
+            <div id="greeting"><p class='top'>Tic-Tac-Toe</p><p class='points'> Current Points: </p>
+            
+            
+            </div>
+        
+        </div>
+        <div id='inner'>
+    <div id="first" onclick="window.location.href = 'https://test-react3-tiffany.netlify.app';">
+        <div id='first1'><h1>Nurse</h1></div>
+    <div id='selection'>
+        <div id='image'>
+    <img src="./Static/img/nurse1.png">
+            </div>
+        </div>
+        </div>
+        
+    <div id="second" onclick="window.location.href = 'https://test-react2-tiffany.netlify.app/';">
+        <div id='second1'><h1>Mask</h1></div>
+  <div id='selection2'>
+    <div id='image'>
+    <img src="./Static/img/mask3.png">
+            </div>
+        </div>
+    </div>
+    <div id="third" onclick="window.location.href = 'https://test-react-tiffany.netlify.app';">
+        <div id='third1'><h1>Sanitizer</h1></div>
+  <div id='selection3'>
+    <div id='image'>
+    <img src="./Static/img/sanitizer1.png">
+            </div>
+        </div>
+    </div>
+    
+            
+            
+            
+           </div> 
+        <div id='footer'>this is footer.</div>
+    </div>
+  <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+  
+</body>
+</html>
