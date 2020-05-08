@@ -1,0 +1,279 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Welcome to Happify!</title>
+    <style>
+        
+        
+         body {
+            text-align: center;
+            margin: 0;
+        }
+        img {
+            object-fit: contain;
+            max-width: 90%;
+            max-height: 95px;
+            display: block;
+            margin-left: auto;
+            margin-right: auto;
+}
+        .first{
+            color: #EF629F;
+            
+        }
+        .second{
+            color: #3AB795;
+            
+        }
+        .top{
+            color: #3AB795;
+            font-size: 20pt;
+            font-weight: bold;
+        }
+        .username{
+            color: #EF629F;
+            margin-top: -10px;
+            font-weight: bold;
+        }
+        #container {
+            
+            
+            height: 120vh;
+            
+        }
+        #inner {
+            grid-row: 2 / span 1;
+            
+        }
+        #dailytask{
+            margin-left: 25px;
+            margin-right: 25px;
+            margin-top: 10px;
+            margin-bottom: 10px;
+            border-radius: 25px;
+            background-color: #B8D8BA;
+            grid-row: 1 / span 1;
+            display: grid;
+            grid-template-columns: 50% 50%;
+        }
+        
+        #dailytask1{
+            margin-top: auto;
+           margin-bottom: auto;
+            border-radius: 25px 0 0 25px;
+            
+           
+            grid-column: 1 / span 1;
+            
+        }   
+        #dailytask2{
+            margin-top: auto;
+           margin-bottom: auto;
+            border-radius: 0 25px 25px 0;
+            
+            
+            grid-column: 2 / span 1;
+            
+        }
+        
+        #games{
+            margin-left: 25px;
+            margin-right: 25px;
+            margin-top: 10px;
+            margin-bottom: 10px;
+            border-radius: 25px;
+            grid-row: 2 / span 1;
+            background-color: #FAC9B8;
+            display: grid;
+            grid-template-columns: 50% 50%;
+
+        }
+        #games1{
+            margin-top: auto;
+           margin-bottom: auto;
+            border-radius: 25px 0 0 25px;
+            
+           
+            grid-column: 1 / span 1;
+            
+        }   
+        #games2{
+            margin-top: auto;
+           margin-bottom: auto;
+            border-radius: 0 25px 25px 0;
+            
+            
+            grid-column: 2 / span 1;
+            
+        }
+        #howdoyoufeeltoday{
+            margin-left: 25px;
+            margin-right: 25px;
+            margin-top: 10px;
+            margin-bottom: 10px;
+            border-radius: 25px;
+            background-color: #B8D8BA;
+            grid-row: 3 / span 1;
+            display: grid;
+            grid-template-columns: 50% 50%;
+
+        }
+        #how1{
+            margin-top: auto;
+           margin-bottom: auto;
+            border-radius: 25px 0 0 25px;
+            
+           
+            grid-column: 1 / span 1;
+            
+        }   
+        #how2{
+            margin-top: auto;
+           margin-bottom: auto;
+            border-radius: 0 25px 25px 0;
+            
+            
+            grid-column: 2 / span 1;
+            
+        }
+        #redeem{
+            margin-left: 25px;
+            margin-right: 25px;
+            margin-top: 10px;
+            margin-bottom: 10px;
+            border-radius: 25px;
+            background-color: #FAC9B8;
+            grid-row: 4 / span 1;
+            display: grid;
+            grid-template-columns: 50% 50%;
+        }
+        #redeem1{
+           margin-top: auto;
+           margin-bottom: auto;
+           border-radius: 25px 0 0 25px;
+/*            background-color: #B8D8BA;*/
+           
+            grid-column: 1 / span 1;
+            
+        }   
+        #redeem2{
+            margin-top: auto;
+           margin-bottom: auto;
+
+            border-radius: 0 25px 25px 0;
+
+            
+            grid-column: 2 / span 1;
+            
+        }
+
+        #header{
+            grid-row: 1 / span 1;
+        }
+        #greeting {
+            color: #EF629F;
+        }
+        
+            .container {
+  list-style-type: none;
+  margin: 0;
+  
+  overflow: hidden;
+  background-color: #75DBCD;
+}
+.list {
+  float: left;
+}
+.list a {
+  display: block;
+  color: white;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+}
+.list a:hover {
+  background-color: rgb(65, 134, 125);
+}
+    
+    </style>
+</head>
+<body>
+    <div id='container'>
+        <div id="header">
+            <nav>
+            <ul class="container">
+    <li class="list"><a href="Hmepage_of_app.html">Home</a></li>
+    
+    <li class="list"><a>Mini Games</a></li>
+    <li class="list" style="float: right;"><a href="user_profile.html"><img src="static/img/shape.png" width="20px" height="20px"> </a></li>
+    
+</ul>
+            </nav>
+            <div id="greeting"><p class='top'>Hello</p><h1 class='username'> username!</h1></div>
+        
+        </div>
+        <div id='inner'>
+    <div id="dailytask" onclick="window.location.href = 'http://google.ca';">
+        <div id='dailytask1'>
+            <h1 class="first">Daily tasks</h1>
+        </div>
+  <div id='dailytask2'>
+      <div id='image'>
+      <img src="img/task2.png">
+      </div>
+  </div>
+  
+    
+   
+        
+        </div>
+        
+    <div id="games" onclick="window.location.href = 'http://google.ca';">
+        <div id="games1">
+    <h1 class="second">Mini Games</h1>
+            </div>
+        <div id="games2">
+            <div id='image'>
+    <img src="img/game.png">
+            </div>
+        </div>
+    </div>
+    <div id="howdoyoufeeltoday" onclick="window.location.href = 'http://google.ca';">
+        <div id="how1">
+    <h1 class="first">Your health</h1>
+            </div>
+        <div id="how2">
+            <div id='image'>
+    <img src="img/feel2.png">
+            </div>
+        </div>
+    
+    </div>
+    <div id="redeem" onclick="window.location.href = 'http://google.ca';">
+        
+        <div id="redeem1">
+    <h1 class="second">Redeem?</h1>
+            </div>
+        <div id="redeem2">
+            <div id='image'>
+            
+    <img src="img/coupon1.png">
+                </div>
+            </div>
+        
+    
+    
+        
+        
+        
+    
+    </div>
+           </div> 
+        <div id='footer'>Made by FutureCurves.</div>
+    </div>
+  <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+  
+</body>
+</html>
