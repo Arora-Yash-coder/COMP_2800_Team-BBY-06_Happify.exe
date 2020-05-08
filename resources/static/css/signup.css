@@ -1,0 +1,223 @@
+.container{
+      background-color:hsla(120, 60%, 2%, 0.6);
+      
+      /* filter:alpha(opacity=50); */
+      z-index:-1; 
+      /* opacity:0.8; */
+    }
+    #choice_tab{
+      display: inline;
+    }
+    #reg{
+     
+      /* background-color:hsla(120, 60%, 2%, 0.6) ; */
+      float: left;
+    }
+    #userForm{
+      margin: 0;
+    }
+    #log{
+      float: right;
+      margin: 0;
+      padding-top: 10px;
+      height: 50px;
+      width: 120px;
+      padding-right: 20px;
+      
+      background-color: rgb(0, 0, 0);
+    }
+
+    input[type="text"] {
+      margin-top: 20px;
+      margin-bottom: -1px;
+      border-bottom-left-radius: 0;
+      border-bottom-right-radius: 0;
+      font-size: 15pt;
+      height: 48px;
+      width: 360px;
+    }
+
+    input[type="password"] {
+      margin-top: 20px;
+      margin-bottom: -1px;
+      border-bottom-left-radius: 0;
+      border-bottom-right-radius: 0;
+      font-size: 15pt;
+      height: 48px;
+      width: 360px;
+    }
+
+    input[type="email"] {
+      margin-top: 20px;
+      margin-bottom: -1px;
+      border-bottom-left-radius: 0;
+      border-bottom-right-radius: 0;
+      font-size: 15pt;
+      height: 48px;
+      width: 360px;
+    }
+
+
+    #register {
+      margin-left: auto;
+      color: floralwhite;
+      margin-top: 20px;
+      margin-bottom: -1px;
+      border-bottom-left-radius: 0;
+      border-bottom-right-radius: 0;
+      font-size: 18pt;
+      height: 48px;
+      width: 100px;
+      background-color: dodgerblue;
+    }
+
+
+
+    .container {
+      text-align: center;
+      width: 400px;
+    }
+
+    body {
+      color: white;
+    }
+
+    @media only screen and (min-width: 1024px) {
+      body {
+        background-image: url(./img/background.jpg);
+        /* text-align: center; */
+        background-size: cover;
+        height: 100vh;
+      }
+
+      input {
+        margin-top: 30px;
+        margin-bottom: 20px;
+        border-top-left-radius: 0;
+        border-top-right-radius: 0;
+        width: 300px;
+      }
+
+      button {
+        margin-top: 15px;
+        margin-bottom: 15px;
+        border-top-left-radius: 0;
+        border-top-right-radius: 0;
+        width: 100%;
+        font-size: 15pt;
+      }
+
+    }
+
+    @media only screen and (max-width: 1023px) {
+      body {
+        margin: 0;
+        background-image: url(./img/background.jpg);
+        text-align: center;
+        background-size: cover;
+        height: 100vh;
+      }
+
+      #form-wrapper {
+        padding-top: 30%;
+      }
+
+      input {
+        margin-top: 30px;
+        margin-bottom: 20px;
+        border-top-left-radius: 0;
+        border-top-right-radius: 0;
+        width: 300px;
+      }
+
+      button {
+        margin-top: 15px;
+        margin-bottom: 15px;
+        border-top-left-radius: 0;
+        border-top-right-radius: 0;
+        width: 100%;
+        font-size: 15pt;
+      }
+
+    }
+
+
+    @media only screen and (max-device-width: 320px) {
+      body {
+        background-image: url(./img/background.jpg);
+        text-align: center;
+        background-size: cover;
+        height: 100vh;
+      }
+
+      input[type="text"] {
+        margin-top: 20px;
+        margin-bottom: -1px;
+        border-bottom-left-radius: 0;
+        border-bottom-right-radius: 0;
+        font-size: 15pt;
+        height: 48px;
+        width: 250px;
+      }
+
+      input[type="password"] {
+        margin-top: 20px;
+        margin-bottom: -1px;
+        border-bottom-left-radius: 0;
+        border-bottom-right-radius: 0;
+        font-size: 15pt;
+        height: 48px;
+        width: 250px;
+      }
+
+      input[type="email"] {
+        margin-top: 20px;
+        margin-bottom: -1px;
+        border-bottom-left-radius: 0;
+        border-bottom-right-radius: 0;
+        font-size: 15pt;
+        height: 48px;
+        width: 250px;
+      }
+
+      button {
+        margin-top: 15px;
+        margin-bottom: 15px;
+        border-top-left-radius: 0;
+        border-top-right-radius: 0;
+        width: 100%;
+        font-size: 15pt;
+      }
+    }
+
+    /*
+              for iphone X
+        @media only screen 
+    and (device-width : 375px) 
+    and (device-height : 812px) 
+    and (-webkit-device-pixel-ratio : 3) {
+        body {
+      background-image: url(./img/background.jpg);
+      text-align: center;
+      background-size: cover;  
+      height: 100vh;
+    }
+    
+	
+
+	input{
+	  margin: 20px;
+	  border-top-left-radius: 0;
+	  border-top-right-radius: 0;
+         width: 300px;
+	}
+    button {
+      margin-top: 15px;
+      margin-bottom: 15px;
+	  border-top-left-radius: 0;
+	  border-top-right-radius: 0;
+      width: 100%;
+      font-size: 15pt;   
+	}
+    }
+*/

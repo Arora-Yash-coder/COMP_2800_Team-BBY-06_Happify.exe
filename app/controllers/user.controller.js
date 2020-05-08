@@ -32,7 +32,8 @@ exports.register = (req, res) => {
     //     });
 
     User.create(user);
-    return;
+    
+    res.redirect('/login');
 };
 
 // Fetch all Users

@@ -346,7 +346,7 @@ module.exports = function (app) {
 
 
 	//tic tac toe connection, it runs on port 81
-	app.get("/minigames/ttt", (req, res) => {
+	app.get("/games/ttt", (req, res) => {
 		res.sendFile(staticPath + "/ttt_game_entrance.html")
 	})
 
@@ -389,6 +389,7 @@ module.exports = function (app) {
 				.catch(error => {
 					console.log(error)
 					res.redirect('/register');
+					res.redirect('/');
 				});
 		});
 
