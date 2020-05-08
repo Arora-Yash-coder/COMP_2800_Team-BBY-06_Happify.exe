@@ -108,9 +108,9 @@ module.exports = function (app) {
 		res.end();
 	});
 
-	app.get("/game/chess", (req, res) => {
-		res.sendFile(__dirname + "/chessboard.html")
-	})
+	// app.get("/game/chess", (req, res) => {
+	// 	res.redirect("judaozhong.com:3001")
+	// })
 
 	app.get('/coupon',sessionChecker2, users.getCoupon);
 
@@ -348,6 +348,17 @@ module.exports = function (app) {
 	//tic tac toe connection, it runs on port 81
 	app.get("/games/ttt", (req, res) => {
 		res.sendFile(staticPath + "/ttt_game_entrance.html")
+	})
+
+	
+	
+	app.get("/games/snake", (req, res) => {
+		res.sendFile(staticPath + "/snake.html")
+	})
+
+		
+	app.get("/games/shooter", (req, res) => {
+		res.sendFile(staticPath + "/zombie.html")
 	})
 
 
