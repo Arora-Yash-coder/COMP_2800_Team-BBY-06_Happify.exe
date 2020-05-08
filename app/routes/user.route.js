@@ -26,7 +26,9 @@ module.exports = function (app) {
 			toolbar: toolbar_bottom,
 		}));
 	});
-
+	app.get('/AboutUs', (req, res) => {
+		res.render(path + "AboutUS.ejs");
+	});
 	app.get('/success', (req, res) => {
 		res.sendFile(path + "successful.html");
 	});
@@ -38,6 +40,7 @@ module.exports = function (app) {
 	app.get('/:username', (req, res) => {
 		res.sendFile(path + "successful.html");
 	});
+	
 
 	// Save a User to MongoDB
 	app.post('/api/users/register', users.register);
