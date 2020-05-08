@@ -11,6 +11,7 @@
         background-repeat: no-repeat;
         background-attachment: fixed;
         background-size: cover;
+        font-family: Arial, Helvetica, sans-serif;
     }
 
     .card,
@@ -26,6 +27,12 @@
         box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
     }
 
+    .card-body {
+        display: grid;
+        grid-template-columns: auto auto;
+        grid-column-gap: 50px;
+    }
+
     .card-img-top {
         width: auto;
         height: auto;
@@ -38,55 +45,74 @@
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
     <div class="card">
         <div class="card-body">
-            <img class="card-img-top" src="static/img/logow.png" alt="Logo">
-            <h4 class="card-title" style="text-transform: uppercase;">Happify</h4>
-            <hr>
-            <p class="card-text" style="text-align: justify;">
-                FutureCurves focuses on the mental well-being of people in isolation during the COVID-19 outbreak. It
-                offers wholesome daily tasks for the users to finish, while getting points for redeeming coupons. An
-                abundance of minigames to play is also a feature in our project.
-                We first came up with the idea of having such an app to cheer people up when we found most of our peers
-                are feeling down in the isolation caused by the COVID-19 pandemic. Also we are concerned about the
-                affected economy as well, so we think of a win-win mechanism of helping both the users as well as
-                businesses.
-            </p>
+            <div class="grid-item">
+                <img class="card-img-top" src="static/img/logow.png" alt="Logo">
+            </div>
+            <div>
+                <h4 class="card-title" style="text-transform: uppercase;">Happify</h4>
+                <hr>
+                <p class="card-text" style="text-align: justify;">
+                    FutureCurves focuses on the mental well-being of people in isolation during the COVID-19 outbreak.
+                    It
+                    offers wholesome daily tasks for the users to finish, while getting points for redeeming coupons. An
+                    abundance of minigames to play is also a feature in our project.
+                    We first came up with the idea of having such an app to cheer people up when we found most of our
+                    peers
+                    are feeling down in the isolation caused by the COVID-19 pandemic. Also we are concerned about the
+                    affected economy as well, so we think of a win-win mechanism of helping both the users as well as
+                    businesses.
+                </p>
+            </div>
         </div>
     </div>
     <div class="card">
         <div class="card-body">
-            <img class="card-img-top" src="static/img/Judao1.png" alt="Judao">
-            <h4 class="card-title" style="text-transform: uppercase;">Judao Zhong</h4>
-            <hr>
-            <ul>
-                <li>The “Project Manager” in FutureCurves.</li>
-                <li>A devotee of server technologies and web development skills.</li>
-                <li>A Board Game Lover.</li>
-            </ul>
-            <p class="card-text" style="text-align: justify;">
-                “It’s time to meditate in solitude.” That’s what I thought when the “stay-at-home” order came into
-                effect. You know for a guy that likes getting close to nature, it’s a totally different lifestyle to
-                experience for the coming months, but I will know how to get along, and that’s why he’s leading such a
-                project.
-            </p>
-        </div>
-    </div>
-    <div class="media">
-        <img class="pull-left" src="static/img/Tiffany1.png" alt="Tiffany">
-        <div class="media-body pull-right">
-            <h4 class="mt-0" style="text-transform: uppercase;">Tiffany Gu</h4>
-            <hr>
-            <ul>
-                <li>The “Web developer” in FutureCurves</li>
-                <li>Very interested in MongoDB and using that in a “web app” project</li>
-                <li>I have always been feeling down during the isolation time so thought this is a good time to start
-                    working on a project that helps people like me. </li>
-                <li>Stay positive everyone!</li>
-            </ul>
+            <div>
+                <img class="card-img-top" src="static/img/Judao1.png" alt="Judao">
+            </div>
+            <div>
+                <h4 class="card-title" style="text-transform: uppercase;">Judao Zhong</h4>
+                <hr>
+                <ul>
+                    <li>The “Project Manager” in FutureCurves.</li>
+                    <li>A devotee of server technologies and web development skills.</li>
+                    <li>A Board Game Lover.</li>
+                </ul>
+                <p class="card-text" style="text-align: justify;">
+                    “It’s time to meditate in solitude.” That’s what I thought when the “stay-at-home” order came into
+                    effect. You know for a guy that likes getting close to nature, it’s a totally different lifestyle to
+                    experience for the coming months, but I will know how to get along, and that’s why he’s leading such
+                    a
+                    project.
+                </p>
+            </div>
         </div>
     </div>
     <div class="card">
         <div class="card-body">
+            <div>
+                <img class="card-img-top" src="static/img/Tiffany1.png" alt="Tiffany">
+            </div>
+            <div>
+                <h4 class="card-title" style="text-transform: uppercase;">Tiffany Gu</h4>
+                <hr>
+                <ul>
+                    <li>The “Web developer” in FutureCurves</li>
+                    <li>Very interested in MongoDB and using that in a “web app” project</li>
+                    <li>I have always been feeling down during the isolation time so thought this is a good time to
+                        start
+                        working on a project that helps people like me. </li>
+                    <li>Stay positive everyone!</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <div class="card">
+        <div class="card-body">
+            <div>
             <img class="card-img-top" src="static/img/Saga1.png" alt="Saga">
+            </div>
+            <div>
             <h4 class="card-title" style="text-transform: uppercase;">Saga Munkhbold</h4>
             <hr>
             <ul>
@@ -98,7 +124,25 @@
                 like just a normal small old Communist mining town.
             </p>
         </div>
+        </div>
+    </div>
+    <div class="card">
+        <div class="card-body">
+            <div>
+            <img class="card-img-top" src="static/img/yash1.png" alt="Yash">
+            </div>
+            <div>
+            <h4 class="card-title" style="text-transform: uppercase;">Yash Arora</h4> 
+            <hr>
+            <ul>
+                <li>The “Head of Game development” in FutureCurves.</li>
+            
+            </ul>
+            <p class="card-text" style="text-align: justify;">
+                Yash's intro
+            </p>
+        </div>
+        </div>
     </div>
 </body>
-
 </html>
