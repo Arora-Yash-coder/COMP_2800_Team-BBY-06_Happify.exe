@@ -101,6 +101,8 @@ module.exports = function (app) {
 
 	app.get('/coupon', users.getCoupon);
 
+	app.post('/coupon/redeem', users.redeemCoupon);
+
 	app.get("/restart",(req,res)=>{
 		uci[id] = "position startpos moves ";
 		stockfishes[id].postMessage(uci[id]);
@@ -246,6 +248,14 @@ module.exports = function (app) {
 	app.route('/getDailyKnowledge').get(users.dailyKnowledge);
 
 	app.route('/getDailyTasks').get(users.dailyTasks);
+
+
+
+	app.route('/getDailyTasks/dislikeTask').post(users.taskDislike);
+	app.route('/getDailyTasks/likeTask').post(users.taskLike);
+
+	app.route('/getDailyTasks/dislikeKnowledge').post(users.knowledgeDislike);
+	app.route('/getDailyTasks/likeKnowledge').post(users.knowledgeLike);
 
 	app.get('/user_profile', function (req, res) {
 

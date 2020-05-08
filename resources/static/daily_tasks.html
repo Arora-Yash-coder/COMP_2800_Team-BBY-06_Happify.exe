@@ -681,17 +681,18 @@
       <div id="dailytask">
         <div id='dailytask1'></div>
         <div id='selection'>
-
-          <a class="square_btn" class="like">I like it!</a>
-          <a class="square_btn" class="dislike">I don't like it!</a>
+          <span id = "dailytask1_id"></span>
+          <a class="square_btn" class="like" id="dailytask_like">I like it!</a>
+          <a class="square_btn" class="dislike" id="dailytask_dislike">I don't like it!</a>
         </div>
       </div>
 
       <div id="knowledge">
         <div id='knowledge1'></div>
         <div id='selection2'>
-          <a href="#" class="square_btn_second">I like it!</a>
-          <a href="#" class="square_btn_second">I don't like it!</a>
+          <span id = "dailyknowledge1_id"></span>
+          <a class="square_btn_second" class="like" id="knowledge_like">I like it!</a>
+          <a class="square_btn_second" class="dislike" id="knowledge_dislike">I don't like it!</a>
         </div>
       </div>
 
@@ -703,7 +704,7 @@
   <script>
 
 
-    function(){}
+    function getTasks() {
     $.ajax({
       url: "/getDailyTasks",
       dataType: "json",
@@ -719,9 +720,12 @@
 
         div.html(htmlStr);
 
+        $("#dailytask1_id").html(data.result[seed].id)
+
         var div4 = $("#knowledge1");
         let seed2 = Math.floor(Math.random() * 11);
-
+        
+        $("#dailyknowledge1_id").html(data.result[seed2].id)
         let htmlStr2 = "";
 
         htmlStr2 += "<h3>Knowledge of the day</h3><p>" + data.result[seed2].content
@@ -737,11 +741,53 @@
           + jqXHR.responseText);
       }
     });
-
+  }  getTasks()
     
-    $(".dislike").on("click",()=>{
-
+    $("#dailytask_dislike").on("click",()=>{
+        let id = $("#dailytask1_id").html()
+     
+        $.ajax({
+          type: "post",
+          url: "/getDailyTasks/dislikeTask",
+          data: {"id":id},
+          dataType: "dataType",
+          success: function (response) {
+            alert("thx 4 ur feedbck")
+          }
+        });
     })
+
+    $("#knowledge_like").on("click",()=>{
+        let id = $("#dailyknowledge1_id").html()
+       
+        $.ajax({
+          type: "post",
+          url: "/getDailyTasks/likeKnowledge",
+          data: {"id":id},
+          dataType: "dataType",
+          success: function (response) {
+            alert("thx 4 ur feedbck")
+          }
+        });
+    })
+
+
+    $("#knowledge_dislike").on("click",()=>{
+        let id = $("#dailyknowledge1_id").html()
+     
+        $.ajax({
+          type: "post",
+          url: "/getDailyTasks/dislikeKnowledge",
+          data: {"id":id},
+          dataType: "dataType",
+          success: function (response) {
+            alert("thx 4 ur feedbck")
+          }
+        });
+    })
+
+
+
   </script>
 </body>
 
