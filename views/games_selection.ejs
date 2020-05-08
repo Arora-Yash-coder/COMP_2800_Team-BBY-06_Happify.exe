@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Daily tasks</title>
     <style>
-        @media only screen and (max-width: 350px) {
+        
             .top {
                 color: #3AB795;
                 font-size: 17pt;
@@ -18,11 +18,11 @@
             }
         }
 
-        @media only screen and (max-width: 400px) {
+       
 
             body {
                 text-align: center;
-                margin: 0;
+                margin:-10px;
             }
 
             img {
@@ -52,20 +52,21 @@
 
             .username {
                 color: #EF629F;
-                margin-top: -10px;
+/*                margin-top: -10px;*/
                 font-weight: bold;
             }
 
             #container {
-                display: grid;
-                grid-template-rows: 15% 82% 1%;
-                height: 120vh;
+/*                display: grid;*/
+/*                grid-template-rows: 15% 82% 1%;*/
+/*                height: 120vh;*/
+                margin:0;
 
             }
 
             #inner {
                 grid-row: 2 / span 1;
-                display: grid;
+/*                display: grid;*/
                 grid-template-rows: 25% 25% 25% 25%;
             }
 
@@ -207,396 +208,7 @@
             #greeting {
                 color: #EF629F;
             }
-        }
-
-        @media only screen and (min-width: 401px) {
-
-            body {
-                text-align: center;
-                margin: 0;
-            }
-
-            img {
-                object-fit: contain;
-                max-width: 90%;
-                max-height: 95px;
-                display: block;
-                margin-left: auto;
-                margin-right: auto;
-            }
-
-            .first {
-                color: #EF629F;
-
-            }
-
-            .second {
-                color: #3AB795;
-
-            }
-
-            .top {
-                color: #3AB795;
-                font-size: 20pt;
-                font-weight: bold;
-            }
-
-            .username {
-                color: #EF629F;
-                margin-top: -10px;
-                font-weight: bold;
-            }
-
-            #container {
-                display: grid;
-                grid-template-rows: 15% 82% 1%;
-                height: 120vh;
-
-            }
-
-            #inner {
-                grid-row: 2 / span 1;
-                display: grid;
-                grid-template-rows: 25% 25% 25% 25%;
-            }
-
-            #dailytask {
-                margin-left: 25px;
-                margin-right: 25px;
-                margin-top: 10px;
-                margin-bottom: 10px;
-                border-radius: 25px;
-                background-color: #B8D8BA;
-                grid-row: 1 / span 1;
-                display: grid;
-                grid-template-columns: 50% 50%;
-            }
-
-            #dailytask1 {
-                margin-top: auto;
-                margin-bottom: auto;
-                border-radius: 25px 0 0 25px;
-                background-color: #B8D8BA;
-
-                grid-column: 1 / span 1;
-
-            }
-
-            #dailytask2 {
-                margin-top: auto;
-                margin-bottom: auto;
-                border-radius: 0 25px 25px 0;
-                background-color: #B8D8BA;
-
-                grid-column: 2 / span 1;
-
-            }
-
-            #games {
-                margin-left: 25px;
-                margin-right: 25px;
-                margin-top: 10px;
-                margin-bottom: 10px;
-                border-radius: 25px;
-                grid-row: 2 / span 1;
-                background-color: #FAC9B8;
-                display: grid;
-                grid-template-columns: 50% 50%;
-
-            }
-
-            #games1 {
-                margin-top: auto;
-                margin-bottom: auto;
-                border-radius: 25px 0 0 25px;
-
-
-                grid-column: 1 / span 1;
-
-            }
-
-            #games2 {
-                margin-top: auto;
-                margin-bottom: auto;
-                border-radius: 0 25px 25px 0;
-
-
-                grid-column: 2 / span 1;
-
-            }
-
-            #howdoyoufeeltoday {
-                margin-left: 25px;
-                margin-right: 25px;
-                margin-top: 10px;
-                margin-bottom: 10px;
-                border-radius: 25px;
-                background-color: #B8D8BA;
-                grid-row: 3 / span 1;
-                display: grid;
-                grid-template-columns: 50% 50%;
-
-            }
-
-            #how1 {
-                margin-top: auto;
-                margin-bottom: auto;
-                border-radius: 25px 0 0 25px;
-
-
-                grid-column: 1 / span 1;
-
-            }
-
-            #how2 {
-                margin-top: auto;
-                margin-bottom: auto;
-                border-radius: 0 25px 25px 0;
-
-
-                grid-column: 2 / span 1;
-
-            }
-
-            #redeem {
-                margin-left: 25px;
-                margin-right: 25px;
-                margin-top: 10px;
-                margin-bottom: 10px;
-                border-radius: 25px;
-                background-color: #FAC9B8;
-                grid-row: 4 / span 1;
-                display: grid;
-                grid-template-columns: 50% 50%;
-            }
-
-            #redeem1 {
-                margin-top: auto;
-                margin-bottom: auto;
-                border-radius: 25px 0 0 25px;
-                /*            background-color: #B8D8BA;*/
-
-                grid-column: 1 / span 1;
-
-            }
-
-            #redeem2 {
-                margin-top: auto;
-                margin-bottom: auto;
-
-                border-radius: 0 25px 25px 0;
-
-
-                grid-column: 2 / span 1;
-
-            }
-
-            #header {
-                grid-row: 1 / span 1;
-            }
-
-            #greeting {
-                color: #EF629F;
-            }
-        }
-
-        @media only screen and (min-width: 1024px) {
-            h1 {
-                font-size: 40pt;
-            }
-
-            body {
-                text-align: center;
-                margin: 0;
-            }
-
-            img {
-                object-fit: contain;
-                max-width: 90%;
-                max-height: 130px;
-                display: block;
-                margin-left: auto;
-                margin-right: auto;
-            }
-
-            .first {
-                color: #EF629F;
-
-            }
-
-            .second {
-                color: #3AB795;
-
-            }
-
-            .top {
-                color: #3AB795;
-                font-size: 20pt;
-                font-weight: bold;
-            }
-
-            .username {
-                color: #EF629F;
-                margin-top: -10px;
-                font-weight: bold;
-            }
-
-            #container {
-                display: grid;
-                grid-template-rows: 13% 96% 1%;
-                height: 90vh;
-
-            }
-
-            #inner {
-                grid-row: 2 / span 1;
-                display: grid;
-                grid-template-rows: 25% 25% 25% 25%;
-            }
-
-            #dailytask {
-                margin-left: 25px;
-                margin-right: 25px;
-                margin-top: 10px;
-                margin-bottom: 10px;
-                border-radius: 25px;
-                background-color: #B8D8BA;
-                grid-row: 1 / span 1;
-                display: grid;
-                grid-template-columns: 50% 50%;
-            }
-
-            #dailytask1 {
-                margin-top: auto;
-                margin-bottom: auto;
-                border-radius: 25px 0 0 25px;
-                background-color: #B8D8BA;
-
-                grid-column: 1 / span 1;
-
-            }
-
-            #dailytask2 {
-                margin-top: auto;
-                margin-bottom: auto;
-                border-radius: 0 25px 25px 0;
-                background-color: #B8D8BA;
-
-                grid-column: 2 / span 1;
-
-            }
-
-            #games {
-                margin-left: 25px;
-                margin-right: 25px;
-                margin-top: 10px;
-                margin-bottom: 10px;
-                border-radius: 25px;
-                grid-row: 2 / span 1;
-                background-color: #FAC9B8;
-                display: grid;
-                grid-template-columns: 50% 50%;
-
-            }
-
-            #games1 {
-                margin-top: auto;
-                margin-bottom: auto;
-                border-radius: 25px 0 0 25px;
-
-
-                grid-column: 1 / span 1;
-
-            }
-
-            #games2 {
-                margin-top: auto;
-                margin-bottom: auto;
-                border-radius: 0 25px 25px 0;
-
-
-                grid-column: 2 / span 1;
-
-            }
-
-            #howdoyoufeeltoday {
-                margin-left: 25px;
-                margin-right: 25px;
-                margin-top: 10px;
-                margin-bottom: 10px;
-                border-radius: 25px;
-                background-color: #B8D8BA;
-                grid-row: 3 / span 1;
-                display: grid;
-                grid-template-columns: 50% 50%;
-
-            }
-
-            #how1 {
-                margin-top: auto;
-                margin-bottom: auto;
-                border-radius: 25px 0 0 25px;
-
-
-                grid-column: 1 / span 1;
-
-            }
-
-            #how2 {
-                margin-top: auto;
-                margin-bottom: auto;
-                border-radius: 0 25px 25px 0;
-
-
-                grid-column: 2 / span 1;
-
-            }
-
-            #redeem {
-                margin-left: 25px;
-                margin-right: 25px;
-                margin-top: 10px;
-                margin-bottom: 10px;
-                border-radius: 25px;
-                background-color: #FAC9B8;
-                grid-row: 4 / span 1;
-                display: grid;
-                grid-template-columns: 50% 50%;
-            }
-
-            #redeem1 {
-                margin-top: auto;
-                margin-bottom: auto;
-                border-radius: 25px 0 0 25px;
-                /*            background-color: #B8D8BA;*/
-
-                grid-column: 1 / span 1;
-
-            }
-
-            #redeem2 {
-                margin-top: auto;
-                margin-bottom: auto;
-
-                border-radius: 0 25px 25px 0;
-
-
-                grid-column: 2 / span 1;
-
-            }
-
-            #header {
-                grid-row: 1 / span 1;
-            }
-
-            #greeting {
-                color: #EF629F;
-            }
-
-            #footer {
-                grid-row: 3 / span 1;
-            }
-        }
+        
 
         .container {
             list-style-type: none;
@@ -621,13 +233,24 @@
         .list a:hover {
             background-color: rgb(65, 134, 125);
         }
+        #header{
+            text-align: center;
+            
+        }
+        #footer{
+           text-align: center; 
+        }
+        nav{
+            margin:0;
+        }
     </style>
 </head>
 
 <body>
     <div id='container'>
         <div id="header">
-            <%- navbar %> 
+            <nav>
+            <%- navbar %> </nav>
             <div id="greeting">
                 <p class='top'>Hello</p>
                 <h1 class='username'> username!</h1>
@@ -691,7 +314,8 @@
 
             </div>
         </div>
-        <%- footer %> 
+        <footer>
+        <%- footer %> </footer>
     </div>
     <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
     <script>

@@ -3,6 +3,7 @@
 <head>
   <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="./css/navbar.css">
     
   <title>Tic-Tac-Toe</title>
      <style>
@@ -161,6 +162,30 @@
              #footer{
                  grid-row: 3 / span 1;
              }
+         
+.container {
+    list-style-type: none;
+    margin: 0;
+
+    overflow: hidden;
+    background-color: #75DBCD;
+}
+
+.list {
+    float: left;
+}
+
+.list a {
+    display: block;
+    color: white;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+}
+
+.list a:hover {
+    background-color: rgb(65, 134, 125);
+}
         
     
     </style>
@@ -169,8 +194,15 @@
     <div id='container'>
         <div id="header">
             <nav>
-            This is a nav bar!
-            </nav>
+    <ul class="container">
+      <li class="list"><a href="/homepage">Home</a></li>
+
+      <li class="list"><a href="/minigames">Mini Games</a></li>
+      <li class="list" style="float: right;"><a href="/user_profile"><img src="./img/shape.png"
+            width="20px" height="20px"> </a></li>
+
+    </ul>
+  </nav>
             <div id="greeting"><p class='top'>Tic-Tac-Toe</p><p class='points'> Current Points: </p>
             
             
@@ -208,7 +240,7 @@
             
             
            </div> 
-        <div id='footer'>this is footer.</div>
+        <div id='footer'>Made by FutureCurves.</div>
     </div>
   <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
   

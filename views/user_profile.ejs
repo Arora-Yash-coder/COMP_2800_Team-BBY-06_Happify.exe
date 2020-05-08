@@ -87,11 +87,12 @@
       background-color: white;
       border: #3AB795 solid 1px;
       color: #3AB795;
-      padding: 10px 26px;
+      padding: 7px 26px;
       text-align: center;
       text-decoration: none;
       display: inline-block;
       font-size: 16px;
+        margin-bottom: 20px;
     }
 
     #avatar {
@@ -108,6 +109,10 @@
     #submit {
       display: none;
     }
+      #logout{
+          color:#EF629F; 
+          border: #EF629F solid 1px;
+      }
   </style>
 
 </head>
@@ -115,7 +120,7 @@
 <body>
   <%- navbar %>
   <h1>User Profile</h1>
-  <button id="logout">log out!</button>
+  
   <img id="avatar" class="avatar" src="/img/avatar.png">
   <form action="/upload_avatar" enctype="multipart/form-data" method="post">
     <input type="file" class="avatar" id="upload" name="upload">
@@ -157,6 +162,8 @@
   </div>
 
   <button type="button" onclick="save()" id="save">Save</button>
+    <button id="logout">log out!</button>
+    <br>
   <!--
     <div id="submit">
     <a href="#" class="square_btn">Yes</a></div>
