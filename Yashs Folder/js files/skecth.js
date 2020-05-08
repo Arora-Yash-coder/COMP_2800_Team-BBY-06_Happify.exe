@@ -9,9 +9,12 @@ let button3;
 let button4;
 
 let score = 0;
+let img;
+let virus;
 
 function setup() {
   createCanvas(window.innerWidth, window.innerHeight);
+  img = loadImage('/Resources/Extras/virus.png');
   w = floor(width / rez);
   h = floor(height / rez);
   frameRate(5);
@@ -19,10 +22,13 @@ function setup() {
   foodLocation();
 }
 
+
 function foodLocation() {
-  let x = floor(random(w));
-  let y = floor(random(h));
+  let x = floor(random(w - (20/rez)));
+  let y = floor(random(h - (20/rez)));
+  noFill();
   food = createVector(x, y);
+   
 }
 /**----------------For Desktop Players------------------ */
 function keyPressed() {
@@ -34,8 +40,6 @@ function keyPressed() {
     snake.setDir(0, 1);
   } else if (keyCode === UP_ARROW) {
     snake.setDir(0, -1);
-  } else if (key == ' ') {
-    snake.grow();
   }
 }
 
@@ -52,6 +56,7 @@ function draw() {
   scale(rez);
   background(51);
 
+  virus = image(img, food.x-1, food.y-1 ,40/20,40/20);
   button1 = new Button(8, h - 8, 0, -1);
   button1.display();
   button2 = new Button(8, h - 2, 0, 1);
@@ -81,6 +86,6 @@ function draw() {
   }
 
   noStroke();
-  fill(255, 0, 0);
+  fill(0, 0, 0,0);
   rect(food.x, food.y, 1, 1);
 }
