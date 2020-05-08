@@ -1,6 +1,7 @@
 module.exports = function (app) {
 
-
+	var path = __basedir + '/views/';
+	global.path = path;
 
 
 
@@ -67,7 +68,7 @@ module.exports = function (app) {
 
 	}));
 
-	
+
 	app.use((req, res, next) => {
 
 		if (req.cookies.user_sid && !req.session.user_sid) {
@@ -99,12 +100,12 @@ module.exports = function (app) {
 		res.sendFile(__dirname + "/chessboard.html")
 	})
 
-	app.get('/coupon', users.getCoupon);
+	app.get('/coupon',sessionChecker, users.getCoupon);
 
 	var MongoClient = require('mongodb').MongoClient;
 	const dbConfig = require('../config/mongodb.config.js');
 	var ObjectId = require('mongodb').ObjectID;
-	app.get('/my_coupons', (req, res) => {
+	app.get('/my_coupons', sessionChecker,(req, res) => {
 		// res.setHeader('Content-Type', 'application/json');
 		let coupon_id_array;
 		MongoClient.connect(dbConfig.url, function (err, db) {
@@ -130,8 +131,42 @@ module.exports = function (app) {
 	}
 
 	);
+	// var body_ejs = fs.readFileSync(path + "components/homepage_body.ejs", 'utf-8');
+	var navbar_top_ejs = fs.readFileSync(path + "components/navbar_top.ejs", 'utf-8');
 
-	app.get("/homepage",(req,res)=>{res.render(path + "homepage.ejs")})
+	var footer = fs.readFileSync(path + "components/footer.ejs", 'utf-8');
+
+	app.get("/my_health", (req, res) => {
+		res.render(path + "my_health.ejs", {
+			navbar: navbar_top_ejs,
+			footer: footer
+		})
+	})
+
+	app.get("/user_profile", (req, res) => {
+		res.render(path + "user_profile.ejs", {
+			navbar: navbar_top_ejs,
+			footer: footer
+		})
+	})
+
+	app.get("/homepage",sessionChecker, (req, res) => {
+		res.render(path + "homepage.ejs", {
+			navbar: navbar_top_ejs,
+			footer: footer
+		})
+	})
+
+	app.get("/minigames", (req, res) => {
+		res.render(path + "games_selection.ejs", {
+			navbar: navbar_top_ejs,
+			footer: footer
+		})
+	})
+
+
+
+
 
 	app.post('/coupon/redeem', users.redeemCoupon);
 
@@ -223,8 +258,7 @@ module.exports = function (app) {
 
 
 	//sutff related to ejs rendering
-	var path = __basedir + '/views/';
-	global.path = path;
+
 
 	var staticPath = __basedir + '/resources/static/';
 	app.use(express.static(staticPath));
@@ -236,13 +270,13 @@ module.exports = function (app) {
 	});
 
 
-	var navbar_top_ejs = fs.readFileSync(path + "components/navbar_top.ejs", 'utf-8');
-	var body_ejs = fs.readFileSync(path + "components/homepage_body.ejs", 'utf-8');
-	var toolbar_bottom = fs.readFileSync(path + "components/toolbar_bottom.ejs", 'utf-8');
+
 
 	app.get('/', (req, res) => {
 		res.sendFile(staticPath + "landing_page.html");
 	});
+
+
 
 	app.get('/reminder', (req, res) => {
 		res.sendFile(path + "reminder.html");
@@ -277,6 +311,16 @@ module.exports = function (app) {
 		res.sendFile(staticPath + "daily_tasks.html");
 	});
 
+
+
+
+
+	//tic tac toe connection, it runs on port 81
+	app.get("/minigames/ttt", (req, res) => {
+		res.status(301).redirect("http://localhost:81")
+	})
+
+
 	app.route('/getDailyKnowledge').get(users.dailyKnowledge);
 
 	app.route('/getDailyTasks').get(users.dailyTasks);
@@ -289,10 +333,7 @@ module.exports = function (app) {
 	app.route('/getDailyTasks/dislikeKnowledge').post(users.knowledgeDislike);
 	app.route('/getDailyTasks/likeKnowledge').post(users.knowledgeLike);
 
-	app.get('/user_profile', function (req, res) {
 
-		res.sendFile(staticPath + "user_profile.html");
-	});
 
 	app.route('/user_profile/getProfile').get(users.getProfile);
 
@@ -325,9 +366,15 @@ module.exports = function (app) {
 		.get(sessionChecker, (req, res) => {
 			res.sendFile(staticPath + 'login.html');
 		})
-	// .post(
-	// 	users.verify
-	// );
+
+	// route for user logout
+	app.get('/logout', (req, res) => {
+		
+			res.clearCookie('user_sid');
+			req.session = null;
+			res.redirect('/login');
+		
+	});
 
 
 	app.get('/:username', (req, res) => {
@@ -343,11 +390,6 @@ module.exports = function (app) {
 	app.post('/api/users/verify', users.verify);
 
 
-
-	//tic tac toe connection, it runs on port 81
-	app.get("/game/ttt", (req, res) => {
-		res.status(301).redirect("http://localhost:81")
-	})
 
 	app.post("/getKey", (req, res) => {
 		res.send('BHzTemBBukw8OY7qXGqtXPPIGSr-TyACw3rNEcmsBTx2gEJQ2YECWff5oBMb9fRss7vhn3a6ATNxucmb52zHM2U')

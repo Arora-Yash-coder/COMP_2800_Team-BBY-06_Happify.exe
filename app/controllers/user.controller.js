@@ -62,8 +62,8 @@ exports.verify = (req, res) => {
 
     var path = __basedir + '/views/';
     var navbar_top_ejs = fs.readFileSync(path + "components/navbar_top.ejs", 'utf-8');
-    var body_ejs = fs.readFileSync(path + "components/homepage_body.ejs", 'utf-8');
-    var toolbar_bottom = fs.readFileSync(path + "components/toolbar_bottom.ejs", 'utf-8');
+	
+	var footer = fs.readFileSync(path + "components/footer.ejs", 'utf-8');
 
     let query = User.findOne({ "username": usn });
     query.then(function (theUser) {
@@ -84,8 +84,7 @@ exports.verify = (req, res) => {
                 // res.send(successMsg);
                 res.render(path + "homepage.ejs", {
                     navbar: navbar_top_ejs,
-                    body: body_ejs,
-                    toolbar: toolbar_bottom,
+                    footer: footer,
                 });
 
             }

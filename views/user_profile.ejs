@@ -2,11 +2,36 @@
 <html lang="en">
 
 <head>
+  <!-- <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script> -->
   <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>User Profile</title>
 
   <style>
+    .container {
+      list-style-type: none;
+      margin: 0;
+
+      overflow: hidden;
+      background-color: #75DBCD;
+    }
+
+    .list {
+      float: left;
+    }
+
+    .list a {
+      display: block;
+      color: white;
+      text-align: center;
+      padding: 14px 16px;
+      text-decoration: none;
+    }
+
+    .list a:hover {
+      background-color: rgb(65, 134, 125);
+    }
+
     body {
       text-align: center;
     }
@@ -33,7 +58,7 @@
       color: white;
     }
 
-    textarea {}
+
 
     #container {
       background-color: #B8D8BA;
@@ -83,42 +108,14 @@
     #submit {
       display: none;
     }
-                  .container {
-  list-style-type: none;
-  margin: 0;
-  
-  overflow: hidden;
-  background-color: #75DBCD;
-}
-.list {
-  float: left;
-}
-.list a {
-  display: block;
-  color: white;
-  text-align: center;
-  padding: 14px 16px;
-  text-decoration: none;
-}
-.list a:hover {
-  background-color: rgb(65, 134, 125);
-}
   </style>
-  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+
 </head>
 
 <body>
-    <nav>
-            <ul class="container">
-    <li class="list"><a href="Hmepage_of_app.html">Home</a></li>
-    
-    <li class="list"><a>Mini Games</a></li>
-    <li class="list" style="float: right;"><a href="user_profile.html"><img src="static/img/shape.png" width="20px" height="20px"> </a></li>
-    
-</ul>
-            </nav>
+  <%- navbar %>
   <h1>User Profile</h1>
-
+  <button id="logout">log out!</button>
   <img id="avatar" class="avatar" src="/img/avatar.png">
   <form action="/upload_avatar" enctype="multipart/form-data" method="post">
     <input type="file" class="avatar" id="upload" name="upload">
@@ -164,7 +161,7 @@
     <div id="submit">
     <a href="#" class="square_btn">Yes</a></div>
 -->
-<footer>Made by FutureCurves.</footer>
+  <%- footer %>
 
   <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
   <script>
@@ -255,13 +252,14 @@
       let phonenoinput = $("#phonenoinput").val()
 
       let data = {
-                username: usernameinput,
-                password: passwordinput,
-                email: emailinput,
-                phoneno: phonenoinput,
-                firstname: firstnameinput,
-                lastname: lastnameinput}
-                console.log(data)
+        username: usernameinput,
+        password: passwordinput,
+        email: emailinput,
+        phoneno: phonenoinput,
+        firstname: firstnameinput,
+        lastname: lastnameinput
+      }
+      console.log(data)
 
       $.ajax({
         type: "post",
@@ -269,7 +267,10 @@
         data: data,
         dataType: "text",
         success: function (response) {
-            alert(response)
+          console.log(response)
+          setTimeout(() => {
+            window.location.href = "/homepage"
+          }, 300);
         }
       });
     })
@@ -369,10 +370,13 @@
       }
     });
 
-    $("#mycoupons").click(()=>{
+    $("#mycoupons").click(() => {
       window.location.href = "/my_coupons"
     })
 
+    $("#logout").click(()=>{
+      window.location.href = "/logout";
+    })
   </script>
 </body>
 
