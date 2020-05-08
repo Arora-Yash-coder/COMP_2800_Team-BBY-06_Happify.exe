@@ -33,6 +33,7 @@
     "mongoose": "^5.9.11",
     "morgan": "^1.10.0",
     "nodemon": "^2.0.3",
+    "serve-favicon": "^2.5.0",
     "stockfish": "^10.0.2",
     "web-push": "^3.4.3"
   },

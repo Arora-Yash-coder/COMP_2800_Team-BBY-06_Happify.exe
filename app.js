@@ -4,7 +4,12 @@ var bodyParser = require('body-parser');
 app.use(bodyParser.json());
 var MongoClient = require('mongodb').MongoClient;
 
- 
+var favicon = require('serve-favicon');
+
+app.use(favicon(__dirname + '/resources/static/img/favicon-32x32.png'));
+
+
+
 app.use(express.static('resources'));
 
 //"__dirname" is the path at the current folder(because app.js is at the current folder)

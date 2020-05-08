@@ -7,19 +7,21 @@
   <title>About Us</title>
 
   <style>
-.list {
-  float: left;
-}
-.list a {
-  display: block;
-  color: white;
-  text-align: center;
-  padding: 14px 16px;
-  text-decoration: none;
-}
-.list a:hover {
-  background-color: rgb(65, 134, 125);
-}
+    .list {
+      float: left;
+    }
+
+    .list a {
+      display: block;
+      color: white;
+      text-align: center;
+      padding: 14px 16px;
+      text-decoration: none;
+    }
+
+    .list a:hover {
+      background-color: rgb(65, 134, 125);
+    }
 
 
 
@@ -47,23 +49,25 @@
     #container>div:nth-child(even) {
       background-color: #FAC9B8;
     }
+
     .coupons {
-                margin-left: 25px;
-                margin-right: 25px;
-                margin-top: 10px;
-                margin-bottom: 10px;
-                border-radius: 25px;
-                background-color: #B8D8BA;
+      margin-left: 25px;
+      margin-right: 25px;
+      margin-top: 10px;
+      margin-bottom: 10px;
+      border-radius: 25px;
+      background-color: #B8D8BA;
 
 
-                color: #EF629F;
-            }
+      color: #EF629F;
+    }
   </style>
 
 </head>
 
 <body>
   <h1>My Coupons</h1>
+  <%- navbar %>
   <div id='container'>
     <% for (var i = 0; i < coupons.length;  i++ ) { %>
     <div class="coupons" id="coupons_<%= i+1 %>">
@@ -80,7 +84,7 @@
     <% } %>
   </div>
 
-  <footer>this is footer</footer>
+  <%- footer %> 
 
 </body>
 

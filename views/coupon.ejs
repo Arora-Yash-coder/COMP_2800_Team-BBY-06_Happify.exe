@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
+    <link rel="stylesheet" type="text/css" href="static/css/navbar.css">
     <title>Coupon Page</title>
     <style>
         body {
@@ -141,9 +141,7 @@
 </head>
 
 <body>
-    <nav>
-        This is a nav bar!
-    </nav>
+    <%- navbar %>
     <div id="greeting">
         <p class='top'>Redeem Points</p>
         <p class='points'> Current Points: </p>
@@ -177,7 +175,7 @@
 
 
 
-    <div id='footer'>this is footer.</div>
+    <%- footer %>
     </div>
     <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
     <script>

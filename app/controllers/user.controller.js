@@ -292,6 +292,10 @@ exports.setProfile = function (req, res) {
 }
 
 
+	// var body_ejs = fs.readFileSync(path + "components/homepage_body.ejs", 'utf-8');
+	var navbar_top_ejs = fs.readFileSync(path + "components/navbar_top.ejs", 'utf-8');
+
+	var footer = fs.readFileSync(path + "components/footer.ejs", 'utf-8');
 exports.getCoupon = (req, res) => {
     // res.setHeader('Content-Type', 'application/json');
     MongoClient.connect(dbConfig.url, function (err, db) {
@@ -308,7 +312,9 @@ exports.getCoupon = (req, res) => {
 
             db.close();
             res.end(res.render(path + "coupon.ejs", {
-                coupons: result
+                coupons: result,
+                navbar: navbar_top_ejs,
+			footer: footer
             }));
             //    res.send( { result });
 

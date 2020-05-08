@@ -650,7 +650,7 @@
 
             </div>
 
-            <div id="games" onclick="window.location.href = 'http://localhost:85';">
+            <div id="games" onclick="window.location.href = '/minigames/ttt'">
                 <div id="games1">
                     <h1 class="second">Tic Tac Toe</h1>
                 </div>
@@ -694,7 +694,13 @@
         <%- footer %> 
     </div>
     <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
-
+    <script>
+        function ttt(event){
+            event.target.port=85
+            console.log("ttt")
+        }
+        
+    </script>
 </body>
 
 </html>

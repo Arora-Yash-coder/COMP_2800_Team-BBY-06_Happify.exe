@@ -3,7 +3,7 @@ module.exports = function (app) {
 	var path = __basedir + '/views/';
 	global.path = path;
 
-
+	
 
 	var subs;
 	var vKey;
@@ -90,6 +90,18 @@ module.exports = function (app) {
 		}
 	};
 
+	var sessionChecker2 = (req, res, next) =>{
+		if (!req.session || !req.cookies.user_sid) {
+			//if it is there, it would redirect to homepage
+			res.redirect("/login");
+		} else {
+
+			//if the session is not there or the user_sid wasn't correct,
+			//then it would move to the login page
+			next();
+		}
+	};
+
 	//======================Judao ChessGame================================================
 	app.get('/checkstatus', sessionChecker, (req, res) => {
 		res.redirect('/login');
@@ -100,12 +112,18 @@ module.exports = function (app) {
 		res.sendFile(__dirname + "/chessboard.html")
 	})
 
-	app.get('/coupon',sessionChecker, users.getCoupon);
+	app.get('/coupon',sessionChecker2, users.getCoupon);
+
+	// var body_ejs = fs.readFileSync(path + "components/homepage_body.ejs", 'utf-8');
+	var navbar_top_ejs = fs.readFileSync(path + "components/navbar_top.ejs", 'utf-8');
+
+	var footer = fs.readFileSync(path + "components/footer.ejs", 'utf-8');
+
 
 	var MongoClient = require('mongodb').MongoClient;
 	const dbConfig = require('../config/mongodb.config.js');
 	var ObjectId = require('mongodb').ObjectID;
-	app.get('/my_coupons', sessionChecker,(req, res) => {
+	app.get('/my_coupons', sessionChecker2,(req, res) => {
 		// res.setHeader('Content-Type', 'application/json');
 		let coupon_id_array;
 		MongoClient.connect(dbConfig.url, function (err, db) {
@@ -123,7 +141,9 @@ module.exports = function (app) {
 
 					console.log(data)
 					res.end(res.render(path + "my_coupons.ejs", {
-						coupons: data
+						coupons: data,
+						navbar: navbar_top_ejs,
+						footer: footer
 					}));
 				});
 			});
@@ -131,10 +151,7 @@ module.exports = function (app) {
 	}
 
 	);
-	// var body_ejs = fs.readFileSync(path + "components/homepage_body.ejs", 'utf-8');
-	var navbar_top_ejs = fs.readFileSync(path + "components/navbar_top.ejs", 'utf-8');
-
-	var footer = fs.readFileSync(path + "components/footer.ejs", 'utf-8');
+	
 
 	app.get("/my_health", (req, res) => {
 		res.render(path + "my_health.ejs", {
@@ -143,26 +160,31 @@ module.exports = function (app) {
 		})
 	})
 
-	app.get("/user_profile", (req, res) => {
+	app.get("/user_profile",sessionChecker2, (req, res) => {
 		res.render(path + "user_profile.ejs", {
 			navbar: navbar_top_ejs,
 			footer: footer
 		})
 	})
+	
+	app.get("/about_us",(req,res)=>{
+		res.sendFile(staticPath +"about_us.html")
+	})
 
-	app.get("/homepage",sessionChecker, (req, res) => {
+	app.get("/homepage",sessionChecker2, (req, res) => {
 		res.render(path + "homepage.ejs", {
 			navbar: navbar_top_ejs,
 			footer: footer
 		})
 	})
 
-	app.get("/minigames", (req, res) => {
+	app.get("/minigames",sessionChecker2, (req, res) => {
 		res.render(path + "games_selection.ejs", {
 			navbar: navbar_top_ejs,
 			footer: footer
 		})
 	})
+
 
 
 
@@ -261,8 +283,13 @@ module.exports = function (app) {
 
 
 	var staticPath = __basedir + '/resources/static/';
+
 	app.use(express.static(staticPath));
 	global.staticPath = staticPath;
+
+	var favicon = require('serve-favicon');
+	app.use(favicon(staticPath + '/img/favicon-32x32.png'));
+
 
 	router.use(function (req, res, next) {
 		console.log("/" + req.method);
@@ -308,7 +335,10 @@ module.exports = function (app) {
 	//============DBwork=====Tiffany=================================================
 
 	app.get('/daily_tasks', function (req, res) {
-		res.sendFile(staticPath + "daily_tasks.html");
+		res.render(path + "daily_tasks.ejs", {
+			navbar: navbar_top_ejs,
+			footer: footer
+		})
 	});
 
 
@@ -317,7 +347,7 @@ module.exports = function (app) {
 
 	//tic tac toe connection, it runs on port 81
 	app.get("/minigames/ttt", (req, res) => {
-		res.status(301).redirect("http://localhost:81")
+		res.sendFile(staticPath + "/ttt_game_entrance.html")
 	})
 
 
