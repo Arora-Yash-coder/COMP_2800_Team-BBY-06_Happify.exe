@@ -17,52 +17,58 @@
       font-weight: bold;
 
     }
-       .square_btn {
-    display: inline-block;
-    padding: 0.3em 1em;
-    text-decoration: none;
-    color: #EF629F;
-    border: solid 2px #EF629F;
-    border-radius: 3px;
-    transition: .4s;
-}
 
-        .square_btn:hover {
-    background: #EF629F;
-    color: white;
-}
+    .square_btn {
+      display: inline-block;
+      padding: 0.3em 1em;
+      text-decoration: none;
+      color: #EF629F;
+      border: solid 2px #EF629F;
+      border-radius: 3px;
+      transition: .4s;
+    }
+
+    .square_btn:hover {
+      background: #EF629F;
+      color: white;
+    }
+
     textarea {}
-    #container{
-        background-color: #B8D8BA;
-        border-radius: 25px;
-        margin-left: 25px;
-        margin-right: 25px;
-        padding-top: 10px;
-        padding-bottom: 10px;
-        margin-top: 10px;
-        margin-bottom: 10px;
-      }
-    #mycoupons{
-        background-color: #FAC9B8;
-        border-radius: 25px;
-        margin-left: 25px;
-        margin-right: 25px;
-        padding-top: 10px;
-        padding-bottom: 10px;
-        margin-top: 10px;
-        margin-bottom: 10px;  
-        color: #3AB795;
-      }
-      button {
-        background-color: white; 
-        border: #3AB795 solid 1px;
-        color: #3AB795;
-        padding: 10px 26px;
-        text-align: center;
-        text-decoration: none;
-        display: inline-block;
-        font-size: 16px;
-      }
+
+    #container {
+      background-color: #B8D8BA;
+      border-radius: 25px;
+      margin-left: 25px;
+      margin-right: 25px;
+      padding-top: 10px;
+      padding-bottom: 10px;
+      margin-top: 10px;
+      margin-bottom: 10px;
+    }
+
+    #mycoupons {
+      background-color: #FAC9B8;
+      border-radius: 25px;
+      margin-left: 25px;
+      margin-right: 25px;
+      padding-top: 10px;
+      padding-bottom: 10px;
+      margin-top: 10px;
+      margin-bottom: 10px;
+      color: #3AB795;
+    }
+
+    button {
+      background-color: white;
+      border: #3AB795 solid 1px;
+      color: #3AB795;
+      padding: 10px 26px;
+      text-align: center;
+      text-decoration: none;
+      display: inline-block;
+      font-size: 16px;
+    }
+
     #avatar {
       width: 100px;
       height: 100px;
@@ -84,7 +90,7 @@
 <body>
   <h1>User Profile</h1>
 
-  <img id="avatar" class="avatar">
+  <img id="avatar" class="avatar" src="/img/avatar.png">
   <form action="/upload_avatar" enctype="multipart/form-data" method="post">
     <input type="file" class="avatar" id="upload" name="upload">
     <input type="submit" id="submit" value="Upload file">
@@ -92,43 +98,45 @@
   </form>
 
 
-    <div id="container">
-  <div id="username"></div>
-  <textarea id="usernameinput" rows="1" placeholder='Username';></textarea>
-  <div id="password">
+  <div id="container">
+    <form id="userForm" action="/api/users/register" method="post">
+      <div id="username"></div>
+      <textarea id="usernameinput" rows="1" placeholder='Username' name="username" ;></textarea>
+      <div id="password">
 
-  </div>
-  <textarea id="passwordinput" rows="1" placeholder='Password';></textarea>
-  <div id="firstname">
+      </div>
+      <textarea id="passwordinput" rows="1" placeholder='Password' name="password" min="6" maxlength="16"></textarea>
+      <div id="firstname">
 
-  </div>
-  <textarea id="firstnameinput" rows="1" placeholder='Firstname';></textarea>
-  <div id="lastname">
+      </div>
+      <textarea id="firstnameinput" rows="1" placeholder='Firstname' name="firstname"></textarea>
+      <div id="lastname">
 
-  </div>
-  <textarea id="lastnameinput" rows="1" placeholder='Lastname';></textarea>
-  <div id="email">
+      </div>
+      <textarea id="lastnameinput" rows="1" placeholder='Lastname' name="lastname"></textarea>
+      <div id="email">
 
-  </div>
-  <textarea id="emailinput" rows="1" placeholder='Email';></textarea>
-  <div id="phoneno">
+      </div>
+      <textarea id="emailinput" rows="1" placeholder='Email' name="email"></textarea>
+      <div id="phoneno">
 
+      </div>
+      <textarea id="phonenoinput" rows="1" placeholder='Phone Number, starting with 1-' name="phoneno"></textarea>
+      <br>
+    </form>
   </div>
-  <textarea id="phonenoinput" rows="1" placeholder='Phone Number';></textarea>
-  <br>
-        </div>
-    <div id="mycoupons">
-    
+  <div id="mycoupons">
+
     <h2>My coupons</h2>
-    </div>
-    
-  <button type="button">Save</button>
-<!--
+  </div>
+
+  <button type="button" onclick="save()" id="save">Save</button>
+  <!--
     <div id="submit">
     <a href="#" class="square_btn">Yes</a></div>
 -->
-    
-    
+
+
   <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
   <script>
     //=====================upload==========avatar====================
@@ -204,6 +212,37 @@
     //=====================upload==========avatar====================
 
 
+    //======================UPDATE======INFO
+
+    $("#save").click(() => {
+      let usernameinput = $("#usernameinput").val()
+      let passwordinput = $("#passwordinput").val()
+      let firstnameinput = $("#firstnameinput").val()
+      let lastnameinput = $("#lastnameinput").val()
+      let emailinput = $("#emailinput").val()
+      let phonenoinput = $("#phonenoinput").val()
+
+      let data = {
+                username: usernameinput,
+                password: passwordinput,
+                email: emailinput,
+                phoneno: phonenoinput,
+                firstname: firstnameinput,
+                lastname: lastnameinput}
+                console.log(data)
+
+      $.ajax({
+        type: "post",
+        url: "/user_profile/setProfile",
+        data: data,
+        dataType: "text",
+        success: function (response) {
+            alert(response)
+        }
+      });
+    })
+
+
 
 
 
@@ -214,7 +253,7 @@
 
 
     $.ajax({
-      url: "/getProfile",
+      url: "/user_profile/getProfile",
       dataType: "json",
       type: "GET",
       success: function (data) {
@@ -244,7 +283,7 @@
         //FIRSTNAME
         var div_firstname = $("#firstname");
         var text_firstnameinput = $("#firstnameinput");
-       
+
         let firstname = "" + data.result[0].firstname;
         let htmlStr4 = "";
 
@@ -256,7 +295,7 @@
 
         //LAST NAME
         var div_lastname = $("#lastname");
-       
+
         var text_lastnameinput = $("#lastnameinput");
         let htmlStr5 = "";
         let lastname = "" + data.result[0].lastname;
@@ -269,7 +308,7 @@
         //EMAIL
         var div_email = $("#email");
         var text_emailinput = $("#emailinput");
-      
+
         let htmlStr3 = "";
         let email = "" + data.result[0].email;
         htmlStr3 += "<h3>Email</h3><p>"
@@ -281,7 +320,7 @@
         //PHONE
         var div_phoneno = $("#phoneno");
         var text_phonenoinput = $("#phonenoinput");
-     
+
 
         let htmlStr6 = "";
         let phoneno = "" + data.result[0].phoneno;

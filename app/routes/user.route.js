@@ -259,10 +259,12 @@ module.exports = function (app) {
 
 	app.get('/user_profile', function (req, res) {
 
-		res.sendFile(path + "user_profile.html");
+		res.sendFile(staticPath + "user_profile.html");
 	});
 
-	app.route('/getProfile').get(users.getProfile);
+	app.route('/user_profile/getProfile').get(users.getProfile);
+
+	app.route('/user_profile/setProfile').post(users.setProfile);
 
 	//^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 

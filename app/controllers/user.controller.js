@@ -229,6 +229,7 @@ exports.knowledgeLike = function (req, res) {
     });
 }
 
+
 var ObjectId = require('mongodb').ObjectID;
 exports.getProfile = function (req, res) {
     res.setHeader('Content-Type', 'application/json');
@@ -250,6 +251,44 @@ exports.getProfile = function (req, res) {
         });
     });
 }
+
+exports.setProfile = function (req, res) {
+    res.setHeader('Content-Type', 'application/json');
+    MongoClient.connect(dbConfig.url, function (err, db) {
+        console.log("req.body================")
+        console.log(req.body.phoneno)
+
+        var dbo = db.db("test");
+        dbo.collection("user").updateOne(
+            { _id: ObjectId(req.session.user_sid) },
+            { $set:{
+                username: req.body.username,
+                password: req.body.password,
+                email: req.body.email,
+                firstname: req.body.firstname,
+                lastname: req.body.lastname,
+                phoneno: req.body.phoneno} },
+                {multi:true, new:true}
+        )
+        // if (err) throw err;
+        // var dbo = db.db("test");
+        // dbo.collection("users").find({
+        //     _id: ObjectId(req.session.user_sid)
+        // }).toArray(function (err, result) {
+        //     console.log("req.session.result")
+        //     console.log(result)
+        //     console.log("req.session.user_sid")
+        //     console.log(req.session.user_sid)
+        //     if (err) throw err;
+        //     // console.log(result);
+
+        //     res.send({ result: result });
+        //     
+        // });
+        db.close();
+    });
+}
+
 
 exports.getCoupon = (req, res) => {
     // res.setHeader('Content-Type', 'application/json');
@@ -274,17 +313,19 @@ exports.getCoupon = (req, res) => {
         });
     });
 }
-
+let points_needed = undefined;
+let user_points;
 exports.redeemCoupon = (req, res) => {
     // res.setHeader('Content-Type', 'application/json');
-    let points_needed = undefined;
+    
+    let id = parseInt(req.body["id"])
     MongoClient.connect(dbConfig.url, function (err, db) {
 
         console.log("+++++++++++++++++++++++req.body===============================")
 
         console.log("+++++++++++++++++++++++req.SESSION===============================")
         console.log(req.session)
-        let id = parseInt(req.body["id"])
+       
         console.log(id)
         if (err) throw err;
         var dbo = db.db("test");
@@ -297,11 +338,12 @@ exports.redeemCoupon = (req, res) => {
 
         });
 
+        
         dbo.collection("users").find({
             _id: ObjectId(req.session.user_sid)
         }).toArray(function (err, result) {
-            let user_points;
-            if(result[0].points){
+            
+            if(result[0]){
                 if(result[0].points >=0){
                     user_points = result[0].points;
                 }else{
@@ -323,21 +365,26 @@ exports.redeemCoupon = (req, res) => {
                 // res.end(res.send("you need to log in first!!!!"));
                 
                 //   throw err;
-            }
-
-            if(req.session.user_sid && user_points && (user_points - points_needed) >=0){
-                console.log("redeem successful")
-                res.send("success");
-            }
-            
-
-            
-            db.close();
+            }            
         });
-
-
-
-
+        
+        if(req.session.user_sid && user_points && (user_points - points_needed) >=0){
+            console.log("redeem successful")
+            console.log(-points_needed);
+            console.log("id");
+            console.log(id);
+            dbo.collection("users").updateOne(
+                { _id: ObjectId(req.session.user_sid)},
+                { $inc: { points: -points_needed } ,
+                 $push:{ coupons_owned: id}},
+                { new: true }
+                
+            )
+            db.close();
+            
+            res.send("redeem successful");
+            
+        }
     });
 }
 
