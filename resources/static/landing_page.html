@@ -1,135 +1,150 @@
 <!DOCTYPE html>
 <html>
+
 <head>
     <link rel="icon" href="/img/favicon-32x32.png" type="image/gif" sizes="16x16">
     <style>
         body {
             margin: 0;
         }
-/*        for webpages*/
+
+        /*        for webpages*/
         @media only screen and (min-width: 1024px) {
-        div {
-            height: 100vh;
-            background-image: url("/img/background.jpg");
-            background-size: cover;
-            
+            div {
+                height: 100vh;
+                background-image: url("/img/background.jpg");
+                background-size: cover;
+
+            }
+
+            #title {
+                padding-top: 15%;
+                text-align: center;
+                color: white;
+                font-size: 20pt;
+            }
+
+            button {
+
+                background-color: #3AB795;
+                /* Green */
+                border: none;
+                color: white;
+                padding: 15px 32px;
+                text-align: center;
+                text-decoration: none;
+                display: inline-block;
+                font-size: 16px;
+            }
         }
-        #title {
-            padding-top: 15%;
-            text-align: center;
-            color: white;
-            font-size: 20pt;
-        }
-        button {
-            
-            background-color: #3AB795; /* Green */
-            border: none;
-            color: white;
-            padding: 15px 32px;
-            text-align: center;
-            text-decoration: none;
-            display: inline-block;
-            font-size: 16px;
-        }
-        }
-        
+
         @media only screen and (max-width: 1023px) {
-        div {
-            height: 80vh;
-            background-image: url(img/background.jpg);
-            background-size: cover;
-            
+            div {
+                height: 80vh;
+                background-image: url(img/background.jpg);
+                background-size: cover;
+
+            }
+
+            #title {
+                padding-top: 45%;
+                text-align: center;
+                color: white;
+                font-size: 25pt;
+            }
+
+            button {
+
+                background-color: #3AB795;
+                /* Green */
+                border: none;
+                color: white;
+                padding: 20px 40px;
+                text-align: center;
+                text-decoration: none;
+                display: inline-block;
+                font-size: 30px;
+            }
         }
-        #title {
-            padding-top: 45%;
-            text-align: center;
-            color: white;
-            font-size: 25pt;
-        }
-        button {
-            
-            background-color: #3AB795; /* Green */
-            border: none;
-            color: white;
-            padding: 20px 40px;
-            text-align: center;
-            text-decoration: none;
-            display: inline-block;
-            font-size: 30px;
-        }
-        }
+
         @media only screen and (max-width: 399px) {
-        div {
-            height: 75vh;
-            background-image: url(img/background.jpg);
-            background-size: cover;
-            
+            div {
+                height: 75vh;
+                background-image: url(img/background.jpg);
+                background-size: cover;
+
+            }
+
+            #title {
+                padding-top: 60%;
+                text-align: center;
+                color: white;
+                font-size: 25pt;
+            }
+
+            button {
+
+                background-color: #3AB795;
+                /* Green */
+                border: none;
+                color: white;
+                padding: 20px 40px;
+                text-align: center;
+                text-decoration: none;
+                display: inline-block;
+                font-size: 30px;
+            }
         }
-        #title {
-            padding-top: 60%;
-            text-align: center;
-            color: white;
-            font-size: 25pt;
-        }
-        button {
-            
-            background-color: #3AB795; /* Green */
-            border: none;
-            color: white;
-            padding: 20px 40px;
-            text-align: center;
-            text-decoration: none;
-            display: inline-block;
-            font-size: 30px;
-        }
-        }
-/*        for iphone X*/
-        @media only screen 
-    and (device-width : 375px) 
-    and (device-height : 812px) 
-    and (-webkit-device-pixel-ratio : 3) {
-        div {
-            height: 70vh;
-            background-image: url(img/background.jpg);
-            background-size: cover;
-            
-        }
-        #title {
-            padding-top: 70%;
-            text-align: center;
-            color: white;
-            font-size: 30pt;
-        }
-        button {
-            
-            background-color: #3AB795; /* Green */
-            border: none;
-            color: white;
-            padding: 20px 40px;
-            text-align: center;
-            text-decoration: none;
-            display: inline-block;
-            font-size: 30px;
-        }
-        
+
+        /*        for iphone X*/
+        @media only screen and (device-width : 375px) and (device-height : 812px) and (-webkit-device-pixel-ratio : 3) {
+            div {
+                height: 70vh;
+                background-image: url(img/background.jpg);
+                background-size: cover;
+
+            }
+
+            #title {
+                padding-top: 70%;
+                text-align: center;
+                color: white;
+                font-size: 30pt;
+            }
+
+            button {
+
+                background-color: #3AB795;
+                /* Green */
+                border: none;
+                color: white;
+                padding: 20px 40px;
+                text-align: center;
+                text-decoration: none;
+                display: inline-block;
+                font-size: 30px;
+            }
+
         }
     </style>
-    </head>
+</head>
+
 <body>
-<div>
-    <div id="title">
-    <h1>Welcome to Happify.exe</h1>
-        <br>
-        <form action="D:\BCIT Term2 Work\COMP2800\About Us\about_us.html">
-  <button>About Us</button>
-    </form> 
-        <br>
-        <br>
-<form action="D:\BCIT Term2 Work\COMP2800\Login_registration\login_registration.html">
-  <button>Login</button>
-    </form>   
+    <div>
+        <div id="title">
+            <h1>Welcome to Happify.exe</h1>
+            <br>
+            <form action="/about_us">
+                <button>About Us</button>
+            </form>
+            <br>
+            <br>
+            <form action="/login">
+                <button>Login</button>
+            </form>
         </div>
 
-</div>
+    </div>
 </body>
+
 </html>
