@@ -155,16 +155,16 @@
         <% for (var i = 0; i < coupons.length;  i++ ) { %>
         <div class="coupons" id="coupons_<%= i+1 %>">
             <div class="coupon" id="coupon_<%= i+1 %>">
-               
+
                 <h1 class="title"><%= coupons[i].title %></h1>
                 <p class="description" id="description_<%= i+1 %>"><%= coupons[i].description %></p>
                 <span class="points"><%= coupons[i].points %></span>
             </div>
 
             <div class='confirm' id="confirm_<%= i+1 %>">
-                <span ></span>
+                <span></span>
                 <a class="square_btn_second yes" id="nth_<%= i+1 %>" name="<%=coupons[i].id%>">Yes</a>
-                <a class="square_btn_second no" >No</a>
+                <a class="square_btn_second no">No</a>
             </div>
         </div>
     </div>
@@ -188,12 +188,12 @@
 
 
         let coupon_info = null;
-            let confirm_choice = null;
-            let node_id = 0;
+        let confirm_choice = null;
+        let node_id = 0;
         $(".coupon").click(function (e) {
-           
+
             // const coupon_display = 
-            
+
             const confirmation_selection = " <h1>Confirm?</h1></div><div id='selection'><a class='square_btn_second'>Yes</a><a class='square_btn_second'>No</a>"
             if (e.target && (e.target.nodeName == "H1" || e.target.nodeName == "P" || e.target.nodeName == "SPAN")) {
                 coupon_info = $("#" + e.target.parentNode.id)
@@ -212,25 +212,31 @@
 
         });
 
-        $(".no").click( (e) => {
+        $(".no").click((e) => {
             console.log(confirm_choice)
             confirm_choice.toggle()
             $("#description_" + node_id).toggle();
         })
 
-        $(".yes").click( (e) => {
+        $(".yes").click((e) => {
             redeem_id = $(e.target).attr("name");
-            
+
             $.ajax({
                 type: "post",
                 url: "/coupon/redeem",
-                data: {"id" : redeem_id},
-                dataType: "text/plain",
+                data: { "id": redeem_id },
+                dataType: "text",
                 success: function (response) {
                     alert(response)
+                },
+                error: function (xhr, ajaxOptions, thrownError) {
+                    alert(xhr.status);
+                    alert(thrownError);
                 }
+            })
+                
             });
-        })
+        
 
 
     </script>

@@ -261,14 +261,17 @@ exports.setProfile = function (req, res) {
         var dbo = db.db("test");
         dbo.collection("user").updateOne(
             { _id: ObjectId(req.session.user_sid) },
-            { $set:{
-                username: req.body.username,
-                password: req.body.password,
-                email: req.body.email,
-                firstname: req.body.firstname,
-                lastname: req.body.lastname,
-                phoneno: req.body.phoneno} },
-                {multi:true, new:true}
+            {
+                $set: {
+                    username: req.body.username,
+                    password: req.body.password,
+                    email: req.body.email,
+                    firstname: req.body.firstname,
+                    lastname: req.body.lastname,
+                    phoneno: req.body.phoneno
+                }
+            },
+            { multi: true, new: true }
         )
         // if (err) throw err;
         // var dbo = db.db("test");
@@ -317,7 +320,7 @@ let points_needed = undefined;
 let user_points;
 exports.redeemCoupon = (req, res) => {
     // res.setHeader('Content-Type', 'application/json');
-    
+
     let id = parseInt(req.body["id"])
     MongoClient.connect(dbConfig.url, function (err, db) {
 
@@ -325,7 +328,7 @@ exports.redeemCoupon = (req, res) => {
 
         console.log("+++++++++++++++++++++++req.SESSION===============================")
         console.log(req.session)
-       
+
         console.log(id)
         if (err) throw err;
         var dbo = db.db("test");
@@ -338,18 +341,18 @@ exports.redeemCoupon = (req, res) => {
 
         });
 
-        
+
         dbo.collection("users").find({
             _id: ObjectId(req.session.user_sid)
         }).toArray(function (err, result) {
-            
-            if(result[0]){
-                if(result[0].points >=0){
+
+            if (result[0]) {
+                if (result[0].points >= 0) {
                     user_points = result[0].points;
-                }else{
+                } else {
                     console.log("go ahead")
-                }   
-            }else{
+                }
+            } else {
                 console.log("user doesn't has any points")
             }
 
@@ -363,30 +366,79 @@ exports.redeemCoupon = (req, res) => {
                 //need to link to the front end
                 console.log("not working")
                 // res.end(res.send("you need to log in first!!!!"));
-                
+
                 //   throw err;
-            }            
+            }
         });
-        
-        if(req.session.user_sid && user_points && (user_points - points_needed) >=0){
+
+        if (req.session.user_sid && user_points && (user_points - points_needed) >= 0) {
             console.log("redeem successful")
             console.log(-points_needed);
             console.log("id");
             console.log(id);
             dbo.collection("users").updateOne(
-                { _id: ObjectId(req.session.user_sid)},
-                { $inc: { points: -points_needed } ,
-                 $push:{ coupons_owned: id}},
+                { _id: ObjectId(req.session.user_sid) },
+                {
+                    $inc: { points: -points_needed },
+                    $push: { coupons_owned: id }
+                },
                 { new: true }
-                
+
             )
             db.close();
-            
+
             res.send("redeem successful");
-            
+
         }
     });
 }
+
+exports.viewOwnedCoupons = (req, res) => {
+    // res.setHeader('Content-Type', 'application/json');
+    let coupon_id_array;
+    MongoClient.connect(dbConfig.url, function (err, db) {
+        if (err) throw err;
+        var dbo = db.db("test");
+
+        dbo.collection("users").find({
+            _id: ObjectId(req.session.user_sid)
+        }).toArray(function (err, result) {
+            coupon_id_array = result[0].coupons_owned;
+
+            dbo.collection("coupons_available").find({
+                id: {$in : coupon_id_array}
+            }).limit(5).toArray(function (err, data) {
+                
+                console.log(data)
+                res.render(path +"")
+            });
+        });
+    });
+
+    // MongoClient.connect(dbConfig.url, function (err, db) {
+    //     var dbo = db.db("test");
+
+       
+    //         console.log("result[0].coupons_owned")
+    //         console.log(coupon_id_array)
+    //         dbo.collection("coupons_available").find({
+    //             id: {$in : [1,2,3,4]}
+    //         }).toArray(function (err, res) {
+    //             console.log("result = =  = = = =  = = == = = = =  = =   coupons_owned")
+    //             console.log(res)
+
+    //         });
+     
+
+
+
+    //     db.close();
+
+    // });
+
+   
+}
+
 
 
 

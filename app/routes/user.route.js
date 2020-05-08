@@ -67,7 +67,7 @@ module.exports = function (app) {
 
 	}));
 
-
+	
 	app.use((req, res, next) => {
 
 		if (req.cookies.user_sid && !req.session.user_sid) {
@@ -80,9 +80,9 @@ module.exports = function (app) {
 	var sessionChecker = (req, res, next) => {
 		if (req.session.user_sid && req.cookies.user_sid) {
 			//if it is there, it would redirect to homepage
-			res.redirect('/');
+			res.redirect('/homepage');
 		} else {
-			
+
 			//if the session is not there or the user_sid wasn't correct,
 			//then it would move to the login page
 			next();
@@ -101,9 +101,41 @@ module.exports = function (app) {
 
 	app.get('/coupon', users.getCoupon);
 
+	var MongoClient = require('mongodb').MongoClient;
+	const dbConfig = require('../config/mongodb.config.js');
+	var ObjectId = require('mongodb').ObjectID;
+	app.get('/my_coupons', (req, res) => {
+		// res.setHeader('Content-Type', 'application/json');
+		let coupon_id_array;
+		MongoClient.connect(dbConfig.url, function (err, db) {
+			if (err) throw err;
+			var dbo = db.db("test");
+
+			dbo.collection("users").find({
+				_id: ObjectId(req.session.user_sid)
+			}).toArray(function (err, result) {
+				coupon_id_array = result[0].coupons_owned;
+
+				dbo.collection("coupons_available").find({
+					id: { $in: coupon_id_array }
+				}).limit(5).toArray(function (err, data) {
+
+					console.log(data)
+					res.end(res.render(path + "my_coupons.ejs", {
+						coupons: data
+					}));
+				});
+			});
+		});
+	}
+
+	);
+
+	app.get("/homepage",(req,res)=>{res.render(path + "homepage.ejs")})
+
 	app.post('/coupon/redeem', users.redeemCoupon);
 
-	app.get("/restart",(req,res)=>{
+	app.get("/restart", (req, res) => {
 		uci[id] = "position startpos moves ";
 		stockfishes[id].postMessage(uci[id]);
 		res.redirect("/game/chess")
@@ -117,7 +149,7 @@ module.exports = function (app) {
 		console.log("uci-=================================================")
 		console.log(req.body["uci"])
 		stockfishes[id].postMessage(uci[id] + " " + req.body["uci"]);
-		uci[id] =  uci[id] + " " + req.body["uci"]
+		uci[id] = uci[id] + " " + req.body["uci"]
 		console.log("-=---------=-=-=-=-=-=-uic[id]-=-=-=-=-=-=-=-=-=-=-=-=");
 		console.log(uci[id]);
 		stockfishes[id].postMessage("go infinite");
@@ -125,23 +157,23 @@ module.exports = function (app) {
 			stockfishes[id].postMessage("stop");
 			stockfishes[id].postMessage("d");
 		}, 100);
-	
-		
+
+
 		stockfishes[id].onmessage = function (message) {
 			if (message.startsWith("bestmove")) {
-	
+
 				next_move = message.split(" ")
-			   
+
 			}
-			if(next_move.length !=0 ){
+			if (next_move.length != 0) {
 				console.log("msg");
 				console.log(next_move);
 				//1 is the position where the bestmove uci is
-				uci[id] =  uci[id] + " " + next_move[1]
+				uci[id] = uci[id] + " " + next_move[1]
 				res.send(next_move[1])
 			}
 			console.log(message)
-		}	
+		}
 	})
 	//^^^^^^^^^^^^^^^^^==Judao ChessGame==^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
@@ -242,7 +274,7 @@ module.exports = function (app) {
 	//============DBwork=====Tiffany=================================================
 
 	app.get('/daily_tasks', function (req, res) {
-		res.sendFile(staticPath+"daily_tasks.html");
+		res.sendFile(staticPath + "daily_tasks.html");
 	});
 
 	app.route('/getDailyKnowledge').get(users.dailyKnowledge);

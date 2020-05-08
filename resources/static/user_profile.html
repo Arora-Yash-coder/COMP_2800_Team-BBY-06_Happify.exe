@@ -141,6 +141,9 @@
   <script>
     //=====================upload==========avatar====================
     $(document).ready(function () {
+
+
+
       $(".avatar").on("click", () => {
         document.getElementById("upload").click();
 
@@ -337,120 +340,9 @@
       }
     });
 
-    // $.ajax({
-    //   url: "/getProfile",
-    //   dataType: "json",
-    //   type: "GET",
-    //   success: function (data) {
-    //     var div_password = $("#password");
-
-    //     var text_passwordinput = $("#passwordinput");
-    //     let htmlStr2 = "";
-    //     let password = "" + data.result[0].password;
-    //     htmlStr2 += "<h3>Password</h3><p>"
-    //       + "</p>";
-
-    //     div_password.html(htmlStr2);
-    //     text_passwordinput.append(password);
-    //   },
-    //   error: function (jqXHR, textStatus, errorThrown) {
-    //     $("#p1").text(textStatus + " " + errorThrown
-    //       + jqXHR.responseText);
-    //   }
-    // });
-    // $.ajax({
-    //   url: "/getProfile",
-    //   dataType: "json",
-    //   type: "GET",
-    //   success: function (data) {
-    //     var div_firstname = $("#firstname");
-    //     var text_firstnameinput = $("#firstnameinput");
-    //     let seed = Math.floor(Math.random() * 11);
-    //     let firstname = "" + data.result[0].firstname;
-    //     let htmlStr4 = "";
-
-    //     htmlStr4 += "<h3>Firstname</h3><p>"
-    //       + "</p>";
-
-    //     div_firstname.html(htmlStr4);
-    //     text_firstnameinput.append(firstname);
-    //   },
-    //   error: function (jqXHR, textStatus, errorThrown) {
-    //     $("#p1").text(textStatus + " " + errorThrown
-    //       + jqXHR.responseText);
-    //   }
-    // });
-
-
-    // $.ajax({
-    //   url: "/getProfile",
-    //   dataType: "json",
-    //   type: "GET",
-    //   success: function (data) {
-    //     var div_lastname = $("#lastname");
-    //     let seed = Math.floor(Math.random() * 11);
-    //     var text_lastnameinput = $("#lastnameinput");
-    //     let htmlStr5 = "";
-    //     let lastname = "" + data.result[0].lastname;
-    //     htmlStr5 += "<h3>Lastname</h3><p>"
-    //       + "</p>";
-
-    //     div_lastname.html(htmlStr5);
-    //     text_lastnameinput.append(lastname);
-    //   },
-    //   error: function (jqXHR, textStatus, errorThrown) {
-    //     $("#p1").text(textStatus + " " + errorThrown
-    //       + jqXHR.responseText);
-    //   }
-    // });
-
-    // $.ajax({
-    //   url: "/getProfile",
-    //   dataType: "json",
-    //   type: "GET",
-    //   success: function (data) {
-    //     var div_email = $("#email");
-    //     var text_emailinput = $("#emailinput");
-    //     let seed = Math.floor(Math.random() * 11);
-
-    //     let htmlStr3 = "";
-    //     let email = "" + data.result[0].email;
-    //     htmlStr3 += "<h3>Email</h3><p>"
-    //       + "</p>";
-
-    //     div_email.html(htmlStr3);
-    //     text_emailinput.append(email);
-    //   },
-    //   error: function (jqXHR, textStatus, errorThrown) {
-    //     $("#p1").text(textStatus + " " + errorThrown
-    //       + jqXHR.responseText);
-    //   }
-    // });
-
-
-
-    // $.ajax({
-    //   url: "/getProfile",
-    //   dataType: "json",
-    //   type: "GET",
-    //   success: function (data) {
-    //     var div_phoneno = $("#phoneno");
-    //     var text_phonenoinput = $("#phonenoinput");
-    //     let seed = Math.floor(Math.random() * 11);
-
-    //     let htmlStr6 = "";
-    //     let phoneno = "" + data.result[0].phoneno;
-    //     htmlStr6 += "<h3>PhoneNo</h3><p>"
-    //       + "</p>";
-
-    //     div_phoneno.html(htmlStr6);
-    //     text_phonenoinput.append(phoneno);
-    //   },
-    //   error: function (jqXHR, textStatus, errorThrown) {
-    //     $("#p1").text(textStatus + " " + errorThrown
-    //       + jqXHR.responseText);
-    //   }
-    // });
+    $("#mycoupons").click(()=>{
+      window.location.href = "/my_coupons"
+    })
 
   </script>
 </body>
