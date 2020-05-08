@@ -14,7 +14,7 @@ let virus;
 
 function setup() {
   createCanvas(window.innerWidth, window.innerHeight);
-  img = loadImage('/Resources/Extras/virus.png');
+  img = loadImage('Resources/Extras/virus.png');
   w = floor(width / rez);
   h = floor(height / rez);
   frameRate(5);

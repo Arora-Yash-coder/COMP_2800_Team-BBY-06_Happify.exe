@@ -62,7 +62,7 @@ var character = {
   y: canvas.height / 2,
   r: CHARACTER_SIZE / 2,
   lasers: [],
-  src: '/Resources/Character/Character_81.png',
+  src: 'Resources/Character/Character_81.png',
   a: 270 / 180 * Math.PI, //Convert to Radians
   d: 3
 }
@@ -81,28 +81,28 @@ function keydown( /** @type {KeyboardEvent} */ ev) {
       break;
     case 37:
       character.x -= CHARACTER_SPEED;
-      character.src = '/Resources/Character/Character_224.png';
+      character.src = 'Resources/Character/Character_224.png';
       character.d = 2;
       audio.play();
       audio.volume = 0.2;
       break;
     case 38:
       character.y -= CHARACTER_SPEED;
-      character.src = '/Resources/Character/Character_57.png';
+      character.src = 'Resources/Character/Character_57.png';
       character.d = 1;
       audio.play();
       audio.volume = 0.2;
       break;
     case 39:
       character.x += CHARACTER_SPEED;
-      character.src = '/Resources/Character/Character_251.png';
+      character.src = 'Resources/Character/Character_251.png';
       character.d = 0;
       audio.play();
       audio.volume = 0.2;
       break;
     case 40:
       character.y += CHARACTER_SPEED;
-      character.src = '/Resources/Character/Character_81.png';
+      character.src = 'Resources/Character/Character_81.png';
       character.d = 3;
       audio.play();
       audio.volume = 0.2;
@@ -140,7 +140,7 @@ function newZombie(x, y) {
     r: ZOMBIE_SIZE / 2,
     a: 270 / 180 * Math.PI,
 
-    src: '/Resources/Extras/virus.png'
+    src: 'Resources/Extras/virus.png'
   }
   return zomb;
 }
@@ -219,13 +219,13 @@ function update() {
   ctx.fillText(texths, canvas.width / 2, CHARACTER_SIZE / 2);
   // Lives and Game Over------------------------------------------------------------
   let image1 = new Image();
-  image1.src = '/Resources/Character/Character_81.png';
+  image1.src = 'Resources/Character/Character_81.png';
   ctx.drawImage(image1, 0, 0);
   let image2 = new Image();
-  image2.src = '/Resources/Character/Character_81.png';
+  image2.src = 'Resources/Character/Character_81.png';
   ctx.drawImage(image2, 70, 0);
   let image3 = new Image();
-  image3.src = '/Resources/Character/Character_81.png';
+  image3.src = 'Resources/Character/Character_81.png';
   ctx.drawImage(image3, 140, 0);
   if (Damage == 0) {
 
