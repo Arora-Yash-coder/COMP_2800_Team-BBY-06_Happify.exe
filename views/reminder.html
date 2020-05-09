@@ -1,0 +1,136 @@
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="./img/favicon-32x32.png" type="image/gif" sizes="16x16">
+    <title>Document</title>
+    <script src="https://code.jquery.com/jquery-3.5.0.js"
+        integrity="sha256-r/AaFHrszJtwpe+tHyNi/XCfMxYpbsRg2Uqn0x3s2zc=" crossorigin="anonymous"></script>
+    <!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script> -->
+</head>
+
+<body>
+    <form></form>
+    <button onclick="push()">push me to get info</button>
+    <button onclick="subscribe()">start daily reminder</button>
+    <button onclick="sub()">sub</button>
+    <legend>
+        <label for="hour">hour</label>
+        <input id="hour" type="number" value="23">
+        <br />
+        <label for="minute">minute</label>
+        <input id="minute" type="number" value="30">
+        <div>
+            <h1>We will remind you to go to bed at</h1>
+            <h2 id="time"> </h2>
+            <h1> every day</h1>
+        </div>
+        <h2>copy this:</h2>
+        <div id="pushinfo"></div>
+
+    </legend>
+
+    <script>
+    var gotVapidKey;
+
+        addEventListener('load', async () => {
+            let sw = await navigator.serviceWorker.register('./sw.js')
+
+           async function formSubmit() {
+                var url = "/getKey";
+                var request = new XMLHttpRequest();
+                request.open('POST', url, true);
+                request.onload = function () { // request successful 
+                    // we can use server response to our request now 
+                    
+                    gotVapidKey = request.responseText;
+                    console.log(gotVapidKey);
+                };
+
+                request.onerror = function () {
+                    console.log("fail to get key") 
+                };
+
+                request.send(); // create FormData from form that triggered event 
+                
+            }formSubmit()
+            // and you can attach form submit event like this for example 
+            
+            
+
+            // let sw = await navigator.serviceWorker.register('../resources/static/js/sw.js')
+
+            
+        })
+        let vapid;
+        async function subscribe() {
+            
+            
+            let subinfo = $("#pushinfo").html($("#hour").val())
+            $.ajax({
+                
+                type: "post",
+                url: "/subscribe",
+                data: subinfo,
+                // contentType: "app/json",
+                success: function (response) {
+                    vapid = response;
+                    console.log("response===========")
+                    console.log(vapid)
+                }
+            });
+
+           
+
+            setTimeout(() => {
+                subinfo = JSON.stringify(push)
+            console.log(subinfo)
+ 
+
+            
+            }, 200);
+            
+
+            var hour = document.getElementById("hour").value;
+            var mintue = document.getElementById("minute").value;
+
+            document.getElementById("time").innerHTML = hour + ":" + mintue;
+        }
+
+        async function sub(){
+           
+             sw = await navigator.serviceWorker.ready;
+            //pushed to the browser
+            let push = await sw.pushManager.subscribe({
+                userVisibleOnly: true,
+                // applicationServerKey : 'BOLwoYGg2hw44iExdhZ71-HSMLFTKdDwjx_42_qWPwyvD_HAZMzV4K6rJS1LzKMYkv3DCbU8bP4MLgnxGTynNYA'
+                applicationServerKey: vapid
+            })
+        }
+
+        async function push() {
+            date = new Date().toString();
+            data = { date }
+
+            console.log(typeof (date))
+            console.log(data)
+
+            $.ajax({
+                // contentType:"application/json",
+                type: "post",
+                url: "/push",
+                data: { date },
+                dataType: "text/plain",
+
+                success: function (response) {
+                    alert(response)
+                }
+            });
+        }
+
+
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="static/css/navbar.css">
+    <link rel="icon" href="./img/favicon-32x32.png" type="image/gif" sizes="16x16">
+    <title>Coupon Page</title>
+    <style>
+        body {
+            text-align: center;
+            margin: 0;
+
+        }
+
+        .square_btn_second {
+            display: inline-block;
+            padding: 0.3em 1em;
+            text-decoration: none;
+            color: #3AB795;
+            border: solid 2px #3AB795;
+            border-radius: 3px;
+            transition: .4s;
+        }
+
+        .square_btn_second:hover {
+            background: #EF629F;
+            color: white;
+        }
+
+        #container>div:nth-child(even) {
+            background-color: #FAC9B8;
+        }
+
+        @media only screen and (max-width:400px) {
+            .top {
+                color: #3AB795;
+                font-size: 13pt;
+                font-weight: bold;
+            }
+
+
+            .points {
+                color: #EF629F;
+                margin-top: -10px;
+                font-weight: bold;
+                font-size: 13pt;
+            }
+
+            .description {
+                margin-left: 25px;
+                margin-right: 25px;
+                margin-top: 10px;
+                margin-bottom: 10px;
+                border-radius: 25px;
+
+                grid-row: 1 / span 1;
+                display: grid;
+                grid-template-rows: 50% 50%;
+                color: #EF629F;
+            }
+
+            .title {
+                padding: 15px;
+                margin-top: auto;
+                margin-bottom: auto;
+                border-radius: 25px 0 0 25px;
+
+
+            }
+
+            .coupons {
+                margin-left: 25px;
+                margin-right: 25px;
+                margin-top: 10px;
+                margin-bottom: 10px;
+                border-radius: 25px;
+                background-color: #B8D8BA;
+
+                display: block;
+                grid-template-rows: 50% 50%;
+                color: #EF629F;
+            }
+        }
+
+
+
+        @media only screen and (min-width: 401px) {
+
+            .top {
+                color: #3AB795;
+                font-size: 23pt;
+                font-weight: bold;
+            }
+
+            .points {
+                color: #EF629F;
+                margin-top: -10px;
+                font-weight: bold;
+                font-size: 23pt;
+            }
+
+            .coupons {
+                margin-left: 25px;
+                margin-right: 25px;
+                margin-top: 10px;
+                margin-bottom: 10px;
+                border-radius: 25px;
+                background-color: #B8D8BA;
+
+
+                color: #EF629F;
+            }
+
+
+        }
+
+
+
+        @media only screen and (min-width: 1024px) {
+            .points {
+                color: #EF629F;
+                margin-top: -10px;
+                font-weight: bold;
+                font-size: 25pt;
+            }
+
+            .coupons {
+                margin-left: 25px;
+                margin-right: 25px;
+                margin-top: 10px;
+                margin-bottom: 10px;
+                border-radius: 25px;
+
+                grid-template-rows: 50% 50%;
+                color: #EF629F;
+            }
+
+        }
+    </style>
+</head>
+
+<body>
+    <%- navbar %>
+    <div id="greeting">
+        <p class='top'>Redeem Points</p>
+        <p class='points'> Current Points: </p>
+    </div>
+
+    <div id='container'>
+
+
+        <% for (var i = 0; i < coupons.length;  i++ ) { %>
+        <div class="coupons" id="coupons_<%= i+1 %>">
+            <div class="coupon" id="coupon_<%= i+1 %>">
+
+                <h1 class="title"><%= coupons[i].title %></h1>
+                <p class="description" id="description_<%= i+1 %>"><%= coupons[i].description %></p>
+                <span class="points"><%= coupons[i].points %></span>
+            </div>
+
+            <div class='confirm' id="confirm_<%= i+1 %>">
+                <span></span>
+                <a class="square_btn_second yes" id="nth_<%= i+1 %>" name="<%=coupons[i].id%>">Yes</a>
+                <a class="square_btn_second no">No</a>
+            </div>
+        </div>
+    </div>
+    <% } %>
+
+
+    </div>
+
+
+
+
+
+    <%- footer %>
+    </div>
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+    <script>
+        let itemArr = $(".coupons");
+        console.log(itemArr[0]);
+        // for(var nodeIndex in )
+        $(".confirm").hide();
+
+
+        let coupon_info = null;
+        let confirm_choice = null;
+        let node_id = 0;
+        $(".coupon").click(function (e) {
+
+            // const coupon_display = 
+
+            const confirmation_selection = " <h1>Confirm?</h1></div><div id='selection'><a class='square_btn_second'>Yes</a><a class='square_btn_second'>No</a>"
+            if (e.target && (e.target.nodeName == "H1" || e.target.nodeName == "P" || e.target.nodeName == "SPAN")) {
+                coupon_info = $("#" + e.target.parentNode.id)
+                node_id = e.target.parentNode.id.substr(7)
+
+                // alert(node_id)
+            } else {
+                coupon_info = $("#" + e.target.id)
+                node_id = e.target.id.substr(7)
+                // alert(node_id)
+            }
+            confirm_choice = $("#confirm_" + node_id)
+            confirm_choice.toggle()
+            $("#description_" + node_id).toggle();
+            // node_to_change.html(confirmation_selection)
+
+        });
+
+        $(".no").click((e) => {
+            console.log(confirm_choice)
+            confirm_choice.toggle()
+            $("#description_" + node_id).toggle();
+        })
+
+        $(".yes").click((e) => {
+            redeem_id = $(e.target).attr("name");
+
+            $.ajax({
+                type: "post",
+                url: "/coupon/redeem",
+                data: { "id": redeem_id },
+                dataType: "text",
+                success: function (response) {
+                    alert(response)
+                },
+                error: function (xhr, ajaxOptions, thrownError) {
+                    alert(xhr.status);
+                    alert(thrownError);
+                }
+            })
+                
+            });
+        
+
+
+    </script>
+</body>
+
+</html>

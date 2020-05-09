@@ -2,7 +2,14 @@ var express = require('express');
 var app = express();
 var bodyParser = require('body-parser');
 app.use(bodyParser.json());
- 
+var MongoClient = require('mongodb').MongoClient;
+
+var favicon = require('serve-favicon');
+
+app.use(favicon(__dirname + '/resources/static/img/favicon-32x32.png'));
+
+
+
 app.use(express.static('resources'));
 
 //"__dirname" is the path at the current folder(because app.js is at the current folder)
@@ -13,6 +20,7 @@ global.__basedir = __dirname;
 const dbConfig = require('./app/config/mongodb.config.js');
 const mongoose = require('mongoose');
  
+
 mongoose.Promise = global.Promise;
  
 // Connecting to the database
@@ -23,11 +31,30 @@ mongoose.connect(dbConfig.url)
     console.log('Could not connect to MongoDB.');
     process.exit();
 });
+
+MongoClient.connect(dbConfig.url, function(err, db) {
+  if (err) throw err;
+})
  
 require('./app/routes/user.route.js')(app);
+
+
+var fs =require('fs')
+const https = require('https');
+var options = {
+    key: fs.readFileSync('./privatekey.pem'),
+    cert: fs.readFileSync('./certificate.pem')
+};
+
+// var server = https.createServer(options, app);
+
+// server.listen(80, () => {
+//   console.log("server starting on port : " + 80)
+// });
  
+
 // Create a Server
-var server = app.listen(80, function () {
+var server = app.listen(3000, function () {
  
   var host = server.address().address
   var port = server.address().port
