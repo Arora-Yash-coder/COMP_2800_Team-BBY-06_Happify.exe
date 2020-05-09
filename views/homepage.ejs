@@ -4,6 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="./img/favicon-32x32.png" type="image/gif" sizes="16x16">
     <title>Welcome to Happify!</title>
     <style>
         body {
@@ -187,6 +188,7 @@
 
         #header {
             grid-row: 1 / span 1;
+            text-align:center;
         }
 
         #greeting {
@@ -215,6 +217,9 @@
 
         .list a:hover {
             background-color: rgb(65, 134, 125);
+        }
+        footer{
+            text-align: center;
         }
     </style>
 </head>
@@ -279,7 +284,8 @@
                     </div>
                 </div>
             </div>
-            <%- footer %>
+            <footer>
+            <%- footer %></footer>
                 
                 <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
 
