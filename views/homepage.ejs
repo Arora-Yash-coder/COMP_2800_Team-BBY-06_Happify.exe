@@ -4,7 +4,6 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="icon" href="./img/favicon-32x32.png" type="image/gif" sizes="16x16">
     <title>Welcome to Happify!</title>
     <style>
         body {
@@ -188,7 +187,6 @@
 
         #header {
             grid-row: 1 / span 1;
-            text-align:center;
         }
 
         #greeting {
@@ -218,9 +216,6 @@
         .list a:hover {
             background-color: rgb(65, 134, 125);
         }
-        footer{
-            text-align: center;
-        }
     </style>
 </head>
 
@@ -231,7 +226,7 @@
 
             <div id="greeting">
                 <p class='top'>Hello</p>
-                <h1 class='username'> username!</h1>
+                <h1 class='username' id="username"> username!</h1>
             </div>
 
         </div>
@@ -284,11 +279,19 @@
                     </div>
                 </div>
             </div>
-            <footer>
-            <%- footer %></footer>
-                
-                <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+            <%- footer %>
 
+            <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+            <script>
+                function say_hi() {
+                    $.get("/user_profile/getProfile", function (data, status) {
+                        $("#username").html(data.result[0].username)
+                        console.log("data.username===============")
+                        console.log(data)
+                    });
+                } say_hi()
+
+            </script>
 </body>
 
 </html>

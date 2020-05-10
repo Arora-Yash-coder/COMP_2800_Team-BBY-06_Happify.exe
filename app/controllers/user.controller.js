@@ -259,7 +259,7 @@ exports.setProfile = function (req, res) {
         console.log(req.body.phoneno)
 
         var dbo = db.db("test");
-        dbo.collection("user").updateOne(
+        dbo.collection("users").updateOne(
             { _id: ObjectId(req.session.user_sid) },
             {
                 $set: {
@@ -380,7 +380,7 @@ exports.redeemCoupon = (req, res) => {
         if (req.session.user_sid && user_points && (user_points - points_needed) >= 0) {
             console.log("redeem successful")
             console.log(-points_needed);
-            console.log("id");
+            console.log("id===================================");
             console.log(id);
             dbo.collection("users").updateOne(
                 { _id: ObjectId(req.session.user_sid) },
@@ -388,7 +388,7 @@ exports.redeemCoupon = (req, res) => {
                     $inc: { points: -points_needed },
                     $push: { coupons_owned: id }
                 },
-                { new: true }
+                { new: true}
 
             )
             db.close();

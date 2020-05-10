@@ -5,7 +5,6 @@
   <!-- <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script> -->
   <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="icon" href="./img/favicon-32x32.png" type="image/gif" sizes="16x16">
   <title>User Profile</title>
 
   <style>
@@ -93,7 +92,7 @@
       text-decoration: none;
       display: inline-block;
       font-size: 16px;
-        margin-bottom: 20px;
+      margin-bottom: 20px;
     }
 
     #avatar {
@@ -110,10 +109,11 @@
     #submit {
       display: none;
     }
-      #logout{
-          color:#EF629F; 
-          border: #EF629F solid 1px;
-      }
+
+    #logout {
+      color: #EF629F;
+      border: #EF629F solid 1px;
+    }
   </style>
 
 </head>
@@ -121,7 +121,7 @@
 <body>
   <%- navbar %>
   <h1>User Profile</h1>
-  
+
   <img id="avatar" class="avatar" src="/img/avatar.png">
   <form action="/upload_avatar" enctype="multipart/form-data" method="post">
     <input type="file" class="avatar" id="upload" name="upload">
@@ -163,8 +163,8 @@
   </div>
 
   <button type="button" onclick="save()" id="save">Save</button>
-    <button id="logout">log out!</button>
-    <br>
+  <button id="logout">log out!</button>
+  <br>
   <!--
     <div id="submit">
     <a href="#" class="square_btn">Yes</a></div>
@@ -183,8 +183,13 @@
 
       })
       //local Storage reads the attribute "picture" to the document.
+
       var pictureSrc = window.localStorage.getItem("picture");
-      $('#avatar').attr('src', pictureSrc);
+      if (pictureSrc) {
+        $('#avatar').attr('src', pictureSrc);
+      }else{
+        $('#avatar').attr('src', "/img/avatar.png");
+      }
 
       //regex that would allow the browse function to work.
       $(document).on('change', '.btn-file :file', function () {
@@ -228,7 +233,6 @@
         }
         // localStorage.setItem("picture", pictureSrc);
         reader.readAsDataURL(input.files[0]);
-
       }
 
       //After some picture is upload, the page reads the new URL
@@ -237,7 +241,6 @@
         e.preventDefault();
         console.log(this.files[0]);
         console.log(readURL(this));
-
       });
     });
     //       reader.readAsDataURL(input.files[0]);
@@ -382,7 +385,7 @@
       window.location.href = "/my_coupons"
     })
 
-    $("#logout").click(()=>{
+    $("#logout").click(() => {
       window.location.href = "/logout";
     })
   </script>

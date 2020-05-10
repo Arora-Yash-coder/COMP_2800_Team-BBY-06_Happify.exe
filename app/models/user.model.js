@@ -23,6 +23,8 @@ const UserSchema = mongoose.Schema({
     firstname: String,
     lastname: String,
     phoneno: String,
+    coupons_owned: { type: Array, default: [1] },
+    points: { type: Number, default: 1 }
 	//
 });
  
