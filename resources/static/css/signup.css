@@ -1,5 +1,6 @@
 body {
-  background-image: url(./../img/background.jpg);
+  background-image: url(./../img/background.png);
+    background-size: cover;
 }
 .container{
       background-color:hsla(120, 60%, 2%, 0.6);
@@ -62,16 +63,15 @@ body {
 
 
     #register {
-      margin-left: auto;
-      color: floralwhite;
-      margin-top: 20px;
-      margin-bottom: -1px;
-      border-bottom-left-radius: 0;
-      border-bottom-right-radius: 0;
-      font-size: 18pt;
-      height: 48px;
-      width: 100px;
-      background-color: dodgerblue;
+        margin-top: 10px;
+      background-color: transparent;
+      border: #3AB795 solid 1px;
+      color: #3AB795;
+      padding: 10px 26px;
+      text-align: center;
+      text-decoration: none;
+      display: inline-block;
+      font-size: 16px;
     }
 
 
@@ -84,11 +84,12 @@ body {
     body {
       color: white;
     }
-
+    
+/*
     @media only screen and (min-width: 1024px) {
       body {
       
-        /* text-align: center; */
+         text-align: center; 
         background-size: cover;
         height: 100vh;
       }
@@ -143,9 +144,11 @@ body {
       }
 
     }
+*/
 
 
-    @media only screen and (max-device-width: 320px) {
+/*    @media only screen and (max-device-width: 320px) {*/
+/*
       body {
    
         text-align: center;
@@ -164,6 +167,8 @@ body {
       }
 
       input[type="password"] {
+*/
+/*
         margin-top: 20px;
         margin-bottom: -1px;
         border-bottom-left-radius: 0;
@@ -191,7 +196,35 @@ body {
         width: 100%;
         font-size: 15pt;
       }
+    }margin-top: 20px;
+        margin-bottom: -1px;
+        border-bottom-left-radius: 0;
+        border-bottom-right-radius: 0;
+        font-size: 15pt;
+        height: 48px;
+        width: 250px;
+      }
+
+      input[type="email"] {
+        margin-top: 20px;
+        margin-bottom: -1px;
+        border-bottom-left-radius: 0;
+        border-bottom-right-radius: 0;
+        font-size: 15pt;
+        height: 48px;
+        width: 250px;
+      }
+
+      button {
+        margin-top: 15px;
+        margin-bottom: 15px;
+        border-top-left-radius: 0;
+        border-top-right-radius: 0;
+        width: 100%;
+        font-size: 15pt;
+      }
     }
+*/
 
     /*
               for iphone X
