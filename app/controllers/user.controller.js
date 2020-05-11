@@ -46,7 +46,7 @@ exports.register = (req, res) => {
     //     });
 
     User.create(user);
-    
+
     res.redirect('/login');
 };
 
@@ -62,8 +62,8 @@ exports.verify = (req, res) => {
 
     var path = __basedir + '/views/';
     var navbar_top_ejs = fs.readFileSync(path + "components/navbar_top.ejs", 'utf-8');
-	
-	var footer = fs.readFileSync(path + "components/footer.ejs", 'utf-8');
+
+    var footer = fs.readFileSync(path + "components/footer.ejs", 'utf-8');
 
     let query = User.findOne({ "username": usn });
     query.then(function (theUser) {
@@ -82,7 +82,7 @@ exports.verify = (req, res) => {
                 console.log("res.cookies======================" + res.cookies)
                 // console.log("req.session.user_sid" + req.session.user_sid);
                 // res.send(successMsg);
-                console.log("redirecting to homepage----------" )
+                console.log("redirecting to homepage----------")
                 res.redirect("/homepage")
                 // res.redirect("/homepage")
                 res.end()
@@ -286,16 +286,16 @@ exports.setProfile = function (req, res) {
         //     
         // });
         db.close();
-        
+
     });
     res.redirect('/user_profile')
 }
 
 
-	// var body_ejs = fs.readFileSync(path + "components/homepage_body.ejs", 'utf-8');
-	var navbar_top_ejs = fs.readFileSync(path + "components/navbar_top.ejs", 'utf-8');
+// var body_ejs = fs.readFileSync(path + "components/homepage_body.ejs", 'utf-8');
+var navbar_top_ejs = fs.readFileSync(path + "components/navbar_top.ejs", 'utf-8');
 
-	var footer = fs.readFileSync(path + "components/footer.ejs", 'utf-8');
+var footer = fs.readFileSync(path + "components/footer.ejs", 'utf-8');
 exports.getCoupon = (req, res) => {
     // res.setHeader('Content-Type', 'application/json');
     MongoClient.connect(dbConfig.url, function (err, db) {
@@ -311,11 +311,11 @@ exports.getCoupon = (req, res) => {
 
 
             db.close();
-            res.end(res.render(path + "coupon.ejs", {
+            res.render(path + "coupon.ejs", {
                 coupons: result,
                 navbar: navbar_top_ejs,
-			footer: footer
-            }));
+                footer: footer
+            });
             //    res.send( { result });
 
         });
@@ -387,7 +387,7 @@ exports.redeemCoupon = (req, res) => {
                     $inc: { points: -points_needed },
                     $push: { coupons_owned: id }
                 },
-                { new: true}
+                { new: true }
 
             )
             db.close();
@@ -411,17 +411,19 @@ exports.viewOwnedCoupons = (req, res) => {
             coupon_id_array = result[0].coupons_owned;
 
             dbo.collection("coupons_available").find({
-                id: {$in : coupon_id_array}
+                id: { $in: coupon_id_array }
             }).limit(5).toArray(function (err, data) {
-                
+
                 console.log(data)
-                res.render(path +"")
+                res.render(path + "coupon.ejs",{
+                    
+                })
             });
         });
     });
 
 
-   
+
 }
 
 
@@ -489,7 +491,7 @@ exports.getUserPoints = (req, res) => {
                     $inc: { points: -points_needed },
                     $push: { coupons_owned: id }
                 },
-                { new: true}
+                { new: true }
 
             )
             db.close();
@@ -501,6 +503,46 @@ exports.getUserPoints = (req, res) => {
 }
 
 
+exports.searchCoupon = (req, res) => {
+    res.setHeader('Content-Type', 'application/json');
+
+    // let id = parseInt(req.body)
+    console.log("req.body in searchCoupon line 508=")
+    console.log(req.body)
+    MongoClient.connect(dbConfig.url, function (err, db) {
+
+        console.log("+++++++++++++++++++++++req.body[search_box]===============================")
+        
+        // for (var i in req.body) {
+            let search_input =  req.body.serach_box
+            console.log(search_input)
+            let regex_input = ".*" + search_input +".*" 
+            let points_input = parseInt(req.body.serach_box)
+            console.log(regex_input)
+            console.log(points_input)
+        // }
+        console.log("+++++++++++++++++++++++req.SESSION===============================")
 
 
+
+        if (err) throw err;
+        var dbo = db.db("test");
+        dbo.collection("coupons_available").find(
+            { $or:[{title:{$regex:regex_input}},{description :{$regex:regex_input}},{points : {$lte:points_input}}]  }
+             ).limit(5).toArray(function (err, result) {
+            if (err) throw err;
+            console.log("gets back the result=================");
+            console.log(result);
+                       
+            db.close();
+            // res.send(result)
+            // res.redirect("/homepage")
+            res.render(path + "coupon.ejs", {
+                coupons: result,
+                navbar: navbar_top_ejs,
+                footer: footer
+            })
+        });
+    })
+}
 

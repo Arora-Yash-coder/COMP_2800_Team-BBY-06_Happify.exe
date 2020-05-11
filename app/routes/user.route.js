@@ -433,7 +433,7 @@ module.exports = function (app) {
 	//check if the user is allowed to log in.
 	app.post('/api/users/verify', users.verify);
 
-
+	app.post('/coupon/search', users.searchCoupon)
 
 	app.post("/getKey", (req, res) => {
 		res.send('BHzTemBBukw8OY7qXGqtXPPIGSr-TyACw3rNEcmsBTx2gEJQ2YECWff5oBMb9fRss7vhn3a6ATNxucmb52zHM2U')

@@ -12,7 +12,7 @@
             margin: 0;
             background-image: url(../img/background.png);
             background-size: cover;
-            height:120vh;
+            height: 120vh;
 
         }
 
@@ -146,8 +146,11 @@
 <body>
     <%- navbar %>
     <div id="greeting">
-        <p class='top'>Current Points:</p>  <span id="current_points"> </span>
-        
+        <p class='top'>Current Points:</p> <span id="current_points"> </span>
+        <div id="search_function"><input id="search_box" type="text" placeholder="input coupon title or description">
+            <button id="search">search</button></div>
+
+
     </div>
 
     <div id='container'>
@@ -182,20 +185,51 @@
     </div>
     <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
     <script>
+        
+
         $(document).ready(function () {
+
+            
+        $("#search").on("click",() => {
+            var serach_box = $("#search_box").val();
+            console.log("serach_box")
+            console.log(serach_box)
+            console.log($("#search_box").val())
+            $.ajax({
+                type: "post",
+                url: "/coupon/search",
+                data: {serach_box},
+                dataType: "html",
+                success: function (response) {
+                    console.log("response")
+                    console.log(response)
+                    $("html").html(response)
+                },
+                error:(e)=>{
+                    console.log(e)
+                }
+            });
+        })
+
+
+
+
+
+
+           
             $.ajax({
                 type: "get",
                 url: "/user_profile/getProfile",
-                
+
                 dataType: "json",
                 success: function (response) {
                     console.log(response)
                     console.log(response.result[0].points)
                     $("#current_points").html(response.result[0].points)
                 },
-                error:(response)=>{
+                error: (response) => {
                     console.log(response)
-                   
+
                     alert(response.points)
                 }
             });
@@ -253,9 +287,11 @@
                     alert(thrownError);
                 }
             })
-                
-            });
-        
+
+        });
+
+
+   
 
 
     </script>
