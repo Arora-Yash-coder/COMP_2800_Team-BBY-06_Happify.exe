@@ -4,219 +4,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet"  type="text/css" href="/static/css/homepage.css">
     <title>Welcome to Happify!</title>
-    <style>
-        body {
-            text-align: center;
-            margin: 0;
-        }
-
-        img {
-            object-fit: contain;
-            max-width: 90%;
-            max-height: 95px;
-            display: block;
-            margin-left: auto;
-            margin-right: auto;
-        }
-
-        .first {
-            color: #EF629F;
-
-        }
-
-        .second {
-            color: #3AB795;
-
-        }
-
-        .top {
-            color: #3AB795;
-            font-size: 20pt;
-            font-weight: bold;
-        }
-
-        .username {
-            color: #EF629F;
-            margin-top: -10px;
-            font-weight: bold;
-        }
-
-        #container {
-
-
-            height: 120vh;
-
-        }
-
-        #inner {
-            grid-row: 2 / span 1;
-
-        }
-
-        #dailytask {
-            margin-left: 25px;
-            margin-right: 25px;
-            margin-top: 10px;
-            margin-bottom: 10px;
-            border-radius: 25px;
-            background-color: #B8D8BA;
-            grid-row: 1 / span 1;
-            display: grid;
-            grid-template-columns: 50% 50%;
-        }
-
-        #dailytask1 {
-            margin-top: auto;
-            margin-bottom: auto;
-            border-radius: 25px 0 0 25px;
-
-
-            grid-column: 1 / span 1;
-
-        }
-
-        #dailytask2 {
-            margin-top: auto;
-            margin-bottom: auto;
-            border-radius: 0 25px 25px 0;
-
-
-            grid-column: 2 / span 1;
-
-        }
-
-        #games {
-            margin-left: 25px;
-            margin-right: 25px;
-            margin-top: 10px;
-            margin-bottom: 10px;
-            border-radius: 25px;
-            grid-row: 2 / span 1;
-            background-color: #FAC9B8;
-            display: grid;
-            grid-template-columns: 50% 50%;
-
-        }
-
-        #games1 {
-            margin-top: auto;
-            margin-bottom: auto;
-            border-radius: 25px 0 0 25px;
-
-
-            grid-column: 1 / span 1;
-
-        }
-
-        #games2 {
-            margin-top: auto;
-            margin-bottom: auto;
-            border-radius: 0 25px 25px 0;
-
-
-            grid-column: 2 / span 1;
-
-        }
-
-        #howdoyoufeeltoday {
-            margin-left: 25px;
-            margin-right: 25px;
-            margin-top: 10px;
-            margin-bottom: 10px;
-            border-radius: 25px;
-            background-color: #B8D8BA;
-            grid-row: 3 / span 1;
-            display: grid;
-            grid-template-columns: 50% 50%;
-
-        }
-
-        #how1 {
-            margin-top: auto;
-            margin-bottom: auto;
-            border-radius: 25px 0 0 25px;
-
-
-            grid-column: 1 / span 1;
-
-        }
-
-        #how2 {
-            margin-top: auto;
-            margin-bottom: auto;
-            border-radius: 0 25px 25px 0;
-
-
-            grid-column: 2 / span 1;
-
-        }
-
-        #redeem {
-            margin-left: 25px;
-            margin-right: 25px;
-            margin-top: 10px;
-            margin-bottom: 10px;
-            border-radius: 25px;
-            background-color: #FAC9B8;
-            grid-row: 4 / span 1;
-            display: grid;
-            grid-template-columns: 50% 50%;
-        }
-
-        #redeem1 {
-            margin-top: auto;
-            margin-bottom: auto;
-            border-radius: 25px 0 0 25px;
-            /*            background-color: #B8D8BA;*/
-
-            grid-column: 1 / span 1;
-
-        }
-
-        #redeem2 {
-            margin-top: auto;
-            margin-bottom: auto;
-
-            border-radius: 0 25px 25px 0;
-
-
-            grid-column: 2 / span 1;
-
-        }
-
-        #header {
-            grid-row: 1 / span 1;
-        }
-
-        #greeting {
-            color: #EF629F;
-        }
-
-        .container {
-            list-style-type: none;
-            margin: 0;
-
-            overflow: hidden;
-            background-color: #75DBCD;
-        }
-
-        .list {
-            float: left;
-        }
-
-        .list a {
-            display: block;
-            color: white;
-            text-align: center;
-            padding: 14px 16px;
-            text-decoration: none;
-        }
-
-        .list a:hover {
-            background-color: rgb(65, 134, 125);
-        }
-    </style>
+    
 </head>
 
 <body>
@@ -283,7 +73,8 @@
 
             <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
             <script>
-                function say_hi() {
+                $(document).ready(function () {
+                    function say_hi() {
                     $.get("/user_profile/getProfile", function (data, status) {
                         $("#username").html(data.result[0].username)
                         console.log("data.username===============")
@@ -291,7 +82,10 @@
                     });
                 } say_hi()
 
+                });
+               
             </script>
+            <script src='/static/js/navbar_top.js'></script>
 </body>
 
 </html>

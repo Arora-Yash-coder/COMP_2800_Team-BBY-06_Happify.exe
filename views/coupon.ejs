@@ -143,8 +143,8 @@
 <body>
     <%- navbar %>
     <div id="greeting">
-        <p class='top'>Redeem Points</p>
-        <p class='points'> Current Points: </p>
+        <p class='top'>Current Points:</p>  <span id="current_points"> </span>
+        
     </div>
 
     <div id='container'>
@@ -179,6 +179,24 @@
     </div>
     <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
     <script>
+        $(document).ready(function () {
+            $.ajax({
+                type: "get",
+                url: "/user_profile/getProfile",
+                
+                dataType: "json",
+                success: function (response) {
+                    console.log(response)
+                    console.log(response.result[0].points)
+                    $("#current_points").html(response.result[0].points)
+                },
+                error:(response)=>{
+                    console.log(response)
+                   
+                    alert(response.points)
+                }
+            });
+        });
         let itemArr = $(".coupons");
         console.log(itemArr[0]);
         // for(var nodeIndex in )

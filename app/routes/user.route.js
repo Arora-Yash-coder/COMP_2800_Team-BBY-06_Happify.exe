@@ -171,11 +171,13 @@ module.exports = function (app) {
 		res.sendFile(staticPath +"about_us.html")
 	})
 
-	app.get("/homepage",sessionChecker2, (req, res) => {
-		res.render(path + "homepage.ejs", {
+	app.get("/homepage", (req, res) => {
+		
+		res.render(path + "/homepage.ejs", {
 			navbar: navbar_top_ejs,
 			footer: footer
 		})
+		
 	})
 
 	app.get("/minigames",sessionChecker2, (req, res) => {
