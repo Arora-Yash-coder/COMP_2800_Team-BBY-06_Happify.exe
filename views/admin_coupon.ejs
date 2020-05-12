@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Coupon Management</title>
+    <link rel="stylesheet" href="/style.css">
+</head>
+<body>
+
+<!-- Create your form here -->
+<fieldset class="todo-list">
+<legend class="todo-list__title">Items Goes Here</legend> 
+
+<form action="/myForm" method="post">
+<div id="items_to_submit">
+    <label class="todo-list__title" for="to_do_item_1">Todo Item 1</label> 
+    <input name="to_do_item" id="to_do_item_1" class="to_do_items" type="text"> <br/>
+    
+</div>
+<button type="submit">Submit</button>
+
+<!-- <button id="submit">test</button> -->
+</form>
+<button id="add_item">+</button>
+
+
+
+<fieldset class="todo-list">
+    <legend class="todo-list__title">My Special Todo List</legend>
+
+   <%  if(todolist) { %> 
+    <% for( var i=0; i < todolist.length; i++) { %>
+       <% console.log(todolist) %>  
+    <label class="todo-list__label">
+        <input type="checkbox" name="" id="" />
+        <i class="check"></i>
+        <span><%= todolist[i] %></span>
+    </label>
+    <% } %>
+   <% } %> 
+
+</fieldset>
+
+    
+
+  
+
+
+
+
+
+</fieldset>
+
+
+<script src="https://ajax.aspnetcdn.com/ajax/jQuery/jquery-3.4.1.min.js"></script>
+<script>
+    
+
+    let item_number = 2;
+
+    $("#add_item").on("click",function(){
+        $("#items_to_submit").append("<label class='todo-list__title' for='to_do_item'" + item_number + ">Todo Item " + item_number +"</label>")
+        $("#items_to_submit").append("<input name='to_do_item' id='to_do_item_'"+item_number+" type='text' class = 'to_do_items'><br/>")
+        
+        item_number++;
+    })
+    
+
+
+</script>
+
+</body>
+
+</html>

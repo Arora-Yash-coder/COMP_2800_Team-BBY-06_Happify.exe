@@ -153,8 +153,8 @@ module.exports = function (app) {
 	);
 	
 
-	app.get("/my_health", (req, res) => {
-		res.render(path + "my_health.ejs", {
+	app.get("/my_record", (req, res) => {
+		res.render(path + "my_record.ejs", {
 			navbar: navbar_top_ejs,
 			footer: footer
 		})
@@ -311,9 +311,6 @@ module.exports = function (app) {
 		res.sendFile(path + "reminder.html");
 	});
 
-	app.get('/success', (req, res) => {
-		res.sendFile(path + "successful.html");
-	});
 
 
 	app.post('/subscribe', (req, res) => {
@@ -421,9 +418,7 @@ module.exports = function (app) {
 	});
 
 
-	app.get('/:username', (req, res) => {
-		res.sendFile(staticPath + "successful.html");
-	});
+	
 
 	// Save a User to MongoDB
 	app.post('/api/users/register', users.register);
@@ -486,7 +481,24 @@ module.exports = function (app) {
 			}
 		});
 	});
+	
+	app.get('/admin_verify', (req, res) => {
+		res.sendFile(static + "admin_verify.ejs");
+	});
 
+	app.post('/users/admin', (req, res) => {
+		users.verifyAdmin
+	});
+
+	app.get('/:username', (req, res) => {
+		res.sendFile(staticPath + "successful.html");
+	});
+
+
+
+	app.use('*', (req, res) => {
+		res.sendFile(path + "404.html");
+	});
 
 
 

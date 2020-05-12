@@ -1,20 +1,8 @@
 const mongoose = require('mongoose');
  
-const DailyTaskSchema = mongoose.Schema({
-  daily_task_id : {type:Number , default: 0},
-  text_content:{type:String},
-  supplementary:{type : String},
-  complement:{type:String},
-  date : {type : Date},
-  finished:{type: Boolean},
-})
 
-const UserDailyTaskSchema = mongoose.Schema({
-    user_id: {type:String},
-    daily_task_1 : { type:DailyTaskSchema, default:null},
-    daily_task_2 : { type:DailyTaskSchema, default:null},
-    daily_task_3 : { type:DailyTaskSchema, default:null},
-})
+
+
 
 //creates a UserSchema for mongoDB using mongoose
 const UserSchema = mongoose.Schema({
@@ -47,10 +35,8 @@ const UserSchema = mongoose.Schema({
 
 
 
-var DailyTask = mongoose.model('DailyTask',DailyTaskSchema)
 
 
-var UserDailyTask = mongoose.model('UserDailyTask',UserDailyTaskSchema)
 
 //make it global
 var User = mongoose.model('User', UserSchema);

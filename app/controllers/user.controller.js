@@ -546,3 +546,65 @@ exports.searchCoupon = (req, res) => {
     })
 }
 
+
+exports.verifyAdmin = (req, res) => {
+    let usn = req.body.username;
+    let successMsg = " login successful";
+    let incorrectMsg = "password not correct";
+    let usrnameNotFoundMsg = "username not found";
+    console.log("the user tried logging in with username: \n" + usn);
+
+
+
+
+    var path = __basedir + '/views/';
+    var navbar_top_ejs = fs.readFileSync(path + "components/navbar_top.ejs", 'utf-8');
+
+    var footer = fs.readFileSync(path + "components/footer.ejs", 'utf-8');
+
+
+
+
+    MongoClient.connect(dbConfig.url, function (err, db) {
+        if (err) throw err;
+        var dbo = db.db("test");
+        dbo.collection("admin").findOne({"username" : usn}).then(function (theUser) {
+        //if the user exists
+        if (theUser) {
+            //and the password corresponds to the username from the DB
+            if (theUser.toObject().password == req.body.password) {
+                console.log(theUser.toObject().username + successMsg)
+                req.session.user_sid = theUser.toObject()._id;
+                req.cookies.user_sid = theUser._id;
+                req.cookies.sub = "null";
+                res.cookie({
+                    "user_sid": theUser._id,
+                    "sub": "null"
+                })
+                console.log("res.cookies======================" + res.cookies)
+                // console.log("req.session.user_sid" + req.session.user_sid);
+                // res.send(successMsg);
+                console.log("redirecting to homepage----------")
+                res.redirect("/homepage")
+                // res.redirect("/homepage")
+                res.end()
+            }
+            //but the password was not right
+            else {
+                console.log(incorrectMsg)
+                res.send(incorrectMsg);
+
+            }
+            //the user doesn't even exist
+        } else {
+            console.log(usrnameNotFoundMsg);
+
+            res.send(usrnameNotFoundMsg);
+
+        }
+        res.end();
+
+    })
+
+})
+}
