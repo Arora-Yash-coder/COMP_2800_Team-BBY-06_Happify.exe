@@ -442,6 +442,25 @@ module.exports = function (app) {
 	//imported for dealing with submitted pictures
 	var formidable = require('formidable');
 
+	app.post("/check_time",(req,res)=>{
+		console.log("time should be in here++++++++++++++++++++++++++++++")
+		let client_timestamp =  Date.parse(req.body.d)
+		let server_timestamp =  Date.now();
+
+		//if the client time exceeds 5am
+		//and the client has not done all the tasks
+			//go and find the stuff in the db.
+				//in the result array, look for those with "true" -> render differently
+				//                     look for those with "false"-> render normally
+
+		if(client_timestamp > server_timestamp+3600*1000*12 || client_timestamp < server_timestamp - 3600*1000*12){
+			console.log("the user is trying to cheat!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!")
+		}
+		else{
+			console.log("the user is finishing all the tasks")
+		}
+	})
+
 	app.post('/upload_avatar', function (req, res) {
 		var form = new formidable.IncomingForm();
 		console.log("about to parse");

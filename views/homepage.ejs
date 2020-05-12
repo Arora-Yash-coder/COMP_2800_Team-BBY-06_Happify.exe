@@ -4,9 +4,10 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet"  type="text/css" href="/static/css/homepage.css">
+    <link rel="stylesheet" type="text/css" href="/static/css/homepage.css">
+    <link rel="stylesheet" type="text/css" href="/static/css/navbar.css">
     <title>Welcome to Happify!</title>
-    
+
 </head>
 
 <body>
@@ -15,40 +16,55 @@
         <div id="header">
 
             <div id="greeting">
-                <p class='top'>Hello</p>
-                <h1 class='username' id="username"> username!</h1>
+                <p class='top' id="welcome">Welcome Back,</p>
+                <h1 class='username' id="username"></h1>
             </div>
 
         </div>
         <div id='inner'>
             <div id="dailytask" onclick="window.location.href = '/daily_tasks' ">
                 <div id='dailytask1'>
-                    <h1 class="first">Daily tasks</h1>
+                    <h3 class="first">Finish Our Daily Challenges</h3>
                 </div>
                 <div id='dailytask2'>
-                    <div id='image'>
-                        <img src="/img/task2.png">
+                    <div id='image1'>
+                        <img id="daily_task_img" src="/img/task2.png">
                     </div>
                 </div>
-
-
-
-
             </div>
+
+            <h1 style="color:violet;margin: 0;padding: 0;"> + </h1>
 
             <div id="games" onclick="window.location.href = '/minigames' ">
                 <div id="games1">
                     <h1 class="second">Mini Games</h1>
                 </div>
                 <div id="games2">
-                    <div id='image'>
-                        <img src="img/game.png">
+                    <div id='image2'>
+                        <img id="game_img" src="img/game.png">
                     </div>
                 </div>
             </div>
+           
+            <h1 style="color:violet;margin: 0;padding: 0;transform: rotate(90deg);"> = </h1>
+
+
+            <div id="redeem" onclick="window.location.href = '/coupon';">
+
+                <div id="redeem1">
+                    <h1 class="second">Redeem!</h1>
+                </div>
+                <div id="redeem2">
+                    <div id='image'>
+
+                        <img id="redeem_img" src="img/coupon1.png">
+                    </div>
+                </div>
+            </div>
+
             <div id="howdoyoufeeltoday" onclick="window.location.href = '/my_health';">
                 <div id="how1">
-                    <h1 class="first">Your health</h1>
+                    <h1 class="first">Check Record</h1>
                 </div>
                 <div id="how2">
                     <div id='image'>
@@ -57,33 +73,21 @@
                 </div>
 
             </div>
-            <div id="redeem" onclick="window.location.href = '/coupon';">
-
-                <div id="redeem1">
-                    <h1 class="second">Redeem?</h1>
-                </div>
-                <div id="redeem2">
-                    <div id='image'>
-
-                        <img src="img/coupon1.png">
-                    </div>
-                </div>
-            </div>
             <%- footer %>
 
-            <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+            <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
             <script>
                 $(document).ready(function () {
                     function say_hi() {
-                    $.get("/user_profile/getProfile", function (data, status) {
-                        $("#username").html(data.result[0].username)
-                        console.log("data.username===============")
-                        console.log(data)
-                    });
-                } say_hi()
+                        $.get("/user_profile/getProfile", function (data, status) {
+                            $("#username").html(data.result[0].username)
+                            console.log("data.username===============")
+                            console.log(data)
+                        });
+                    } say_hi()
 
                 });
-               
+
             </script>
             <script src='/static/js/navbar_top.js'></script>
 </body>

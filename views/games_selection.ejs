@@ -10,9 +10,13 @@
             color: #3AB795;
             font-size: 17pt;
             font-weight: bold;
+            margin: 0;
+            margin-top: 10px;
+            padding: 0;
         }
 
         .username {
+            margin-top: 0;
             font-size: 15pt;
         }
        
@@ -212,29 +216,8 @@
         }
 
 
-        .container {
-            list-style-type: none;
-            margin: 0;
 
-            overflow: hidden;
-            background-color: #75DBCD;
-        }
 
-        .list {
-            float: left;
-        }
-
-        .list a {
-            display: block;
-            color: white;
-            text-align: center;
-            padding: 14px 16px;
-            text-decoration: none;
-        }
-
-        .list a:hover {
-            background-color: rgb(65, 134, 125);
-        }
 
         #header {
             text-align: center;
@@ -245,10 +228,8 @@
             text-align: center;
         }
 
-        nav {
-            margin: 0;
-        }
     </style>
+    <link rel="stylesheet"  type="text/css" href="/static/css/navbar.css">
 </head>
 
 <body>
@@ -258,7 +239,7 @@
                 <%- navbar %> </nav>
             <div id="greeting">
                 <p class='top'>Hello</p>
-                <h1 class="username" id='username'>DNA_PolymerACE !</h1>
+                <h1 class="username" id='username'></h1>
             </div>
 
         </div>
@@ -323,7 +304,7 @@
         <footer>
             <%- footer %> </footer>
     </div>
-    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
     <script>
         function ttt(event) {
             event.target.port = 85
@@ -339,6 +320,7 @@
         }say_hi()
 
     </script>
+     <script src='/static/js/navbar_top.js'></script>
 </body>
 
 </html>

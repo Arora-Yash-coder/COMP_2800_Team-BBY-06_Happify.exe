@@ -46,19 +46,23 @@ var options = {
     cert: fs.readFileSync('./certificate.pem')
 };
 
-// var server = https.createServer(options, app);
+var server = https.createServer(options, app);
 
-// server.listen(80, () => {
-//   console.log("server starting on port : " + 80)
-// });
- 
+server.listen(443, () => {
+  console.log("server starting on port : " + 3000)
+});
+
+
+https.createServer(options, app).listen(90, function () {
+    console.log('Https server listening on port ' + 3011);
+});
 
 // Create a Server
-var server = app.listen(3000, function () {
+// var server = app.listen(3000, function () {
  
-  var host = server.address().address
-  var port = server.address().port
+//   var host = server.address().address
+//   var port = server.address().port
  
-  console.log("App listening at http://%s:%s", host, port)
+//   console.log("App listening at http://%s:%s", host, port)
  
-})
+// })
