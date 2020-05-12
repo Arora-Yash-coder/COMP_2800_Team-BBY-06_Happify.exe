@@ -6,8 +6,6 @@ if (canvas.height < window.innerHeight) {
   canvas.height = window.innerHeight;
 }
 
-
-
 const LASER_DIST = 0.6;
 const FPS = 120; //Frames Per Second.
 const CHARACTER_SIZE = 50; //Character Size in Pixels
@@ -15,7 +13,7 @@ const CHARACTER_SPEED = 5; //PX per Key Pressed
 let ZOMBIES_NUM = 15; //Starting number of zombies
 const ZOMBIE_SIZE = 50;
 const ZOMBIE_SPEED = 16;
-const SHOW_BOUNDING = false  ;
+const SHOW_BOUNDING = false;
 const LASER_MAX = 15;
 const LASER_SPEED = 200;
 const TEXT_FADE_TIME = 2.5; // text fade time in seconds
@@ -139,7 +137,6 @@ function newZombie(x, y) {
     y: y,
     r: ZOMBIE_SIZE / 2,
     a: 270 / 180 * Math.PI,
-
     src: 'Resources/Extras/virus.png'
   }
   return zomb;
@@ -167,30 +164,28 @@ function update() {
       ZOMBIES_NUM = ZOMBIES_NUM + 5;
       level++;
       textAlpha = 1.0;
-
-      let w = Math.floor(window.innerWidth / 20);
-      let h = Math.floor(window.innerHeight / 20);
-      button1 = new Button(8, h - 8, 0, -1);
-      button1.display();
-      button2 = new Button(8, h - 2, 0, 1);
-      button2.display();
-      button3 = new Button(14, h - 2, 1, 0);
-      button3.display();
-      button4 = new Button(2, h - 2, -1, 0);
-      button4.display();
-
-
     }
   }, 1000 / FPS);
 
-
+  
   // BackGround---------------------------------------------------------------
-  ctx.fillStyle = "black";
+  ctx.fillStyle = "white";
   ctx.fillRect(0, 0, canvas.width, canvas.height);
   let characterobj = new Image();
   characterobj.src = character.src;
   ctx.drawImage(characterobj, character.x, character.y);
 
+
+  let w = Math.floor(window.innerWidth);
+  let h = Math.floor(window.innerHeight);
+  button1 = new Button(170, h - 120, 0, -1);
+  button1.display();
+  button2 = new Button(170, h - 60, 0, 1);
+  button2.display();
+  button3 = new Button(300, h - 60, 1, 0);
+  button3.display();
+  button4 = new Button(40, h - 60, -1, 0);
+  button4.display();
 
   // Level Text----------------------------------------------------------------
   if (textAlpha >= 0) {
@@ -206,7 +201,7 @@ function update() {
   let texts = "Score : " + score;
   ctx.textAlign = "Right";
   ctx.textBaseline = "middle";
-  ctx.fillStyle = "rgba(255, 255, 255, 1.0)";
+  ctx.fillStyle = "rgba(0, 0, 0, 1.0)";
   ctx.font = "small-caps " + TEXT_SIZE + "px dejavu sans mono";
   ctx.fillText(texts, canvas.width - CHARACTER_SIZE * 2, CHARACTER_SIZE / 2);
 
@@ -214,7 +209,7 @@ function update() {
   let texths = "Best : " + highscore;
   ctx.textAlign = "center";
   ctx.textBaseline = "middle";
-  ctx.fillStyle = "rgba(255, 255, 255, 1.0)";
+  ctx.fillStyle = "rgba(0, 0, 0, 1.0)";
   ctx.font = "small-caps " + TEXT_SIZE + "px dejavu sans mono";
   ctx.fillText(texths, canvas.width / 2, CHARACTER_SIZE / 2);
   // Lives and Game Over------------------------------------------------------------
@@ -230,19 +225,19 @@ function update() {
   if (Damage == 0) {
 
   } else if (Damage == 1) {
-    ctx.fillStyle = "black";
+    ctx.fillStyle = "white";
     ctx.fillRect(140, 0, 70, 70);
   } else if (Damage == 2) {
-    ctx.fillStyle = "black";
+    ctx.fillStyle = "white";
     ctx.fillRect(70, 0, 140, 70);
   } else {
-    ctx.fillStyle = "black";
+    ctx.fillStyle = "white";
     ctx.fillRect(0, 0, 210, 70);
     clearInterval(x);
     text = "Game Over";
     ctx.textAlign = "center";
     ctx.textBaseline = "middle";
-    ctx.fillStyle = "rgba(255, 255, 255, 1.0)";
+    ctx.fillStyle = "rgba(0, 0, 0, 1.0)";
     ctx.font = "small-caps " + TEXT_SIZE + "px dejavu sans mono";
     ctx.fillText(text, canvas.width / 2, canvas.height / 2);
     setTimeout(function () {
@@ -337,7 +332,7 @@ function update() {
   }
   // Creating the Bullet
   for (var i = 0; i < character.lasers.length; i++) {
-    ctx.fillStyle = "yellow";
+    ctx.fillStyle = "lightBlue";
     ctx.beginPath();
     ctx.arc(character.lasers[i].x, character.lasers[i].y, CHARACTER_SIZE / 15, 0, Math.PI * 2, false);
     ctx.fill();
@@ -359,9 +354,7 @@ function update() {
     } else {
       character.lasers[i].x += 3;
     }
-
-
-
+    
     // calculate the distance travelled
     character.lasers[i].dist += Math.sqrt(Math.pow(character.lasers[i].xv, 2) + Math.pow(character.lasers[i].yv, 2));
   }
@@ -378,9 +371,4 @@ function update() {
   } else if (character.y > canvas.height + character.r) {
     character.y = 0 - character.r;
   }
-
-}
-
-function setup() {
-  
 }

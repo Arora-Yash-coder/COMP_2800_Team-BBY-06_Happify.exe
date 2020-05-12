@@ -3,17 +3,15 @@ function Button(x, y, dir1, dir2) {
     this.y = y;
 
     this.display = function () {
-    var c = document.getElementById("canvas");
-    var ctx = c.getContext("2d");
-    ctx.fillStyle = "#FFFFFF";
-    ctx.fillRect(this.x, this.y, 150, 100);
+    
+    ctx.fillStyle = "rgba(0,0,0,0.5)";
+    ctx.fillRect(this.x, this.y, 120, 50);
     }
 
     this.clicked = function () {
-        let d = dist(mouseX / 20, mouseY / 20, this.x, this.y);
-        if (d < 2) {
-            snake.setDir(dir1, dir2);
+        let d = dist(mouseX, mouseY, this.x, this.y);
+        if (d < 40) {
+            console.log("aaaaaaaaaaa");
         }
     }
-
 }
