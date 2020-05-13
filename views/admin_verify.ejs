@@ -2,7 +2,7 @@
 <html lang="en">
 
 <head>
-  <title>Register/Login</title>
+  <title>Admin Login</title>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
@@ -24,7 +24,7 @@
     </div>
 
     <div id="form-wrapper">
-      <form id="userForm" action="/api/users/verify" method="post" style="display: inline-block">
+      <form id="userForm" action="api/users/admin" method="post" style="display: inline-block">
         <h1 class="form-signin-heading">Admin Page</h1>
         <h3 class="form-signin-heading">Please login</h3>
         <!--			<label for="username">Username:</label>-->
@@ -45,10 +45,7 @@
     <br>
     
   </div>
-  <script> $("#reg").on("click",()=>{
-    window.location.href="/register"
-})
-</script>
+  
 </body>
 
 </html>

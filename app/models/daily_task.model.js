@@ -18,14 +18,7 @@ const mongoose = require('mongoose');
 // });
 
 
-const DailyTaskSchema = mongoose.Schema({
-  daily_task_id : {type:Number , unique : true},
-  title:{type:String},
-  text_info:{type : String,required: true},
-  complement:{type:String},
-  date : {type : Date},
-  finished:{type: Boolean},
-})
+
 
  
 //make it global
