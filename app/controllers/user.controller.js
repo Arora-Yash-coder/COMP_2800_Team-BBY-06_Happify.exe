@@ -608,3 +608,10 @@ exports.verifyAdmin = (req, res) => {
 
 })
 }
+
+
+exports.admin_coupon_management = (req,res)=>{
+        console.log("searching")
+		
+		
+}

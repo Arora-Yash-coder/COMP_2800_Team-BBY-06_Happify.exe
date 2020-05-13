@@ -93,7 +93,7 @@ img {
     margin-right: 25px;
     margin-top: 10px;
     margin-bottom: 10px;
-/*    border-radius: 25px;*/
+    border-radius: 25px;
     grid-row: 2 / span 1;
     background-color: #FAC9B8;
     display: grid;

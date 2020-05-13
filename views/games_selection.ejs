@@ -4,57 +4,251 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" type="text/css" href="/static/css/game_selection.css">
-    <link rel="stylesheet" type="text/css" href="/static/css/navbar.css">
-    <title>Mini Games!</title>
+    <title>Daily tasks</title>
+    <style>
+        .top {
+            color: #3AB795;
+            font-size: 17pt;
+            font-weight: bold;
+            margin: 0;
+            margin-top: 10px;
+            padding: 0;
+        }
 
+        .username {
+            margin-top: 0;
+            font-size: 15pt;
+        }
+       
+
+
+
+        body {
+            text-align: center;
+            margin: -10px;
+            background-image: url(../img/background.png);
+            background-size: cover;
+            height:120vh;
+        }
+
+        img {
+            object-fit: contain;
+            max-width: 90%;
+            max-height: 95px;
+            display: block;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .first {
+            color: #EF629F;
+
+        }
+
+        .second {
+            color: #3AB795;
+
+        }
+
+        .top {
+            color: #3AB795;
+            font-size: 20pt;
+            font-weight: bold;
+        }
+
+        .username {
+            color: #EF629F;
+            /*                margin-top: -10px;*/
+            font-weight: bold;
+        }
+
+        #container {
+            /*                display: grid;*/
+            /*                grid-template-rows: 15% 82% 1%;*/
+            /*                height: 120vh;*/
+            margin: 0;
+
+        }
+
+        #inner {
+            grid-row: 2 / span 1;
+            /*                display: grid;*/
+            grid-template-rows: 25% 25% 25% 25%;
+        }
+
+        #dailytask {
+            margin-left: 25px;
+            margin-right: 25px;
+            margin-top: 10px;
+            margin-bottom: 10px;
+            border-radius: 25px;
+            background-color: #B8D8BA;
+            grid-row: 1 / span 1;
+            display: grid;
+            grid-template-columns: 50% 50%;
+        }
+
+        #dailytask1 {
+            margin-top: auto;
+            margin-bottom: auto;
+            border-radius: 25px 0 0 25px;
+            background-color: #B8D8BA;
+
+            grid-column: 1 / span 1;
+
+        }
+
+        #dailytask2 {
+            margin-top: auto;
+            margin-bottom: auto;
+            border-radius: 0 25px 25px 0;
+            background-color: #B8D8BA;
+
+            grid-column: 2 / span 1;
+
+        }
+
+        #games {
+            margin-left: 25px;
+            margin-right: 25px;
+            margin-top: 10px;
+            margin-bottom: 10px;
+            border-radius: 25px;
+            grid-row: 2 / span 1;
+            background-color: #FAC9B8;
+            display: grid;
+            grid-template-columns: 50% 50%;
+
+        }
+
+        #games1 {
+            margin-top: auto;
+            margin-bottom: auto;
+            border-radius: 25px 0 0 25px;
+
+
+            grid-column: 1 / span 1;
+
+        }
+
+        #games2 {
+            margin-top: auto;
+            margin-bottom: auto;
+            border-radius: 0 25px 25px 0;
+
+
+            grid-column: 2 / span 1;
+
+        }
+
+        #howdoyoufeeltoday {
+            margin-left: 25px;
+            margin-right: 25px;
+            margin-top: 10px;
+            margin-bottom: 10px;
+            border-radius: 25px;
+            background-color: #B8D8BA;
+            grid-row: 3 / span 1;
+            display: grid;
+            grid-template-columns: 50% 50%;
+
+        }
+
+        #how1 {
+            margin-top: auto;
+            margin-bottom: auto;
+            border-radius: 25px 0 0 25px;
+
+
+            grid-column: 1 / span 1;
+
+        }
+
+        #how2 {
+            margin-top: auto;
+            margin-bottom: auto;
+            border-radius: 0 25px 25px 0;
+
+
+            grid-column: 2 / span 1;
+
+        }
+
+        #redeem {
+            margin-left: 25px;
+            margin-right: 25px;
+            margin-top: 10px;
+            margin-bottom: 10px;
+            border-radius: 25px;
+            background-color: #FAC9B8;
+            grid-row: 4 / span 1;
+            display: grid;
+            grid-template-columns: 50% 50%;
+        }
+
+        #redeem1 {
+            margin-top: auto;
+            margin-bottom: auto;
+            border-radius: 25px 0 0 25px;
+            /*            background-color: #B8D8BA;*/
+
+            grid-column: 1 / span 1;
+
+        }
+
+        #redeem2 {
+            margin-top: auto;
+            margin-bottom: auto;
+
+            border-radius: 0 25px 25px 0;
+
+
+            grid-column: 2 / span 1;
+
+        }
+
+        #header {
+            grid-row: 1 / span 1;
+        }
+
+        #greeting {
+            color: #EF629F;
+        }
+
+
+
+
+
+        #header {
+            text-align: center;
+
+        }
+
+        #footer {
+            text-align: center;
+        }
+
+    </style>
+    <link rel="stylesheet"  type="text/css" href="/static/css/navbar.css">
 </head>
 
 <body>
-    <%- navbar %>
     <div id='container'>
         <div id="header">
-
+            <nav>
+                <%- navbar %> </nav>
             <div id="greeting">
-                <p class='top' id="welcome">Welcome Back,</p>
-                <h1 class='username' id="username"></h1>
-                <p class='top' id="welcome">Choose a game to play</p>
-                
+                <p class='top'>Hello</p>
+                <h1 class="username" id='username'></h1>
             </div>
 
         </div>
         <div id='inner'>
-            
-            <div id="stats">
-            <h2>All points you earned: </h2>
-                <h2 id='pointsofar'></h2>
-                <h2>You earned today: </h2>
-                <h2 id='pointofday'></h2>
-                <h2>
-                </h2>
-            </div>
-<!--
-            <div id="dailytask" onclick="window.location.href = '/daily_tasks' ">
+            <div id="dailytask" onclick="window.location.href ='http://judaozhong.com:3001/game/chess' ">
                 <div id='dailytask1'>
-                    <h3 class="first">Finish Our Daily Challenges</h3>
-                </div>
-                <div id='dailytask2'>
-                    <div id='image1'>
-                        <img id="daily_task_img" src="/img/task2.png">
-                    </div>
-                </div>
-            </div>
--->
-
-
-<!--            <h1 style="color:violet;margin: 0;padding: 0;"> + </h1>-->
-
-            <div id='inner'>
-            <div id="games1" onclick="window.location.href ='http://judaozhong.com:3001/game/chess' ">
-                <div id='games1_1'>
                     <h1 class="first">Chess Game</h1>
                 </div>
-                <div id='games1_2'>
+                <div id='dailytask2'>
                     <div id='image'>
                         <img src="static/img/chess2.png">
                     </div>
@@ -65,34 +259,34 @@
 
             </div>
 
-            <div id="games2" onclick="window.location.href = '/games/ttt'">
-                <div id="games2_1">
-                    <h1 class="first">Tic Tac Toe</h1>
+            <div id="games" onclick="window.location.href = '/games/ttt'">
+                <div id="games1">
+                    <h1 class="second">Tic Tac Toe</h1>
                 </div>
-                <div id="games2_2">
+                <div id="games2">
                     <div id='image'>
                         <img src="static/img/tic1.png">
                     </div>
                 </div>
             </div>
-            <div id="games3"
+            <div id="howdoyoufeeltoday"
                 onclick="window.location.href = 'https://s3-us-west-2.amazonaws.com/arorayash.com/Project2/index.html'">
-                <div id="games3_1">
+                <div id="how1">
                     <h1 class="first">Snake Eater</h1>
                 </div>
-                <div id="games3_2">
+                <div id="how2">
                     <div id='image'>
                         <img src="static/img/snake2.png">
                     </div>
                 </div>
 
             </div>
-            <div id="games4" onclick="window.location.href = 'http://judaozhong.com:3002/zombie.html';">
+            <div id="redeem" onclick="window.location.href = 'http://judaozhong.com:3002/zombie.html';">
 
-                <div id="games4_1">
-                    <h1 class="first">Shooter Game</h1>
+                <div id="redeem1">
+                    <h1 class="second">Shooter Game</h1>
                 </div>
-                <div id="games4_2">
+                <div id="redeem2">
                     <div id='image'>
 
                         <img src="static/img/game1.png">
@@ -106,56 +300,27 @@
 
 
             </div>
-            </div>
         </div>
+        <footer>
+            <%- footer %> </footer>
     </div>
-<!--
-            <div id="howdoyoufeeltoday" onclick="window.location.href = '/my_record';">
-                <div id="how1">
-                    <h1 class="first">Check Record</h1>
-                </div>
-                <div id="how2">
-                    <div id='image'>
-                        <img src="img/feel2.png">
-                    </div>
-                </div>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+    <script>
+        function ttt(event) {
+            event.target.port = 85
+            console.log("ttt")
+        }
 
-            </div>
--->
-            <%- footer %>
+        function say_hi() {
+            $.get("/user_profile/getProfile", function (data, status) {
+                $("#username").html(data.result[0].username)
+                console.log("data.username===============")
+                console.log(data)
+            });
+        }say_hi()
 
-        
-          
-            <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
-            <script>
-                $(document).ready(function () {
-                    function say_hi() {
-                        $.get("/user_profile/getProfile", function (data, status) {
-                            $("#username").html(data.result[0].username);
-                            console.log("data.username===============")
-                            console.log(data)
-                        });
-                    } say_hi()
-
-                });
-
-            </script>
-            <script>
-                $(document).ready(function () {
-                    function show_points() {
-                        $.get("/user_profile/getProfile", function (data, status) {
-                            $("#pointsofar").html(data.result[0].points);
-                            $("#pointofday").html(data.result[0].daily_task[0].points_earned_today);
-                            console.log("data.total===============");
-                            console.log(data);
-                        });
-                    } show_points()
-
-                });
-
-            </script>
-            
-            <script src='/static/js/navbar_top.js'></script>
+    </script>
+     <script src='/static/js/navbar_top.js'></script>
 </body>
 
 </html>

@@ -4,25 +4,59 @@
 <head>
   <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
   <link rel="stylesheet" type="text/css" href="static/css/navbar.css">
-  <link rel="stylesheet" type="text/css" href="static/css/my_coupons.css">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>My Coupons</title>
 
+  <style>
+    
+
+
+    body {
+      text-align: center;
+      margin: 0;
+      background-image: url(../img/background.png);
+      background-size: cover;
+      height:120vh;
+
+    }
+
+    .square_btn_second {
+      display: inline-block;
+      padding: 0.3em 1em;
+      text-decoration: none;
+      color: #3AB795;
+      border: solid 2px #3AB795;
+      border-radius: 3px;
+      transition: .4s;
+    }
+
+    .square_btn_second:hover {
+      background: #EF629F;
+      color: white;
+    }
+
+    #container>div:nth-child(even) {
+      background-color: #FAC9B8;
+    }
+
+    .coupons {
+      margin-left: 25px;
+      margin-right: 25px;
+      margin-top: 10px;
+      margin-bottom: 10px;
+      border-radius: 25px;
+      background-color: #B8D8BA;
+
+
+      color: #EF629F;
+    }
+  </style>
 
 </head>
 
 <body>
-    <%- navbar %>
-  <h1>My Acquired Coupons</h1>
-    <div id="stats">
-            <h2>All points you earned: </h2>
-                <h2 id='pointsofar'></h2>
-                <h2>You earned today: </h2>
-                <h2 id='pointofday'></h2>
-                <h2>
-                </h2>
-            </div>
-  
+  <h1>My Coupons</h1>
+  <%- navbar %>
   <div id='container'>
     <% for (var i = 0; i < coupons.length;  i++ ) { %>
     <div class="coupons" id="coupons_<%= i+1 %>">
@@ -40,34 +74,7 @@
   </div>
 
   <%- footer %> 
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
-            <script>
-                $(document).ready(function () {
-                    function say_hi() {
-                        $.get("/user_profile/getProfile", function (data, status) {
-                            $("#username").html(data.result[0].username);
-                            console.log("data.username===============")
-                            console.log(data)
-                        });
-                    } say_hi()
 
-                });
-
-            </script>
-            <script>
-                $(document).ready(function () {
-                    function show_points() {
-                        $.get("/user_profile/getProfile", function (data, status) {
-                            $("#pointsofar").html(data.result[0].points);
-                            $("#pointofday").html(data.result[0].daily_task[0].points_earned_today);
-                            console.log("data.total===============");
-                            console.log(data);
-                        });
-                    } show_points()
-
-                });
-
-            </script>
 </body>
 
 </html>

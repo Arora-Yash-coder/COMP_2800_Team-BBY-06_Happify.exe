@@ -83,7 +83,7 @@
   }
 
   button {
-    background-color: transparent;
+    background-color: white;
     border: #3AB795 solid 1px;
     color: #3AB795;
     padding: 7px 26px;
@@ -92,6 +92,7 @@
     display: inline-block;
     font-size: 16px;
     margin-bottom: 20px;
+    font-weight: 300;
   }
 
   #avatar {

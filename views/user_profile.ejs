@@ -9,11 +9,11 @@
   <link rel="stylesheet" type="text/css" href="/static/css/user_profile.css">
   <link rel="stylesheet" type="text/css" href="/static/css/navbar.css">
   
+
 </head>
 
 <body>
-    <header id="head">
-  <%- navbar %></header>
+  <%- navbar %>
   <h1>User Profile</h1>
 
   <img id="avatar" class="avatar" src="/img/avatar.png">
@@ -26,25 +26,25 @@
 
   <div id="container">
     <form id="userForm" action="/api/users/register" method="post">
-      <div id="username">Username</div>
+      <div id="username"></div>
       <input id="usernameinput" rows="1" placeholder='Username' name="username" ;></input>
-      <div id="password">Password
+      <div id="password">
 
       </div>
       <input id="passwordinput" rows="1" type="password" placeholder='Password' name="password" min="6" maxlength="16"></input>
-      <div id="firstname">First Name
+      <div id="firstname">
 
       </div>
       <input id="firstnameinput" rows="1" placeholder='Firstname' name="firstname"></input>
-      <div id="lastname">Last Name
+      <div id="lastname">
 
       </div>
       <input id="lastnameinput" rows="1" placeholder='Lastname' name="lastname"></input>
-      <div id="email">Email
+      <div id="email">
 
       </div>
       <input id="emailinput" rows="1" placeholder='Email' type="email" name="email"></input>
-      <div id="phoneno">Phone Number
+      <div id="phoneno">
 
       </div>
       <input id="phonenoinput" rows="1" placeholder='Phone Number, starting with 1-' name="phoneno"></input>

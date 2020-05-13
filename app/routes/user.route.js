@@ -487,16 +487,60 @@ module.exports = function (app) {
 	});
 
 	app.get('/admin_coupon', (req, res) => {
-		res.render(path + "admin_coupon.ejs");
+		 console.log("searching")
+		 MongoClient.connect(dbConfig.url, function (err, db) {
+			if (err) throw err;
+			var dbo = db.db("test");
+			dbo.collection("coupons_available").find({}).toArray(function (err, result) {
+				if (err) throw err;
+				console.log("================result=====================");
+				console.log(result);
+				let render = []
+				console.log(result.length);
+				for (var i = 0; i < result.length; i++) {
+					render.push(result[i])
+				}
+				console.log("render--------------------")
+				console.log(render)
+	
+				db.close();
+				res.render(path + "admin_coupon.ejs", { todolist: render });
+				console.log("RENDERED===================================");
+			});
+			// res.render("pages/index", { todolist: render });
+		});
 	});
 
 	app.post('api/users/admin', (req, res) => {
 		users.verifyAdmin
 	});
 
-	app.get('/:username', (req, res) => {
-		res.sendFile(staticPath + "successful.html");
+	app.post('/coupon/add', (req, res) => {
+		console.log(req.body)
 	});
+
+	app.post("/coupon/delete",(req,res)=>{
+		ids_to_delete = req.body["checked[]"]
+		ids = []
+		for(var each in ids_to_delete){
+			
+			ids.push(parseInt( ids_to_delete[each]))
+		}
+		console.log(ids)
+		MongoClient.connect(dbConfig.url, function (err, db) {
+			if (err) throw err;
+			var dbo = db.db("test");
+
+			dbo.collection("coupons_available").remove(
+				{
+					id: { $in: ids }
+			}
+	
+			)
+		});
+
+
+	})
 
 
 
