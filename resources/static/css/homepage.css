@@ -33,13 +33,15 @@ img {
     color: #3AB795;
     font-size: 20pt;
     font-weight: bold;
+    margin-bottom: 10px;
 }
 
 .username {
     color: #EF629F;
-    margin-top: -10px;
+    margin-top: 5px;
     font-weight: bold;
 }
+
 
 #container {
 
@@ -53,6 +55,7 @@ img {
 
 }
 
+/*
 #dailytask {
     margin-left: 25px;
     margin-right: 25px;
@@ -84,7 +87,20 @@ img {
     grid-column: 2 / span 1;
 
 }
+*/
+#stats {
+    margin-left: 25px;
+    margin-right: 25px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    border-radius: 25px;
+    grid-row: 2 / span 1;
+    background-color: #FAC9B8;
+    display: grid;
+    grid-template-columns: 50% 50%;
+    color: #3AB795;
 
+}
 #games {
     margin-left: 25px;
     margin-right: 25px;

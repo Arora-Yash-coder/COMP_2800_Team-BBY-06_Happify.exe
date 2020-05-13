@@ -1,5 +1,6 @@
 body {
     background-image: url(./../img/background.png);
+    width: 100%;
   }
 #login{
     background-color: transparent;
@@ -25,20 +26,24 @@ body {
     display: inline;
   }
 
-  #reg {
-      background-color: rgb(0, 0, 0);
-    /* background-color:hsla(120, 60%, 2%, 0.6) ; */
-    float: right;
-  }
+  #log {
 
-  #log{
-    float: left;
-    margin: 0;
+    float: right;
+      margin: 0;
     padding-top: 10px;
     height: 50px;
     width: 120px;
     padding-right: 20px;
-    
+  }
+
+  #reg{
+    float: left;
+    margin: 0;
+    padding-top: 10px;
+    height: 50px;
+    width: 50%;
+    padding-right: 5%;
+    background-color: rgb(0, 0, 0);
     
   }
 
@@ -51,6 +56,26 @@ body {
 
 
   @media only screen and (min-width: 1024px) {
+       #log {
+
+    float: right;
+      margin: 0;
+/*    padding-top: 10px;*/
+    height: 50px;
+    width: 120px;
+    padding-right: 20px;
+  }
+
+  #reg{
+    float: left;
+    margin: 0;
+/*    padding-top: 10px;*/
+    height: 50px;
+    width: 60%;
+    padding-right: 5%;
+    background-color: rgb(0, 0, 0);
+    
+  }
     body {
      
       text-align: center;
