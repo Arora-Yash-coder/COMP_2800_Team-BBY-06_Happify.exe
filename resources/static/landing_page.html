@@ -3,16 +3,17 @@
 
 <head>
     <link rel="icon" href="/img/favicon-32x32.png" type="image/gif" sizes="16x16">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <style>
         body {
             margin: 0;
         }
 
         /*        for webpages*/
-        @media only screen and (min-width: 1024px) {
+       
             div {
                 height: 100vh;
-                background-image: url("/img/background.jpg");
+                background-image: url("/img/background.png");
                 background-size: cover;
 
             }
@@ -36,96 +37,37 @@
                 display: inline-block;
                 font-size: 16px;
             }
+       .square_btn {
+            display: inline-block;
+            padding: 0.3em 1em;
+            text-decoration: none;
+            color: #EF629F;
+            border: solid 2px #EF629F;
+            border-radius: 3px;
+            transition: .4s;
         }
 
-        @media only screen and (max-width: 1023px) {
-            div {
-                height: 80vh;
-                background-image: url(img/background.jpg);
-                background-size: cover;
-
-            }
-
-            #title {
-                padding-top: 45%;
-                text-align: center;
-                color: white;
-                font-size: 25pt;
-            }
-
-            button {
-
-                background-color: #3AB795;
-                /* Green */
-                border: none;
-                color: white;
-                padding: 20px 40px;
-                text-align: center;
-                text-decoration: none;
-                display: inline-block;
-                font-size: 30px;
-            }
+        .square_btn:hover {
+            background: #EF629F;
+            color: white;
         }
 
-        @media only screen and (max-width: 399px) {
-            div {
-                height: 75vh;
-                background-image: url(img/background.jpg);
-                background-size: cover;
-
-            }
-
-            #title {
-                padding-top: 60%;
-                text-align: center;
-                color: white;
-                font-size: 25pt;
-            }
-
-            button {
-
-                background-color: #3AB795;
-                /* Green */
-                border: none;
-                color: white;
-                padding: 20px 40px;
-                text-align: center;
-                text-decoration: none;
-                display: inline-block;
-                font-size: 30px;
-            }
+        .square_btn_second {
+            display: inline-block;
+            padding: 0.3em 1em;
+            text-decoration: none;
+            color: #3AB795;
+            border: solid 2px #3AB795;
+            border-radius: 3px;
+            transition: .4s;
         }
 
-        /*        for iphone X*/
-        @media only screen and (device-width : 375px) and (device-height : 812px) and (-webkit-device-pixel-ratio : 3) {
-            div {
-                height: 70vh;
-                background-image: url(img/background.jpg);
-                background-size: cover;
-
-            }
-
-            #title {
-                padding-top: 70%;
-                text-align: center;
-                color: white;
-                font-size: 30pt;
-            }
-
-            button {
-
-                background-color: #3AB795;
-                /* Green */
-                border: none;
-                color: white;
-                padding: 20px 40px;
-                text-align: center;
-                text-decoration: none;
-                display: inline-block;
-                font-size: 30px;
-            }
-
+        .square_btn_second:hover {
+            background: #EF629F;
+            color: white;
         }
+
+        
     </style>
 </head>
 
@@ -134,14 +76,15 @@
         <div id="title">
             <h1>Welcome to Happify.exe</h1>
             <br>
-            <form action="/about_us">
-                <button>About Us</button>
-            </form>
+<!--            <form action="/about_us">-->
+                <a href="./about_us.html" class="square_btn_second">About Us</a>
+<!--            </form>-->
             <br>
             <br>
-            <form action="/login">
-                <button>Login</button>
-            </form>
+<!--            <form action="/login">-->
+                <a href="./login.html" class="square_btn_second">Login</a>
+                    
+<!--            </form>-->
         </div>
 
     </div>

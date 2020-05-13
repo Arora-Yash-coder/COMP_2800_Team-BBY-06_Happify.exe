@@ -4,262 +4,246 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="icon" href="./img/favicon-32x32.png" type="image/gif" sizes="16x16">
     <title>Daily tasks</title>
     <style>
-        
-            .top {
-                color: #3AB795;
-                font-size: 17pt;
-                font-weight: bold;
-            }
-
-            .username {
-                font-size: 15pt;
-            }
+        .top {
+            color: #3AB795;
+            font-size: 17pt;
+            font-weight: bold;
+            margin: 0;
+            margin-top: 10px;
+            padding: 0;
         }
 
-       
-
-            body {
-                text-align: center;
-                margin:-10px;
-            }
-
-            img {
-                object-fit: contain;
-                max-width: 90%;
-                max-height: 95px;
-                display: block;
-                margin-left: auto;
-                margin-right: auto;
-            }
-
-            .first {
-                color: #EF629F;
-
-            }
-
-            .second {
-                color: #3AB795;
-
-            }
-
-            .top {
-                color: #3AB795;
-                font-size: 20pt;
-                font-weight: bold;
-            }
-
-            .username {
-                color: #EF629F;
-/*                margin-top: -10px;*/
-                font-weight: bold;
-            }
-
-            #container {
-/*                display: grid;*/
-/*                grid-template-rows: 15% 82% 1%;*/
-/*                height: 120vh;*/
-                margin:0;
-
-            }
-
-            #inner {
-                grid-row: 2 / span 1;
-/*                display: grid;*/
-                grid-template-rows: 25% 25% 25% 25%;
-            }
-
-            #dailytask {
-                margin-left: 25px;
-                margin-right: 25px;
-                margin-top: 10px;
-                margin-bottom: 10px;
-                border-radius: 25px;
-                background-color: #B8D8BA;
-                grid-row: 1 / span 1;
-                display: grid;
-                grid-template-columns: 50% 50%;
-            }
-
-            #dailytask1 {
-                margin-top: auto;
-                margin-bottom: auto;
-                border-radius: 25px 0 0 25px;
-                background-color: #B8D8BA;
-
-                grid-column: 1 / span 1;
-
-            }
-
-            #dailytask2 {
-                margin-top: auto;
-                margin-bottom: auto;
-                border-radius: 0 25px 25px 0;
-                background-color: #B8D8BA;
-
-                grid-column: 2 / span 1;
-
-            }
-
-            #games {
-                margin-left: 25px;
-                margin-right: 25px;
-                margin-top: 10px;
-                margin-bottom: 10px;
-                border-radius: 25px;
-                grid-row: 2 / span 1;
-                background-color: #FAC9B8;
-                display: grid;
-                grid-template-columns: 50% 50%;
-
-            }
-
-            #games1 {
-                margin-top: auto;
-                margin-bottom: auto;
-                border-radius: 25px 0 0 25px;
+        .username {
+            margin-top: 0;
+            font-size: 15pt;
+        }
 
 
-                grid-column: 1 / span 1;
-
-            }
-
-            #games2 {
-                margin-top: auto;
-                margin-bottom: auto;
-                border-radius: 0 25px 25px 0;
 
 
-                grid-column: 2 / span 1;
+        body {
+            text-align: center;
+            margin: -10px;
+            background-image: url(../img/background.png);
+            background-size: cover;
+            height: 120vh;
+        }
 
-            }
+        img {
+            object-fit: contain;
+            max-width: 90%;
+            max-height: 95px;
+            display: block;
+            margin-left: auto;
+            margin-right: auto;
+        }
 
-            #howdoyoufeeltoday {
-                margin-left: 25px;
-                margin-right: 25px;
-                margin-top: 10px;
-                margin-bottom: 10px;
-                border-radius: 25px;
-                background-color: #B8D8BA;
-                grid-row: 3 / span 1;
-                display: grid;
-                grid-template-columns: 50% 50%;
+        .first {
+            color: #EF629F;
 
-            }
+        }
 
-            #how1 {
-                margin-top: auto;
-                margin-bottom: auto;
-                border-radius: 25px 0 0 25px;
+        .second {
+            color: #3AB795;
 
+        }
 
-                grid-column: 1 / span 1;
+        .top {
+            color: #3AB795;
+            font-size: 20pt;
+            font-weight: bold;
+        }
 
-            }
+        .username {
+            color: #EF629F;
+            /*                margin-top: -10px;*/
+            font-weight: bold;
+        }
 
-            #how2 {
-                margin-top: auto;
-                margin-bottom: auto;
-                border-radius: 0 25px 25px 0;
-
-
-                grid-column: 2 / span 1;
-
-            }
-
-            #redeem {
-                margin-left: 25px;
-                margin-right: 25px;
-                margin-top: 10px;
-                margin-bottom: 10px;
-                border-radius: 25px;
-                background-color: #FAC9B8;
-                grid-row: 4 / span 1;
-                display: grid;
-                grid-template-columns: 50% 50%;
-            }
-
-            #redeem1 {
-                margin-top: auto;
-                margin-bottom: auto;
-                border-radius: 25px 0 0 25px;
-                /*            background-color: #B8D8BA;*/
-
-                grid-column: 1 / span 1;
-
-            }
-
-            #redeem2 {
-                margin-top: auto;
-                margin-bottom: auto;
-
-                border-radius: 0 25px 25px 0;
-
-
-                grid-column: 2 / span 1;
-
-            }
-
-            #header {
-                grid-row: 1 / span 1;
-            }
-
-            #greeting {
-                color: #EF629F;
-            }
-        
-
-        .container {
-            list-style-type: none;
+        #container {
+            /*                display: grid;*/
+            /*                grid-template-rows: 15% 82% 1%;*/
+            /*                height: 120vh;*/
             margin: 0;
 
-            overflow: hidden;
-            background-color: #75DBCD;
         }
 
-        .list {
-            float: left;
+        #inner {
+            grid-row: 2 / span 1;
+            /*                display: grid;*/
+            grid-template-rows: 25% 25% 25% 25%;
         }
 
-        .list a {
-            display: block;
-            color: white;
+        #dailytask {
+            margin-left: 25px;
+            margin-right: 25px;
+            margin-top: 10px;
+            margin-bottom: 10px;
+            border-radius: 25px;
+            background-color: #B8D8BA;
+            grid-row: 1 / span 1;
+            display: grid;
+            grid-template-columns: 50% 50%;
+        }
+
+        #dailytask1 {
+            margin-top: auto;
+            margin-bottom: auto;
+            border-radius: 25px 0 0 25px;
+            background-color: #B8D8BA;
+
+            grid-column: 1 / span 1;
+
+        }
+
+        #dailytask2 {
+            margin-top: auto;
+            margin-bottom: auto;
+            border-radius: 0 25px 25px 0;
+            background-color: #B8D8BA;
+
+            grid-column: 2 / span 1;
+
+        }
+
+        #games {
+            margin-left: 25px;
+            margin-right: 25px;
+            margin-top: 10px;
+            margin-bottom: 10px;
+            border-radius: 25px;
+            grid-row: 2 / span 1;
+            background-color: #FAC9B8;
+            display: grid;
+            grid-template-columns: 50% 50%;
+
+        }
+
+        #games1 {
+            margin-top: auto;
+            margin-bottom: auto;
+            border-radius: 25px 0 0 25px;
+
+
+            grid-column: 1 / span 1;
+
+        }
+
+        #games2 {
+            margin-top: auto;
+            margin-bottom: auto;
+            border-radius: 0 25px 25px 0;
+
+
+            grid-column: 2 / span 1;
+
+        }
+
+        #howdoyoufeeltoday {
+            margin-left: 25px;
+            margin-right: 25px;
+            margin-top: 10px;
+            margin-bottom: 10px;
+            border-radius: 25px;
+            background-color: #B8D8BA;
+            grid-row: 3 / span 1;
+            display: grid;
+            grid-template-columns: 50% 50%;
+
+        }
+
+        #how1 {
+            margin-top: auto;
+            margin-bottom: auto;
+            border-radius: 25px 0 0 25px;
+
+
+            grid-column: 1 / span 1;
+
+        }
+
+        #how2 {
+            margin-top: auto;
+            margin-bottom: auto;
+            border-radius: 0 25px 25px 0;
+
+
+            grid-column: 2 / span 1;
+
+        }
+
+        #redeem {
+            margin-left: 25px;
+            margin-right: 25px;
+            margin-top: 10px;
+            margin-bottom: 10px;
+            border-radius: 25px;
+            background-color: #FAC9B8;
+            grid-row: 4 / span 1;
+            display: grid;
+            grid-template-columns: 50% 50%;
+        }
+
+        #redeem1 {
+            margin-top: auto;
+            margin-bottom: auto;
+            border-radius: 25px 0 0 25px;
+            /*            background-color: #B8D8BA;*/
+
+            grid-column: 1 / span 1;
+
+        }
+
+        #redeem2 {
+            margin-top: auto;
+            margin-bottom: auto;
+
+            border-radius: 0 25px 25px 0;
+
+
+            grid-column: 2 / span 1;
+
+        }
+
+        #header {
+            grid-row: 1 / span 1;
+        }
+
+        #greeting {
+            color: #EF629F;
+        }
+
+
+
+
+
+        #header {
             text-align: center;
-            padding: 14px 16px;
-            text-decoration: none;
+
         }
 
-        .list a:hover {
-            background-color: rgb(65, 134, 125);
-        }
-        #header{
+        #footer {
             text-align: center;
-            
-        }
-        #footer{
-           text-align: center; 
-        }
-        nav{
-            margin:0;
         }
     </style>
+    <link rel="stylesheet" type="text/css" href="/static/css/navbar.css">
 </head>
 
 <body>
     <div id='container'>
         <div id="header">
             <nav>
-            <%- navbar %> </nav>
+                <%- navbar %> </nav>
             <div id="greeting">
                 <p class='top'>Hello</p>
-                <h1 class='username'>DNA_PolymerACE !</h1>
+                <h1 class="username" id='username'></h1>
             </div>
 
         </div>
         <div id='inner'>
-            <div id="dailytask" onclick= "window.location.href ='http://judaozhong.com:3001/game/chess' ">
+            <div id="dailytask" onclick="window.location.href ='http://judaozhong.com:3001/game/chess' ">
                 <div id='dailytask1'>
                     <h1 class="first">Chess Game</h1>
                 </div>
@@ -284,7 +268,9 @@
                     </div>
                 </div>
             </div>
-            <div id="howdoyoufeeltoday" onclick="window.location.href = 'https://s3-us-west-2.amazonaws.com/arorayash.com/Project2/index.html'">
+            <!-- <div id="howdoyoufeeltoday"
+                onclick="window.location.href = 'https://s3-us-west-2.amazonaws.com/arorayash.com/Project2/index.html'"> -->
+            <div id="howdoyoufeeltoday" onclick="window.location.href = '/static/minigames/snake.html'">
                 <div id="how1">
                     <h1 class="first">Snake Eater</h1>
                 </div>
@@ -295,7 +281,8 @@
                 </div>
 
             </div>
-            <div id="redeem" onclick="window.location.href = 'http://judaozhong.com:3002/zombie.html';">
+            <!-- <div id="redeem" onclick="window.location.href = 'http://judaozhong.com:3002/zombie.html';"> -->
+                <div id="redeem" onclick="window.location.href = '/static/minigames/zombie.html';">
 
                 <div id="redeem1">
                     <h1 class="second">Shooter Game</h1>
@@ -316,16 +303,25 @@
             </div>
         </div>
         <footer>
-        <%- footer %> </footer>
+            <%- footer %> </footer>
     </div>
-    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
     <script>
-        function ttt(event){
-            event.target.port=85
+        function ttt(event) {
+            event.target.port = 85
             console.log("ttt")
         }
-        
+
+        function say_hi() {
+            $.get("/user_profile/getProfile", function (data, status) {
+                $("#username").html(data.result[0].username)
+                console.log("data.username===============")
+                console.log(data)
+            });
+        } say_hi()
+
     </script>
+    <script src='/static/js/navbar_top.js'></script>
 </body>
 
 </html>

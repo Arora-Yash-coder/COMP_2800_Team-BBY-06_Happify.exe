@@ -153,8 +153,8 @@ module.exports = function (app) {
 	);
 	
 
-	app.get("/my_health", (req, res) => {
-		res.render(path + "my_health.ejs", {
+	app.get("/my_record", (req, res) => {
+		res.render(path + "my_record.ejs", {
 			navbar: navbar_top_ejs,
 			footer: footer
 		})
@@ -171,13 +171,17 @@ module.exports = function (app) {
 		res.sendFile(staticPath +"about_us.html")
 	})
 
-	app.get("/homepage",sessionChecker2, (req, res) => {
-		res.render(path + "homepage.ejs", {
+	//goes to the homepage 
+	app.get("/homepage", (req, res) => {
+		
+		res.render(path + "/homepage.ejs", {
 			navbar: navbar_top_ejs,
 			footer: footer
 		})
+		
 	})
 
+	//the minigame entrance
 	app.get("/minigames",sessionChecker2, (req, res) => {
 		res.render(path + "games_selection.ejs", {
 			navbar: navbar_top_ejs,
@@ -185,11 +189,7 @@ module.exports = function (app) {
 		})
 	})
 
-
-
-
-
-
+	//when the users click on this,
 	app.post('/coupon/redeem', users.redeemCoupon);
 
 	app.get("/restart", (req, res) => {
@@ -309,9 +309,6 @@ module.exports = function (app) {
 		res.sendFile(path + "reminder.html");
 	});
 
-	app.get('/success', (req, res) => {
-		res.sendFile(path + "successful.html");
-	});
 
 
 	app.post('/subscribe', (req, res) => {
@@ -419,9 +416,7 @@ module.exports = function (app) {
 	});
 
 
-	app.get('/:username', (req, res) => {
-		res.sendFile(staticPath + "successful.html");
-	});
+	
 
 	// Save a User to MongoDB
 	app.post('/api/users/register', users.register);
@@ -431,7 +426,8 @@ module.exports = function (app) {
 	//check if the user is allowed to log in.
 	app.post('/api/users/verify', users.verify);
 
-
+	//the link to post and search for a coupon
+	app.post('/coupon/search', users.searchCoupon)
 
 	app.post("/getKey", (req, res) => {
 		res.send('BHzTemBBukw8OY7qXGqtXPPIGSr-TyACw3rNEcmsBTx2gEJQ2YECWff5oBMb9fRss7vhn3a6ATNxucmb52zHM2U')
@@ -439,6 +435,25 @@ module.exports = function (app) {
 
 	//imported for dealing with submitted pictures
 	var formidable = require('formidable');
+
+	app.post("/check_time",(req,res)=>{
+		console.log("time should be in here++++++++++++++++++++++++++++++")
+		let client_timestamp =  Date.parse(req.body.d)
+		let server_timestamp =  Date.now();
+
+		//if the client time exceeds 5am
+		//and the client has not done all the tasks
+			//go and find the stuff in the db.
+				//in the result array, look for those with "true" -> render differently
+				//                     look for those with "false"-> render normally
+
+		if(client_timestamp > server_timestamp+3600*1000*12 || client_timestamp < server_timestamp - 3600*1000*12){
+			console.log("the user is trying to cheat!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!")
+		}
+		else{
+			console.log("the user is finishing all the tasks")
+		}
+	})
 
 	app.post('/upload_avatar', function (req, res) {
 		var form = new formidable.IncomingForm();
@@ -465,7 +480,76 @@ module.exports = function (app) {
 			}
 		});
 	});
+	
+	app.get('/admin', (req, res) => {
+		res.render(path + "admin_verify.ejs");
+	});
 
+	app.get('/admin_home', (req, res) => {
+		res.render(path + "admin_home.ejs");
+	});
+
+	app.get('/admin_coupon', (req, res) => {
+		 console.log("searching")
+		 MongoClient.connect(dbConfig.url, function (err, db) {
+			if (err) throw err;
+			var dbo = db.db("test");
+			dbo.collection("coupons_available").find({}).toArray(function (err, result) {
+				if (err) throw err;
+				console.log("================result=====================");
+				console.log(result);
+				let render = []
+				console.log(result.length);
+				for (var i = 0; i < result.length; i++) {
+					render.push(result[i])
+				}
+				console.log("render--------------------")
+				console.log(render)
+	
+				db.close();
+				res.render(path + "admin_coupon.ejs", { todolist: render });
+				console.log("RENDERED===================================");
+			});
+			// res.render("pages/index", { todolist: render });
+		});
+	});
+
+	app.post('api/users/admin', (req, res) => {
+		users.verifyAdmin
+	});
+
+	app.post('/coupon/add', (req, res) => {
+		console.log(req.body)
+	});
+
+	app.post("/coupon/delete",(req,res)=>{
+		ids_to_delete = req.body["checked[]"]
+		ids = []
+		for(var each in ids_to_delete){
+			
+			ids.push(parseInt( ids_to_delete[each]))
+		}
+		console.log(ids)
+		MongoClient.connect(dbConfig.url, function (err, db) {
+			if (err) throw err;
+			var dbo = db.db("test");
+
+			dbo.collection("coupons_available").remove(
+				{
+					id: { $in: ids }
+			}
+	
+			)
+		});
+
+
+	})
+
+
+
+	app.use('*', (req, res) => {
+		res.sendFile(path + "404.html");
+	});
 
 
 

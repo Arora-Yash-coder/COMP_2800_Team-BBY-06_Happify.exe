@@ -4,148 +4,19 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" type="text/css" href="static/css/navbar.css">
-    <link rel="icon" href="./img/favicon-32x32.png" type="image/gif" sizes="16x16">
+    <link rel="stylesheet" type="text/css" href="/static/css/navbar.css">
     <title>Coupon Page</title>
-    <style>
-        body {
-            text-align: center;
-            margin: 0;
-
-        }
-
-        .square_btn_second {
-            display: inline-block;
-            padding: 0.3em 1em;
-            text-decoration: none;
-            color: #3AB795;
-            border: solid 2px #3AB795;
-            border-radius: 3px;
-            transition: .4s;
-        }
-
-        .square_btn_second:hover {
-            background: #EF629F;
-            color: white;
-        }
-
-        #container>div:nth-child(even) {
-            background-color: #FAC9B8;
-        }
-
-        @media only screen and (max-width:400px) {
-            .top {
-                color: #3AB795;
-                font-size: 13pt;
-                font-weight: bold;
-            }
-
-
-            .points {
-                color: #EF629F;
-                margin-top: -10px;
-                font-weight: bold;
-                font-size: 13pt;
-            }
-
-            .description {
-                margin-left: 25px;
-                margin-right: 25px;
-                margin-top: 10px;
-                margin-bottom: 10px;
-                border-radius: 25px;
-
-                grid-row: 1 / span 1;
-                display: grid;
-                grid-template-rows: 50% 50%;
-                color: #EF629F;
-            }
-
-            .title {
-                padding: 15px;
-                margin-top: auto;
-                margin-bottom: auto;
-                border-radius: 25px 0 0 25px;
-
-
-            }
-
-            .coupons {
-                margin-left: 25px;
-                margin-right: 25px;
-                margin-top: 10px;
-                margin-bottom: 10px;
-                border-radius: 25px;
-                background-color: #B8D8BA;
-
-                display: block;
-                grid-template-rows: 50% 50%;
-                color: #EF629F;
-            }
-        }
-
-
-
-        @media only screen and (min-width: 401px) {
-
-            .top {
-                color: #3AB795;
-                font-size: 23pt;
-                font-weight: bold;
-            }
-
-            .points {
-                color: #EF629F;
-                margin-top: -10px;
-                font-weight: bold;
-                font-size: 23pt;
-            }
-
-            .coupons {
-                margin-left: 25px;
-                margin-right: 25px;
-                margin-top: 10px;
-                margin-bottom: 10px;
-                border-radius: 25px;
-                background-color: #B8D8BA;
-
-
-                color: #EF629F;
-            }
-
-
-        }
-
-
-
-        @media only screen and (min-width: 1024px) {
-            .points {
-                color: #EF629F;
-                margin-top: -10px;
-                font-weight: bold;
-                font-size: 25pt;
-            }
-
-            .coupons {
-                margin-left: 25px;
-                margin-right: 25px;
-                margin-top: 10px;
-                margin-bottom: 10px;
-                border-radius: 25px;
-
-                grid-template-rows: 50% 50%;
-                color: #EF629F;
-            }
-
-        }
-    </style>
+    <link rel="stylesheet" type="text/css" href="/static/css/coupon.css">
 </head>
 
 <body>
     <%- navbar %>
     <div id="greeting">
-        <p class='top'>Redeem Points</p>
-        <p class='points'> Current Points: </p>
+        <p class='top'>Current Points:</p> <span id="current_points"> </span>
+        <div id="search_function"><input id="search_box" type="text" placeholder="input coupon title or description">
+            <button id="search">search</button></div>
+
+
     </div>
 
     <div id='container'>
@@ -178,8 +49,57 @@
 
     <%- footer %>
     </div>
-    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
     <script>
+        
+
+        $(document).ready(function () {
+
+            
+        $("#search").on("click",() => {
+            var serach_box = $("#search_box").val();
+            console.log("serach_box")
+            console.log(serach_box)
+            console.log($("#search_box").val())
+            $.ajax({
+                type: "post",
+                url: "/coupon/search",
+                data: {serach_box},
+                dataType: "html",
+                success: function (response) {
+                    console.log("response")
+                    console.log(response)
+                    $("html").html(response)
+                },
+                error:(e)=>{
+                    console.log(e)
+                }
+            });
+        })
+
+
+
+
+
+
+           
+            $.ajax({
+                type: "get",
+                url: "/user_profile/getProfile",
+
+                dataType: "json",
+                success: function (response) {
+                    console.log(response)
+                    console.log(response.result[0].points)
+                    $("#current_points").html(response.result[0].points)
+                },
+                error: (response) => {
+                    console.log(response)
+
+                    alert(response.points)
+                }
+            });
+        });
         let itemArr = $(".coupons");
         console.log(itemArr[0]);
         // for(var nodeIndex in )
@@ -233,9 +153,11 @@
                     alert(thrownError);
                 }
             })
-                
-            });
-        
+
+        });
+
+
+   
 
 
     </script>

@@ -35,7 +35,11 @@ $(document).ready(function () {
 
 				} else {
 					alert("login successful")
-					$("html").html(msg)
+					/*remember this line of code:
+					 $("html").html(msg)
+					 it wasted me 2+ hrs of time
+					 */
+					window.location.href = '/homepage'
 				}
 
 			},

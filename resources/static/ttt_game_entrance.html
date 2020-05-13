@@ -2,193 +2,15 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" type="text/css" href="./css/navbar.css">
-    <link rel="icon" href="/img/favicon-32x32.png" type="image/gif" sizes="16x16">
+<!--    <meta name="viewport" content="width=device-width, initial-scale=1.0">-->
     
-  <title>Tic-Tac-Toe</title>
+  <title>Tic-Tac-Toeeee</title>
+    <link rel="stylesheet" type="text/css" href="/static/css/navbar.css">
+    <link rel="stylesheet" type="text/css" href="/static/css/tic_tac_toe.css">
+    
      <style>
 
-       
-       body {
-            text-align: center;
-            margin: 0;
-            
-        }
-        img {
-            object-fit: contain;
-            max-width: 90%;
-            max-height: 95px;
-            display: block;
-            margin-left: auto;
-            margin-right: auto;
-}
-        .first{
-            color: #EF629F;
-            
-        }
-        .second{
-            color: #3AB795;
-            
-        }
-        .top{
-            color: #3AB795;
-            font-size: 13pt;
-            font-weight: bold;
-        }
-        .points{
-            color: #EF629F;
-            margin-top: -10px;
-            font-weight: bold;
-            font-size: 13pt;
-        }
-        #container {
-/*            display: grid;*/
-            grid-template-rows: 20% 65% 1%;
-            height: 100vh;
-            
-        }
-        #header {
-            grid-row: 1 / span 1;        
-        }
-        #inner {
-            grid-row: 2 / span 1;
-            display: grid;
-            grid-template-rows: 33.3% 33.3% 33.3%;
-        }
-        #first{
-            margin-left: 25px;
-            margin-right: 25px;
-            margin-top: 10px;
-            margin-bottom: 10px;
-            border-radius: 25px;
-            background-color: #B8D8BA;
-            grid-row: 1 / span 1;
-            display: grid;
-            grid-template-columns: 50% 50%;
-            color: #EF629F;
-        }
-        #first1{
-            padding: 15px;
-            margin-top: auto;
-            margin-bottom: auto;
-            border-radius: 25px 0 0 25px;
-           
-           
-            grid-column: 1 / span 1;
-            
-        }   
-        #selection{
-            margin-top: auto;
-            margin-bottom: auto;
-            border-radius: 0 25px 25px 0;
-            
-            
-            grid-column: 2 / span 1;
-            
-        }
-        
-        
-        #second{
-            margin-left: 25px;
-            margin-right: 25px;
-            margin-top: 10px;
-            margin-bottom: 10px;
-            border-radius: 25px;
-            background-color: #FAC9B8;
-            grid-row: 2 / span 1;
-            display: grid;
-            grid-template-columns: 50% 50%;
-            color: #3AB795;
-        }
-        #second1{
-            padding: 15px;
-            margin-top: auto;
-           margin-bottom: auto;
-            border-radius: 25px 0 0 25px;
-           
-           
-            grid-column: 1 / span 1;
-            
-        }   
-        #selection2{
-            margin-top: auto;
-           margin-bottom: auto;
-            border-radius: 0 25px 25px 0;
-          
-            
-            grid-column: 2 / span 1;
-            
-        }
-        #third{
-            margin-left: 25px;
-            margin-right: 25px;
-            margin-top: 10px;
-            margin-bottom: 10px;
-            border-radius: 25px;
-            background-color: #B8D8BA;
-            grid-row: 3 / span 1;
-            display: grid;
-            grid-template-columns: 50% 50%;
-             color: #EF629F;
-        }
-        #third1{
-            padding: 15px;
-            margin-top: auto;
-           margin-bottom: auto;
-            border-radius: 25px 0 0 25px;
-           
-           
-            grid-column: 1 / span 1;
-            
-        }   
-        #selection3{
-            margin-top: auto;
-           margin-bottom: auto;
-            border-radius: 0 25px 25px 0;
-            
-            
-            grid-column: 2 / span 1;
-            
-        }
-             
-        
-
-        #header{
-            grid-row: 1 / span 1;
-        }
-        #greeting {
-            color: #EF629F;
-        }
-             #footer{
-                 grid-row: 3 / span 1;
-             }
-         
-.container {
-    list-style-type: none;
-    margin: 0;
-
-    overflow: hidden;
-    background-color: #75DBCD;
-}
-
-.list {
-    float: left;
-}
-
-.list a {
-    display: block;
-    color: white;
-    text-align: center;
-    padding: 14px 16px;
-    text-decoration: none;
-}
-
-.list a:hover {
-    background-color: rgb(65, 134, 125);
-}
-        
-    
+      
     </style>
 </head>
 <body>
@@ -198,17 +20,22 @@
     <ul class="container">
       <li class="list"><a href="/homepage">Home</a></li>
 
-      <li class="list"><a href="/minigames">Mini Games</a></li>
-      <li class="list" style="float: right;"><a href="/user_profile"><img src="/img/shape.png"
+<!--      <li class="list"><a href="/minigames">Mini Games</a></li>-->
+      <li class="list" style="float: right;"><a href="/user_profile"><img src="/static/img/shape.png"
             width="20px" height="20px"> </a></li>
 
     </ul>
   </nav>
-            <div id="greeting"><p class='top'>Tic-Tac-Toe</p><p class='points'> Current Points: </p>
-            
-            
+            <div id="greeting"><p class='top'>Tic-Tac-Toe</p></div>
+            <div id="stats">
+            <h2>All points you earned: </h2>
+                <h2 id='pointsofar'></h2>
+                <h2>You earned today: </h2>
+                <h2 id='pointofday'></h2>
+                <h2>
+                </h2>
             </div>
-        
+
         </div>
         <div id='inner'>
     <div id="first" onclick="window.location.href = 'https://test-react3-tiffany.netlify.app';">
@@ -243,7 +70,33 @@
            </div> 
         <div id='footer'>Made by FutureCurves.</div>
     </div>
-  <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
-  
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+    <script>
+                $(document).ready(function () {
+                    function say_hi() {
+                        $.get("/user_profile/getProfile", function (data, status) {
+                            $("#username").html(data.result[0].username);
+                            console.log("data.username===============")
+                            console.log(data)
+                        });
+                    } say_hi()
+
+                });
+
+    </script>
+    <script>
+                $(document).ready(function () {
+                    function show_points() {
+                        $.get("/user_profile/getProfile", function (data, status) {
+                            $("#pointsofar").html(data.result[0].points);
+                            $("#pointofday").html(data.result[0].daily_task[0].points_earned_today);
+                            console.log("data.total===============");
+                            console.log(data);
+                        });
+                    } show_points()
+
+                });
+
+    </script>
 </body>
 </html>
