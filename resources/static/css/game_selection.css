@@ -20,12 +20,12 @@ img {
 }
 
 .first {
-    color: #EF629F;
+    color: #3AB795;
 
 }
 
 .second {
-    color: #3AB795;
+    color: #EF629F;
 
 }
 
@@ -52,42 +52,8 @@ img {
 
 #inner {
     grid-row: 2 / span 1;
-
+    
 }
-
-/*
-#dailytask {
-    margin-left: 25px;
-    margin-right: 25px;
-    margin-top: 10px;
-    margin-bottom: 10px;
-    border-radius: 25px;
-    background-color: #B8D8BA;
-    grid-row: 1 / span 1;
-    display: grid;
-    grid-template-columns: 50% 50%;
-}
-
-#dailytask1 {
-    margin-top: auto;
-    margin-bottom: auto;
-    border-radius: 25px 0 0 25px;
-
-
-    grid-column: 1 / span 1;
-
-}
-
-#dailytask2 {
-    margin-top: auto;
-    margin-bottom: auto;
-    border-radius: 0 25px 25px 0;
-
-
-    grid-column: 2 / span 1;
-
-}
-*/
 #stats {
     margin-left: 25px;
     margin-right: 25px;
@@ -101,7 +67,40 @@ img {
     color: #3AB795;
 
 }
-#games {
+#games1 {
+    margin-left: 25px;
+    margin-right: 25px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    border-radius: 25px;
+    background-color: #FAC9B8;
+    grid-row: 1 / span 1;
+    display: grid;
+    grid-template-columns: 50% 50%;
+    color:#EF629F;
+}
+
+#games1_1 {
+    margin-top: auto;
+    margin-bottom: auto;
+    border-radius: 25px 0 0 25px;
+
+
+    grid-column: 1 / span 1;
+
+}
+
+#games1_2 {
+    margin-top: auto;
+    margin-bottom: auto;
+    border-radius: 0 25px 25px 0;
+
+
+    grid-column: 2 / span 1;
+
+}
+
+#games2 {
     margin-left: 25px;
     margin-right: 25px;
     margin-top: 10px;
@@ -111,10 +110,10 @@ img {
     background-color: #FAC9B8;
     display: grid;
     grid-template-columns: 50% 50%;
-
+    color:#EF629F;
 }
 
-#games1 {
+#games2_1 {
     margin-top: auto;
     margin-bottom: auto;
     border-radius: 25px 0 0 25px;
@@ -124,7 +123,7 @@ img {
 
 }
 
-#games2 {
+#games2_2 {
     margin-top: auto;
     margin-bottom: auto;
     border-radius: 0 25px 25px 0;
@@ -134,20 +133,20 @@ img {
 
 }
 
-#howdoyoufeeltoday {
+#games3 {
     margin-left: 25px;
     margin-right: 25px;
     margin-top: 10px;
     margin-bottom: 10px;
     border-radius: 25px;
-    background-color: #B8D8BA;
+    background-color: #FAC9B8;
     grid-row: 3 / span 1;
     display: grid;
     grid-template-columns: 50% 50%;
 
 }
 
-#how1 {
+#games3_1 {
     margin-top: auto;
     margin-bottom: auto;
     border-radius: 25px 0 0 25px;
@@ -157,7 +156,7 @@ img {
 
 }
 
-#how2 {
+#games3_2 {
     margin-top: auto;
     margin-bottom: auto;
     border-radius: 0 25px 25px 0;
@@ -167,7 +166,7 @@ img {
 
 }
 
-#redeem {
+#games4 {
     margin-left: 25px;
     margin-right: 25px;
     margin-top: 10px;
@@ -179,7 +178,7 @@ img {
     grid-template-columns: 50% 50%;
 }
 
-#redeem1 {
+#games4_1 {
     margin-top: auto;
     margin-bottom: auto;
     border-radius: 25px 0 0 25px;
@@ -189,7 +188,7 @@ img {
 
 }
 
-#redeem2 {
+#games4_2 {
     margin-top: auto;
     margin-bottom: auto;
 

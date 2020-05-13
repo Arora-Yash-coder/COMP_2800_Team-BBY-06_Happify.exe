@@ -18,17 +18,18 @@
             <div id="greeting">
                 <p class='top' id="welcome">Welcome Back,</p>
                 <h1 class='username' id="username"></h1>
-                
+                <p class='top' id="welcome">Redeem your coupon or play a game</p>
                 
             </div>
 
         </div>
         <div id='inner'>
             
-            <div id="stats" onclick="window.location.href = '/minigames' ">
+            <div id="stats">
             <h2>All points you earned: </h2>
                 <h2 id='pointsofar'></h2>
-                <h2 id='pointofday'>You earned: </h2>
+                <h2>You earned today: </h2>
+                <h2 id='pointofday'></h2>
                 <h2>
                 </h2>
             </div>
@@ -98,7 +99,7 @@
                 $(document).ready(function () {
                     function say_hi() {
                         $.get("/user_profile/getProfile", function (data, status) {
-                            $("#username").html(data.result[0].username)
+                            $("#username").html(data.result[0].username);
                             console.log("data.username===============")
                             console.log(data)
                         });
@@ -109,30 +110,19 @@
             </script>
             <script>
                 $(document).ready(function () {
-                    function pointsofar() {
+                    function show_points() {
                         $.get("/user_profile/getProfile", function (data, status) {
-                            $("#pointsofar").html(data.result[0].points)
-                            console.log("data.username===============")
-                            console.log(data)
+                            $("#pointsofar").html(data.result[0].points);
+                            $("#pointofday").html(data.result[0].daily_task[0].points_earned_today);
+                            console.log("data.total===============");
+                            console.log(data);
                         });
-                    } pointsofar()
+                    } show_points()
 
                 });
 
             </script>
-            <script>
-                $(document).ready(function () {
-                    function pointtoday() {
-                        $.get("/user_profile/getProfile", function (data, status) {
-                            $("#username").html(data.result[0].username)
-                            console.log("data.username===============")
-                            console.log(data)
-                        });
-                    } pointtoday()
-
-                });
-
-            </script>
+            
             <script src='/static/js/navbar_top.js'></script>
 </body>
 
