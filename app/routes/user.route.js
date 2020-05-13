@@ -482,11 +482,15 @@ module.exports = function (app) {
 		});
 	});
 	
-	app.get('/admin_verify', (req, res) => {
-		res.sendFile(static + "admin_verify.ejs");
+	app.get('/admin', (req, res) => {
+		res.render(path + "admin_verify.ejs");
 	});
 
-	app.post('/users/admin', (req, res) => {
+	app.get('/admin_coupon', (req, res) => {
+		res.render(path + "admin_coupon.ejs");
+	});
+
+	app.post('api/users/admin', (req, res) => {
 		users.verifyAdmin
 	});
 

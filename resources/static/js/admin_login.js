@@ -39,7 +39,7 @@ $(document).ready(function () {
 					 $("html").html(msg)
 					 it wasted me 2+ hrs of time
 					 */
-					window.location.href = '/homepage'
+					window.location.href = '/admin_coupon'
 				}
 
 			},
