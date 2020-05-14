@@ -1,15 +1,13 @@
-$(document).ready(function () {
 
-	// SUBMIT FORM
-	$("#userForm").submit(function (event) {
-		// Prevent the form from submitting via the browser.
-		event.preventDefault();
-		ajaxPost();
-	});
+
+$(document).ready(function () {
+	// Cookies.set({user_sid:"1"})
+
 
 	$("#login").on("click", function (event) {
 		// Prevent the form from submitting via the browser.
 		event.preventDefault();
+		
 		ajaxCompare();
 	});
 
@@ -37,7 +35,11 @@ $(document).ready(function () {
 
 				} else {
 					alert("login successful")
-					$("html").html(msg)
+					/*remember this line of code:
+					 $("html").html(msg)
+					 it wasted me 2+ hrs of time
+					 */
+					window.location.href = '/homepage'
 				}
 
 			},
@@ -49,52 +51,5 @@ $(document).ready(function () {
 
 	}
 
-	function ajaxPost() {
 
-		// PREPARE FORM DATA
-		var regInfo = {
-			username: $("#username").val(),
-			password: $("#password").val(),
-			email: $("#email").val(),
-			firstname: $("#firstname").val(),
-			lastname: $("#lastname").val(),
-			phoneno: $("#phoneno").val()
-
-		}
-
-		//register
-		$.ajax({
-			type: "POST",
-			contentType: "application/json",
-			url: "/api/users/register",
-			data: JSON.stringify(regInfo),
-			dataType: 'json',
-			success: function (user) {
-				$("#postResultDiv").html("<p>" +
-					"Submitted Successfully! <br>" +
-					"--> " + user.firstname + " " + user.lastname + "</p>");
-				alert(user);
-				setTimeout(() => {
-					window.location.replace("./success")
-				}, 2200);
-			},
-			error: function (e) {
-				alert("Error!")
-				console.log("ERROR: ", e);
-			}
-		});
-
-		// Reset FormData after Posting
-		resetData();
-
-	}
-
-	function resetData() {
-		$("#username").val("");
-		$("#password").val("");
-		$("#email").val("");
-		$("#firstname").val("");
-		$("#lastname").val("");
-		$("#phoneno").val("");
-	}
 })

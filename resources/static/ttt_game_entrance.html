@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+<!--    <meta name="viewport" content="width=device-width, initial-scale=1.0">-->
+    
+  <title>Tic-Tac-Toeeee</title>
+    <link rel="stylesheet" type="text/css" href="/static/css/navbar.css">
+    <link rel="stylesheet" type="text/css" href="/static/css/tic_tac_toe.css">
+    
+     <style>
+
+      
+    </style>
+</head>
+<body>
+    <div id='container'>
+        <div id="header">
+            <nav>
+    <ul class="container">
+      <li class="list"><a href="/homepage">Home</a></li>
+
+<!--      <li class="list"><a href="/minigames">Mini Games</a></li>-->
+      <li class="list" style="float: right;"><a href="/user_profile"><img src="/static/img/shape.png"
+            width="20px" height="20px"> </a></li>
+
+    </ul>
+  </nav>
+            <div id="greeting"><p class='top'>Tic-Tac-Toe</p></div>
+            <div id="stats">
+            <h2>All points you earned: </h2>
+                <h2 id='pointsofar'></h2>
+                <h2>You earned today: </h2>
+                <h2 id='pointofday'></h2>
+                <h2>
+                </h2>
+            </div>
+
+        </div>
+        <div id='inner'>
+    <div id="first" onclick="window.location.href = 'https://test-react3-tiffany.netlify.app';">
+        <div id='first1'><h1>Nurse</h1></div>
+    <div id='selection'>
+        <div id='image'>
+    <img src="/static/img/tictactoe/nurse.png">
+            </div>
+        </div>
+        </div>
+        
+    <div id="second" onclick="window.location.href = 'https://test-react2-tiffany.netlify.app/';">
+        <div id='second1'><h1>Mask</h1></div>
+  <div id='selection2'>
+    <div id='image'>
+    <img src="/static/img/tictactoe/mask.png">
+            </div>
+        </div>
+    </div>
+    <div id="third" onclick="window.location.href = 'https://test-react-tiffany.netlify.app';">
+        <div id='third1'><h1>Sanitizer</h1></div>
+  <div id='selection3'>
+    <div id='image'>
+    <img src="/static/img/tictactoe/sanitizer.png">
+            </div>
+        </div>
+    </div>
+    
+            
+            
+            
+           </div> 
+        <div id='footer'>Made by FutureCurves.</div>
+    </div>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+    <script>
+                $(document).ready(function () {
+                    function say_hi() {
+                        $.get("/user_profile/getProfile", function (data, status) {
+                            $("#username").html(data.result[0].username);
+                            console.log("data.username===============")
+                            console.log(data)
+                        });
+                    } say_hi()
+
+                });
+
+    </script>
+    <script>
+                $(document).ready(function () {
+                    function show_points() {
+                        $.get("/user_profile/getProfile", function (data, status) {
+                            $("#pointsofar").html(data.result[0].points);
+                            $("#pointofday").html(data.result[0].daily_task[0].points_earned_today);
+                            console.log("data.total===============");
+                            console.log(data);
+                        });
+                    } show_points()
+
+                });
+
+    </script>
+</body>
+</html>

@@ -1,0 +1,33 @@
+
+.container {
+    list-style-type: none;
+    margin: 0;
+
+    overflow: hidden;
+    background-color: #3AB795;
+}
+
+.list {
+    float: left;
+    font-size: 15pt;
+}
+
+.list a {
+    display: block;
+    color: white;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+}
+
+.list a:hover {
+    background-color: rgb(65, 134, 125);
+}
+
+#show_points{
+    margin:0 ;
+    padding-left: 0;
+    padding-right: 0;
+    font-size: 17pt ;
+    color: darkred;
+}

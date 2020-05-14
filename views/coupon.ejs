@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="/static/css/navbar.css">
+    <title>Coupon Page</title>
+    <link rel="stylesheet" type="text/css" href="/static/css/coupon.css">
+</head>
+
+<body>
+    <%- navbar %>
+    <div id="greeting">
+        <p class='top'>Current Points:</p> <span id="current_points"> </span>
+        <div id="search_function"><input id="search_box" type="text" placeholder="input coupon title or description">
+            <button id="search">search</button></div>
+
+
+    </div>
+
+    <div id='container'>
+
+
+        <% for (var i = 0; i < coupons.length;  i++ ) { %>
+        <div class="coupons" id="coupons_<%= i+1 %>">
+            <div class="coupon" id="coupon_<%= i+1 %>">
+
+                <h1 class="title"><%= coupons[i].title %></h1>
+                <p class="description" id="description_<%= i+1 %>"><%= coupons[i].description %></p>
+                <span class="points"><%= coupons[i].points %></span>
+            </div>
+
+            <div class='confirm' id="confirm_<%= i+1 %>">
+                <span></span>
+                <a class="square_btn_second yes" id="nth_<%= i+1 %>" name="<%=coupons[i].id%>">Yes</a>
+                <a class="square_btn_second no">No</a>
+            </div>
+        </div>
+    </div>
+    <% } %>
+
+
+    </div>
+
+
+
+
+
+    <%- footer %>
+    </div>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+    <script>
+        
+
+        $(document).ready(function () {
+
+            
+        $("#search").on("click",() => {
+            var serach_box = $("#search_box").val();
+            console.log("serach_box")
+            console.log(serach_box)
+            console.log($("#search_box").val())
+            $.ajax({
+                type: "post",
+                url: "/coupon/search",
+                data: {serach_box},
+                dataType: "html",
+                success: function (response) {
+                    console.log("response")
+                    console.log(response)
+                    $("html").html(response)
+                },
+                error:(e)=>{
+                    console.log(e)
+                }
+            });
+        })
+
+
+
+
+
+
+           
+            $.ajax({
+                type: "get",
+                url: "/user_profile/getProfile",
+
+                dataType: "json",
+                success: function (response) {
+                    console.log(response)
+                    console.log(response.result[0].points)
+                    $("#current_points").html(response.result[0].points)
+                },
+                error: (response) => {
+                    console.log(response)
+
+                    alert(response.points)
+                }
+            });
+        });
+        let itemArr = $(".coupons");
+        console.log(itemArr[0]);
+        // for(var nodeIndex in )
+        $(".confirm").hide();
+
+
+        let coupon_info = null;
+        let confirm_choice = null;
+        let node_id = 0;
+        $(".coupon").click(function (e) {
+
+            // const coupon_display = 
+
+            const confirmation_selection = " <h1>Confirm?</h1></div><div id='selection'><a class='square_btn_second'>Yes</a><a class='square_btn_second'>No</a>"
+            if (e.target && (e.target.nodeName == "H1" || e.target.nodeName == "P" || e.target.nodeName == "SPAN")) {
+                coupon_info = $("#" + e.target.parentNode.id)
+                node_id = e.target.parentNode.id.substr(7)
+
+                // alert(node_id)
+            } else {
+                coupon_info = $("#" + e.target.id)
+                node_id = e.target.id.substr(7)
+                // alert(node_id)
+            }
+            confirm_choice = $("#confirm_" + node_id)
+            confirm_choice.toggle()
+            $("#description_" + node_id).toggle();
+            // node_to_change.html(confirmation_selection)
+
+        });
+
+        $(".no").click((e) => {
+            console.log(confirm_choice)
+            confirm_choice.toggle()
+            $("#description_" + node_id).toggle();
+        })
+
+        $(".yes").click((e) => {
+            redeem_id = $(e.target).attr("name");
+
+            $.ajax({
+                type: "post",
+                url: "/coupon/redeem",
+                data: { "id": redeem_id },
+                dataType: "text",
+                success: function (response) {
+                    alert(response)
+                },
+                error: function (xhr, ajaxOptions, thrownError) {
+                    alert(xhr.status);
+                    alert(thrownError);
+                }
+            })
+
+        });
+
+
+   
+
+
+    </script>
+</body>
+
+</html>
