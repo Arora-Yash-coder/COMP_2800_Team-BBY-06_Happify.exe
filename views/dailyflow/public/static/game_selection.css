@@ -306,3 +306,23 @@ img {
     90%  { transform: scale(1,1)    translateY(-10px); }
     100% { transform: scale(1,1)    translateY(0) ;visibility: visible }
 }
+
+button {
+        background-color: white; /* Green */
+        border: 1px solid #3AB795;
+        color: #3AB795;
+        padding: 10px 24px;
+        text-align: center;
+        text-decoration: none;
+        display: inline-block;
+        font-size: 16px;
+}
+#proceed{
+        float: right;
+}
+#back{
+        float: left;
+}
+#footer{
+    color: black;
+}

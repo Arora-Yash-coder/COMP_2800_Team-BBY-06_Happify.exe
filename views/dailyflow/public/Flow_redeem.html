@@ -8,21 +8,7 @@
     <title>Coupon Page</title>
     <link rel="stylesheet" type="text/css" href="./static/coupon.css">
     <style>
-    body{
-        background-image: url(./static/background.png);
-        background-size: cover;    
-            
-        }
-    input {
-        background-color: white; /* Green */
-        border: 1px solid #3AB795;
-        color: #3AB795;
-        padding: 10px 24px;
-        text-align: center;
-        text-decoration: none;
-        display: inline-block;
-        font-size: 16px;
-    }
+    
     </style>
 </head>
 
@@ -30,55 +16,35 @@
    <div style="float: right">Step 3 of 3</div>
     <br>
     
-    <h1>Choose coupons to redeem</h1>
+    <h1>Congratulations! Now you can choose your coupons by clicking on them!</h1>
 <div id="stats">
-    <h2>Congratulations! Now you can choose your coupons by clicking on them!</h2>
+    
     <br>
-            <h2>All points you earned: </h2>
+            <h2 id="description1">All points you earned: </h2>
                 <h2 id='pointsofar'></h2>
-                <h2>You earned today: </h2>
+                <h2 id="description2">You earned today: </h2>
                 <h2 id='pointofday'></h2>
-                <h2>
-                </h2>
+                
             </div>
     <div id="search_function"><input id="search_box" type="text" placeholder="Coupon title or description">
             <button id="search">search</button></div>
+    
+<!--    Add some coupons here-->
     <div id='container'>
 
 
-<!--
-        <% for (var i = 0; i < coupons.length;  i++ ) { %>
-        <div class="coupons" id="coupons_<%= i+1 %>">
-            <div class="coupon" id="coupon_<%= i+1 %>">
-
-                <h1 class="title"><%= coupons[i].title %></h1>
-                <p class="description" id="description_<%= i+1 %>"><%= coupons[i].description %></p>
-                <span class="points"><%= coupons[i].points %></span>
-            </div>
-
-            <div class='confirm' id="confirm_<%= i+1 %>">
-                <span></span>
-                <a class="square_btn_second yes" id="nth_<%= i+1 %>" name="<%=coupons[i].id%>">Yes</a>
-                <a class="square_btn_second no">No</a>
-            </div>
-        </div>
--->
-    </div>
-<!--    <% } %>-->
-
-
     </div>
 
-<form action="D:\BCIT Term2 Work\Workflow of the day\deploy - Copy\public\Flow_mini_games.html">
+
+
+
+    <button id="proceed" onclick="location.href='./Flow_final.html';">Proceed</button>
+    <button id="back" onclick="location.href='./Flow_daily_tasks.html';">Back</button>
     
-    <input type="submit" value="Back" style="float: left">
-    </form>
-    <form action="D:\BCIT Term2 Work\Workflow of the day\deploy - Copy\public\Flow_final.html">
     
-    <input type="submit" value="Proceed" style="float: right">
-    </form>
 
-    </div>
+  
+
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
     <script>
         
@@ -219,6 +185,7 @@
                 });
 
             </script>
+<div id='footer'>Made by FutureCurves.</div>
 </body>
 
 </html>
