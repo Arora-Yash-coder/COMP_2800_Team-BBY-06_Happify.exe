@@ -11,8 +11,10 @@
 </head>
 
 <body>
+<!--    nav bar-->
     <%- navbar %>
     <div id='container'>
+<!--        header div-->
         <div id="header">
 
             <div id="greeting">
@@ -24,7 +26,7 @@
 
         </div>
         <div id='inner'>
-            
+<!--            Stats div-->
             <div id="stats">
             <h2>All points you earned: </h2>
                 <h2 id='pointsofar'></h2>
@@ -33,23 +35,11 @@
                 <h2>
                 </h2>
             </div>
-<!--
-            <div id="dailytask" onclick="window.location.href = '/daily_tasks' ">
-                <div id='dailytask1'>
-                    <h3 class="first">Finish Our Daily Challenges</h3>
-                </div>
-                <div id='dailytask2'>
-                    <div id='image1'>
-                        <img id="daily_task_img" src="/img/task2.png">
-                    </div>
-                </div>
-            </div>
--->
 
-
-<!--            <h1 style="color:violet;margin: 0;padding: 0;"> + </h1>-->
 
             <div id='inner'>
+                
+<!--Mini games selection-->
             <div id="games1" onclick="window.location.href ='http://judaozhong.com:3001/game/chess' ">
                 <div id='games1_1'>
                     <h1 class="first">Chess Game</h1>
@@ -125,8 +115,10 @@
             <%- footer %>
 
         
-          
+<!--Import the Jquery-->
             <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+    
+<!--Reads the username.-->
             <script>
                 $(document).ready(function () {
                     function say_hi() {
@@ -140,6 +132,7 @@
                 });
 
             </script>
+<!--    Reads the points earned today.-->
             <script>
                 $(document).ready(function () {
                     function show_points() {

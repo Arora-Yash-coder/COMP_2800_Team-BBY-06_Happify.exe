@@ -9,7 +9,7 @@
     <title>Welcome to Happify!</title>
 
 </head>
-
+<!--HTML parts of the page-->
 <body>
     <%- navbar %>
     <div id='container'>
@@ -18,7 +18,7 @@
             <div id="greeting">
                 <p class='top' id="welcome">Welcome Back,</p>
                 <h1 class='username' id="username"></h1>
-                <p class='top' id="welcome">Redeem your coupon or play a game</p>
+                <p class='top' id="welcome">Redeem your coupon or play a game by clicking the cards</p>
                 
             </div>
 
@@ -47,8 +47,6 @@
 -->
 
 
-<!--            <h1 style="color:violet;margin: 0;padding: 0;"> + </h1>-->
-
             <div id="games" onclick="window.location.href = '/minigames' ">
                 <div id="games1">
                     <h1 class="second">Mini Games</h1>
@@ -60,10 +58,6 @@
                 </div>
             </div>
            
-<!--
-            <h1 style="color:violet;margin: 0;padding: 0;transform: rotate(90deg);"> 
-↓ </h1>
--->
 
 
             <div id="redeem" onclick="window.location.href = '/coupon';">
@@ -95,6 +89,8 @@
             <%- footer %>
 
             <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+            
+<!--            Reads the points you earned today.-->
             <script>
                 $(document).ready(function () {
                     function say_hi() {
@@ -108,6 +104,7 @@
                 });
 
             </script>
+<!--            Reads the points you earned so far.-->
             <script>
                 $(document).ready(function () {
                     function show_points() {

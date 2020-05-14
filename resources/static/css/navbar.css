@@ -4,7 +4,7 @@
     margin: 0;
 
     overflow: hidden;
-    background-color: #75DBCD;
+    background-color: #3AB795;
 }
 
 .list {
@@ -23,10 +23,3 @@
     background-color: rgb(65, 134, 125);
 }
 
-#show_points{
-    margin:0 ;
-    padding-left: 0;
-    padding-right: 0;
-    font-size: 17pt ;
-    color: darkred;
-}

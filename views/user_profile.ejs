@@ -12,6 +12,7 @@
 </head>
 
 <body>
+<!--    Nav bar-->
     <header id="head">
   <%- navbar %></header>
   <h1>User Profile</h1>
@@ -23,7 +24,7 @@
 
   </form>
 
-
+<!--user profile section-->
   <div id="container">
     <form id="userForm" action="/api/users/register" method="post">
       <div id="username">Username</div>
@@ -51,13 +52,14 @@
       <br>
     </form>
   </div>
+<!--Loads my coupons so far-->
   <div id="mycoupons">
 
     <h2>My coupons</h2>
   </div>
-
+<!--    Save and log out functions-->
   <button type="button" onclick="save()" id="save">Save</button>
-  <button id="logout">log out!</button>
+  <button id="logout">Log out!</button>
   <br>
   <!--
     <div id="submit">
@@ -189,7 +191,7 @@
 
 
 
-
+//Read the user profile from the database.
     $.ajax({
       url: "/user_profile/getProfile",
       dataType: "json",
