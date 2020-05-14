@@ -1,6 +1,8 @@
 const mongoose = require('mongoose');
 
 
+
+
 const DailyTaskSchema = mongoose.Schema({
   daily_task_id: { type: Number, unique: true },
   title: { type: String, default: "null", required: true },

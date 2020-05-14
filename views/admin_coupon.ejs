@@ -138,9 +138,14 @@
                 data:  {checked},
                 dataType: "dataType",
                 success: function (response) {
-                    alert("update successful")
+                   window.location.href = '/admin_coupon'
+                },
+                error:(e)=>{
+                    window.location.href = '/admin_coupon'
                 }
             });
+
+            window.location.href = '/admin_coupon'
         })
 
 

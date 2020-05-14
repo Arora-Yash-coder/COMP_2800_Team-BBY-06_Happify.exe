@@ -149,7 +149,7 @@ exports.dailyTasks = function (req, res) {
     MongoClient.connect(dbConfig.url, function (err, db) {
         if (err) throw err;
         var dbo = db.db("test");
-        dbo.collection("user_daily_task").find({}).toArray(function (err, result) {
+        dbo.collection("daily_tasks").find({}).toArray(function (err, result) {
             if (err) throw err;
             console.log(result);
             res.send({ result: result });
@@ -612,6 +612,5 @@ exports.verifyAdmin = (req, res) => {
 
 exports.admin_coupon_management = (req,res)=>{
         console.log("searching")
-		
-		
+
 }

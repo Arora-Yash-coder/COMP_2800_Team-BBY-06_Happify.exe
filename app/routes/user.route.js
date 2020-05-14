@@ -171,6 +171,7 @@ module.exports = function (app) {
 		res.sendFile(staticPath +"about_us.html")
 	})
 
+	//goes to the homepage 
 	app.get("/homepage", (req, res) => {
 		
 		res.render(path + "/homepage.ejs", {
@@ -180,6 +181,7 @@ module.exports = function (app) {
 		
 	})
 
+	//the minigame entrance
 	app.get("/minigames",sessionChecker2, (req, res) => {
 		res.render(path + "games_selection.ejs", {
 			navbar: navbar_top_ejs,
@@ -187,11 +189,7 @@ module.exports = function (app) {
 		})
 	})
 
-
-
-
-
-
+	//when the users click on this,
 	app.post('/coupon/redeem', users.redeemCoupon);
 
 	app.get("/restart", (req, res) => {
@@ -334,7 +332,7 @@ module.exports = function (app) {
 	//============DBwork=====Tiffany=================================================
 
 	app.get('/daily_tasks', function (req, res) {
-		res.render(path + "daily_tasks.ejs", {
+		res.render(path + "daily_tasks_reader.ejs", {
 			navbar: navbar_top_ejs,
 			footer: footer
 		})
@@ -428,6 +426,7 @@ module.exports = function (app) {
 	//check if the user is allowed to log in.
 	app.post('/api/users/verify', users.verify);
 
+	//the link to post and search for a coupon
 	app.post('/coupon/search', users.searchCoupon)
 
 	app.post("/getKey", (req, res) => {
@@ -484,6 +483,10 @@ module.exports = function (app) {
 	
 	app.get('/admin', (req, res) => {
 		res.render(path + "admin_verify.ejs");
+	});
+
+	app.get('/admin_home', (req, res) => {
+		res.render(path + "admin_home.ejs");
 	});
 
 	app.get('/admin_coupon', (req, res) => {

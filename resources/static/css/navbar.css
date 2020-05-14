@@ -4,12 +4,11 @@
     margin: 0;
 
     overflow: hidden;
-    background-color: #3AB795;
+    background-color: #75DBCD;
 }
 
 .list {
     float: left;
-    font-size: 15pt;
 }
 
 .list a {
