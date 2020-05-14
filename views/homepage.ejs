@@ -9,16 +9,18 @@
     <title>Welcome to Happify!</title>
 
 </head>
-<!--HTML parts of the page-->
+
 <body>
+    <%  if(navbar) { %> 
     <%- navbar %>
+    <% } %> 
     <div id='container'>
         <div id="header">
 
             <div id="greeting">
                 <p class='top' id="welcome">Welcome Back,</p>
                 <h1 class='username' id="username"></h1>
-                <p class='top' id="welcome">Redeem your coupon or play a game by clicking the cards</p>
+                <p class='top' id="welcome">Redeem your coupon or play a game</p>
                 
             </div>
 
@@ -47,6 +49,8 @@
 -->
 
 
+<!--            <h1 style="color:violet;margin: 0;padding: 0;"> + </h1>-->
+
             <div id="games" onclick="window.location.href = '/minigames' ">
                 <div id="games1">
                     <h1 class="second">Mini Games</h1>
@@ -58,6 +62,10 @@
                 </div>
             </div>
            
+<!--
+            <h1 style="color:violet;margin: 0;padding: 0;transform: rotate(90deg);"> 
+↓ </h1>
+-->
 
 
             <div id="redeem" onclick="window.location.href = '/coupon';">
@@ -89,8 +97,6 @@
             <%- footer %>
 
             <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
-            
-<!--            Reads the points you earned today.-->
             <script>
                 $(document).ready(function () {
                     function say_hi() {
@@ -104,21 +110,9 @@
                 });
 
             </script>
-<!--            Reads the points you earned so far.-->
-            <script>
-                $(document).ready(function () {
-                    function show_points() {
-                        $.get("/user_profile/getProfile", function (data, status) {
-                            $("#pointsofar").html(data.result[0].points);
-                            $("#pointofday").html(data.result[0].daily_task[0].points_earned_today);
-                            console.log("data.total===============");
-                            console.log(data);
-                        });
-                    } show_points()
-
-                });
-
-            </script>
+             <script src="/static/js/get_points.js">
+     
+             </script>
             
             <script src='/static/js/navbar_top.js'></script>
 </body>

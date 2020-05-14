@@ -11,19 +11,21 @@
 
 <body>
     <%- navbar %>
-    
-    <h1>Choose coupons to redeem</h1>
-<div id="stats">
-            <h2>All points you earned: </h2>
-                <h2 id='pointsofar'></h2>
-                <h2>You earned today: </h2>
-                <h2 id='pointofday'></h2>
-                <h2>
-                </h2>
-            </div>
+
+    <h1>Congratulations! Now you can choose your coupons by clicking on them!</h1>
+    <div id="stats">
+        <h2>All points you earned: </h2>
+        <h2 id='pointsofar'></h2>
+        <h2>You earned today: </h2>
+        <h2 id='pointofday'></h2>
+        <h2>
+        </h2>
+    </div>
     <div id="search_function"><input id="search_box" type="text" placeholder="Coupon title or description">
-            <button id="search">search</button></div>
+        <button id="search">search</button></div>
     <div id='container'>
+        <button id="proceed" onclick="location.href='/reminder'">Proceed</button>
+        <button id="back" onclick="location.href='/minigames'">Back</button>
 
 
         <% for (var i = 0; i < coupons.length;  i++ ) { %>
@@ -53,52 +55,54 @@
 
     <%- footer %>
     </div>
-<!--Jquery import-->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
-<!--Search for coupons function-->
     <script>
-        
+
 
         $(document).ready(function () {
 
-            
-        $("#search").on("click",() => {
-            var serach_box = $("#search_box").val();
 
-            $.ajax({
-                type: "post",
-                url: "/coupon/search",
-                data: {serach_box},
-                dataType: "html",
-                success: function (response) {
+            $("#search").on("click", () => {
+                var serach_box = $("#search_box").val();
+                console.log("serach_box")
+                console.log(serach_box)
+                console.log($("#search_box").val())
+                $.ajax({
+                    type: "post",
+                    url: "/coupon/search",
+                    data: { serach_box },
+                    dataType: "html",
+                    success: function (response) {
+                        console.log("response")
+                        console.log(response)
+                        $("html").html(response)
+                    },
+                    error: (e) => {
+                        console.log(e)
+                    }
+                });
+            })
 
-                    $("html").html(response);
-                },
-                error:(e)=>{
-                    console.log(e);
-                }
-            });
-        })
 
 
 
 
 
 
-//Updates the points
             $.ajax({
                 type: "get",
                 url: "/user_profile/getProfile",
 
                 dataType: "json",
                 success: function (response) {
-
-                    $("#current_points").html(response.result[0].points);
+                    console.log(response)
+                    console.log(response.result[0].points)
+                    $("#current_points").html(response.result[0].points)
                 },
                 error: (response) => {
-                    console.log(response);
+                    console.log(response)
 
-                    alert(response.points);
+                    alert(response.points)
                 }
             });
         });
@@ -111,45 +115,45 @@
         let coupon_info = null;
         let confirm_choice = null;
         let node_id = 0;
-//Confirm the selection of coupons
         $(".coupon").click(function (e) {
 
-            
+            // const coupon_display = 
 
             const confirmation_selection = " <h1>Confirm?</h1></div><div id='selection'><a class='square_btn_second'>Yes</a><a class='square_btn_second'>No</a>"
             if (e.target && (e.target.nodeName == "H1" || e.target.nodeName == "P" || e.target.nodeName == "SPAN")) {
-                coupon_info = $("#" + e.target.parentNode.id);
-                node_id = e.target.parentNode.id.substr(7);
+                coupon_info = $("#" + e.target.parentNode.id)
+                node_id = e.target.parentNode.id.substr(7)
 
-                
+                // alert(node_id)
             } else {
-                coupon_info = $("#" + e.target.id);
-                node_id = e.target.id.substr(7);
+                coupon_info = $("#" + e.target.id)
+                node_id = e.target.id.substr(7)
                 // alert(node_id)
             }
-            confirm_choice = $("#confirm_" + node_id);
-            confirm_choice.toggle();
+            confirm_choice = $("#confirm_" + node_id)
+            confirm_choice.toggle()
             $("#description_" + node_id).toggle();
             // node_to_change.html(confirmation_selection)
 
         });
-//Quit the choice
+
         $(".no").click((e) => {
             console.log(confirm_choice)
             confirm_choice.toggle()
             $("#description_" + node_id).toggle();
         })
-//Confirm the choice
+
         $(".yes").click((e) => {
             redeem_id = $(e.target).attr("name");
-
+            
+            //redeem a coupon, the coupon is now available in my_profile page
             $.ajax({
                 type: "post",
                 url: "/coupon/redeem",
                 data: { "id": redeem_id },
                 dataType: "text",
                 success: function (response) {
-                    alert(response);
+                    alert(response)
                 },
                 error: function (xhr, ajaxOptions, thrownError) {
                     alert(xhr.status);
@@ -157,42 +161,30 @@
                 }
             })
 
+            
+
         });
 
 
-   
+
 
 
     </script>
-<!-- Reads username from database.-->
-            <script>
-                $(document).ready(function () {
-                    function say_hi() {
-                        $.get("/user_profile/getProfile", function (data, status) {
-                            $("#username").html(data.result[0].username);
-                            console.log("data.username===============");
-                            console.log(data);
-                        });
-                    } say_hi()
-
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+    <script>
+        $(document).ready(function () {
+            function say_hi() {
+                $.get("/user_profile/getProfile", function (data, status) {
+                    $("#username").html(data.result[0].username);
+                    console.log("data.username===============")
+                    console.log(data)
                 });
+            } say_hi()
 
-            </script>
-<!--Reads points from database.-->
-            <script>
-                $(document).ready(function () {
-                    function show_points() {
-                        $.get("/user_profile/getProfile", function (data, status) {
-                            $("#pointsofar").html(data.result[0].points);
-                            $("#pointofday").html(data.result[0].daily_task[0].points_earned_today);
-                            console.log("data.total===============");
-                            console.log(data);
-                        });
-                    } show_points()
+        });
 
-                });
-
-            </script>
+    </script>
+    <script src="/static/js/get_points.js"> </script>
 </body>
 
 </html>

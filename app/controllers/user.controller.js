@@ -50,7 +50,21 @@ exports.register = (req, res) => {
     res.redirect('/login');
 };
 
+var ObjectId = require('mongodb').ObjectID;
 exports.verify = (req, res) => {
+    // MongoClient.connect(dbConfig.url, function (err, db) {
+    //     console.log("n=================================")
+    //     console.log()
+    //     if (err) throw err;
+    //     var dbo = db.db("test");
+    //     dbo.collection("users").updateOne(
+    //         { daily_task_rec: { $elemMatch:  { _id: ObjectId(req.session.user_sid),date: { $lte: new Date() } } } },
+    //         { $set: { "daily_task_rec.$.user_id": req.session.user_id } },
+    //         { upsert: true }
+    //     )
+    //     res.end();
+    // })
+
     let usn = req.body.username;
     let successMsg = " login successful";
     let incorrectMsg = "password not correct";
@@ -100,7 +114,7 @@ exports.verify = (req, res) => {
             res.send(usrnameNotFoundMsg);
 
         }
-        res.end();
+       
 
     })
 
@@ -227,7 +241,7 @@ exports.knowledgeLike = function (req, res) {
 }
 
 
-var ObjectId = require('mongodb').ObjectID;
+
 exports.getProfile = function (req, res) {
     res.setHeader('Content-Type', 'application/json');
     MongoClient.connect(dbConfig.url, function (err, db) {
@@ -313,7 +327,8 @@ exports.getCoupon = (req, res) => {
             db.close();
             res.render(path + "coupon.ejs", {
                 coupons: result,
-                navbar: navbar_top_ejs,
+                // navbar: navbar_top_ejs,
+                navbar: undefined,
                 footer: footer
             });
             //    res.send( { result });
@@ -415,8 +430,8 @@ exports.viewOwnedCoupons = (req, res) => {
             }).limit(5).toArray(function (err, data) {
 
                 console.log(data)
-                res.render(path + "coupon.ejs",{
-                    
+                res.render(path + "coupon.ejs", {
+
                 })
             });
         });
@@ -512,14 +527,14 @@ exports.searchCoupon = (req, res) => {
     MongoClient.connect(dbConfig.url, function (err, db) {
 
         console.log("+++++++++++++++++++++++req.body[search_box]===============================")
-        
+
         // for (var i in req.body) {
-            let search_input =  req.body.serach_box
-            console.log(search_input)
-            let regex_input = ".*" + search_input +".*" 
-            let points_input = parseInt(req.body.serach_box)
-            console.log(regex_input)
-            console.log(points_input)
+        let search_input = req.body.serach_box
+        console.log(search_input)
+        let regex_input = ".*" + search_input + ".*"
+        let points_input = parseInt(req.body.serach_box)
+        console.log(regex_input)
+        console.log(points_input)
         // }
         console.log("+++++++++++++++++++++++req.SESSION===============================")
 
@@ -528,12 +543,12 @@ exports.searchCoupon = (req, res) => {
         if (err) throw err;
         var dbo = db.db("test");
         dbo.collection("coupons_available").find(
-            { $or:[{title:{$regex:regex_input}},{description :{$regex:regex_input}},{points : {$lte:points_input}}]  }
-             ).limit(5).toArray(function (err, result) {
+            { $or: [{ title: { $regex: regex_input } }, { description: { $regex: regex_input } }, { points: { $lte: points_input } }] }
+        ).limit(5).toArray(function (err, result) {
             if (err) throw err;
             console.log("gets back the result=================");
             console.log(result);
-                       
+
             db.close();
             // res.send(result)
             // res.redirect("/homepage")
@@ -567,50 +582,124 @@ exports.verifyAdmin = (req, res) => {
 
     MongoClient.connect(dbConfig.url, function (err, db) {
         if (err) throw err;
-        var dbo = db.db("test");
-        dbo.collection("admin").findOne({"username" : usn}).then(function (theUser) {
-        //if the user exists
-        if (theUser) {
-            //and the password corresponds to the username from the DB
-            if (theUser.toObject().password == req.body.password) {
-                console.log(theUser.toObject().username + successMsg)
-                req.session.user_sid = theUser.toObject()._id;
-                req.cookies.user_sid = theUser._id;
-                req.cookies.sub = "null";
-                res.cookie({
-                    "user_sid": theUser._id,
-                    "sub": "null"
-                })
-                console.log("res.cookies======================" + res.cookies)
-                // console.log("req.session.user_sid" + req.session.user_sid);
-                // res.send(successMsg);
-                console.log("redirecting to homepage----------")
-                res.redirect("/homepage")
-                // res.redirect("/homepage")
-                res.end()
-            }
-            //but the password was not right
-            else {
-                console.log(incorrectMsg)
-                res.send(incorrectMsg);
+        var dbo = db.db("admin");
+        dbo.collection("users").findOne({ "username": usn }).then(function (theUser) {
+            //if the user exists
+            if (theUser) {
+                //and the password corresponds to the username from the DB
+                if (theUser.toObject().password == req.body.password) {
+                    console.log(theUser.toObject().username + successMsg)
+                    req.session.user_sid = theUser.toObject()._id;
+                    req.cookies.user_sid = theUser._id;
+                    req.cookies.sub = "null";
+                    res.cookie({
+                        "user_sid": theUser._id,
+                        "sub": "null"
+                    })
+                    console.log("res.cookies======================" + res.cookies)
+                    // console.log("req.session.user_sid" + req.session.user_sid);
+                    // res.send(successMsg);
+                    console.log("redirecting to homepage----------")
+                    res.redirect("/homepage")
+                    // res.redirect("/homepage")
+                    res.end()
+                }
+                //but the password was not right
+                else {
+                    console.log(incorrectMsg)
+                    res.send(incorrectMsg);
+
+                }
+                //the user doesn't even exist
+            } else {
+                console.log(usrnameNotFoundMsg);
+
+                res.send(usrnameNotFoundMsg);
 
             }
-            //the user doesn't even exist
-        } else {
-            console.log(usrnameNotFoundMsg);
 
-            res.send(usrnameNotFoundMsg);
 
-        }
-        res.end();
+        })
 
     })
-
-})
 }
 
 
-exports.admin_coupon_management = (req,res)=>{
-        console.log("searching")
+exports.admin_coupon_management = (req, res) => {
+    console.log("searching")
 
+}
+
+exports.addPoints = (req, res, n) => {
+    res.setHeader('Content-Type', 'application/json');
+    MongoClient.connect(dbConfig.url, function (err, db) {
+        console.log("n=================================")
+        console.log(n)
+
+
+
+
+        if (err) throw err;
+        var dbo = db.db("test");
+        let id = parseInt(req.body["id"])
+        console.log(id)
+        console.log("^^^^^^^id")
+        dbo.collection("users").updateOne(
+            { _id: ObjectId(req.session.user_sid) },
+            { $inc: { points: n } },
+            { upsert: true }
+        )
+
+        dbo.collection("users").updateOne(
+            {
+                daily_task_rec: { $elemMatch: { "user_id": req.session.user_sid, date: { $lte: new Date() } } },
+            },
+            { $inc: { "daily_task_rec.$.points_earned_today": n } },
+            // { upsert: true }
+        )
+
+
+        //     dbo.collection("users").find({ "daily_task_rec": { $elemMatch :{ "user_id" :'5ebd0264a845395b60ce3d69'}}  
+        // }).toArray(function (err, result) {
+        //         console.log("array result------------------------")
+        //         console.log(result)
+        //         if (err) throw err;
+        //         db.close();
+        //     });
+
+
+
+        //     dbo.collection("users").find({ "daily_task_rec": { $elemMatch : {points_earned_today :0} } 
+        // }).toArray(function (err, result) {
+        //         console.log("array daily_task_rec------------------------")
+        //         console.log(result)
+        //         if (err) throw err;
+        //         db.close();
+        //     });
+
+
+
+
+
+
+
+
+        dbo.collection("users").find({
+            _id: ObjectId(req.session.user_sid)
+        }).toArray(function (err, result) {
+            console.log("req.session.result")
+            console.log(result)
+            console.log("req.session.user_sid")
+            console.log(req.session.user_sid)
+            if (err) throw err;
+            // console.log(result);
+
+            res.send("Nice, Congrats");
+            db.close();
+        });
+
+
+
+
+    });
 }

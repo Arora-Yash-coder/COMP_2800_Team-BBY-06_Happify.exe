@@ -11,95 +11,110 @@
 </head>
 
 <body>
-<!--    nav bar-->
     <%- navbar %>
     <div id='container'>
-<!--        header div-->
         <div id="header">
 
             <div id="greeting">
-                <p class='top' id="welcome">Welcome Back,</p>
-                <h1 class='username' id="username"></h1>
-                <p class='top' id="welcome">Choose a game to play</p>
-                
+                <!-- <p class='top' id="welcome">Welcome Back,</p> -->
+                <!-- <h1 class='username' id="username"></h1>
+                <p class='top' id="welcome">Choose a game to play</p> -->
+                <p class='top' id="welcome">Feel like playing a game? Choose a game to play</p>
             </div>
 
         </div>
         <div id='inner'>
-<!--            Stats div-->
+
             <div id="stats">
-            <h2>All points you earned: </h2>
+                <h2>All points you earned: </h2>
                 <h2 id='pointsofar'></h2>
                 <h2>You earned today: </h2>
                 <h2 id='pointofday'></h2>
                 <h2>
                 </h2>
             </div>
+            <!--
+            <div id="dailytask" onclick="window.location.href = '/daily_tasks' ">
+                <div id='dailytask1'>
+                    <h3 class="first">Finish Our Daily Challenges</h3>
+                </div>
+                <div id='dailytask2'>
+                    <div id='image1'>
+                        <img id="daily_task_img" src="/img/task2.png">
+                    </div>
+                </div>
+            </div>
+-->
 
+
+            <!--            <h1 style="color:violet;margin: 0;padding: 0;"> + </h1>-->
 
             <div id='inner'>
-                
-<!--Mini games selection-->
-            <div id="games1" onclick="window.location.href ='http://judaozhong.com:3001/game/chess' ">
-                <div id='games1_1'>
-                    <h1 class="first">Chess Game</h1>
+                <div id="games1" onclick="window.location.href ='http://judaozhong.com:3001/game/chess' ">
+                    <div id='games1_1'>
+                        <h1 class="first">Chess Game</h1>
+                    </div>
+                    <div id='games1_2'>
+                        <div id='image'>
+                            <img src="static/img/chess2.png">
+                        </div>
+                    </div>
+
+
+
+
                 </div>
-                <div id='games1_2'>
-                    <div id='image'>
-                        <img src="static/img/chess2.png">
+
+                <div id="games2" onclick="window.location.href = '/games/ttt'">
+                    <div id="games2_1">
+                        <h1 class="first">Tic Tac Toe</h1>
+                    </div>
+                    <div id="games2_2">
+                        <div id='image'>
+                            <img src="static/img/tic1.png">
+                        </div>
                     </div>
                 </div>
-
-
-
-
-            </div>
-
-            <div id="games2" onclick="window.location.href = '/games/ttt'">
-                <div id="games2_1">
-                    <h1 class="first">Tic Tac Toe</h1>
-                </div>
-                <div id="games2_2">
-                    <div id='image'>
-                        <img src="static/img/tic1.png">
+                <div id="games3"
+                    onclick="window.location.href = 'https://s3-us-west-2.amazonaws.com/arorayash.com/Project2/index.html'">
+                    <div id="games3_1">
+                        <h1 class="first">Snake Eater</h1>
                     </div>
-                </div>
-            </div>
-            <div id="games3"
-                onclick="window.location.href = 'https://s3-us-west-2.amazonaws.com/arorayash.com/Project2/index.html'">
-                <div id="games3_1">
-                    <h1 class="first">Snake Eater</h1>
-                </div>
-                <div id="games3_2">
-                    <div id='image'>
-                        <img src="static/img/snake2.png">
+                    <div id="games3_2">
+                        <div id='image'>
+                            <img src="static/img/snake2.png">
+                        </div>
                     </div>
+
                 </div>
+                <div id="games4" onclick="window.location.href = 'http://judaozhong.com:3002/zombie.html';">
 
-            </div>
-            <div id="games4" onclick="window.location.href = 'http://judaozhong.com:3002/zombie.html';">
-
-                <div id="games4_1">
-                    <h1 class="first">Shooter Game</h1>
-                </div>
-                <div id="games4_2">
-                    <div id='image'>
-
-                        <img src="static/img/game1.png">
+                    <div id="games4_1">
+                        <h1 class="first">Shooter Game</h1>
                     </div>
+                    <div id="games4_2">
+                        <div id='image'>
+
+                            <img src="static/img/game1.png">
+                        </div>
+                    </div>
+                    <br />
+
+
+
+
+
+
+
                 </div>
 
-
-
-
-
-
-
+                <button id="proceed" onclick="location.href='/coupon';">Proceed</button>
+                <button id="back" onclick="location.href='/daily_tasks';">Back</button>
             </div>
-            </div>
+
         </div>
     </div>
-<!--
+    <!--
             <div id="howdoyoufeeltoday" onclick="window.location.href = '/my_record';">
                 <div id="how1">
                     <h1 class="first">Check Record</h1>
@@ -112,43 +127,41 @@
 
             </div>
 -->
-            <%- footer %>
+    <%- footer %>
 
-        
-<!--Import the Jquery-->
-            <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
-    
-<!--Reads the username.-->
-            <script>
-                $(document).ready(function () {
-                    function say_hi() {
-                        $.get("/user_profile/getProfile", function (data, status) {
-                            $("#username").html(data.result[0].username);
-                            console.log("data.username===============")
-                            console.log(data)
-                        });
-                    } say_hi()
 
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+    <script>
+        $(document).ready(function () {
+            function say_hi() {
+                $.get("/user_profile/getProfile", function (data, status) {
+                    $("#username").html(data.result[0].username);
+                    console.log("data.username===============")
+                    console.log(data)
                 });
+            } say_hi()
 
-            </script>
-<!--    Reads the points earned today.-->
-            <script>
-                $(document).ready(function () {
-                    function show_points() {
-                        $.get("/user_profile/getProfile", function (data, status) {
-                            $("#pointsofar").html(data.result[0].points);
-                            $("#pointofday").html(data.result[0].daily_task[0].points_earned_today);
-                            console.log("data.total===============");
-                            console.log(data);
-                        });
-                    } show_points()
+        });
 
+    </script>
+    <script>
+        $(document).ready(function () {
+            function show_points() {
+                $.get("/user_profile/getProfile", function (data, status) {
+                   let pointstoday = data.result[0].daily_task_rec[data.result[0].daily_task_rec.length-1].points_earned_today
+                    $("#pointsofar").html(data.result[0].points);
+                    $("#pointofday").html(pointstoday);
+                    console.log("data.result[0].daily_task_rec================");
+                    ;
                 });
+            } show_points()
 
-            </script>
-            
-            <script src='/static/js/navbar_top.js'></script>
+        });
+
+    </script>
+
+    <script src='/static/js/navbar_top.js'></script>
 </body>
 
 </html>

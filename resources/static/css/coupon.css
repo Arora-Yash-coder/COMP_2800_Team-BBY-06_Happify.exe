@@ -1,10 +1,11 @@
 body {
     text-align: center;
     margin: 0;
-    background-image: url(../img/background.png);
+    background-image: url(/static/img/background.png);
     background-size: cover;
     
     color: #3AB795;
+    height: 100vh;
 }
 
 .square_btn_second {
@@ -36,20 +37,37 @@ body {
     display: grid;
     grid-template-columns: 50% 50%;
     color: #3AB795;
-
+    display: grid;
+    grid-template-rows: 50% 50%;
+    grid-template-columns: 50% 50%;
 }
-@media only screen and (max-width:400px) {
-    body{
-        height: 140vh;
-    }
-    .top {
+#description1{
+    grid-row: 1 / span 1;
+    grid-column: 1 / span 1;
+}
+
+#description2{
+    grid-row: 2 / span 1;
+    grid-column: 1 / span 1;
+}
+
+#pointsofar{
+   grid-row: 1 / span 1;
+   grid-column: 2 / span 1; 
+    
+}
+#pointofday{
+    grid-row: 2 / span 1;
+    grid-column: 2 / span 1;
+}
+.top {
         color: #3AB795;
         font-size: 13pt;
         font-weight: bold;
     }
 
 
-    .points {
+.points {
         color: #3AB795;
         margin-top: -10px;
         font-weight: bold;
@@ -90,62 +108,28 @@ body {
         grid-template-rows: 50% 50%;
         color: #3AB795;
     }
+
+body{
+        background-image: url(/static/img/background.png);
+        background-size: cover;    
+            
 }
-
-
-
-@media only screen and (min-width: 401px) {
-
-    .top {
+button {
+        background-color: white; /* Green */
+        border: 1px solid #3AB795;
         color: #3AB795;
-        font-size: 23pt;
-        font-weight: bold;
-    }
-
-    .points {
-        color: #3AB795;
-        margin-top: -10px;
-        font-weight: bold;
-        font-size: 23pt;
-    }
-
-    .coupons {
-        margin-left: 25px;
-        margin-right: 25px;
-        margin-top: 10px;
-        margin-bottom: 10px;
-        border-radius: 25px;
-        background-color: #FAC9B8;
-
-
-        color: #3AB795;
-    }
-
-
+        padding: 10px 24px;
+        text-align: center;
+        text-decoration: none;
+        display: inline-block;
+        font-size: 16px;
 }
-
-
-
-@media only screen and (min-width: 1024px) {
-    body{
-        height: 160vh;
-    }
-    .points {
-        color: #3AB795;
-        margin-top: -10px;
-        font-weight: bold;
-        font-size: 25pt;
-    }
-
-    .coupons {
-        margin-left: 25px;
-        margin-right: 25px;
-        margin-top: 10px;
-        margin-bottom: 10px;
-        border-radius: 25px;
-        background-color: #FAC9B8;
-        grid-template-rows: 50% 50%;
-        color: #3AB795;
-    }
-
+#proceed{
+            float: right;
+}
+#back{
+            float: left;
+}
+#footer{
+    color: black;
 }

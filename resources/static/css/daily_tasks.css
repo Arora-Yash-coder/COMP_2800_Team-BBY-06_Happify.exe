@@ -35,7 +35,7 @@
         margin: 0;
         background-image: url(../img/background.png);
         background-size: cover;
-        height:120vh;
+        /* height:100vh; */
 
       }
 
@@ -74,15 +74,15 @@
 
       #container {
 /*        display: grid;*/
-        grid-template-rows: 17% 72% 1%;
+        /* grid-template-rows: 17% 72% 1%; */
         height: 100vh;
 
       }
 
       #inner {
-        grid-row: 2 / span 1;
+        /* grid-row: 2 / span 1; */
 /*        display: grid;*/
-        grid-template-rows: 50% 50%;
+        /* grid-template-rows: 50% 50%; */
       }
 
       #dailytask {
@@ -105,17 +105,17 @@
         border-radius: 25px 0 0 25px;
 
 
-        grid-row: 1 / span 1;
+        /* grid-row: 1 / span 1; */
 
       }
 
       #selection {
-        margin-top: auto;
+        margin-top: 0;
         margin-bottom: auto;
         border-radius: 0 25px 25px 0;
 
 
-        grid-row: 2 / span 1;
+        /* grid-row: 2 / span 1; */
 
       }
 
@@ -126,10 +126,10 @@
         margin-top: 10px;
         margin-bottom: 10px;
         border-radius: 25px;
-        grid-row: 2 / span 1;
+        /* grid-row: 2 / span 1; */
         background-color: #FAC9B8;
-        display: grid;
-        grid-template-rows: 50% 50%;
+        /* display: grid; */
+        /* grid-template-rows: 50% 50%; */
         color: #3AB795;
       }
 
@@ -140,7 +140,7 @@
         border-radius: 25px 0 0 25px;
 
 
-        grid-row: 1 / span 1;
+        /* grid-row: 1 / span 1; */
 
       }
 
@@ -150,13 +150,13 @@
         border-radius: 0 25px 25px 0;
 
 
-        grid-row: 2 / span 1;
+        /* grid-row: 2 / span 1; */
 
       }
 
 
       #header {
-        grid-row: 1 / span 1;
+        /* grid-row: 1 / span 1; */
       }
 
       #greeting {

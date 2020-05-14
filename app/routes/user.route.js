@@ -3,7 +3,7 @@ module.exports = function (app) {
 	var path = __basedir + '/views/';
 	global.path = path;
 
-	
+
 
 	var subs;
 	var vKey;
@@ -90,7 +90,7 @@ module.exports = function (app) {
 		}
 	};
 
-	var sessionChecker2 = (req, res, next) =>{
+	var sessionChecker2 = (req, res, next) => {
 		if (!req.session || !req.cookies.user_sid) {
 			//if it is there, it would redirect to homepage
 			res.redirect("/login");
@@ -112,7 +112,7 @@ module.exports = function (app) {
 	// 	res.redirect("judaozhong.com:3001")
 	// })
 
-	app.get('/coupon',sessionChecker2, users.getCoupon);
+	app.get('/coupon', sessionChecker2, users.getCoupon);
 
 	// var body_ejs = fs.readFileSync(path + "components/homepage_body.ejs", 'utf-8');
 	var navbar_top_ejs = fs.readFileSync(path + "components/navbar_top.ejs", 'utf-8');
@@ -123,7 +123,7 @@ module.exports = function (app) {
 	var MongoClient = require('mongodb').MongoClient;
 	const dbConfig = require('../config/mongodb.config.js');
 	var ObjectId = require('mongodb').ObjectID;
-	app.get('/my_coupons', sessionChecker2,(req, res) => {
+	app.get('/my_coupons', sessionChecker2, (req, res) => {
 		// res.setHeader('Content-Type', 'application/json');
 		let coupon_id_array;
 		MongoClient.connect(dbConfig.url, function (err, db) {
@@ -142,7 +142,7 @@ module.exports = function (app) {
 					console.log(data)
 					res.end(res.render(path + "my_coupons.ejs", {
 						coupons: data,
-						navbar: navbar_top_ejs,
+						// navbar: navbar_top_ejs,
 						footer: footer
 					}));
 				});
@@ -151,7 +151,7 @@ module.exports = function (app) {
 	}
 
 	);
-	
+
 
 	app.get("/my_record", (req, res) => {
 		res.render(path + "my_record.ejs", {
@@ -160,31 +160,32 @@ module.exports = function (app) {
 		})
 	})
 
-	app.get("/user_profile",sessionChecker2, (req, res) => {
+	app.get("/user_profile", sessionChecker2, (req, res) => {
 		res.render(path + "user_profile.ejs", {
 			navbar: navbar_top_ejs,
 			footer: footer
 		})
 	})
-	
-	app.get("/about_us",(req,res)=>{
-		res.sendFile(staticPath +"about_us.html")
+
+	app.get("/about_us", (req, res) => {
+		res.sendFile(staticPath + "about_us.html")
 	})
 
 	//goes to the homepage 
 	app.get("/homepage", (req, res) => {
-		
+
 		res.render(path + "/homepage.ejs", {
 			navbar: navbar_top_ejs,
 			footer: footer
 		})
-		
+
 	})
 
 	//the minigame entrance
-	app.get("/minigames",sessionChecker2, (req, res) => {
+	app.get("/minigames", sessionChecker2, (req, res) => {
 		res.render(path + "games_selection.ejs", {
-			navbar: navbar_top_ejs,
+			// navbar: navbar_top_ejs,
+			navbar: undefined,
 			footer: footer
 		})
 	})
@@ -303,6 +304,13 @@ module.exports = function (app) {
 		res.sendFile(staticPath + "landing_page.html");
 	});
 
+	app.get('/add_points', (req, res) => {
+		users.addPoints(req, res, 10)
+
+
+
+	});
+
 
 
 	app.get('/reminder', (req, res) => {
@@ -332,224 +340,331 @@ module.exports = function (app) {
 	//============DBwork=====Tiffany=================================================
 
 	app.get('/daily_tasks', function (req, res) {
-		res.render(path + "daily_tasks_reader.ejs", {
-			navbar: navbar_top_ejs,
-			footer: footer
-		})
-	});
-
-
-
-
-
-	//tic tac toe connection, it runs on port 81
-	app.get("/games/ttt", (req, res) => {
-		res.sendFile(staticPath + "/ttt_game_entrance.html")
-	})
-
-	
-	
-	app.get("/games/snake", (req, res) => {
-		res.sendFile(staticPath + "/snake.html")
-	})
-
 		
-	app.get("/games/shooter", (req, res) => {
-		res.sendFile(staticPath + "/zombie.html")
-	})
-
-
-	app.route('/getDailyKnowledge').get(users.dailyKnowledge);
-
-	app.route('/getDailyTasks').get(users.dailyTasks);
-
-
-
-	app.route('/getDailyTasks/dislikeTask').post(users.taskDislike);
-	app.route('/getDailyTasks/likeTask').post(users.taskLike);
-
-	app.route('/getDailyTasks/dislikeKnowledge').post(users.knowledgeDislike);
-	app.route('/getDailyTasks/likeKnowledge').post(users.knowledgeLike);
-
-
-
-	app.route('/user_profile/getProfile').get(users.getProfile);
-
-	app.route('/user_profile/setProfile').post(users.setProfile);
-
-	//^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-
-
-
-	//=====================REGISTER PAGE=================================================================================
-	app.route('/register')
-		.get(sessionChecker, (req, res) => {
-			res.sendFile(staticPath + "signup.html");
-		})
-		.post((req, res) => {
-			//post to register
-			users.register
-				.then(user => {
-					req.session.user = user.dataValues;
-					console.log("req.session.user ???????? " + req.session.user)
-					res.redirect('/');
-				})
-				.catch(error => {
-					console.log(error)
-					res.redirect('/register');
-					res.redirect('/');
-				});
-		});
-
-	app.route('/login')
-		.get(sessionChecker, (req, res) => {
-			res.sendFile(staticPath + 'login.html');
-		})
-
-	// route for user logout
-	app.get('/logout', (req, res) => {
-		
-			res.clearCookie('user_sid');
-			req.session = null;
-			res.redirect('/login');
-		
-	});
-
-
-	
-
-	// Save a User to MongoDB
-	app.post('/api/users/register', users.register);
-
-	// Retrieve all Users
-	app.get('/api/users/all', users.findAll);
-	//check if the user is allowed to log in.
-	app.post('/api/users/verify', users.verify);
-
-	//the link to post and search for a coupon
-	app.post('/coupon/search', users.searchCoupon)
-
-	app.post("/getKey", (req, res) => {
-		res.send('BHzTemBBukw8OY7qXGqtXPPIGSr-TyACw3rNEcmsBTx2gEJQ2YECWff5oBMb9fRss7vhn3a6ATNxucmb52zHM2U')
-	})
-
-	//imported for dealing with submitted pictures
-	var formidable = require('formidable');
-
-	app.post("/check_time",(req,res)=>{
-		console.log("time should be in here++++++++++++++++++++++++++++++")
-		let client_timestamp =  Date.parse(req.body.d)
-		let server_timestamp =  Date.now();
-
-		//if the client time exceeds 5am
-		//and the client has not done all the tasks
-			//go and find the stuff in the db.
-				//in the result array, look for those with "true" -> render differently
-				//                     look for those with "false"-> render normally
-
-		if(client_timestamp > server_timestamp+3600*1000*12 || client_timestamp < server_timestamp - 3600*1000*12){
-			console.log("the user is trying to cheat!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!")
-		}
-		else{
-			console.log("the user is finishing all the tasks")
-		}
-	})
-
-	app.post('/upload_avatar', function (req, res) {
-		var form = new formidable.IncomingForm();
-		console.log("about to parse");
-		console.log("form=========");
-		console.log(form);
-		form.parse(req, function (error, fields, files) {
-			console.log("parsing done");
-			console.log(files.upload.path);
-			console.log("===============req.session.user_sid===============")
-			console.log(req.session.user_sid)
-			if (req.session.user_sid != undefined && req.session != null) {
-				let dir = "resources/" + req.session.user_sid;
-
-				if (!fs.existsSync(dir)) {
-					fs.mkdirSync(dir);
-				}
-				if (fs.existsSync(dir)) {
-					fs.writeFileSync(dir + "/avatar.png", fs.readFileSync(files.upload.path));
-					res.redirect("/user_profile");
-				}
-			} else {
-				res.redirect("/checkstatus")
-			}
-		});
-	});
-	
-	app.get('/admin', (req, res) => {
-		res.render(path + "admin_verify.ejs");
-	});
-
-	app.get('/admin_home', (req, res) => {
-		res.render(path + "admin_home.ejs");
-	});
-
-	app.get('/admin_coupon', (req, res) => {
-		 console.log("searching")
-		 MongoClient.connect(dbConfig.url, function (err, db) {
-			if (err) throw err;
-			var dbo = db.db("test");
-			dbo.collection("coupons_available").find({}).toArray(function (err, result) {
-				if (err) throw err;
-				console.log("================result=====================");
-				console.log(result);
-				let render = []
-				console.log(result.length);
-				for (var i = 0; i < result.length; i++) {
-					render.push(result[i])
-				}
-				console.log("render--------------------")
-				console.log(render)
-	
-				db.close();
-				res.render(path + "admin_coupon.ejs", { todolist: render });
-				console.log("RENDERED===================================");
-			});
-			// res.render("pages/index", { todolist: render });
-		});
-	});
-
-	app.post('api/users/admin', (req, res) => {
-		users.verifyAdmin
-	});
-
-	app.post('/coupon/add', (req, res) => {
-		console.log(req.body)
-	});
-
-	app.post("/coupon/delete",(req,res)=>{
-		ids_to_delete = req.body["checked[]"]
-		ids = []
-		for(var each in ids_to_delete){
-			
-			ids.push(parseInt( ids_to_delete[each]))
-		}
-		console.log(ids)
+		let user = null;
+		//indicating how many items left to be added into the array
+		let n_to_go = 0;
+		//used to store the upcoming tasks' ids
+		let go_ahead = []
 		MongoClient.connect(dbConfig.url, function (err, db) {
 			if (err) throw err;
 			var dbo = db.db("test");
+			dbo.collection("users").findOne({
+				_id: ObjectId(req.session.user_sid)
+			}).then(result => {
+				//if the user exists
+				if (result) {
+					//if the user has not yet finished the tasks
+					if (result.daily_task_rec[0].finished_id.length != 0) {
+						//the array is needed afterwards
+						go_ahead = result.daily_task_rec[0].finished_id;
+						//the number of stuff to go
+						n_to_go = 3 - go_ahead.length;
+					}else{
+						n_to_go = 3
+						go_ahead = [0]
+					}
+				}
+			}).then(()=>{})
 
-			dbo.collection("coupons_available").remove(
+			let added_item = []
+			//find those that's not in the done list
+			dbo.collection("daily_tasks").find({
+				"id" :{$nin: go_ahead}
+			}).limit(n_to_go).toArray( (err, daily_tasks) => { 
+
+				console.log("go_ahead")
+				console.log(go_ahead)
+				console.log("n_to_go")
+				console.log(n_to_go)
+				console.log("daily_tasks")
+				console.log(daily_tasks)
+
+			
+				for(var i in daily_tasks){
+					added_item.push(daily_tasks[i].id)
+				} 
+				console.log("=============added===daily_tasks===========================")
+				console.log(added_item)
+
+				res.render(path + "daily_tasks.ejs", {
+					navbar: undefined,
+					todolist: daily_tasks,
+					todo_item: daily_tasks,
+					footer: footer
+				})
+			})
+
+			dbo.collection("users").updateOne(
+				{ _id: ObjectId(req.session.user_sid) },
 				{
-					id: { $in: ids }
-			}
-	
+					$push: { daily_task_archived: {$each :added_item} }
+				},
+				{ new: true ,upsert:true  }
+
 			)
+
+			for(var i in added_item){
+				console.log("==========================added_item[i]")
+				console.log(added_item[i])
+			
+			} 
+			
+			db.close();
+
 		});
 
 
+
+
+
+
+
+		
+	});
+
+
+
+
+
+
+
+
+
+	// let daily_tasks = [];
+	// MongoClient.connect(dbConfig.url, function (err, db) {
+	// 	if (err) throw err;
+	// 	var dbo = db.db("test");
+	// 	dbo.collection("daily_tasks").find({}).toArray(function (err, result) {
+	// 		if (err) throw err;
+	// 		console.log(result);
+	// 		daily_tasks = result;
+	// 		db.close();
+	// 		// _reader
+	// 		res.render(path + "daily_tasks.ejs", {
+	// 			navbar: undefined,
+	// 			todolist: daily_tasks,
+	// 			todo_item: daily_tasks,
+	// 			footer: footer
+	// 		})
+	// 	});
+	// });
+
+
+// });
+
+
+
+
+
+//tic tac toe connection, it runs on port 81
+app.get("/games/ttt", (req, res) => {
+	res.sendFile(staticPath + "/ttt_game_entrance.html")
+})
+
+
+
+app.get("/games/snake", (req, res) => {
+	res.sendFile(staticPath + "/snake.html")
+})
+
+
+app.get("/games/shooter", (req, res) => {
+	res.sendFile(staticPath + "/zombie.html")
+})
+
+
+app.route('/getDailyKnowledge').get(users.dailyKnowledge);
+
+app.route('/getDailyTasks').get(users.dailyTasks);
+
+
+
+app.route('/getDailyTasks/dislikeTask').post(users.taskDislike);
+app.route('/getDailyTasks/likeTask').post(users.taskLike);
+
+app.route('/getDailyTasks/dislikeKnowledge').post(users.knowledgeDislike);
+app.route('/getDailyTasks/likeKnowledge').post(users.knowledgeLike);
+
+
+
+app.route('/user_profile/getProfile').get(users.getProfile);
+
+app.route('/user_profile/setProfile').post(users.setProfile);
+
+//^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+
+
+//=====================REGISTER PAGE=================================================================================
+app.route('/register')
+	.get(sessionChecker, (req, res) => {
+		res.sendFile(staticPath + "signup.html");
+	})
+	.post((req, res) => {
+		//post to register
+		users.register
+			.then(user => {
+				req.session.user = user.dataValues;
+				console.log("req.session.user ???????? " + req.session.user)
+				res.redirect('/');
+			})
+			.catch(error => {
+				console.log(error)
+				res.redirect('/register');
+				res.redirect('/');
+			});
+	});
+
+app.route('/login')
+	.get(sessionChecker, (req, res) => {
+		res.sendFile(staticPath + 'login.html');
 	})
 
+// route for user logout
+app.get('/logout', (req, res) => {
+
+	res.clearCookie('user_sid');
+	req.session = null;
+	res.redirect('/login');
+
+});
 
 
-	app.use('*', (req, res) => {
-		res.sendFile(path + "404.html");
+
+
+// Save a User to MongoDB
+app.post('/api/users/register', users.register);
+
+// Retrieve all Users
+app.get('/api/users/all', users.findAll);
+//check if the user is allowed to log in.
+app.post('/api/users/verify', users.verify);
+
+//the link to post and search for a coupon
+app.post('/coupon/search', users.searchCoupon)
+
+app.post("/getKey", (req, res) => {
+	res.send('BHzTemBBukw8OY7qXGqtXPPIGSr-TyACw3rNEcmsBTx2gEJQ2YECWff5oBMb9fRss7vhn3a6ATNxucmb52zHM2U')
+})
+
+//imported for dealing with submitted pictures
+var formidable = require('formidable');
+
+app.post("/check_time", (req, res) => {
+	console.log("time should be in here++++++++++++++++++++++++++++++")
+	let client_timestamp = Date.parse(req.body.d)
+	let server_timestamp = Date.now();
+
+	//if the client time exceeds 5am
+	//and the client has not done all the tasks
+	//go and find the stuff in the db.
+	//in the result array, look for those with "true" -> render differently
+	//                     look for those with "false"-> render normally
+
+	if (client_timestamp > server_timestamp + 3600 * 1000 * 12 || client_timestamp < server_timestamp - 3600 * 1000 * 12) {
+		console.log("the user is trying to cheat!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!")
+	}
+	else {
+		console.log("the user is finishing all the tasks")
+	}
+})
+
+app.post('/upload_avatar', function (req, res) {
+	var form = new formidable.IncomingForm();
+	console.log("about to parse");
+	console.log("form=========");
+	console.log(form);
+	form.parse(req, function (error, fields, files) {
+		console.log("parsing done");
+		console.log(files.upload.path);
+		console.log("===============req.session.user_sid===============")
+		console.log(req.session.user_sid)
+		if (req.session.user_sid != undefined && req.session != null) {
+			let dir = "resources/" + req.session.user_sid;
+
+			if (!fs.existsSync(dir)) {
+				fs.mkdirSync(dir);
+			}
+			if (fs.existsSync(dir)) {
+				fs.writeFileSync(dir + "/avatar.png", fs.readFileSync(files.upload.path));
+				res.redirect("/user_profile");
+			}
+		} else {
+			res.redirect("/checkstatus")
+		}
 	});
+});
+
+app.get('/admin', (req, res) => {
+	res.render(path + "admin_verify.ejs");
+});
+
+app.get('/admin_home', (req, res) => {
+	res.render(path + "admin_home.ejs");
+});
+
+app.get('/admin_coupon', (req, res) => {
+	console.log("searching")
+	MongoClient.connect(dbConfig.url, function (err, db) {
+		if (err) throw err;
+		var dbo = db.db("test");
+		dbo.collection("coupons_available").find({}).toArray(function (err, result) {
+			if (err) throw err;
+			console.log("================result=====================");
+			console.log(result);
+			let render = []
+			console.log(result.length);
+			for (var i = 0; i < result.length; i++) {
+				render.push(result[i])
+			}
+			console.log("render--------------------")
+			console.log(render)
+
+			db.close();
+			res.render(path + "admin_coupon.ejs", { todolist: render });
+			console.log("RENDERED===================================");
+		});
+		// res.render("pages/index", { todolist: render });
+	});
+});
+
+app.post('api/users/admin', (req, res) => {
+	users.verifyAdmin
+});
+
+app.post('/coupon/add', (req, res) => {
+	console.log(req.body)
+});
+
+app.post("/coupon/delete", (req, res) => {
+	ids_to_delete = req.body["checked[]"]
+	ids = []
+	for (var each in ids_to_delete) {
+
+		ids.push(parseInt(ids_to_delete[each]))
+	}
+	console.log(ids)
+	MongoClient.connect(dbConfig.url, function (err, db) {
+		if (err) throw err;
+		var dbo = db.db("test");
+
+		dbo.collection("coupons_available").remove(
+			{
+				id: { $in: ids }
+			}
+
+		)
+	});
+
+
+})
+
+
+
+app.use('*', (req, res) => {
+	res.sendFile(path + "404.html");
+});
 
 
 
