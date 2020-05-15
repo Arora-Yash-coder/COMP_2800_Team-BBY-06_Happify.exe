@@ -4,27 +4,31 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="stylesheet" type="text/css" href="/static/css/navbar.css">
 <!--  <link rel="stylesheet" type="text/css" href="/static/css/daily_tasks.css">-->
   
   <title>Daily tasks</title>
+  <link rel="icon" type="image/png" href="static/favicon-32x32.png">
   <style>
+    html{
+      font-family: Arial, Helvetica, sans-serif;
+    }
     input {
         background-color: white; /* Green */
         border: 1px solid #3AB795;
-        color: #3AB795;
+        color: black;
         padding: 10px 24px;
         text-align: center;
         text-decoration: none;
         display: inline-block;
         font-size: 16px;
+        
     }
     
       .square_btn {
         display: inline-block;
         padding: 0.3em 1em;
         text-decoration: none;
-        color: #3AB795;
+        color: rgb(26, 129, 102);
         border: solid 2px #3AB795;
         border-radius: 3px;
         transition: .4s;
@@ -39,7 +43,7 @@
         display: inline-block;
         padding: 0.3em 1em;
         text-decoration: none;
-        color: #3AB795;
+        color: rgb(26, 129, 102);
         border: solid 2px #3AB795;
         border-radius: 3px;
         transition: .4s;
@@ -56,7 +60,7 @@
         background-image: url(./static/background.png);
         background-size: cover;
         height:120vh;
-        color:#3AB795;
+        color:rgb(26, 129, 102);
       }
 
       img {
@@ -96,7 +100,6 @@
 /*        display: grid;*/
         grid-template-rows: 17% 72% 1%;
         height: 100vh;
-
       }
 
       #inner {
@@ -106,8 +109,8 @@
       }
 
       #dailytask {
-        margin-left: 25px;
-        margin-right: 25px;
+        margin-left: auto;
+        margin-right: auto;
         margin-top: 10px;
         margin-bottom: 10px;
         border-radius: 25px;
@@ -115,34 +118,30 @@
         grid-row: 1 / span 1;
         display: grid;
         grid-template-rows: 50% 50%;
-        color: #3AB795;
+        color: rgb(26, 129, 102);
+        width: 700px;
+        border: 2px solid gray;
       }
 
       #dailytask1 {
-        padding: 15px;
+        padding: 30px;
         margin-top: auto;
         margin-bottom: auto;
         border-radius: 25px 0 0 25px;
-
-
         grid-row: 1 / span 1;
-
       }
 
       #selection {
         margin-top: auto;
         margin-bottom: auto;
         border-radius: 0 25px 25px 0;
-
-
         grid-row: 2 / span 1;
-
       }
 
 
       #knowledge {
-        margin-left: 25px;
-        margin-right: 25px;
+        margin-left: auto;
+        margin-right: auto;
         margin-top: 10px;
         margin-bottom: 10px;
         border-radius: 25px;
@@ -150,7 +149,9 @@
         background-color: #FAC9B8;
         display: grid;
         grid-template-rows: 50% 50%;
-        color: #3AB795;
+        color: rgb(26, 129, 102);
+        width: 700px;
+        border: 2px solid gray;
       }
 
       #knowledge1 {
@@ -158,26 +159,20 @@
         margin-top: auto;
         margin-bottom: auto;
         border-radius: 25px 0 0 25px;
-
-
         grid-row: 1 / span 1;
-
       }
 
       #selection2 {
         margin-top: auto;
         margin-bottom: auto;
         border-radius: 0 25px 25px 0;
-
-
         grid-row: 2 / span 1;
-
       }
 
 
       #story {
-        margin-left: 25px;
-        margin-right: 25px;
+        margin-left: auto;
+        margin-right: auto;
         margin-top: 10px;
         margin-bottom: 10px;
         border-radius: 25px;
@@ -185,44 +180,53 @@
         grid-row: 1 / span 1;
         display: grid;
         grid-template-rows: 50% 50%;
-        color: #3AB795;
+        color: rgb(26, 129, 102);
+        width: 700px;
+        border: 2px solid gray;
       }
 
       #story1 {
-        padding: 15px;
+        padding: 30px;
         margin-top: auto;
         margin-bottom: auto;
         border-radius: 25px 0 0 25px;
-
-
         grid-row: 1 / span 1;
-
       }
 
       #selection3 {
         margin-top: auto;
         margin-bottom: auto;
         border-radius: 0 25px 25px 0;
-
-
         grid-row: 2 / span 1;
-
       }
       #header {
         grid-row: 1 / span 1;
       }
 
       #greeting {
+        background-color: rgb(250,201,184, 0.5); 
         color: #EF629F;
+        border: 2px solid gray;
+        border-radius: 25px;
+        margin-left: auto;
+        margin-right: auto;
+        width: 700px;
       }
-    
+      .step{
+        float: right;
+        color: black;
+        margin: 5px;
+        border: 2px solid gray;
+        background-color: white;
+        border-radius: 2px;
+      }
   </style>
 </head>
 
 <body>
   <div id='container'>
     <div id="header">
-      <div style="float: right">Step 1 of 3</div>
+      <div class="step">Step 1 of 3</div>
         <br>
       <div id="greeting">
         <p class='top'>Daily tasks</p>
@@ -260,15 +264,10 @@
           <a class="square_btn_second" class="dislike" id="knowledge_dislike">I don't like it!</a>
         </div>
       </div>
-        
-        
-        
-        
-
     </div>
  <form action="D:\BCIT Term2 Work\Workflow of the day\deploy - Copy\public\Flow_mini_games.html">
     
-    <input type="submit" value="Proceed" style="float: right">
+    <input type="submit" value="Proceed" style="float: right; margin-right: 10px;border-radius: 2px;">
     </form>
   </div>
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>

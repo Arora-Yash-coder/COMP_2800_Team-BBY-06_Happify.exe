@@ -4,7 +4,7 @@ body {
     background-image: url(../img/background.png);
     background-size: cover;
     
-    color: #3AB795;
+    color: rgb(26, 129, 102);
 }
 
 .square_btn_second {
@@ -26,8 +26,8 @@ body {
     background-color: #FAC9B8;
 }
 #stats {
-    margin-left: 25px;
-    margin-right: 25px;
+    margin-left: auto;
+    margin-right: auto;
     margin-top: 10px;
     margin-bottom: 10px;
 /*    border-radius: 25px;*/
@@ -35,9 +35,30 @@ body {
     background-color: #FAC9B8;
     display: grid;
     grid-template-columns: 50% 50%;
-    color: #3AB795;
-
+    color: rgb(26, 129, 102);
+    width: 90%;
+    border: 2px solid gray;
+    border-radius: 2px;
 }
+.step{
+    float: right;
+    color: black;
+    margin: 5px;
+    border: 2px solid gray;
+    background-color: white;
+    border-radius: 2px;
+  }
+  #search{
+    background-color: white; 
+    border: 1px solid #3AB795;
+    color: black;;
+    padding: 6px 20px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    border-radius: 2px;
+  }
 @media only screen and (max-width:400px) {
     body{
         height: 140vh;

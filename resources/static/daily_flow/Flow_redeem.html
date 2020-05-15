@@ -7,29 +7,31 @@
 <!--    <link rel="stylesheet" type="text/css" href="/static/css/navbar.css">-->
     <title>Coupon Page</title>
     <link rel="stylesheet" type="text/css" href="./static/coupon.css">
+    <link rel="icon" type="image/png" href="static/favicon-32x32.png">
     <style>
     body{
         background-image: url(./static/background.png);
         background-size: cover;    
-            
+        font-family: Arial, Helvetica, sans-serif;   
         }
     input {
         background-color: white; /* Green */
         border: 1px solid #3AB795;
-        color: #3AB795;
+        color: black;;
         padding: 10px 24px;
         text-align: center;
         text-decoration: none;
         display: inline-block;
         font-size: 16px;
+        border-radius: 2px;
     }
+    
     </style>
 </head>
 
 <body>
-   <div style="float: right">Step 3 of 3</div>
+   <div class="step">Step 3 of 3</div>
     <br>
-    
     <h1>Choose coupons to redeem</h1>
 <div id="stats">
     <h2>Congratulations! Now you can choose your coupons by clicking on them!</h2>
@@ -42,7 +44,8 @@
                 </h2>
             </div>
     <div id="search_function"><input id="search_box" type="text" placeholder="Coupon title or description">
-            <button id="search">search</button></div>
+            <button id="search">search</button>
+        </div>
     <div id='container'>
 
 
@@ -71,11 +74,11 @@
 
 <form action="D:\BCIT Term2 Work\Workflow of the day\deploy - Copy\public\Flow_mini_games.html">
     
-    <input type="submit" value="Back" style="float: left">
+    <input type="submit" value="Back" style="float: left; margin-left: 10px;">
     </form>
     <form action="D:\BCIT Term2 Work\Workflow of the day\deploy - Copy\public\Flow_final.html">
     
-    <input type="submit" value="Proceed" style="float: right">
+    <input type="submit" value="Proceed" style="float: right; margin-right: 10px;">
     </form>
 
     </div>

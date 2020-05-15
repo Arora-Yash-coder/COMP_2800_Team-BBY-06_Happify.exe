@@ -6,7 +6,7 @@
             background-image: url(./background.png);
             background-size: cover;
             height: 140vh;
-            
+            font-family: Arial, Helvetica, sans-serif;
         }
         img {
             object-fit: contain;

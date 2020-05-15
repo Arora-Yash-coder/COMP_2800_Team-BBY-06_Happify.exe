@@ -6,26 +6,33 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" type="text/css" href="./static/game_selection.css">
 <!--    <link rel="stylesheet" type="text/css" href="/static/css/navbar.css">-->
+    <link rel="icon" type="image/png" href="static/favicon-32x32.png">
     <title>Mini Games!</title>
     <style>
     input {
         background-color: white; /* Green */
         border: 1px solid #3AB795;
-        color: #3AB795;
+        color: black;
         padding: 10px 24px;
         text-align: center;
         text-decoration: none;
         display: inline-block;
         font-size: 16px;
+        border-radius: 2px;
     }
-    
-    
-    
+    .step{
+        float: right;
+        color: black;
+        margin: 5px;
+        border: 2px solid gray;
+        background-color: white;
+        border-radius: 2px;
+      }
     </style>
 </head>
 
 <body>
-    <div id = "step" style="float: right; color:#3AB795;">Step 2 of 3</div>
+    <div class = "step">Step 2 of 3</div>
     <br>
     <div id='container'>
         <div id="header">
@@ -34,9 +41,11 @@
 <!--
                 <p class='top' id="welcome">Welcome Back,</p>
                 <h1 class='username' id="username"></h1>
--->
-                <p class='top' id="welcome">Feel like playing a game? Choose a game to play</p>
-                
+-->             
+                <div class="top">
+                <p id="welcome">Feel like playing a game?</p>
+                <p id="welcome">Choose one of the game below</p>
+                </div>
             </div>
 
         </div>
@@ -107,31 +116,25 @@
             <div id="games4" onclick="window.location.href = 'http://judaozhong.com:3002/zombie.html';">
 
                 <div id="games4_1">
-                    <h1 class="first">Shooter Game</h1>
+                    <h1 class="first">Virus0</h1>
                 </div>
                 <div id="games4_2">
                     <div id='image'>
 
-                        <img src="./static/game1.png">
+                        <img src="./static/virus.png">
                     </div>
                 </div>
-
-
-
-
-
-
 
             </div>
             </div>
         </div>
         <form action="D:\BCIT Term2 Work\Workflow of the day\deploy - Copy\public\Flow_redeem.html">
     
-    <input type="submit" value="Proceed" style="float: right">
+    <input type="submit" value="Proceed" style="float: right; margin-right: 10px; border-radius: 2px;">
     </form>
     <form action="D:\BCIT Term2 Work\Workflow of the day\deploy - Copy\public\Flow_daily_tasks.html">
     
-    <input type="submit" value="Back" style="float: left">
+    <input type="submit" value="Back" style="float: left; margin-left: 10px; border-radius: 2px;">
     </form>
     </div>
     

@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Welcome!</title>
+    <link rel="icon" type="image/png" href="img/favicon-32x32.png">
+</head>
+<style>
+    body,
+    html {
+        height: 100%;
+        margin: 0;
+        font-family: Arial, Helvetica, sans-serif;
+    }
+
+    .bg {
+        background-image: url("background.png");
+        height: 100%;
+        background-position: center;
+        background-repeat: no-repeat;
+        background-size: cover;
+        filter: blur(4px);
+    }
+
+    .cont {
+        display: grid;
+        grid-template-columns: auto;
+        margin: 10px;
+        padding: 10px;
+        width: 500px;
+        height: 100px;
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    .item {
+        border: solid;
+        border-color: gray;
+        text-align: center;
+    }
+
+    .title {
+        text-align: center;
+
+        
+            background-color: rgb(0, 0, 0);
+            /* Fallback color */
+            background-color: rgba(0, 0, 0, 0.4);
+            /* Black w/opacity/see-through */
+            color: white;
+            font-weight: bold;
+            border: 3px solid #f1f1f1;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            z-index: 2;
+            width: 80%;
+            padding: 20px;
+    }
+    .text{
+        text-align: center;
+    }
+</style>
+
+<body>
+    <div class="bg"> </div>
+    <div class="title">
+        <img src="logo.png">
+        <h1>The Hapify</h1>
+    </div>
+    <h2 class="text">Welcome to Happify</h2>
+    <h2 class="text">Let's get started with the daily tasks for today!</h2>
+    <div class="cont"><a href="#">
+        <div class="item">
+            <p>Daily Tasks</p>
+        </div>
+    </a></div>
+</body>
+
+</html>

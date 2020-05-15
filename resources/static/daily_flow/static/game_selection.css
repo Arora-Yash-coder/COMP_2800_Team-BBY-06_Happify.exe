@@ -3,8 +3,8 @@ body {
     background-size: cover;
     text-align: center;
     margin: 0;
+    font-family: Arial, Helvetica, sans-serif;
 }
-
 img {
     object-fit: contain;
     max-width: 90%;
@@ -16,11 +16,13 @@ img {
 
 #welcome{
     padding: 1px;
-    margin: 0;
+    margin-left: auto;
+    margin-right: auto;
+    
 }
 
 .first {
-    color: #3AB795;
+    color: rgb(26, 129, 102);
 
 }
 
@@ -30,7 +32,7 @@ img {
 }
 
 .top {
-    color: #3AB795;
+    color: rgb(26, 129, 102);
     font-size: 20pt;
     font-weight: bold;
     margin-bottom: 10px;
@@ -55,8 +57,8 @@ img {
     
 }
 #stats {
-    margin-left: 25px;
-    margin-right: 25px;
+    margin-left: auto;
+    margin-right: auto;
     margin-top: 10px;
     margin-bottom: 10px;
 /*    border-radius: 25px;*/
@@ -64,12 +66,14 @@ img {
     background-color: #FAC9B8;
     display: grid;
     grid-template-columns: 50% 50%;
-    color: #3AB795;
-
+    color: rgb(26, 129, 102);
+    border: 2px solid gray;
+    border-radius: 2px;
+    width: 80%;
 }
 #games1 {
-    margin-left: 25px;
-    margin-right: 25px;
+    margin-left: auto;
+    margin-right: auto;
     margin-top: 10px;
     margin-bottom: 10px;
     border-radius: 25px;
@@ -77,32 +81,27 @@ img {
     grid-row: 1 / span 1;
     display: grid;
     grid-template-columns: 50% 50%;
-    color:#EF629F;
+    border: 2px solid gray;
+    width: 75%;
 }
 
 #games1_1 {
     margin-top: auto;
     margin-bottom: auto;
     border-radius: 25px 0 0 25px;
-
-
     grid-column: 1 / span 1;
-
 }
 
 #games1_2 {
     margin-top: auto;
     margin-bottom: auto;
     border-radius: 0 25px 25px 0;
-
-
     grid-column: 2 / span 1;
-
 }
 
 #games2 {
-    margin-left: 25px;
-    margin-right: 25px;
+    margin-left: auto;
+    margin-right: auto;
     margin-top: 10px;
     margin-bottom: 10px;
     border-radius: 25px;
@@ -110,17 +109,15 @@ img {
     background-color: #FAC9B8;
     display: grid;
     grid-template-columns: 50% 50%;
-    color:#EF629F;
+    border: 2px solid gray;
+    width: 75%;
 }
 
 #games2_1 {
     margin-top: auto;
     margin-bottom: auto;
     border-radius: 25px 0 0 25px;
-
-
     grid-column: 1 / span 1;
-
 }
 
 #games2_2 {
@@ -134,8 +131,8 @@ img {
 }
 
 #games3 {
-    margin-left: 25px;
-    margin-right: 25px;
+    margin-left: auto;
+    margin-right: auto;
     margin-top: 10px;
     margin-bottom: 10px;
     border-radius: 25px;
@@ -143,7 +140,8 @@ img {
     grid-row: 3 / span 1;
     display: grid;
     grid-template-columns: 50% 50%;
-
+    border: 2px solid gray;
+    width: 75%;
 }
 
 #games3_1 {
@@ -167,8 +165,8 @@ img {
 }
 
 #games4 {
-    margin-left: 25px;
-    margin-right: 25px;
+    margin-left: auto;
+    margin-right: auto;
     margin-top: 10px;
     margin-bottom: 10px;
     border-radius: 25px;
@@ -176,6 +174,8 @@ img {
     grid-row: 4 / span 1;
     display: grid;
     grid-template-columns: 50% 50%;
+    border: 2px solid gray;
+    width: 75%;
 }
 
 #games4_1 {
