@@ -28,11 +28,12 @@
     "express": "^4.17.1",
     "express-session": "^1.17.1",
     "formidable": "^1.2.2",
+    "jquery": "^3.5.1",
     "jsdom": "^16.2.2",
     "mongodb": "^3.5.7",
     "mongoose": "^5.9.11",
     "morgan": "^1.10.0",
-    "nodemon": "^2.0.3",
+    "nodemon": "^2.0.4",
     "serve-favicon": "^2.5.0",
     "stockfish": "^10.0.2",
     "web-push": "^3.4.3"

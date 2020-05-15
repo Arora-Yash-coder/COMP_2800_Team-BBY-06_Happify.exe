@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-<!--    <meta name="viewport" content="width=device-width, initial-scale=1.0">-->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     
   <title>Tic-Tac-Toeeee</title>
     <link rel="stylesheet" type="text/css" href="/static/css/navbar.css">
@@ -71,32 +71,6 @@
         <div id='footer'>Made by FutureCurves.</div>
     </div>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
-    <script>
-                $(document).ready(function () {
-                    function say_hi() {
-                        $.get("/user_profile/getProfile", function (data, status) {
-                            $("#username").html(data.result[0].username);
-                            console.log("data.username===============")
-                            console.log(data)
-                        });
-                    } say_hi()
-
-                });
-
-    </script>
-    <script>
-                $(document).ready(function () {
-                    function show_points() {
-                        $.get("/user_profile/getProfile", function (data, status) {
-                            $("#pointsofar").html(data.result[0].points);
-                            $("#pointofday").html(data.result[0].daily_task[0].points_earned_today);
-                            console.log("data.total===============");
-                            console.log(data);
-                        });
-                    } show_points()
-
-                });
-
-    </script>
+    <script src="/static/js/ttt_game_entrance.js"></script>
 </body>
 </html>

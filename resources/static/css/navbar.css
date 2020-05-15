@@ -9,7 +9,6 @@
 
 .list {
     float: left;
-    font-size: 15pt;
 }
 
 .list a {
@@ -24,10 +23,3 @@
     background-color: rgb(65, 134, 125);
 }
 
-#show_points{
-    margin:0 ;
-    padding-left: 0;
-    padding-right: 0;
-    font-size: 17pt ;
-    color: darkred;
-}
