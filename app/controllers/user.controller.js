@@ -144,6 +144,7 @@ exports.push = (req, res) => {
         });
 };
 
+//shows the daily knowledge(not in use)
 exports.dailyKnowledge = function (req, res) {
     res.setHeader('Content-Type', 'application/json');
     MongoClient.connect(dbConfig.url, function (err, db) {
@@ -158,6 +159,7 @@ exports.dailyKnowledge = function (req, res) {
     });
 }
 
+//find and send daily task in arrays to the front end
 exports.dailyTasks = function (req, res) {
     res.setHeader('Content-Type', 'application/json');
     MongoClient.connect(dbConfig.url, function (err, db) {
@@ -172,6 +174,7 @@ exports.dailyTasks = function (req, res) {
     });
 }
 
+//rate down the daily task(not in use)
 exports.taskDislike = function (req, res) {
     res.setHeader('Content-Type', 'application/json');
     MongoClient.connect(dbConfig.url, function (err, db) {
@@ -188,6 +191,8 @@ exports.taskDislike = function (req, res) {
     });
 }
 
+
+//rate up the daily task(not in use)
 exports.taskLike = function (req, res) {
     res.setHeader('Content-Type', 'application/json');
     MongoClient.connect(dbConfig.url, function (err, db) {
@@ -206,6 +211,7 @@ exports.taskLike = function (req, res) {
 }
 
 
+//rate down the daily knowledge (not in use)
 exports.knowledgeDislike = function (req, res) {
     res.setHeader('Content-Type', 'application/json');
     MongoClient.connect(dbConfig.url, function (err, db) {
@@ -222,6 +228,8 @@ exports.knowledgeDislike = function (req, res) {
     });
 }
 
+
+//rate up the daily task(not in use)
 exports.knowledgeLike = function (req, res) {
     res.setHeader('Content-Type', 'application/json');
     MongoClient.connect(dbConfig.url, function (err, db) {
@@ -242,6 +250,7 @@ exports.knowledgeLike = function (req, res) {
 
 
 
+//get user profile
 exports.getProfile = function (req, res) {
     res.setHeader('Content-Type', 'application/json');
     MongoClient.connect(dbConfig.url, function (err, db) {
@@ -263,6 +272,7 @@ exports.getProfile = function (req, res) {
     });
 }
 
+//change user profile, used in user_profile page
 exports.setProfile = function (req, res) {
     res.setHeader('Content-Type', 'application/json');
     MongoClient.connect(dbConfig.url, function (err, db) {
@@ -334,13 +344,9 @@ exports.getCoupon = (req, res) => {
         if (err) throw err;
         var dbo = db.db("test");
 
-
-
         dbo.collection("coupons_available").find().limit(5).toArray(function (err, result) {
             if (err) throw err;
-
             console.log(result)
-
 
             db.close();
 
@@ -349,15 +355,15 @@ exports.getCoupon = (req, res) => {
                     coupons: result,
                     navbar: navbar_top_ejs,
                     back_button: undefined,
-                    proceed_button : undefined,
+                    proceed_button: undefined,
                     footer: footer,
 
                 }));
             } else {
                 res.render(path + "coupon.ejs", {
                     coupons: result,
-                    back_button:"<button id='back' onclick='window.location.href='/minigames';'>Back</button>",
-                    proceed_button : "<button id='proceed' onclick='window.location.href='./flow_final.html''>Proceed</button>",
+                    back_button: "<button id='back' onclick='window.location.href='/minigames';'>Back</button>",
+                    proceed_button: "<button id='proceed' onclick='window.location.href='./flow_final.html''>Proceed</button>",
                     navbar: undefined,
                     footer: footer
                 });
@@ -472,7 +478,7 @@ exports.viewOwnedCoupons = (req, res) => {
 
 }
 
-
+//show the user's points
 exports.getUserPoints = (req, res) => {
     // res.setHeader('Content-Type', 'application/json');
 
@@ -500,14 +506,18 @@ exports.getUserPoints = (req, res) => {
         dbo.collection("users").find({
             _id: ObjectId(req.session.user_sid)
         }).toArray(function (err, result) {
-
+            //if the user exists
             if (result[0]) {
+                 //if the user's points are 0 or positive
                 if (result[0].points >= 0) {
+                    //show user points
                     user_points = result[0].points;
                 } else {
+                    //leave the code alone
                     console.log("go ahead")
                 }
             } else {
+                //show user points failed
                 console.log("user doesn't has any points")
             }
 
@@ -548,7 +558,8 @@ exports.getUserPoints = (req, res) => {
     });
 }
 
-
+//reads the user's input and search the items on the backend
+//returns the results in arrays
 exports.searchCoupon = (req, res) => {
     res.setHeader('Content-Type', 'application/json');
 
@@ -592,7 +603,7 @@ exports.searchCoupon = (req, res) => {
     })
 }
 
-
+//the admin wants to log in
 exports.verifyAdmin = (req, res) => {
     let usn = req.body.username;
     let successMsg = " login successful";
@@ -655,12 +666,13 @@ exports.verifyAdmin = (req, res) => {
     })
 }
 
-
+//the admin wants to search for a coupon
 exports.admin_coupon_management = (req, res) => {
     console.log("searching")
 
 }
 
+//the user gains according points
 exports.addPoints = (req, res, n) => {
     res.setHeader('Content-Type', 'application/json');
     MongoClient.connect(dbConfig.url, function (err, db) {
@@ -734,4 +746,23 @@ exports.addPoints = (req, res, n) => {
 
 
     });
+}
+
+//gets the state the user is in
+exports.getState = (req, res) => {
+    let getState = null;
+
+    MongoClient.connect(dbConfig.url, function (err, db) {
+        if (err) throw err;
+        var dbo = db.db("test");
+
+        dbo.collection("users").find({
+            _id: ObjectId(req.session.user_sid)
+        }).toArray(function (err, result) {
+            getState = result[0].daily_task_rec[result[0].daily_task_rec.length - 1].state
+            console.log("+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++getState")
+            
+        })
+    })
+
 }

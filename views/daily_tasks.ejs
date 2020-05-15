@@ -6,9 +6,10 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <!-- <link rel="stylesheet" type="text/css" href="/static/css/navbar.css"> -->
   <link rel="stylesheet" type="text/css" href="/static/css/flow_daily_tasks.css">
-
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
   <title>Daily tasks</title>
-
+  <!-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css"> -->
 </head>
 
 <body>
@@ -25,6 +26,10 @@
 
     </div>
 
+
+
+
+    
     <div id="dailytask">
       <% if (todo_item != undefined || todo_item != null) { %>
 
@@ -32,22 +37,26 @@
       <% if(todo_item[i]){ %>
 
       <div id='inner_<%= i%>'>
+
         <span class="taskid" id="taskid<%=todo_item[i].id%>"></span>
-        <span style="background-color: cornsilk;" class="title" id="title_<%=i %>"><%= todo_item[i].title; %></span>
-
-        <!-- prints out the paragraphs -->
-        <%for(var j = 0; j <todo_item[i].paragraph.length; j++){%>
-        <p><%= todo_item[i].paragraph[j]; %></p>
-        <% } %>
-
-        <p style="color: rgb(43, 61, 226);"><%= todo_item[i].question; %></p>
-
-        <div style="color:black">
-          <%for(var k = 0; k <todo_item[i].choices.length; k++){%>
-          <div id="<%=todo_item[i].answer %>">
-            <button class="answer_choices" id="choice<%=k%>"><%=todo_item[i].choices[k]%></button>
-          </div>
+        <img src="<%=todo_item[i].img%>"
+        <span class="to_do_title" data-toggle="collapse" data-target="#Read_content_<%=i%>"  
+          id="title_<%=i %>"><%= todo_item[i].title; %></span>
+        <div class="collapse" id="Read_content_<%=i%>" >
+          <!-- prints out the paragraphs -->
+          <%for(var j = 0; j <todo_item[i].paragraph.length; j++){%>
+          <p><%= todo_item[i].paragraph[j]; %></p>
           <% } %>
+
+          <p style="color: rgb(43, 61, 226);"><%= todo_item[i].question; %></p>
+
+          <div style="color:black">
+            <%for(var k = 0; k <todo_item[i].choices.length; k++){%>
+            <div id="<%=todo_item[i].answer %>">
+              <button class="answer_choices" id="choice<%=k%>"><%=todo_item[i].choices[k]%></button>
+            </div>
+            <% } %>
+          </div>
         </div>
       </div>
       <br />
@@ -55,14 +64,16 @@
       <% } %>
       <% }else{ console.log("todo_items[i] not exist" ) } %>
 
+
     </div>
 
     <%- proceed_button %>
 
 
   </div>
-  <div id='footer'>Made by FutureCurves.</div>
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+  <%- footer %>
+
+
   <script src='/static/js/navbar_top.js'></script>
   <script src='/static/js/daily_tasks.js'></script>
 </body>

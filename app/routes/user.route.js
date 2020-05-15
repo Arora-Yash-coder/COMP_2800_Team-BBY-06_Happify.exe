@@ -173,11 +173,38 @@ module.exports = function (app) {
 
 	//goes to the homepage 
 	app.get("/homepage", (req, res) => {
+		let state = null;
 
-		res.render(path + "/homepage.ejs", {
-			navbar: navbar_top_ejs,
-			footer: footer
+		console.log(state)
+
+		MongoClient.connect(dbConfig.url, function (err, db) {
+			if (err) throw err;
+			var dbo = db.db("test");
+
+			dbo.collection("users").find({
+				_id: ObjectId(req.session.user_sid)
+			}).toArray(function (err, result) {
+				state = result[0].daily_task_rec[result[0].daily_task_rec.length - 1].state
+				console.log("state==================================================")
+				console.log(state)
+				if (state <= 3) {
+					res.redirect("/daily_tasks")
+				}
+				else if (state >= 4 && state <= 5) {
+					res.redirect("/minigames")
+				}
+				else if (state > 5 && state <= 6) {
+					res.redirect("/coupon")
+				}
+				else {
+					res.render(path + "/homepage.ejs", {
+						navbar: navbar_top_ejs,
+						footer: footer
+					})
+				}
+			})
 		})
+
 
 	})
 
@@ -199,19 +226,19 @@ module.exports = function (app) {
 
 				if (state == 4) {
 					res.end(res.render(path + "games_selection.ejs", {
-						
+
 						navbar: undefined,
-						proceed_button : undefined,
-						back_button:"<button id='back' onclick='window.location.href='/daily_tasks';'>Back</button>",
+						proceed_button: undefined,
+						back_button: "<button id='back' onclick='window.location.href='/daily_tasks';'>Back</button>",
 						footer: footer,
 
 					}));
 				}
 				else if (state == 5) {
-					res.end(res.render(path + "games_selection.ejs", {						
+					res.end(res.render(path + "games_selection.ejs", {
 						navbar: undefined,
 						proceed_button: "<button id='proceed' onclick='window.location.href='/coupon''>Proceed</button>",
-						back_button :  "<button id='back' onclick='window.location.href='/daily_tasks';'>Back</button>",
+						back_button: "<button id='back' onclick='window.location.href='/daily_tasks';'>Back</button>",
 						footer: footer,
 
 					}));
@@ -221,7 +248,7 @@ module.exports = function (app) {
 					res.end(res.render(path + "games_selection.ejs", {
 						navbar: navbar_top_ejs,
 						proceed_button: undefined,
-						back_button : undefined,
+						back_button: undefined,
 						footer: footer,
 					}));
 				}
@@ -426,6 +453,7 @@ module.exports = function (app) {
 			}, { $inc: { "daily_task_rec.$.state": 1 } },
 
 			)
+			console.log("state added 1!!!!!")
 			res.send("state added 1!!!!!")
 
 		})
@@ -448,9 +476,210 @@ module.exports = function (app) {
 		})
 	})
 
-	app.get('/daily_tasks', function (req, res) {
-		let state = null;
+	// app.get('/daily_tasks', function (req, res) {
 
+	// 	function get_stuff_to_send(){
+
+	// 	}
+
+
+	// 	let state = null;
+
+	// 	MongoClient.connect(dbConfig.url, function (err, db) {
+	// 		if (err) throw err;
+	// 		var dbo = db.db("test");
+
+	// 		dbo.collection("users").find({
+	// 			_id: ObjectId(req.session.user_sid)
+	// 		}).toArray(function (err, result) {
+
+	// 			//find the work that needs to be done
+	// 			console.log("result.daily_task_rec.state")
+	// 			// console.log(result[0].daily_task_rec)
+	// 			console.log(result[0].daily_task_rec[result[0].daily_task_rec.length - 1].state)
+
+	// 			state = result[0].daily_task_rec[result[0].daily_task_rec.length - 1].state;
+
+	// 			//if the state property is less than 3, which indicates that user is 
+	// 			//still in the "daily task" user flow.
+	// 			if (state < 3) {
+	// 				//then we will go to the db and find the number of items
+	// 				dbo.collection("daily_tasks").find({
+	// 				// 3 - state means the number of items to find	
+	// 				}).limit(3 - state).toArray(function (err, data) {
+
+
+
+	// 					console.log("the stuff to show -=------------------------------------------")
+	// 					console.log(data)
+
+	// 					db.close()
+
+
+
+	// 					// MongoClient.connect(dbConfig.url, function (err, db) {
+	// 					// 	console.log("added_item")
+	// 					// 	console.log(added_item)
+	// 					// 	if (err) throw err;
+	// 					// 	var dbo = db.db("test");
+	// 					// 	dbo.collection("users").updateOne(
+	// 					// 		{ _id: ObjectId(req.session.user_sid) },
+	// 					// 		{
+	// 					// 			$push: { daily_task_archived: { $each: added_item } }
+	// 					// 		},
+	// 					// 		{ new: true, upsert: true }
+	// 					// 	)
+	// 					// })
+
+	// 					res.end(res.render(path + "daily_tasks.ejs", {
+	// 						todo_item: data,
+	// 						navbar: undefined,
+	// 						proceed_button: undefined,
+	// 						footer: footer
+	// 					}));
+	// 				});
+	// 			}
+
+	// 			else if (state >= 3) {
+	// 				res.end(res.render(path + "daily_tasks.ejs", {
+	// 					todo_item: undefined,
+	// 					navbar: undefined,
+	// 					proceed_button: '<button id="proceed" onclick="window.location.href="/minigames"">Proceed</button>',
+	// 					footer: footer
+	// 				}));
+	// 			}
+	// 		});
+
+	// 	});
+
+
+
+
+
+
+
+	// 	// let user = null;
+	// 	// //indicating how many items left to be added into the array
+	// 	// let n_to_go = 0;
+	// 	// //used to store the upcoming tasks' ids
+	// 	// let go_ahead = []
+	// 	// MongoClient.connect(dbConfig.url, function (err, db) {
+	// 	// 	if (err) throw err;
+	// 	// 	var dbo = db.db("test");
+	// 	// 	dbo.collection("users").findOne({
+	// 	// 		_id: ObjectId(req.session.user_sid)
+	// 	// 	}).then(result => {
+	// 	// 		//if the user exists
+	// 	// 		if (result) {
+	// 	// 			//if the user has not yet finished the tasks
+	// 	// 			if (result.daily_task_rec[0].finished_id.length != 0) {
+	// 	// 				//the array is needed afterwards
+	// 	// 				go_ahead = result.daily_task_rec[0].finished_id;
+	// 	// 				//the number of stuff to go
+	// 	// 				n_to_go = 3 - go_ahead.length;
+	// 	// 			} else {
+	// 	// 				n_to_go = 3
+	// 	// 				go_ahead = [0]
+	// 	// 			}
+	// 	// 		}
+	// 	// 	}).then(() => { })
+
+	// 	// 	let added_item = []
+	// 	// 	//find those that's not in the done list
+	// 	// 	dbo.collection("daily_tasks").find({
+	// 	// 		"id": { $nin: go_ahead }
+	// 	// 	}).limit(n_to_go).toArray((err, daily_tasks) => {
+
+	// 	// 		console.log("go_ahead")
+	// 	// 		console.log(go_ahead)
+	// 	// 		console.log("n_to_go")
+	// 	// 		console.log(n_to_go)
+	// 	// 		console.log("daily_tasks")
+	// 	// 		console.log(daily_tasks)
+
+
+	// 	// 		for (var i in daily_tasks) {
+	// 	// 			added_item.push(daily_tasks[i].id)
+	// 	// 		}
+	// 	// 		console.log("=============added===daily_tasks===========================")
+	// 	// 		console.log(added_item)
+
+	// 	// 		res.render(path + "daily_tasks.ejs", {
+	// 	// 			navbar: undefined,
+	// 	// 			todolist: daily_tasks,
+	// 	// 			todo_item: daily_tasks,
+	// 	// 			footer: footer
+	// 	// 		})
+	// 	// 	})
+
+	// 	// 	dbo.collection("users").updateOne(
+	// 	// 		{ _id: ObjectId(req.session.user_sid) },
+	// 	// 		{
+	// 	// 			$push: { daily_task_archived: { $each: added_item } }
+	// 	// 		},
+	// 	// 		{ new: true, upsert: true }
+
+	// 	// 	)
+
+	// 	// 	for (var i in added_item) {
+	// 	// 		console.log("==========================added_item[i]")
+	// 	// 		console.log(added_item[i])
+
+	// 	// 	}
+
+	// 	// 	db.close();
+
+	// 	// });
+
+
+
+
+
+
+
+
+	// });
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+	app.get('/daily_tasks', sessionChecker2, function (req, res) {
+
+		function get_stuff_to_send() {
+
+		}
+
+
+		let state = null;
+		let added_item = [];
 		MongoClient.connect(dbConfig.url, function (err, db) {
 			if (err) throw err;
 			var dbo = db.db("test");
@@ -466,12 +695,62 @@ module.exports = function (app) {
 
 				state = result[0].daily_task_rec[result[0].daily_task_rec.length - 1].state;
 
+				//if the state property is less than 3, which indicates that user is 
+				//still in the "daily task" user flow.
 				if (state < 3) {
+					//then we will go to the db and find the number of items
 					dbo.collection("daily_tasks").find({
-
+						// "3 - state" means the number of items to find	
 					}).limit(3 - state).toArray(function (err, data) {
-						console.log("the stuff to show -=------------------------------------------")
-						console.log(data)
+
+
+						//1. this is to get the daily_task's id, and then we will archive the task's id.
+						//   we are doing this because the task should not show up in the daily task again if the user has done it already
+						console.log("in 708  take a peek at the data schema------------ ")
+						console.log(data[0].id)
+
+						//2. before archiving it, we need to push the data into an array, so that 
+						//it's easily done.
+						for (var index in data) {
+							console.log("in 712  the stuff to show---------------------------- ")
+							console.log(added_item)
+							if (data[index]) {
+								added_item.push(data[index].id)
+							}
+
+						}
+
+						// close the database to avoid problems from showing up in the update(atomic read)
+						db.close()
+
+						//connect again to update
+						MongoClient.connect(dbConfig.url, function (err, db) {
+							console.log("added_item")
+							console.log(added_item)
+							console.log("in 727 req.session.user_id------------------------------------")
+							console.log(req.session.user_sid)
+
+							if (err) throw err;
+							var dbo = db.db("test");
+
+
+							dbo.collection("users").updateOne(
+								//find the correct ObjectID
+								{
+									_id: ObjectId(req.session.user_sid),
+									//compare if the date is correct: right on today
+									daily_task_rec: { $elemMatch: { date: { $lte: new Date() } } }
+								},
+								{
+									//push each item
+									$addToSet: { daily_task_archived: { $each: added_item } },
+									//the $addToSet operator is to avoid repeating the items
+									$set: { "daily_task_rec.$.user_id": req.session.user_sid }
+								},
+								{ new: true, upsert: true }
+							)
+						})
+
 						res.end(res.render(path + "daily_tasks.ejs", {
 							todo_item: data,
 							navbar: undefined,
@@ -589,6 +868,36 @@ module.exports = function (app) {
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 	// let daily_tasks = [];
 	// MongoClient.connect(dbConfig.url, function (err, db) {
 	// 	if (err) throw err;
@@ -682,12 +991,32 @@ module.exports = function (app) {
 
 	// route for user logout
 	app.get('/logout', (req, res) => {
+		MongoClient.connect(dbConfig.url, function (err, db) {
+			if (err) throw err;
+			var dbo = db.db("test");
+			dbo.collection("users").updateOne(
+				//find the correct ObjectID
+				{
+					_id: ObjectId(req.session.user_sid),
+					daily_task_rec: { $elemMatch: { "state": { $lte: 10 }, date: { $lte: new Date() } } },
+				},
+				{
 
-		res.clearCookie('user_sid');
-		req.session = null;
-		res.redirect('/login');
+					//set the state back to 0 for testing 
+					$set: { "daily_task_rec.$.state": 0 }
+				}
+			)
 
-	});
+			db.close()
+			res.clearCookie('user_sid');
+			req.session = null;
+			res.redirect('/login');
+		});
+
+
+
+
+	})
 
 
 

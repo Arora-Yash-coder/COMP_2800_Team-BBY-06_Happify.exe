@@ -107,7 +107,7 @@
 
 
 
-    $(".title").click((e) => {
+    $(".to_do_title").click((e) => {
 
       let length = $(".taskid").length
       let taskid = $(".taskid")
@@ -134,29 +134,24 @@
       });
 
 
-      $("#" + e.target.parentNode.id + " ~ div > span ~  ").css("display", "none")
-      $("#" + e.target.parentNode.id + " ~ div > span ~   ").css("display", "none")
+      // $("#" + e.target.parentNode.id + " ~ div > span ~  ").css("display", "none")
+      // $("#" + e.target.parentNode.id + " ~ div > span ~   ").css("display", "none")
 
-      $("#" + e.target.id + " ~ *").toggle()
+      // $("#" + e.target.id + " ~ *").toggle()
 
-      if ($("#" + e.target.id + " ~ div > div > button").css("display", "none")) {
+      // if ($("#" + e.target.id + " ~ div > div > button").css("display", "none")) {
         setTimeout(() => {
 
-          $("#" + e.target.id + " ~ div > div > button").show()
+          $("#" + e.target.id + " ~ div button").show()
         }, 3000);
-      } else {
-        $("#" + e.target.id + " ~ div > div > button").css("display", "none")
-      }
+      // } else {
+      //   $("#" + e.target.id + " ~ div > div > button").css("display", "none")
+      // }
 
     })
 
     $("button").click((e) => {
 
-      console.log(e.target.parentElement.id)
-      console.log($(e.target).html())
-      console.log(typeof $(e.target).html())
-      console.log(typeof e.target.parentElement.id)
-      console.log($(e.target).html() == e.target.parentElement.id)
       if ($(e.target).html() == e.target.parentElement.id) {
         $.ajax({
           type: "get",
@@ -197,7 +192,7 @@
       } else if ($(e.target).html() == "Proceed") {
         e.preventDefault
       }
-      else { alert("This is wrrrrong!") }
+      // else { alert("This is wrrrrong!") }
     })
 
 
