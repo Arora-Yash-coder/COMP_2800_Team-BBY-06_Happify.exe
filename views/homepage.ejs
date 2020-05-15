@@ -35,21 +35,7 @@
                 <h2>
                 </h2>
             </div>
-<!--
-            <div id="dailytask" onclick="window.location.href = '/daily_tasks' ">
-                <div id='dailytask1'>
-                    <h3 class="first">Finish Our Daily Challenges</h3>
-                </div>
-                <div id='dailytask2'>
-                    <div id='image1'>
-                        <img id="daily_task_img" src="/img/task2.png">
-                    </div>
-                </div>
-            </div>
--->
 
-
-<!--            <h1 style="color:violet;margin: 0;padding: 0;"> + </h1>-->
 
             <div id="games" onclick="window.location.href = '/minigames' ">
                 <div id="games1">
@@ -62,10 +48,7 @@
                 </div>
             </div>
            
-<!--
-            <h1 style="color:violet;margin: 0;padding: 0;transform: rotate(90deg);"> 
-↓ </h1>
--->
+
 
 
             <div id="redeem" onclick="window.location.href = '/coupon';">
@@ -81,39 +64,13 @@
                 </div>
             </div>
 
-<!--
-            <div id="howdoyoufeeltoday" onclick="window.location.href = '/my_record';">
-                <div id="how1">
-                    <h1 class="first">Check Record</h1>
-                </div>
-                <div id="how2">
-                    <div id='image'>
-                        <img src="img/feel2.png">
-                    </div>
-                </div>
 
-            </div>
--->
             <%- footer %>
 
             <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
-            <script>
-                $(document).ready(function () {
-                    function say_hi() {
-                        $.get("/user_profile/getProfile", function (data, status) {
-                            $("#username").html(data.result[0].username);
-                            console.log("data.username===============")
-                            console.log(data)
-                        });
-                    } say_hi()
-
-                });
-
-            </script>
-             <script src="/static/js/get_points.js">
-     
-             </script>
             
+            <script src="/static/js/get_points.js"></script>
+            <script src='/static/js/homepage.js'></script>
             <script src='/static/js/navbar_top.js'></script>
 </body>
 
