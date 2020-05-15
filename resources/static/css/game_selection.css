@@ -1,5 +1,5 @@
 body {
-/*
+    /*
     background-image: url(/static/img/background.png);
     background-size: cover;
 */
@@ -17,7 +17,7 @@ img {
     margin-right: auto;
 }
 
-#welcome{
+#welcome {
     padding: 1px;
     margin: 0;
 }
@@ -55,14 +55,15 @@ img {
 
 #inner {
     grid-row: 2 / span 1;
-    
+
 }
+
 #stats {
-/*    margin-left: 25px;*/
-/*    margin-right: 25px;*/
+    /*    margin-left: 25px;*/
+    /*    margin-right: 25px;*/
     margin-top: 10px;
     margin-bottom: 10px;
-/*    border-radius: 25px;*/
+    /*    border-radius: 25px;*/
     grid-row: 2 / span 1;
     background-color: #7BDFF2;
     display: grid;
@@ -70,6 +71,7 @@ img {
     color: #53131E;
 
 }
+
 #games1 {
     margin-left: 25px;
     margin-right: 25px;
@@ -80,8 +82,8 @@ img {
     grid-row: 1 / span 1;
     display: grid;
     grid-template-columns: 50% 50%;
-    color:#53131E;
-    border: solid 2px rgba(83,19,30,0.7);
+    color: #53131E;
+    border: solid 2px rgba(83, 19, 30, 0.7);
 }
 
 #games1_1 {
@@ -114,8 +116,8 @@ img {
     background-color: #D6F9DD;
     display: grid;
     grid-template-columns: 50% 50%;
-    color:#53131E;
-    border: solid 2px rgba(83,19,30,0.7);
+    color: #53131E;
+    border: solid 2px rgba(83, 19, 30, 0.7);
 }
 
 #games2_1 {
@@ -148,7 +150,7 @@ img {
     grid-row: 3 / span 1;
     display: grid;
     grid-template-columns: 50% 50%;
-    border: solid 2px rgba(83,19,30,0.7);
+    border: solid 2px rgba(83, 19, 30, 0.7);
 }
 
 #games3_1 {
@@ -181,7 +183,7 @@ img {
     grid-row: 4 / span 1;
     display: grid;
     grid-template-columns: 50% 50%;
-    border: solid 2px rgba(83,19,30,0.7);
+    border: solid 2px rgba(83, 19, 30, 0.7);
 }
 
 #games4_1 {
@@ -250,100 +252,151 @@ img {
     animation-name: gaming;
     animation-delay: 3.5s;
     animation-duration: 1.5s;
-  }
-  
-  @keyframes gaming {
-    0%   {background-color: none;}
-    10%   {background-color: red;}
-    15%  {background-color: yellow;}
-    25%  {background-color: rgb(255, 145, 0);}
-    35%  {background-color: rgb(0, 255, 234);}
-    55%  {background-color: beige;}
-    100% {background-color: green;}
-  }
+}
 
-#daily_task_img{
+@keyframes gaming {
+    0% {
+        background-color: none;
+    }
+
+    10% {
+        background-color: red;
+    }
+
+    15% {
+        background-color: yellow;
+    }
+
+    25% {
+        background-color: rgb(255, 145, 0);
+    }
+
+    35% {
+        background-color: rgb(0, 255, 234);
+    }
+
+    55% {
+        background-color: beige;
+    }
+
+    100% {
+        background-color: green;
+    }
+}
+
+#daily_task_img {
     /* width: 100px;
     height: 100px; */
-    
+
     background-color: none;
     animation-name: shake;
     animation-delay: 0.8s;
     animation-duration: 1.6s;
-  }
+}
 
-  @keyframes shake {
-    10%, 90% {
-    
-      transform: translate3d(-1px, 0, 0) rotate(15deg);
-    }
-    
-    20%, 80% {
-     
-      transform: translate3d(2px, 3px, 2px) rotate(-15deg);
-    }
-  
-    30%, 50%, 70% {
-      transform: translate3d(-4px, 0, 0) rotate(15deg);
-    }
-  
-    40%, 60% {
-      transform: translate3d(4px, 0, 0) rotate(-20deg);
-    }
-  }
+@keyframes shake {
 
-  #redeem_img{
+    10%,
+    90% {
+
+        transform: translate3d(-1px, 0, 0) rotate(15deg);
+    }
+
+    20%,
+    80% {
+
+        transform: translate3d(2px, 3px, 2px) rotate(-15deg);
+    }
+
+    30%,
+    50%,
+    70% {
+        transform: translate3d(-4px, 0, 0) rotate(15deg);
+    }
+
+    40%,
+    60% {
+        transform: translate3d(4px, 0, 0) rotate(-20deg);
+    }
+}
+
+#redeem_img {
     visibility: hidden;
     transform: translateX(-350px) translateY(-200px);
     animation-name: bounce;
     animation-timing-function: ease;
     animation-duration: 1.8s;
-        animation-iteration-count: 1;
-        animation-delay: 5.8s;
-        animation-fill-mode: forwards;
-  }
+    animation-iteration-count: 1;
+    animation-delay: 5.8s;
+    animation-fill-mode: forwards;
+}
 
 @keyframes bounce {
-    5%   { transform: scale(1,1)  rotate(10deg)  translateX(-200px) translateY(-200px);visibility: visible; }
-    30%  { transform: scale(1.1,.9) rotate(5deg) translateX(-50px)  translateY(-10px) ; }
-    50%   { transform: scale(1,1)   rotate(2deg)  translateX(-50px) translateY(-40px); }
-    60%  { transform: scale(1.1,.9)  rotate(-1deg) translateX(-20) translateY(-20); }
-    70%  { transform: scale(.9,1.1) translateY(-50px); }
-    90%  { transform: scale(1,1)    translateY(-10px); }
-    100% { transform: scale(1,1)    translateY(0) ;visibility: visible }
-}
-
- button {
-        background-color: transparent;
-      border: #53131E solid 1.5px;
-      color: #53131E;
-      padding: 7px 26px;
-      text-align: center;
-      text-decoration: none;
-      display: inline-block;
-      font-size: 16px;
-    font-weight: 300;
+    5% {
+        transform: scale(1, 1) rotate(10deg) translateX(-200px) translateY(-200px);
+        visibility: visible;
     }
 
+    30% {
+        transform: scale(1.1, .9) rotate(5deg) translateX(-50px) translateY(-10px);
+    }
 
-button:hover{
+    50% {
+        transform: scale(1, 1) rotate(2deg) translateX(-50px) translateY(-40px);
+    }
+
+    60% {
+        transform: scale(1.1, .9) rotate(-1deg) translateX(-20) translateY(-20);
+    }
+
+    70% {
+        transform: scale(.9, 1.1) translateY(-50px);
+    }
+
+    90% {
+        transform: scale(1, 1) translateY(-10px);
+    }
+
+    100% {
+        transform: scale(1, 1) translateY(0);
+        visibility: visible
+    }
+}
+
+button {
+    background-color: transparent;
+    border: #53131E solid 1.5px;
+    color: #53131E;
+    padding: 7px 26px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    font-weight: 300;
+}
+
+
+button:hover {
     background-color: white;
-      border: #53131E solid 1.5px;
-      color: #53131E;
-      padding: 7px 26px;
-      text-align: center;
-      text-decoration: none;
-      display: inline-block;
-      font-size: 16px;
-    
+    border: #53131E solid 1.5px;
+    color: #53131E;
+    padding: 7px 26px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+
 }
-#proceed{
-        float: right;
+
+#proceed {
+    float: right;
 }
-#back{
-        float: left;
+
+#back {
+    float: left;
 }
-#footer{
+
+#footer {
     margin-top: 40px;
 }
 
@@ -358,9 +411,9 @@ button:hover{
     font-size: 0.75rem;
     background-color: #e9ecef;
     border-radius: 0.25rem;
-  }
-  
-  .progress-bar {
+}
+
+.progress-bar {
     display: -ms-flexbox;
     display: flex;
     -ms-flex-direction: column;
@@ -373,28 +426,28 @@ button:hover{
     white-space: nowrap;
     background-color: #007bff;
     transition: width 0.6s ease;
-  }
-  
-  @media (prefers-reduced-motion: reduce) {
+}
+
+@media (prefers-reduced-motion: reduce) {
     .progress-bar {
-      transition: none;
+        transition: none;
     }
-  }
-  
-  .progress-bar-striped {
+}
+
+.progress-bar-striped {
     background-image: linear-gradient(45deg, rgba(255, 255, 255, 0.15) 25%, transparent 25%, transparent 50%, rgba(255, 255, 255, 0.15) 50%, rgba(255, 255, 255, 0.15) 75%, transparent 75%, transparent);
     background-size: 1rem 1rem;
-  }
-  
-  .progress-bar-animated {
-     width: 65%;
+}
+
+.progress-bar-animated {
+    width: 65%;
     -webkit-animation: progress-bar-stripes 1s linear infinite;
     animation: progress-bar-stripes 1s linear infinite;
-  }
-  
-  @media (prefers-reduced-motion: reduce) {
+}
+
+@media (prefers-reduced-motion: reduce) {
     .progress-bar-animated {
-      -webkit-animation: none;
-      animation: none;
+        -webkit-animation: none;
+        animation: none;
     }
-  }
+}

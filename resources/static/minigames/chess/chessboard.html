@@ -3,9 +3,15 @@
 
 <head>
 	<meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 	
 	<style>
+        body{
+            background-color: #99F7AB;
+           
+        }
 		#grid_container {
+            
 			display: grid;
 			grid-template-rows: repeat(9, 1fr);
 			grid-template-columns: 65px repeat(8, 120px) 1fr;
@@ -35,7 +41,7 @@
 		}
 
 		#side_bar {
-			grid-area: side_bar;
+/*			grid-area: side_bar;*/
 		}
 
 		#show_coor_row{
@@ -68,7 +74,32 @@
 			padding-left: 30px;
 			width: 120px;
 		}
+        button {
+            background-color: transparent;
+            border: #53131E solid 1.5px;
+            color: #53131E;
+            padding: 7px 26px;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 40px;
+            margin-bottom: 20px;
+            font-weight: bold;
+/*            margin-left: 100%;*/
+            
+        }
 
+        button:hover {
+            background-color: white;
+            border: #53131E solid 1.5px;
+            color: #53131E;
+            padding: 7px 26px;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 40px;
+            margin-bottom: 20px;
+        }
 		
 
 	</style>
@@ -89,11 +120,7 @@
 		</div>
 		<!-- board_container essential is the board itself, html elements created via javascript -->
 		<div id="board_container"></div>
-		<div id="side_bar">
-			<button>start</button>
-			<button onclick="restart()">restart</button>
-			
-		</div>
+		
 		<div      id="show_coor_col">
 			<div class="show_coor_col_ids">a</div>
 			<div class="show_coor_col_ids">b</div>
@@ -106,6 +133,11 @@
 		</div>
 
 	</div>
+    <div id="side_bar">
+			<button>Start</button>
+			<button onclick="restart()">Restart</button>
+			
+		</div>
 </body>
 
 <!-- <script src="https://code.jquery.com/jquery-3.5.0.js"></script>

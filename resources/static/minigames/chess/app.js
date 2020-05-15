@@ -66,7 +66,7 @@ app.post("/game/chess", (req, res) => {
 
 
 
-var server = app.listen(80, function () {
+var server = app.listen(1234, function () {
 
     var host = server.address().address
     var port = server.address().port

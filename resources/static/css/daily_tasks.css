@@ -1,173 +1,172 @@
+.square_btn {
+  display: inline-block;
+  padding: 0.3em 1em;
+  text-decoration: none;
+  color: #EF629F;
+  border: solid 2px #EF629F;
+  border-radius: 3px;
+  transition: .4s;
+}
 
-    
-      .square_btn {
-        display: inline-block;
-        padding: 0.3em 1em;
-        text-decoration: none;
-        color: #EF629F;
-        border: solid 2px #EF629F;
-        border-radius: 3px;
-        transition: .4s;
-      }
+.square_btn:hover {
+  background: #EF629F;
+  color: white;
+}
 
-      .square_btn:hover {
-        background: #EF629F;
-        color: white;
-      }
+.square_btn_second {
+  display: inline-block;
+  padding: 0.3em 1em;
+  text-decoration: none;
+  color: #3AB795;
+  border: solid 2px #3AB795;
+  border-radius: 3px;
+  transition: .4s;
+}
 
-      .square_btn_second {
-        display: inline-block;
-        padding: 0.3em 1em;
-        text-decoration: none;
-        color: #3AB795;
-        border: solid 2px #3AB795;
-        border-radius: 3px;
-        transition: .4s;
-      }
+.square_btn_second:hover {
+  background: #EF629F;
+  color: white;
+}
 
-      .square_btn_second:hover {
-        background: #EF629F;
-        color: white;
-      }
+body {
+  text-align: center;
+  margin: 0;
+  /*        background-image: url(../img/background.png);*/
+  /*        background-size: cover;*/
+  /* height:100vh; */
+  background-color: #99F7AB;
+}
 
-      body {
-        text-align: center;
-        margin: 0;
-/*        background-image: url(../img/background.png);*/
-/*        background-size: cover;*/
-        /* height:100vh; */
-          background-color: #99F7AB;
-      }
+img {
+  object-fit: contain;
+  max-width: 90%;
+  max-height: 95px;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
 
-      img {
-        object-fit: contain;
-        max-width: 90%;
-        max-height: 95px;
-        display: block;
-        margin-left: auto;
-        margin-right: auto;
-      }
+.first {
+  color: #EF629F;
 
-      .first {
-        color: #EF629F;
+}
 
-      }
+.second {
+  color: #3AB795;
 
-      .second {
-        color: #3AB795;
+}
 
-      }
+.top {
 
-      .top {
+  color: #3AB795;
+  font-size: 20pt;
+  font-weight: bold;
+}
 
-        color: #3AB795;
-        font-size: 20pt;
-        font-weight: bold;
-      }
+.points {
+  color: #EF629F;
+  font-size: 20pt;
+  margin-top: -10px;
+  font-weight: bold;
+}
 
-      .points {
-        color: #EF629F;
-        font-size: 20pt;
-        margin-top: -10px;
-        font-weight: bold;
-      }
+#container {
+  /*        display: grid;*/
+  /* grid-template-rows: 17% 72% 1%; */
+  height: 100vh;
 
-      #container {
-/*        display: grid;*/
-        /* grid-template-rows: 17% 72% 1%; */
-        height: 100vh;
+}
 
-      }
+#inner {
+  /* grid-row: 2 / span 1; */
+  /*        display: grid;*/
+  /* grid-template-rows: 50% 50%; */
+}
 
-      #inner {
-        /* grid-row: 2 / span 1; */
-/*        display: grid;*/
-        /* grid-template-rows: 50% 50%; */
-      }
+#dailytask {
+  margin-left: 25px;
+  margin-right: 25px;
+  margin-top: 10px;
+  margin-bottom: 10px;
+  border-radius: 25px;
+  background-color: #B8D8BA;
+  grid-row: 1 / span 1;
+  display: grid;
+  grid-template-rows: 50% 50%;
+  color: #EF629F;
+}
 
-      #dailytask {
-        margin-left: 25px;
-        margin-right: 25px;
-        margin-top: 10px;
-        margin-bottom: 10px;
-        border-radius: 25px;
-        background-color: #B8D8BA;
-        grid-row: 1 / span 1;
-        display: grid;
-        grid-template-rows: 50% 50%;
-        color: #EF629F;
-      }
-
-      #dailytask1 {
-        padding: 15px;
-        margin-top: auto;
-        margin-bottom: auto;
-        border-radius: 25px 0 0 25px;
+#dailytask1 {
+  padding: 15px;
+  margin-top: auto;
+  margin-bottom: auto;
+  border-radius: 25px 0 0 25px;
 
 
-        /* grid-row: 1 / span 1; */
+  /* grid-row: 1 / span 1; */
 
-      }
+}
 
-      #selection {
-        margin-top: 0;
-        margin-bottom: auto;
-        border-radius: 0 25px 25px 0;
-
-
-        /* grid-row: 2 / span 1; */
-
-      }
+#selection {
+  margin-top: 0;
+  margin-bottom: auto;
+  border-radius: 0 25px 25px 0;
 
 
-      #knowledge {
-        margin-left: 25px;
-        margin-right: 25px;
-        margin-top: 10px;
-        margin-bottom: 10px;
-        border-radius: 25px;
-        /* grid-row: 2 / span 1; */
-        background-color: #FAC9B8;
-        /* display: grid; */
-        /* grid-template-rows: 50% 50%; */
-        color: #3AB795;
-      }
+  /* grid-row: 2 / span 1; */
 
-      #knowledge1 {
-        padding: 30px;
-        margin-top: auto;
-        margin-bottom: auto;
-        border-radius: 25px 0 0 25px;
+}
 
 
-        /* grid-row: 1 / span 1; */
+#knowledge {
+  margin-left: 25px;
+  margin-right: 25px;
+  margin-top: 10px;
+  margin-bottom: 10px;
+  border-radius: 25px;
+  /* grid-row: 2 / span 1; */
+  background-color: #FAC9B8;
+  /* display: grid; */
+  /* grid-template-rows: 50% 50%; */
+  color: #3AB795;
+}
 
-      }
-
-      #selection2 {
-        margin-top: auto;
-        margin-bottom: auto;
-        border-radius: 0 25px 25px 0;
-
-
-        /* grid-row: 2 / span 1; */
-
-      }
+#knowledge1 {
+  padding: 30px;
+  margin-top: auto;
+  margin-bottom: auto;
+  border-radius: 25px 0 0 25px;
 
 
-      #header {
-        /* grid-row: 1 / span 1; */
-      }
+  /* grid-row: 1 / span 1; */
 
-      #greeting {
-        color: #EF629F;
-      }
-    
-      /* boostrap */
+}
+
+#selection2 {
+  margin-top: auto;
+  margin-bottom: auto;
+  border-radius: 0 25px 25px 0;
+
+
+  /* grid-row: 2 / span 1; */
+
+}
+
+
+#header {
+  /* grid-row: 1 / span 1; */
+}
+
+#greeting {
+  color: #EF629F;
+}
+
+/* boostrap */
 @-webkit-keyframes progress-bar-stripes {
   from {
     background-position: 1rem 0;
   }
+
   to {
     background-position: 0 0;
   }
@@ -177,6 +176,7 @@
   from {
     background-position: 1rem 0;
   }
+
   to {
     background-position: 0 0;
   }
@@ -221,7 +221,7 @@
 }
 
 .progress-bar-animated {
- width: 75%;
+  width: 75%;
   -webkit-animation: progress-bar-stripes 1s linear infinite;
   animation: progress-bar-stripes 1s linear infinite;
 }
@@ -232,5 +232,3 @@
     animation: none;
   }
 }
-
-

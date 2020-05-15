@@ -1,71 +1,74 @@
 body {
-/*    background-image: url(./../img/background.png);*/
-    background-color: #99F7AB;
-    width: 100%;
-  }
-#login{
-    background-color: transparent;
-      border: #53131E solid 1.5px;
-      color: #53131E;
-      padding: 7px 26px;
-      text-align: center;
-      text-decoration: none;
-      display: inline-block;
-      font-size: 16px;
-    font-weight: bold;
-    
+  /*    background-image: url(./../img/background.png);*/
+  background-color: #99F7AB;
+  width: 100%;
 }
-#login:hover{
-    background-color: white;
-      border: #53131E solid 1.5px;
-      color: #53131E;
-      padding: 7px 26px;
-      text-align: center;
-      text-decoration: none;
-      display: inline-block;
-      font-size: 16px;
-    
+
+#login {
+  background-color: transparent;
+  border: #53131E solid 1.5px;
+  color: #53131E;
+  padding: 7px 26px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  font-weight: bold;
+
 }
+
+#login:hover {
+  background-color: white;
+  border: #53131E solid 1.5px;
+  color: #53131E;
+  padding: 7px 26px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+
+}
+
 .container {
-    background-color: hsla(120, 60%, 2%, 0.6);
-    text-align: center;
-    width: 400px;
-    /* filter:alpha(opacity=50); */
-    z-index: -1;
-    /* opacity:0.8; */
-/*    width: 90%;*/
-    width: 370px;
-    color:white;
-  }
+  background-color: hsla(120, 60%, 2%, 0.6);
+  text-align: center;
+  width: 400px;
+  /* filter:alpha(opacity=50); */
+  z-index: -1;
+  /* opacity:0.8; */
+  /*    width: 90%;*/
+  width: 370px;
+  color: white;
+}
 
-  #choice_tab {
-    display: inline;
-  }
+#choice_tab {
+  display: inline;
+}
 
-  #log {
+#log {
 
-    float: right;
-      margin: 0;
-    padding-top: 10px;
-    height: 50px;
-    width: 120px;
-    padding-right: 20px;
-  }
+  float: right;
+  margin: 0;
+  padding-top: 10px;
+  height: 50px;
+  width: 120px;
+  padding-right: 20px;
+}
 
-  #reg{
-    float: left;
-    margin: 0;
-    padding-top: 10px;
-    height: 50px;
-    width: 50%;
-    padding-left: 15px;
-    padding-right: 5%;
-    background-color: rgb(0, 0, 0);
-    
-  }
+#reg {
+  float: left;
+  margin: 0;
+  padding-top: 10px;
+  height: 50px;
+  width: 50%;
+  padding-left: 15px;
+  padding-right: 5%;
+  background-color: rgb(0, 0, 0);
+
+}
 
 
-  @import "bourbon";
+@import "bourbon";
 
 /*
   a {
@@ -76,9 +79,9 @@ body {
 
 
 
-    #form-wrapper {
-      padding-top: 10%;
-    }
+#form-wrapper {
+  padding-top: 10%;
+}
 
 /*
     h1 {
@@ -92,25 +95,25 @@ body {
     }
 */
 
-    input[type="text"] {
-      margin-top: 20px;
-      margin-bottom: -1px;
-      border-bottom-left-radius: 0;
-      border-bottom-right-radius: 0;
-      font-size: 15pt;
-      height: 48px;
-      width: 340px;
-    }
+input[type="text"] {
+  margin-top: 20px;
+  margin-bottom: -1px;
+  border-bottom-left-radius: 0;
+  border-bottom-right-radius: 0;
+  font-size: 15pt;
+  height: 48px;
+  width: 340px;
+}
 
-    input[type="password"] {
-      margin-bottom: 23px;
-      border-top-left-radius: 0;
-      border-top-right-radius: 0;
-      font-size: 15pt;
-      height: 48px;
-      width: 340px;
+input[type="password"] {
+  margin-bottom: 23px;
+  border-top-left-radius: 0;
+  border-top-right-radius: 0;
+  font-size: 15pt;
+  height: 48px;
+  width: 340px;
 
-    }
+}
 
 /*
     input[type="submit"] {
@@ -122,4 +125,3 @@ body {
         
     }
 */
-
