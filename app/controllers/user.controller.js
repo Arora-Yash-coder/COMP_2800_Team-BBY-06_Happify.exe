@@ -114,7 +114,7 @@ exports.verify = (req, res) => {
             res.send(usrnameNotFoundMsg);
 
         }
-       
+
 
     })
 
@@ -311,6 +311,24 @@ var navbar_top_ejs = fs.readFileSync(path + "components/navbar_top.ejs", 'utf-8'
 
 var footer = fs.readFileSync(path + "components/footer.ejs", 'utf-8');
 exports.getCoupon = (req, res) => {
+    let state = null;
+    MongoClient.connect(dbConfig.url, function (err, db) {
+        if (err) throw err;
+        var dbo = db.db("test");
+
+        dbo.collection("users").find({
+            _id: ObjectId(req.session.user_sid)
+        }).toArray(function (err, result) {
+
+
+            state = result[0].daily_task_rec[result[0].daily_task_rec.length - 1].state;
+        })
+
+    })
+
+
+
+
     // res.setHeader('Content-Type', 'application/json');
     MongoClient.connect(dbConfig.url, function (err, db) {
         if (err) throw err;
@@ -325,12 +343,25 @@ exports.getCoupon = (req, res) => {
 
 
             db.close();
-            res.render(path + "coupon.ejs", {
-                coupons: result,
-                // navbar: navbar_top_ejs,
-                navbar: undefined,
-                footer: footer
-            });
+
+            if (state >= 7) {
+                res.end(res.render(path + "coupon.ejs", {
+                    coupons: result,
+                    navbar: navbar_top_ejs,
+                    back_button: undefined,
+                    proceed_button : undefined,
+                    footer: footer,
+
+                }));
+            } else {
+                res.render(path + "coupon.ejs", {
+                    coupons: result,
+                    back_button:"<button id='back' onclick='window.location.href='/minigames';'>Back</button>",
+                    proceed_button : "<button id='proceed' onclick='window.location.href='./flow_final.html''>Proceed</button>",
+                    navbar: undefined,
+                    footer: footer
+                });
+            }
             //    res.send( { result });
 
         });
@@ -653,7 +684,7 @@ exports.addPoints = (req, res, n) => {
         dbo.collection("users").updateOne(
             {
                 // daily_task_rec: { $elemMatch: { "user_id": req.session.user_sid, date: { $lte: new Date() } } },
-                daily_task_rec: { $elemMatch: { "state": {$lte : 10}, date: { $lte: new Date() } } },
+                daily_task_rec: { $elemMatch: { "state": { $lte: 10 }, date: { $lte: new Date() } } },
             },
             { $inc: { "daily_task_rec.$.points_earned_today": n } },
             // { upsert: true }

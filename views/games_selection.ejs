@@ -182,6 +182,14 @@
         $("#proceed").click(() => {
 
             alert("clicked")
+            $.ajax({
+                    type: "get",
+                    url: "/state_add",
+                    dataType: "text",
+                    success: function (response) {
+                        console.log("successfully move onto the next state!")
+                    }
+                });
 
             window.location.href = '/coupon';
 

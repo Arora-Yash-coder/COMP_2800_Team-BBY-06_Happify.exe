@@ -217,7 +217,7 @@ module.exports = function (app) {
 					}));
 				}
 
-				else if (state >= 7) {
+				else if (state >= 6) {
 					res.end(res.render(path + "games_selection.ejs", {
 						navbar: navbar_top_ejs,
 						proceed_button: undefined,
