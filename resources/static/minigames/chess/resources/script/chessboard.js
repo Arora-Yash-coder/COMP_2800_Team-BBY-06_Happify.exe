@@ -152,7 +152,7 @@ class Cell {
                         console.log({"uci":uci})
                         $.ajax({
                             type: "post",
-                            url: "/game/chess",
+                            url: "/minigames/chess",
                             data: {"uci":uci},
                             // dataType: "dataType",
                             success: function (response) {
@@ -197,7 +197,7 @@ class Cell {
                         console.log({"uci":uci})
                         $.ajax({
                             type: "post",
-                            url: "/game/chess",
+                            url: "/minigames/chess",
                             data: {"uci":uci},
                             // dataType: "dataType",
                             success: function (response) {
@@ -437,9 +437,9 @@ class Pawn extends Piece {
         //renders the chess according to the right color
         super.piece_render(color, x_coor, y_coor)
         if (this.color == "white")
-            this.img = "/img/White_Pawn.png"
+            this.img = "/minigames/chess/resources/img/White_Pawn.png"
         else
-            this.img = "/img/Black_Pawn.png"
+            this.img = "/minigames/chess/resources/img/Black_Pawn.png"
 
         //this line of code 
         this.board.get_cell(x_coor, y_coor).set_piece(this);
@@ -546,9 +546,9 @@ class Knight extends Piece {
         //renders the chess according to the right color
         super.piece_render(color, x_coor, y_coor)
         if (this.color == "white")
-            this.img = "/img/White_Knight.png"
+            this.img = "/minigames/chess/resources/img/White_Knight.png"
         else
-            this.img = "/img/Black_Knight.png"
+            this.img = "/minigames/chess/resources/img/Black_Knight.png"
 
         //this line of code 
         this.board.get_cell(x_coor, y_coor).set_piece(this);
@@ -602,9 +602,9 @@ class Bishop extends Piece {
         //renders the chess according to the right color
         super.piece_render(color, x_coor, y_coor)
         if (this.color == "white")
-            this.img = "/img/White_Bishop.png"
+            this.img = "/minigames/chess/resources/img/White_Bishop.png"
         else
-            this.img = "/img/Black_Bishop.png"
+            this.img = "/minigames/chess/resources/img/Black_Bishop.png"
 
         //this line of code 
         this.board.get_cell(x_coor, y_coor).set_piece(this);
@@ -625,9 +625,9 @@ class Rook extends Piece {
         //renders the chess according to the right color
         super.piece_render(color, x_coor, y_coor)
         if (this.color == "white")
-            this.img = "/img/White_Rook.png"
+            this.img = "/minigames/chess/resources/img/White_Rook.png"
         else
-            this.img = "/img/Black_Rook.png"
+            this.img = "/minigames/chess/resources/img/Black_Rook.png"
 
         //this line of code 
         this.board.get_cell(x_coor, y_coor).set_piece(this);
@@ -648,9 +648,9 @@ class King extends Piece {
         //renders the chess according to the right color
         super.piece_render(color, x_coor, y_coor)
         if (this.color == "white")
-            this.img = "/img/White_King.png"
+            this.img = "/minigames/chess/resources/img/White_King.png"
         else
-            this.img = "/img/Black_King.png"
+            this.img = "/minigames/chess/resources/img/Black_King.png"
 
         //this line of code 
         this.board.get_cell(x_coor, y_coor).set_piece(this);
@@ -671,9 +671,9 @@ class Queen extends Piece {
         //renders the chess according to the right color
         super.piece_render(color, x_coor, y_coor)
         if (this.color == "white")
-            this.img = "/img/White_Queen.png"
+            this.img = "/minigames/chess/resources/img/White_Queen.png"
         else
-            this.img = "/img/Black_Queen.png"
+            this.img = "/minigames/chess/resources/img/Black_Queen.png"
 
         //this line of code 
         this.board.get_cell(x_coor, y_coor).set_piece(this);

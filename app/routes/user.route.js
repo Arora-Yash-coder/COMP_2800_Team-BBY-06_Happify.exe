@@ -109,7 +109,7 @@ module.exports = function (app) {
 	});
 
 	// app.get("/game/chess", (req, res) => {
-	// 	res.redirect("judaozhong.com:3001")
+	// 	res.redirect("")
 	// })
 
 	app.get('/coupon', sessionChecker2, users.getCoupon);
@@ -271,6 +271,14 @@ module.exports = function (app) {
 	//when the users click on this,
 	app.post('/coupon/redeem', users.redeemCoupon);
 
+
+	//---------------------Judao ChessGame--------------------------------------
+	app.get("/minigames/chess", (req, res) => {
+		res.sendFile(staticPath + "/minigames/chess/chessboard.html")
+	})
+
+
+	
 	app.get("/restart", (req, res) => {
 		uci[id] = "position startpos moves ";
 		stockfishes[id].postMessage(uci[id]);
@@ -278,9 +286,9 @@ module.exports = function (app) {
 	})
 
 
-	app.post("/game/chess", (req, res) => {
-		// console.log("req.body")
-		// console.log(req.body)
+	app.post("/minigames/chess", (req, res) => {
+		console.log("req.body")
+		console.log(req.body)
 		var next_move = []
 		console.log("uci-=================================================")
 		console.log(req.body["uci"])

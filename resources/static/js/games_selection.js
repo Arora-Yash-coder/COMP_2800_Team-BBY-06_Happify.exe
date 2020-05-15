@@ -52,3 +52,35 @@ $(document).ready(function () {
 
 
         })
+
+        let allowedKeys = {
+            37: 'left',
+            38: 'up',
+            39: 'right',
+            40: 'down',
+            65: 'a',
+            66: 'b'
+        };
+
+        let konamiCode = ['up', 'up', 'down', 'down', 'left', 'right', 'left', 'right', 'b', 'a'];
+        let counter = 0;
+
+        document.addEventListener('keydown', function (e) {
+            let key = allowedKeys[e.keyCode];
+            let requiredKey = konamiCode[counter];
+
+            if (key == requiredKey) {
+                counter++;
+
+                if (counter == konamiCode.length) {
+                    easter();
+                    counter = 0;
+                }
+            } else {
+                counter = 0;
+            }
+        });
+
+        function easter() {
+            window.location.href = '/static/minigames/agar.html';
+        }
