@@ -6,9 +6,10 @@ body {
        
             div {
                 height: 100vh;
-                background-image: url("/img/background.png");
-                background-size: cover;
-
+/*                background-image: url("/img/background.png");*/
+/*                background-size: cover;*/
+                background-color: #99F7AB;
+/*                background-color:rgba(153,247,171,0.7);*/
             }
 
             #title {
@@ -18,10 +19,11 @@ body {
                 font-size: 20pt;
             }
 
+/*
             button {
 
-                background-color: #3AB795;
-                /* Green */
+                background-color: #d6f9dd;
+                 Green 
                 border: none;
                 color: white;
                 padding: 15px 32px;
@@ -30,6 +32,7 @@ body {
                 display: inline-block;
                 font-size: 16px;
             }
+*/
        .square_btn {
             display: inline-block;
             padding: 0.3em 1em;
@@ -49,13 +52,13 @@ body {
             display: inline-block;
             padding: 0.3em 1em;
             text-decoration: none;
-            color: #3AB795;
-            border: solid 2px #3AB795;
+            color: #53131e;
+            border: solid 2px #53131e;
             border-radius: 3px;
             transition: .4s;
         }
 
         .square_btn_second:hover {
-            background: #EF629F;
-            color: white;
+            background: #d6f9dd;
+            color: #753e48;
         }

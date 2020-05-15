@@ -26,8 +26,12 @@
 
   body {
     text-align: center;
+      background-color: #99F7AB;
+      color: #53131E;
+/*
     background-image: url(../img/background.png);
     background-size: cover;
+*/
     height:120vh;
   }
   #head{
@@ -35,7 +39,7 @@
         
   }
   h1 {
-    color: #3AB795;
+    color: #53131E;
     font-size: 20pt;
     font-weight: bold;
 
@@ -59,19 +63,19 @@
 
 
   #container {
-    background-color: #FAC9B8;
+    background-color: #7BDFF2;
 /*    border-radius: 25px;*/
-    margin-left: 25px;
-    margin-right: 25px;
+/*    margin-left: 25px;*/
+/*    margin-right: 25px;*/
     padding-top: 10px;
     padding-bottom: 10px;
     margin-top: 10px;
     margin-bottom: 10px;
-    color: #3AB795;
+    color: #53131E;
   }
 
   #mycoupons {
-    background-color: #FAC9B8;
+    background-color: #D6F9DD;
     border-radius: 25px;
     margin-left: 25px;
     margin-right: 25px;
@@ -79,13 +83,14 @@
     padding-bottom: 10px;
     margin-top: 10px;
     margin-bottom: 10px;
-    color: #3AB795;
+    color: #53131E;
+      border: solid 2px rgba(83,19,30,0.7);
   }
 
   button {
-    background-color: white;
-    border: #3AB795 solid 1px;
-    color: #3AB795;
+    background-color: transparent;
+    border: #53131E solid 1.5px;
+    color: #53131E;
     padding: 7px 26px;
     text-align: center;
     text-decoration: none;
@@ -93,6 +98,20 @@
     font-size: 16px;
     margin-bottom: 20px;
   }
+
+button:hover {
+    background-color: white;
+      border: #53131E solid 1.5px;
+      color: #53131E;
+    padding: 7px 26px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin-bottom: 20px;
+  }
+
+
 
   #avatar {
     width: 100px;
@@ -109,7 +128,8 @@
     display: none;
   }
 
+/*
   #logout {
     color: #EF629F;
     border: #EF629F solid 1px;
-  }
+  }*/

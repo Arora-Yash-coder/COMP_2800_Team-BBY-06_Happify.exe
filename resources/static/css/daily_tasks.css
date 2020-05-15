@@ -33,10 +33,10 @@
       body {
         text-align: center;
         margin: 0;
-        background-image: url(../img/background.png);
-        background-size: cover;
+/*        background-image: url(../img/background.png);*/
+/*        background-size: cover;*/
         /* height:100vh; */
-
+          background-color: #99F7AB;
       }
 
       img {

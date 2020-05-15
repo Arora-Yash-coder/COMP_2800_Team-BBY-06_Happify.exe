@@ -1,12 +1,13 @@
-
-       
-       body {
+ body {
             text-align: center;
             margin: 0;
+/*
             background-image: url(/static/img/background.png);
             background-size: cover;
-            height: 140vh;
-            
+*/
+            height: 100vh;
+            background-color: #99F7AB;
+      color: #53131E;
         }
         img {
             object-fit: contain;
@@ -17,20 +18,20 @@
             margin-right: auto;
          }
         .first{
-            color: #EF629F;
+            color: #53131E;
             
         }
         .second{
-            color: #3AB795;
+            color: #53131E;
             
         }
         .top{
-            color: #3AB795;
+/*            color: #3AB795;*/
             font-size: 30pt;
             font-weight: bold;
         }
         .points{
-            color: #EF629F;
+            color: #53131E;
             margin-top: -10px;
             font-weight: bold;
             font-size: 13pt;
@@ -55,11 +56,12 @@
             margin-top: 10px;
             margin-bottom: 10px;
             border-radius: 25px;
-            background-color: #FAC9B8;
+            background-color: #D6F9DD;
             grid-row: 1 / span 1;
             display: grid;
             grid-template-columns: 50% 50%;
-            color: #3AB795;
+            border: solid 2px rgba(83,19,30,0.7);
+            
         }
         #first1{
             padding: 15px;
@@ -88,11 +90,11 @@
             margin-top: 10px;
             margin-bottom: 10px;
             border-radius: 25px;
-            background-color: #FAC9B8;
+            background-color: #D6F9DD;
             grid-row: 2 / span 1;
             display: grid;
             grid-template-columns: 50% 50%;
-            color: #3AB795;
+            border: solid 2px rgba(83,19,30,0.7);
         }
         #second1{
             padding: 15px;
@@ -119,11 +121,11 @@
             margin-top: 10px;
             margin-bottom: 10px;
             border-radius: 25px;
-            background-color: #FAC9B8;
+            background-color: #D6F9DD;
             grid-row: 3 / span 1;
             display: grid;
             grid-template-columns: 50% 50%;
-             color: #3AB795;
+            border: solid 2px rgba(83,19,30,0.7);
         }
         #third1{
             padding: 15px;
@@ -149,7 +151,7 @@
             grid-row: 1 / span 1;
         }
         #greeting {
-            color: #EF629F;
+            color: #53131E;
             
         }
         #footer{
@@ -161,7 +163,7 @@
     margin: 0;
 
     overflow: hidden;
-    background-color: #3AB795;
+    background-color: #4B7F52;
 }
 
 .list {
@@ -181,15 +183,15 @@
     background-color: rgb(65, 134, 125);
 }
 #stats {
-    margin-left: 25px;
-    margin-right: 25px;
+/*    margin-left: 25px;*/
+/*    margin-right: 25px;*/
     margin-top: 10px;
     margin-bottom: 10px;
 /*    border-radius: 25px;*/
     grid-row: 2 / span 1;
-    background-color: #FAC9B8;
+    background-color: #7BDFF2;
     display: grid;
     grid-template-columns: 50% 50%;
-    color: #3AB795;
+    
 
 }

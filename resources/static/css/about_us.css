@@ -69,50 +69,52 @@
 
 body {
     text-align: center;
-    background-image: url(../img/background.png);
-    background-size: cover;
+/*    background-image: url(../img/background.png);*/
+/*    background-size: cover;*/
+    background-color: #99F7AB;
   }
 
   h1 {
-    color: #3AB795;
+    color: white;
 
   }
   .intro{
-      background-color: #B8D8BA;
-      border-radius: 25px;
-      margin-left: 25px;
-      margin-right: 25px;
+      background-color: #7BDFF2;
+/*      border-radius: 25px;*/
+/*      margin-left: 25px;*/
+/*      margin-right: 25px;*/
       padding-top: 10px;
       padding-bottom: 10px;
       margin-top: 10px;
       margin-bottom: 10px;
-      color: #EF629F;
+      color: #53131E;
     }
     .one{
-        background-color: #FAC9B8;
-      border-radius: 25px;
-      margin-left: 25px;
-      margin-right: 25px;
+        background-color: #D6F9DD;
+/*      border-radius: 25px;*/
+/*      margin-left: 25px;*/
+/*      margin-right: 25px;*/
       padding-top: 10px;
       padding-bottom: 10px;
       margin-top: 10px;
       margin-bottom: 10px;  
-      color: #3AB795;
+      color: #53131E;
     }
     .two{
-        background-color: #B8D8BA;
-      border-radius: 25px;
-      margin-left: 25px;
-      margin-right: 25px;
+        background-color: #D6F9DD;
+/*      border-radius: 25px;*/
+/*      margin-left: 25px;*/
+/*      margin-right: 25px;*/
       padding-top: 10px;
       padding-bottom: 10px;
       margin-top: 10px;
       margin-bottom: 10px;
-      color: #EF629F;
+      color: #53131E;
     }
     img{
         max-width: 80%;
     }
+/*
     button {
     background-color: white;
     border: #3AB795 solid 1px;
@@ -124,6 +126,11 @@ body {
     font-size: 16px;
       margin-bottom: 20px;
   }
+*/
+#footer{
+    color: #53131E;
+}
+/*
 .square_btn {
             display: inline-block;
             padding: 0.3em 1em;
@@ -138,18 +145,19 @@ body {
             background: #EF629F;
             color: white;
         }
+*/
 
         .square_btn_second {
             display: inline-block;
             padding: 0.3em 1em;
             text-decoration: none;
-            color: #3AB795;
-            border: solid 2px #3AB795;
+            color: #53131e;
+            border: solid 2px #53131e;
             border-radius: 3px;
             transition: .4s;
         }
 
         .square_btn_second:hover {
-            background: #EF629F;
-            color: white;
+            background: white;
+            color: #753e48;
         }

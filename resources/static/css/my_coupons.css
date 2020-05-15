@@ -1,14 +1,13 @@
-h1{
-          color: #3AB795;
-    }
+
 
     body {
       text-align: center;
       margin: 0;
-      background-image: url(../img/background.png);
-      background-size: cover;
+/*      background-image: url(../img/background.png);*/
+/*      background-size: cover;*/
       height:120vh;
-
+        background-color: #99F7AB;
+    color: #53131E;
     }
 
     .square_btn_second {
@@ -36,21 +35,22 @@ h1{
       margin-top: 10px;
       margin-bottom: 10px;
       border-radius: 25px;
-      background-color: #FAC9B8;
+      background-color: #D6F9DD;
 
 
-      color: #3AB795;
+      color: #53131E;
+        border: solid 2px rgba(83,19,30,0.7);
     }
     #stats {
-        margin-left: 25px;
-        margin-right: 25px;
+/*        margin-left: 25px;*/
+/*        margin-right: 25px;*/
         margin-top: 10px;
         margin-bottom: 10px;
 /*    border-radius: 25px;*/
         grid-row: 2 / span 1;
-        background-color: #FAC9B8;
+        background-color: #7BDFF2;
         display: grid;
         grid-template-columns: 50% 50%;
-        color: #3AB795;
+        color: #53131E;
 
       }

@@ -1,6 +1,9 @@
 body {
+/*
     background-image: url(./../img/background.png);
     background-size: cover;
+*/
+    background-color: #99F7AB;
     width: 100%;
 }
 .container{
@@ -9,6 +12,7 @@ body {
       /* filter:alpha(opacity=50); */
       z-index:-1; 
       /* opacity:0.8; */
+/*    width: 90%;*/
     }
     #choice_tab{
       display: inline;
@@ -64,17 +68,29 @@ body {
     }
 
 
-    #register {
-/*      margin-top: 10px;*/
-      background-color: transparent;
-      border: #3AB795 solid 1px;
-      color: #3AB795;
-      padding: 10px 26px;
+    #register{
+    background-color: transparent;
+      border: #53131E solid 1.5px;
+      color: #53131E;
+      padding: 7px 26px;
       text-align: center;
       text-decoration: none;
       display: inline-block;
       font-size: 16px;
-    }
+    font-weight: bold;
+    
+}
+#register:hover{
+    background-color: white;
+      border: #53131E solid 1.5px;
+      color: #53131E;
+      padding: 7px 26px;
+      text-align: center;
+      text-decoration: none;
+      display: inline-block;
+      font-size: 16px;
+    
+}
 
 
 

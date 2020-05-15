@@ -1,42 +1,42 @@
 body {
     text-align: center;
     margin: 0;
-    background-image: url(/static/img/background.png);
-    background-size: cover;
-    
-    color: #3AB795;
+/*    background-image: url(/static/img/background.png);*/
+/*    background-size: cover;*/
+    background-color: #99F7AB;
+    color: #53131E;
     height: 100vh;
 }
 
 .square_btn_second {
-    display: inline-block;
-    padding: 0.3em 1em;
-    text-decoration: none;
-    color: #3AB795;
-    border: solid 2px #3AB795;
-    border-radius: 3px;
-    transition: .4s;
-}
+            display: inline-block;
+            padding: 0.3em 1em;
+            text-decoration: none;
+            color: #53131e;
+            border: solid 2px #53131e;
+            border-radius: 3px;
+            transition: .4s;
+        }
 
-.square_btn_second:hover {
-    background: #EF629F;
-    color: white;
-}
+        .square_btn_second:hover {
+            background: white;
+            color: #753e48;
+        }
 
 #container>div:nth-child(even) {
     background-color: #FAC9B8;
 }
 #stats {
-    margin-left: 25px;
-    margin-right: 25px;
+/*    margin-left: 25px;*/
+/*    margin-right: 25px;*/
     margin-top: 10px;
     margin-bottom: 10px;
 /*    border-radius: 25px;*/
     grid-row: 2 / span 1;
-    background-color: #FAC9B8;
+    background-color: #7BDFF2;
     display: grid;
     grid-template-columns: 50% 50%;
-    color: #3AB795;
+    color: #53131E;
     display: grid;
     grid-template-rows: 50% 50%;
     grid-template-columns: 50% 50%;
@@ -61,14 +61,14 @@ body {
     grid-column: 2 / span 1;
 }
 .top {
-        color: #3AB795;
+        color: #53131E;
         font-size: 13pt;
         font-weight: bold;
     }
 
 
 .points {
-        color: #3AB795;
+        color: #53131E;
         margin-top: -10px;
         font-weight: bold;
         font-size: 13pt;
@@ -84,7 +84,7 @@ body {
         grid-row: 1 / span 1;
         display: grid;
         grid-template-rows: 50% 50%;
-        color: #3AB795;
+        color: #53131E;
     }
 
     .title {
@@ -102,20 +102,41 @@ body {
         margin-top: 10px;
         margin-bottom: 10px;
         border-radius: 25px;
-        background-color: #FAC9B8;
+        background-color: #D6F9DD;
 
         display: block;
         grid-template-rows: 50% 50%;
-        color: #3AB795;
+        color: #53131E;
+        border: solid 2px rgba(83,19,30,0.7);
     }
 
-body{
-        background-image: url(/static/img/background.png);
-        background-size: cover;    
-            
+button{
+    background-color: transparent;
+      border: #53131E solid 1.5px;
+      color: #53131E;
+      padding: 7px 26px;
+      text-align: center;
+      text-decoration: none;
+      display: inline-block;
+      font-size: 16px;
+    font-weight: bold;
+    
 }
+button:hover{
+    background-color: white;
+      border: #53131E solid 1.5px;
+      color: #53131E;
+      padding: 7px 26px;
+      text-align: center;
+      text-decoration: none;
+      display: inline-block;
+      font-size: 16px;
+    
+}
+
+/*
 button {
-        background-color: white; /* Green */
+        background-color: white;  Green 
         border: 1px solid #3AB795;
         color: #3AB795;
         padding: 10px 24px;
@@ -124,8 +145,10 @@ button {
         display: inline-block;
         font-size: 16px;
 }
+*/
 #proceed{
-            float: right;
+    margin-top: 10px;
+/*            float: right;*/
 }
 #back{
             float: left;
@@ -133,7 +156,11 @@ button {
 #footer{
     color: black;
 }
-
+#search_function{
+    margin-top: 10px;
+    margin-bottom: 10px;
+    
+}
 
 
 /* bootstrap progress bar */
