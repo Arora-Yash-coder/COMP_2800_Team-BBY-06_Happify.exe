@@ -75,7 +75,7 @@ body {
     color: #53131E;
     margin-top: -10px;
     font-weight: bold;
-    font-size: 13pt;
+    font-size: 20pt;
 }
 
 .description {
@@ -161,7 +161,7 @@ button {
 }
 
 #footer {
-    color: black;
+/*    color: black;*/
 }
 
 #search_function {
@@ -210,7 +210,7 @@ button {
 }
 
 .progress-bar-animated {
-    width: 65%;
+    width: 75%;
     -webkit-animation: progress-bar-stripes 1s linear infinite;
     animation: progress-bar-stripes 1s linear infinite;
 }

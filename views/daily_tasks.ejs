@@ -15,7 +15,7 @@
 <body>
   <div id='container'>
     <div id="header">
-      <div style="float: right">Step 1 of 3</div>
+<!--      <div style="float: right">Step 1 of 3</div>-->
       <br>
       <div id="greeting">
         <p class='top'>Daily tasks</p>
@@ -26,7 +26,10 @@
 
     </div>
 
-
+<div class="progress">
+                <div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar"
+                    aria-valuenow="75" aria-valuemin="0" aria-valuemax="100"></div>
+            </div>
 
 
     
@@ -39,7 +42,7 @@
       <div id='inner_<%= i%>'>
 
         <span class="taskid" id="taskid<%=todo_item[i].id%>"></span>
-        <img src="<%=todo_item[i].img%>"
+        <img src="<%=todo_item[i].img%>">
         <span class="to_do_title" data-toggle="collapse" data-target="#Read_content_<%=i%>"  
           id="title_<%=i %>"><%= todo_item[i].title; %></span>
         <div class="collapse" id="Read_content_<%=i%>" >

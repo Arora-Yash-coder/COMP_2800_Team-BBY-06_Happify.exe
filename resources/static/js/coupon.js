@@ -100,6 +100,7 @@ $(".yes").click((e) => {
             alert(xhr.status);
             alert(thrownError);
         }
+        
     })
 
 
@@ -128,7 +129,7 @@ $(".yes").click((e) => {
     })
 
 
-
+setTimeout(()=>{window.location.replace('/coupon')},120);
 });
 
 

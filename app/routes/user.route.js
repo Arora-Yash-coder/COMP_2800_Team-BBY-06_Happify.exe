@@ -229,16 +229,21 @@ module.exports = function (app) {
 
 						navbar: undefined,
 						proceed_button: undefined,
-						back_button: "<button id='back' onclick='window.location.href='/daily_tasks';'>Back</button>",
-						footer: footer,
+						back_button: undefined,
+//						back_button: "<button id='back' onclick='window.location.href='/daily_tasks';'>Back</button>",
+                        footer: footer,
 
 					}));
+				}
+                else if (state < 4) {
+					res.redirect('/homepage');
 				}
 				else if (state == 5) {
 					res.end(res.render(path + "games_selection.ejs", {
 						navbar: undefined,
 						proceed_button: "<button id='proceed' onclick='window.location.href='/coupon''>Proceed</button>",
-						back_button: "<button id='back' onclick='window.location.href='/daily_tasks';'>Back</button>",
+						back_button: undefined,
+//						back_button: "<button id='back' onclick='window.location.href='/daily_tasks';'>Back</button>",
 						footer: footer,
 
 					}));
