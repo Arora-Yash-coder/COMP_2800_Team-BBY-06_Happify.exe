@@ -449,7 +449,7 @@ module.exports = function (app) {
 
 			dbo.collection("users").updateOne({
 				_id: ObjectId(req.session.user_sid),
-				daily_task_rec: { $elemMatch: { date: { $lte: new Date() } } }
+				daily_task_rec: { $elemMatch: { date: {  $gte: new Date(new Date().setDate(new Date().getDate()-1)) } } }
 			}, { $inc: { "daily_task_rec.$.state": 1 } },
 
 			)
@@ -645,7 +645,7 @@ module.exports = function (app) {
 
 
 
-
+	app.get("/get_state",sessionChecker2,users.getState)
 
 
 
