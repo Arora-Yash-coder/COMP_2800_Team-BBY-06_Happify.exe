@@ -160,7 +160,9 @@ img {
 #greeting {
   color: #EF629F;
 }
-
+#footer{
+    margin-top: 260px;
+}
 /* boostrap */
 @-webkit-keyframes progress-bar-stripes {
   from {

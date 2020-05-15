@@ -61,6 +61,9 @@
       background-color: #99F7AB;
       color: #53131E;
     }
+    #footer{
+    margin-top: 470px;
+    }
 
     img {
       object-fit: contain;
