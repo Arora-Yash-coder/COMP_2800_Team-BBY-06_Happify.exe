@@ -24,8 +24,8 @@
     <div id="search_function"><input id="search_box" type="text" placeholder="Coupon title or description">
         <button id="search">search</button></div>
     <div id='container'>
-        <button id="proceed" onclick="location.href='/reminder'">Proceed</button>
-        <button id="back" onclick="location.href='/minigames'">Back</button>
+        <button id="proceed" onclick="window.location.href='./flow_final.html'">Proceed</button>
+        <button id="back" >Back</button>
 
 
         <% for (var i = 0; i < coupons.length;  i++ ) { %>
@@ -181,10 +181,47 @@
                 });
             } say_hi()
 
+
+
+
+
+
+            $("#proceed").click(()=>{
+                $.ajax({
+                    type: "get",
+                    url: "/state_add",
+                    dataType: "text",
+                    success: function (response) {
+                        console.log("successfully move onto the next state!")
+                    }
+                });
+            })
+
+            $("#back").click(()=>{
+                window.location.href="/minigames"
+                $.ajax({
+                    type: "get",
+                    url: "/state_minus",
+                    dataType: "text",
+                    success: function (response) {
+                        console.log("successfully move onto the last state@@!")
+                        window.location.href="/minigames"
+                    }
+                   
+                });
+                window.location.href="/minigames"
+            })
+
+
         });
 
     </script>
+
+    
+
+
     <script src="/static/js/get_points.js"> </script>
+
 </body>
 
 </html>

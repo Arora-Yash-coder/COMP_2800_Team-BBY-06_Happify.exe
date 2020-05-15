@@ -652,7 +652,8 @@ exports.addPoints = (req, res, n) => {
 
         dbo.collection("users").updateOne(
             {
-                daily_task_rec: { $elemMatch: { "user_id": req.session.user_sid, date: { $lte: new Date() } } },
+                // daily_task_rec: { $elemMatch: { "user_id": req.session.user_sid, date: { $lte: new Date() } } },
+                daily_task_rec: { $elemMatch: { "state": {$lte : 10}, date: { $lte: new Date() } } },
             },
             { $inc: { "daily_task_rec.$.points_earned_today": n } },
             // { upsert: true }

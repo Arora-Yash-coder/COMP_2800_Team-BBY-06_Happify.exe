@@ -50,7 +50,8 @@
             <!--            <h1 style="color:violet;margin: 0;padding: 0;"> + </h1>-->
 
             <div id='inner'>
-                <div id="games1" onclick="window.location.href ='http://judaozhong.com:3001/game/chess' ">
+                <div class="minigame" id="games1"
+                    onclick="window.location.href ='http://judaozhong.com:3001/game/chess' ">
                     <div id='games1_1'>
                         <h1 class="first">Chess Game</h1>
                     </div>
@@ -65,7 +66,7 @@
 
                 </div>
 
-                <div id="games2" onclick="window.location.href = '/games/ttt'">
+                <div class="minigame" id="games2" onclick="window.location.href = '/games/ttt'">
                     <div id="games2_1">
                         <h1 class="first">Tic Tac Toe</h1>
                     </div>
@@ -75,7 +76,7 @@
                         </div>
                     </div>
                 </div>
-                <div id="games3"
+                <div class="minigame" id="games3"
                     onclick="window.location.href = 'https://s3-us-west-2.amazonaws.com/arorayash.com/Project2/index.html'">
                     <div id="games3_1">
                         <h1 class="first">Snake Eater</h1>
@@ -87,7 +88,8 @@
                     </div>
 
                 </div>
-                <div id="games4" onclick="window.location.href = 'http://judaozhong.com:3002/zombie.html';">
+                <div class="minigame" id="games4"
+                    onclick="window.location.href = 'http://judaozhong.com:3002/zombie.html';">
 
                     <div id="games4_1">
                         <h1 class="first">Shooter Game</h1>
@@ -108,8 +110,12 @@
 
                 </div>
 
-                <button id="proceed" onclick="location.href='/coupon';">Proceed</button>
-                <button id="back" onclick="location.href='/daily_tasks';">Back</button>
+
+                <%- proceed_button  %>
+
+                <%- back_button  %>
+
+
             </div>
 
         </div>
@@ -149,7 +155,7 @@
         $(document).ready(function () {
             function show_points() {
                 $.get("/user_profile/getProfile", function (data, status) {
-                   let pointstoday = data.result[0].daily_task_rec[data.result[0].daily_task_rec.length-1].points_earned_today
+                    let pointstoday = data.result[0].daily_task_rec[data.result[0].daily_task_rec.length - 1].points_earned_today
                     $("#pointsofar").html(data.result[0].points);
                     $("#pointofday").html(pointstoday);
                     console.log("data.result[0].daily_task_rec================");
@@ -157,7 +163,32 @@
                 });
             } show_points()
 
+            $(".minigame").on("click", () => {
+                $.ajax({
+                    type: "get",
+                    url: "/state_add",
+                    dataType: "text",
+                    success: function (response) {
+                        console.log("successfully move onto the next state!")
+                    }
+                });
+
+            })
+
         });
+
+
+
+        $("#proceed").click(() => {
+
+            alert("clicked")
+
+            window.location.href = '/coupon';
+
+
+        })
+
+
 
     </script>
 

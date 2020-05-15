@@ -4,7 +4,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-   <!-- <link rel="stylesheet" type="text/css" href="/static/css/navbar.css"> -->
+  <!-- <link rel="stylesheet" type="text/css" href="/static/css/navbar.css"> -->
   <link rel="stylesheet" type="text/css" href="/static/css/flow_daily_tasks.css">
 
   <title>Daily tasks</title>
@@ -32,7 +32,7 @@
       <% if(todo_item[i]){ %>
 
       <div id='inner_<%= i%>'>
-
+        <span class="taskid" id="taskid<%=todo_item[i].id%>"></span>
         <span style="background-color: cornsilk;" class="title" id="title_<%=i %>"><%= todo_item[i].title; %></span>
 
         <!-- prints out the paragraphs -->
@@ -57,9 +57,9 @@
 
     </div>
 
+    <%- proceed_button %>
 
 
-    <button onclick="location.href='/minigames';">Proceed</button>
   </div>
   <div id='footer'>Made by FutureCurves.</div>
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
@@ -172,26 +172,53 @@
 
     $(".answer_choices").hide()
 
-    
+
 
     $(".title").click((e) => {
-      $("#"+e.target.parentNode.id+" ~ div > span ~  ").css("display","none")
-      $("#"+e.target.parentNode.id+" ~ div > span ~   ").css("display","none")
+
+      let length = $(".taskid").length
+      let taskid = $(".taskid")
+      console.log("taskid")
+      console.log(taskid)
+      let id_array = []
+
+
+      for (var each = 0; each < length; each++) {
+        // id_array.push(titles[each].id.substring(6)) 
+        id_array.push(parseInt(taskid[each].id.substring(6)))
+      }
+      console.log("--------------------------id_array")
+      console.log(id_array)
+
+      $.ajax({
+        type: "post",
+        url: "/daily_tasks",
+        data: { id_array },
+        dataType: "text",
+        success: function (response) {
+          //  alert(response)
+        }
+      });
+
+
+      $("#" + e.target.parentNode.id + " ~ div > span ~  ").css("display", "none")
+      $("#" + e.target.parentNode.id + " ~ div > span ~   ").css("display", "none")
 
       $("#" + e.target.id + " ~ *").toggle()
 
-      if($("#" + e.target.id + " ~ div > div > button").css("display","none")){
-      setTimeout(() => {
+      if ($("#" + e.target.id + " ~ div > div > button").css("display", "none")) {
+        setTimeout(() => {
 
-        $("#" + e.target.id + " ~ div > div > button").show()
-      }, 3000);
-    }else{
-      $("#" + e.target.id + " ~ div > div > button").css("display","none")
-    }
+          $("#" + e.target.id + " ~ div > div > button").show()
+        }, 3000);
+      } else {
+        $("#" + e.target.id + " ~ div > div > button").css("display", "none")
+      }
 
     })
 
     $("button").click((e) => {
+
       console.log(e.target.parentElement.id)
       console.log($(e.target).html())
       console.log(typeof $(e.target).html())
@@ -200,39 +227,82 @@
       if ($(e.target).html() == e.target.parentElement.id) {
         $.ajax({
           type: "get",
+          url: "/state_add",
+          dataType: "text",
+          success: function (response) {
+            window.location.reload();
+          }
+        });
+
+        $.ajax({
+          type: "get",
           url: "/add_points",
           data: "data",
           dataType: "text",
           success: function (response) {
-           alert(response)
+            alert(response)
           }
 
+
+
         });
-      } else if($(e.target).html() == "Proceed"){
+
+        $.ajax({
+          type: "get",
+          url: "/state_add",
+          dataType: "text",
+          success: function (response) {
+            console.log("successfully move onto the next state!")
+          }
+        });
+
+
+
+
+
+
+      } else if ($(e.target).html() == "Proceed") {
         e.preventDefault
       }
-      else{alert("This is wrrrrong!")}
+      else { alert("This is wrrrrong!") }
     })
 
 
 
     $(document).ready(function () {
-    $.ajax({
+
+
+
+      $.ajax({
         type: "get",
         url: "/user_profile/getProfile",
-        
+
         dataType: "json",
         success: function (response) {
-         
-            $("#show_points").html("Current Points:" + response.result[0].points)
-        },
-        error:(response)=>{
-            console.log("failed")
-           
-        }
-    });
-});
 
+          $("#show_points").html("Current Points:" + response.result[0].points)
+        },
+        error: (response) => {
+          console.log("failed")
+
+        }
+      });
+    });
+
+    $("#proceed").click(() => {
+
+      alert("clicked")
+      $.ajax({
+        type: "get",
+        url: "/state_add",
+
+        dataType: "text",
+        success: function (response) {
+          alert(response)
+          window.location.href = '/minigames';
+        }
+      });
+    })
   </script>
 </body>
 
