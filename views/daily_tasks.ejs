@@ -15,7 +15,11 @@
 <body>
   <div id='container'>
     <div id="header">
+<<<<<<< HEAD
       <div style="float: right">Step 1 of 3</div>
+=======
+<!--      <div style="float: right">Step 1 of 3</div>-->
+>>>>>>> judao_tiffany_backend
       <br>
       <div id="greeting">
         <p class='top'>Daily tasks</p>
@@ -25,10 +29,59 @@
       </div>
 
     </div>
+<<<<<<< HEAD
 
 
+=======
+
+<div class="progress">
+                <div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar"
+                    aria-valuenow="75" aria-valuemin="0" aria-valuemax="100"></div>
+            </div>
 
 
+    
+    <div id="dailytask">
+      <% if (todo_item != undefined || todo_item != null) { %>
+
+      <% for (var i = 0; i < todo_item.length;  i++ ) { %>
+      <% if(todo_item[i]){ %>
+
+      <div id='inner_<%= i%>'>
+
+        <span class="taskid" id="taskid<%=todo_item[i].id%>"></span>
+        <img src="<%=todo_item[i].img%>">
+        <span class="to_do_title" data-toggle="collapse" data-target="#Read_content_<%=i%>"  
+          id="title_<%=i %>"><%= todo_item[i].title; %></span>
+        <div class="collapse" id="Read_content_<%=i%>" >
+          <!-- prints out the paragraphs -->
+          <%for(var j = 0; j <todo_item[i].paragraph.length; j++){%>
+          <p><%= todo_item[i].paragraph[j]; %></p>
+          <% } %>
+
+          <p style="color: rgb(43, 61, 226);"><%= todo_item[i].question; %></p>
+
+          <div style="color:black">
+            <%for(var k = 0; k <todo_item[i].choices.length; k++){%>
+            <div id="<%=todo_item[i].answer %>">
+              <button class="answer_choices" id="choice<%=k%>"><%=todo_item[i].choices[k]%></button>
+            </div>
+            <% } %>
+          </div>
+        </div>
+      </div>
+      <br />
+      <%  } %>
+      <% } %>
+      <% }else{ console.log("todo_items[i] not exist" ) } %>
+
+
+    </div>
+>>>>>>> judao_tiffany_backend
+
+    <%- proceed_button %>
+
+<<<<<<< HEAD
     
     <div id="dailytask">
       <% if (todo_item != undefined || todo_item != null) { %>
@@ -69,6 +122,8 @@
 
     <%- proceed_button %>
 
+=======
+>>>>>>> judao_tiffany_backend
 
   </div>
   <%- footer %>

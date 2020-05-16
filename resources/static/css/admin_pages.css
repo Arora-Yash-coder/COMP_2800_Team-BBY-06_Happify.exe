@@ -1,11 +1,21 @@
 @import url("https://fonts.googleapis.com/css?family=Lato:400,400i,700");
+<<<<<<< HEAD
+=======
+
+>>>>>>> judao_tiffany_backend
 body {
   display: -webkit-box;
   display: flex;
   -webkit-box-pack: center;
+<<<<<<< HEAD
           justify-content: center;
   -webkit-box-align: center;
           align-items: center;
+=======
+  justify-content: center;
+  -webkit-box-align: center;
+  align-items: center;
+>>>>>>> judao_tiffany_backend
   /* height: 100vh; */
   background: #1A1E23;
 }
@@ -15,27 +25,44 @@ body {
   display: flex;
   -webkit-box-orient: vertical;
   -webkit-box-direction: normal;
+<<<<<<< HEAD
           flex-direction: column;
+=======
+  flex-direction: column;
+>>>>>>> judao_tiffany_backend
   padding: 0 75px 10px 30px;
   background: #162740;
   border: transparent;
 }
+<<<<<<< HEAD
+=======
+
+>>>>>>> judao_tiffany_backend
 .todo-list .todo-list__title {
   padding: 3px 6px;
   color: #f1faee;
   background-color: #264456;
 }
+<<<<<<< HEAD
+=======
+
+>>>>>>> judao_tiffany_backend
 .todo-list .todo-list__label {
   display: -webkit-box;
   display: flex;
   -webkit-box-align: center;
+<<<<<<< HEAD
           align-items: center;
+=======
+  align-items: center;
+>>>>>>> judao_tiffany_backend
   margin: 40px 0;
   font-size: 24px;
   font-family: Lato, sans-serif;
   color: #f1faee;
   cursor: pointer;
 }
+<<<<<<< HEAD
 .todo-list .todo-list__label input[type="checkbox"] {
   opacity: 0;
   -webkit-appearance: none;
@@ -43,6 +70,17 @@ body {
           appearance: none;
 }
 .todo-list .todo-list__label input[type="checkbox"] + .check {
+=======
+
+.todo-list .todo-list__label input[type="checkbox"] {
+  opacity: 0;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+}
+
+.todo-list .todo-list__label input[type="checkbox"]+.check {
+>>>>>>> judao_tiffany_backend
   position: absolute;
   width: 25px;
   height: 25px;
@@ -50,12 +88,18 @@ body {
   -webkit-transition: 0.2s;
   transition: 0.2s;
 }
+<<<<<<< HEAD
 .todo-list .todo-list__label input[type="checkbox"]:checked + .check {
+=======
+
+.todo-list .todo-list__label input[type="checkbox"]:checked+.check {
+>>>>>>> judao_tiffany_backend
   width: 25px;
   height: 15px;
   border-top: transparent;
   border-right: transparent;
   -webkit-transform: rotate(-45deg);
+<<<<<<< HEAD
           transform: rotate(-45deg);
 }
 .todo-list .todo-list__label input[type="checkbox"] ~ span {
@@ -66,6 +110,20 @@ body {
   transition: 0.5s;
 }
 .todo-list .todo-list__label input[type="checkbox"] ~ span::before {
+=======
+  transform: rotate(-45deg);
+}
+
+.todo-list .todo-list__label input[type="checkbox"]~span {
+  position: relative;
+  left: 40px;
+  white-space: nowrap;
+  -webkit-transition: 0.5s;
+  transition: 0.5s;
+}
+
+.todo-list .todo-list__label input[type="checkbox"]~span::before {
+>>>>>>> judao_tiffany_backend
   position: absolute;
   content: "";
   top: 50%;
@@ -74,14 +132,21 @@ body {
   height: 1px;
   background: #f1faee;
   -webkit-transform: scaleX(0);
+<<<<<<< HEAD
           transform: scaleX(0);
   -webkit-transform-origin: right;
           transform-origin: right;
+=======
+  transform: scaleX(0);
+  -webkit-transform-origin: right;
+  transform-origin: right;
+>>>>>>> judao_tiffany_backend
   -webkit-transition: -webkit-transform 0.5s;
   transition: -webkit-transform 0.5s;
   transition: transform 0.5s;
   transition: transform 0.5s, -webkit-transform 0.5s;
 }
+<<<<<<< HEAD
 .todo-list .todo-list__label input[type="checkbox"]:checked ~ span {
   color: #585b57;
 }
@@ -93,6 +158,21 @@ body {
 }
 
 textarea{
+=======
+
+.todo-list .todo-list__label input[type="checkbox"]:checked~span {
+  color: #585b57;
+}
+
+.todo-list .todo-list__label input[type="checkbox"]:checked~span::before {
+  -webkit-transform: scaleX(1);
+  transform: scaleX(1);
+  -webkit-transform-origin: left;
+  transform-origin: left;
+}
+
+textarea {
+>>>>>>> judao_tiffany_backend
   margin-top: 20px;
   width: 260px;
   height: 280px;
@@ -104,13 +184,21 @@ textarea{
   margin-bottom: 20px;
 }
 
+<<<<<<< HEAD
 button{
+=======
+button {
+>>>>>>> judao_tiffany_backend
   font-size: 24px;
   font-family: Lato, sans-serif;
   background-color: bisque;
 }
 
+<<<<<<< HEAD
 a{
+=======
+a {
+>>>>>>> judao_tiffany_backend
   color: #1A1E23;
   height: 24px;
   font-size: 24px;

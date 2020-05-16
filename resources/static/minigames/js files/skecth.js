@@ -84,7 +84,11 @@ function draw() {
   let d = dist(mouseX / 20, mouseY / 20, 2.75, 1.75);
   if (d < 1.25) {
     // Code goes here to move back to menu.
+<<<<<<< HEAD
     window.location.href = "https://www.google.com"
+=======
+    window.location.href = "/minigames"
+>>>>>>> judao_tiffany_backend
     print("Yaaaa");
   }
 

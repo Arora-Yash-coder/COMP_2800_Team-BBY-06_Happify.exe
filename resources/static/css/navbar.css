@@ -1,14 +1,18 @@
-
 .container {
     list-style-type: none;
     margin: 0;
 
     overflow: hidden;
+<<<<<<< HEAD
     background-color: #3AB795;
+=======
+    background-color: #4B7F52;
+>>>>>>> judao_tiffany_backend
 }
 
 .list {
     float: left;
+    font-size: 15pt;
 }
 
 .list a {

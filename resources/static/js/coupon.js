@@ -100,6 +100,10 @@ $(".yes").click((e) => {
             alert(xhr.status);
             alert(thrownError);
         }
+<<<<<<< HEAD
+=======
+        
+>>>>>>> judao_tiffany_backend
     })
 
 
@@ -128,7 +132,11 @@ $(".yes").click((e) => {
     })
 
 
+<<<<<<< HEAD
 
+=======
+setTimeout(()=>{window.location.replace('/coupon')},120);
+>>>>>>> judao_tiffany_backend
 });
 
 

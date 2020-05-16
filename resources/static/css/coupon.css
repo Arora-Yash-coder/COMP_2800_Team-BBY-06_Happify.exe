@@ -1,10 +1,17 @@
 body {
     text-align: center;
     margin: 0;
+<<<<<<< HEAD
     background-image: url(/static/img/background.png);
     background-size: cover;
     
     color: #3AB795;
+=======
+    /*    background-image: url(/static/img/background.png);*/
+    /*    background-size: cover;*/
+    background-color: #99F7AB;
+    color: #53131E;
+>>>>>>> judao_tiffany_backend
     height: 100vh;
 }
 
@@ -12,20 +19,31 @@ body {
     display: inline-block;
     padding: 0.3em 1em;
     text-decoration: none;
+<<<<<<< HEAD
     color: #3AB795;
     border: solid 2px #3AB795;
+=======
+    color: #53131e;
+    border: solid 2px #53131e;
+>>>>>>> judao_tiffany_backend
     border-radius: 3px;
     transition: .4s;
 }
 
 .square_btn_second:hover {
+<<<<<<< HEAD
     background: #EF629F;
     color: white;
+=======
+    background: white;
+    color: #753e48;
+>>>>>>> judao_tiffany_backend
 }
 
 #container>div:nth-child(even) {
     background-color: #FAC9B8;
 }
+<<<<<<< HEAD
 #stats {
     margin-left: 25px;
     margin-right: 25px;
@@ -37,20 +55,44 @@ body {
     display: grid;
     grid-template-columns: 50% 50%;
     color: #3AB795;
+=======
+
+#stats {
+    /*    margin-left: 25px;*/
+    /*    margin-right: 25px;*/
+    margin-top: 10px;
+    margin-bottom: 10px;
+    /*    border-radius: 25px;*/
+    grid-row: 2 / span 1;
+    background-color: #7BDFF2;
+    display: grid;
+    grid-template-columns: 50% 50%;
+    color: #53131E;
+>>>>>>> judao_tiffany_backend
     display: grid;
     grid-template-rows: 50% 50%;
     grid-template-columns: 50% 50%;
 }
+<<<<<<< HEAD
 #description1{
+=======
+
+#description1 {
+>>>>>>> judao_tiffany_backend
     grid-row: 1 / span 1;
     grid-column: 1 / span 1;
 }
 
+<<<<<<< HEAD
 #description2{
+=======
+#description2 {
+>>>>>>> judao_tiffany_backend
     grid-row: 2 / span 1;
     grid-column: 1 / span 1;
 }
 
+<<<<<<< HEAD
 #pointsofar{
    grid-row: 1 / span 1;
    grid-column: 2 / span 1; 
@@ -116,6 +158,97 @@ body{
 }
 button {
         background-color: white; /* Green */
+=======
+#pointsofar {
+    grid-row: 1 / span 1;
+    grid-column: 2 / span 1;
+
+}
+
+#pointofday {
+    grid-row: 2 / span 1;
+    grid-column: 2 / span 1;
+}
+
+.top {
+    color: #53131E;
+    font-size: 13pt;
+    font-weight: bold;
+}
+
+
+.points {
+    color: #53131E;
+    margin-top: -10px;
+    font-weight: bold;
+    font-size: 20pt;
+}
+
+.description {
+    margin-left: 25px;
+    margin-right: 25px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    border-radius: 25px;
+
+    grid-row: 1 / span 1;
+    display: grid;
+    grid-template-rows: 50% 50%;
+    color: #53131E;
+}
+
+.title {
+    padding: 15px;
+    margin-top: auto;
+    margin-bottom: auto;
+    border-radius: 25px 0 0 25px;
+
+
+}
+
+.coupons {
+    margin-left: 25px;
+    margin-right: 25px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    border-radius: 25px;
+    background-color: #D6F9DD;
+
+    display: block;
+    grid-template-rows: 50% 50%;
+    color: #53131E;
+    border: solid 2px rgba(83, 19, 30, 0.7);
+}
+
+button {
+    background-color: transparent;
+    border: #53131E solid 1.5px;
+    color: #53131E;
+    padding: 7px 26px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    font-weight: bold;
+
+}
+
+button:hover {
+    background-color: white;
+    border: #53131E solid 1.5px;
+    color: #53131E;
+    padding: 7px 26px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+
+}
+
+/*
+button {
+        background-color: white;  Green 
+>>>>>>> judao_tiffany_backend
         border: 1px solid #3AB795;
         color: #3AB795;
         padding: 10px 24px;
@@ -124,6 +257,7 @@ button {
         display: inline-block;
         font-size: 16px;
 }
+<<<<<<< HEAD
 #proceed{
             float: right;
 }
@@ -134,6 +268,27 @@ button {
     color: black;
 }
 
+=======
+*/
+#proceed {
+    margin-top: 10px;
+    /*            float: right;*/
+}
+
+#back {
+    float: left;
+}
+
+#footer {
+/*    color: black;*/
+}
+
+#search_function {
+    margin-top: 10px;
+    margin-bottom: 10px;
+
+}
+>>>>>>> judao_tiffany_backend
 
 
 /* bootstrap progress bar */
@@ -146,9 +301,15 @@ button {
     font-size: 0.75rem;
     background-color: #e9ecef;
     border-radius: 0.25rem;
+<<<<<<< HEAD
   }
   
   .progress-bar {
+=======
+}
+
+.progress-bar {
+>>>>>>> judao_tiffany_backend
     display: -ms-flexbox;
     display: flex;
     -ms-flex-direction: column;
@@ -161,6 +322,7 @@ button {
     white-space: nowrap;
     background-color: #007bff;
     transition: width 0.6s ease;
+<<<<<<< HEAD
   }
   
   @media (prefers-reduced-motion: reduce) {
@@ -186,3 +348,30 @@ button {
       animation: none;
     }
   }
+=======
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .progress-bar {
+        transition: none;
+    }
+}
+
+.progress-bar-striped {
+    background-image: linear-gradient(45deg, rgba(255, 255, 255, 0.15) 25%, transparent 25%, transparent 50%, rgba(255, 255, 255, 0.15) 50%, rgba(255, 255, 255, 0.15) 75%, transparent 75%, transparent);
+    background-size: 1rem 1rem;
+}
+
+.progress-bar-animated {
+    width: 75%;
+    -webkit-animation: progress-bar-stripes 1s linear infinite;
+    animation: progress-bar-stripes 1s linear infinite;
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .progress-bar-animated {
+        -webkit-animation: none;
+        animation: none;
+    }
+}
+>>>>>>> judao_tiffany_backend

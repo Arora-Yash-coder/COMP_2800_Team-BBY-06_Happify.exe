@@ -48,6 +48,7 @@ var options = {
 
 //var server = https.createServer(options, app);
 
+<<<<<<< HEAD
 //server.listen(443, () => {
 //  console.log("server starting on port : " + 3000)
 //});
@@ -56,6 +57,16 @@ var options = {
 //https.createServer(options, app).listen(90, function () {
 //    console.log('Https server listening on port ' + 3011);
 //});
+=======
+// server.listen(443, () => {
+//   console.log("server starting on port : " + 3000)
+// });
+
+
+// https.createServer(options, app).listen(90, function () {
+//     console.log('Https server listening on port ' + 3011);
+// });
+>>>>>>> judao_tiffany_backend
 
 // Create a Server
 var server = app.listen(3000, function () {

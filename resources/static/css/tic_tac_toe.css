@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 
        
        body {
@@ -193,3 +194,247 @@
     color: #3AB795;
 
 }
+=======
+ body {
+     text-align: center;
+     margin: 0;
+     /*
+            background-image: url(/static/img/background.png);
+            background-size: cover;
+*/
+     height: 100vh;
+     background-color: #99F7AB;
+     color: #53131E;
+ }
+
+ img {
+     object-fit: contain;
+     max-width: 90%;
+     max-height: 95px;
+     display: block;
+     margin-left: auto;
+     margin-right: auto;
+ }
+
+ .first {
+     color: #53131E;
+
+ }
+
+ .second {
+     color: #53131E;
+
+ }
+
+ .top {
+     /*            color: #3AB795;*/
+     font-size: 30pt;
+     font-weight: bold;
+ }
+
+ .points {
+     color: #53131E;
+     margin-top: -10px;
+     font-weight: bold;
+     font-size: 13pt;
+ }
+
+ #container {
+     /*            display: grid;*/
+     grid-template-rows: 20% 65% 1%;
+     height: 100vh;
+
+ }
+
+ #header {
+     grid-row: 1 / span 1;
+ }
+
+ #inner {
+     grid-row: 2 / span 1;
+     display: grid;
+     grid-template-rows: 33.3% 33.3% 33.3%;
+ }
+
+ #first {
+     margin-left: 25px;
+     margin-right: 25px;
+     margin-top: 10px;
+     margin-bottom: 10px;
+     border-radius: 25px;
+     background-color: #D6F9DD;
+     grid-row: 1 / span 1;
+     display: grid;
+     grid-template-columns: 50% 50%;
+     border: solid 2px rgba(83, 19, 30, 0.7);
+
+ }
+
+ #first1 {
+     padding: 15px;
+     margin-top: auto;
+     margin-bottom: auto;
+     border-radius: 25px 0 0 25px;
+
+
+     grid-column: 1 / span 1;
+
+ }
+
+ #selection {
+     margin-top: auto;
+     margin-bottom: auto;
+     border-radius: 0 25px 25px 0;
+
+
+     grid-column: 2 / span 1;
+
+ }
+
+
+ #second {
+     margin-left: 25px;
+     margin-right: 25px;
+     margin-top: 10px;
+     margin-bottom: 10px;
+     border-radius: 25px;
+     background-color: #D6F9DD;
+     grid-row: 2 / span 1;
+     display: grid;
+     grid-template-columns: 50% 50%;
+     border: solid 2px rgba(83, 19, 30, 0.7);
+ }
+
+ #second1 {
+     padding: 15px;
+     margin-top: auto;
+     margin-bottom: auto;
+     border-radius: 25px 0 0 25px;
+
+
+     grid-column: 1 / span 1;
+
+ }
+
+ #selection2 {
+     margin-top: auto;
+     margin-bottom: auto;
+     border-radius: 0 25px 25px 0;
+
+
+     grid-column: 2 / span 1;
+
+ }
+
+ #third {
+     margin-left: 25px;
+     margin-right: 25px;
+     margin-top: 10px;
+     margin-bottom: 10px;
+     border-radius: 25px;
+     background-color: #D6F9DD;
+     grid-row: 3 / span 1;
+     display: grid;
+     grid-template-columns: 50% 50%;
+     border: solid 2px rgba(83, 19, 30, 0.7);
+ }
+
+ #third1 {
+     padding: 15px;
+     margin-top: auto;
+     margin-bottom: auto;
+     border-radius: 25px 0 0 25px;
+
+
+     grid-column: 1 / span 1;
+
+ }
+
+ #selection3 {
+     margin-top: auto;
+     margin-bottom: auto;
+     border-radius: 0 25px 25px 0;
+     grid-column: 2 / span 1;
+
+ }
+
+
+
+ #header {
+     grid-row: 1 / span 1;
+ }
+
+ #greeting {
+     color: #53131E;
+
+ }
+
+ #footer {
+     grid-row: 3 / span 1;
+ }
+
+ .container {
+     list-style-type: none;
+     margin: 0;
+
+     overflow: hidden;
+     background-color: #4B7F52;
+ }
+
+ .list {
+     float: left;
+     font-size: 15pt;
+ }
+
+ .list a {
+     display: block;
+     color: white;
+     text-align: center;
+     padding: 14px 16px;
+     text-decoration: none;
+ }
+
+ .list a:hover {
+     background-color: rgb(65, 134, 125);
+ }
+
+ #stats {
+     /*    margin-left: 25px;*/
+     /*    margin-right: 25px;*/
+     margin-top: 10px;
+     margin-bottom: 10px;
+     /*    border-radius: 25px;*/
+     grid-row: 2 / span 1;
+     background-color: #7BDFF2;
+     display: grid;
+     grid-template-columns: 50% 50%;
+
+
+ }
+ button {
+    background-color: transparent;
+    border: #53131E solid 1.5px;
+    color: #53131E;
+    padding: 7px 26px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 40px;
+    margin-bottom: 20px;
+    font-weight: bold;
+/*            margin-left: 100%;*/
+    
+}
+
+button:hover {
+    background-color: white;
+    border: #53131E solid 1.5px;
+    color: #53131E;
+    padding: 7px 26px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 40px;
+    margin-bottom: 20px;
+}
+>>>>>>> judao_tiffany_backend
