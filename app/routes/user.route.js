@@ -3,7 +3,7 @@ module.exports = function (app) {
 	var path = __basedir + '/views/';
 	global.path = path;
 
-	
+
 
 	var subs;
 	var vKey;
@@ -90,7 +90,7 @@ module.exports = function (app) {
 		}
 	};
 
-	var sessionChecker2 = (req, res, next) =>{
+	var sessionChecker2 = (req, res, next) => {
 		if (!req.session || !req.cookies.user_sid) {
 			//if it is there, it would redirect to homepage
 			res.redirect("/login");
@@ -109,10 +109,10 @@ module.exports = function (app) {
 	});
 
 	// app.get("/game/chess", (req, res) => {
-	// 	res.redirect("judaozhong.com:3001")
+	// 	res.redirect("")
 	// })
 
-	app.get('/coupon',sessionChecker2, users.getCoupon);
+	app.get('/coupon', sessionChecker2, users.getCoupon);
 
 	// var body_ejs = fs.readFileSync(path + "components/homepage_body.ejs", 'utf-8');
 	var navbar_top_ejs = fs.readFileSync(path + "components/navbar_top.ejs", 'utf-8');
@@ -123,7 +123,7 @@ module.exports = function (app) {
 	var MongoClient = require('mongodb').MongoClient;
 	const dbConfig = require('../config/mongodb.config.js');
 	var ObjectId = require('mongodb').ObjectID;
-	app.get('/my_coupons', sessionChecker2,(req, res) => {
+	app.get('/my_coupons', sessionChecker2, (req, res) => {
 		// res.setHeader('Content-Type', 'application/json');
 		let coupon_id_array;
 		MongoClient.connect(dbConfig.url, function (err, db) {
@@ -151,47 +151,198 @@ module.exports = function (app) {
 	}
 
 	);
-	
 
-	app.get("/my_health", (req, res) => {
-		res.render(path + "my_health.ejs", {
+
+	app.get("/my_record", (req, res) => {
+		res.render(path + "my_record.ejs", {
 			navbar: navbar_top_ejs,
 			footer: footer
 		})
 	})
 
-	app.get("/user_profile",sessionChecker2, (req, res) => {
+	app.get("/user_profile", sessionChecker2, (req, res) => {
 		res.render(path + "user_profile.ejs", {
 			navbar: navbar_top_ejs,
 			footer: footer
 		})
 	})
+
+	app.get("/about_us", (req, res) => {
+		res.sendFile(staticPath + "about_us.html")
+	})
+
+	//goes to the homepage 
+	app.get("/homepage", (req, res) => {
+		let state = null;
+
+		console.log(state)
+
+		MongoClient.connect(dbConfig.url, function (err, db) {
+			if (err) throw err;
+			var dbo = db.db("test");
+<<<<<<< HEAD
 	
-	app.get("/about_us",(req,res)=>{
-		res.sendFile(staticPath +"about_us.html")
-	})
+=======
 
-	app.get("/homepage",sessionChecker2, (req, res) => {
-		res.render(path + "homepage.ejs", {
-			navbar: navbar_top_ejs,
-			footer: footer
+>>>>>>> judao_tiffany_backend
+			dbo.collection("users").find({
+				_id: ObjectId(req.session.user_sid)
+			}).toArray(function (err, result) {
+				state = result[0].daily_task_rec[result[0].daily_task_rec.length - 1].state
+				console.log("state==================================================")
+				console.log(state)
+<<<<<<< HEAD
+				if(state <= 3){
+					res.redirect("/daily_tasks")
+				}
+				else if( state >= 4 && state <= 5 ){
+					res.redirect("/minigames")
+				}
+				else if( state > 5 && state <= 6 ){
+					res.redirect("/coupon")
+				}
+				else{
+=======
+				if (state <= 3) {
+					res.redirect("/daily_tasks")
+				}
+				else if (state >= 4 && state <= 5) {
+					res.redirect("/minigames")
+				}
+				else if (state > 5 && state <= 6) {
+					res.redirect("/coupon")
+				}
+				else {
+>>>>>>> judao_tiffany_backend
+					res.render(path + "/homepage.ejs", {
+						navbar: navbar_top_ejs,
+						footer: footer
+					})
+				}
+			})
 		})
+
+
 	})
 
-	app.get("/minigames",sessionChecker2, (req, res) => {
-		res.render(path + "games_selection.ejs", {
-			navbar: navbar_top_ejs,
-			footer: footer
-		})
+	//the minigame entrance
+	app.get("/minigames", sessionChecker2, (req, res) => {
+
+		let state = null;
+
+		MongoClient.connect(dbConfig.url, function (err, db) {
+			if (err) throw err;
+			var dbo = db.db("test");
+
+			dbo.collection("users").find({
+				_id: ObjectId(req.session.user_sid)
+			}).toArray(function (err, result) {
+<<<<<<< HEAD
+
+
+				state = result[0].daily_task_rec[result[0].daily_task_rec.length - 1].state;
+
+				if (state == 4) {
+					res.end(res.render(path + "games_selection.ejs", {
+						
+						navbar: undefined,
+						proceed_button : undefined,
+						back_button:"<button id='back' onclick='window.location.href='/daily_tasks';'>Back</button>",
+						footer: footer,
+
+					}));
+				}
+				else if (state == 5) {
+					res.end(res.render(path + "games_selection.ejs", {						
+						navbar: undefined,
+						proceed_button: "<button id='proceed' onclick='window.location.href='/coupon''>Proceed</button>",
+						back_button :  "<button id='back' onclick='window.location.href='/daily_tasks';'>Back</button>",
+						footer: footer,
+
+					}));
+				}
+
+				else if (state >= 6) {
+					res.end(res.render(path + "games_selection.ejs", {
+						navbar: navbar_top_ejs,
+						proceed_button: undefined,
+						back_button : undefined,
+						footer: footer,
+					}));
+				}
+
+
+			});
+=======
+>>>>>>> judao_tiffany_backend
+
+		});
+
+				state = result[0].daily_task_rec[result[0].daily_task_rec.length - 1].state;
+
+				if (state == 4) {
+					res.end(res.render(path + "games_selection.ejs", {
+
+						navbar: undefined,
+						proceed_button: undefined,
+						back_button: undefined,
+//						back_button: "<button id='back' onclick='window.location.href='/daily_tasks';'>Back</button>",
+                        footer: footer,
+
+<<<<<<< HEAD
+=======
+					}));
+				}
+                else if (state < 4) {
+					res.redirect('/homepage');
+				}
+				else if (state == 5) {
+					res.end(res.render(path + "games_selection.ejs", {
+						navbar: undefined,
+						proceed_button: "<button id='proceed' onclick='window.location.href='/coupon''>Proceed</button>",
+						back_button: undefined,
+//						back_button: "<button id='back' onclick='window.location.href='/daily_tasks';'>Back</button>",
+						footer: footer,
+
+					}));
+				}
+
+				else if (state >= 6) {
+					res.end(res.render(path + "games_selection.ejs", {
+						navbar: navbar_top_ejs,
+						proceed_button: undefined,
+						back_button: undefined,
+						footer: footer,
+					}));
+				}
+
+
+			});
+
+		});
+
+
+
+
+>>>>>>> judao_tiffany_backend
+		// res.render(path + "games_selection.ejs", {
+		// 	// navbar: navbar_top_ejs,
+		// 	navbar: undefined,
+		// 	footer: footer
+		// })
 	})
 
-
-
-
-
-
+	//when the users click on this,
 	app.post('/coupon/redeem', users.redeemCoupon);
 
+
+	//---------------------Judao ChessGame--------------------------------------
+	app.get("/minigames/chess", (req, res) => {
+		res.sendFile(staticPath + "/minigames/chess/chessboard.html")
+	})
+
+
+	
 	app.get("/restart", (req, res) => {
 		uci[id] = "position startpos moves ";
 		stockfishes[id].postMessage(uci[id]);
@@ -199,9 +350,9 @@ module.exports = function (app) {
 	})
 
 
-	app.post("/game/chess", (req, res) => {
-		// console.log("req.body")
-		// console.log(req.body)
+	app.post("/minigames/chess", (req, res) => {
+		console.log("req.body")
+		console.log(req.body)
 		var next_move = []
 		console.log("uci-=================================================")
 		console.log(req.body["uci"])
@@ -303,15 +454,19 @@ module.exports = function (app) {
 		res.sendFile(staticPath + "landing_page.html");
 	});
 
+	app.get('/add_points', (req, res) => {
+		users.addPoints(req, res, 10)
+
+
+
+	});
+
 
 
 	app.get('/reminder', (req, res) => {
 		res.sendFile(path + "reminder.html");
 	});
 
-	app.get('/success', (req, res) => {
-		res.sendFile(path + "successful.html");
-	});
 
 
 	app.post('/subscribe', (req, res) => {
@@ -333,13 +488,552 @@ module.exports = function (app) {
 
 
 	//============DBwork=====Tiffany=================================================
+	app.post('/daily_tasks', (req, res) => {
+		let added_item = [];
+		let daily_tasks = req.body["id_array[]"];
+		console.log(daily_tasks)
+
+		for (var i in daily_tasks) {
+			added_item.push(daily_tasks[i].id)
+		}
+		// const PromiseA = 
+		//need aysnc version to deal with passing in values
+		MongoClient.connect(dbConfig.url, function (err, db) {
+			console.log("added_item")
+			console.log(added_item)
+			if (err) throw err;
+			var dbo = db.db("test");
+			dbo.collection("users").updateOne(
+				{ _id: ObjectId(req.session.user_sid) },
+				{
+					$push: { daily_task_archived: { $each: added_item } }
+				},
+				{ new: true, upsert: true }
+			)
+		})
+	})
+
+
+	app.get('/state_add', (req, res) => {
+		MongoClient.connect(dbConfig.url, function (err, db) {
+			if (err) throw err;
+			var dbo = db.db("test");
+
+			dbo.collection("users").updateOne({
+				_id: ObjectId(req.session.user_sid),
+<<<<<<< HEAD
+				daily_task_rec: { $elemMatch: { date: { $lte: new Date() } } }
+=======
+				daily_task_rec: { $elemMatch: { date: {  $gte: new Date(new Date().setDate(new Date().getDate()-1)) } } }
+>>>>>>> judao_tiffany_backend
+			}, { $inc: { "daily_task_rec.$.state": 1 } },
+
+			)
+			console.log("state added 1!!!!!")
+			res.send("state added 1!!!!!")
+<<<<<<< HEAD
+=======
+
+		})
+	})
+
+
+	app.get('/state_minus', (req, res) => {
+		MongoClient.connect(dbConfig.url, function (err, db) {
+			if (err) throw err;
+			var dbo = db.db("test");
+
+			dbo.collection("users").updateOne({
+				_id: ObjectId(req.session.user_sid),
+				daily_task_rec: { $elemMatch: { date: { $lte: new Date() } } }
+			}, { $inc: { "daily_task_rec.$.state": -1 } },
+
+			)
+			res.send("state minused 1!!!!!")
+>>>>>>> judao_tiffany_backend
+
+		})
+	})
+
+<<<<<<< HEAD
+
+	app.get('/state_minus', (req, res) => {
+		MongoClient.connect(dbConfig.url, function (err, db) {
+			if (err) throw err;
+			var dbo = db.db("test");
+
+			dbo.collection("users").updateOne({
+				_id: ObjectId(req.session.user_sid),
+				daily_task_rec: { $elemMatch: { date: { $lte: new Date() } } }
+			}, { $inc: { "daily_task_rec.$.state": -1 } },
+
+			)
+			res.send("state minused 1!!!!!")
+
+		})
+	})
 
 	app.get('/daily_tasks', function (req, res) {
-		res.render(path + "daily_tasks.ejs", {
-			navbar: navbar_top_ejs,
-			footer: footer
-		})
+		let state = null;
+
+=======
+	// app.get('/daily_tasks', function (req, res) {
+
+	// 	function get_stuff_to_send(){
+
+	// 	}
+
+
+	// 	let state = null;
+
+	// 	MongoClient.connect(dbConfig.url, function (err, db) {
+	// 		if (err) throw err;
+	// 		var dbo = db.db("test");
+
+	// 		dbo.collection("users").find({
+	// 			_id: ObjectId(req.session.user_sid)
+	// 		}).toArray(function (err, result) {
+
+	// 			//find the work that needs to be done
+	// 			console.log("result.daily_task_rec.state")
+	// 			// console.log(result[0].daily_task_rec)
+	// 			console.log(result[0].daily_task_rec[result[0].daily_task_rec.length - 1].state)
+
+	// 			state = result[0].daily_task_rec[result[0].daily_task_rec.length - 1].state;
+
+	// 			//if the state property is less than 3, which indicates that user is 
+	// 			//still in the "daily task" user flow.
+	// 			if (state < 3) {
+	// 				//then we will go to the db and find the number of items
+	// 				dbo.collection("daily_tasks").find({
+	// 				// 3 - state means the number of items to find	
+	// 				}).limit(3 - state).toArray(function (err, data) {
+
+
+
+	// 					console.log("the stuff to show -=------------------------------------------")
+	// 					console.log(data)
+
+	// 					db.close()
+
+
+
+	// 					// MongoClient.connect(dbConfig.url, function (err, db) {
+	// 					// 	console.log("added_item")
+	// 					// 	console.log(added_item)
+	// 					// 	if (err) throw err;
+	// 					// 	var dbo = db.db("test");
+	// 					// 	dbo.collection("users").updateOne(
+	// 					// 		{ _id: ObjectId(req.session.user_sid) },
+	// 					// 		{
+	// 					// 			$push: { daily_task_archived: { $each: added_item } }
+	// 					// 		},
+	// 					// 		{ new: true, upsert: true }
+	// 					// 	)
+	// 					// })
+
+	// 					res.end(res.render(path + "daily_tasks.ejs", {
+	// 						todo_item: data,
+	// 						navbar: undefined,
+	// 						proceed_button: undefined,
+	// 						footer: footer
+	// 					}));
+	// 				});
+	// 			}
+
+	// 			else if (state >= 3) {
+	// 				res.end(res.render(path + "daily_tasks.ejs", {
+	// 					todo_item: undefined,
+	// 					navbar: undefined,
+	// 					proceed_button: '<button id="proceed" onclick="window.location.href="/minigames"">Proceed</button>',
+	// 					footer: footer
+	// 				}));
+	// 			}
+	// 		});
+
+	// 	});
+
+
+
+
+
+
+
+	// 	// let user = null;
+	// 	// //indicating how many items left to be added into the array
+	// 	// let n_to_go = 0;
+	// 	// //used to store the upcoming tasks' ids
+	// 	// let go_ahead = []
+	// 	// MongoClient.connect(dbConfig.url, function (err, db) {
+	// 	// 	if (err) throw err;
+	// 	// 	var dbo = db.db("test");
+	// 	// 	dbo.collection("users").findOne({
+	// 	// 		_id: ObjectId(req.session.user_sid)
+	// 	// 	}).then(result => {
+	// 	// 		//if the user exists
+	// 	// 		if (result) {
+	// 	// 			//if the user has not yet finished the tasks
+	// 	// 			if (result.daily_task_rec[0].finished_id.length != 0) {
+	// 	// 				//the array is needed afterwards
+	// 	// 				go_ahead = result.daily_task_rec[0].finished_id;
+	// 	// 				//the number of stuff to go
+	// 	// 				n_to_go = 3 - go_ahead.length;
+	// 	// 			} else {
+	// 	// 				n_to_go = 3
+	// 	// 				go_ahead = [0]
+	// 	// 			}
+	// 	// 		}
+	// 	// 	}).then(() => { })
+
+	// 	// 	let added_item = []
+	// 	// 	//find those that's not in the done list
+	// 	// 	dbo.collection("daily_tasks").find({
+	// 	// 		"id": { $nin: go_ahead }
+	// 	// 	}).limit(n_to_go).toArray((err, daily_tasks) => {
+
+	// 	// 		console.log("go_ahead")
+	// 	// 		console.log(go_ahead)
+	// 	// 		console.log("n_to_go")
+	// 	// 		console.log(n_to_go)
+	// 	// 		console.log("daily_tasks")
+	// 	// 		console.log(daily_tasks)
+
+
+	// 	// 		for (var i in daily_tasks) {
+	// 	// 			added_item.push(daily_tasks[i].id)
+	// 	// 		}
+	// 	// 		console.log("=============added===daily_tasks===========================")
+	// 	// 		console.log(added_item)
+
+	// 	// 		res.render(path + "daily_tasks.ejs", {
+	// 	// 			navbar: undefined,
+	// 	// 			todolist: daily_tasks,
+	// 	// 			todo_item: daily_tasks,
+	// 	// 			footer: footer
+	// 	// 		})
+	// 	// 	})
+
+	// 	// 	dbo.collection("users").updateOne(
+	// 	// 		{ _id: ObjectId(req.session.user_sid) },
+	// 	// 		{
+	// 	// 			$push: { daily_task_archived: { $each: added_item } }
+	// 	// 		},
+	// 	// 		{ new: true, upsert: true }
+
+	// 	// 	)
+
+	// 	// 	for (var i in added_item) {
+	// 	// 		console.log("==========================added_item[i]")
+	// 	// 		console.log(added_item[i])
+
+	// 	// 	}
+
+	// 	// 	db.close();
+
+	// 	// });
+
+
+
+
+
+
+
+
+	// });
+
+
+
+
+
+
+	app.get("/get_state",sessionChecker2,users.getState)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+	app.get('/daily_tasks', sessionChecker2, function (req, res) {
+
+		function get_stuff_to_send() {
+
+		}
+
+
+		let state = null;
+		let added_item = [];
+>>>>>>> judao_tiffany_backend
+		MongoClient.connect(dbConfig.url, function (err, db) {
+			if (err) throw err;
+			var dbo = db.db("test");
+
+			dbo.collection("users").find({
+				_id: ObjectId(req.session.user_sid)
+			}).toArray(function (err, result) {
+
+				//find the work that needs to be done
+				console.log("result.daily_task_rec.state")
+				// console.log(result[0].daily_task_rec)
+				console.log(result[0].daily_task_rec[result[0].daily_task_rec.length - 1].state)
+
+				state = result[0].daily_task_rec[result[0].daily_task_rec.length - 1].state;
+
+<<<<<<< HEAD
+				if (state < 3) {
+					dbo.collection("daily_tasks").find({
+
+					}).limit(3 - state).toArray(function (err, data) {
+						console.log("the stuff to show -=------------------------------------------")
+						console.log(data)
+=======
+				//if the state property is less than 3, which indicates that user is 
+				//still in the "daily task" user flow.
+				if (state < 3) {
+					//then we will go to the db and find the number of items
+					dbo.collection("daily_tasks").find({
+						// "3 - state" means the number of items to find	
+					}).limit(3 - state).toArray(function (err, data) {
+
+
+						//1. this is to get the daily_task's id, and then we will archive the task's id.
+						//   we are doing this because the task should not show up in the daily task again if the user has done it already
+						console.log("in 708  take a peek at the data schema------------ ")
+						console.log(data[0].id)
+
+						//2. before archiving it, we need to push the data into an array, so that 
+						//it's easily done.
+						for (var index in data) {
+							console.log("in 712  the stuff to show---------------------------- ")
+							console.log(added_item)
+							if (data[index]) {
+								added_item.push(data[index].id)
+							}
+
+						}
+
+						// close the database to avoid problems from showing up in the update(atomic read)
+						db.close()
+
+						//connect again to update
+						MongoClient.connect(dbConfig.url, function (err, db) {
+							console.log("added_item")
+							console.log(added_item)
+							console.log("in 727 req.session.user_id------------------------------------")
+							console.log(req.session.user_sid)
+
+							if (err) throw err;
+							var dbo = db.db("test");
+
+
+							dbo.collection("users").updateOne(
+								//find the correct ObjectID
+								{
+									_id: ObjectId(req.session.user_sid),
+									//compare if the date is correct: right on today
+									daily_task_rec: { $elemMatch: { date: { $lte: new Date() } } }
+								},
+								{
+									//push each item
+									$addToSet: { daily_task_archived: { $each: added_item } },
+									//the $addToSet operator is to avoid repeating the items
+									$set: { "daily_task_rec.$.user_id": req.session.user_sid }
+								},
+								{ new: true, upsert: true }
+							)
+						})
+
+>>>>>>> judao_tiffany_backend
+						res.end(res.render(path + "daily_tasks.ejs", {
+							todo_item: data,
+							navbar: undefined,
+							proceed_button: undefined,
+							footer: footer
+						}));
+					});
+				}
+
+				else if (state >= 3) {
+					res.end(res.render(path + "daily_tasks.ejs", {
+						todo_item: undefined,
+						navbar: undefined,
+						proceed_button: '<button id="proceed" onclick="window.location.href="/minigames"">Proceed</button>',
+						footer: footer
+					}));
+				}
+			});
+
+		});
+
+
+
+
+
+
+
+		// let user = null;
+		// //indicating how many items left to be added into the array
+		// let n_to_go = 0;
+		// //used to store the upcoming tasks' ids
+		// let go_ahead = []
+		// MongoClient.connect(dbConfig.url, function (err, db) {
+		// 	if (err) throw err;
+		// 	var dbo = db.db("test");
+		// 	dbo.collection("users").findOne({
+		// 		_id: ObjectId(req.session.user_sid)
+		// 	}).then(result => {
+		// 		//if the user exists
+		// 		if (result) {
+		// 			//if the user has not yet finished the tasks
+		// 			if (result.daily_task_rec[0].finished_id.length != 0) {
+		// 				//the array is needed afterwards
+		// 				go_ahead = result.daily_task_rec[0].finished_id;
+		// 				//the number of stuff to go
+		// 				n_to_go = 3 - go_ahead.length;
+		// 			} else {
+		// 				n_to_go = 3
+		// 				go_ahead = [0]
+		// 			}
+		// 		}
+		// 	}).then(() => { })
+
+		// 	let added_item = []
+		// 	//find those that's not in the done list
+		// 	dbo.collection("daily_tasks").find({
+		// 		"id": { $nin: go_ahead }
+		// 	}).limit(n_to_go).toArray((err, daily_tasks) => {
+
+		// 		console.log("go_ahead")
+		// 		console.log(go_ahead)
+		// 		console.log("n_to_go")
+		// 		console.log(n_to_go)
+		// 		console.log("daily_tasks")
+		// 		console.log(daily_tasks)
+
+
+		// 		for (var i in daily_tasks) {
+		// 			added_item.push(daily_tasks[i].id)
+		// 		}
+		// 		console.log("=============added===daily_tasks===========================")
+		// 		console.log(added_item)
+
+		// 		res.render(path + "daily_tasks.ejs", {
+		// 			navbar: undefined,
+		// 			todolist: daily_tasks,
+		// 			todo_item: daily_tasks,
+		// 			footer: footer
+		// 		})
+		// 	})
+
+		// 	dbo.collection("users").updateOne(
+		// 		{ _id: ObjectId(req.session.user_sid) },
+		// 		{
+		// 			$push: { daily_task_archived: { $each: added_item } }
+		// 		},
+		// 		{ new: true, upsert: true }
+
+		// 	)
+
+		// 	for (var i in added_item) {
+		// 		console.log("==========================added_item[i]")
+		// 		console.log(added_item[i])
+
+		// 	}
+
+		// 	db.close();
+
+		// });
+
+
+
+
+
+
+
+
 	});
+
+
+
+
+
+
+
+
+
+<<<<<<< HEAD
+=======
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+>>>>>>> judao_tiffany_backend
+	// let daily_tasks = [];
+	// MongoClient.connect(dbConfig.url, function (err, db) {
+	// 	if (err) throw err;
+	// 	var dbo = db.db("test");
+	// 	dbo.collection("daily_tasks").find({}).toArray(function (err, result) {
+	// 		if (err) throw err;
+	// 		console.log(result);
+	// 		daily_tasks = result;
+	// 		db.close();
+	// 		// _reader
+	// 		res.render(path + "daily_tasks.ejs", {
+	// 			navbar: undefined,
+	// 			todolist: daily_tasks,
+	// 			todo_item: daily_tasks,
+	// 			footer: footer
+	// 		})
+	// 	});
+	// });
+
+
+	// });
+
 
 
 
@@ -350,13 +1044,13 @@ module.exports = function (app) {
 		res.sendFile(staticPath + "/ttt_game_entrance.html")
 	})
 
-	
-	
+
+
 	app.get("/games/snake", (req, res) => {
 		res.sendFile(staticPath + "/snake.html")
 	})
 
-		
+
 	app.get("/games/shooter", (req, res) => {
 		res.sendFile(staticPath + "/zombie.html")
 	})
@@ -411,17 +1105,48 @@ module.exports = function (app) {
 
 	// route for user logout
 	app.get('/logout', (req, res) => {
-		
+<<<<<<< HEAD
+=======
+		MongoClient.connect(dbConfig.url, function (err, db) {
+			if (err) throw err;
+			var dbo = db.db("test");
+			dbo.collection("users").updateOne(
+				//find the correct ObjectID
+				{
+					_id: ObjectId(req.session.user_sid),
+					daily_task_rec: { $elemMatch: { "state": { $lte: 10 }, date: { $lte: new Date() } } },
+				},
+				{
+
+					//set the state back to 0 for testing 
+					$set: { "daily_task_rec.$.state": 0 }
+				}
+			)
+
+			db.close()
 			res.clearCookie('user_sid');
 			req.session = null;
 			res.redirect('/login');
-		
-	});
+		});
 
 
-	app.get('/:username', (req, res) => {
-		res.sendFile(staticPath + "successful.html");
+
+
+	})
+
+>>>>>>> judao_tiffany_backend
+
+		res.clearCookie('user_sid');
+		req.session = null;
+		res.redirect('/login');
+
+<<<<<<< HEAD
 	});
+=======
+>>>>>>> judao_tiffany_backend
+
+
+
 
 	// Save a User to MongoDB
 	app.post('/api/users/register', users.register);
@@ -431,7 +1156,8 @@ module.exports = function (app) {
 	//check if the user is allowed to log in.
 	app.post('/api/users/verify', users.verify);
 
-
+	//the link to post and search for a coupon
+	app.post('/coupon/search', users.searchCoupon)
 
 	app.post("/getKey", (req, res) => {
 		res.send('BHzTemBBukw8OY7qXGqtXPPIGSr-TyACw3rNEcmsBTx2gEJQ2YECWff5oBMb9fRss7vhn3a6ATNxucmb52zHM2U')
@@ -439,6 +1165,25 @@ module.exports = function (app) {
 
 	//imported for dealing with submitted pictures
 	var formidable = require('formidable');
+
+	app.post("/check_time", (req, res) => {
+		console.log("time should be in here++++++++++++++++++++++++++++++")
+		let client_timestamp = Date.parse(req.body.d)
+		let server_timestamp = Date.now();
+
+		//if the client time exceeds 5am
+		//and the client has not done all the tasks
+		//go and find the stuff in the db.
+		//in the result array, look for those with "true" -> render differently
+		//                     look for those with "false"-> render normally
+
+		if (client_timestamp > server_timestamp + 3600 * 1000 * 12 || client_timestamp < server_timestamp - 3600 * 1000 * 12) {
+			console.log("the user is trying to cheat!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!")
+		}
+		else {
+			console.log("the user is finishing all the tasks")
+		}
+	})
 
 	app.post('/upload_avatar', function (req, res) {
 		var form = new formidable.IncomingForm();
@@ -466,6 +1211,75 @@ module.exports = function (app) {
 		});
 	});
 
+	app.get('/admin', (req, res) => {
+		res.render(path + "admin_verify.ejs");
+	});
+
+	app.get('/admin_home', (req, res) => {
+		res.render(path + "admin_home.ejs");
+	});
+
+	app.get('/admin_coupon', (req, res) => {
+		console.log("searching")
+		MongoClient.connect(dbConfig.url, function (err, db) {
+			if (err) throw err;
+			var dbo = db.db("test");
+			dbo.collection("coupons_available").find({}).toArray(function (err, result) {
+				if (err) throw err;
+				console.log("================result=====================");
+				console.log(result);
+				let render = []
+				console.log(result.length);
+				for (var i = 0; i < result.length; i++) {
+					render.push(result[i])
+				}
+				console.log("render--------------------")
+				console.log(render)
+
+				db.close();
+				res.render(path + "admin_coupon.ejs", { todolist: render });
+				console.log("RENDERED===================================");
+			});
+			// res.render("pages/index", { todolist: render });
+		});
+	});
+
+	app.post('api/users/admin', (req, res) => {
+		users.verifyAdmin
+	});
+
+	app.post('/coupon/add', (req, res) => {
+		console.log(req.body)
+	});
+
+	app.post("/coupon/delete", (req, res) => {
+		ids_to_delete = req.body["checked[]"]
+		ids = []
+		for (var each in ids_to_delete) {
+
+			ids.push(parseInt(ids_to_delete[each]))
+		}
+		console.log(ids)
+		MongoClient.connect(dbConfig.url, function (err, db) {
+			if (err) throw err;
+			var dbo = db.db("test");
+
+			dbo.collection("coupons_available").remove(
+				{
+					id: { $in: ids }
+				}
+
+			)
+		});
+
+
+	})
+
+
+
+	app.use('*', (req, res) => {
+		res.sendFile(path + "404.html");
+	});
 
 
 

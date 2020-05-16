@@ -3,3 +3,5 @@
 privatekey.pem
 certrequest.csr
 certificate.pem
+package.json
+package-lock.json

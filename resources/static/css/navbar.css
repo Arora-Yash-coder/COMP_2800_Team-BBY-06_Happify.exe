@@ -1,14 +1,18 @@
-
 .container {
     list-style-type: none;
     margin: 0;
 
     overflow: hidden;
-    background-color: #75DBCD;
+<<<<<<< HEAD
+    background-color: #3AB795;
+=======
+    background-color: #4B7F52;
+>>>>>>> judao_tiffany_backend
 }
 
 .list {
     float: left;
+    font-size: 15pt;
 }
 
 .list a {
@@ -22,3 +26,4 @@
 .list a:hover {
     background-color: rgb(65, 134, 125);
 }
+

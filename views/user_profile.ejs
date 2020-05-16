@@ -5,123 +5,17 @@
   <!-- <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script> -->
   <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="icon" href="./img/favicon-32x32.png" type="image/gif" sizes="16x16">
   <title>User Profile</title>
-
-  <style>
-    .container {
-      list-style-type: none;
-      margin: 0;
-
-      overflow: hidden;
-      background-color: #75DBCD;
-    }
-
-    .list {
-      float: left;
-    }
-
-    .list a {
-      display: block;
-      color: white;
-      text-align: center;
-      padding: 14px 16px;
-      text-decoration: none;
-    }
-
-    .list a:hover {
-      background-color: rgb(65, 134, 125);
-    }
-
-    body {
-      text-align: center;
-    }
-
-    h1 {
-      color: #3AB795;
-      font-size: 20pt;
-      font-weight: bold;
-
-    }
-
-    .square_btn {
-      display: inline-block;
-      padding: 0.3em 1em;
-      text-decoration: none;
-      color: #EF629F;
-      border: solid 2px #EF629F;
-      border-radius: 3px;
-      transition: .4s;
-    }
-
-    .square_btn:hover {
-      background: #EF629F;
-      color: white;
-    }
-
-
-
-    #container {
-      background-color: #B8D8BA;
-      border-radius: 25px;
-      margin-left: 25px;
-      margin-right: 25px;
-      padding-top: 10px;
-      padding-bottom: 10px;
-      margin-top: 10px;
-      margin-bottom: 10px;
-    }
-
-    #mycoupons {
-      background-color: #FAC9B8;
-      border-radius: 25px;
-      margin-left: 25px;
-      margin-right: 25px;
-      padding-top: 10px;
-      padding-bottom: 10px;
-      margin-top: 10px;
-      margin-bottom: 10px;
-      color: #3AB795;
-    }
-
-    button {
-      background-color: white;
-      border: #3AB795 solid 1px;
-      color: #3AB795;
-      padding: 7px 26px;
-      text-align: center;
-      text-decoration: none;
-      display: inline-block;
-      font-size: 16px;
-        margin-bottom: 20px;
-    }
-
-    #avatar {
-      width: 100px;
-      height: 100px;
-      border-radius: 50%;
-      background-image: url(avatar.png);
-    }
-
-    #upload {
-      display: none;
-    }
-
-    #submit {
-      display: none;
-    }
-      #logout{
-          color:#EF629F; 
-          border: #EF629F solid 1px;
-      }
-  </style>
-
+  <link rel="stylesheet" type="text/css" href="/static/css/user_profile.css">
+  <link rel="stylesheet" type="text/css" href="/static/css/navbar.css">
+  
 </head>
 
 <body>
-  <%- navbar %>
+    <header id="head">
+  <%- navbar %></header>
   <h1>User Profile</h1>
-  
+
   <img id="avatar" class="avatar" src="/img/avatar.png">
   <form action="/upload_avatar" enctype="multipart/form-data" method="post">
     <input type="file" class="avatar" id="upload" name="upload">
@@ -132,28 +26,28 @@
 
   <div id="container">
     <form id="userForm" action="/api/users/register" method="post">
-      <div id="username"></div>
-      <textarea id="usernameinput" rows="1" placeholder='Username' name="username" ;></textarea>
-      <div id="password">
+      <div id="username">Username</div>
+      <input id="usernameinput" rows="1" placeholder='Username' name="username" ;></input>
+      <div id="password">Password
 
       </div>
-      <textarea id="passwordinput" rows="1" placeholder='Password' name="password" min="6" maxlength="16"></textarea>
-      <div id="firstname">
+      <input id="passwordinput" rows="1" type="password" placeholder='Password' name="password" min="6" maxlength="16"></input>
+      <div id="firstname">First Name
 
       </div>
-      <textarea id="firstnameinput" rows="1" placeholder='Firstname' name="firstname"></textarea>
-      <div id="lastname">
+      <input id="firstnameinput" rows="1" placeholder='Firstname' name="firstname"></input>
+      <div id="lastname">Last Name
 
       </div>
-      <textarea id="lastnameinput" rows="1" placeholder='Lastname' name="lastname"></textarea>
-      <div id="email">
+      <input id="lastnameinput" rows="1" placeholder='Lastname' name="lastname"></input>
+      <div id="email">Email
 
       </div>
-      <textarea id="emailinput" rows="1" placeholder='Email' name="email"></textarea>
-      <div id="phoneno">
+      <input id="emailinput" rows="1" placeholder='Email' type="email" name="email"></input>
+      <div id="phoneno">Phone Number
 
       </div>
-      <textarea id="phonenoinput" rows="1" placeholder='Phone Number, starting with 1-' name="phoneno"></textarea>
+      <input id="phonenoinput" rows="1" placeholder='Phone Number, starting with 1-' name="phoneno"></input>
       <br>
     </form>
   </div>
@@ -163,229 +57,21 @@
   </div>
 
   <button type="button" onclick="save()" id="save">Save</button>
-    <button id="logout">log out!</button>
-    <br>
+<<<<<<< HEAD
+  <button id="logout">log out!</button>
+=======
+  <button id="logout">Log out!</button>
+>>>>>>> judao_tiffany_backend
+  <br>
   <!--
     <div id="submit">
     <a href="#" class="square_btn">Yes</a></div>
 -->
   <%- footer %>
 
-  <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
-  <script>
-    //=====================upload==========avatar====================
-    $(document).ready(function () {
-
-
-
-      $(".avatar").on("click", () => {
-        document.getElementById("upload").click();
-
-      })
-      //local Storage reads the attribute "picture" to the document.
-      var pictureSrc = window.localStorage.getItem("picture");
-      $('#avatar').attr('src', pictureSrc);
-
-      //regex that would allow the browse function to work.
-      $(document).on('change', '.btn-file :file', function () {
-        var input = $(this),
-          label = input.val().replace(/\\/g, '/').replace(/.*\//, '');
-        input.trigger('fileselect', [label]);
-      });
-
-      $('.btn-file :file').on('fileselect', function (event, label) {
-
-        var input = $(this).parents('.input-group').find(':text'),
-          log = label;
-
-        if (input.length) {
-          input.val(log);
-        } else {
-          if (log) alert(log);
-        }
-
-      });
-
-
-
-
-
-
-      //the function reads the URL to the picture.
-      function readURL(input) {
-
-
-        var reader = new FileReader();
-
-        reader.onload = function (e) {
-          pictureSrc = e.target.result;
-          $('#avatar').attr('src', pictureSrc);
-          /*this line of code is crucial, if it is put outside
-          of the the function(e){} callback, then the memory function
-          would not work*/
-          localStorage.setItem("picture", pictureSrc);
-
-        }
-        // localStorage.setItem("picture", pictureSrc);
-        reader.readAsDataURL(input.files[0]);
-
-      }
-
-      //After some picture is upload, the page reads the new URL
-      $(".avatar").change(function (e) {
-        $("#submit").click();
-        e.preventDefault();
-        console.log(this.files[0]);
-        console.log(readURL(this));
-
-      });
-    });
-    //       reader.readAsDataURL(input.files[0]);
-
-
-
-
-
-    //=====================upload==========avatar====================
-
-
-    //======================UPDATE======INFO
-
-    $("#save").click(() => {
-      let usernameinput = $("#usernameinput").val()
-      let passwordinput = $("#passwordinput").val()
-      let firstnameinput = $("#firstnameinput").val()
-      let lastnameinput = $("#lastnameinput").val()
-      let emailinput = $("#emailinput").val()
-      let phonenoinput = $("#phonenoinput").val()
-
-      let data = {
-        username: usernameinput,
-        password: passwordinput,
-        email: emailinput,
-        phoneno: phonenoinput,
-        firstname: firstnameinput,
-        lastname: lastnameinput
-      }
-      console.log(data)
-
-      $.ajax({
-        type: "post",
-        url: "/user_profile/setProfile",
-        data: data,
-        dataType: "text",
-        success: function (response) {
-          console.log(response)
-          setTimeout(() => {
-            window.location.href = "/homepage"
-          }, 300);
-        }
-      });
-    })
-
-
-
-
-
-
-
-
-
-
-
-    $.ajax({
-      url: "/user_profile/getProfile",
-      dataType: "json",
-      type: "GET",
-      success: function (data) {
-        //USERNAME
-        var div_usrname = $("#username");
-        var text_usernameinput = $("#usernameinput");
-
-
-        let htmlStr = "";
-        let username = "" + data.result[0].username;
-        htmlStr += "<h3>Username</h3><p>"
-          + "</p>";
-        div_usrname.html(htmlStr);
-        text_usernameinput.append(username);
-        //PASSWORD
-        var div_password = $("#password");
-
-        var text_passwordinput = $("#passwordinput");
-        let htmlStr2 = "";
-        let password = "" + data.result[0].password;
-        htmlStr2 += "<h3>Password</h3><p>"
-          + "</p>";
-
-        div_password.html(htmlStr2);
-        text_passwordinput.append(password);
-
-        //FIRSTNAME
-        var div_firstname = $("#firstname");
-        var text_firstnameinput = $("#firstnameinput");
-
-        let firstname = "" + data.result[0].firstname;
-        let htmlStr4 = "";
-
-        htmlStr4 += "<h3>Firstname</h3><p>"
-          + "</p>";
-
-        div_firstname.html(htmlStr4);
-        text_firstnameinput.append(firstname);
-
-        //LAST NAME
-        var div_lastname = $("#lastname");
-
-        var text_lastnameinput = $("#lastnameinput");
-        let htmlStr5 = "";
-        let lastname = "" + data.result[0].lastname;
-        htmlStr5 += "<h3>Lastname</h3><p>"
-          + "</p>";
-
-        div_lastname.html(htmlStr5);
-        text_lastnameinput.append(lastname);
-
-        //EMAIL
-        var div_email = $("#email");
-        var text_emailinput = $("#emailinput");
-
-        let htmlStr3 = "";
-        let email = "" + data.result[0].email;
-        htmlStr3 += "<h3>Email</h3><p>"
-          + "</p>";
-
-        div_email.html(htmlStr3);
-        text_emailinput.append(email);
-
-        //PHONE
-        var div_phoneno = $("#phoneno");
-        var text_phonenoinput = $("#phonenoinput");
-
-
-        let htmlStr6 = "";
-        let phoneno = "" + data.result[0].phoneno;
-        htmlStr6 += "<h3>PhoneNo</h3><p>"
-          + "</p>";
-
-        div_phoneno.html(htmlStr6);
-        text_phonenoinput.append(phoneno);
-
-      },
-      error: function (jqXHR, textStatus, errorThrown) {
-        $("#p1").text(textStatus + " " + errorThrown
-          + jqXHR.responseText);
-      }
-    });
-
-    $("#mycoupons").click(() => {
-      window.location.href = "/my_coupons"
-    })
-
-    $("#logout").click(()=>{
-      window.location.href = "/logout";
-    })
-  </script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+  <script src='/static/js/user_profile.js'></script>
+  <script src='/static/js/navbar_top.js'></script>
 </body>
 
 </html>

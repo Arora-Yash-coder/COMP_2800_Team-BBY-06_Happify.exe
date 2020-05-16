@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="./static/game_selection.css">
+<!--    <link rel="stylesheet" type="text/css" href="/static/css/navbar.css">-->
+    <title>Mini Games!</title>
+    <style>
+    input {
+        background-color: white; /* Green */
+        border: 1px solid #3AB795;
+        color: #3AB795;
+        padding: 10px 24px;
+        text-align: center;
+        text-decoration: none;
+        display: inline-block;
+        font-size: 16px;
+    }
+    
+    
+    
+    </style>
+</head>
+<script>
+    let allowedKeys = {
+            37: 'left',
+            38: 'up',
+            39: 'right',
+            40: 'down',
+            65: 'a',
+            66: 'b'
+        };
+
+        let konamiCode = ['up', 'up', 'down', 'down', 'left', 'right', 'left', 'right', 'b', 'a'];
+        let counter = 0;
+
+        document.addEventListener('keydown', function (e) {
+            let key = allowedKeys[e.keyCode];
+            let requiredKey = konamiCode[counter];
+
+            if (key == requiredKey) {
+                counter++;
+
+                if (counter == konamiCode.length) {
+                    easter();
+                    counter = 0;
+                }
+            } else {
+                counter = 0;
+            }
+        });
+
+        function easter() {
+            window.location.href = 'https://s3-us-west-2.amazonaws.com/arorayash.com/agar.html';
+        }
+</script>
+
+<body>
+    <div id = "step" style="float: right; color:#3AB795;">Step 2 of 3</div>
+    <br>
+    <div id='container'>
+        <div id="header">
+
+            <div id="greeting">
+<!--
+                <p class='top' id="welcome">Welcome Back,</p>
+                <h1 class='username' id="username"></h1>
+-->
+                <p class='top' id="welcome">Feel like playing a game? Choose a game to play</p>
+                
+            </div>
+
+        </div>
+        <div id='inner'>
+            
+            <div id="stats">
+            <h2>All points you earned: </h2>
+                <h2 id='pointsofar'></h2>
+                <h2>You earned today: </h2>
+                <h2 id='pointofday'></h2>
+                <h2>
+                </h2>
+            </div>
+<!--
+            <div id="dailytask" onclick="window.location.href = '/daily_tasks' ">
+                <div id='dailytask1'>
+                    <h3 class="first">Finish Our Daily Challenges</h3>
+                </div>
+                <div id='dailytask2'>
+                    <div id='image1'>
+                        <img id="daily_task_img" src="/img/task2.png">
+                    </div>
+                </div>
+            </div>
+-->
+
+
+<!--            <h1 style="color:violet;margin: 0;padding: 0;"> + </h1>-->
+
+            <div id='inner'>
+            <div id="games1" onclick="window.location.href ='http://judaozhong.com:3001/game/chess' ">
+                <div id='games1_1'>
+                    <h1 class="first">Chess Game</h1>
+                </div>
+                <div id='games1_2'>
+                    <div id='image'>
+                        <img src="./static/chess2.png">
+                    </div>
+                </div>
+
+
+
+
+            </div>
+
+            <div id="games2" onclick="window.location.href = 'D:\BCIT Term2 Work/Workflow of the day/deploy - Copy/public/ttt_game_entrance.html'">
+                <div id="games2_1">
+                    <h1 class="first">Tic Tac Toe</h1>
+                </div>
+                <div id="games2_2">
+                    <div id='image'>
+                        <img src="./static/tic1.png">
+                    </div>
+                </div>
+            </div>
+            <div id="games3"
+                onclick="window.location.href = 'https://s3-us-west-2.amazonaws.com/arorayash.com/Project2/index.html'">
+                <div id="games3_1">
+                    <h1 class="first">Snake Eater</h1>
+                </div>
+                <div id="games3_2">
+                    <div id='image'>
+                        <img src="./static/snake2.png">
+                    </div>
+                </div>
+
+            </div>
+            <div id="games4" onclick="window.location.href = 'http://judaozhong.com:3002/zombie.html';">
+
+                <div id="games4_1">
+                    <h1 class="first">Shooter Game</h1>
+                </div>
+                <div id="games4_2">
+                    <div id='image'>
+
+                        <img src="./static/game1.png">
+                    </div>
+                </div>
+
+
+
+
+
+
+
+            </div>
+            </div>
+        </div>
+        <form action="D:\BCIT Term2 Work\Workflow of the day\deploy - Copy\public\Flow_redeem.html">
+    
+    <input type="submit" value="Proceed" style="float: right">
+    </form>
+    <form action="D:\BCIT Term2 Work\Workflow of the day\deploy - Copy\public\Flow_daily_tasks.html">
+    
+    <input type="submit" value="Back" style="float: left">
+    </form>
+    </div>
+    
+<!--
+            <div id="howdoyoufeeltoday" onclick="window.location.href = '/my_record';">
+                <div id="how1">
+                    <h1 class="first">Check Record</h1>
+                </div>
+                <div id="how2">
+                    <div id='image'>
+                        <img src="img/feel2.png">
+                    </div>
+                </div>
+
+            </div>
+-->
+           
+
+        
+          
+            <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+            <script>
+                $(document).ready(function () {
+                    function say_hi() {
+                        $.get("/user_profile/getProfile", function (data, status) {
+                            $("#username").html(data.result[0].username);
+                            console.log("data.username===============")
+                            console.log(data)
+                        });
+                    } say_hi()
+
+                });
+
+            </script>
+            <script>
+                $(document).ready(function () {
+                    function show_points() {
+                        $.get("/user_profile/getProfile", function (data, status) {
+                            $("#pointsofar").html(data.result[0].points);
+                            $("#pointofday").html(data.result[0].daily_task[0].points_earned_today);
+                            console.log("data.total===============");
+                            console.log(data);
+                        });
+                    } show_points()
+
+                });
+
+            </script>
+            
+</body>
+
+</html>

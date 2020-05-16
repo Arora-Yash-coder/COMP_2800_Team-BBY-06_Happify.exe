@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <title>Admin Login</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  
+  <link rel="stylesheet"  type="text/css" href="/static/css/login.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+ 
+  <script src="/static/js/admin_login.js"></script>
+
+</head>
+
+<body>
+
+  <div class="container">
+    <div id="choice_tab">
+      
+      <h3 id="log">Login</h3>
+    </div>
+
+    <div id="form-wrapper">
+      <form id="userForm" action="api/users/admin" method="post" style="display: inline-block">
+        <h1 class="form-signin-heading">Admin Page</h1>
+        <h3 class="form-signin-heading">Please login</h3>
+        <!--			<label for="username">Username:</label>-->
+        <input type="text" class="form-control" id="username" name="username" placeholder="Enter Username" />
+
+        <br>
+
+        <!--			<label for="password">Password:</label>-->
+        <input type="password" class="form-control" id="password" name="password" min="6" maxlength="16"
+          placeholder="Enter Password" />
+
+        <button id="login" type="submit">Log in</button>
+        
+      </form>
+    </div>
+    <div id="postResultDiv">
+    </div>
+    <br>
+    
+  </div>
+  <script src='/static/js/admin_verify.js'></script>
+</body>
+
+</html>

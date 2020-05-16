@@ -1,0 +1,16 @@
+body{
+            background-image: url(./background.png);
+            background-size: cover;
+            height: 100vh;
+            text-align: center;
+}
+button {
+            background-color: white; /* Green */
+            border: 1px solid #3AB795;
+            color: #3AB795;
+            padding: 10px 24px;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 16px;
+}

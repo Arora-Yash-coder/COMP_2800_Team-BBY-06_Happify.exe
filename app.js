@@ -46,12 +46,27 @@ var options = {
     cert: fs.readFileSync('./certificate.pem')
 };
 
-// var server = https.createServer(options, app);
+//var server = https.createServer(options, app);
 
-// server.listen(80, () => {
-//   console.log("server starting on port : " + 80)
+<<<<<<< HEAD
+//server.listen(443, () => {
+//  console.log("server starting on port : " + 3000)
+//});
+//
+//
+//https.createServer(options, app).listen(90, function () {
+//    console.log('Https server listening on port ' + 3011);
+//});
+=======
+// server.listen(443, () => {
+//   console.log("server starting on port : " + 3000)
 // });
- 
+
+
+// https.createServer(options, app).listen(90, function () {
+//     console.log('Https server listening on port ' + 3011);
+// });
+>>>>>>> judao_tiffany_backend
 
 // Create a Server
 var server = app.listen(3000, function () {
