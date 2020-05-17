@@ -1,4 +1,3 @@
-//Setting up the Canvas;
 let canvas = document.getElementById("canvas");
 let body = document.getElementById("body");
 if (canvas.width < window.innerWidth) {
@@ -8,7 +7,6 @@ if (canvas.height < window.innerHeight) {
   canvas.height = window.innerHeight;
 }
 
-/*-------------------------All the variables and Constants---------------------- */
 const LASER_DIST = 0.6;
 const FPS = 120; //Frames Per Second.
 const CHARACTER_SIZE = 50; //Character Size in Pixels
@@ -32,13 +30,14 @@ let button2;
 let button3;
 let button4;
 let button5;
-let button6;
-let flag = true;//For Multiple input Bug fix
-let zombies = [];//Stores the zombies generated
+let flag = true;
+
+let xposition = new Array();
+let yposition = new Array();
+let zombies = [];
 
 let ctx = canvas.getContext("2d");
 
-//Background audio
 let audio = document.getElementById("monica");
 audio.loop = true;
 
@@ -53,7 +52,12 @@ if (scoreStr == null) {
   highscore = parseInt(scoreStr);
 }
 
-//Character Gig
+
+window.addEventListener('mousemove', function (e) {
+  xposition.push(e.x);
+  yposition.push(e.y);
+});
+
 let character = {
   x: canvas.width / 2,
   y: canvas.height / 2,
@@ -64,7 +68,7 @@ let character = {
   d: 3
 }
 
-// Set Up Event Handler For Movement.
+// Set Up Event Handler.
 document.addEventListener("keydown", keydown);
 
 function keydown( /** @type {KeyboardEvent} */ ev) {
@@ -126,12 +130,10 @@ function generatezombies(n) {
   }
 }
 
-// Returns Distance between two points in a 2d System
 function distBetweenPositions(x1, y1, x2, y2) {
   return Math.sqrt(Math.pow(x2 - x1, 2) + Math.pow(y2 - y1, 2));
 }
 
-//Zombie Gig
 function newZombie(x, y) {
   let zomb = {
     x: x,
@@ -177,7 +179,7 @@ function update() {
   characterobj.src = character.src;
   ctx.drawImage(characterobj, character.x, character.y);
 
-  //All the buttons used for movement and shooting function
+
   let w = Math.floor(window.innerWidth);
   let h = Math.floor(window.innerHeight);
   button1 = new Button(170, h - 120,3);
@@ -188,10 +190,8 @@ function update() {
   button3.display();
   button4 = new Button(40, h - 60,2);
   button4.display();
-  button5 = new Button(w - 140, h - 60,1);
+  button5 = new Button(w/2 - 60, h - 60,1);
   button5.display();
-  button6 = new Button(5,5,6);
-  button6.display();
 
   
   body.addEventListener('click', e => {
@@ -201,7 +201,6 @@ function update() {
       button3.clicked();
       button4.clicked();
       button5.clicked();
-      button6.clicked();
       setTimeout(function () {
         flag = true;
       },100)
@@ -220,13 +219,6 @@ function update() {
     ctx.fillText(text, canvas.width / 2, canvas.height / 2);
     textAlpha -= (1.0 / TEXT_FADE_TIME / FPS);
   }
-  // Menu--------------------------------------------------------------------------
-  let textm = "Menu";
-  ctx.textAlign = "Center";
-  ctx.textBaseline = "top";
-  ctx.fillStyle = "rgba(0, 0, 0, 1.0)";
-  ctx.font = "small-caps " + TEXT_SIZE + "px dejavu sans mono";
-  ctx.fillText(textm, 65, 10);
   // Score-------------------------------------------------------------------------
   let texts = "Score : " + score;
   ctx.textAlign = "Right";
@@ -245,24 +237,24 @@ function update() {
   // Lives and Game Over------------------------------------------------------------
   let image1 = new Image();
   image1.src = 'Resources/Character/Character_81.png';
-  ctx.drawImage(image1, 125, 0);
+  ctx.drawImage(image1, 0, 0);
   let image2 = new Image();
   image2.src = 'Resources/Character/Character_81.png';
-  ctx.drawImage(image2, 195, 0);
+  ctx.drawImage(image2, 70, 0);
   let image3 = new Image();
   image3.src = 'Resources/Character/Character_81.png';
-  ctx.drawImage(image3, 270, 0);
+  ctx.drawImage(image3, 140, 0);
   if (Damage == 0) {
 
   } else if (Damage == 1) {
     ctx.fillStyle = "white";
-    ctx.fillRect(270, 0, 70, 70);
+    ctx.fillRect(140, 0, 70, 70);
   } else if (Damage == 2) {
     ctx.fillStyle = "white";
-    ctx.fillRect(195, 0, 140, 70);
+    ctx.fillRect(70, 0, 140, 70);
   } else {
     ctx.fillStyle = "white";
-    ctx.fillRect(125, 0, 210, 70);
+    ctx.fillRect(0, 0, 210, 70);
     clearInterval(x);
     text = "Game Over";
     ctx.textAlign = "center";
