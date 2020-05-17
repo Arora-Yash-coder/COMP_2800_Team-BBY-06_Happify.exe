@@ -2,12 +2,13 @@ body{
         background-image: url(./background.png);
         background-size:cover;
         height: 100vh;
-        
+        font-family: Arial, Helvetica, sans-serif;
+        color:rgb(26, 129, 102);
     }
     button {
         background-color: white; /* Green */
         border: 1px solid #3AB795;
-        color: #3AB795;
+        color: rgb(26, 129, 102);
         padding: 10px 24px;
         text-align: center;
         text-decoration: none;
@@ -20,7 +21,24 @@ body{
     #homepage{
         float: right;
     }
+    .cont{
+        margin-right: auto;
+        margin-left: auto;
+        width: 60%;
+        height: 40%;
+        border: 2px solid gray;
+        background-color: #FAC9B8;
+    }
+    .text{
+        text-align: center;
+    }
 footer{
-    margin-top: 80px;
-    text-align: center;
+
+        color: black;
+        position: fixed;
+        left: 0;
+        bottom: 0;
+        width: 100%;
+        text-align: center;
+
 }

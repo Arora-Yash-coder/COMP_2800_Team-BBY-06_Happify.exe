@@ -1,7 +1,7 @@
     button {
         background-color: white; /* Green */
         border: 1px solid #3AB795;
-        color: #3AB795;
+        color: rgb(26, 129, 102);
         padding: 10px 24px;
         text-align: center;
         text-decoration: none;
@@ -13,7 +13,7 @@
         display: inline-block;
         padding: 0.3em 1em;
         text-decoration: none;
-        color: #3AB795;
+        color: rgb(26, 129, 102);
         border: solid 2px #3AB795;
         border-radius: 3px;
         transition: .4s;
@@ -28,7 +28,7 @@
         display: inline-block;
         padding: 0.3em 1em;
         text-decoration: none;
-        color: #3AB795;
+        color: rgb(26, 129, 102);
         border: solid 2px #3AB795;
         border-radius: 3px;
         transition: .4s;
@@ -45,7 +45,8 @@
         background-image: url(./background.png);
         background-size: cover;
         height:120vh;
-        color:#3AB795;
+        color:rgb(26, 129, 102);
+        font-family: Arial, Helvetica, sans-serif;
       }
 
       img {
@@ -95,8 +96,8 @@
       }
 
       #dailytask {
-        margin-left: 25px;
-        margin-right: 25px;
+        margin-left: auto;
+        margin-right: auto;
         margin-top: 10px;
         margin-bottom: 10px;
         border-radius: 25px;
@@ -105,6 +106,9 @@
         display: grid;
         grid-template-rows: 50% 50%;
         color: #3AB795;
+        color: rgb(26, 129, 102);
+        width: 700px;
+        border: 2px solid gray;
       }
 
       #dailytask1 {
@@ -112,8 +116,6 @@
         margin-top: auto;
         margin-bottom: auto;
         border-radius: 25px 0 0 25px;
-
-
         grid-row: 1 / span 1;
 
       }
@@ -122,16 +124,14 @@
         margin-top: auto;
         margin-bottom: auto;
         border-radius: 0 25px 25px 0;
-
-
         grid-row: 2 / span 1;
 
       }
 
 
       #knowledge {
-        margin-left: 25px;
-        margin-right: 25px;
+        margin-left: auto;
+        margin-right: auto;
         margin-top: 10px;
         margin-bottom: 10px;
         border-radius: 25px;
@@ -139,7 +139,9 @@
         background-color: #FAC9B8;
         display: grid;
         grid-template-rows: 50% 50%;
-        color: #3AB795;
+        color: rgb(26, 129, 102);
+        width: 700px;
+        border: 2px solid gray;
       }
 
       #knowledge1 {
@@ -147,8 +149,6 @@
         margin-top: auto;
         margin-bottom: auto;
         border-radius: 25px 0 0 25px;
-
-
         grid-row: 1 / span 1;
 
       }
@@ -157,16 +157,14 @@
         margin-top: auto;
         margin-bottom: auto;
         border-radius: 0 25px 25px 0;
-
-
         grid-row: 2 / span 1;
 
       }
 
 
       #story {
-        margin-left: 25px;
-        margin-right: 25px;
+        margin-left: auto;
+        margin-right: auto;
         margin-top: 10px;
         margin-bottom: 10px;
         border-radius: 25px;
@@ -174,7 +172,9 @@
         grid-row: 1 / span 1;
         display: grid;
         grid-template-rows: 50% 50%;
-        color: #3AB795;
+        color: rgb(26, 129, 102);
+        width: 700px;
+        border: 2px solid gray;
       }
 
       #story1 {
@@ -182,8 +182,6 @@
         margin-top: auto;
         margin-bottom: auto;
         border-radius: 25px 0 0 25px;
-
-
         grid-row: 1 / span 1;
 
       }
@@ -192,8 +190,6 @@
         margin-top: auto;
         margin-bottom: auto;
         border-radius: 0 25px 25px 0;
-
-
         grid-row: 2 / span 1;
 
       }
@@ -202,8 +198,29 @@
       }
 
       #greeting {
+        background-color: rgb(250,201,184, 0.5); 
         color: #EF629F;
+        border: 2px solid gray;
+        border-radius: 25px;
+        margin-left: auto;
+        margin-right: auto;
+        width: 700px;
+      }
+      .step{
+        float: right;
+        color: black;
+        margin: 5px;
+        border: 2px solid gray;
+        background-color: white;
+        border-radius: 2px;
       }
 #footer{
+  
     color: black;
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    text-align: center;
+
 }

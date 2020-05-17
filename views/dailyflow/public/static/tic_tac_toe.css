@@ -6,7 +6,8 @@
             background-image: url(./background.png);
             background-size: cover;
             height: 140vh;
-            
+            font-family: Arial, Helvetica, sans-serif;
+            color: rgb(26, 129, 102);
         }
         img {
             object-fit: contain;
@@ -50,8 +51,8 @@
             grid-template-rows: 33.3% 33.3% 33.3%;
         }
         #first{
-            margin-left: 25px;
-            margin-right: 25px;
+            margin-left: auto;
+            margin-right: auto;
             margin-top: 10px;
             margin-bottom: 10px;
             border-radius: 25px;
@@ -59,7 +60,10 @@
             grid-row: 1 / span 1;
             display: grid;
             grid-template-columns: 50% 50%;
-            color: #3AB795;
+            color: rgb(26, 129, 102);
+            border: 2px solid gray;
+            
+            width:75%;
         }
         #first1{
             padding: 15px;
@@ -83,8 +87,8 @@
         
         
         #second{
-            margin-left: 25px;
-            margin-right: 25px;
+            margin-left: auto;
+            margin-right: auto;
             margin-top: 10px;
             margin-bottom: 10px;
             border-radius: 25px;
@@ -92,7 +96,10 @@
             grid-row: 2 / span 1;
             display: grid;
             grid-template-columns: 50% 50%;
-            color: #3AB795;
+            color: rgb(26, 129, 102);
+    border: 2px solid gray;
+ 
+    width: 75%;
         }
         #second1{
             padding: 15px;
@@ -114,8 +121,8 @@
             
         }
         #third{
-            margin-left: 25px;
-            margin-right: 25px;
+            margin-left: auto;
+            margin-right: auto;
             margin-top: 10px;
             margin-bottom: 10px;
             border-radius: 25px;
@@ -123,7 +130,10 @@
             grid-row: 3 / span 1;
             display: grid;
             grid-template-columns: 50% 50%;
-             color: #3AB795;
+            color: rgb(26, 129, 102);
+            border: 2px solid gray;
+           
+            width: 75%;
         }
         #third1{
             padding: 15px;
@@ -153,7 +163,13 @@
             
         }
         #footer{
-            grid-row: 3 / span 1;
+           
+    color: black;
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    text-align: center;
         }
          
 .container {
@@ -181,8 +197,8 @@
     background-color: rgb(65, 134, 125);
 }
 #stats {
-    margin-left: 25px;
-    margin-right: 25px;
+    margin-left: auto;
+    margin-right: auto;
     margin-top: 10px;
     margin-bottom: 10px;
 /*    border-radius: 25px;*/
@@ -191,5 +207,8 @@
     display: grid;
     grid-template-columns: 50% 50%;
     color: #3AB795;
-
+    color: rgb(26, 129, 102);
+    border: 2px solid gray;
+    border-radius: 2px;
+    width: 80%;
 }
