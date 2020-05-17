@@ -284,6 +284,7 @@ module.exports = function (app) {
 					res.redirect("/daily_tasks")
 				}
 				else if (state >= 4 && state <= 5) {
+					users.addPoints(req, res, 10)
 					res.redirect("/minigames")
 				}
 				else if (state > 5 && state <= 6) {
@@ -538,6 +539,7 @@ module.exports = function (app) {
 
 	//============DBwork=====Tiffany=================================================
 	app.post('/daily_tasks', (req, res) => {
+		
 		// let added_item = [];
 		let daily_tasks = req.body["id_array[]"];
 		console.log("531 req.body=====================================")
@@ -559,6 +561,7 @@ module.exports = function (app) {
 				//if the user's answer is correct
 				if (answer == result[0].answer) {
 					MongoClient.connect(dbConfig.url, function (err, db) {
+						
 						console.log("作答正确")
 						if (err) throw err;
 						var dbo = db.db("test");
@@ -593,6 +596,7 @@ module.exports = function (app) {
 							$inc: { "daily_task_rec.$.state": 1 }
 						})
 						res.send("Correct, How Smart You ARE!!!")
+						users.addPoints(req, res, 10)
 					})
 				} else {
 					res.send("Not quite")
@@ -902,7 +906,7 @@ module.exports = function (app) {
 					console.log(result[0].daily_task_archived)
 					//then we will go to the db and find the number of items
 					dbo.collection("daily_tasks").find({
-						id: { $nin: result[0].daily_task_archived }
+						// id: { $nin: result[0].daily_task_archived }
 						// "3 - state" means the number of items to find 	
 					}).limit(3 - state).toArray(function (err, data) {
 

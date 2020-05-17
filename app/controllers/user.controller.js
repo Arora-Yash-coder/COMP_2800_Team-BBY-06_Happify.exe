@@ -682,7 +682,7 @@ exports.admin_coupon_management = (req, res) => {
 
 //the user gains according points
 exports.addPoints = (req, res, n) => {
-    res.setHeader('Content-Type', 'application/json');
+   
     MongoClient.connect(dbConfig.url, function (err, db) {
         console.log("n=================================")
         console.log(n)
@@ -747,7 +747,7 @@ exports.addPoints = (req, res, n) => {
             if (err) throw err;
             // console.log(result);
 
-            res.send("Nice, Congrats");
+            
             db.close();
         });
 
