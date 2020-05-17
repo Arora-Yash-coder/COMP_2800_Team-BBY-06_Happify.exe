@@ -7,7 +7,7 @@ module.exports = function (app) {
 
 	var subs;
 	var vKey;
-	var pusher = require('web-push')
+	
 	//It's a NodeJS package that allows us to hash passwords for security purposes.
 	const bcrypt = require("bcrypt");
 	//parse the body to the right format
@@ -27,9 +27,11 @@ module.exports = function (app) {
 	var router = express.Router();
 	const fs = require('fs');
 	// const ejs = require('ejs');
+
 	const users = require('../controllers/user.controller.js');
-	const push = require('../controllers/push.controller.js');
+	const pusher = require('../controllers/push.controller.js');
 	const cookieParser = require('cookie-parser');
+
 	app.use("/", router);
 
 	app.use(bodyParser.json());
@@ -450,43 +452,14 @@ module.exports = function (app) {
 
 	//==================WEB PUSH NOTIFICATION=======================================================================================================================
 	app.post("/push", (req, res) => {
+		console.log(req.body)	
+		pusher.sub_info(req,res,req.body.push)
 
+		// setTimeout(() => {
+		// 	res.redirect("/reminder")
+		// }, 5000);
 
-
-		// let sub = {"endpoint":"https://fcm.googleapis.com/fcm/send/cWeZa3YmIa4:APA91bEJm2VDc4lQFlFOMWtsJSzEAtp6_SwEdPmxn8K81y5Uw1P9IqLyC8-IkHS17QmrrWbNL2nS7i_xigdU4rAV_Lbc2Q19O2qdxTYu4ETX-yiz55jxVCtVA8mEi5GXKwsHk9IP64fw","expirationTime":null,"keys":{"p256dh":"BCv6JuLUv4Jr-Zdt7dkmK48hqiqA7TpNikZXnx5M5buTdJx_6-pdKCZaq2w_qPVqQIAPw8s2eFTsOX_LpQfHn4w","auth":"rOanjFsUqHVdBgz9GxkyOQ"}}
-		console.log("pushing")
-
-		sub = JSON.parse(req.cookies["sub"]);
-		console.log("session.sid " + req.cookies.user_sid)
-		console.log("sub.............. ")
-		console.log(sub)
-		//step 1:get VapidIDkeys
-		// let vapidKeys = push.generateVAPIDKeys();
-
-		// console.log(vapidKeys); 
-
-		// vapidKeys = vKey;
-		let vapidKeys = {
-			publicKey: 'BHzTemBBukw8OY7qXGqtXPPIGSr-TyACw3rNEcmsBTx2gEJQ2YECWff5oBMb9fRss7vhn3a6ATNxucmb52zHM2U',
-			privateKey: 'fW97xyBbRKUBqr_7Tn9l8X91i-rDlsY4PUAAZBBj17U'
-		}
-
-		// vapidKeys ={
-		// 	publicKey: 'BOLwoYGg2hw44iExdhZ71-HSMLFTKdDwjx_42_qWPwyvD_HAZMzV4K6rJS1LzKMYkv3DCbU8bP4MLgnxGTynNYA',
-		// 	privateKey: 'X1t918Q8AZIU4d9jrYXaBsrlvD9xubvVMSPwUoXPJkw'
-		//   }
-		// sub changes 
-
-
-
-
-		pusher.setVapidDetails('futurecurvess:test@judaozhong.com', vapidKeys.publicKey, vapidKeys.privateKey)
-		setTimeout(() => {
-			pusher.sendNotification(sub, 'test message')
-		}, 20);
-
-		console.log("date---------------------------------------------")
-		console.log(req.body)
+	
 
 	})
 
@@ -525,26 +498,15 @@ module.exports = function (app) {
 
 
 	app.get('/reminder', (req, res) => {
-		res.sendFile(path + "reminder.html");
+		// res.sendFile(path + "reminder.html");
+		res.sendFile(staticPath + "/remtest.html");
 	});
 
 
 
-	app.post('/subscribe', (req, res) => {
-		// the endpoint from the request is stored in the session 
-		let vapidKeys = pusher.generateVAPIDKeys();
-		vKey = vapidKeys;
-		console.log("Public vapidKeys=============================================");
-		console.log(vapidKeys["publicKey"]);
-		res.send(vapidKeys["publicKey"])
-		// console.log(Object.keys(req.body)[0]);
-		subs = Object.keys(req.body)[0];
-		res.cookie({ "sub": Object.keys(req.body)[0] });
-		req.session.sub = Object.keys(req.body)[0];
-		console.log("req.cookies>--------------------------------------------------- ")
-		console.log(req.cookies)
-		console.log("req.session.sub >?????????????????>>>>>>>>>>>>>>>>>>>>>>>>>>>>> " + req.session.sub)
-		// res.send(req.session.sub);
+	app.get('/subscribe', (req, res) => {
+		pusher.subscribe(req,res)
+
 	});
 
 

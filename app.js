@@ -40,11 +40,11 @@ require('./app/routes/user.route.js')(app);
 
 
 var fs = require('fs')
-// const https = require('https');
-// var options = {
-//   key: fs.readFileSync('./privatekey.pem'),
-//   cert: fs.readFileSync('./certificate.pem')
-// };
+const https = require('https');
+var options = {
+  key: fs.readFileSync('./privatekey.pem'),
+  cert: fs.readFileSync('./certificate.pem')
+};
 
 // // var https_server = https.createServer(options, app);
 
@@ -53,12 +53,12 @@ var fs = require('fs')
 // // });
 
 
-// https.createServer(options, app).listen(443, function () {
-//   console.log('Https server listening on port ' + 3011);
-// });
+https.createServer(options, app).listen(443, function () {
+  console.log('Https server listening on port ' + 3011);
+});
 
 // Create a Server
-var http_server = app.listen(3000, function () {
+var http_server = app.listen(3006, function () {
 
   var host = http_server.address().address
   var port = http_server.address().port
