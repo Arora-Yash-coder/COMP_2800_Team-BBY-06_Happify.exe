@@ -140,6 +140,17 @@ module.exports = function (app) {
 			dbo.collection("users").find({
 				_id: ObjectId(req.session.user_sid)
 			}).toArray(function (err, result) {
+				
+				//  dbo.collection("coupons_available").aggregate(
+				// 	{$group : { id : 'users.$coupons_owned', count : {$sum : 1}}}
+			
+				//  ).toArray((err,aggregate)=>{
+				// 	console.log("aggregate in line 148")
+				// 	console.log(aggregate)
+				//  })
+				
+				
+
 				coupon_id_array = result[0].coupons_owned;
 
 				dbo.collection("coupons_available").find({
@@ -383,7 +394,7 @@ module.exports = function (app) {
 	})
 
 	//when the users click on this,
-	app.post('/coupon/redeem', users.redeemCoupon);
+	app.post('/coupon/redeem', sessionChecker2,users.redeemCoupon);
 
 
 	//---------------------Judao ChessGame--------------------------------------
@@ -393,10 +404,10 @@ module.exports = function (app) {
 
 
 
-	app.get("/restart", (req, res) => {
+	app.get("/minigames/chess/restart", (req, res) => {
 		uci[id] = "position startpos moves ";
 		stockfishes[id].postMessage(uci[id]);
-		res.redirect("/game/chess")
+		res.redirect("/minigames/chess")
 	})
 
 
@@ -906,7 +917,7 @@ module.exports = function (app) {
 					console.log(result[0].daily_task_archived)
 					//then we will go to the db and find the number of items
 					dbo.collection("daily_tasks").find({
-						// id: { $nin: result[0].daily_task_archived }
+						id: { $nin: result[0].daily_task_archived }
 						// "3 - state" means the number of items to find 	
 					}).limit(3 - state).toArray(function (err, data) {
 

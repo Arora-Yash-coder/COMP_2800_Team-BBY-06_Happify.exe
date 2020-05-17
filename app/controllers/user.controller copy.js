@@ -394,7 +394,7 @@ let points_needed = undefined;
 let user_points;
 exports.redeemCoupon = (req, res) => {
     // res.setHeader('Content-Type', 'application/json');
-    let user_points = -1;
+
     let id = parseInt(req.body["id"])
     MongoClient.connect(dbConfig.url, function (err, db) {
 
@@ -411,49 +411,59 @@ exports.redeemCoupon = (req, res) => {
             console.log("The user needs so many points to redeem!!!!!!!!! ");
             console.log(result[0].points);
             points_needed = result[0].points;
-            // db.close();
-            MongoClient.connect(dbConfig.url, function (err, db) {
-                console.log("416 req.session.user_sid")
-                console.log(req.session.user_sid)
-                dbo.collection("users").find({
-                    _id: ObjectId(req.session.user_sid)
-                }).toArray(function (err, result) {
-                    console.log("419 ------------------------- result")
-                    console.log(result)
-                    user_points = result[0].points;
-                    // db.close();
-                    MongoClient.connect(dbConfig.url, function(err, db){
-                        if (req.session.user_sid && user_points && (user_points - points_needed) >= 0) {
-                            console.log("redeem successful")
+            db.close();
 
-                            dbo.collection("users").updateOne(
-                                { _id: ObjectId(req.session.user_sid) },
-                                {
-                                    $inc: { points: -points_needed },
-                                    // "daily_task_rec.$.points_earned_today"
-                                    $push: { coupons_owned: id }
-                                },
-                                { new: true }
-                
-                            )
-                            db.close();
-                
-                            res.send("redeem successful");
-                
-                        }
-                        else{
-                            res.send("you don't have enough points for redeeming!!!");
-                        }
-                    })
-                });
-
-            })
         });
 
 
-        
+        dbo.collection("users").find({
+            _id: ObjectId(req.session.user_sid)
+        }).toArray(function (err, result) {
 
+            if (result[0]) {
+                if (result[0].points >= 0) {
+                    user_points = result[0].points;
+                } else {
+                    console.log("go ahead")
+                }
+            } else {
+                console.log("user doesn't has any points")
+            }
 
+            console.log("req.session.result")
+            console.log(result)
+
+            console.log("req.session.user_sid")
+            console.log(req.session.user_sid)
+
+            if (err || !req.session.user_sid) {
+                //need to link to the front end
+                console.log("not working")
+                // res.end(res.send("you need to log in first!!!!"));
+
+                //   throw err;
+            }
+        });
+
+        if (req.session.user_sid && user_points && (user_points - points_needed) >= 0) {
+            console.log("redeem successful")
+            console.log(-points_needed);
+            console.log("id===================================");
+            console.log(id);
+            dbo.collection("users").updateOne(
+                { _id: ObjectId(req.session.user_sid) },
+                {
+                    $inc: { points: -points_needed },
+                    $push: { coupons_owned: id }
+                },
+                { new: true }
+
+            )
+            db.close();
+
+            res.send("redeem successful");
+
+        }
     });
 }
 

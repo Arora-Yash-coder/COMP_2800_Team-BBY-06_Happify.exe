@@ -86,7 +86,7 @@ $(".no").click((e) => {
 
 $(".yes").click((e) => {
     redeem_id = $(e.target).attr("name");
-
+    let this_coupon = $(e.target)
     //redeem a coupon, the coupon is now available in my_profile page
     $.ajax({
         type: "post",
@@ -95,10 +95,18 @@ $(".yes").click((e) => {
         dataType: "text",
         success: function (response) {
             alert(response)
+            if(response == "redeem successful"){
+                window.location.reload()
+            }else if(response == "you don't have enough points for redeeming!!!"){
+                 this_coupon.css("background-color","grey")
+            }else{
+                window.location.reload()
+            }
         },
         error: function (xhr, ajaxOptions, thrownError) {
             alert(xhr.status);
             alert(thrownError);
+            window.location.reload()
         }
 
     })
