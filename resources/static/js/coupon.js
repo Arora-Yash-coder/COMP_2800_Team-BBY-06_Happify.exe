@@ -100,10 +100,7 @@ $(".yes").click((e) => {
             alert(xhr.status);
             alert(thrownError);
         }
-<<<<<<< HEAD
-=======
-        
->>>>>>> judao_tiffany_backend
+
     })
 
 
@@ -132,11 +129,27 @@ $(".yes").click((e) => {
     })
 
 
-<<<<<<< HEAD
 
-=======
-setTimeout(()=>{window.location.replace('/coupon')},120);
->>>>>>> judao_tiffany_backend
+
+
+    // setTimeout(() => { window.location.replace('/coupon') }, 120);
 });
 
+
+
+$("#proceed").click(() => {
+
+    let state_request = "proceed button clicked in STEP 6";
+    console.log(state_request)
+    $.ajax({
+        type: "post",
+        url: "/state_add",
+        data: { state_request },
+        dataType: "text",
+        success: function (response) {
+            window.location.replace('./flow_final.html')
+
+        }
+    });
+})
 

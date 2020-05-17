@@ -6,8 +6,8 @@
   <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>User Profile</title>
-  <link rel="stylesheet" type="text/css" href="/static/css/user_profile.css">
-  <link rel="stylesheet" type="text/css" href="/static/css/navbar.css">
+  <link rel="stylesheet" type="text/css" href="/static/css/user_profile<%=css%>">
+  <link rel="stylesheet" type="text/css" href="/static/css/navbar<%=css%>">
   
 </head>
 
@@ -17,6 +17,11 @@
   <h1>User Profile</h1>
 
   <img id="avatar" class="avatar" src="/img/avatar.png">
+  <div id='ui_choice'>
+    <span>Color Scheme: </span><br/>
+    <button class="ui_choice" id='ui_choice_0'>green mode</button>
+    <button class="ui_choice" id='ui_choice_1'>fire mode</button>
+  </div>
   <form action="/upload_avatar" enctype="multipart/form-data" method="post">
     <input type="file" class="avatar" id="upload" name="upload">
     <input type="submit" id="submit" value="Upload file">
@@ -57,11 +62,7 @@
   </div>
 
   <button type="button" onclick="save()" id="save">Save</button>
-<<<<<<< HEAD
-  <button id="logout">log out!</button>
-=======
   <button id="logout">Log out!</button>
->>>>>>> judao_tiffany_backend
   <br>
   <!--
     <div id="submit">

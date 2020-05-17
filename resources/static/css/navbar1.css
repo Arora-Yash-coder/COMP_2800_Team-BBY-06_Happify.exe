@@ -1,14 +1,14 @@
+
 .container {
     list-style-type: none;
     margin: 0;
 
     overflow: hidden;
-    background-color: #4B7F52;
+    background-color: #3AB795;
 }
 
 .list {
     float: left;
-    font-size: 15pt;
 }
 
 .list a {
@@ -22,3 +22,4 @@
 .list a:hover {
     background-color: rgb(65, 134, 125);
 }
+

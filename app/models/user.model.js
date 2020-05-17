@@ -76,7 +76,8 @@ const daily_task_rec ={
   finished_id : [2,3],
   date : new Date(),
   points_earned_today :0,
-  user_id : "96956"
+  user_id : '',
+  state:0
 }
 
 
@@ -108,7 +109,8 @@ const UserSchema = mongoose.Schema({
   points: { type: Number, default: 1 },
   // default: defaultUserTask
   daily_task_rec: { type: Array ,required:true,default :daily_task_rec },
-  daily_task_archived : {type : [Number], default:[]}
+  daily_task_archived : {type : [Number], default:[]},
+  UI_style: {type:String, default :""}
 });
 
 

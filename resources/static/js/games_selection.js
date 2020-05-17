@@ -20,13 +20,16 @@ $(document).ready(function () {
                 });
             } show_points()
 
+            
             $(".minigame").on("click", () => {
+                let state_request = "I am ready to play a game"    
                 $.ajax({
-                    type: "get",
+                    type: "post",
                     url: "/state_add",
+                    data : {state_request},
                     dataType: "text",
                     success: function (response) {
-                        console.log("successfully move onto the next state!")
+                        window.location.replace('/coupon')
                     }
                 });
 
@@ -37,23 +40,22 @@ $(document).ready(function () {
 
 
         $("#proceed").click(() => {
-
-            alert("clicked")
+            let state_request = "proceed button clicked";
+            console.log(state_request)
             $.ajax({
-                    type: "get",
+                    type: "post",
                     url: "/state_add",
+                    data : {state_request},
                     dataType: "text",
                     success: function (response) {
-                        console.log("successfully move onto the next state!")
+                        window.location.replace('/coupon')
                     }
                 });
 
-            window.location.href = '/coupon';
+            
 
 
         })
-<<<<<<< HEAD
-=======
 
         let allowedKeys = {
             37: 'left',
@@ -86,4 +88,11 @@ $(document).ready(function () {
         function easter() {
             window.location.href = '/static/minigames/agar.html';
         }
->>>>>>> judao_tiffany_backend
+
+
+
+
+
+
+
+        

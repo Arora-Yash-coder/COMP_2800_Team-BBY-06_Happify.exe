@@ -1,29 +1,4 @@
 body {
-<<<<<<< HEAD
-            margin: 0;
-        }
-
-        /*        for webpages*/
-       
-            div {
-                height: 100vh;
-                background-image: url("/img/background.png");
-                background-size: cover;
-
-            }
-
-            #title {
-                padding-top: 15%;
-                text-align: center;
-                color: white;
-                font-size: 20pt;
-            }
-
-            button {
-
-                background-color: #3AB795;
-                /* Green */
-=======
     margin: 0;
 }
 
@@ -49,7 +24,6 @@ div {
 
                 background-color: #d6f9dd;
                  Green 
->>>>>>> judao_tiffany_backend
                 border: none;
                 color: white;
                 padding: 15px 32px;
@@ -58,37 +32,6 @@ div {
                 display: inline-block;
                 font-size: 16px;
             }
-<<<<<<< HEAD
-       .square_btn {
-            display: inline-block;
-            padding: 0.3em 1em;
-            text-decoration: none;
-            color: #EF629F;
-            border: solid 2px #EF629F;
-            border-radius: 3px;
-            transition: .4s;
-        }
-
-        .square_btn:hover {
-            background: #EF629F;
-            color: white;
-        }
-
-        .square_btn_second {
-            display: inline-block;
-            padding: 0.3em 1em;
-            text-decoration: none;
-            color: #3AB795;
-            border: solid 2px #3AB795;
-            border-radius: 3px;
-            transition: .4s;
-        }
-
-        .square_btn_second:hover {
-            background: #EF629F;
-            color: white;
-        }
-=======
 */
 .square_btn {
     display: inline-block;
@@ -119,4 +62,3 @@ div {
     background: #d6f9dd;
     color: #753e48;
 }
->>>>>>> judao_tiffany_backend

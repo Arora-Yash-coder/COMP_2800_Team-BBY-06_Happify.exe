@@ -1,13 +1,9 @@
 /*CSS style of the homepage*/
 body {
-    /*
     background-image: url(../img/background.png);
     background-size: cover;
-*/
     text-align: center;
     margin: 0;
-    background-color: #99F7AB;
-    color: #53131E;
 }
 
 img {
@@ -19,30 +15,30 @@ img {
     margin-right: auto;
 }
 
-#welcome {
+#welcome{
     padding: 1px;
     margin: 0;
 }
 
 .first {
-    color: #53131E;
+    color: #EF629F;
 
 }
 
 .second {
-    color: #53131E;
+    color: #3AB795;
 
 }
 
 .top {
-    color: #53131E;
+    color: #3AB795;
     font-size: 20pt;
     font-weight: bold;
     margin-bottom: 10px;
 }
 
 .username {
-    color: #53131E;
+    color: #EF629F;
     margin-top: 5px;
     font-weight: bold;
 }
@@ -61,31 +57,28 @@ img {
 }
 
 #stats {
-    /*    margin-left: 25px;*/
-    /*    margin-right: 25px;*/
+    margin-left: 25px;
+    margin-right: 25px;
     margin-top: 10px;
     margin-bottom: 10px;
-    /*    border-radius: 25px;*/
+/*    border-radius: 25px;*/
     grid-row: 2 / span 1;
-    background-color: #7BDFF2;
+    background-color: #FAC9B8;
     display: grid;
     grid-template-columns: 50% 50%;
-    color: #53131E;
+    color: #3AB795;
 
 }
-
 #games {
     margin-left: 25px;
     margin-right: 25px;
     margin-top: 10px;
     margin-bottom: 10px;
     border-radius: 25px;
-    border: 2px solid rgba(83, 19, 30, 0.7);
     grid-row: 2 / span 1;
-    background-color: #D6F9DD;
+    background-color: #FAC9B8;
     display: grid;
     grid-template-columns: 50% 50%;
-
 
 }
 
@@ -115,11 +108,11 @@ img {
     margin-top: 10px;
     margin-bottom: 10px;
     border-radius: 25px;
-    background-color: #D6F9DD;
+    background-color: #B8D8BA;
     grid-row: 3 / span 1;
     display: grid;
     grid-template-columns: 50% 50%;
-    border: 2px solid rgba(83, 19, 30, 0.7);
+
 }
 
 #how1 {
@@ -148,11 +141,10 @@ img {
     margin-top: 10px;
     margin-bottom: 10px;
     border-radius: 25px;
-    background-color: #D6F9DD;
+    background-color: #FAC9B8;
     grid-row: 4 / span 1;
     display: grid;
     grid-template-columns: 50% 50%;
-    border: 2px solid rgba(83, 19, 30, 0.7);
 }
 
 #redeem1 {
@@ -208,18 +200,14 @@ img {
     background-color: rgb(65, 134, 125);
 }
 
-#footer {
-    color: #53131E;
-
-}
 
 
 
 
-/*
+
 #game_img {
-     width: 100px;
-    height: 100px; 
+    /* width: 100px;
+    height: 100px; */
     background-size: 10px;
     background-color: none;
     animation-name: gaming;
@@ -236,12 +224,10 @@ img {
     55%  {background-color: beige;}
     100% {background-color: green;}
   }
-*/
 
-/*
 #daily_task_img{
-     width: 100px;
-    height: 100px; 
+    /* width: 100px;
+    height: 100px; */
     
     background-color: none;
     animation-name: shake;
@@ -279,9 +265,7 @@ img {
         animation-delay: 5.8s;
         animation-fill-mode: forwards;
   }
-*/
 
-/*
 @keyframes bounce {
     5%   { transform: scale(1,1)  rotate(10deg)  translateX(-200px) translateY(-200px);visibility: visible; }
     30%  { transform: scale(1.1,.9) rotate(5deg) translateX(-50px)  translateY(-10px) ; }
@@ -291,7 +275,6 @@ img {
     90%  { transform: scale(1,1)    translateY(-10px); }
     100% { transform: scale(1,1)    translateY(0) ;visibility: visible }
 }
-*/
 /* 
 
 .progress{display: none;} */

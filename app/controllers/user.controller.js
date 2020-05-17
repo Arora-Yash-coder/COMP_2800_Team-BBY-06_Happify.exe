@@ -88,12 +88,23 @@ exports.verify = (req, res) => {
                 console.log(theUser.toObject().username + successMsg)
                 req.session.user_sid = theUser.toObject()._id;
                 req.cookies.user_sid = theUser._id;
+                console.log("theUser.UI_style=============== in 91")
+                console.log(theUser)
+                console.log(theUser.password)
+                console.log(theUser.UI_style)
+
+                req.session.UI_style = theUser.UI_style;
+                console.log("theUser.UI_style=============== in 95")
+                console.log(req.session.UI_style)
                 req.cookies.sub = "null";
+                req.cookies.UI_style = theUser.UI_style;
                 res.cookie({
                     "user_sid": theUser._id,
-                    "sub": "null"
+                    "sub": "null",
+                    "UI_style": theUser.UI_style
                 })
-                console.log("res.cookies======================" + res.cookies)
+                console.log("req.cookies======================")
+                console.log(req.cookies)
                 // console.log("req.session.user_sid" + req.session.user_sid);
                 // res.send(successMsg);
                 console.log("redirecting to homepage----------")
@@ -250,10 +261,7 @@ exports.knowledgeLike = function (req, res) {
 
 
 
-<<<<<<< HEAD
-=======
 //get user profile
->>>>>>> judao_tiffany_backend
 exports.getProfile = function (req, res) {
     res.setHeader('Content-Type', 'application/json');
     MongoClient.connect(dbConfig.url, function (err, db) {
@@ -325,7 +333,6 @@ var navbar_top_ejs = fs.readFileSync(path + "components/navbar_top.ejs", 'utf-8'
 var footer = fs.readFileSync(path + "components/footer.ejs", 'utf-8');
 exports.getCoupon = (req, res) => {
     let state = null;
-<<<<<<< HEAD
     MongoClient.connect(dbConfig.url, function (err, db) {
         if (err) throw err;
         var dbo = db.db("test");
@@ -333,69 +340,46 @@ exports.getCoupon = (req, res) => {
         dbo.collection("users").find({
             _id: ObjectId(req.session.user_sid)
         }).toArray(function (err, result) {
-
-
             state = result[0].daily_task_rec[result[0].daily_task_rec.length - 1].state;
-        })
+            db.close()
+            
+            MongoClient.connect(dbConfig.url, function (err, db) {
+                if (err) throw err;
+                
+                var dbo = db.db("test");
 
-    })
+                dbo.collection("coupons_available").find().limit(5).toArray(function (err, result) {
+                    if (err) throw err;
+                    console.log(result)
 
+                    db.close();
 
+                    if (state >= 7) {
+                        res.end(res.render(path + "coupon.ejs", {
+                            coupons: result,
+                            navbar: navbar_top_ejs,
+                            back_button: undefined,
+                            proceed_button: undefined,
+                            footer: footer,
 
+                        }));
+                    } else {
+                        res.render(path + "coupon.ejs", {
+                            coupons: result,
+                            back_button: "<button id='back' onclick='window.location.href='/minigames';'>Back</button>",
+                            proceed_button: "<button id='proceed' onclick='window.location.href='./flow_final.html''>Proceed</button>",
+                            navbar: undefined,
+                            footer: footer
+                        });
+                    }
+                    //    res.send( { result });
 
-    // res.setHeader('Content-Type', 'application/json');
-=======
->>>>>>> judao_tiffany_backend
-    MongoClient.connect(dbConfig.url, function (err, db) {
-        if (err) throw err;
-        var dbo = db.db("test");
-
-        dbo.collection("users").find({
-            _id: ObjectId(req.session.user_sid)
-        }).toArray(function (err, result) {
-
-
-            state = result[0].daily_task_rec[result[0].daily_task_rec.length - 1].state;
-        })
-
-    })
-
-
-
-
-    // res.setHeader('Content-Type', 'application/json');
-    MongoClient.connect(dbConfig.url, function (err, db) {
-        if (err) throw err;
-        var dbo = db.db("test");
-
-        dbo.collection("coupons_available").find().limit(5).toArray(function (err, result) {
-            if (err) throw err;
-            console.log(result)
-
-            db.close();
-
-            if (state >= 7) {
-                res.end(res.render(path + "coupon.ejs", {
-                    coupons: result,
-                    navbar: navbar_top_ejs,
-                    back_button: undefined,
-                    proceed_button: undefined,
-                    footer: footer,
-
-                }));
-            } else {
-                res.render(path + "coupon.ejs", {
-                    coupons: result,
-                    back_button: "<button id='back' onclick='window.location.href='/minigames';'>Back</button>",
-                    proceed_button: "<button id='proceed' onclick='window.location.href='./flow_final.html''>Proceed</button>",
-                    navbar: undefined,
-                    footer: footer
                 });
-            }
-            //    res.send( { result });
+            });
+        })
 
-        });
-    });
+    })
+
 }
 let points_needed = undefined;
 let user_points;
@@ -502,11 +486,7 @@ exports.viewOwnedCoupons = (req, res) => {
 
 }
 
-<<<<<<< HEAD
-
-=======
 //show the user's points
->>>>>>> judao_tiffany_backend
 exports.getUserPoints = (req, res) => {
     // res.setHeader('Content-Type', 'application/json');
 
@@ -534,16 +514,6 @@ exports.getUserPoints = (req, res) => {
         dbo.collection("users").find({
             _id: ObjectId(req.session.user_sid)
         }).toArray(function (err, result) {
-<<<<<<< HEAD
-
-            if (result[0]) {
-                if (result[0].points >= 0) {
-                    user_points = result[0].points;
-                } else {
-                    console.log("go ahead")
-                }
-            } else {
-=======
             //if the user exists
             if (result[0]) {
                 //if the user's points are 0 or positive
@@ -556,7 +526,6 @@ exports.getUserPoints = (req, res) => {
                 }
             } else {
                 //show user points failed
->>>>>>> judao_tiffany_backend
                 console.log("user doesn't has any points")
             }
 
@@ -597,12 +566,8 @@ exports.getUserPoints = (req, res) => {
     });
 }
 
-<<<<<<< HEAD
-
-=======
 //reads the user's input and search the items on the backend
 //returns the results in arrays
->>>>>>> judao_tiffany_backend
 exports.searchCoupon = (req, res) => {
     res.setHeader('Content-Type', 'application/json');
 
@@ -646,11 +611,7 @@ exports.searchCoupon = (req, res) => {
     })
 }
 
-<<<<<<< HEAD
-
-=======
 //the admin wants to log in
->>>>>>> judao_tiffany_backend
 exports.verifyAdmin = (req, res) => {
     let usn = req.body.username;
     let successMsg = " login successful";
@@ -665,57 +626,10 @@ exports.verifyAdmin = (req, res) => {
     var navbar_top_ejs = fs.readFileSync(path + "components/navbar_top.ejs", 'utf-8');
 
     var footer = fs.readFileSync(path + "components/footer.ejs", 'utf-8');
-<<<<<<< HEAD
 
 
 
 
-    MongoClient.connect(dbConfig.url, function (err, db) {
-        if (err) throw err;
-        var dbo = db.db("admin");
-        dbo.collection("users").findOne({ "username": usn }).then(function (theUser) {
-            //if the user exists
-            if (theUser) {
-                //and the password corresponds to the username from the DB
-                if (theUser.toObject().password == req.body.password) {
-                    console.log(theUser.toObject().username + successMsg)
-                    req.session.user_sid = theUser.toObject()._id;
-                    req.cookies.user_sid = theUser._id;
-                    req.cookies.sub = "null";
-                    res.cookie({
-                        "user_sid": theUser._id,
-                        "sub": "null"
-                    })
-                    console.log("res.cookies======================" + res.cookies)
-                    // console.log("req.session.user_sid" + req.session.user_sid);
-                    // res.send(successMsg);
-                    console.log("redirecting to homepage----------")
-                    res.redirect("/homepage")
-                    // res.redirect("/homepage")
-                    res.end()
-                }
-                //but the password was not right
-                else {
-                    console.log(incorrectMsg)
-                    res.send(incorrectMsg);
-
-                }
-                //the user doesn't even exist
-            } else {
-                console.log(usrnameNotFoundMsg);
-=======
->>>>>>> judao_tiffany_backend
-
-                res.send(usrnameNotFoundMsg);
-
-            }
-
-
-<<<<<<< HEAD
-        })
-
-    })
-=======
     MongoClient.connect(dbConfig.url, function (err, db) {
         if (err) throw err;
         var dbo = db.db("admin");
@@ -764,7 +678,6 @@ exports.verifyAdmin = (req, res) => {
 exports.admin_coupon_management = (req, res) => {
     console.log("searching")
 
->>>>>>> judao_tiffany_backend
 }
 
 //the user gains according points
@@ -791,6 +704,7 @@ exports.addPoints = (req, res, n) => {
         dbo.collection("users").updateOne(
             {
                 // daily_task_rec: { $elemMatch: { "user_id": req.session.user_sid, date: { $lte: new Date() } } },
+                _id: ObjectId(req.session.user_sid),
                 daily_task_rec: { $elemMatch: { "state": { $lte: 10 }, date: { $gte: new Date(new Date().setDate(new Date().getDate() - 2)) } } },
             },
             { $inc: { "daily_task_rec.$.points_earned_today": n } },
@@ -847,7 +761,7 @@ exports.addPoints = (req, res, n) => {
 exports.getState = (req, res) => {
     let getState = null;
     let res_arr = []
-    
+
     MongoClient.connect(dbConfig.url, function (err, db) {
         if (err) throw err;
         var dbo = db.db("test");
@@ -866,23 +780,23 @@ exports.getState = (req, res) => {
 
             console.log(new Date(new Date().setDate(new Date().getDate() - 2)))
 
-        //     if(result.length != 0){
-        //     console.log("Push the dates into an array and do comparison")
-        //      res_arr = result[0].daily_task_rec
+            //     if(result.length != 0){
+            //     console.log("Push the dates into an array and do comparison")
+            //      res_arr = result[0].daily_task_rec
 
-        let days_of_use  = result.length
-        //     console.log("The variable shows the days of the user has been using it")
-        //     console.log(days_of_use)
+            let days_of_use = result.length
+            //     console.log("The variable shows the days of the user has been using it")
+            //     console.log(days_of_use)
 
-        //     for (var index in res_arr) {
-        //         daily_task_array.push(res_arr[index].date);
-        //     }
+            //     for (var index in res_arr) {
+            //         daily_task_array.push(res_arr[index].date);
+            //     }
 
 
-        //     console.log("This is how the date array looks like:")
-        //     console.log(daily_task_array)
+            //     console.log("This is how the date array looks like:")
+            //     console.log(daily_task_array)
 
-        // }
+            // }
 
             db.close()
 
@@ -908,7 +822,7 @@ exports.getState = (req, res) => {
                         },
                         { new: true, upsert: true }
 
-                       
+
                     )
                     db.close()
                     console.log("pushed?????????????????????????????")
@@ -939,6 +853,7 @@ exports.getState = (req, res) => {
 
 
 
+
 // //gets the state the user is in
 // exports.getState = (req, res) => {
 //     let getState = null;
@@ -947,114 +862,13 @@ exports.getState = (req, res) => {
 //         if (err) throw err;
 //         var dbo = db.db("test");
 
-<<<<<<< HEAD
-exports.admin_coupon_management = (req, res) => {
-    console.log("searching")
-
-}
-
-exports.addPoints = (req, res, n) => {
-    res.setHeader('Content-Type', 'application/json');
-    MongoClient.connect(dbConfig.url, function (err, db) {
-        console.log("n=================================")
-        console.log(n)
-
-
-
-
-        if (err) throw err;
-        var dbo = db.db("test");
-        let id = parseInt(req.body["id"])
-        console.log(id)
-        console.log("^^^^^^^id")
-        dbo.collection("users").updateOne(
-            { _id: ObjectId(req.session.user_sid) },
-            { $inc: { points: n } },
-            { upsert: true }
-        )
-
-        dbo.collection("users").updateOne(
-            {
-                // daily_task_rec: { $elemMatch: { "user_id": req.session.user_sid, date: { $lte: new Date() } } },
-                daily_task_rec: { $elemMatch: { "state": { $lte: 10 }, date: { $lte: new Date() } } },
-            },
-            { $inc: { "daily_task_rec.$.points_earned_today": n } },
-            // { upsert: true }
-        )
-
-
-        //     dbo.collection("users").find({ "daily_task_rec": { $elemMatch :{ "user_id" :'5ebd0264a845395b60ce3d69'}}  
-        // }).toArray(function (err, result) {
-        //         console.log("array result------------------------")
-        //         console.log(result)
-        //         if (err) throw err;
-        //         db.close();
-        //     });
-
-
-
-        //     dbo.collection("users").find({ "daily_task_rec": { $elemMatch : {points_earned_today :0} } 
-        // }).toArray(function (err, result) {
-        //         console.log("array daily_task_rec------------------------")
-        //         console.log(result)
-        //         if (err) throw err;
-        //         db.close();
-        //     });
-
-
-
-=======
 //         dbo.collection("users").find({
 //             _id: ObjectId(req.session.user_sid)
 //         }).toArray(function (err, result) {
 //             getState = result[0].daily_task_rec[result[0].daily_task_rec.length - 1].state
 //             console.log("+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++getState")
->>>>>>> judao_tiffany_backend
 
 //         })
 //     })
 
-<<<<<<< HEAD
-
-
-
-        dbo.collection("users").find({
-            _id: ObjectId(req.session.user_sid)
-        }).toArray(function (err, result) {
-            console.log("req.session.result")
-            console.log(result)
-            console.log("req.session.user_sid")
-            console.log(req.session.user_sid)
-            if (err) throw err;
-            // console.log(result);
-
-            res.send("Nice, Congrats");
-            db.close();
-        });
-
-
-
-
-    });
-}
-
-exports.getState = (req, res) => {
-    let getState = null;
-
-    MongoClient.connect(dbConfig.url, function (err, db) {
-        if (err) throw err;
-        var dbo = db.db("test");
-
-        dbo.collection("users").find({
-            _id: ObjectId(req.session.user_sid)
-        }).toArray(function (err, result) {
-            getState = result[0].daily_task_rec[result[0].daily_task_rec.length - 1].state
-            console.log("+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++getState")
-            
-        })
-    })
-
-}
-=======
 // }
->>>>>>> judao_tiffany_backend

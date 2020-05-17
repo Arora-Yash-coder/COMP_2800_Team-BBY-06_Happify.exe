@@ -11,27 +11,6 @@
 
 <body>
     <%- navbar %>
-<<<<<<< HEAD
-
-    <h1>Congratulations! Now you can choose your coupons by clicking on them!</h1>
-    <div id="stats">
-        <h2>All points you earned: </h2>
-        <h2 id='pointsofar'></h2>
-        <h2>You earned today: </h2>
-        <h2 id='pointofday'></h2>
-        <h2>
-        </h2>
-    </div>
-    <!-- bootstrap progress bar -->
- <div class="progress">
-    <div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100"></div>
-  </div>
-
-    <div id="search_function"><input id="search_box" type="text" placeholder="Coupon title or description">
-        <button id="search">search</button>
-        <button id="proceed">Proceed</button>
-    </div>
-=======
 
     <h1>Congratulations! Now you can choose your coupons by clicking on them!</h1>
     <div id="stats">
@@ -51,8 +30,7 @@
         <button id="search">search</button>
         
     </div>
-    <button id="proceed">Proceed</button>
->>>>>>> judao_tiffany_backend
+    <%-proceed_button %>
     <div id='container'>
 
 
@@ -90,7 +68,7 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
 
 
-    <script>
+    <!-- <script>
         //I don't know why this one would not work if it's put in the separate file
         $("#proceed").click(() => {
             $.ajax({
@@ -103,7 +81,7 @@
                 }
             });
         })
-    </script>
+    </script> -->
 
 
     <!--     //imported js files for this page  -->

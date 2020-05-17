@@ -1,8 +1,5 @@
 let canvas = document.getElementById("canvas");
-<<<<<<< HEAD
-=======
 let body = document.getElementById("body");
->>>>>>> judao_tiffany_backend
 if (canvas.width < window.innerWidth) {
   canvas.width = window.innerWidth;
 }
@@ -32,11 +29,8 @@ let button1;
 let button2;
 let button3;
 let button4;
-<<<<<<< HEAD
-=======
 let button5;
 let flag = true;
->>>>>>> judao_tiffany_backend
 
 let xposition = new Array();
 let yposition = new Array();
@@ -64,11 +58,7 @@ window.addEventListener('mousemove', function (e) {
   yposition.push(e.y);
 });
 
-<<<<<<< HEAD
-var character = {
-=======
 let character = {
->>>>>>> judao_tiffany_backend
   x: canvas.width / 2,
   y: canvas.height / 2,
   r: CHARACTER_SIZE / 2,
@@ -170,10 +160,7 @@ function shootLaser() {
 
 
 function update() {
-<<<<<<< HEAD
-=======
   
->>>>>>> judao_tiffany_backend
   setInterval(function () {
     if (count == 0) {
       generatezombies(ZOMBIES_NUM);
@@ -195,16 +182,6 @@ function update() {
 
   let w = Math.floor(window.innerWidth);
   let h = Math.floor(window.innerHeight);
-<<<<<<< HEAD
-  button1 = new Button(170, h - 120, 0, -1);
-  button1.display();
-  button2 = new Button(170, h - 60, 0, 1);
-  button2.display();
-  button3 = new Button(300, h - 60, 1, 0);
-  button3.display();
-  button4 = new Button(40, h - 60, -1, 0);
-  button4.display();
-=======
   button1 = new Button(170, h - 120,3);
   button1.display();
   button2 = new Button(170, h - 60,5);
@@ -231,7 +208,6 @@ function update() {
     flag = false;
   });
   
->>>>>>> judao_tiffany_backend
 
   // Level Text----------------------------------------------------------------
   if (textAlpha >= 0) {
@@ -294,22 +270,13 @@ function update() {
 
   // Collisions---------------------------------------------------------------
 
-<<<<<<< HEAD
-  var ax, ay, ar, lx, ly;
-  for (var i = zombies.length - 1; i >= 0; i--) {
-=======
   let ax, ay, ar, lx, ly;
   for (let i = zombies.length - 1; i >= 0; i--) {
->>>>>>> judao_tiffany_backend
     // grab the asteroid properties
     ax = zombies[i].x + 35;
     ay = zombies[i].y + 35;
     ar = zombies[i].r;
-<<<<<<< HEAD
-    for (var j = character.lasers.length - 1; j >= 0; j--) {
-=======
     for (let j = character.lasers.length - 1; j >= 0; j--) {
->>>>>>> judao_tiffany_backend
       // grab the laser properties
       lx = character.lasers[j].x;
       ly = character.lasers[j].y;
@@ -386,22 +353,14 @@ function update() {
 
   }
   // Creating the Bullet
-<<<<<<< HEAD
-  for (var i = 0; i < character.lasers.length; i++) {
-=======
   for (let i = 0; i < character.lasers.length; i++) {
->>>>>>> judao_tiffany_backend
     ctx.fillStyle = "lightBlue";
     ctx.beginPath();
     ctx.arc(character.lasers[i].x, character.lasers[i].y, CHARACTER_SIZE / 15, 0, Math.PI * 2, false);
     ctx.fill();
   }
   // Moving The Lasers
-<<<<<<< HEAD
-  for (var i = character.lasers.length - 1; i >= 0; i--) {
-=======
   for (let i = character.lasers.length - 1; i >= 0; i--) {
->>>>>>> judao_tiffany_backend
     // check distance travelled
     if (character.lasers[i].dist > LASER_DIST * canvas.width) {
       character.lasers.splice(i, 1);
