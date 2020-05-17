@@ -19,50 +19,50 @@ global.__basedir = __dirname;
 // Configuring the database
 const dbConfig = require('./app/config/mongodb.config.js');
 const mongoose = require('mongoose');
- 
+
 
 mongoose.Promise = global.Promise;
- 
+
 // Connecting to the database
 mongoose.connect(dbConfig.url)
-.then(() => {
-    console.log("Successfully connected to MongoDB.");    
-}).catch(err => {
+  .then(() => {
+    console.log("Successfully connected to MongoDB.");
+  }).catch(err => {
     console.log('Could not connect to MongoDB.');
     process.exit();
-});
+  });
 
-MongoClient.connect(dbConfig.url, function(err, db) {
+MongoClient.connect(dbConfig.url, function (err, db) {
   if (err) throw err;
 })
- 
+
 require('./app/routes/user.route.js')(app);
 
 
-var fs =require('fs')
-const https = require('https');
-var options = {
-    key: fs.readFileSync('./privatekey.pem'),
-    cert: fs.readFileSync('./certificate.pem')
-};
+var fs = require('fs')
+// const https = require('https');
+// var options = {
+//   key: fs.readFileSync('./privatekey.pem'),
+//   cert: fs.readFileSync('./certificate.pem')
+// };
 
-var server = https.createServer(options, app);
+// // var https_server = https.createServer(options, app);
 
-server.listen(443, () => {
-  console.log("server starting on port : " + 3000)
-});
+// // https_server.listen(443, () => {
+// //   console.log("https_server starting on port : " + 443)
+// // });
 
 
-https.createServer(options, app).listen(90, function () {
-    console.log('Https server listening on port ' + 3011);
-});
+// https.createServer(options, app).listen(443, function () {
+//   console.log('Https server listening on port ' + 3011);
+// });
 
 // Create a Server
-var server = app.listen(3000, function () {
- 
-  var host = server.address().address
-  var port = server.address().port
- 
+var http_server = app.listen(3000, function () {
+
+  var host = http_server.address().address
+  var port = http_server.address().port
+
   console.log("App listening at http://%s:%s", host, port)
- 
+
 })

@@ -1,4 +1,6 @@
+//Setting up the Canvas;
 let canvas = document.getElementById("canvas");
+let body = document.getElementById("body");
 if (canvas.width < window.innerWidth) {
   canvas.width = window.innerWidth;
 }
@@ -6,6 +8,7 @@ if (canvas.height < window.innerHeight) {
   canvas.height = window.innerHeight;
 }
 
+/*-------------------------All the variables and Constants---------------------- */
 const LASER_DIST = 0.6;
 const FPS = 120; //Frames Per Second.
 const CHARACTER_SIZE = 50; //Character Size in Pixels
@@ -28,13 +31,14 @@ let button1;
 let button2;
 let button3;
 let button4;
-
-let xposition = new Array();
-let yposition = new Array();
-let zombies = [];
+let button5;
+let button6;
+let flag = true;//For Multiple input Bug fix
+let zombies = [];//Stores the zombies generated
 
 let ctx = canvas.getContext("2d");
 
+//Background audio
 let audio = document.getElementById("monica");
 audio.loop = true;
 
@@ -49,13 +53,8 @@ if (scoreStr == null) {
   highscore = parseInt(scoreStr);
 }
 
-
-window.addEventListener('mousemove', function (e) {
-  xposition.push(e.x);
-  yposition.push(e.y);
-});
-
-var character = {
+//Character Gig
+let character = {
   x: canvas.width / 2,
   y: canvas.height / 2,
   r: CHARACTER_SIZE / 2,
@@ -65,7 +64,7 @@ var character = {
   d: 3
 }
 
-// Set Up Event Handler.
+// Set Up Event Handler For Movement.
 document.addEventListener("keydown", keydown);
 
 function keydown( /** @type {KeyboardEvent} */ ev) {
@@ -127,10 +126,12 @@ function generatezombies(n) {
   }
 }
 
+// Returns Distance between two points in a 2d System
 function distBetweenPositions(x1, y1, x2, y2) {
   return Math.sqrt(Math.pow(x2 - x1, 2) + Math.pow(y2 - y1, 2));
 }
 
+//Zombie Gig
 function newZombie(x, y) {
   let zomb = {
     x: x,
@@ -157,6 +158,7 @@ function shootLaser() {
 
 
 function update() {
+  
   setInterval(function () {
     if (count == 0) {
       generatezombies(ZOMBIES_NUM);
@@ -175,17 +177,38 @@ function update() {
   characterobj.src = character.src;
   ctx.drawImage(characterobj, character.x, character.y);
 
-
+  //All the buttons used for movement and shooting function
   let w = Math.floor(window.innerWidth);
   let h = Math.floor(window.innerHeight);
-  button1 = new Button(170, h - 120, 0, -1);
+  button1 = new Button(170, h - 120,3);
   button1.display();
-  button2 = new Button(170, h - 60, 0, 1);
+  button2 = new Button(170, h - 60,5);
   button2.display();
-  button3 = new Button(300, h - 60, 1, 0);
+  button3 = new Button(300, h - 60,4);
   button3.display();
-  button4 = new Button(40, h - 60, -1, 0);
+  button4 = new Button(40, h - 60,2);
   button4.display();
+  button5 = new Button(w - 140, h - 60,1);
+  button5.display();
+  button6 = new Button(5,5,6);
+  button6.display();
+
+  
+  body.addEventListener('click', e => {
+    if(flag == true){
+      button1.clicked();
+      button2.clicked();
+      button3.clicked();
+      button4.clicked();
+      button5.clicked();
+      button6.clicked();
+      setTimeout(function () {
+        flag = true;
+      },100)
+    }
+    flag = false;
+  });
+  
 
   // Level Text----------------------------------------------------------------
   if (textAlpha >= 0) {
@@ -197,6 +220,13 @@ function update() {
     ctx.fillText(text, canvas.width / 2, canvas.height / 2);
     textAlpha -= (1.0 / TEXT_FADE_TIME / FPS);
   }
+  // Menu--------------------------------------------------------------------------
+  let textm = "Menu";
+  ctx.textAlign = "Center";
+  ctx.textBaseline = "top";
+  ctx.fillStyle = "rgba(0, 0, 0, 1.0)";
+  ctx.font = "small-caps " + TEXT_SIZE + "px dejavu sans mono";
+  ctx.fillText(textm, 65, 10);
   // Score-------------------------------------------------------------------------
   let texts = "Score : " + score;
   ctx.textAlign = "Right";
@@ -215,24 +245,24 @@ function update() {
   // Lives and Game Over------------------------------------------------------------
   let image1 = new Image();
   image1.src = 'Resources/Character/Character_81.png';
-  ctx.drawImage(image1, 0, 0);
+  ctx.drawImage(image1, 125, 0);
   let image2 = new Image();
   image2.src = 'Resources/Character/Character_81.png';
-  ctx.drawImage(image2, 70, 0);
+  ctx.drawImage(image2, 195, 0);
   let image3 = new Image();
   image3.src = 'Resources/Character/Character_81.png';
-  ctx.drawImage(image3, 140, 0);
+  ctx.drawImage(image3, 270, 0);
   if (Damage == 0) {
 
   } else if (Damage == 1) {
     ctx.fillStyle = "white";
-    ctx.fillRect(140, 0, 70, 70);
+    ctx.fillRect(270, 0, 70, 70);
   } else if (Damage == 2) {
     ctx.fillStyle = "white";
-    ctx.fillRect(70, 0, 140, 70);
+    ctx.fillRect(195, 0, 140, 70);
   } else {
     ctx.fillStyle = "white";
-    ctx.fillRect(0, 0, 210, 70);
+    ctx.fillRect(125, 0, 210, 70);
     clearInterval(x);
     text = "Game Over";
     ctx.textAlign = "center";
@@ -248,13 +278,13 @@ function update() {
 
   // Collisions---------------------------------------------------------------
 
-  var ax, ay, ar, lx, ly;
-  for (var i = zombies.length - 1; i >= 0; i--) {
+  let ax, ay, ar, lx, ly;
+  for (let i = zombies.length - 1; i >= 0; i--) {
     // grab the asteroid properties
     ax = zombies[i].x + 35;
     ay = zombies[i].y + 35;
     ar = zombies[i].r;
-    for (var j = character.lasers.length - 1; j >= 0; j--) {
+    for (let j = character.lasers.length - 1; j >= 0; j--) {
       // grab the laser properties
       lx = character.lasers[j].x;
       ly = character.lasers[j].y;
@@ -331,14 +361,14 @@ function update() {
 
   }
   // Creating the Bullet
-  for (var i = 0; i < character.lasers.length; i++) {
+  for (let i = 0; i < character.lasers.length; i++) {
     ctx.fillStyle = "lightBlue";
     ctx.beginPath();
     ctx.arc(character.lasers[i].x, character.lasers[i].y, CHARACTER_SIZE / 15, 0, Math.PI * 2, false);
     ctx.fill();
   }
   // Moving The Lasers
-  for (var i = character.lasers.length - 1; i >= 0; i--) {
+  for (let i = character.lasers.length - 1; i >= 0; i--) {
     // check distance travelled
     if (character.lasers[i].dist > LASER_DIST * canvas.width) {
       character.lasers.splice(i, 1);

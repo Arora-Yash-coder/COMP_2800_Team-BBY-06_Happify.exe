@@ -1,10 +1,9 @@
-
 .container {
     list-style-type: none;
     margin: 0;
 
     overflow: hidden;
-    background-color: #3AB795;
+    background-color: #4B7F52;
 }
 
 .list {
@@ -22,12 +21,4 @@
 
 .list a:hover {
     background-color: rgb(65, 134, 125);
-}
-
-#show_points{
-    margin:0 ;
-    padding-left: 0;
-    padding-right: 0;
-    font-size: 17pt ;
-    color: darkred;
 }

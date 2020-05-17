@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<!--    <link rel="stylesheet" type="text/css" href="/static/css/navbar.css">-->
+    <title>Coupon Page</title>
+    <link rel="stylesheet" type="text/css" href="./static/coupon.css">
+    <style>
+    
+    </style>
+</head>
+
+<body>
+   <div style="float: right">Step 3 of 3</div>
+    <br>
+    
+    <h1>Congratulations! Now you can choose your coupons by clicking on them!</h1>
+<div id="stats">
+    
+    <br>
+            <h2 id="description1">All points you earned: </h2>
+                <h2 id='pointsofar'></h2>
+                <h2 id="description2">You earned today: </h2>
+                <h2 id='pointofday'></h2>
+                
+            </div>
+    <div id="search_function"><input id="search_box" type="text" placeholder="Coupon title or description">
+            <button id="search">search</button></div>
+    
+<!--    Add some coupons here-->
+    <div id='container'>
+
+
+    </div>
+
+
+
+
+    <button id="proceed" onclick="location.href='./Flow_final.html';">Proceed</button>
+    <button id="back" onclick="location.href='./Flow_daily_tasks.html';">Back</button>
+    
+    
+
+  
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+    <script>
+        
+
+        $(document).ready(function () {
+
+            
+        $("#search").on("click",() => {
+            var serach_box = $("#search_box").val();
+            console.log("serach_box")
+            console.log(serach_box)
+            console.log($("#search_box").val())
+            $.ajax({
+                type: "post",
+                url: "/coupon/search",
+                data: {serach_box},
+                dataType: "html",
+                success: function (response) {
+                    console.log("response")
+                    console.log(response)
+                    $("html").html(response)
+                },
+                error:(e)=>{
+                    console.log(e)
+                }
+            });
+        })
+
+
+
+
+
+
+           
+            $.ajax({
+                type: "get",
+                url: "/user_profile/getProfile",
+
+                dataType: "json",
+                success: function (response) {
+                    console.log(response)
+                    console.log(response.result[0].points)
+                    $("#current_points").html(response.result[0].points)
+                },
+                error: (response) => {
+                    console.log(response)
+
+//                    alert(response.points)
+                }
+            });
+        });
+        let itemArr = $(".coupons");
+        console.log(itemArr[0]);
+        // for(var nodeIndex in )
+        $(".confirm").hide();
+
+
+        let coupon_info = null;
+        let confirm_choice = null;
+        let node_id = 0;
+        $(".coupon").click(function (e) {
+
+            // const coupon_display = 
+
+            const confirmation_selection = " <h1>Confirm?</h1></div><div id='selection'><a class='square_btn_second'>Yes</a><a class='square_btn_second'>No</a>"
+            if (e.target && (e.target.nodeName == "H1" || e.target.nodeName == "P" || e.target.nodeName == "SPAN")) {
+                coupon_info = $("#" + e.target.parentNode.id)
+                node_id = e.target.parentNode.id.substr(7)
+
+                // alert(node_id)
+            } else {
+                coupon_info = $("#" + e.target.id)
+                node_id = e.target.id.substr(7)
+                // alert(node_id)
+            }
+            confirm_choice = $("#confirm_" + node_id)
+            confirm_choice.toggle()
+            $("#description_" + node_id).toggle();
+            // node_to_change.html(confirmation_selection)
+
+        });
+
+        $(".no").click((e) => {
+            console.log(confirm_choice)
+            confirm_choice.toggle()
+            $("#description_" + node_id).toggle();
+        })
+
+        $(".yes").click((e) => {
+            redeem_id = $(e.target).attr("name");
+
+            $.ajax({
+                type: "post",
+                url: "/coupon/redeem",
+                data: { "id": redeem_id },
+                dataType: "text",
+                success: function (response) {
+                    alert(response)
+                },
+                error: function (xhr, ajaxOptions, thrownError) {
+                    alert(xhr.status);
+                    alert(thrownError);
+                }
+            })
+
+        });
+
+
+   
+
+
+    </script>
+ <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+            <script>
+                $(document).ready(function () {
+                    function say_hi() {
+                        $.get("/user_profile/getProfile", function (data, status) {
+                            $("#username").html(data.result[0].username);
+                            console.log("data.username===============")
+                            console.log(data)
+                        });
+                    } say_hi()
+
+                });
+
+            </script>
+            <script>
+                $(document).ready(function () {
+                    function show_points() {
+                        $.get("/user_profile/getProfile", function (data, status) {
+                            $("#pointsofar").html(data.result[0].points);
+                            $("#pointofday").html(data.result[0].daily_task[0].points_earned_today);
+                            console.log("data.total===============");
+                            console.log(data);
+                        });
+                    } show_points()
+
+                });
+
+            </script>
+<div id='footer'>Made by FutureCurves.</div>
+</body>
+
+</html>

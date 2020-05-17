@@ -1,0 +1,242 @@
+class Cell {
+		constructor(size, x_coor, y_coor, color) {
+			//width of the square
+			this.color = color;
+			this.size = 80;
+			this.x_coor = x_coor;
+			this.y_coor = y_coor;
+			this.id = [this.x_coor, this.y_coor];
+			this.size = size;
+			this.piece = null;
+			this.html;
+		}
+
+		get_piece() {
+			return this.piece;
+		}
+
+		set_piece(piece) {
+			this.piece = piece
+		}
+
+		get_x_coor(){
+			return this.x_coor;
+		}
+
+		get_y_coor(){
+			return this.y_coor;
+		}
+
+		cell_render(cell) {
+			let div = $("<div></div>");
+			$(div).css("display", "inline-block");
+			$(div).css("width", cell.size);
+			$(div).css("height", cell.size);
+			$(div).css("background-color", cell.color);
+
+			// $(div).on("mouseleave", () => {
+			// 	console.log(cell.get_x_coor() + " " + cell.get_y_coor());
+			// 	$(div).css("background-color","green")
+			// })
+
+			$(div).mousedown("click", () => {
+				$(div).css("background-color","green")
+				console.log(cell.get_x_coor() + " " + cell.get_y_coor());
+				if(this.piece != null){
+					this.piece.move_pattern();
+				}
+			})
+
+			$(window).mouseup( () => {
+				$(div).css("background-color",cell.color)
+				
+			})
+
+			
+			
+			$("#board_container").append(div);
+			return div;
+		}
+
+
+		cell_render_available(cell) {
+			let div = $("<div></div>");
+			$(div).css("display", "inline-block");
+			$(div).css("width", cell.size);
+			$(div).css("height", cell.size);
+			$(div).css("background-color", "blue");
+
+			// $(div).on("mouseleave", () => {
+			// 	console.log(cell.get_x_coor() + " " + cell.get_y_coor());
+			// 	$(div).css("background-color","green")
+			// })
+
+			$(window).mousedown("click", () => {
+				
+				// console.log(cell.get_x_coor() + " " + cell.get_y_coor());
+	
+			})
+			
+			
+
+			$(window).mouseup( () => {
+				$(div).css("background-color",cell.color)
+			})
+
+			// $(window).mousedown("click", () => {
+			// 	$(div).css("background-color",cell.color)
+			// 	console.log(cell.get_x_coor() + " " + cell.get_y_coor());
+			// 	if(this.piece != null){
+			// 		this.piece.move_pattern();
+			// 	}
+			// })
+
+			
+			
+			$(cell.html).html(div);
+			return div;
+		}
+
+
+	}
+
+
+
+	//col
+	class Board {
+		constructor() {
+			this.cells = [];
+		}
+
+		create_board() {
+			for (let j = 8; j >= 1; j--) {
+				//row
+				this.cells[j] = []
+				for (let i = 1; i <= 8; i++) {
+					//if even then white 
+					if ((i + j) % 2 == 0)
+						var cell = new Cell(120, i, j, "black" )
+					else
+						var cell = new Cell(120, i, j, "darksalmon")
+
+					//put into the index i,j 
+					this.cells[j][i]= cell;
+
+					// cell.cell_render(cell);
+					this.cells[j][i].html = cell.cell_render(cell);
+				}
+
+			}
+		}
+
+		get_cell(x, y) {
+		
+			return this.cells[y][x];
+		}
+
+
+	}
+
+	let board = new Board();
+	board.create_board();
+
+
+	//Super Class for Pieces
+	class Piece {
+		constructor(piece_name,board,x_coor,y_coor) {
+			this.board = board;
+			this.piece_name = piece_name;
+			
+			this.img;
+			this.cell = this.board.get_cell(x_coor,y_coor);
+			this.cell.set_piece(this);
+		}
+
+		//renders the piece to the board
+		piece_render(color, x_coor, y_coor) {
+			console.log(x_coor);
+
+			let this_cell = this.cell; 
+			this_cell.set_piece(this);
+
+			console.log(this_cell.get_x_coor());
+			console.log(this_cell.get_y_coor());
+
+			$(this_cell.html).html("<img class='piece_imgs' src="+"'"+this.img+"'"+"></img>");
+			
+			//make the pictures impossible to drag
+			$(this_cell.html).mousedown((e)=>{e.preventDefault()})
+
+			// for(let z=0; z<document.getElementsByTagName("img").length;z++)
+		  // document.getElementsByTagName("img")[z].onmousedown = function(e){
+			// 	e.preventDefault();
+			// }
+
+		}
+
+	}
+
+	class Pawn extends Piece {
+		constructor(color,board, x_coor, y_coor) {
+			super("pawn_white",board,x_coor, y_coor);
+
+
+
+			this.board = board;
+			this.color = color;
+			this.x_coor = x_coor;
+			this.y_coor = y_coor;
+			super.piece_render(color,x_coor,y_coor)
+			if (this.color == "white")
+				this.img = "./img/pawn_white.png"
+			else
+				this.img = "./img/pawn_black.png"
+
+			this.board.get_cell(x_coor, y_coor).set_piece(this);
+
+			super.piece_render(color,x_coor,y_coor)
+
+		}
+
+		// piece_render()
+
+		move_pattern(color) {
+			let movable_squares = [];
+			let forward = 0;
+			if(color = "white")
+				forward = +1;
+			//move forward
+			if(this.y_coor >= 1 && this.board.get_cell(this.x_coor,this.y_coor+1).get_piece() == null ){
+				 movable_squares.push(this.board.get_cell(this.x_coor,this.y_coor+1))
+				 let div = this.board.get_cell(this.x_coor,this.y_coor+1);
+				 div.html = div.cell_render_available(div)
+				}
+			//two steps
+			// if(this.y_coor == 1 && this.board.get_cell[x_coor][y_coor+1].get_piece == null )
+			//    movable_squares.push(this.board.get_cell[x_coor][y_coor+2])			
+			if(this.y_coor == 2 && this.board.get_cell(this.x_coor,this.y_coor+2).get_piece() == null 
+													&& this.board.get_cell(this.x_coor,this.y_coor+1).get_piece() == null){
+														
+				 movable_squares.push(this.board.get_cell(this.x_coor,this.y_coor+2))
+				 let div = this.board.get_cell(this.x_coor,this.y_coor+1);
+				 div.html = div.cell_render_available(div);
+				 div = this.board.get_cell(this.x_coor,this.y_coor+2);
+				 div.html = div.cell_render_available(div);
+				}
+
+				movable_squares = []
+		}
+
+
+
+
+	}
+
+	let pawn = new Pawn("white", board, 1, 2);
+	let pawn2 = new Pawn("white", board, 2, 3);
+	let pawn3 = new Pawn("white", board, 3, 2);
+	let pawn4 = new Pawn("white", board, 4, 2);
+	let pawn5 = new Pawn("white", board, 5, 2);
+	let pawn6= new Pawn("white", board, 6, 2);
+	let pawn7= new Pawn("white", board, 7, 2);
+	let pawn8= new Pawn("white", board, 8, 2);
