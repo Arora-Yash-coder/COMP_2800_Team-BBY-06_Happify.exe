@@ -123,7 +123,9 @@
       console.log("--------------------------id_array")
       console.log(id_array)
 
-      $.ajax({
+      //previously added stuff for posting the archived, but is discarded because
+      //if the user refreshes, everything will be gone.
+      /*$.ajax({
         type: "post",
         url: "/daily_tasks",
         data: { id_array },
@@ -132,6 +134,7 @@
           //  alert(response)
         }
       });
+      */
 
 
       // $("#" + e.target.parentNode.id + " ~ div > span ~  ").css("display", "none")
@@ -151,8 +154,12 @@
     })
 
     $("button").click((e) => {
-
+      //if the user clicks on the right answer
       if ($(e.target).html() == e.target.parentElement.id) {
+        
+        
+        //move the state to the next one, deprecated
+        /*
         $.ajax({
           type: "get",
           url: "/state_add",
@@ -161,31 +168,31 @@
             window.location.reload();
           }
         });
+        */
 
+        // $.ajax({
+        //   type: "get",
+        //   url: "/add_points",
+        //   data: "data",
+        //   dataType: "text",
+        //   success: function (response) {
+        //     alert(response)
+        //   }
+        // });
+
+        // deprecated post
+        /*
+        data = e.target.parentElement.id
         $.ajax({
-          type: "get",
-          url: "/add_points",
-          data: "data",
-          dataType: "text",
-          success: function (response) {
-            alert(response)
-          }
-
-
-
-        });
-
-        $.ajax({
-          type: "get",
-          url: "/state_add",
+          type: "post",
+          url: "/daily_tasks",
+          data: {data},
           dataType: "text",
           success: function (response) {
             console.log("successfully move onto the next state!")
           }
         });
-
-
-
+        */
 
 
 
@@ -200,7 +207,7 @@
     $(document).ready(function () {
 
 
-
+      //get points
       $.ajax({
         type: "get",
         url: "/user_profile/getProfile",
@@ -217,17 +224,51 @@
       });
     });
 
-    $("#proceed").click(() => {
-
-      alert("clicked")
+    $("#proceed").click((e) => {
+      // $(e.target).off()
+      let state_request = "proceed button clicked in STEP 3";
+ 
       $.ajax({
-        type: "get",
+        type: "post",
         url: "/state_add",
-
+        data : { state_request },
         dataType: "text",
         success: function (response) {
-          alert(response)
+          console.log(response)
           window.location.href = '/minigames';
         }
       });
+    })
+
+    $(".answer_choices").click((e)=>{
+      console.log("how e.target.className looks like")
+      console.log(e.target.className)
+      let this_button = e.target;
+      //the id of the question in the database
+      let id = e.target.className.substring(15)
+      // alert(id)
+      //the answer content is the html content of the button
+      let answer  = $(e.target).html()
+      $.ajax({
+        type: "post",
+        url: "/daily_tasks",
+        data: {id,answer},
+        dataType: "text",
+        success: function (response) {
+          if(response == "Not quite"){
+            alert(response)
+            $(this_button).css("background-color","rgba(252,44,79,0.6)")
+          }
+          else{
+            alert(response)
+            window.location.reload();
+            $(this_button).css("background-color","#b7eb34")
+            $(this_button).css("opacity","0.6")
+          }
+        }
+      });
+      $(e.target).off()
+      
+    
+
     })

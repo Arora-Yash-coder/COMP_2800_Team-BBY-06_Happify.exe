@@ -88,12 +88,23 @@ exports.verify = (req, res) => {
                 console.log(theUser.toObject().username + successMsg)
                 req.session.user_sid = theUser.toObject()._id;
                 req.cookies.user_sid = theUser._id;
+                console.log("theUser.UI_style=============== in 91")
+                console.log(theUser)
+                console.log(theUser.password)
+                console.log(theUser.UI_style)
+
+                req.session.UI_style = theUser.UI_style;
+                console.log("theUser.UI_style=============== in 95")
+                console.log(req.session.UI_style)
                 req.cookies.sub = "null";
+                req.cookies.UI_style = theUser.UI_style;
                 res.cookie({
                     "user_sid": theUser._id,
-                    "sub": "null"
+                    "sub": "null",
+                    "UI_style": theUser.UI_style
                 })
-                console.log("res.cookies======================" + res.cookies)
+                console.log("req.cookies======================")
+                console.log(req.cookies)
                 // console.log("req.session.user_sid" + req.session.user_sid);
                 // res.send(successMsg);
                 console.log("redirecting to homepage----------")
@@ -329,49 +340,46 @@ exports.getCoupon = (req, res) => {
         dbo.collection("users").find({
             _id: ObjectId(req.session.user_sid)
         }).toArray(function (err, result) {
-
-
             state = result[0].daily_task_rec[result[0].daily_task_rec.length - 1].state;
+            db.close()
+            
+            MongoClient.connect(dbConfig.url, function (err, db) {
+                if (err) throw err;
+                
+                var dbo = db.db("test");
+
+                dbo.collection("coupons_available").find().limit(5).toArray(function (err, result) {
+                    if (err) throw err;
+                    console.log(result)
+
+                    db.close();
+
+                    if (state >= 7) {
+                        res.end(res.render(path + "coupon.ejs", {
+                            coupons: result,
+                            navbar: navbar_top_ejs,
+                            back_button: undefined,
+                            proceed_button: undefined,
+                            footer: footer,
+
+                        }));
+                    } else {
+                        res.render(path + "coupon.ejs", {
+                            coupons: result,
+                            back_button: "<button id='back' onclick='window.location.href='/minigames';'>Back</button>",
+                            proceed_button: "<button id='proceed' onclick='window.location.href='./flow_final.html''>Proceed</button>",
+                            navbar: undefined,
+                            footer: footer
+                        });
+                    }
+                    //    res.send( { result });
+
+                });
+            });
         })
 
     })
 
-
-
-
-    // res.setHeader('Content-Type', 'application/json');
-    MongoClient.connect(dbConfig.url, function (err, db) {
-        if (err) throw err;
-        var dbo = db.db("test");
-
-        dbo.collection("coupons_available").find().limit(5).toArray(function (err, result) {
-            if (err) throw err;
-            console.log(result)
-
-            db.close();
-
-            if (state >= 7) {
-                res.end(res.render(path + "coupon.ejs", {
-                    coupons: result,
-                    navbar: navbar_top_ejs,
-                    back_button: undefined,
-                    proceed_button: undefined,
-                    footer: footer,
-
-                }));
-            } else {
-                res.render(path + "coupon.ejs", {
-                    coupons: result,
-                    back_button: "<button id='back' onclick='window.location.href='/minigames';'>Back</button>",
-                    proceed_button: "<button id='proceed' onclick='window.location.href='./flow_final.html''>Proceed</button>",
-                    navbar: undefined,
-                    footer: footer
-                });
-            }
-            //    res.send( { result });
-
-        });
-    });
 }
 let points_needed = undefined;
 let user_points;
@@ -674,7 +682,7 @@ exports.admin_coupon_management = (req, res) => {
 
 //the user gains according points
 exports.addPoints = (req, res, n) => {
-    res.setHeader('Content-Type', 'application/json');
+   
     MongoClient.connect(dbConfig.url, function (err, db) {
         console.log("n=================================")
         console.log(n)
@@ -696,6 +704,7 @@ exports.addPoints = (req, res, n) => {
         dbo.collection("users").updateOne(
             {
                 // daily_task_rec: { $elemMatch: { "user_id": req.session.user_sid, date: { $lte: new Date() } } },
+                _id: ObjectId(req.session.user_sid),
                 daily_task_rec: { $elemMatch: { "state": { $lte: 10 }, date: { $gte: new Date(new Date().setDate(new Date().getDate() - 2)) } } },
             },
             { $inc: { "daily_task_rec.$.points_earned_today": n } },
@@ -738,7 +747,7 @@ exports.addPoints = (req, res, n) => {
             if (err) throw err;
             // console.log(result);
 
-            res.send("Nice, Congrats");
+            
             db.close();
         });
 
@@ -752,7 +761,7 @@ exports.addPoints = (req, res, n) => {
 exports.getState = (req, res) => {
     let getState = null;
     let res_arr = []
-    
+
     MongoClient.connect(dbConfig.url, function (err, db) {
         if (err) throw err;
         var dbo = db.db("test");
@@ -771,23 +780,23 @@ exports.getState = (req, res) => {
 
             console.log(new Date(new Date().setDate(new Date().getDate() - 2)))
 
-        //     if(result.length != 0){
-        //     console.log("Push the dates into an array and do comparison")
-        //      res_arr = result[0].daily_task_rec
+            //     if(result.length != 0){
+            //     console.log("Push the dates into an array and do comparison")
+            //      res_arr = result[0].daily_task_rec
 
-        let days_of_use  = result.length
-        //     console.log("The variable shows the days of the user has been using it")
-        //     console.log(days_of_use)
+            let days_of_use = result.length
+            //     console.log("The variable shows the days of the user has been using it")
+            //     console.log(days_of_use)
 
-        //     for (var index in res_arr) {
-        //         daily_task_array.push(res_arr[index].date);
-        //     }
+            //     for (var index in res_arr) {
+            //         daily_task_array.push(res_arr[index].date);
+            //     }
 
 
-        //     console.log("This is how the date array looks like:")
-        //     console.log(daily_task_array)
+            //     console.log("This is how the date array looks like:")
+            //     console.log(daily_task_array)
 
-        // }
+            // }
 
             db.close()
 
@@ -813,7 +822,7 @@ exports.getState = (req, res) => {
                         },
                         { new: true, upsert: true }
 
-                       
+
                     )
                     db.close()
                     console.log("pushed?????????????????????????????")
@@ -840,6 +849,7 @@ exports.getState = (req, res) => {
 
     })
 }
+
 
 
 

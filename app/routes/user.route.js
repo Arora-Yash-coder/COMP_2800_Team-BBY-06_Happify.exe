@@ -94,12 +94,19 @@ module.exports = function (app) {
 		if (!req.session || !req.cookies.user_sid) {
 			//if it is there, it would redirect to homepage
 			res.redirect("/login");
+		} else if (!req.session.user_sid) {
+			console.log("req.session line 98")
+			console.log(req.session)
+			console.log("req.session.user_sid line 100")
+			console.log(req.session.user_sid)
+			res.redirect("/login");
 		} else {
-
 			//if the session is not there or the user_sid wasn't correct,
 			//then it would move to the login page
 			next();
 		}
+
+
 	};
 
 	//======================Judao ChessGame================================================
@@ -160,11 +167,94 @@ module.exports = function (app) {
 		})
 	})
 
+
+
+
+
+
+	app.post("/user_profile", (req, res) => {
+		console.log("req.body data schema ==================================")
+		console.log(req.body.ui_choice)
+		let UI_Style = req.body.ui_choice;
+		if (UI_Style == 0) {
+
+			//if the User has chosen style 0, then we start a connection to the db
+			MongoClient.connect(dbConfig.url, function (err, db) {
+				if (err) throw err;
+				var dbo = db.db("test");
+				dbo.collection("users").update({
+					_id: ObjectId(req.session.user_sid)
+				},
+					{
+						//we set the UI_style property to be an empty String
+						$set: { UI_style: "" }
+					}
+
+				)
+				req.session.UI_style = ""
+				// res.session.UI_style = ""
+				console.log("req.session.UI_style in 212")
+				console.log(req.session.UI_style)
+				db.close()
+			})
+		} else {
+			//if the User has not chosen style 0, then we start a connection to the db
+			MongoClient.connect(dbConfig.url, function (err, db) {
+				if (err) throw err;
+				var dbo = db.db("test");
+				dbo.collection("users").update({
+					_id: ObjectId(req.session.user_sid)
+				},
+					{
+						//we set the UI_style property to be an empty String
+						$set: { UI_style: UI_Style }
+					}
+
+				)
+				req.session.UI_style = UI_Style
+				// res.session.UI_style = UI_Style
+				console.log("req.session.UI_style in 212")
+				console.log(req.session.UI_style)
+				db.close()
+			})
+			console.log("req.session.UI_style in 220")
+			console.log(req.session.UI_style)
+
+		}
+
+
+		res.send("changed")
+
+	})
+
 	app.get("/user_profile", sessionChecker2, (req, res) => {
-		res.render(path + "user_profile.ejs", {
-			navbar: navbar_top_ejs,
-			footer: footer
+		//connect to the database
+		MongoClient.connect(dbConfig.url, function (err, db) {
+			if (err) throw err;
+			var dbo = db.db("test");
+			console.log("====")
+			//find the user by session ID
+			dbo.collection("users").find({
+				_id: ObjectId(req.session.user_sid)
+			}).toArray(function (err, theUser) {
+
+				console.log("theUser[0]===============================")
+				console.log(theUser[0].UI_style)
+				//set a property in the session object
+
+				res.render(path + "user_profile.ejs", {
+					navbar: navbar_top_ejs,
+					footer: footer,
+					css: theUser[0].UI_style + ".css"
+				})
+
+			})
+			db.close()
 		})
+
+
+
+
 	})
 
 	app.get("/about_us", (req, res) => {
@@ -172,7 +262,10 @@ module.exports = function (app) {
 	})
 
 	//goes to the homepage 
-	app.get("/homepage", (req, res) => {
+	app.get("/homepage",sessionChecker2, (req, res) => {
+
+		console.log("req.session.UI_style in 267")
+		console.log(req.session.UI_style)
 		let state = null;
 
 		console.log(state)
@@ -191,15 +284,19 @@ module.exports = function (app) {
 					res.redirect("/daily_tasks")
 				}
 				else if (state >= 4 && state <= 5) {
+					users.addPoints(req, res, 10)
 					res.redirect("/minigames")
 				}
 				else if (state > 5 && state <= 6) {
 					res.redirect("/coupon")
 				}
 				else {
+					console.log("req.session.UI_style-----------")
+					console.log(req.session.UI_style)
 					res.render(path + "/homepage.ejs", {
 						navbar: navbar_top_ejs,
-						footer: footer
+						footer: footer,
+						css: req.session.UI_style
 					})
 				}
 			})
@@ -230,30 +327,42 @@ module.exports = function (app) {
 						navbar: undefined,
 						proceed_button: undefined,
 						back_button: undefined,
-//						back_button: "<button id='back' onclick='window.location.href='/daily_tasks';'>Back</button>",
-                        footer: footer,
+						//						back_button: "<button id='back' onclick='window.location.href='/daily_tasks';'>Back</button>",
+						progress_bar:"<div class='progress'><div class='progress-bar progress-bar-striped progress-bar-animated' role='progressbar' aria-valuenow='75' aria-valuemin='0' aria-valuemax='100'></div></div>",
+						footer: footer,
 
 					}));
 				}
-                else if (state < 4) {
+				else if (state < 4) {
 					res.redirect('/homepage');
 				}
 				else if (state == 5) {
 					res.end(res.render(path + "games_selection.ejs", {
 						navbar: undefined,
-						proceed_button: "<button id='proceed' onclick='window.location.href='/coupon''>Proceed</button>",
+						proceed_button: "<button id='proceed'>Proceed</button>",
 						back_button: undefined,
-//						back_button: "<button id='back' onclick='window.location.href='/daily_tasks';'>Back</button>",
+						//						back_button: "<button id='back' onclick='window.location.href='/daily_tasks';'>Back</button>",
+						progress_bar:"<div class='progress'><div class='progress-bar progress-bar-striped progress-bar-animated' role='progressbar' aria-valuenow='75' aria-valuemin='0' aria-valuemax='100'></div></div>",
 						footer: footer,
 
 					}));
 				}
 
-				else if (state >= 6) {
+				else if (state == 6) {
 					res.end(res.render(path + "games_selection.ejs", {
 						navbar: navbar_top_ejs,
 						proceed_button: undefined,
 						back_button: undefined,
+						progress_bar:"<div class='progress'><div class='progress-bar progress-bar-striped progress-bar-animated' role='progressbar' aria-valuenow='75' aria-valuemin='0' aria-valuemax='100'></div></div>",
+						footer: footer,
+					}));
+				}
+				else {
+					res.end(res.render(path + "games_selection.ejs", {
+						navbar: navbar_top_ejs,
+						proceed_button: undefined,
+						back_button: undefined,
+						progress_bar:undefined,
 						footer: footer,
 					}));
 				}
@@ -283,7 +392,7 @@ module.exports = function (app) {
 	})
 
 
-	
+
 	app.get("/restart", (req, res) => {
 		uci[id] = "position startpos moves ";
 		stockfishes[id].postMessage(uci[id]);
@@ -430,46 +539,122 @@ module.exports = function (app) {
 
 	//============DBwork=====Tiffany=================================================
 	app.post('/daily_tasks', (req, res) => {
-		let added_item = [];
+		
+		// let added_item = [];
 		let daily_tasks = req.body["id_array[]"];
-		console.log(daily_tasks)
-
-		for (var i in daily_tasks) {
-			added_item.push(daily_tasks[i].id)
-		}
-		// const PromiseA = 
-		//need aysnc version to deal with passing in values
+		console.log("531 req.body=====================================")
+		console.log(req.body)
+		let question_id = parseInt(req.body.id)
+		let answer = req.body.answer;
 		MongoClient.connect(dbConfig.url, function (err, db) {
-			console.log("added_item")
-			console.log(added_item)
+
 			if (err) throw err;
 			var dbo = db.db("test");
-			dbo.collection("users").updateOne(
-				{ _id: ObjectId(req.session.user_sid) },
-				{
-					$push: { daily_task_archived: { $each: added_item } }
-				},
-				{ new: true, upsert: true }
-			)
+
+			//find the question from the db
+			dbo.collection("daily_tasks").find({
+				id: question_id,
+			}).toArray((err, result) => {
+				db.close()
+				console.log("result[0]")
+				console.log(result[0])
+				//if the user's answer is correct
+				if (answer == result[0].answer) {
+					MongoClient.connect(dbConfig.url, function (err, db) {
+						
+						console.log("作答正确")
+						if (err) throw err;
+						var dbo = db.db("test");
+						//add it to the finished arry
+						// dbo.collection("users").updateOne(
+						// 	{ 
+						// 	  finished_id: { $elemMatch:  { user_id: req.session.user_sid, date: { $gte: new Date(new Date().setDate(new Date().getDate() - 2)) } } } 	
+						// 	},
+						// 	{	
+						// 		$addToSet: { finished_id: question_id   },
+
+						// 	},
+						// 	{  upsert: true }
+						// )
+
+						//add it to the daily archived
+						dbo.collection("users").updateOne(
+							{
+								_id: ObjectId(req.session.user_sid)
+							},
+							{
+								$addToSet: { daily_task_archived: question_id },
+							},
+							{ upsert: true }
+						)
+
+						//move on to the next state (set in DB, added 1)
+						dbo.collection("users").updateOne({
+							_id: ObjectId(req.session.user_sid),
+							daily_task_rec: { $elemMatch: { date: { $gte: new Date(new Date().setDate(new Date().getDate() - 2)) } } }
+						}, {
+							$inc: { "daily_task_rec.$.state": 1 }
+						})
+						res.send("Correct, How Smart You ARE!!!")
+						users.addPoints(req, res, 10)
+					})
+				} else {
+					res.send("Not quite")
+				}
+			})
 		})
+
+
+
+
+
 	})
 
 
-	app.get('/state_add', (req, res) => {
+	app.post('/state_add', (req, res) => {
+
+		let state = null;
+
 		MongoClient.connect(dbConfig.url, function (err, db) {
 			if (err) throw err;
 			var dbo = db.db("test");
 
-			dbo.collection("users").updateOne({
-				_id: ObjectId(req.session.user_sid),
-				daily_task_rec: { $elemMatch: { date: {  $gte: new Date(new Date().setDate(new Date().getDate()-1)) } } }
-			}, { $inc: { "daily_task_rec.$.state": 1 } },
+			dbo.collection("users").find({
+				_id: ObjectId(req.session.user_sid)
+			}).toArray(function (err, result) {
+				state = result[0].daily_task_rec[result[0].daily_task_rec.length - 1].state;
+				db.close()
+				console.log("req.body.state_request in 611")
+				console.log(req.body.state_request)
+				if (
+					state == 3 && req.body.state_request == "proceed button clicked in STEP 3" ||
+					state == 4 && req.body.state_request == "I am ready to play a game" ||
+					state == 5 && req.body.state_request == "proceed button clicked"    ||
+					state == 6 && req.body.state_request == "proceed button clicked in STEP 6") {
+					MongoClient.connect(dbConfig.url, function (err, db) {
+						console.log()
+						if (err) throw err;
+						var dbo = db.db("test");
 
-			)
-			console.log("state added 1!!!!!")
-			res.send("state added 1!!!!!")
+					
+						console.log("I am ready to play a game in 620")
+						dbo.collection("users").updateOne({
+							_id: ObjectId(req.session.user_sid),
+							daily_task_rec: { $elemMatch: { date: { $gte: new Date(new Date().setDate(new Date().getDate() - 2)) } } }
+						}, { $inc: { "daily_task_rec.$.state": 1 } },
 
+						)
+						console.log("state added 1!!!!!")
+						res.send("state added 1!!!!!")
+
+					})
+				}
+			})
 		})
+
+
+
+
 	})
 
 
@@ -658,7 +843,7 @@ module.exports = function (app) {
 
 
 
-	app.get("/get_state",sessionChecker2,users.getState)
+	app.get("/get_state", sessionChecker2, users.getState)
 
 
 
@@ -685,7 +870,8 @@ module.exports = function (app) {
 
 
 	app.get('/daily_tasks', sessionChecker2, function (req, res) {
-
+		console.log("req.session.user_sid")
+		console.log(req.session.user_sid)
 		function get_stuff_to_send() {
 
 		}
@@ -701,6 +887,9 @@ module.exports = function (app) {
 				_id: ObjectId(req.session.user_sid)
 			}).toArray(function (err, result) {
 
+				let archived = []
+				archived = result[0].daily_task_archived;
+
 				//find the work that needs to be done
 				console.log("result.daily_task_rec.state")
 				// console.log(result[0].daily_task_rec)
@@ -711,16 +900,22 @@ module.exports = function (app) {
 				//if the state property is less than 3, which indicates that user is 
 				//still in the "daily task" user flow.
 				if (state < 3) {
+					console.log("++++++++++++++archived++++++++++++++++++")
+					console.log(archived)
+					// console.log(result[0].daily_task_rec[result[0].daily_task_rec.length - 1].daily_task_archived)
+					console.log(result[0].daily_task_archived)
 					//then we will go to the db and find the number of items
 					dbo.collection("daily_tasks").find({
-						// "3 - state" means the number of items to find	
+						// id: { $nin: result[0].daily_task_archived }
+						// "3 - state" means the number of items to find 	
 					}).limit(3 - state).toArray(function (err, data) {
 
 
 						//1. this is to get the daily_task's id, and then we will archive the task's id.
 						//   we are doing this because the task should not show up in the daily task again if the user has done it already
 						console.log("in 708  take a peek at the data schema------------ ")
-						console.log(data[0].id)
+						// console.log(data[0].id)
+						console.log(data)
 
 						//2. before archiving it, we need to push the data into an array, so that 
 						//it's easily done.
@@ -736,8 +931,21 @@ module.exports = function (app) {
 						// close the database to avoid problems from showing up in the update(atomic read)
 						db.close()
 
+						console.log("state*8.33==========================================")
+						console.log(state*8.33)
 						//connect again to update
 						MongoClient.connect(dbConfig.url, function (err, db) {
+							//renders the page
+							res.end(res.render(path + "daily_tasks.ejs", {
+								todo_item: data,
+								navbar: undefined,
+								proceed_button: undefined,
+								footer: footer,
+								progress_percentage : state*8.33 + "%"
+							}));
+
+
+							//after that, archive
 							console.log("added_item")
 							console.log(added_item)
 							console.log("in 727 req.session.user_id------------------------------------")
@@ -747,29 +955,29 @@ module.exports = function (app) {
 							var dbo = db.db("test");
 
 
-							dbo.collection("users").updateOne(
-								//find the correct ObjectID
-								{
-									_id: ObjectId(req.session.user_sid),
-									//compare if the date is correct: right on today
-									daily_task_rec: { $elemMatch: { date: { $lte: new Date() } } }
-								},
-								{
-									//push each item
-									$addToSet: { daily_task_archived: { $each: added_item } },
-									//the $addToSet operator is to avoid repeating the items
-									$set: { "daily_task_rec.$.user_id": req.session.user_sid }
-								},
-								{ new: true, upsert: true }
-							)
+							//push all the items into daily_task_archived
+							/*
+							if (state < 3) {
+								dbo.collection("users").updateOne(
+									//find the correct ObjectID
+									{
+										_id: ObjectId(req.session.user_sid),
+										//compare if the date is correct: right on today
+										daily_task_rec: { $elemMatch: { date: { $gte: new Date(new Date().setDate(new Date().getDate() - 2)) } } }
+									},
+									{
+										//push each item
+										$addToSet: { daily_task_archived: { $each: added_item } },
+										//the $addToSet operator is to avoid repeating the items
+										$set: { "daily_task_rec.$.user_id": req.session.user_sid }
+									},
+									{ new: true, upsert: true }
+								)
+							}
+							*/
 						})
 
-						res.end(res.render(path + "daily_tasks.ejs", {
-							todo_item: data,
-							navbar: undefined,
-							proceed_button: undefined,
-							footer: footer
-						}));
+
 					});
 				}
 
@@ -778,13 +986,14 @@ module.exports = function (app) {
 						todo_item: undefined,
 						navbar: undefined,
 						proceed_button: '<button id="proceed" onclick="window.location.href="/minigames"">Proceed</button>',
-						footer: footer
+						footer: footer,
+						progress_percentage : state*8.33 + "%"
+
 					}));
 				}
 			});
 
 		});
-
 
 
 
@@ -944,25 +1153,29 @@ module.exports = function (app) {
 	})
 
 
-
+	//the route to the snake game
 	app.get("/games/snake", (req, res) => {
 		res.sendFile(staticPath + "/snake.html")
 	})
 
-
+	//sends the shooter game
 	app.get("/games/shooter", (req, res) => {
 		res.sendFile(staticPath + "/zombie.html")
 	})
 
-
+	//(not in use) get daily knowledge
 	app.route('/getDailyKnowledge').get(users.dailyKnowledge);
 
+	//(not in use)get daily tasks
 	app.route('/getDailyTasks').get(users.dailyTasks);
 
 
-
+	//vote down the daily task(not in use)
 	app.route('/getDailyTasks/dislikeTask').post(users.taskDislike);
+
+	//vote up the daily task(not in use)
 	app.route('/getDailyTasks/likeTask').post(users.taskLike);
+
 
 	app.route('/getDailyTasks/dislikeKnowledge').post(users.knowledgeDislike);
 	app.route('/getDailyTasks/likeKnowledge').post(users.knowledgeLike);
@@ -1101,10 +1314,12 @@ module.exports = function (app) {
 		res.render(path + "admin_verify.ejs");
 	});
 
+	//goes to the admin page
 	app.get('/admin_home', (req, res) => {
 		res.render(path + "admin_home.ejs");
 	});
 
+	//
 	app.get('/admin_coupon', (req, res) => {
 		console.log("searching")
 		MongoClient.connect(dbConfig.url, function (err, db) {
@@ -1130,12 +1345,52 @@ module.exports = function (app) {
 		});
 	});
 
+	//posts the user password to check if the person is an admin
 	app.post('api/users/admin', (req, res) => {
 		users.verifyAdmin
 	});
 
+	//add one coupon to the db
 	app.post('/coupon/add', (req, res) => {
+
 		console.log(req.body)
+
+		// MongoClient.connect(dbConfig.url, function (err, db) {
+
+
+		// 	if (err) throw err;
+		// 	var dbo = db.db("test");
+		// 	dbo.collection("coupons_available").find({}).count().toArray((err, num_of_coupons_available) => {
+
+		// 		console.log("num_of_coupons_available")
+		// 		console.log(num_of_coupons_available)
+
+		// 		db.close()
+
+		// 		//connect
+		// 		MongoClient.connect(dbConfig.url, function (err, db) {
+		// 			if (err) throw err;
+		// 			var dbo = db.db("test");
+
+		// 			dbo.collection("coupons_available").updateOne(
+		// 				//find the correct ObjectID
+		// 				{
+		// 				},
+		// 				{
+		// 					//push each item
+		// 					$addToSet: { id: num_of_coupons_available },
+		// 					//the $addToSet operator is to avoid repeating the items
+		// 					$set: { "daily_task_rec.$.user_id": req.session.user_sid }
+		// 				},
+		// 				{ new: true, upsert: true }
+		// 			)
+		// 		})
+		// 	})
+
+
+
+
+		// })
 	});
 
 	app.post("/coupon/delete", (req, res) => {

@@ -61,9 +61,6 @@
       background-color: #99F7AB;
       color: #53131E;
     }
-    #footer{
-    margin-top: 470px;
-    }
 
     img {
       object-fit: contain;
@@ -281,7 +278,7 @@
     }
 
     .progress-bar-animated {
-      width: 25%;
+    
       -webkit-animation: progress-bar-stripes 1s linear infinite;
       animation: progress-bar-stripes 1s linear infinite;
     }

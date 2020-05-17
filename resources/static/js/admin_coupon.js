@@ -18,8 +18,8 @@
         $("#add_item").on("click", function () {
             let new_div = $("<div></div>");
 
-            new_div.append("<label class='todo-list__title' for=id_" + item_number + "'>id </label>")
-            new_div.append("<input name='id' id='id_" + item_number + "' type='text' class = 'to_do_items'>")
+            // new_div.append("<label class='todo-list__title' for=id_" + item_number + "'>id </label>")
+            // new_div.append("<input name='id' id='id_" + item_number + "' type='text' class = 'to_do_items'>")
             new_div.append("<label class='todo-list__title' for=''>title</label>")
             new_div.append("<input name='title' class='to_do_items' id='title_" + item_number + "type='text'>")
             new_div.append("<label class='todo-list__title' for='description_'" + item_number + "'>description</label>")
