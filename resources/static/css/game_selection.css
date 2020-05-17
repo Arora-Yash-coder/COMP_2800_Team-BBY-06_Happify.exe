@@ -8,6 +8,182 @@ body {
     background-color: #99F7AB;
 }
 
+/*
+#proceedbtn{
+    margin-top: 15px;
+    height: 5vh;
+    
+}
+*/
+
+@media only screen and (max-width: 330px) {
+    #greeting {
+        color: #EF629F;
+        font-size: 30pt;
+    }
+
+    #container {
+
+
+        height: 143vh;
+
+    }
+
+    #footer {
+        bottom: 0;
+        margin-top: 130px;
+        color: #53131E;
+        clear: both;
+        position: relative;
+    }
+}
+
+@media only screen and (min-width: 370px) {
+    #greeting {
+        color: #EF629F;
+        font-size: 30pt;
+    }
+
+    #container {
+
+
+        height: 110vh;
+
+    }
+
+    #footer {
+        bottom: 0;
+        margin-top: 50px;
+        color: #53131E;
+        clear: both;
+        position: relative;
+        /*        font-size: 13pt;*/
+    }
+}
+
+@media only screen and (min-width: 600px) {
+    #inner {
+        font-size: 30pt;
+    }
+
+    #proceed {
+        font-size: 27pt;
+        margin-top: 10px;
+    }
+
+    #stats {
+        font-size: 30pt;
+    }
+
+    #welcome {
+        font-size: 40pt;
+    }
+
+    #greeting {
+        color: #EF629F;
+
+    }
+
+    #container {
+
+
+        height: 200vh;
+
+    }
+
+    #footer {
+        bottom: 0;
+        margin-top: 50px;
+        color: #53131E;
+        clear: both;
+        position: relative;
+        /*        font-size: 20pt;*/
+    }
+}
+
+@media only screen and (min-width: 1024px) {
+    #inner {
+        font-size: 30pt;
+    }
+
+    #proceed {
+        font-size: 27pt;
+        margin-top: 10px;
+    }
+
+    #stats {
+        font-size: 30pt;
+    }
+
+    #welcome {
+        font-size: 40pt;
+    }
+
+    #greeting {
+        color: #EF629F;
+
+    }
+
+    #container {
+
+
+        height: 130vh;
+
+    }
+
+    #footer {
+        bottom: 0;
+        margin-top: 50px;
+        color: #53131E;
+        clear: both;
+        position: relative;
+        /*        font-size: 20pt;*/
+    }
+}
+
+@media only screen and (min-width: 1200px) {
+    #inner {
+        font-size: 28pt;
+    }
+
+    #proceed {
+        font-size: 27pt;
+        margin-top: 10px;
+    }
+
+    #stats {
+        font-size: 30pt;
+    }
+
+    #welcome {
+        font-size: 40pt;
+    }
+
+    #greeting {
+        color: #EF629F;
+
+    }
+
+    #container {
+
+
+        height: 170vh;
+
+    }
+
+    #footer {
+        bottom: 0;
+        /*      margin-top: 50px;*/
+        /*      margin-top: 50px;*/
+        color: #53131E;
+        clear: both;
+        position: relative;
+        font-size: 20pt;
+    }
+}
+
+
+
 img {
     object-fit: contain;
     max-width: 90%;
@@ -46,12 +222,7 @@ img {
 }
 
 
-#container {
 
-
-    height: 100vh;
-
-}
 
 #inner {
     grid-row: 2 / span 1;
@@ -61,8 +232,8 @@ img {
 #stats {
     /*    margin-left: 25px;*/
     /*    margin-right: 25px;*/
-    margin-top: 10px;
-    margin-bottom: 10px;
+    margin-top: 5px;
+    margin-bottom: 5px;
     /*    border-radius: 25px;*/
     grid-row: 2 / span 1;
     background-color: #7BDFF2;
@@ -211,9 +382,7 @@ img {
     grid-row: 1 / span 1;
 }
 
-#greeting {
-    color: #EF629F;
-}
+
 
 .container {
     list-style-type: none;
@@ -389,17 +558,21 @@ button:hover {
 }
 
 #proceed {
-    float: right;
+    margin-top: 10px;
+    /*    float: right;*/
+    font-weight: bold;
 }
 
 #back {
-    float: left;
+    /*    float: left;*/
 }
 
+/*
 #footer {
-    margin-top: 100px;
+    margin-top: 50px;
     color: #53131E;
 }
+*/
 
 
 /* bootstrap progress bar */

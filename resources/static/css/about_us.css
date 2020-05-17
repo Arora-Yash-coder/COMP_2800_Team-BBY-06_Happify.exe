@@ -217,40 +217,87 @@ img {
   max-width: 80%;
 }
 
-/*
-    button {
-    background-color: white;
-    border: #3AB795 solid 1px;
-    color: #3AB795;
-    padding: 7px 26px;
-    text-align: center;
-    text-decoration: none;
-    display: inline-block;
-    font-size: 16px;
-      margin-bottom: 20px;
+@media only screen and (max-width: 330px) {
+  body {
+    font-size: 20pt;
   }
-*/
-#footer {
-  margin-top: 10px;
-  color: #53131E;
+
+
+
+  #footer {
+    bottom: 0;
+    margin-top: 40px;
+    color: #53131E;
+    clear: both;
+    position: relative;
+
+  }
 }
 
-/*
-.square_btn {
-            display: inline-block;
-            padding: 0.3em 1em;
-            text-decoration: none;
-            color: #EF629F;
-            border: solid 2px #EF629F;
-            border-radius: 3px;
-            transition: .4s;
-        }
+@media only screen and (min-width: 370px) {
+  body {
+    font-size: 20pt;
+  }
 
-        .square_btn:hover {
-            background: #EF629F;
-            color: white;
-        }
-*/
+
+  #footer {
+    bottom: 0;
+    margin-top: 52px;
+    color: #53131E;
+    clear: both;
+    position: relative;
+
+  }
+}
+
+@media only screen and (min-width: 600px) {
+  body {
+    font-size: 25pt;
+  }
+
+
+  #footer {
+    bottom: 0;
+    margin-top: 67px;
+    color: #53131E;
+    clear: both;
+    position: relative;
+    /*        font-size: 20pt;*/
+  }
+}
+
+@media only screen and (min-width: 1024px) {
+  body {
+    font-size: 25pt;
+  }
+
+  #footer {
+    bottom: 0;
+    margin-top: 40px;
+    color: #53131E;
+    clear: both;
+    position: relative;
+    /*        font-size: 20pt;*/
+  }
+}
+
+@media only screen and (min-width: 1200px) {
+  body {
+    font-size: 20pt;
+  }
+
+  #footer {
+    bottom: 0;
+    margin-top: 50px;
+    color: #53131E;
+    clear: both;
+    position: relative;
+    font-size: 20pt;
+  }
+}
+
+
+
 
 .square_btn_second {
   display: inline-block;
@@ -264,5 +311,5 @@ img {
 
 .square_btn_second:hover {
   background: white;
-  color: #753e48;
+  /*  color: #753e48;*/
 }

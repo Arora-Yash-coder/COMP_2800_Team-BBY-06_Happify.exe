@@ -4,6 +4,66 @@ body {
   width: 100%;
 }
 
+@media only screen and (max-width: 330px) {
+  #footer {
+    text-align: center;
+    bottom: 0;
+    margin-top: 280px;
+    color: #53131E;
+    clear: both;
+    position: relative;
+
+  }
+}
+
+@media only screen and (min-width: 370px) {
+  #footer {
+    text-align: center;
+    bottom: 0;
+    margin-top: 450px;
+    color: #53131E;
+    clear: both;
+    position: relative;
+
+  }
+}
+
+@media only screen and (min-width: 600px) {
+  #footer {
+    text-align: center;
+    bottom: 0;
+    margin-top: 650px;
+    color: #53131E;
+    clear: both;
+    position: relative;
+    /*    font-size: 20pt;*/
+  }
+}
+
+@media only screen and (min-width: 1024px) {
+  #footer {
+    text-align: center;
+    bottom: 0;
+    margin-top: 1000px;
+    color: #53131E;
+    clear: both;
+    position: relative;
+    /*    font-size: 25pt;*/
+  }
+}
+
+@media only screen and (min-width: 1200px) {
+  #footer {
+    text-align: center;
+    bottom: 0;
+    margin-top: 300px;
+    color: #53131E;
+    clear: both;
+    position: relative;
+    font-size: 20pt;
+  }
+}
+
 #login {
   background-color: transparent;
   border: #53131E solid 1.5px;
@@ -125,3 +185,13 @@ input[type="password"] {
         
     }
 */
+/*
+#footer{
+    text-align: center;
+    bottom: 0;
+      margin-top: 300px;
+      color: #53131E;
+      clear: both;
+      position: relative;
+    font-size: 18pt;
+}*/

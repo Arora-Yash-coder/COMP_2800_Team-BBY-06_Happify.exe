@@ -8,6 +8,204 @@ body {
     height: 100vh;
 }
 
+.confirm {
+    font-size: 20pt;
+}
+
+.points {
+    font-size: 40pt;
+}
+
+.description {
+    font-size: 18pt;
+}
+
+@media only screen and (max-width: 330px) {
+    #greeting {
+        color: #EF629F;
+        font-size: 30pt;
+    }
+
+    #container {
+
+
+        /*    height: 120vh;*/
+
+    }
+
+    #footer {
+        bottom: 0;
+        margin-top: 135px;
+        color: #53131E;
+        clear: both;
+        position: relative;
+    }
+}
+
+@media only screen and (min-width: 370px) {
+    #greeting {
+        color: #EF629F;
+        font-size: 30pt;
+    }
+
+    #container {
+
+
+        /*    height: 110vh;*/
+
+    }
+
+    #footer {
+        bottom: 0;
+        margin-top: 150px;
+        color: #53131E;
+        clear: both;
+        position: relative;
+        /*        font-size: 13pt;*/
+    }
+}
+
+@media only screen and (min-width: 600px) {
+    h1 {
+        font-size: 30pt;
+    }
+
+    #inner {
+        font-size: 30pt;
+    }
+
+    #search {
+        font-size: 27pt;
+    }
+
+    #proceed {
+        font-size: 27pt;
+        margin-top: 10px;
+    }
+
+    #stats {
+        font-size: 30pt;
+    }
+
+    #welcome {
+        font-size: 40pt;
+    }
+
+    #greeting {
+        color: #EF629F;
+
+    }
+
+    #container {
+
+
+        /*    height: 200vh;*/
+
+    }
+
+    #footer {
+        bottom: 0;
+        margin-top: 150px;
+        color: #53131E;
+        clear: both;
+        position: relative;
+        /*        font-size: 20pt;*/
+    }
+}
+
+@media only screen and (min-width: 1024px) {
+    h1 {
+        font-size: 30pt;
+    }
+
+    #inner {
+        font-size: 30pt;
+    }
+
+    #search {
+        font-size: 27pt;
+    }
+
+    #proceed {
+        font-size: 27pt;
+        margin-top: 10px;
+    }
+
+    #stats {
+        font-size: 30pt;
+    }
+
+    #welcome {
+        font-size: 40pt;
+    }
+
+    #greeting {
+        color: #EF629F;
+
+    }
+
+    #container {
+
+
+        /*    height: 124vh;*/
+
+    }
+
+    #footer {
+        bottom: 0;
+        margin-top: 150px;
+        color: #53131E;
+        clear: both;
+        position: relative;
+        /*        font-size: 20pt;*/
+    }
+}
+
+@media only screen and (min-width: 1200px) {
+    h1 {
+        font-size: 30pt;
+    }
+
+    #inner {
+        font-size: 28pt;
+    }
+
+    #proceed {
+        font-size: 27pt;
+        margin-top: 10px;
+    }
+
+    #stats {
+        font-size: 30pt;
+    }
+
+    #welcome {
+        font-size: 40pt;
+    }
+
+    #greeting {
+        color: #EF629F;
+
+    }
+
+    #container {
+
+
+        /*    height: 170vh;*/
+
+    }
+
+    #footer {
+        bottom: 0;
+        /*      margin-top: 50px;*/
+        color: #53131E;
+        clear: both;
+        position: relative;
+        font-size: 20pt;
+    }
+}
+
+
 .square_btn_second {
     display: inline-block;
     padding: 0.3em 1em;
@@ -75,7 +273,7 @@ body {
     color: #53131E;
     margin-top: -10px;
     font-weight: bold;
-    font-size: 20pt;
+    /*    font-size: 20pt;*/
 }
 
 .description {
@@ -161,7 +359,7 @@ button {
 }
 
 #footer {
-/*    color: black;*/
+    /*    color: black;*/
 }
 
 #search_function {

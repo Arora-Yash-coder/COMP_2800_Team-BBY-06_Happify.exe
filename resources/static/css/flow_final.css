@@ -1,10 +1,274 @@
 body {
-  /*        background-image: url(/static/img/background.png);*/
-  /*        background-size:cover;*/
-  height: 100vh;
+
   background-color: #99F7AB;
   color: #53131E;
 }
+
+#button_container {
+  text-align: center;
+}
+
+@media only screen and (max-width: 330px) {
+  button {
+    background-color: transparent;
+    border: #53131E solid 1.5px;
+    color: #53131E;
+    padding: 7px 26px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    font-weight: bold;
+
+  }
+
+  button:hover {
+    background-color: white;
+    border: #53131E solid 1.5px;
+    color: #53131E;
+    padding: 7px 26px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+
+  }
+
+  #cong {
+    font-size: 30pt;
+    text-align: center;
+  }
+
+  #done {
+    font-size: 20pt;
+    text-align: center;
+  }
+
+  #container {
+
+    height: 85vh;
+  }
+
+
+  footer {
+    bottom: 0;
+    margin-top: 50px;
+    color: #53131E;
+    clear: both;
+    position: relative;
+  }
+}
+
+@media only screen and (min-width: 370px) {
+  button {
+    background-color: transparent;
+    border: #53131E solid 1.5px;
+    color: #53131E;
+    padding: 7px 26px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    font-weight: bold;
+
+  }
+
+  button:hover {
+    background-color: white;
+    border: #53131E solid 1.5px;
+    color: #53131E;
+    padding: 7px 26px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+
+  }
+
+  #cong {
+    font-size: 30pt;
+    text-align: center;
+  }
+
+  #done {
+    font-size: 20pt;
+    text-align: center;
+  }
+
+  #container {
+
+    height: 89vh;
+  }
+
+  footer {
+    bottom: 0;
+    margin-top: 50px;
+    color: #53131E;
+    clear: both;
+    position: relative;
+    /*        font-size: 15pt;*/
+  }
+}
+
+@media only screen and (min-width: 600px) {
+  #button_container {
+    margin-top: 20px;
+    text-align: center;
+  }
+
+  button {
+    background-color: transparent;
+    border: #53131E solid 1.5px;
+    color: #53131E;
+    padding: 7px 26px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 24px;
+    font-weight: bold;
+
+  }
+
+  button:hover {
+    background-color: white;
+    border: #53131E solid 1.5px;
+    color: #53131E;
+    padding: 7px 26px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 24px;
+
+  }
+
+  #cong {
+    font-size: 40pt;
+    text-align: center;
+  }
+
+  #done {
+    font-size: 30pt;
+    text-align: center;
+  }
+
+  #container {
+
+    height: 90vh;
+  }
+
+
+  footer {
+    bottom: 0;
+    margin-top: 50px;
+    color: #53131E;
+    clear: both;
+    position: relative;
+    /*        font-size: 20pt;*/
+  }
+}
+
+@media only screen and (min-width: 1024px) {
+  button {
+    background-color: transparent;
+    border: #53131E solid 1.5px;
+    color: #53131E;
+    padding: 7px 26px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 26px;
+    font-weight: bold;
+
+  }
+
+  button:hover {
+    background-color: white;
+    border: #53131E solid 1.5px;
+    color: #53131E;
+    padding: 7px 26px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    /*  font-size: 26px;*/
+
+  }
+
+  #cong {
+    font-size: 40pt;
+    text-align: center;
+  }
+
+  #done {
+    font-size: 30pt;
+    text-align: center;
+  }
+
+  #container {
+
+    height: 92vh;
+  }
+
+  footer {
+    bottom: 0;
+    margin-top: 50px;
+    color: #53131E;
+    clear: both;
+    position: relative;
+    font-size: 20pt;
+  }
+}
+
+@media only screen and (min-width: 1200px) {
+  button {
+    background-color: transparent;
+    border: #53131E solid 1.5px;
+    color: #53131E;
+    padding: 7px 26px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 26px;
+    font-weight: bold;
+
+  }
+
+  button:hover {
+    background-color: white;
+    border: #53131E solid 1.5px;
+    color: #53131E;
+    padding: 7px 26px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 26px;
+
+  }
+
+  #cong {
+    font-size: 40pt;
+    text-align: center;
+  }
+
+  #done {
+    font-size: 30pt;
+    text-align: center;
+  }
+
+  #container {
+
+    height: 85vh;
+  }
+
+  footer {
+    bottom: 0;
+    margin-top: 50px;
+    color: #53131E;
+    clear: both;
+    position: relative;
+    font-size: 20pt;
+  }
+}
+
 
 /*
     button {
@@ -18,30 +282,7 @@ body {
         font-size: 16px;
     }
 */
-button {
-  background-color: transparent;
-  border: #53131E solid 1.5px;
-  color: #53131E;
-  padding: 7px 26px;
-  text-align: center;
-  text-decoration: none;
-  display: inline-block;
-  font-size: 16px;
-  font-weight: bold;
 
-}
-
-button:hover {
-  background-color: white;
-  border: #53131E solid 1.5px;
-  color: #53131E;
-  padding: 7px 26px;
-  text-align: center;
-  text-decoration: none;
-  display: inline-block;
-  font-size: 16px;
-
-}
 
 #homepage {
   margin-top: 10px;
@@ -51,12 +292,10 @@ button:hover {
   float: left;
 }
 
-#button_container {
-  text-align: center;
-}
+
 
 footer {
-  margin-top: 80px;
+  /*  margin-top: 25px;*/
   text-align: center;
 }
 

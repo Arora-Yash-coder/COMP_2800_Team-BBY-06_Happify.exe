@@ -81,26 +81,228 @@
 
     }
 
-    .top {
 
-      color: #53131E;
-      font-size: 30pt;
-      font-weight: bold;
+
+    @media only screen and (max-width: 330px) {
+      #container {
+
+        height: 96vh;
+
+      }
+
+      .top {
+
+        color: #53131E;
+        font-size: 30pt;
+        font-weight: bold;
+      }
+
+      .points {
+        color: #53131E;
+        font-size: 20pt;
+        margin-top: -10px;
+        font-weight: bold;
+      }
+
+      #footer {
+        bottom: 0;
+        margin-top: 650px;
+        color: #53131E;
+        clear: both;
+        position: relative;
+      }
     }
 
-    .points {
-      color: #53131E;
-      font-size: 20pt;
-      margin-top: -10px;
-      font-weight: bold;
+    @media only screen and (min-width: 370px) {
+      button {
+        font-size: 20pt;
+      }
+
+      button:hover {
+        font-size: 20pt;
+      }
+
+      p {
+        font-size: 20pt;
+      }
+
+      #container {
+
+        height: 97vh;
+
+      }
+
+      #greeting {
+        color: #53131E;
+        font-size: 15pt;
+      }
+
+      .top {
+
+        color: #53131E;
+        font-size: 30pt;
+        font-weight: bold;
+      }
+
+      .points {
+        color: #53131E;
+        font-size: 20pt;
+        margin-top: -10px;
+        font-weight: bold;
+      }
+
+      #footer {
+        bottom: 0;
+        margin-top: 720px;
+        color: #53131E;
+        clear: both;
+        position: relative;
+        /*        font-size: 15pt;*/
+      }
     }
 
-    /* #container {
+    @media only screen and (min-width: 600px) {
 
-        height: 100vh;
+      button {
+        font-size: 20pt;
+      }
 
-      } */
+      button:hover {
+        font-size: 20pt;
+      }
 
+      #container {
+
+        height: 95vh;
+
+      }
+
+      #greeting {
+        color: #53131E;
+        font-size: 25pt;
+      }
+
+      .top {
+
+        color: #53131E;
+        font-size: 40pt;
+        font-weight: bold;
+      }
+
+      .points {
+        color: #53131E;
+        font-size: 30pt;
+        margin-top: -10px;
+        font-weight: bold;
+      }
+
+      #footer {
+        bottom: 0;
+        margin-top: 400px;
+        color: #53131E;
+        clear: both;
+        position: relative;
+        /*        font-size: 20pt;*/
+      }
+
+      p {
+        font-size: 20pt;
+      }
+    }
+
+    @media only screen and (min-width: 1024px) {
+      button {
+        font-size: 25pt;
+      }
+
+      button:hover {
+        font-size: 25pt;
+      }
+
+      #container {
+
+        height: 97vh;
+
+      }
+
+      #greeting {
+        color: #53131E;
+        font-size: 30pt;
+      }
+
+      .top {
+
+        color: #53131E;
+        font-size: 40pt;
+        font-weight: bold;
+      }
+
+      .points {
+        color: #53131E;
+        font-size: 30pt;
+        margin-top: -10px;
+        font-weight: bold;
+      }
+
+      #footer {
+        bottom: 0;
+        margin-top: 200px;
+        color: #53131E;
+        clear: both;
+        position: relative;
+      }
+
+      p {
+        font-size: 25pt;
+      }
+    }
+
+    @media only screen and (min-width: 1200px) {
+      button {
+        font-size: 25pt;
+      }
+
+      button:hover {
+        font-size: 25pt;
+      }
+
+      #container {
+
+        height: 97vh;
+
+      }
+
+      #greeting {
+        color: #53131E;
+        font-size: 30pt;
+      }
+
+      .top {
+
+        color: #53131E;
+        font-size: 40pt;
+        font-weight: bold;
+      }
+
+      .points {
+        color: #53131E;
+        font-size: 30pt;
+        margin-top: -10px;
+        font-weight: bold;
+      }
+
+      #footer {
+        bottom: 0;
+        margin-top: 700px;
+        color: #53131E;
+        clear: both;
+        position: relative;
+      }
+
+      p {
+        font-size: 25pt;
+      }
+    }
 
     .to_do_title {
 
@@ -200,10 +402,7 @@
 
     #header {}
 
-    #greeting {
-      color: #53131E;
-      font-size: 15pt;
-    }
+
 
 
     /* #title_0 ~ div > div > button{
@@ -278,7 +477,7 @@
     }
 
     .progress-bar-animated {
-    
+
       -webkit-animation: progress-bar-stripes 1s linear infinite;
       animation: progress-bar-stripes 1s linear infinite;
     }

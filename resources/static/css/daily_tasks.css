@@ -33,7 +33,7 @@ body {
   margin: 0;
   /*        background-image: url(../img/background.png);*/
   /*        background-size: cover;*/
-  /* height:100vh; */
+
   background-color: #99F7AB;
 }
 
@@ -73,7 +73,7 @@ img {
 #container {
   /*        display: grid;*/
   /* grid-template-rows: 17% 72% 1%; */
-  height: 100vh;
+  height: 200vh;
 
 }
 
@@ -159,6 +159,14 @@ img {
 
 #greeting {
   color: #EF629F;
+}
+
+#footer {
+  bottom: 0;
+  margin-top: 40px;
+  color: #53131E;
+  clear: both;
+  position: relative;
 }
 
 /* boostrap */
