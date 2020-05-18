@@ -7,7 +7,7 @@ module.exports = function (app) {
 
 	var subs;
 	var vKey;
-	
+
 	//It's a NodeJS package that allows us to hash passwords for security purposes.
 	const bcrypt = require("bcrypt");
 	//parse the body to the right format
@@ -121,6 +121,7 @@ module.exports = function (app) {
 	// 	res.redirect("")
 	// })
 
+
 	app.get('/coupon', sessionChecker2, users.getCoupon);
 
 	// var body_ejs = fs.readFileSync(path + "components/homepage_body.ejs", 'utf-8');
@@ -142,16 +143,16 @@ module.exports = function (app) {
 			dbo.collection("users").find({
 				_id: ObjectId(req.session.user_sid)
 			}).toArray(function (err, result) {
-				
+
 				//  dbo.collection("coupons_available").aggregate(
 				// 	{$group : { id : 'users.$coupons_owned', count : {$sum : 1}}}
-			
+
 				//  ).toArray((err,aggregate)=>{
 				// 	console.log("aggregate in line 148")
 				// 	console.log(aggregate)
 				//  })
-				
-				
+
+
 
 				coupon_id_array = result[0].coupons_owned;
 
@@ -163,7 +164,8 @@ module.exports = function (app) {
 					res.end(res.render(path + "my_coupons.ejs", {
 						coupons: data,
 						navbar: navbar_top_ejs,
-						footer: footer
+						footer: footer,
+						css: result[0].UI_style
 					}));
 				});
 			});
@@ -172,13 +174,6 @@ module.exports = function (app) {
 
 	);
 
-
-	app.get("/my_record", (req, res) => {
-		res.render(path + "my_record.ejs", {
-			navbar: navbar_top_ejs,
-			footer: footer
-		})
-	})
 
 
 
@@ -275,7 +270,7 @@ module.exports = function (app) {
 	})
 
 	//goes to the homepage 
-	app.get("/homepage",sessionChecker2, (req, res) => {
+	app.get("/homepage", sessionChecker2, (req, res) => {
 
 		console.log("req.session.UI_style in 267")
 		console.log(req.session.UI_style)
@@ -337,12 +332,13 @@ module.exports = function (app) {
 				if (state == 4) {
 					res.end(res.render(path + "games_selection.ejs", {
 
-						navbar: undefined,
+						navbar: navbar_top_ejs,
 						proceed_button: undefined,
 						back_button: undefined,
 						//						back_button: "<button id='back' onclick='window.location.href='/daily_tasks';'>Back</button>",
-						progress_bar:"<div class='progress'><div class='progress-bar progress-bar-striped progress-bar-animated' role='progressbar' aria-valuenow='75' aria-valuemin='0' aria-valuemax='100'></div></div>",
+						progress_bar: "<div class='progress'><div class='progress-bar progress-bar-striped progress-bar-animated' role='progressbar' aria-valuenow='75' aria-valuemin='0' aria-valuemax='100'></div></div>",
 						footer: footer,
+						css: result[0].UI_style
 
 					}));
 				}
@@ -351,12 +347,13 @@ module.exports = function (app) {
 				}
 				else if (state == 5) {
 					res.end(res.render(path + "games_selection.ejs", {
-						navbar: undefined,
+						navbar: navbar_top_ejs,
 						proceed_button: "<button id='proceed'>Proceed</button>",
 						back_button: undefined,
 						//						back_button: "<button id='back' onclick='window.location.href='/daily_tasks';'>Back</button>",
-						progress_bar:"<div class='progress'><div class='progress-bar progress-bar-striped progress-bar-animated' role='progressbar' aria-valuenow='75' aria-valuemin='0' aria-valuemax='100'></div></div>",
+						progress_bar: "<div class='progress'><div class='progress-bar progress-bar-striped progress-bar-animated' role='progressbar' aria-valuenow='75' aria-valuemin='0' aria-valuemax='100'></div></div>",
 						footer: footer,
+						css: result[0].UI_style
 
 					}));
 				}
@@ -366,8 +363,9 @@ module.exports = function (app) {
 						navbar: navbar_top_ejs,
 						proceed_button: undefined,
 						back_button: undefined,
-						progress_bar:"<div class='progress'><div class='progress-bar progress-bar-striped progress-bar-animated' role='progressbar' aria-valuenow='75' aria-valuemin='0' aria-valuemax='100'></div></div>",
+						progress_bar: "<div class='progress'><div class='progress-bar progress-bar-striped progress-bar-animated' role='progressbar' aria-valuenow='75' aria-valuemin='0' aria-valuemax='100'></div></div>",
 						footer: footer,
+						css: result[0].UI_style
 					}));
 				}
 				else {
@@ -375,8 +373,9 @@ module.exports = function (app) {
 						navbar: navbar_top_ejs,
 						proceed_button: undefined,
 						back_button: undefined,
-						progress_bar:undefined,
+						progress_bar: undefined,
 						footer: footer,
+						css: result[0].UI_style
 					}));
 				}
 
@@ -395,8 +394,29 @@ module.exports = function (app) {
 		// })
 	})
 
+
+	
+	app.get("/flow_final", sessionChecker2, (req, res) => {
+		MongoClient.connect(dbConfig.url, function (err, db) {
+			if (err) throw err;
+			var dbo = db.db("test");
+
+			dbo.collection("users").find({
+				_id: ObjectId(req.session.user_sid)
+			}).toArray(function (err, result) {
+				res.render("flow_final.ejs" ,{ css: result[0].UI_style }) 
+			})
+		})
+	})
+
+
+
+
+
+
+
 	//when the users click on this,
-	app.post('/coupon/redeem', sessionChecker2,users.redeemCoupon);
+	app.post('/coupon/redeem', sessionChecker2, users.redeemCoupon);
 
 
 	//---------------------Judao ChessGame--------------------------------------
@@ -452,14 +472,9 @@ module.exports = function (app) {
 
 	//==================WEB PUSH NOTIFICATION=======================================================================================================================
 	app.post("/push", (req, res) => {
-		console.log(req.body)	
-		pusher.sub_info(req,res,req.body.push)
+		console.log(req.body)
+		pusher.sub_info(req, res, req.body.push)
 
-		// setTimeout(() => {
-		// 	res.redirect("/reminder")
-		// }, 5000);
-
-	
 
 	})
 
@@ -496,23 +511,41 @@ module.exports = function (app) {
 	});
 
 
+	//go to the reminder page
+	app.get('/reminder',sessionChecker2, (req, res) => {
+		// res.sendFile(path + "remtest.html");
+		MongoClient.connect(dbConfig.url, function (err, db) {
+			if (err) throw err;
+			var dbo = db.db("test");
 
-	app.get('/reminder', (req, res) => {
-		// res.sendFile(path + "reminder.html");
-		res.sendFile(staticPath + "/remtest.html");
+			dbo.collection("users").find({
+				_id: ObjectId(req.session.user_sid)
+			}).toArray(function (err, result) {
+				res.render(path + "reminder.ejs" , 
+				{ css: result[0].UI_style, 
+					navbar : navbar_top_ejs,
+				});
+			})
+		})
+		
 	});
 
 
-
+	//subscribe web-push notification stuff
 	app.get('/subscribe', (req, res) => {
-		pusher.subscribe(req,res)
+		pusher.subscribe(req, res)
 
 	});
 
+	//subscribe web-push notification stuff
+	app.post('/subscribe', (req, res) => {
+		// pusher.subscribe(req,res)
+		pusher.set_reminder_time(req, res)
+	});
 
 	//============DBwork=====Tiffany=================================================
 	app.post('/daily_tasks', (req, res) => {
-		
+
 		// let added_item = [];
 		let daily_tasks = req.body["id_array[]"];
 		console.log("531 req.body=====================================")
@@ -532,9 +565,9 @@ module.exports = function (app) {
 				console.log("result[0]")
 				console.log(result[0])
 				//if the user's answer is correct
-				if (answer == result[0].answer) {
+				if (answer == result[0].answer || result[0].answer == "null") {
 					MongoClient.connect(dbConfig.url, function (err, db) {
-						
+
 						console.log("作答正确")
 						if (err) throw err;
 						var dbo = db.db("test");
@@ -570,8 +603,31 @@ module.exports = function (app) {
 						})
 						res.send("Correct, How Smart You ARE!!!")
 						users.addPoints(req, res, 10)
+						db.close()
 					})
-				} else {
+				}
+				// else if(result[0].answer == "null"){
+				// 	dbo.collection("users").updateOne(
+				// 		{
+				// 			_id: ObjectId(req.session.user_sid)
+				// 		},
+				// 		{
+				// 			$addToSet: { daily_task_archived: question_id },
+				// 		},
+				// 		{ upsert: true }
+				// 	)
+
+
+				// 	dbo.collection("users").updateOne({
+				// 		_id: ObjectId(req.session.user_sid),
+				// 		daily_task_rec: { $elemMatch: { date: { $gte: new Date(new Date().setDate(new Date().getDate() - 2)) } } }
+				// 	}, {
+				// 		$inc: { "daily_task_rec.$.state": 1 }
+				// 	})
+				// 	res.send("Thanks for your feed back!");
+				// 	users.addPoints(req, res, 5)
+				// }
+				else {
 					res.send("Not quite")
 				}
 			})
@@ -584,7 +640,7 @@ module.exports = function (app) {
 	})
 
 
-	app.post('/state_add', (req, res) => {
+	app.post('/state_add', sessionChecker2, (req, res) => {
 
 		let state = null;
 
@@ -602,14 +658,14 @@ module.exports = function (app) {
 				if (
 					state == 3 && req.body.state_request == "proceed button clicked in STEP 3" ||
 					state == 4 && req.body.state_request == "I am ready to play a game" ||
-					state == 5 && req.body.state_request == "proceed button clicked"    ||
+					state == 5 && req.body.state_request == "proceed button clicked" ||
 					state == 6 && req.body.state_request == "proceed button clicked in STEP 6") {
 					MongoClient.connect(dbConfig.url, function (err, db) {
 						console.log()
 						if (err) throw err;
 						var dbo = db.db("test");
 
-					
+
 						console.log("I am ready to play a game in 620")
 						dbo.collection("users").updateOne({
 							_id: ObjectId(req.session.user_sid),
@@ -905,16 +961,17 @@ module.exports = function (app) {
 						db.close()
 
 						console.log("state*8.33==========================================")
-						console.log(state*8.33)
+						console.log(state * 8.33)
 						//connect again to update
 						MongoClient.connect(dbConfig.url, function (err, db) {
 							//renders the page
 							res.end(res.render(path + "daily_tasks.ejs", {
 								todo_item: data,
-								navbar: undefined,
+								navbar: navbar_top_ejs,
 								proceed_button: undefined,
 								footer: footer,
-								progress_percentage : state*8.33 + "%"
+								progress_percentage: state * 8.33 + "%",
+								css: result[0].UI_style
 							}));
 
 
@@ -957,11 +1014,11 @@ module.exports = function (app) {
 				else if (state >= 3) {
 					res.end(res.render(path + "daily_tasks.ejs", {
 						todo_item: undefined,
-						navbar: undefined,
+						navbar: navbar_top_ejs,
 						proceed_button: '<button id="proceed" onclick="window.location.href="/minigames"">Proceed</button>',
 						footer: footer,
-						progress_percentage : state*8.33 + "%"
-
+						progress_percentage: state * 8.33 + "%",
+						css: result[0].UI_style
 					}));
 				}
 			});
@@ -1185,7 +1242,7 @@ module.exports = function (app) {
 
 	app.route('/login')
 		.get(sessionChecker, (req, res) => {
-			res.sendFile(staticPath + 'login.html');
+			res.render(path + 'login.ejs', { css: req.session.ui_choice });
 		})
 
 	// route for user logout
@@ -1217,8 +1274,35 @@ module.exports = function (app) {
 
 	})
 
+	
+	app.get("/my_record", (req, res) => {
+		res.render(path + "my_record.ejs", {
+			navbar: navbar_top_ejs,
+			footer: undefined,
+			css: undefined
+		})
+		// res.sendFile(path + "record.html")
+	})
 
 
+	app.get("/record",(req,res)=>{
+		MongoClient.connect(dbConfig.url, function (err, db) {
+			if (err) throw err;
+			var dbo = db.db("test");
+		
+			//find the user by session ID
+			dbo.collection("users").find({
+				_id: ObjectId(req.session.user_sid)
+			}).toArray(function (err, theUser) {
+			
+					result=theUser[0],
+					res.send(result)
+			
+
+			})
+			db.close()
+		})
+	})
 
 	// Save a User to MongoDB
 	app.post('/api/users/register', users.register);

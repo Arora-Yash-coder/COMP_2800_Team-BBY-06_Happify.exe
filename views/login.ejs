@@ -7,7 +7,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
   
-  <link rel="stylesheet"  type="text/css" href="/static/css/login.css">
+  <link id="css" rel="stylesheet"  type="text/css" href="/static/css/login<%=css%>.css">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
  
@@ -40,11 +40,21 @@
         
       </form>
     </div>
+
+    
+
     <div id="postResultDiv">
     </div>
     <br>
     
   </div>
+
+  <div id='ui_choice'>
+    <span>Color Scheme: </span><br/>
+    <button class="ui_choice" id='ui_choice_0'>Happy mode</button>
+    <button class="ui_choice" id='ui_choice_1'>Fire mode</button>
+  </div>
+  
     <div id="footer">
         Made by FutureCurves.
     </div>

@@ -1,17 +1,26 @@
-
+    button {
+        background-color: white; /* Green */
+        border: 1px solid #3AB795;
+        color: #3AB795;
+        padding: 10px 24px;
+        text-align: center;
+        text-decoration: none;
+        display: inline-block;
+        font-size: 16px;
+    }
     
       .square_btn {
         display: inline-block;
         padding: 0.3em 1em;
         text-decoration: none;
-        color: #EF629F;
-        border: solid 2px #EF629F;
+        color: #3AB795;
+        border: solid 2px #3AB795;
         border-radius: 3px;
         transition: .4s;
       }
 
       .square_btn:hover {
-        background: #EF629F;
+        background: rgb(240, 115, 169);
         color: white;
       }
 
@@ -33,10 +42,10 @@
       body {
         text-align: center;
         margin: 0;
-        background-image: url(../img/background.png);
+        background-image: url(/static/img/background.png);
         background-size: cover;
-        /* height:100vh; */
-
+       
+        color:#3AB795;
       }
 
       img {
@@ -72,17 +81,23 @@
         font-weight: bold;
       }
 
-      #container {
-/*        display: grid;*/
-        /* grid-template-rows: 17% 72% 1%; */
+      /* #container {
+
         height: 100vh;
 
+      } */
+
+
+      .to_do_title{
+        
+        color: brown;
+        background-color: rgba(41, 139, 231, 0.5);
+        opacity: 0.5;
+        font-size: 22pt;
       }
 
-      #inner {
-        /* grid-row: 2 / span 1; */
-/*        display: grid;*/
-        /* grid-template-rows: 50% 50%; */
+      .to_do_title:hover{
+        opacity: 1.0;
       }
 
       #dailytask {
@@ -91,11 +106,10 @@
         margin-top: 10px;
         margin-bottom: 10px;
         border-radius: 25px;
-        background-color: #B8D8BA;
-        grid-row: 1 / span 1;
-        display: grid;
-        grid-template-rows: 50% 50%;
-        color: #EF629F;
+        background-color: rgba(255, 202, 202, 0.5);
+        
+      
+        color: rgb(0, 2, 1);
       }
 
       #dailytask1 {
@@ -104,18 +118,13 @@
         margin-bottom: auto;
         border-radius: 25px 0 0 25px;
 
-
-        /* grid-row: 1 / span 1; */
-
+     
       }
 
       #selection {
-        margin-top: 0;
+        margin-top: auto;
         margin-bottom: auto;
         border-radius: 0 25px 25px 0;
-
-
-        /* grid-row: 2 / span 1; */
 
       }
 
@@ -126,10 +135,9 @@
         margin-top: 10px;
         margin-bottom: 10px;
         border-radius: 25px;
-        /* grid-row: 2 / span 1; */
+     
         background-color: #FAC9B8;
-        /* display: grid; */
-        /* grid-template-rows: 50% 50%; */
+      
         color: #3AB795;
       }
 
@@ -138,33 +146,65 @@
         margin-top: auto;
         margin-bottom: auto;
         border-radius: 25px 0 0 25px;
-
-
-        /* grid-row: 1 / span 1; */
-
       }
 
       #selection2 {
         margin-top: auto;
         margin-bottom: auto;
         border-radius: 0 25px 25px 0;
-
-
-        /* grid-row: 2 / span 1; */
-
       }
 
 
+      #story {
+        margin-left: 25px;
+        margin-right: 25px;
+        margin-top: 10px;
+        margin-bottom: 10px;
+        border-radius: 25px;
+        background-color: #FAC9B8;
+       
+        color: #3AB795;
+      }
+
+      #story1 {
+        padding: 15px;
+        margin-top: auto;
+        margin-bottom: auto;
+        border-radius: 25px 0 0 25px;
+
+
+      }
+
+      #selection3 {
+        margin-top: auto;
+        margin-bottom: auto;
+        border-radius: 0 25px 25px 0;
+
+
+
+      }
       #header {
-        /* grid-row: 1 / span 1; */
+     
       }
 
       #greeting {
         color: #EF629F;
       }
-    
-      /* boostrap */
-@-webkit-keyframes progress-bar-stripes {
+#footer{
+    color: black;
+}
+
+/* #title_0 ~ div > div > button{
+  display: none;
+} */
+
+
+.title ~ *{
+  display: none;
+}
+
+ /* boostrap */
+ @-webkit-keyframes progress-bar-stripes {
   from {
     background-position: 1rem 0;
   }
@@ -183,6 +223,9 @@
 }
 
 
+
+
+/* bootstrap progress bar */
 .progress {
   display: -ms-flexbox;
   display: flex;
@@ -221,7 +264,7 @@
 }
 
 .progress-bar-animated {
- width: 75%;
+   width: 25%;
   -webkit-animation: progress-bar-stripes 1s linear infinite;
   animation: progress-bar-stripes 1s linear infinite;
 }
@@ -231,6 +274,21 @@
     -webkit-animation: none;
     animation: none;
   }
+}
+
+
+/* boostrap collapse */
+.collapse {
+  display: none;
+}
+.collapse.in {
+  display: block;
+}
+tr.collapse.in {
+  display: table-row;
+}
+tbody.collapse.in {
+  display: table-row-group;
 }
 
 

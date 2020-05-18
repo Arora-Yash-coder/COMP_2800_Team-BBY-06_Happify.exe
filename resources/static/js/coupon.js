@@ -155,7 +155,7 @@ $("#proceed").click(() => {
         data: { state_request },
         dataType: "text",
         success: function (response) {
-            window.location.replace('./flow_final.html')
+            window.location.replace('/flow_final')
 
         }
     });

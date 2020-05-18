@@ -349,7 +349,8 @@ exports.getCoupon = (req, res) => {
         }).toArray(function (err, result) {
             state = result[0].daily_task_rec[result[0].daily_task_rec.length - 1].state;
             db.close()
-            
+            UI_style = result[0].UI_style
+
             MongoClient.connect(dbConfig.url, function (err, db) {
                 if (err) throw err;
                 
@@ -369,16 +370,19 @@ exports.getCoupon = (req, res) => {
                             back_button: undefined,
                             proceed_button: undefined,
                             footer: footer,
+                            css :UI_style
 
                         }));
                     } else {
                         res.render(path + "coupon.ejs", {
                             coupons: result,
                             back_button: "<button id='back' onclick='window.location.href='/minigames';'>Back</button>",
-                            proceed_button: "<button id='proceed' onclick='window.location.href='./flow_final.html''>Proceed</button>",
+                            proceed_button: "<button id='proceed' onclick='window.location.href='/flow_final''>Proceed</button>",
                             progress_bar :progress,
-                            navbar: undefined,
-                            footer: footer
+                            navbar: navbar_top_ejs,
+                            footer: footer,
+                            css :UI_style
+
                         });
                     }
                     //    res.send( { result });

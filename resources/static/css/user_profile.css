@@ -329,7 +329,9 @@ h1 {
   color: #53131E;
 }
 
-#mycoupons {
+
+/* mycoupons, myrecord */
+.card {
   background-color: #D6F9DD;
   border-radius: 25px;
   margin-left: 25px;
@@ -341,6 +343,8 @@ h1 {
   color: #53131E;
   border: solid 2px rgba(83, 19, 30, 0.7);
 }
+
+
 
 /*
 button {

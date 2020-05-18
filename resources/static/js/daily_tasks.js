@@ -39,19 +39,19 @@
       });
     }
 
-    $("#dailytask_dislike").on("click", () => {
-      let id = $("#dailytask1_id").html()
+    // $("#dailytask_dislike").on("click", () => {
+    //   let id = $("#dailytask1_id").html()
 
-      $.ajax({
-        type: "post",
-        url: "/getDailyTasks/dislikeTask",
-        data: { "id": id },
-        dataType: "dataType",
-        success: function (response) {
-          alert("thx 4 ur feedbck")
-        }
-      });
-    })
+    //   $.ajax({
+    //     type: "post",
+    //     url: "/getDailyTasks/dislikeTask",
+    //     data: { "id": id },
+    //     dataType: "dataType",
+    //     success: function (response) {
+    //       alert("thx 4 ur feedbck")
+    //     }
+    //   });
+    // })
 
     $("#knowledge_like").on("click", () => {
       let id = $("#dailyknowledge1_id").html()
@@ -258,6 +258,13 @@
           if(response == "Not quite"){
             alert(response)
             $(this_button).css("background-color","rgba(252,44,79,0.6)")
+          }
+          else if(response == "Thanks for your feed back!"){
+            alert(response)
+            window.location.reload();
+            $(this_button).css("background-color","#b7eb34")
+            $(this_button).css("opacity","0.6")
+
           }
           else{
             alert(response)

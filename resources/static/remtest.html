@@ -31,22 +31,17 @@
 
 
 
-
+            //THIS IS A GLOBAL VARIABLE
             let publicKey = null
-
-
-
-
-
-
-
-
+            //WHEN THE WINDOWS IS LOADED, REGISTER THE SERVICE WORKER
             addEventListener('load', async () => {
-
+                //REGISTER THE SERVICE WORKER
                 let sw = await navigator.serviceWorker.register('/sw.js'
                 // , {scope: 'futurecurves.ca/'}
                 )
                 console.log(sw)
+                //GET A NEW VAPID API KEY 
+                newAPIkey()
             })
 
 

@@ -87,6 +87,7 @@ exports.verify = (req, res) => {
             if (theUser.toObject().password == req.body.password) {
                 console.log(theUser.toObject().username + successMsg)
                 req.session.user_sid = theUser.toObject()._id;
+                req.session.ui_choice = theUser.UI_style;
                 req.cookies.user_sid = theUser._id;
                 req.cookies.sub = "null";
                 res.cookie({

@@ -11,7 +11,7 @@ var ObjectId = require('mongodb').ObjectID;
 exports.subscribe = (req, res) => {
     vapidKeys = push.generateVAPIDKeys();
     console.log(vapidKeys);
-
+    remind_time = req.body.time
     MongoClient.connect(dbConfig.url, function (err, db) {
         if (err) throw err;
         var dbo = db.db("test");
@@ -19,7 +19,11 @@ exports.subscribe = (req, res) => {
 
         dbo.collection("users").updateOne(
             { _id: ObjectId(req.session.user_sid) },
-            { $set: { "vapidKeys": vapidKeys } },
+            {
+                $set: {
+                    "vapidKeys": vapidKeys, 
+                }
+            },
             { new: true, upsert: true }
         )
         db.close()
@@ -29,7 +33,7 @@ exports.subscribe = (req, res) => {
     res.send(vapidKeys)
 }
 
-exports.sub_info = (req,res,sub) => {
+exports.sub_info = (req, res, sub) => {
     MongoClient.connect(dbConfig.url, function (err, db) {
         if (err) throw err;
         var dbo = db.db("test");
@@ -37,12 +41,12 @@ exports.sub_info = (req,res,sub) => {
 
         dbo.collection("users").find(
             { _id: ObjectId(req.session.user_sid) },
-        ).toArray((err,result)=>{
+        ).toArray((err, result) => {
             db.close()
             console.log("vapidKeys : publicKey && vapidKeys: private")
             vapidKeys = result[0].vapidKeys
 
-            cron.scheduleJob('45 * * * * *', function(){
+            cron.scheduleJob('15 ' + result[0].remind_time.minute+' '+result[0].remind_time.hour+' * * *', function () {
 
                 push.setVapidDetails('futurecudrves:test@judaozhong.com', vapidKeys.publicKey, vapidKeys.privateKey)
 
@@ -54,8 +58,8 @@ exports.sub_info = (req,res,sub) => {
 
             // push.sendNotification(JSON.parse(sub), 'test message')
         })
-        
-       
+
+
     })
 
 
@@ -70,3 +74,27 @@ exports.sub_info = (req,res,sub) => {
 
 }
 
+exports.set_reminder_time = (req,res)=>{
+    
+
+    MongoClient.connect(dbConfig.url, function (err, db) {
+        if (err) throw err;
+        var dbo = db.db("test");
+        console.log("in line 796 days_of_use")
+
+        dbo.collection("users").updateOne(
+            { _id: ObjectId(req.session.user_sid) },
+            {
+                $set: {
+                    "remind_time": {
+                        hour: parseInt(req.body.hour),
+                        minute: parseInt(req.body.minute)
+                    }
+                }
+            },
+            { new: true, upsert: true }
+        )
+        db.close()
+        console.log("time set in line 97")
+    })
+}

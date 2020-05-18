@@ -1,5 +1,8 @@
 self.addEventListener('push', function(e) {
+  var timestamp = Date.now();
   var options = {
+    // we cannot use the next line of code, the browser is not yet supporting this
+    // showTrigger: new TimestampTrigger(timestamp + 10000),
     body: "It's a good habbit to go to bed early!",
     icon: 'img/favicon-32x32.png',
     vibrate: [100, 50, 100],

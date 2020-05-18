@@ -1,5 +1,5 @@
 body {
-    background-image: url(./../img/background.png);
+    background-image: url(/static/img/background.png);
     width: 100%;
   }
 #login{
@@ -256,3 +256,10 @@ body {
       width: 100%;
     }
   }
+
+#ui_choice_1{
+
+    background-image: url(/static/img/background.png);
+  
+
+}

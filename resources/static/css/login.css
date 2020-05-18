@@ -65,7 +65,7 @@ body {
   }
 }
 
-#login {
+button {
   background-color: transparent;
   border: #53131E solid 1.5px;
   color: #53131E;
@@ -196,3 +196,34 @@ input[type="password"] {
       position: relative;
     font-size: 18pt;
 }*/
+
+
+body{
+  text-align: center;
+}
+
+button:hover {
+  background-color: white;
+  border: rgb(151, 34, 54) solid 1.5px;
+  color: rgb(170, 67, 84);
+  padding: 7px 26px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+
+}
+
+#ui_choice_1{
+
+ color: chocolate;
+  
+
+}
+
+#ui_choice_1:hover{
+
+  background-image: url(/static/img/background.png);
+  
+
+}

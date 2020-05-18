@@ -147,10 +147,18 @@ body {
 
     }
 
-    #remainder1 {
+    #reminder1 {
         font-size: 25pt;
 
     }
+
+
+
+
+
+
+
+
 
     h2 {
         font-size: 30pt;
@@ -441,7 +449,7 @@ img {
 
 }
 
-#remainder {
+#reminder {
     margin-left: 25px;
     margin-right: 25px;
     margin-top: 10px;
