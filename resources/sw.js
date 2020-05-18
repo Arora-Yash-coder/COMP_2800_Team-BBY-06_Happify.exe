@@ -9,9 +9,9 @@ self.addEventListener('push', function(e) {
     },
     actions: [
       {action: "It's bed time ", title: "please Take a rest now",
-        icon: 'img/favicon-32x32.png'},
+        icon: '/static/img/favicon-32x32.png'},
       {action: 'close', title: 'Close',
-        icon: 'img/favicon-32x32.png'},
+        icon: '/static/img/favicon-32x32.png'},
     ]
   };
     self.skipWaiting();

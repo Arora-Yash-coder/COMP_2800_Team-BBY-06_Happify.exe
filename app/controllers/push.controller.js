@@ -1,3 +1,4 @@
+var cron = require('node-schedule');
 var push = require('web-push')
 var MongoClient = require('mongodb').MongoClient;
 const dbConfig = require('../config/mongodb.config.js');
@@ -40,9 +41,18 @@ exports.sub_info = (req,res,sub) => {
             db.close()
             console.log("vapidKeys : publicKey && vapidKeys: private")
             vapidKeys = result[0].vapidKeys
-            push.setVapidDetails('futurecudrves:test@judaozhong.com', vapidKeys.publicKey, vapidKeys.privateKey)
 
-            push.sendNotification(JSON.parse(sub), 'test message')
+            cron.scheduleJob('45 * * * * *', function(){
+
+                push.setVapidDetails('futurecudrves:test@judaozhong.com', vapidKeys.publicKey, vapidKeys.privateKey)
+
+                push.sendNotification(JSON.parse(sub), 'test message')
+
+                console.log('This runs at the 45th second of every minute.');
+            });
+            // push.setVapidDetails('futurecudrves:test@judaozhong.com', vapidKeys.publicKey, vapidKeys.privateKey)
+
+            // push.sendNotification(JSON.parse(sub), 'test message')
         })
         
        
