@@ -2,12 +2,20 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <link rel="stylesheet"  type="text/css" href="/static/css/admin_home.css">
+    <title>Admin Home</title>
 </head>
 <body>
     <div>
-        <button onclick="window.location.href ='/admin_coupon' ">coupon management</button>
-        <button></button>
+        <div id='container'>
+        <h1>Welcome to the Admin Workstation!</h1>
+        <div id='button'>
+        <button onclick="window.location.href ='/admin_coupon' ">Coupon management (Desktop)</button>
+            <br><br>
+            <button onclick="window.location.href ='/admin_coupon' ">Log out</button>
+        </div>
+        </div>
+        <footer id='footer'>Made by FutureCurves.</footer>
     </div>
 </body>
 </html>

@@ -8,11 +8,11 @@ body {
   #footer {
     text-align: center;
     bottom: 0;
-    margin-top: 280px;
+    margin-top: 380px;
     color: #53131E;
     clear: both;
     position: relative;
-
+    padding-left: 50px;
   }
 }
 
@@ -20,7 +20,7 @@ body {
   #footer {
     text-align: center;
     bottom: 0;
-    margin-top: 450px;
+    margin-top: 550px;
     color: #53131E;
     clear: both;
     position: relative;
@@ -32,7 +32,7 @@ body {
   #footer {
     text-align: center;
     bottom: 0;
-    margin-top: 650px;
+    margin-top: 750px;
     color: #53131E;
     clear: both;
     position: relative;
@@ -44,7 +44,7 @@ body {
   #footer {
     text-align: center;
     bottom: 0;
-    margin-top: 1000px;
+    margin-top: 1100px;
     color: #53131E;
     clear: both;
     position: relative;
@@ -56,7 +56,7 @@ body {
   #footer {
     text-align: center;
     bottom: 0;
-    margin-top: 350px;
+    margin-top: 366px;
     color: #53131E;
     clear: both;
     position: relative;

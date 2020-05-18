@@ -218,7 +218,19 @@ img {
 }
 
 @media only screen and (max-width: 330px) {
-  body {
+  .intro {
+    font-size: 20pt;
+  }
+    .one {
+    font-size: 20pt;
+  }
+.two {
+    font-size: 20pt;
+  }
+    h1{
+        font-size: 40pt;
+    }
+    a {
     font-size: 20pt;
   }
 
@@ -235,7 +247,19 @@ img {
 }
 
 @media only screen and (min-width: 370px) {
-  body {
+ .intro {
+    font-size: 20pt;
+  }
+    .one {
+    font-size: 20pt;
+  }
+.two {
+    font-size: 20pt;
+  }
+    h1{
+        font-size: 40pt;
+    }
+    a {
     font-size: 20pt;
   }
 
@@ -251,7 +275,19 @@ img {
 }
 
 @media only screen and (min-width: 600px) {
-  body {
+  .intro {
+    font-size: 25pt;
+  }
+    .one {
+    font-size: 25pt;
+  }
+.two {
+    font-size: 25pt;
+  }
+    h1{
+        font-size: 50pt;
+    }
+    a {
     font-size: 25pt;
   }
 
@@ -267,13 +303,24 @@ img {
 }
 
 @media only screen and (min-width: 1024px) {
-  body {
+  .intro {
     font-size: 25pt;
   }
-
+    .one {
+    font-size: 25pt;
+  }
+.two {
+    font-size: 25pt;
+  }
+    h1{
+        font-size: 50pt;
+    }
+    a {
+    font-size: 25pt;
+  }
   #footer {
     bottom: 0;
-    margin-top: 40px;
+    margin-top: 50px;
     color: #53131E;
     clear: both;
     position: relative;
@@ -282,7 +329,7 @@ img {
 }
 
 @media only screen and (min-width: 1200px) {
-  body {
+  p {
     font-size: 20pt;
   }
 

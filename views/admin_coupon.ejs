@@ -9,24 +9,33 @@
 </head>
 
 <body>
-
+    <div id="container">
+        <form action="/coupon/add" method="post">
+            
+            <button type="submit" id='back'>Back</button>
+            
+        </form>
+        <h1 id='title'>
+        Coupon Management
+        </h1>
     <!-- Create your form here -->
     <fieldset class="todo-list">
-        <legend class="todo-list__title">Items Goes Here</legend>
+<!--        <legend class="todo-list__title">Items Goes Here</legend>-->
 
         <form action="/coupon/add" method="post">
             <div id="items_to_submit">
                 <div>
                     <!-- <label class="todo-list__title" for="id_1">id</label>
                     <input name="id" class="to_do_items" id="id_1" type="text"> -->
-                    <label class="todo-list__title" for="">title</label>
+                    <label class="todo-list__title" for="">Title</label>
                     <input name="title" class="to_do_items" id="title_1" type="text">
-                    <label class="todo-list__title" for="">description</label>
+                    <label class="todo-list__title" for="">Description</label>
                     <input name="description" class="to_do_items" id="description_1" type="text">
-                    <label class="todo-list__title" for="">points</label>
+                    <label class="todo-list__title" for="">Points</label>
                     <input name="points" class="to_do_items" id="points_1" type="text"><br />
                 </div>
             </div>
+            <br><br>
             <button type="submit">Submit</button>
             <button id="add_item">+</button>
             <!-- <button id="submit">test</button> -->
@@ -55,7 +64,7 @@
             <% } %>
 
             <!-- <button id="update">update</button> -->
-            <button id="delete">delete</button>
+            <button id="delete">Delete</button>
 
         </fieldset>
 
@@ -69,7 +78,7 @@
 
     </fieldset>
 
-
+</div>
     <script src="https://ajax.aspnetcdn.com/ajax/jQuery/jquery-3.4.1.min.js"></script>
     <script src='/static/js/admin_coupon.js'></script>
 

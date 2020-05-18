@@ -59,11 +59,11 @@ body {
   #footer {
     text-align: center;
     bottom: 0;
-    margin-top: 150px;
+    margin-top: 200px;
     color: #53131E;
     clear: both;
     position: relative;
-    font-size: 20pt;
+    font-size: 18pt;
   }
 }
 
@@ -142,7 +142,7 @@ input[type="email"] {
   text-decoration: none;
   display: inline-block;
   font-size: 16px;
-  font-weight: bold;
+/*  font-weight: bold;*/
 
 }
 

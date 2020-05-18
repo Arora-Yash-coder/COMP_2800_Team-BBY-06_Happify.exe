@@ -1,4 +1,4 @@
-@import url("https://fonts.googleapis.com/css?family=Lato:400,400i,700");
+/*@import url("https://fonts.googleapis.com/css?family=Lato:400,400i,700");*/
 
 body {
   display: -webkit-box;
@@ -8,8 +8,13 @@ body {
   -webkit-box-align: center;
   align-items: center;
   /* height: 100vh; */
-  background: #1A1E23;
+  background: #99F7AB;
+    color: #53131E;
 }
+#container{
+    margin-top: 2%;
+}
+
 
 .todo-list {
   display: -webkit-box;
@@ -18,14 +23,15 @@ body {
   -webkit-box-direction: normal;
   flex-direction: column;
   padding: 0 75px 10px 30px;
-  background: #162740;
+  background: #99F7AB;
   border: transparent;
 }
 
 .todo-list .todo-list__title {
   padding: 3px 6px;
-  color: #f1faee;
-  background-color: #264456;
+  color: #53131E;
+/*  background-color: #99F7AB;*/
+    font-size: 20pt;
 }
 
 .todo-list .todo-list__label {
@@ -35,8 +41,8 @@ body {
   align-items: center;
   margin: 40px 0;
   font-size: 24px;
-  font-family: Lato, sans-serif;
-  color: #f1faee;
+/*  font-family: Lato, sans-serif;*/
+  color: #53131E;
   cursor: pointer;
 }
 
@@ -92,7 +98,7 @@ body {
 }
 
 .todo-list .todo-list__label input[type="checkbox"]:checked~span {
-  color: #585b57;
+  color: #53131E;
 }
 
 .todo-list .todo-list__label input[type="checkbox"]:checked~span::before {
@@ -107,21 +113,46 @@ textarea {
   width: 260px;
   height: 280px;
   font-size: 24px;
-  font-family: Lato, sans-serif;
-  color: #f1faee;
+/*  font-family: Lato, sans-serif;*/
+  color: #53131E;
   cursor: pointer;
   background: #162740;
   margin-bottom: 20px;
 }
 
+/*
 button {
   font-size: 24px;
   font-family: Lato, sans-serif;
   background-color: bisque;
 }
+*/
+    button {
+      background-color: transparent;
+      border: #53131E solid 1.5px;
+      color: #53131E;
+      padding: 7px 26px;
+      text-align: center;
+      text-decoration: none;
+      display: inline-block;
+      font-size: 17pt;
+      font-weight: 300;
+}
+
+
+button:hover {
+      background-color: white;
+      border: #53131E solid 1.5px;
+      color: #53131E;
+      padding: 7px 26px;
+      text-align: center;
+      text-decoration: none;
+      display: inline-block;
+      font-size: 17pt;
+}
 
 a {
-  color: #1A1E23;
+  color: #53131E;
   height: 24px;
   font-size: 24px;
   font-family: Lato, sans-serif;
@@ -134,4 +165,18 @@ a {
 
 .records {
   margin: 40px;
+}
+#delete{
+    margin-left: -29px;
+}
+#title{
+    text-align: center;
+    color: #53131E;
+}
+#back{
+    text-align: center;
+    margin-left: 45%;
+}
+form{
+/*    text-align: center;*/
 }
