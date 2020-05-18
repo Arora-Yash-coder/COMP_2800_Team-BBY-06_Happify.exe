@@ -5,6 +5,11 @@ body {
   background-color: #99F7AB;
   color: #53131E;
 }
+#nav{
+    margin-left: -20px;
+    margin-right:-8px;
+    margin-top: -10px;
+}
 @media only screen and (max-width: 330px) {
   legend {
     font-size: 18pt;
