@@ -430,7 +430,8 @@ module.exports = function (app) {
 			dbo.collection("users").find({
 				_id: ObjectId(req.session.user_sid)
 			}).toArray(function (err, result) {
-				res.render("flow_final.ejs", { css: result[0].UI_style })
+				res.render("flow_final.ejs", { css: result[0].UI_style,
+                                             navbar: navbar_top_ejs})
 			})
 		})
 	})

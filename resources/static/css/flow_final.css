@@ -23,6 +23,7 @@ body {
  }
 
  .list a {
+     
      display: block;
      color: white;
      text-align: center;
@@ -33,11 +34,13 @@ body {
  .list a:hover {
      background-color: rgb(65, 134, 125);
  }
+/*
 nav {
     margin-left: -20px;
     margin-right: 60px;
     margin-top: -8px;
 }
+*/
 #button_container {
   text-align: center;
 }

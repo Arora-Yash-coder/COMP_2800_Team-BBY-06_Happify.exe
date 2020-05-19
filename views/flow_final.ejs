@@ -5,22 +5,15 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" type="text/css" href="/static/css/flow_final<%=css%>.css">
+    <link rel="stylesheet" type="text/css" href="/static/css/navbar<%=css%>.css">
 
     <title>Finished!</title>
 
 </head>
 
 <body>
-    <nav id='navbar'>
-                <ul class="container">
-                    <li class="list"><a href="/homepage">Home</a></li>
-
-                    <!--      <li class="list"><a href="/minigames">Mini Games</a></li>-->
-                    <li class="list" style="float: right;"><a href="/user_profile"><img src="/static/img/shape.png"
-                                width="20px" height="20px"> </a></li>
-
-                </ul>
-            </nav>
+    <nav id="navbar">
+    <%- navbar %></nav>
     <div id="container">
     <p id="cong">Congratulations!</p>
     <p id="done">You are done for today!</p>
@@ -39,6 +32,7 @@
     <footer>Made by FutureCurves.</footer>
     <!-- Go to www.addthis.com/dashboard to customize your tools -->
     <script src="/static/js/flow_final.js"> </script>
+    <script src='/static/js/navbar_top.js'></script>
 <script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-5ec2cbf0773973c5"></script>
 </body>
 
