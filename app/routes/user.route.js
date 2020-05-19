@@ -575,9 +575,11 @@ module.exports = function (app) {
 					});
 			})
 		})
-
 	});
 
+	app.get("/counselling",sessionChecker2, (req, res)=>{
+		
+	})
 
 	//subscribe web-push notification stuff
 	app.get('/subscribe', (req, res) => {

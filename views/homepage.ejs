@@ -55,6 +55,7 @@
                            
                             dataType: "json",
                             success: function (response) {
+
                                 let title = response[0].title
                                 let link = response[0].url
                                 $("#latest_news_title").html(title)
@@ -119,6 +120,20 @@
                     <h1 class="second">Daily Reminders</h1>
                 </div>
                 <div id="reminder2 card2">
+                    <div id='image'>
+
+                        <img id="redeem_img" src="img/reminder1.png">
+                    </div>
+                </div>
+            </div>
+
+                        
+            <div id="counselling" class="card" onclick="window.location.href = '/counselling';">
+
+                <div id="counselling card1">
+                    <h1 class="second">Mental counselling</h1>
+                </div>
+                <div id="counselling card2">
                     <div id='image'>
 
                         <img id="redeem_img" src="img/reminder1.png">
