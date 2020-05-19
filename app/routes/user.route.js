@@ -2449,10 +2449,10 @@ module.exports = function (app) {
 	// const jsonArray = await csv().fromFile(filePath);
 
 
-	app.get("/parse_covid_data", (req, res) => {
+	app.get("/parse_covid_line_data", (req, res) => {
 		
 		try {
-			console.log("about to insert");
+		
 			MongoClient.connect(dbConfig.url, function (err, db) {
 				if (err) throw err;
 				var dbo = db.db("test");
@@ -2469,7 +2469,7 @@ module.exports = function (app) {
 			console.log(e);
 		}
 
-		// console.log("gogogo")
+		// console.log(csvFilePath)
 		// csv().fromFile(csvFilePath)
 		// 	.then(function (jsonArrayObj) { //when parse finished, result will be emitted here.
 		// 		try {
@@ -2494,7 +2494,26 @@ module.exports = function (app) {
 
 
 		
+	app.get("/parse_covid_bar_data", (req, res) => {
+		
+		try {
+			console.log("about to insert");
+			MongoClient.connect(dbConfig.url, function (err, db) {
+				if (err) throw err;
+				var dbo = db.db("test");
+				dbo.collection("covid_data").aggregate(
+					[ { $unwind: "$HA" },  { $sortByCount: "$HA" } ]
+				).sort({_id:1}).toArray(function (err, infected) {
 
+					console.log(infected)
+					res.send(infected)
+				})
+				db.close()
+			})
+		} catch (e) {
+			console.log(e);
+		}
+	})
 
 
 
