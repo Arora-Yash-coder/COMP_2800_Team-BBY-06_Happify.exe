@@ -3,12 +3,50 @@ body {
   background-color: #99F7AB;
   color: #53131E;
 }
+.sticky {
+  position: fixed;
+  top: 0;
+  width: 100%;
+}
+ .container {
+     width: 100%;
+     list-style-type: none;
+     margin: 0;
 
+     overflow: hidden;
+     background-color: #4B7F52;
+ }
+
+ .list {
+     float: left;
+     font-size: 15pt;
+ }
+
+ .list a {
+     display: block;
+     color: white;
+     text-align: center;
+     padding: 14px 16px;
+     text-decoration: none;
+ }
+
+ .list a:hover {
+     background-color: rgb(65, 134, 125);
+ }
+nav {
+    margin-left: -20px;
+    margin-right: 60px;
+    margin-top: -8px;
+}
 #button_container {
   text-align: center;
 }
-
-@media only screen and (max-width: 330px) {
+.sticky {
+  position: fixed;
+  top: 0;
+  width: 100%;
+}
+@media only screen and (max-width: 369px) {
   button {
     background-color: transparent;
     border: #53131E solid 1.5px;
@@ -46,7 +84,7 @@ body {
 
   #container {
 
-    height: 85vh;
+    height: 110vh;
   }
 
 

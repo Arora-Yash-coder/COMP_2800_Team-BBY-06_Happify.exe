@@ -8,6 +8,11 @@ body {
     height: 100vh;
 }
 
+.sticky {
+  position: fixed;
+  top: 0;
+  width: 100%;
+}
 .confirm {
     font-size: 20pt;
 }
@@ -20,7 +25,10 @@ body {
     font-size: 18pt;
 }
 
-@media only screen and (max-width: 330px) {
+@media only screen and (max-width: 369px) {
+    #content{
+    margin-top: 15%;
+}
     #greeting {
         color: #EF629F;
         font-size: 30pt;
@@ -43,6 +51,9 @@ body {
 }
 
 @media only screen and (min-width: 370px) {
+    #content{
+    margin-top: 15%;
+}
     #greeting {
         color: #EF629F;
         font-size: 30pt;
@@ -66,6 +77,9 @@ body {
 }
 
 @media only screen and (min-width: 600px) {
+    #content{
+    margin-top: 10%;
+}
     h1 {
         font-size: 30pt;
     }
@@ -114,6 +128,9 @@ body {
 }
 
 @media only screen and (min-width: 1024px) {
+    #content{
+    margin-top: 10%;
+}
     h1 {
         font-size: 30pt;
     }
@@ -162,6 +179,9 @@ body {
 }
 
 @media only screen and (min-width: 1200px) {
+    #content{
+    margin-top: 10%;
+}
     h1 {
         font-size: 30pt;
     }
@@ -222,7 +242,7 @@ body {
 }
 
 #container>div:nth-child(even) {
-    background-color: #FAC9B8;
+/*    background-color: #FAC9B8;*/
 }
 
 #stats {

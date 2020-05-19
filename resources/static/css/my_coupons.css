@@ -12,12 +12,20 @@ body {
     font-weight: bold;
     font-size: 40pt;
 }
-
+.sticky {
+  position: fixed;
+  top: 0;
+  width: 100%;
+}
 .description {
     font-size: 18pt;
 }
 
-@media only screen and (max-width: 330px) {
+@media only screen and (max-width: 369px) {
+    #wrapper{
+        
+        margin-top: 15%;
+    }
     #greeting {
         color: #EF629F;
         font-size: 30pt;
@@ -26,7 +34,7 @@ body {
     #container {
 
 
-        /*    height: 120vh;*/
+            height: 120vh;
 
     }
 
@@ -40,6 +48,10 @@ body {
 }
 
 @media only screen and (min-width: 370px) {
+    #wrapper{
+        
+        margin-top: 15%;
+    }
     #greeting {
         color: #EF629F;
         font-size: 30pt;
@@ -48,7 +60,7 @@ body {
     #container {
 
 
-        /*    height: 110vh;*/
+            height: 110vh;
 
     }
 
@@ -63,6 +75,10 @@ body {
 }
 
 @media only screen and (min-width: 600px) {
+    #wrapper{
+        
+        margin-top: 10%;
+    }
     h1 {
         font-size: 30pt;
     }
@@ -92,7 +108,7 @@ body {
     #container {
 
 
-        /*    height: 200vh;*/
+            height: 200vh;
 
     }
 
@@ -107,6 +123,10 @@ body {
 }
 
 @media only screen and (min-width: 1024px) {
+    #wrapper{
+        
+        margin-top: 10%;
+    }
     h1 {
         font-size: 30pt;
     }
@@ -136,7 +156,7 @@ body {
     #container {
 
 
-        height: 52vh;
+        height: 200vh;
 
     }
 
@@ -151,6 +171,10 @@ body {
 }
 
 @media only screen and (min-width: 1200px) {
+    #wrapper{
+        
+        margin-top: 10%;
+    }
     h1 {
         font-size: 30pt;
     }
