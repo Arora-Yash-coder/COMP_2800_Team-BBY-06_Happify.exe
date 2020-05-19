@@ -36,15 +36,46 @@
                 <h2 id='pointofday'></h2>
                 
             </div>
-
-            <div id= "covid_intel" class="card" onclick="window.location.href='/pandemic_info' ">
+            <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+            <div id= "covid_intel" class="card" >
                 <div class="Intel card1">
                     <h1 class="second">COVID INTEL</h1>
+                    <div id = "latest_news_container">
+                        <!-- <span id="latest_news_Header">Latest News</span><br/> -->
+                        <span id="latest_news_title">Latest News title</span><br/>
+                        <span id="latest_news_url">Click On Me To Read!</span>
+
+                    </div>
+                  
+                    <span> </span>
+                    <script>
+                        $.ajax({
+                            type: "get",
+                            url: "/COVID_NEWS",
+                           
+                            dataType: "json",
+                            success: function (response) {
+                                let title = response[0].title
+                                let link = response[0].url
+                                $("#latest_news_title").html(title)
+                                $("#latest_news_container").css("background-color","rgba(235,236,15,0.8)")
+                                $("#latest_news_url").css("background-color","red")
+                                $("#latest_news_container").mouseup(()=>{
+                                    window.location.href = link
+                                })
+                                console.log(response[0])
+                            }
+                        });
+                    </script>
                 </div>
 
-                <div class="Intel card2">
+                <div class="Intel card2" onclick="window.location.href='/pandemic_info' ">
                     <div id='image2'>
-                        <img id="game_img" src="/img/info1.png">
+                        <span>Get Graphic Data By Clicking On Me!</span>
+                        <div>
+                            <img id="game_img" src="/img/info1.png">
+                        </div>
+                       
                     </div>
                 </div>
 
@@ -101,7 +132,7 @@
 
             <%- footer %>
 
-            <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+           
             
             <script src="/static/js/get_points.js"></script>
             <script src='/static/js/homepage.js'></script>

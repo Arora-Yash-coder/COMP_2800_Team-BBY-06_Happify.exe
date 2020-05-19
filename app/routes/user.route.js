@@ -2499,10 +2499,10 @@ module.exports = function (app) {
 
 
 	const https = require('https');
-	app.get("/CBC_NEWS", (req, res) => {
+	app.get("/COVID_NEWS", (req, res) => {
 	
 		
-		var myPath = "https://newsapi.org/v2/top-headlines?country=us&category=business&apiKey=8295de78f914447abfe4bc0c56f3d234";
+		var myPath = "https://newsapi.org/v2/top-headlines?country=ca&category=health&apiKey=8295de78f914447abfe4bc0c56f3d234";
 		
 
 		https.get(myPath, (resp) => {
@@ -2515,13 +2515,14 @@ module.exports = function (app) {
 		
 		  // The whole response has been received. Print out the result.
 		  resp.on('end', () => {
-			console.log(JSON.parse(data));
+			console.log(JSON.parse(data).articles[0]);
+			res.send(JSON.parse(data).articles)
 		  });
 		
 		}).on("error", (err) => {
 		  console.log("Error: " + err.message);
 		});
-
+		
 	})
 
 
