@@ -7,7 +7,7 @@ body {
     #footer {
         text-align: center;
         bottom: 0;
-        margin-top: 130px;
+        margin-top: 170px;
         color: #53131E;
         clear: both;
         position: relative;
@@ -19,7 +19,7 @@ body {
     #footer {
         text-align: center;
         bottom: 0;
-        margin-top: 250px;
+        margin-top: 450px;
         color: #53131E;
         clear: both;
         position: relative;
@@ -31,7 +31,7 @@ body {
     #footer {
         text-align: center;
         bottom: 0;
-        margin-top: 200px;
+        margin-top: 700px;
         color: #53131E;
         clear: both;
         position: relative;
@@ -43,7 +43,7 @@ body {
     #footer {
         text-align: center;
         bottom: 0;
-        margin-top: 280px;
+        margin-top: 940px;
         color: #53131E;
         clear: both;
         position: relative;
@@ -59,7 +59,7 @@ body {
     #footer {
         text-align: center;
         bottom: 0;
-        margin-top: 40px;
+        margin-top: 200px;
         color: #53131E;
         clear: both;
         position: relative;
@@ -68,7 +68,7 @@ body {
 }
 
 div {
-    height: 90vh;
+/*    height: 90vh;*/
     /*                background-image: url("/img/background.png");*/
     /*                background-size: cover;*/
     background-color: #99F7AB;
@@ -78,7 +78,7 @@ div {
 #title {
     padding-top: 13%;
     text-align: center;
-    color: white;
+    color: #53131e;
     font-size: 20pt;
 }
 
