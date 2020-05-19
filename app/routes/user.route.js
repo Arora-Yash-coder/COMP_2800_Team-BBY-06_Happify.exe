@@ -1,23 +1,22 @@
 module.exports = function (app) {
 
+	//FOR THE CONVENIENCE OF OF THE LATER VISITS
 	var path = __basedir + '/views/';
 	global.path = path;
 
+	var staticPath = __basedir + '/resources/static/';
 
-
-	var subs;
-	var vKey;
 
 	//It's a NodeJS package that allows us to hash passwords for security purposes.
 	const bcrypt = require("bcrypt");
 	//parse the body to the right format
 	bodyParser = require("body-parser")
 
-	// parse application/x-www-form-urlencoded
-	app.use(bodyParser.urlencoded({ extended: false }))
-	// parse application/json
-	app.use(bodyParser.json())
-
+	//// PARSE APPLICATION/X-WWW-FORM-URLENCODED///////////////
+	/**/app.use(bodyParser.urlencoded({ extended: false }))/**/
+	//                 PARSE APPLICATION/JSON                //
+	/**/app.use(bodyParser.json())						   /**/
+	///////////////////////////////////////////////////////////
 
 
 	//needless to say
@@ -28,10 +27,18 @@ module.exports = function (app) {
 	const fs = require('fs');
 	// const ejs = require('ejs');
 
+
+	//"users" IS THE MODULE WITH FUNCTIONS THAT ARE IN 
 	const users = require('../controllers/user.controller.js');
+	//"pusher" IS THE MODULE WITH FUNCTIONS RELATED TO Web-Push API
 	const pusher = require('../controllers/push.controller.js');
+
+	//{cookie-parser} IS THE LIBRARY TO DO COOKIE RELATED STUFF
+	//ON NODE SIDE, EITHER TO READ THE COOKIE FROM THE BROWSER
+	//OR SEND A COOKIE TO THE BROSWER
 	const cookieParser = require('cookie-parser');
 
+	
 	app.use("/", router);
 
 	app.use(bodyParser.json());
@@ -39,13 +46,13 @@ module.exports = function (app) {
 	app.use(bodyParser.json());
 	var morgan = require('morgan');
 
-	//import stockfish
+
+	//{stockfish} IS A POWERFUL CHESS ENGINE THAT WOULD
+	//CALCULATE THE MOVES BY ANALYIZING THE OVERALL SITUATION
+	//IT WOULD PROVIDE A "best move" AND A "ponder" SOLUTIONS
+	//AS A RESULT
 	const stockfish = require('stockfish');
-	var stockfishes = [];
-	var id = 0;
-	var uci = [];
-	stockfishes[id] = stockfish();
-	uci[id] = "position startpos moves "
+
 
 
 
@@ -71,15 +78,20 @@ module.exports = function (app) {
 	}));
 
 
+	//COMPARES THE COOKIE TO THE SESSION, FOR CHECKING IF THE 
+	//USER HAS LOGED OUT OR NOT! 
 	app.use((req, res, next) => {
-
+		//THIS IS TO MAKE SURE IF THE USER HAS CLICKED ON 
+		//THE LOGOUT BUTTON, THE USER LOGS OUT 
+		//AND THE COOKIES ARE CLEARED AND NEEDS TO RE-LOGIN
 		if (req.cookies.user_sid && !req.session.user_sid) {
 			res.clearCookie('user_sid');
 		}
 		next();
 	});
 
-	//check if a session is there
+	//THE SESSION CHECKER (#1) IS A MIDDLEWARE THAT WOULD CHECK IF THE USER
+	//HAS A SESSION ID OR NOT, IT IS NEEDED FOR THE LOGIN/LOGOUT FUNCTION
 	var sessionChecker = (req, res, next) => {
 		if (req.session.user_sid && req.cookies.user_sid) {
 			//if it is there, it would redirect to homepage
@@ -92,6 +104,11 @@ module.exports = function (app) {
 		}
 	};
 
+	//THE SESSION CHECKER (#2) IS A MIDDLEWARE THAT WOULD CHECK IF THE USER
+	//HAS A SESSION ID OR NOT, THIS IS FOR PAGES OTHER THAN THE LOGIN/REGISTER
+	//PAGE, IF ANYONE IS TRYING TO VISIT THOSE PAGES WITHOUT A SESSION ID
+	//OR A "user_sid" in a COOKIE. THEN THE USER WILL BE DIRECTED TO THE 
+	//LOG IN PAGE.
 	var sessionChecker2 = (req, res, next) => {
 		if (!req.session || !req.cookies.user_sid) {
 			//if it is there, it would redirect to homepage
@@ -103,23 +120,19 @@ module.exports = function (app) {
 			console.log(req.session.user_sid)
 			res.redirect("/login");
 		} else {
-			//if the session is not there or the user_sid wasn't correct,
-			//then it would move to the login page
+			//NEXT IS THE FUNCTION TO INVOKE AFTER THE CHECK IS COMPLETED
 			next();
 		}
 
 
 	};
 
-	//======================Judao ChessGame================================================
+	
 	app.get('/checkstatus', sessionChecker, (req, res) => {
 		res.redirect('/login');
 		res.end();
 	});
 
-	// app.get("/game/chess", (req, res) => {
-	// 	res.redirect("")
-	// })
 
 
 	app.get('/coupon', sessionChecker2, users.getCoupon);
@@ -127,9 +140,12 @@ module.exports = function (app) {
 	// var body_ejs = fs.readFileSync(path + "components/homepage_body.ejs", 'utf-8');
 	var navbar_top_ejs = fs.readFileSync(path + "components/navbar_top.ejs", 'utf-8');
 
+
 	var footer = fs.readFileSync(path + "components/footer.ejs", 'utf-8');
 
-
+	/////////////////////////////////////////////////////////////////////////////////////////////
+	//---THE FOLLOWING FUNCTIONS ARE ALL RELATED TO MONGODB'S CONNECTION, CONFIGURATION etc.---//
+	//vvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvv//
 	var MongoClient = require('mongodb').MongoClient;
 	const dbConfig = require('../config/mongodb.config.js');
 	var ObjectId = require('mongodb').ObjectID;
@@ -142,6 +158,7 @@ module.exports = function (app) {
 
 			dbo.collection("users").find({
 				_id: ObjectId(req.session.user_sid)
+
 			}).toArray(function (err, result) {
 
 				//  dbo.collection("coupons_available").aggregate(
@@ -173,13 +190,16 @@ module.exports = function (app) {
 	}
 
 	);
+	//^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^///
+	//---THE FOLLOWING FUNCTIONS ARE ALL RELATED TO MONGODB'S CONNECTION, CONFIGURATION etc.---//
+	/////////////////////////////////////////////////////////////////////////////////////////////
 
 
 
 
 
-
-
+	//THE USER WANTS TO CHANGE THE UI STYLE AND THE CHOICE IS POSTED ON THIS
+	//AND WILL ALTER THE DATA BASE UPON REQUEST.
 	app.post("/user_profile", (req, res) => {
 		console.log("req.body data schema ==================================")
 		console.log(req.body.ui_choice)
@@ -235,6 +255,7 @@ module.exports = function (app) {
 
 	})
 
+	//RENDERS THE USER PROFILE PAGE UPON REQUEST
 	app.get("/user_profile", sessionChecker2, (req, res) => {
 		//connect to the database
 		MongoClient.connect(dbConfig.url, function (err, db) {
@@ -265,11 +286,12 @@ module.exports = function (app) {
 
 	})
 
+	//THE ABOUT US PAGE UPON REQUEST 
 	app.get("/about_us", (req, res) => {
 		res.sendFile(staticPath + "about_us.html")
 	})
 
-	//goes to the homepage 
+	//THIS API SENDS THE USER TO THE DATABASE
 	app.get("/homepage", sessionChecker2, (req, res) => {
 
 		console.log("req.session.UI_style in 267")
@@ -277,6 +299,7 @@ module.exports = function (app) {
 		let state = null;
 
 		console.log(state)
+
 
 		MongoClient.connect(dbConfig.url, function (err, db) {
 			if (err) throw err;
@@ -326,9 +349,12 @@ module.exports = function (app) {
 				_id: ObjectId(req.session.user_sid)
 			}).toArray(function (err, result) {
 
-
+				//THE "state" PROPERTY IS STORED IN THE FOLLOWING DATA STRUCTURE IN THE DB:
+				//result[0].daily_task_rec[result[0].daily_task_rec.length - 1].state;
+				//WHILE THE VARIABLE "state" gets access to the data.
 				state = result[0].daily_task_rec[result[0].daily_task_rec.length - 1].state;
 
+				//IF THE USER IS AT A STATE OF 4, THEN THE USER SHOULD BE SENT TO THE GAME SECLECTION MENU
 				if (state == 4) {
 					res.end(res.render(path + "games_selection.ejs", {
 
@@ -395,7 +421,7 @@ module.exports = function (app) {
 	})
 
 
-	
+	//THIS IS A CHECKPOINT FOR THE USER TO SEE IF HE/SHE HAS DONE WORKING ON THE STUFF
 	app.get("/flow_final", sessionChecker2, (req, res) => {
 		MongoClient.connect(dbConfig.url, function (err, db) {
 			if (err) throw err;
@@ -404,7 +430,7 @@ module.exports = function (app) {
 			dbo.collection("users").find({
 				_id: ObjectId(req.session.user_sid)
 			}).toArray(function (err, result) {
-				res.render("flow_final.ejs" ,{ css: result[0].UI_style }) 
+				res.render("flow_final.ejs", { css: result[0].UI_style })
 			})
 		})
 	})
@@ -415,17 +441,35 @@ module.exports = function (app) {
 
 
 
-	//when the users click on this,
+	//AN API TO REDEEM COUPON
+	//INVOKED BY A 'POST' REQUEST OF THE ID OF THE COUPON TO THE DATABASE
 	app.post('/coupon/redeem', sessionChecker2, users.redeemCoupon);
 
 
-	//---------------------Judao ChessGame--------------------------------------
+	
+	/////////////////////////////////////////////////////////////////////////////////////////////
+	//-----------------------------------Judao ChessGame-------------------------------------- //
+	//vvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvv//
+	
+
+		//STOCK FISH BE PUT INTO AN ARRAY 
+	//SO THE 
+	var stockfishes = [];
+	var id = 0;
+	var uci = [];
+	stockfishes[id] = new stockfish();
+	uci[id] = "position startpos moves "
+
+
+
+	//INVOKED UPON CLICKING ON THE "CHESS GAME"
+	//ENTER THE CHESSBOARD
 	app.get("/minigames/chess", (req, res) => {
 		res.sendFile(staticPath + "/minigames/chess/chessboard.html")
 	})
 
 
-
+	//
 	app.get("/minigames/chess/restart", (req, res) => {
 		uci[id] = "position startpos moves ";
 		stockfishes[id].postMessage(uci[id]);
@@ -482,7 +526,7 @@ module.exports = function (app) {
 	//sutff related to ejs rendering
 
 
-	var staticPath = __basedir + '/resources/static/';
+	
 
 	app.use(express.static(staticPath));
 	global.staticPath = staticPath;
@@ -512,7 +556,7 @@ module.exports = function (app) {
 
 
 	//go to the reminder page
-	app.get('/reminder',sessionChecker2, (req, res) => {
+	app.get('/reminder', sessionChecker2, (req, res) => {
 		// res.sendFile(path + "remtest.html");
 		MongoClient.connect(dbConfig.url, function (err, db) {
 			if (err) throw err;
@@ -521,13 +565,14 @@ module.exports = function (app) {
 			dbo.collection("users").find({
 				_id: ObjectId(req.session.user_sid)
 			}).toArray(function (err, result) {
-				res.render(path + "reminder.ejs" , 
-				{ css: result[0].UI_style, 
-					navbar : navbar_top_ejs,
-				});
+				res.render(path + "reminder.ejs",
+					{
+						css: result[0].UI_style,
+						navbar: navbar_top_ejs,
+					});
 			})
 		})
-		
+
 	});
 
 
@@ -557,7 +602,7 @@ module.exports = function (app) {
 			if (err) throw err;
 			var dbo = db.db("test");
 
-			//find the question from the db
+			//PLUGS THE QUESTION OUT FROM THE DB
 			dbo.collection("daily_tasks").find({
 				id: question_id,
 			}).toArray((err, result) => {
@@ -568,7 +613,7 @@ module.exports = function (app) {
 				if (answer == result[0].answer || result[0].answer == "null") {
 					MongoClient.connect(dbConfig.url, function (err, db) {
 
-						console.log("作答正确")
+						console.log("Correct Answer")
 						if (err) throw err;
 						var dbo = db.db("test");
 						//add it to the finished arry
@@ -639,7 +684,8 @@ module.exports = function (app) {
 
 	})
 
-
+	//BY VISITING THIS LINK, THE USER'S STATE WILL BE INCREASE 1
+	//EVENT TRIGGERED BY ANSWERING THE ANSWERS CORRECTLY
 	app.post('/state_add', sessionChecker2, (req, res) => {
 
 		let state = null;
@@ -687,21 +733,7 @@ module.exports = function (app) {
 	})
 
 
-	app.get('/state_minus', (req, res) => {
-		MongoClient.connect(dbConfig.url, function (err, db) {
-			if (err) throw err;
-			var dbo = db.db("test");
-
-			dbo.collection("users").updateOne({
-				_id: ObjectId(req.session.user_sid),
-				daily_task_rec: { $elemMatch: { date: { $lte: new Date() } } }
-			}, { $inc: { "daily_task_rec.$.state": -1 } },
-
-			)
-			res.send("state minused 1!!!!!")
-
-		})
-	})
+	
 
 	// app.get('/daily_tasks', function (req, res) {
 
@@ -871,28 +903,9 @@ module.exports = function (app) {
 
 
 
-
+	//THIS FUNCTION CHECKS WHICH STATE THE USER IS IN
+	//RETURNS AN INTEGER $GTE 0 && $LTE 7
 	app.get("/get_state", sessionChecker2, users.getState)
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
@@ -901,11 +914,7 @@ module.exports = function (app) {
 	app.get('/daily_tasks', sessionChecker2, function (req, res) {
 		console.log("req.session.user_sid")
 		console.log(req.session.user_sid)
-		function get_stuff_to_send() {
-
-		}
-
-
+	
 		let state = null;
 		let added_item = [];
 		MongoClient.connect(dbConfig.url, function (err, db) {
@@ -1025,152 +1034,8 @@ module.exports = function (app) {
 
 		});
 
-
-
-
-
-
-		// let user = null;
-		// //indicating how many items left to be added into the array
-		// let n_to_go = 0;
-		// //used to store the upcoming tasks' ids
-		// let go_ahead = []
-		// MongoClient.connect(dbConfig.url, function (err, db) {
-		// 	if (err) throw err;
-		// 	var dbo = db.db("test");
-		// 	dbo.collection("users").findOne({
-		// 		_id: ObjectId(req.session.user_sid)
-		// 	}).then(result => {
-		// 		//if the user exists
-		// 		if (result) {
-		// 			//if the user has not yet finished the tasks
-		// 			if (result.daily_task_rec[0].finished_id.length != 0) {
-		// 				//the array is needed afterwards
-		// 				go_ahead = result.daily_task_rec[0].finished_id;
-		// 				//the number of stuff to go
-		// 				n_to_go = 3 - go_ahead.length;
-		// 			} else {
-		// 				n_to_go = 3
-		// 				go_ahead = [0]
-		// 			}
-		// 		}
-		// 	}).then(() => { })
-
-		// 	let added_item = []
-		// 	//find those that's not in the done list
-		// 	dbo.collection("daily_tasks").find({
-		// 		"id": { $nin: go_ahead }
-		// 	}).limit(n_to_go).toArray((err, daily_tasks) => {
-
-		// 		console.log("go_ahead")
-		// 		console.log(go_ahead)
-		// 		console.log("n_to_go")
-		// 		console.log(n_to_go)
-		// 		console.log("daily_tasks")
-		// 		console.log(daily_tasks)
-
-
-		// 		for (var i in daily_tasks) {
-		// 			added_item.push(daily_tasks[i].id)
-		// 		}
-		// 		console.log("=============added===daily_tasks===========================")
-		// 		console.log(added_item)
-
-		// 		res.render(path + "daily_tasks.ejs", {
-		// 			navbar: undefined,
-		// 			todolist: daily_tasks,
-		// 			todo_item: daily_tasks,
-		// 			footer: footer
-		// 		})
-		// 	})
-
-		// 	dbo.collection("users").updateOne(
-		// 		{ _id: ObjectId(req.session.user_sid) },
-		// 		{
-		// 			$push: { daily_task_archived: { $each: added_item } }
-		// 		},
-		// 		{ new: true, upsert: true }
-
-		// 	)
-
-		// 	for (var i in added_item) {
-		// 		console.log("==========================added_item[i]")
-		// 		console.log(added_item[i])
-
-		// 	}
-
-		// 	db.close();
-
-		// });
-
-
-
-
-
-
-
-
 	});
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-	// let daily_tasks = [];
-	// MongoClient.connect(dbConfig.url, function (err, db) {
-	// 	if (err) throw err;
-	// 	var dbo = db.db("test");
-	// 	dbo.collection("daily_tasks").find({}).toArray(function (err, result) {
-	// 		if (err) throw err;
-	// 		console.log(result);
-	// 		daily_tasks = result;
-	// 		db.close();
-	// 		// _reader
-	// 		res.render(path + "daily_tasks.ejs", {
-	// 			navbar: undefined,
-	// 			todolist: daily_tasks,
-	// 			todo_item: daily_tasks,
-	// 			footer: footer
-	// 		})
-	// 	});
-	// });
-
-
-	// });
 
 
 
@@ -1199,6 +1064,36 @@ module.exports = function (app) {
 	//(not in use)get daily tasks
 	app.route('/getDailyTasks').get(users.dailyTasks);
 
+	//BY CLICKING ON THE 
+	app.route('/user_profile/getProfile').get(users.getProfile);
+
+	//WHEN THE USER UPDATES THE PROFILE, A POST WILL BE SENT HERE, AND EXCUTES THE CORRESPONDINGG 
+	//FUNCTIONS THAT WILL DO THE UPDATE PROFILE WORK.
+	app.route('/user_profile/setProfile').post(users.setProfile);
+
+
+
+	/////////////////////////////////////////////////////////////////////////////////////////////
+	// The Following Functions Are Deprecated And Will Be Removed Later, If Never Brought Back //
+	//vvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvv//
+
+	//WHEN THIS API IS INVOKED, THE USER'S STATE WILL GO BACK 1
+	app.get('/state_minus', (req, res) => {
+		MongoClient.connect(dbConfig.url, function (err, db) {
+			if (err) throw err;
+			var dbo = db.db("test");
+
+			dbo.collection("users").updateOne({
+				_id: ObjectId(req.session.user_sid),
+				daily_task_rec: { $elemMatch: { date: { $lte: new Date() } } }
+			}, { $inc: { "daily_task_rec.$.state": -1 } },
+
+			)
+			res.send("state minused 1!!!!!")
+
+		})
+	})
+
 
 	//vote down the daily task(not in use)
 	app.route('/getDailyTasks/dislikeTask').post(users.taskDislike);
@@ -1211,16 +1106,13 @@ module.exports = function (app) {
 	app.route('/getDailyTasks/likeKnowledge').post(users.knowledgeLike);
 
 
-
-	app.route('/user_profile/getProfile').get(users.getProfile);
-
-	app.route('/user_profile/setProfile').post(users.setProfile);
-
-	//^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-
+	//^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+	// The Above Functions Are Deprecated And Will Be Removed Later, If Never Brought Back      //
+	//////////////////////////////////////////////////////////////////////////////////////////////
 
 
 	//=====================REGISTER PAGE=================================================================================
+
 	app.route('/register')
 		.get(sessionChecker, (req, res) => {
 			res.sendFile(staticPath + "signup.html");
@@ -1245,7 +1137,8 @@ module.exports = function (app) {
 			res.render(path + 'login.ejs', { css: req.session.ui_choice });
 		})
 
-	// route for user logout
+	// A ROUTE THE USER WILL VISIT WHEN CLICKING ON THE LOGOUT BUTTON
+	// THE API INVOKES 
 	app.get('/logout', (req, res) => {
 		MongoClient.connect(dbConfig.url, function (err, db) {
 			if (err) throw err;
@@ -1274,7 +1167,7 @@ module.exports = function (app) {
 
 	})
 
-	
+	//VISITS THE 'MY RECORD' PAGE WHERE CHARTS AND GRAPHS ARE PRESENTED
 	app.get("/my_record", (req, res) => {
 		res.render(path + "my_record.ejs", {
 			navbar: navbar_top_ejs,
@@ -1285,19 +1178,20 @@ module.exports = function (app) {
 	})
 
 
-	app.get("/record",(req,res)=>{
+	//THIS ROUTE GET'S THE USER'S INFORMATION AND SENDS IT TO THE FRONTT END. 
+	app.get("/record", (req, res) => {
 		MongoClient.connect(dbConfig.url, function (err, db) {
 			if (err) throw err;
 			var dbo = db.db("test");
-		
+
 			//find the user by session ID
 			dbo.collection("users").find({
 				_id: ObjectId(req.session.user_sid)
 			}).toArray(function (err, theUser) {
-			
-					result=theUser[0],
+
+				result = theUser[0],
 					res.send(result)
-			
+
 
 			})
 			db.close()
@@ -1322,6 +1216,7 @@ module.exports = function (app) {
 	//imported for dealing with submitted pictures
 	var formidable = require('formidable');
 
+	//
 	app.post("/check_time", (req, res) => {
 		console.log("time should be in here++++++++++++++++++++++++++++++")
 		let client_timestamp = Date.parse(req.body.d)
@@ -1367,11 +1262,12 @@ module.exports = function (app) {
 		});
 	});
 
+
 	app.get('/admin', (req, res) => {
 		res.render(path + "admin_verify.ejs");
 	});
 
-	//goes to the admin page
+	//goes to the ADMIN'S HOME page
 	app.get('/admin_home', (req, res) => {
 		res.render(path + "admin_home.ejs");
 	});
@@ -1450,6 +1346,8 @@ module.exports = function (app) {
 		// })
 	});
 
+
+	//BY VISITING "/coupon/delete" THE ADMIN CAN DELETE A COUPON BY ITS ID(INVOKED UPON CLICKING ON THE BTN)
 	app.post("/coupon/delete", (req, res) => {
 		ids_to_delete = req.body["checked[]"]
 		ids = []
