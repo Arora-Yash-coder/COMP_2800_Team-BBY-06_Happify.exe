@@ -436,7 +436,7 @@ img {
 
 }
 
-
+/* 
 #Help {
     margin-left: 25px;
     margin-right: 25px;
@@ -450,7 +450,7 @@ img {
     grid-template-columns: 50% 50%;
 
 
-}
+} */
 
 
 #games {
@@ -534,7 +534,7 @@ img {
     border: 2px solid rgba(83, 19, 30, 0.7);
 }
 
-#redeem1 {
+.card1 {
     margin-top: auto;
     margin-bottom: auto;
     border-radius: 25px 0 0 25px;
@@ -544,7 +544,7 @@ img {
 
 }
 
-#redeem2 {
+.card2 {
     margin-top: auto;
     margin-bottom: auto;
 
