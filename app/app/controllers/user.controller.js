@@ -863,3 +863,30 @@ exports.getState = (req, res) => {
 //     })
 
 // }
+
+exports.checkCoupons =  (req, res) => {
+    // res.setHeader('Content-Type', 'application/json');
+    let coupon_id_array;
+    MongoClient.connect(dbConfig.url, function (err, db) {
+        if (err) throw err;
+        var dbo = db.db("test");
+
+        dbo.collection("users").find({
+            _id: ObjectId(req.session.user_sid)
+        }).toArray(function (err, result) {
+            coupon_id_array = result[0].coupons_owned;
+
+            dbo.collection("coupons_available").find({
+                id: { $in: coupon_id_array }
+            }).limit(5).toArray(function (err, data) {
+
+                console.log(data)
+                res.end(res.render(path + "my_coupons.ejs", {
+                    coupons: data,
+                    navbar: navbar_top_ejs,
+                    footer: footer
+                }));
+            });
+        });
+    });
+}

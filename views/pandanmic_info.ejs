@@ -1,0 +1,141 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+</head>
+<body>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.3/Chart.bundle.min.js"></script>
+    
+    <div class="graph" id="line_graph">
+        <canvas id="line-chart" width="40" height="50"></canvas>
+        <!-- <button onclick="getData()">click to show stuff</button>
+        <button onclick="drawGraph()">Draw</button> -->
+    </div>
+
+
+    <div class="graph" id="radar_graph">
+        <canvas id="radar-chart" width="40" height="50"></canvas>
+    </div>
+    <script>
+        
+        var data = null;
+        var days = []
+        var infected_num = []
+        async function getData() {
+            console.log("doing")
+            let get_data = await $.ajax({
+                type: "get",
+                url: "/parse_covid_data",
+
+                dataType: "json",
+                success: function (response) {
+                    data = response
+                    console.log(data)
+                    
+                    for (var i in data) {
+                        console.log( data[i]._id)
+                        days.push("Reported_Date " + data[i]._id)
+                        console.log(data[i].count)
+                        infected_num.push(data[i].count)
+                    }
+                    return
+                    
+
+                }
+            });
+
+
+        }
+
+        //line chart
+        async function drawGraph() {
+            new Chart(document.getElementById("line-chart"), {
+                type: 'line',
+                data: {
+                    //days
+                    labels: days,
+
+                    datasets: [{
+                        data: infected_num,
+                        label: "USER POINTS",
+                        borderColor: "#3e95cd",
+                        fill: true
+                    },
+                        // {
+                        // 	data: [86, 114, 106, 106, 107, 111, 133, 221, 783, 2478],
+                        // 	label: "Coupons Redeemed",
+                        // 	borderColor: "#3e95cd",
+                        // 	fill: false
+                        // }, 
+
+                    ]
+                },
+                options: {
+                    title: {
+                        display: true,
+                        text: 'User Record'
+                    }
+                }
+            });
+
+
+            // //radar chart
+            // new Chart(document.getElementById("radar-chart"), {
+            //     type: 'radar',
+            //     data: {
+            //         labels: ["Multi-Tower", "TicTacToe", "Zombie", "Snake Eater", "Chess"],
+            //         datasets: [
+            //             {
+            //                 label: "Time Of Play",
+            //                 fill: true,
+            //                 backgroundColor: "rgba(179,181,198,0.2)",
+            //                 borderColor: "rgba(227,71,43,1)",
+            //                 pointBorderColor: "#fff",
+            //                 pointBackgroundColor: "rgba(179,181,198,1)",
+            //                 data: [15, 15, 15, 15, 10]
+            //             }, {
+            //                 label: "Points Earned",
+            //                 fill: true,
+            //                 backgroundColor: "rgba(255,99,132,0.2)",
+            //                 borderColor: "rgba(10,2,31,1)",
+            //                 pointBorderColor: "#fff",
+            //                 pointBackgroundColor: "rgba(255,99,132,1)",
+            //                 pointBorderColor: "#fff",
+            //                 data: [10, 20, 5, 10, 10]
+            //             }
+            //         ]
+            //     },
+            //     options: {
+            //         title: {
+            //             display: true,
+            //             // text: 'Distribution in % of world population'
+            //         }
+            //     }
+            // });
+
+
+
+
+
+        }
+
+        getData().then(() => {
+            drawGraph()
+        })
+
+        // drawGraph()
+        $(".choice_btn").click((e) => {
+            $(e.target.parentNode.parentNode).css("display", "none")
+            $(e.target.parentNode.parentNode).css("height", "0")
+            $(e.target.parentNode.parentNode).remove()
+        })
+
+
+
+    </script>
+
+</body>
+</html>
