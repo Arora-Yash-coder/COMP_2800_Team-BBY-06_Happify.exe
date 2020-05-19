@@ -2487,9 +2487,9 @@ module.exports = function (app) {
 		// 	})
 	})
 
-	app.get("/pandanmic_info", (req, res) => {
+	app.get("/pandemic_info", (req, res) => {
 
-		res.render(path + "pandanmic_info.ejs")
+		res.render(path + "pandemic_info.ejs")
 	})
 
 
