@@ -34,7 +34,7 @@ body {
     #container {
 
 
-        height: 143vh;
+        height: 200vh;
 
     }
 
@@ -59,7 +59,7 @@ body {
     #container {
 
 
-        height: 110vh;
+        height: 200vh;
 
     }
 
@@ -145,7 +145,7 @@ body {
     #container {
 
 
-        height: 130vh;
+        height: 200vh;
 
     }
 
@@ -188,14 +188,14 @@ body {
     #container {
 
 
-        height: 170vh;
+        height: 200vh;
 
     }
 
     #footer {
         bottom: 0;
         /*      margin-top: 50px;*/
-        /*      margin-top: 50px;*/
+              margin-top: 1000px;
         color: #53131E;
         clear: both;
         position: relative;

@@ -14,16 +14,23 @@
 </head>
 
 <body>
-  <div id='container'>
-      <div id="navbar">
+    <div id="navbar">
     <%- navbar%></div>
+  <div id='container'>
+      
     <div id="header">
       <!--      <div style="float: right">Step 1 of 3</div>-->
       <br>
       <div id="greeting">
         <p class='top'>Daily tasks</p>
-        <p class='points' id="show_points"> Current Points: </p>
-
+<!--        <p class='points' id="show_points"> Current Points: &nbsp;&nbsp;</p>-->
+<div id="stats">
+                <h2>All points you earned: </h2>
+                <h2 id='pointsofar'></h2>
+                <h2>You earned today: </h2>
+                <h2 id='pointofday'></h2>
+                
+            </div>
         <p>By reading each item and giving a feedback, you get five points.</p>
       </div>
       

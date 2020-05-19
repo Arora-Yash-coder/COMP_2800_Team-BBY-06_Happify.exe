@@ -226,7 +226,10 @@ function myNavbar() {
         dataType: "json",
         success: function (response) {
 
-          $("#show_points").html("Current Points:" + response.result[0].points)
+          let pointstoday = response.result[0].daily_task_rec[response.result[0].daily_task_rec.length - 1].points_earned_today
+                    $("#pointsofar").html(response.result[0].points);
+                    $("#pointofday").html(pointstoday);
+            
         },
         error: (response) => {
           console.log("failed")

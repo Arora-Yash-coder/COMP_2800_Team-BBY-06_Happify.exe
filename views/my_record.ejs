@@ -8,241 +8,40 @@
         integrity="sha256-9/aliU8dGd2tb6OSsuzixeV4y/faTqgFtohetphbbj0=" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.3/Chart.bundle.min.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="/static/css/my_record<%=css%>.css">
     <title>My Record</title>
     <style>
-        .graph {
-            background-color: rgba(255,255,240,0.9);
-            
-        }
-
-        .square_btn {
-            display: inline-block;
-            padding: 0.3em 1em;
-            text-decoration: none;
-            color: #EF629F;
-            border: solid 2px #EF629F;
-            border-radius: 3px;
-            transition: .4s;
-        }
-
-        .square_btn:hover {
-            background: #EF629F;
-            color: white;
-        }
-
-        .square_btn_second {
-            display: inline-block;
-            padding: 0.3em 1em;
-            text-decoration: none;
-            color: #3AB795;
-            border: solid 2px #3AB795;
-            border-radius: 3px;
-            transition: .4s;
-        }
-
-        .square_btn_second:hover {
-            background: #EF629F;
-            color: white;
-        }
-
-        body {
-            text-align: center;
-            margin: 0;
-            background-image: url(../img/background.png);
-            background-size: cover;
-            height: 120vh;
-            display: inline;
-
-        }
-
-        img {
-            object-fit: contain;
-            max-width: 90%;
-            max-height: 95px;
-            display: block;
-            margin-left: auto;
-            margin-right: auto;
-        }
-
-        .first {
-            color: #EF629F;
-
-        }
-
-        .second {
-            color: #3AB795;
-
-        }
-
-        .top {
-
-            color: #3AB795;
-            font-size: 20pt;
-            font-weight: bold;
-        }
-
-        .points {
-            color: #EF629F;
-            font-size: 20pt;
-            margin-top: -10px;
-            font-weight: bold;
-        }
-
-        #container {
-            /*            display: grid;*/
-            grid-template-rows: 17% 72% 1%;
-            height: 100vh;
-
-        }
-
-        #inner {
-            /* grid-row: 2 / span 1;
-            display: grid; */
-            grid-template-rows: 50% 50%;
-            height: 80vh;
-            margin-bottom: 20px;
-        }
-
-        #sleep {
-            margin-left: 25px;
-            margin-right: 25px;
-            margin-top: 10px;
-            margin-bottom: 10px;
-            border-radius: 25px;
-            background-color: #B8D8BA;
-            grid-row: 1 / span 1;
-            display: grid;
-            grid-template-rows: 50% 50%;
-            color: #EF629F;
-        }
-
-        #sleep1 {
-            padding: 15px;
-            margin-top: auto;
-            margin-bottom: auto;
-            border-radius: 25px 0 0 25px;
-
-
-            grid-row: 1 / span 1;
-
-        }
-
-        #selection {
-            margin-top: auto;
-            margin-bottom: auto;
-            border-radius: 0 25px 25px 0;
-
-
-            grid-row: 2 / span 1;
-
-        }
-
-
-        #eat {
-            margin-left: 25px;
-            margin-right: 25px;
-            margin-top: 10px;
-            margin-bottom: 10px;
-            border-radius: 25px;
-            grid-row: 2 / span 1;
-            background-color: #FAC9B8;
-            display: grid;
-            grid-template-rows: 50% 50%;
-            color: #3AB795;
-        }
-
-        #eat1 {
-            padding: 30px;
-            margin-top: auto;
-            margin-bottom: auto;
-            border-radius: 25px 0 0 25px;
-
-
-            grid-row: 1 / span 1;
-
-        }
-
-        #selection2 {
-            margin-top: auto;
-            margin-bottom: auto;
-            border-radius: 0 25px 25px 0;
-
-
-            grid-row: 2 / span 1;
-
-        }
-
-
-        #header {
-            grid-row: 1 / span 1;
-        }
-
-        #greeting {
-            color: #EF629F;
-        }
-
-        .container {
-            list-style-type: none;
-            margin: 0;
-
-            overflow: hidden;
-            background-color: #75DBCD;
-        }
-
-        .list {
-            float: left;
-        }
-
-        .list a {
-            display: block;
-            color: white;
-            text-align: center;
-            padding: 14px 16px;
-            text-decoration: none;
-        }
-
-        .list a:hover {
-            background-color: rgb(65, 134, 125);
-        }
+        
     </style>
 </head>
 
 <body>
+    <nav id='navbar'>
+    <%-navbar %></nav>
     <div id='container'>
         <div id="header">
-            <%-navbar %>
+            
+<!--
             <div id="greeting">
                 <p class='top'>My health</p>
                 <p class='points'> Current Points: </p>
 
 
             </div>
+-->
+            <h1 class='top'>My Record</h1>
+            <div id="stats">
+                <h2>All points you earned: </h2>
+                <h2 id='pointsofar'></h2>
+                <h2>You earned today: </h2>
+                <h2 id='pointofday'></h2>
+                
+            </div>
 
         </div>
         <div id='inner'>
 
-            <div id="sleep" class="check sleep_check">
-                <div id='sleep1'>
-                    <h1>Did you sleep well?</h1>
-                    <p>Sleep repairs you.</p>
-                </div>
-                <div id='selection'>
-
-                    <a class="square_btn choice_btn">Yes</a>
-                    <a class="square_btn choice_btn">No</a>
-                </div>
-            </div>
-
-            <div id="eat" class="check eat_check">
-                <div id='eat1'>
-                    <h1>Did you eat well?</h1>
-                    <p>Eat healthy foods.</p>
-                </div>
-                <div id='selection2'>
-                    <a class="square_btn_second choice_btn">Yes</a>
-                    <a class="square_btn_second choice_btn ">No</a>
-                </div>
-            </div>
+           
 
             <div class="graph" id="line_graph">
                 <canvas id="line-chart" width="40" height="50"></canvas>
@@ -264,119 +63,11 @@
 
     </div>
     <br>
-    <%- footer %>
+    <footer id='footer'>
+    <%- footer %></footer>
 
 
-    <script>
-        var user = null;
-        var days = []
-        var points_arr = []
-        async function getData() {
-            let get_data = await $.ajax({
-                type: "get",
-                url: "/record",
-
-                dataType: "json",
-                success: function (response) {
-                    user = response
-                    daily_task = user["daily_task_rec"];
-
-                    for (var i in daily_task) {
-                        days.push("day " + daily_task[i].day)
-                        points_arr.push(daily_task[i].points_earned_today)
-                    }
-
-                }
-            });
-
-
-        }
-
-        //line chart
-        async function drawGraph() {
-            new Chart(document.getElementById("line-chart"), {
-                type: 'line',
-                data: {
-                    //days
-                    labels: days,
-
-                    datasets: [{
-                        data: points_arr,
-                        label: "USER POINTS",
-                        borderColor: "#3e95cd",
-                        fill: true
-                    },
-                        // {
-                        // 	data: [86, 114, 106, 106, 107, 111, 133, 221, 783, 2478],
-                        // 	label: "Coupons Redeemed",
-                        // 	borderColor: "#3e95cd",
-                        // 	fill: false
-                        // }, 
-
-                    ]
-                },
-                options: {
-                    title: {
-                        display: true,
-                        text: 'User Record'
-                    }
-                }
-            });
-
-
-            //radar chart
-            new Chart(document.getElementById("radar-chart"), {
-                type: 'radar',
-                data: {
-                    labels: ["Multi-Tower", "TicTacToe", "Zombie", "Snake Eater", "Chess"],
-                    datasets: [
-                        {
-                            label: "Time Of Play",
-                            fill: true,
-                            backgroundColor: "rgba(179,181,198,0.2)",
-                            borderColor: "rgba(227,71,43,1)",
-                            pointBorderColor: "#fff",
-                            pointBackgroundColor: "rgba(179,181,198,1)",
-                            data: [15, 15, 15, 15, 10]
-                        }, {
-                            label: "Points Earned",
-                            fill: true,
-                            backgroundColor: "rgba(255,99,132,0.2)",
-                            borderColor: "rgba(10,2,31,1)",
-                            pointBorderColor: "#fff",
-                            pointBackgroundColor: "rgba(255,99,132,1)",
-                            pointBorderColor: "#fff",
-                            data: [10, 20, 5, 10, 10]
-                        }
-                    ]
-                },
-                options: {
-                    title: {
-                        display: true,
-                        // text: 'Distribution in % of world population'
-                    }
-                }
-            });
-
-
-
-
-
-        }
-
-        getData().then(() => {
-            drawGraph()
-        })
-
-        $(".choice_btn").click((e) => {
-            $(e.target.parentNode.parentNode).css("display", "none")
-            $(e.target.parentNode.parentNode).css("height", "0")
-            $(e.target.parentNode.parentNode).remove()
-        })
-
-
-
-    </script>
+    <script src='/static/js/my_record.js'></script>
 <!-- Go to www.addthis.com/dashboard to customize your tools -->
 <script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-5ec2cbf0773973c5"></script>
 </body>
