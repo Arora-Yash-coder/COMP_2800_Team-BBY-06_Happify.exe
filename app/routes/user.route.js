@@ -430,8 +430,10 @@ module.exports = function (app) {
 			dbo.collection("users").find({
 				_id: ObjectId(req.session.user_sid)
 			}).toArray(function (err, result) {
-				res.render("flow_final.ejs", { css: result[0].UI_style,
-                                             navbar: navbar_top_ejs})
+				res.render("flow_final.ejs", {
+					css: result[0].UI_style,
+					navbar: navbar_top_ejs
+				})
 			})
 		})
 	})
@@ -1493,6 +1495,13 @@ module.exports = function (app) {
 		});
 
 		//============DBwork=====Tiffany=================================================
+
+
+
+
+
+
+
 		app.post('/daily_tasks', (req, res) => {
 
 			// let added_item = [];
@@ -2450,15 +2459,15 @@ module.exports = function (app) {
 
 
 	app.get("/parse_covid_line_data", (req, res) => {
-		
+
 		try {
-		
+
 			MongoClient.connect(dbConfig.url, function (err, db) {
 				if (err) throw err;
 				var dbo = db.db("test");
 				dbo.collection("covid_data").aggregate(
-					[ { $unwind: "$Reported_Date" },  { $sortByCount: "$Reported_Date" } ]
-				).sort({_id:1}).toArray(function (err, infected) {
+					[{ $unwind: "$Reported_Date" }, { $sortByCount: "$Reported_Date" }]
+				).sort({ _id: 1 }).toArray(function (err, infected) {
 
 					console.log(infected)
 					res.send(infected)
@@ -2487,23 +2496,62 @@ module.exports = function (app) {
 		// 	})
 	})
 
+
+
+	const https = require('https');
+	app.get("/CBC_NEWS", (req, res) => {
+	
+		
+		var myPath = "https://newsapi.org/v2/top-headlines?country=us&category=business&apiKey=8295de78f914447abfe4bc0c56f3d234";
+		
+
+		https.get(myPath, (resp) => {
+		  let data = '';
+		
+		  // A chunk of data has been recieved.
+		  resp.on('data', (chunk) => {
+			data += chunk;
+		  });
+		
+		  // The whole response has been received. Print out the result.
+		  resp.on('end', () => {
+			console.log(JSON.parse(data));
+		  });
+		
+		}).on("error", (err) => {
+		  console.log("Error: " + err.message);
+		});
+
+	})
+
+
+
+
+
+
+
+
+
+
+
+
 	app.get("/pandemic_info", (req, res) => {
 
 		res.render(path + "pandemic_info.ejs")
 	})
 
 
-		
+
 	app.get("/parse_covid_bar_data", (req, res) => {
-		
+
 		try {
 			console.log("about to insert");
 			MongoClient.connect(dbConfig.url, function (err, db) {
 				if (err) throw err;
 				var dbo = db.db("test");
 				dbo.collection("covid_data").aggregate(
-					[ { $unwind: "$HA" },  { $sortByCount: "$HA" } ]
-				).sort({_id:1}).toArray(function (err, infected) {
+					[{ $unwind: "$HA" }, { $sortByCount: "$HA" }]
+				).sort({ _id: 1 }).toArray(function (err, infected) {
 
 					console.log(infected)
 					res.send(infected)
