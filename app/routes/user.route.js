@@ -578,7 +578,7 @@ module.exports = function (app) {
 	});
 
 	app.get("/counselling",sessionChecker2, (req, res)=>{
-		
+		res.render(path + "counselling.ejs",{navbar:navbar_top_ejs})
 	})
 
 	//subscribe web-push notification stuff
@@ -2540,7 +2540,7 @@ module.exports = function (app) {
 
 	app.get("/pandemic_info", (req, res) => {
 
-		res.render(path + "pandemic_info.ejs")
+		res.render(path + "pandemic_info.ejs",{navbar:navbar_top_ejs})
 	})
 
 

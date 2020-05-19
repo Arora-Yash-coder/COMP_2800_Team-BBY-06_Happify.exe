@@ -3,7 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Document</title>.
+    <link rel="stylesheet" type="text/css" href="/static/css/navbar.css">    
+
     <style>
         html,
         body {
@@ -23,7 +25,7 @@
 <body>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.3/Chart.bundle.min.js"></script>
-
+    <%-navbar%>
     <div class="graph" id="line_graph">
         <canvas id="line-chart" width="40" height="50"></canvas>
     </div>
@@ -177,7 +179,7 @@
             drawLineGraph()
         }).then(() => {
             getBarData().then(() => {
-                drawBarGraph()
+                drawBarGraph().then(drawMap())
             })
         })
 
@@ -225,10 +227,11 @@
 
 
     <script>
+async function drawMap(){
 
 
-
-
+console.log("data in line 232")
+        console.log(data)
         var chart = am4core.create("chartdiv", am4maps.MapChart);
 
         // Set map definition
@@ -246,7 +249,7 @@
 
         // Configure series
         var polygonTemplate = polygonSeries.mapPolygons.template;
-        polygonTemplate.tooltipText = "{HA_Title}";
+        polygonTemplate.tooltipText = "{HA_Title}" ;
         polygonTemplate.fill = am4core.color("#74B266");
 
         // Create hover state and set alternative fill color
@@ -257,6 +260,7 @@
         chart.zoomControl = new am4maps.ZoomControl();
 
 // console.log(JSON.stringify(BC))
+}
 
     </script>
 

@@ -3,9 +3,80 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Counselling</title>
-    
+    <link rel="stylesheet" href="/static/css/counselling.css">
+    <link rel="stylesheet" href="/static/css/homepage.css">
+    <link rel="stylesheet" type="text/css" href="/static/css/navbar.css">    
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+
+    <style>
+        body{
+            text-align: center;
+        }
+        .header1{
+            margin: 10px;
+        }
+
+       .link{
+            text-decoration: underline;
+            color: blue;
+            font: bold;
+        }
+        .card{
+            display: block;
+        }
+
+
+    </style>
+
+
+
 </head>
 <body>
+
+    <%-navbar%>
+
+    <span id = heading1>Mental Helath Services</span>
+    <div class="card">
+        <span class="header1">Outter Link</span>
+        <div class="card2" id = "card_link_1">
+            <span id="crisiscenter_span" class="card collapse" >Crisis Centre Website</span>
+            <ul id="crisiscenter_phone_no">
+                <li class="link" id="crisiscenter_website" onclick="window.location.href='https://crisiscentre.bc.ca/'"><i>BC Crisis Centre</i></li>
+                <li>Anywhere in BC 1-800-SUICIDE: 1-800-784-2433</li>
+                <li> Mental Health Support Line: 310-6789</li>
+                <li>Vancouver Coastal Regional Distress Line: 604-872-3311</li>
+                <li>Sunshine Coast/Sea to Sky: 1-866-661-3311</li>
+                <li> Seniors Distress Line: 604-872-1234</li>
+            </ul>
+
+        </div>
+
+        <div class="card2">
+            <span id="self_help_span" class="card collapse">Self Help Articles</span>
+            <ul id="self_help">
+                <li class="link" onclick="window.location.href='https://www.helpguide.org/articles/suicide-prevention/are-you-feeling-suicidal.htm'"><i>How To Releaf Suicidal Thoughts</i></li>
+                <li class="link" onclick="window.location.href='https://www.webmd.com/depression/guide/depression-living-managing'"><i>Depression Recovery</i></li>
+            </ul>
+        </div>
+
+        
+        
     
+        
+    </div>
+
+    <div class="card">
+        <span></span>
+        <p>This service provides free text conselling with our volunteers</p>.
+        <p>Most of our volunteers are psychology students</p>
+        <button>Proceed</button>
+    </div>
+
+    <script >
+        $(".collapse ~ * ").hide()
+        $(".collapse").click((e)=>{
+            $("#"+e.target.id+" ~ ul").toggle()
+        })
+    </script>
 </body>
 </html>
