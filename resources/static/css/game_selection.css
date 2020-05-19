@@ -8,6 +8,12 @@ body {
     background-color: #99F7AB;
 }
 
+
+  .sticky {
+  position: fixed;
+  top: 0;
+  width: 100%;
+}
 /*
 #proceedbtn{
     margin-top: 15px;
@@ -16,7 +22,10 @@ body {
 }
 */
 
-@media only screen and (max-width: 330px) {
+@media only screen and (max-width: 369px) {
+    #container{
+    margin-top: 15%;
+}
     #greeting {
         color: #EF629F;
         font-size: 30pt;
@@ -39,6 +48,9 @@ body {
 }
 
 @media only screen and (min-width: 370px) {
+    #container{
+    margin-top: 15%;
+}
     #greeting {
         color: #EF629F;
         font-size: 30pt;
@@ -62,6 +74,9 @@ body {
 }
 
 @media only screen and (min-width: 600px) {
+    #container{
+    margin-top: 10%;
+}
     #inner {
         font-size: 30pt;
     }
@@ -102,6 +117,9 @@ body {
 }
 
 @media only screen and (min-width: 1024px) {
+    #container{
+    margin-top: 10%;
+}
     #inner {
         font-size: 30pt;
     }
@@ -142,6 +160,9 @@ body {
 }
 
 @media only screen and (min-width: 1200px) {
+    #container{
+    margin-top: 10%;
+}
     #inner {
         font-size: 28pt;
     }

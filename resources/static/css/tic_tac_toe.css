@@ -10,7 +10,15 @@
      color: #53131E;
  }
 
- @media only screen and (max-width: 330px) {
+.sticky {
+  position: fixed;
+  top: 0;
+  width: 100%;
+}
+ @media only screen and (max-width: 369px) {
+     #container{
+    margin-top: 20%;
+}
      #greeting {
          color: #EF629F;
          font-size: 30pt;
@@ -25,7 +33,7 @@
 
      #footer {
          bottom: 0;
-         margin-top: 50px;
+         margin-top: 250px;
          color: #53131E;
          clear: both;
          position: relative;
@@ -33,6 +41,9 @@
  }
 
  @media only screen and (min-width: 370px) {
+     #container{
+    margin-top: 20%;
+}
      #greeting {
          color: #EF629F;
          font-size: 30pt;
@@ -47,7 +58,7 @@
 
      #footer {
          bottom: 0;
-         margin-top: 50px;
+         margin-top: 250px;
          color: #53131E;
          clear: both;
          position: relative;
@@ -56,6 +67,9 @@
  }
 
  @media only screen and (min-width: 600px) {
+     #container{
+    margin-top: 12%;
+}
      #inner {
          font-size: 30pt;
      }
@@ -96,6 +110,9 @@
  }
 
  @media only screen and (min-width: 1024px) {
+     #container{
+    margin-top: 12%;
+}
      #inner {
          font-size: 30pt;
      }
@@ -136,6 +153,9 @@
  }
 
  @media only screen and (min-width: 1200px) {
+     #container{
+    margin-top: 12%;
+}
      #inner {
          font-size: 28pt;
      }

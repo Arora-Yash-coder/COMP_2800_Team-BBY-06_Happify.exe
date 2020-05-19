@@ -22,6 +22,11 @@
       font-size: 16px;
 
     }
+.sticky {
+  position: fixed;
+  top: 0;
+  width: 100%;
+}
 
     .square_btn {
       display: inline-block;
@@ -106,14 +111,14 @@
 
       #footer {
         bottom: 0;
-        margin-top: 650px;
+        margin-top: 1350px;
         color: #53131E;
         clear: both;
         position: relative;
       }
     }
 
-    @media only screen and (min-width: 370px) {
+@media only screen and (max-width: 360px) {
       button {
         font-size: 20pt;
       }
@@ -153,7 +158,55 @@
 
       #footer {
         bottom: 0;
-        margin-top: 720px;
+        margin-top: 2000px;
+        color: #53131E;
+        clear: both;
+        position: relative;
+        /*        font-size: 15pt;*/
+      }
+    }
+
+    @media only screen and (min-width: 361px) {
+      button {
+        font-size: 20pt;
+      }
+
+      button:hover {
+        font-size: 20pt;
+      }
+
+      p {
+        font-size: 20pt;
+      }
+
+      #container {
+
+        height: 97vh;
+
+      }
+
+      #greeting {
+        color: #53131E;
+        font-size: 15pt;
+      }
+
+      .top {
+
+        color: #53131E;
+        font-size: 30pt;
+        font-weight: bold;
+      }
+
+      .points {
+        color: #53131E;
+        font-size: 20pt;
+        margin-top: -10px;
+        font-weight: bold;
+      }
+
+      #footer {
+        bottom: 0;
+        margin-top: 2000px;
         color: #53131E;
         clear: both;
         position: relative;
@@ -198,7 +251,7 @@
 
       #footer {
         bottom: 0;
-        margin-top: 400px;
+        margin-top: 2000px;
         color: #53131E;
         clear: both;
         position: relative;
@@ -246,7 +299,7 @@
 
       #footer {
         bottom: 0;
-        margin-top: 200px;
+        margin-top: 2000px;
         color: #53131E;
         clear: both;
         position: relative;
@@ -308,8 +361,8 @@
     .to_do_title {
 
       color: brown;
-      background-color: #D6F9DD;
-      opacity: 0.5;
+      background-color: transparent;
+/*      opacity: 0.5;*/
       font-size: 22pt;
     }
 

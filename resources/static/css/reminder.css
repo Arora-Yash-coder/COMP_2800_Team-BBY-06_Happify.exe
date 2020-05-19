@@ -4,13 +4,19 @@ body {
   
   background-color: #99F7AB;
   color: #53131E;
+    margin:0;
 }
-#nav{
-    margin-left: -20px;
-    margin-right:-8px;
-    margin-top: -10px;
+.sticky {
+  position: fixed;
+  top: 0;
+  width: 100%;
 }
-@media only screen and (max-width: 330px) {
+
+
+@media only screen and (max-width: 369px) {
+    #container{
+        margin-top: 15%;
+    }
   legend {
     font-size: 18pt;
   }
@@ -21,7 +27,30 @@ body {
         height: 100vh;
     }
 
+  button {
+    background-color: transparent;
+    border: #53131E solid 1.5px;
+    color: #53131E;
+    padding: 7px 26px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 23px;
+    font-weight: bold;
 
+  }
+
+  button:hover {
+    background-color: white;
+    border: #53131E solid 1.5px;
+    color: #53131E;
+    padding: 7px 26px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 23px;
+
+  }
 
   #footer {
     bottom: 0;
@@ -34,6 +63,9 @@ body {
 }
 
 @media only screen and (min-width: 370px) {
+    #container{
+        margin-top: 15%;
+    }
  legend {
     font-size: 20pt;
   }
@@ -43,7 +75,30 @@ body {
     #container{
         height: 100vh;
     }
+  button {
+    background-color: transparent;
+    border: #53131E solid 1.5px;
+    color: #53131E;
+    padding: 7px 26px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 23px;
+    font-weight: bold;
 
+  }
+
+  button:hover {
+    background-color: white;
+    border: #53131E solid 1.5px;
+    color: #53131E;
+    padding: 7px 26px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 23px;
+
+  }
   #footer {
     bottom: 0;
     
@@ -55,6 +110,9 @@ body {
 }
 
 @media only screen and (min-width: 600px) {
+    #container{
+        margin-top: 10%;
+    }
   legend {
     font-size: 20pt;
   }
@@ -101,6 +159,9 @@ body {
 }
 
 @media only screen and (min-width: 1024px) {
+    #container{
+        margin-top: 10%;
+    }
   legend {
     font-size: 27pt;
   }
@@ -142,6 +203,9 @@ body {
 }
 
 @media only screen and (min-width: 1200px) {
+    #container{
+        margin-top: 10%;
+    }
   legend {
     font-size: 20pt;
   }

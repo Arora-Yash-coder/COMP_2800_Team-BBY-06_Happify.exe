@@ -32,10 +32,10 @@
         <legend>
             <form>
 
-                <label for="hour">hour</label>
+                <label for="hour">Hour</label>
                 <input id="hour" type="number" value="23">
                 <br />
-                <label for="minute">minute</label>
+                <label for="minute">Minute</label>
                 <input id="minute" type="number" value="30">
                 <br />
 
@@ -169,6 +169,27 @@
 
 
 
+    </script>
+    <script>
+    // When the user scrolls the page, execute myFunction
+window.onscroll = function() {myFunction()};
+
+// Get the navbar
+var navbar = document.getElementById("nav");
+
+// Get the offset position of the navbar
+var sticky = navbar.offsetTop;
+
+// Add the sticky class to the navbar when you reach its scroll position. Remove "sticky" when you leave the scroll position
+function myFunction() {
+  if (window.pageYOffset >= sticky) {
+    navbar.classList.add("sticky")
+  } else {
+    navbar.classList.remove("sticky");
+  }
+}
+    
+    
     </script>
     <!-- Go to www.addthis.com/dashboard to customize your tools -->
 <script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-5ec2cbf0773973c5"></script>

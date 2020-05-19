@@ -9,8 +9,15 @@ body {
 
 }
 
-
-@media only screen and (max-width: 330px) {
+.sticky {
+  position: fixed;
+  top: 0;
+  width: 100%;
+}
+@media only screen and (max-width: 369px) {
+    #wrapper{
+        margin-top: 15%;
+    }
   #ui_choice {
     font-size: 15pt;
   }
@@ -65,6 +72,9 @@ body {
 }
 
 @media only screen and (min-width: 370px) {
+    #wrapper{
+        margin-top: 15%;
+    }
   #ui_choice {
     font-size: 15pt;
   }
@@ -119,6 +129,9 @@ body {
 }
 
 @media only screen and (min-width: 600px) {
+    #wrapper{
+        margin-top: 10%;
+    }
   #ui_choice {
     font-size: 25pt;
   }
@@ -181,6 +194,9 @@ body {
 }
 
 @media only screen and (min-width: 1024px) {
+    #wrapper{
+        margin-top: 10%;
+    }
   #ui_choice {
     font-size: 25pt;
   }
@@ -234,6 +250,9 @@ body {
 }
 
 @media only screen and (min-width: 1200px) {
+    #wrapper{
+        margin-top: 10%;
+    }
   #ui_choice {
     font-size: 25pt;
   }

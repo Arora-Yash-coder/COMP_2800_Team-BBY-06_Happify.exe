@@ -9,8 +9,16 @@ body {
     background-color: #99F7AB;
     color: #53131E;
 }
+.sticky {
+  position: fixed;
+  top: 0;
+  width: 100%;
+}
 
-@media only screen and (max-width: 330px) {
+@media only screen and (max-width: 369px) {
+    #container{
+        margin-top: 15%;
+    }
     h2 {
         font-size: 20pt;
     }
@@ -60,7 +68,7 @@ body {
 
     #container {
 
-        height: 135vh;
+        height: 145vh;
     }
 
 
@@ -74,6 +82,9 @@ body {
 }
 
 @media only screen and (min-width: 370px) {
+    #container{
+        margin-top: 15%;
+    }
     h2 {
         font-size: 20pt;
     }
@@ -137,6 +148,9 @@ body {
 }
 
 @media only screen and (min-width: 600px) {
+    #container{
+        margin-top: 10%;
+    }
     #games1 {
         font-size: 25pt;
 
@@ -214,7 +228,7 @@ body {
 
     #container {
 
-        height: 105vh;
+        height: 125vh;
     }
 
 
@@ -229,6 +243,9 @@ body {
 }
 
 @media only screen and (min-width: 1024px) {
+    #container{
+        margin-top: 10%;
+    }
     h2 {
         font-size: 30pt;
     }
@@ -292,6 +309,9 @@ body {
 }
 
 @media only screen and (min-width: 1200px) {
+    #container{
+        margin-top: 10%;
+    }
     h2 {
         font-size: 30pt;
     }
@@ -341,7 +361,7 @@ body {
 
     #container {
 
-        height: 140vh;
+        height: 160vh;
     }
 
     #footer {
