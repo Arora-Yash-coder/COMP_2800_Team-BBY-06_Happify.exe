@@ -10,6 +10,15 @@ app.use(favicon(__dirname + '/resources/static/img/favicon-32x32.png'));
 
 
 
+
+
+
+
+
+
+
+
+
 app.use(express.static('resources'));
 
 //"__dirname" is the path at the current folder(because app.js is at the current folder)
@@ -58,7 +67,7 @@ https.createServer(options, app).listen(443, function () {
 });
 
 // Create a Server
-var http_server = app.listen(3006, function () {
+var http_server = app.listen(3000, function () {
 
   var host = http_server.address().address
   var port = http_server.address().port
@@ -66,3 +75,29 @@ var http_server = app.listen(3006, function () {
   console.log("App listening at http://%s:%s", host, port)
 
 })
+
+////////////////////////////////////////////////////////////////////////////////////////
+//                SOCKET.IO FOR CHAT BOX AT 3000
+////////////////////////////////////////////////////////////////////////////////////////
+// THE KEY CODE
+const io = require('socket.io')(http_server)
+
+const users = {}
+
+io.on('connection', socket => {
+  socket.on('new-user', name => {
+    users[socket.id] = name
+    socket.broadcast.emit('user-connected', name)
+  })
+  socket.on('send-chat-message', message => {
+    socket.broadcast.emit('chat-message', { message: message, name: users[socket.id] })
+  })
+  socket.on('disconnect', () => {
+    socket.broadcast.emit('user-disconnected', users[socket.id])
+    delete users[socket.id]
+  })
+})
+
+//^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^//
+//                     SOCKET.IO FOR CHAT BOX                                            //
+///////////////////////////////////////////////////////////////////////////////////////////

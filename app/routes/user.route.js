@@ -980,7 +980,7 @@ module.exports = function (app) {
 
 			cookie: {
 
-				expires: 600000
+				expires: 60000000
 			}
 
 		}));
@@ -2573,7 +2573,9 @@ module.exports = function (app) {
 
 
 
-
+	app.get("/chatbox",(req,res)=>{
+		res.render(path + "chatbox.ejs")
+	})
 
 	//tic tac toe connection, it runs on port 81
 	app.get("/games/ttt", (req, res) => {

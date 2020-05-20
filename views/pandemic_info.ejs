@@ -21,7 +21,7 @@
             height: 55%;
         }
 
-        #chart_container{
+        #chart_container {
             text-align: center;
         }
     </style>
@@ -40,6 +40,8 @@
         <canvas id="bar-chart" width="40" height="50"></canvas>
     </div>
 
+    
+
     <button id="line_graph_button">See Historical Pandemic Trend</button>
     <button id="bar_graph_button">See Pandemic Distribution </button>
 
@@ -55,7 +57,7 @@
             $("#line_graph").hide()
         })
 
-       
+
         var days = []
         var infected_num = []
         async function getLineData() {
@@ -117,7 +119,14 @@
 
 
 
-        var distribution = [];
+        var distribution = {
+            "4 Vancouver Island": null,
+            "2 Fraser": null,
+            "1 Interior": null,
+            "3 Vancouver Coastal": null,
+            "5 Northen": null,
+
+        };
         var section = [];
         var infected_num_section = [];
         async function getBarData() {
@@ -136,7 +145,26 @@
                         section.push(data[i]._id)
                         console.log(data[i].count)
                         infected_num_section.push(data[i].count)
-                        // if(data[i]._id=="Vancouver Island")
+
+                        if (data[i]._id == "Vancouver Island") {
+                            distribution["4 Vancouver Island"] = data[i].count
+                        }
+                        else if (data[i]._id == "Fraser") {
+                            distribution["2 Fraser"] = data[i].count
+
+                        }
+                        else if (data[i]._id == "Interior") {
+                            distribution["1 Interior"] = data[i].count
+
+                        }
+                        else if (data[i]._id == "Vancouver Coastal") {
+                            distribution["3 Vancouver Coastal"] = data[i].count
+
+                        }
+                        else {
+                            distribution["5 Northern"] = data[i].count
+
+                        }
                     }
                     return
 
@@ -241,7 +269,7 @@
     <div id="chart_container">
         <h2>See Distribution</h2>
         <div id="chartdiv"></div>
-        
+        <p id="info"> </p>
     </div>
 
 
@@ -249,20 +277,16 @@
     <script>
         async function drawMap() {
 
-            var d = {
-                data:{
-                    datacomm:1
-                }
-            }
 
+            console.log("{HA_Title}")
             console.log("data in line 232")
-            console.log(data)
+            console.log(distribution)
             var chart = am4core.create("chartdiv", am4maps.MapChart);
 
             // Set map definition
             chart.geodataSource.url = "/static/BC-HA-map.min.json"
 
-
+            chart.data = distribution;
             // Set projection
             chart.projection = new am4maps.projections.Mercator();
 
@@ -274,22 +298,46 @@
 
             // Configure series
             var polygonTemplate = polygonSeries.mapPolygons.template;
-            polygonTemplate.tooltipText = "{HA_Title}" + d.data.datacomm ;
-            
-            polygonTemplate.fill = am4core.color("#74B266");
+          
 
-            // Create hover state and set alternative fill color
-            var hs = polygonTemplate.states.create("hover");
-            hs.properties.fill = am4core.color("#367B25");
+            polygonTemplate.tooltipText = "{HA_Title}" ;
 
-            chart.seriesContainer.draggable = false;
-            chart.seriesContainer.resizable = false;
-            chart.maxZoomLevel = 1;
-            // Add zoom control
-            // chart.zoomControl = new am4maps.ZoomControl();
+           
+
+                // polygonTemplate.fill = am4core.color("#74B266");
+
+                polygonTemplate.events.on("hit", function (ev) {
+                var data = ev.target.dataItem.dataContext;
+                var info = document.getElementById("info");
+                console.log("312 data")
+                console.log(distribution)
+                console.log("title")
+                let a = data.HA_Title
+                console.log(a)
+                // alert(distribution[a] + "cases")
+                info.innerHTML = "<h3>" + distribution[a]+ "cases" +" </h3>";
+                // if (data.HA_Title) {
+                //     info.innerHTML += distribution[a];
+                //     polygonTemplate.tooltipText = "{HA_Title}" + distribution[a];
+                // }
+                // else {
+                //     info.innerHTML += "<i>No description provided.</i>"
+                // }
+            })
 
 
-        }
+                // Create hover state and set alternative fill color
+                var hs = polygonTemplate.states.create("hover");
+                hs.properties.fill = am4core.color("#367B25");
+
+                chart.seriesContainer.draggable = false;
+                chart.seriesContainer.resizable = false;
+                chart.maxZoomLevel = 1;
+                // Add zoom control
+                // chart.zoomControl = new am4maps.ZoomControl();
+
+
+            }
 
     </script>
 
