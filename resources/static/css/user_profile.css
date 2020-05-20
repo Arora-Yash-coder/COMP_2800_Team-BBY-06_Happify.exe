@@ -13,9 +13,10 @@ body {
   position: fixed;
   top: 0;
   width: 100%;
+    margin-left: -8px;
 }
 .regular{
-    margin-top:0;
+    margin:-8px;
     
 }
 @media only screen and (max-width: 369px) {
@@ -311,10 +312,12 @@ body {
 
 
 
+/*
 #head {
   margin: -8px;
 
 }
+*/
 
 h1 {
   color: #53131E;

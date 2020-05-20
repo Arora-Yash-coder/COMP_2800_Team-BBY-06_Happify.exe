@@ -488,6 +488,9 @@ img {
     grid-template-columns: 50% 50%;
     border: 2px solid rgba(83, 19, 30, 0.7);
 }
+#info2{
+    margin-top: 7%;
+}
 #reminder {
     margin-left: 25px;
     margin-right: 25px;
