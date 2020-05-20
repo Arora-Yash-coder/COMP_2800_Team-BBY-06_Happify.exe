@@ -1883,7 +1883,7 @@ module.exports = function (app) {
 
 					//if the state property is less than 3, which indicates that user is 
 					//still in the "daily task" user flow.
-					if (state < 3) {
+					if ( state >=0 && state < 3) {
 						console.log("++++++++++++++archived++++++++++++++++++")
 						console.log(archived)
 						// console.log(result[0].daily_task_rec[result[0].daily_task_rec.length - 1].daily_task_archived)
@@ -1975,6 +1975,9 @@ module.exports = function (app) {
 							progress_percentage: state * 8.33 + "%",
 							css: result[0].UI_style
 						}));
+					}
+					else{
+
 					}
 				});
 
@@ -2391,6 +2394,7 @@ module.exports = function (app) {
 							console.log("in 712  the stuff to show---------------------------- ")
 							console.log(added_item)
 							if (data[index]) {
+								if(index <= 2)
 								added_item.push(data[index].id)
 							}
 

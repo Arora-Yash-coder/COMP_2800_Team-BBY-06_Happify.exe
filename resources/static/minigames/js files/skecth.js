@@ -54,6 +54,12 @@ function mousePressed() {
   button2.clicked();
   button3.clicked();
   button4.clicked();
+  let d = dist(mouseX / 20, mouseY / 20, 2.75, 1.75);
+  if (d < 1.25) {
+    // Code goes here to move back to menu.
+    window.location.href = "https://www.google.com"
+    print("Yaaaa");
+  }
 }
 
 
@@ -81,12 +87,7 @@ function draw() {
   textSize(1.5);
   fill(0);
   text('Menu', 1, 2);
-  let d = dist(mouseX / 20, mouseY / 20, 2.75, 1.75);
-  if (d < 1.25) {
-    // Code goes here to move back to menu.
-    window.location.href = "/minigames"
-    print("Yaaaa");
-  }
+  
 
   /**--------------------Score System--------------------*/
   textFont('dejavu');
