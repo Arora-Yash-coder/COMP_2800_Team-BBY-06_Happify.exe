@@ -12,9 +12,9 @@
 
 </head>
 <body>
-
-    <%-navbar%>
-
+<div id="navbar">
+    <%-navbar%></div>
+<div id="container">
     <span id = heading1><h1>Mental Health Services</h1></span>
     <div id="card1">
         <div id="card1_1">
@@ -58,6 +58,7 @@
         
     </div>
     <button>Proceed</button>
+    </div>
     <footer id="footer">Made by FutureCurves.</footer>
 
     <script >
@@ -65,6 +66,26 @@
         $(".collapse").click((e)=>{
             $("#"+e.target.id+" ~ ol").toggle()
         })
+    </script>
+    <script>
+    
+    // When the user scrolls the page, execute myFunction
+window.onscroll = function() {myFunction()};
+
+// Get the navbar
+var navbar = document.getElementById("navbar");
+
+// Get the offset position of the navbar
+var sticky = navbar.offsetTop;
+
+// Add the sticky class to the navbar when you reach its scroll position. Remove "sticky" when you leave the scroll position
+function myFunction() {
+  if (window.pageYOffset >= sticky) {
+    navbar.classList.add("sticky")
+  } else {
+    navbar.classList.remove("sticky");
+  }
+}
     </script>
     <!-- Go to www.addthis.com/dashboard to customize your tools -->
 <script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-5ec2cbf0773973c5"></script>

@@ -10,8 +10,24 @@ body{
             color: blue;
             font: bold;
         }
-        
+#card1{
+     background-color: #7BDFF2;
+}
+#card2{
+     background-color: #7BDFF2;
+}
+       
+/* The sticky class is added to the navbar with JS when it reaches its scroll position */
+.sticky {
+  position: fixed;
+  top: 0;
+  width: 100%;
+}
+#container{
+    margin-top: 40px;
+}
 @media only screen and (max-width: 369px) {
+    
     .header1{
         font-size: 20pt;
         font-weight: bold;
@@ -20,10 +36,7 @@ body{
     font-size: 25pt;
     display:grid;
     grid-template-rows: 5% 70% 25%;
-     background-color: #7BDFF2;
-  /*    border-radius: 25px;*/
-  /*    margin-left: 25px;*/
-  /*    margin-right: 25px;*/
+    
   padding-top: 10px;
   padding-bottom: 10px;
   margin-top: 10px;
@@ -37,10 +50,7 @@ body{
     font-size: 25pt;
     display:grid;
     grid-template-rows: 50% 50%;
-     background-color: #7BDFF2;
-  /*    border-radius: 25px;*/
-  /*    margin-left: 25px;*/
-  /*    margin-right: 25px;*/
+     
   padding-top: 10px;
   padding-bottom: 10px;
   margin-top: 10px;
@@ -52,6 +62,7 @@ body{
 }
     
     #footer{
+       
         font-size: 20pt;
     }
         }
@@ -69,10 +80,7 @@ body{
     font-size: 25pt;
     display:grid;
     grid-template-rows: 10% 70% 20%;
-     background-color: #7BDFF2;
-  /*    border-radius: 25px;*/
-  /*    margin-left: 25px;*/
-  /*    margin-right: 25px;*/
+     
   padding-top: 10px;
   padding-bottom: 10px;
   margin-top: 10px;
@@ -86,10 +94,7 @@ body{
     font-size: 25pt;
     display:grid;
     grid-template-rows: 50% 50%;
-     background-color: #7BDFF2;
-  /*    border-radius: 25px;*/
-  /*    margin-left: 25px;*/
-  /*    margin-right: 25px;*/
+   
   padding-top: 10px;
   padding-bottom: 10px;
   margin-top: 10px;
@@ -111,10 +116,7 @@ body{
     font-size: 25pt;
     display:grid;
     grid-template-rows: 10% 60% 30%;
-     background-color: #7BDFF2;
-  /*    border-radius: 25px;*/
-  /*    margin-left: 25px;*/
-  /*    margin-right: 25px;*/
+     
   padding-top: 10px;
   padding-bottom: 10px;
   margin-top: 10px;
@@ -128,10 +130,7 @@ body{
     font-size: 25pt;
     display:grid;
     grid-template-rows: 50% 50%;
-     background-color: #7BDFF2;
-  /*    border-radius: 25px;*/
-  /*    margin-left: 25px;*/
-  /*    margin-right: 25px;*/
+    
   padding-top: 10px;
   padding-bottom: 10px;
   margin-top: 10px;
@@ -152,10 +151,7 @@ body{
     font-size: 25pt;
     display:grid;
     grid-template-rows: 10% 60% 30%;
-     background-color: #7BDFF2;
-  /*    border-radius: 25px;*/
-  /*    margin-left: 25px;*/
-  /*    margin-right: 25px;*/
+    
   padding-top: 10px;
   padding-bottom: 10px;
   margin-top: 10px;
@@ -169,10 +165,7 @@ body{
     font-size: 25pt;
     display:grid;
     grid-template-rows: 50% 50%;
-     background-color: #7BDFF2;
-  /*    border-radius: 25px;*/
-  /*    margin-left: 25px;*/
-  /*    margin-right: 25px;*/
+    
   padding-top: 10px;
   padding-bottom: 10px;
   margin-top: 10px;
@@ -194,10 +187,7 @@ body{
     font-size: 10pt;
     display:grid;
     grid-template-rows: 10% 60% 30%;
-     background-color: #7BDFF2;
-  /*    border-radius: 25px;*/
-  /*    margin-left: 25px;*/
-  /*    margin-right: 25px;*/
+    
   padding-top: 10px;
   padding-bottom: 10px;
   margin-top: 10px;
@@ -211,10 +201,7 @@ body{
     font-size: 10pt;
     display:grid;
     grid-template-rows: 50% 50%;
-     background-color: #7BDFF2;
-  /*    border-radius: 25px;*/
-  /*    margin-left: 25px;*/
-  /*    margin-right: 25px;*/
+   
   padding-top: 10px;
   padding-bottom: 10px;
   margin-top: 10px;

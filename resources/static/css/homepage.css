@@ -74,7 +74,7 @@ body {
 
     #footer {
         bottom: 0;
-        margin-top: 50px;
+        margin-top: 350px;
         color: #53131E;
         clear: both;
         position: relative;
@@ -295,7 +295,7 @@ body {
 
     #container {
 
-        height: 200vh;
+        height: 150vh;
     }
 
     #footer {

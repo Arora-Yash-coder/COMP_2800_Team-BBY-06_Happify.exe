@@ -3,34 +3,26 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>.
+    <title>Pandemic Data</title>.
     <link rel="stylesheet" type="text/css" href="/static/css/navbar.css">
 
-    <style>
-        html,
-        body {
-            margin: 0;
-        }
-
-        .graph {
-            width: 80%;
-            /* height: 100px; */
-        }
-
-        #chartdiv {
-            height: 55%;
-        }
-
-        #chart_container {
-            text-align: center;
-        }
-    </style>
+    <link rel="stylesheet" type="text/css" href="/static/css/pandemic_info.css">
 </head>
 
 <body>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.3/Chart.bundle.min.js"></script>
+    <div id="navbar" class='regular'>
+
+    
     <%-navbar%>
+    
+    
+    </div>
+    <div id="container">
+        <h1 id="title">
+        Pandemic Info
+        </h1>
     <div class="graph" id="line_graph">
         <canvas id="line-chart" width="40" height="50"></canvas>
     </div>
@@ -41,9 +33,10 @@
     </div>
 
     
-
+<div id="buttons">
     <button id="line_graph_button">See Historical Pandemic Trend</button>
     <button id="bar_graph_button">See Pandemic Distribution </button>
+        </div>
 
 
     <script>
@@ -271,8 +264,8 @@
         <div id="chartdiv"></div>
         <p id="info"> </p>
     </div>
-
-
+</div>
+<footer id="footer">Made by FutureCurves.</footer>
 
     <script>
         async function drawMap() {
@@ -343,6 +336,28 @@
 
 
 
+<script>
+    
+    // When the user scrolls the page, execute myFunction
+window.onscroll = function() {myFunction()};
+
+// Get the navbar
+var navbar = document.getElementById("navbar");
+
+// Get the offset position of the navbar
+var sticky = navbar.offsetTop;
+
+// Add the sticky class to the navbar when you reach its scroll position. Remove "sticky" when you leave the scroll position
+function myFunction() {
+  if (window.pageYOffset >= sticky) {
+      navbar.classList.remove("regular");
+    navbar.classList.add("sticky");
+  } else {
+    navbar.classList.remove("sticky");
+      navbar.classList.add("regular");
+  }
+}
+    </script>
 
 
 
@@ -353,7 +368,8 @@
 
 
 
-
+<!-- Go to www.addthis.com/dashboard to customize your tools -->
+<script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-5ec2cbf0773973c5"></script>
 
 
 
