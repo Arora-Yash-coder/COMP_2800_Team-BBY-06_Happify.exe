@@ -37,13 +37,23 @@
                 
             </div>
             <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+            
+            
+         
             <div id= "covid_intel" class="card" >
+                <h1 id = "covid_h1" class="covid_h1 second covid_intel">COVID INTEL</h1>
+                <h1 id = "intel_h1" class="second covid_intel">COVID</h1>
+                <h1 id = "intel_h1_2" class="second covid_intel">INTEL</h1>
+                <img id = "info2" class="covid_h1" src="/static/img/info2.png">
+
                 <div class="Intel card1">
-                    <h1 class="second">COVID INTEL</h1>
+                 
                     <div id = "latest_news_container">
+                        <span id="news_title"><b>Latest News:</b></span><br/>
                         <!-- <span id="latest_news_Header">Latest News</span><br/> -->
+                        
                         <span id="latest_news_title">Latest News title</span><br/>
-                        <span id="latest_news_url">Click On Me To Read!</span>
+                        <span id="latest_news_url"><i>Click To Visit</i></span>
 
                     </div>
                   
@@ -52,12 +62,12 @@
                 </div>
 
                 <div class="Intel card2" onclick="window.location.href='/pandemic_info' ">
-                    <div id='image2'>
-                        <span>INFOGRAPHICS IN HERE!</span>
-                        <div>
-                            <img id="game_img" src="/img/info1.png">
-                        </div>
+                    <div id="info_div">
                        
+                        <div>
+                            <img id="info_img" src="/img/info1.png">
+                        </div>
+                        <span id="info_span"><i>INFOGRAPHICS IN HERE!</i></span>
                     </div>
                 </div>
 
@@ -139,8 +149,8 @@
                                 let title = response[0].title
                                 let link = response[0].url
                                 $("#latest_news_title").html(title)
-                                $("#latest_news_container").css("background-color","rgba(235,236,15,0.8)")
-                                $("#latest_news_url").css("background-color","red")
+                               
+                              
                                 $("#latest_news_container").mouseup(()=>{
                                     window.location.href = link
                                 })

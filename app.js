@@ -8,17 +8,8 @@ var favicon = require('serve-favicon');
 
 app.use(favicon(__dirname + '/resources/static/img/favicon-32x32.png'));
 
-
-
-
-
-
-
-
-
-
-
-
+//NODE.js USES THE RESOURCES FOLDER UNDER THE ROOT FOLDER FOR
+//ANY FILE SOURCE BY DEFAULT
 app.use(express.static('resources'));
 
 //"__dirname" is the path at the current folder(because app.js is at the current folder)
@@ -48,18 +39,22 @@ MongoClient.connect(dbConfig.url, function (err, db) {
 require('./app/routes/user.route.js')(app);
 
 
+//fs is the file reader sync module
 var fs = require('fs')
+
+//HTTPS is SSL based server
 const https = require('https');
+
+//these are the keys:
+//if you dont have those keys and you wanna run 
+//the server, comment out the code in line 55 and
+//the following block of code as well.
 var options = {
   key: fs.readFileSync('./privatekey.pem'),
   cert: fs.readFileSync('./certificate.pem')
 };
 
-// // var https_server = https.createServer(options, app);
 
-// // https_server.listen(443, () => {
-// //   console.log("https_server starting on port : " + 443)
-// // });
 
 
 https.createServer(options, app).listen(443, function () {
@@ -82,8 +77,10 @@ var http_server = app.listen(3000, function () {
 // THE KEY CODE
 const io = require('socket.io')(http_server)
 
+//the users are json objects
 const users = {}
 
+//on connection, the server reads in the 
 io.on('connection', socket => {
   socket.on('new-user', name => {
     users[socket.id] = name

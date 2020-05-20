@@ -16,6 +16,10 @@ body {
 }
 
 @media only screen and (max-width: 369px) {
+    #latest_news_container{
+        font-size: 12pt;
+    }
+
     #container{
         margin-top: 15%;
     }
@@ -242,6 +246,7 @@ body {
     }
 }
 
+/* Media Query for 1024px to?????????????????????????? */
 @media only screen and (min-width: 1024px) and (max-width:1025px) {
     #container{
         margin-top: 10%;
@@ -308,7 +313,9 @@ body {
     }
 }
 
+/* Media Query for wider than 1024px  */
 @media only screen and (min-width: 1200px) {
+    
     #container{
         margin-top: 10%;
     }
@@ -615,8 +622,36 @@ img {
 }
 
 #latest_news_container{
+    font-size: 15pt;
+    border: black;
+    border-radius: 15px;
     margin: 10px;
+    border-style: dotted;
 }
+
+#info_div{
+    border-style: dashed;
+}
+
+#latest_news_url{
+    float: none;
+    color:blue;
+    text-decoration: underline;
+    text-align: center;
+}
+
+#info_span{
+    color:blue;
+    text-decoration: underline;
+    text-align: center;
+}
+
+#news_title{
+   
+   color: black;
+}
+
+
 
 
 

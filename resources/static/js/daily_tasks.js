@@ -217,6 +217,27 @@ function myNavbar() {
 
     $(document).ready(function () {
 
+      
+    $.ajax({
+      type: "get",
+      url: "/get_state",
+      // data: "data",
+      dataType: "text",
+      success: function (response) {
+        if(response =="0"){
+          alert("Welcome back, you are visiting the app for the first time of the day")
+          alert("So We are suggesting you to do the daily tasks first")
+          alert("You can leave now, but your progress will be gone")
+          alert("You can always comeback by hitting the button on the navbar.")
+        }
+        if(parseInt(response)<6){
+          $("#homepage_link").attr("href","/set_state_back_to_zero")
+        }
+      }
+    });
+
+
+
 
       //get points
       $.ajax({
@@ -289,7 +310,5 @@ function myNavbar() {
         }
       });
       $(e.target).off()
-      
-    
-
+ 
     })

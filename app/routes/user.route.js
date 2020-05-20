@@ -336,6 +336,32 @@ module.exports = function (app) {
 
 	})
 
+
+	app.get("/set_state_back_to_zero",(req,res)=>{
+		MongoClient.connect(dbConfig.url, function (err, db) {
+			console.log()
+			if (err) throw err;
+			var dbo = db.db("test");
+
+
+			console.log("I am ready to play a game in 620")
+			dbo.collection("users").updateOne({
+				_id: ObjectId(req.session.user_sid),
+				daily_task_rec: { $elemMatch: { date: { $gte: new Date(new Date().setDate(new Date().getDate() - 1)) } } }
+			}, { $set: { "daily_task_rec.$.state": -1 } },
+
+			)
+			console.log("state added 1!!!!!")
+			res.render(path + "/homepage.ejs", {
+				navbar: navbar_top_ejs,
+				footer: footer,
+				css: req.session.UI_style
+			})
+
+		})
+	})
+
+
 	//the minigame entrance
 	app.get("/minigames", sessionChecker2, (req, res) => {
 
@@ -584,7 +610,6 @@ module.exports = function (app) {
 	//subscribe web-push notification stuff
 	app.get('/subscribe', (req, res) => {
 		pusher.subscribe(req, res)
-
 	});
 
 	//subscribe web-push notification stuff
@@ -1219,7 +1244,7 @@ module.exports = function (app) {
 					state = result[0].daily_task_rec[result[0].daily_task_rec.length - 1].state
 					console.log("state==================================================")
 					console.log(state)
-					if (state <= 3) {
+					if ( state >= 0 &&state <= 3 ) {
 						res.redirect("/daily_tasks")
 					}
 					else if (state >= 4 && state <= 5) {
@@ -1229,6 +1254,15 @@ module.exports = function (app) {
 					else if (state > 5 && state <= 6) {
 						res.redirect("/coupon")
 					}
+
+					else if (state == -1) {
+						res.render(path + "/homepage.ejs", {
+							navbar: navbar_top_ejs,
+							footer: footer,
+							css: req.session.UI_style
+						})
+					}
+
 					else {
 						console.log("req.session.UI_style-----------")
 						console.log(req.session.UI_style)
@@ -1601,51 +1635,51 @@ module.exports = function (app) {
 
 		//BY VISITING THIS LINK, THE USER'S STATE WILL BE INCREASE 1
 		//EVENT TRIGGERED BY ANSWERING THE ANSWERS CORRECTLY
-		app.post('/state_add', sessionChecker2, (req, res) => {
+		// app.post('/state_add', sessionChecker2, (req, res) => {
 
-			let state = null;
+		// 	let state = null;
 
-			MongoClient.connect(dbConfig.url, function (err, db) {
-				if (err) throw err;
-				var dbo = db.db("test");
+		// 	MongoClient.connect(dbConfig.url, function (err, db) {
+		// 		if (err) throw err;
+		// 		var dbo = db.db("test");
 
-				dbo.collection("users").find({
-					_id: ObjectId(req.session.user_sid)
-				}).toArray(function (err, result) {
-					state = result[0].daily_task_rec[result[0].daily_task_rec.length - 1].state;
-					db.close()
-					console.log("req.body.state_request in 611")
-					console.log(req.body.state_request)
-					if (
-						state == 3 && req.body.state_request == "proceed button clicked in STEP 3" ||
-						state == 4 && req.body.state_request == "I am ready to play a game" ||
-						state == 5 && req.body.state_request == "proceed button clicked" ||
-						state == 6 && req.body.state_request == "proceed button clicked in STEP 6") {
-						MongoClient.connect(dbConfig.url, function (err, db) {
-							console.log()
-							if (err) throw err;
-							var dbo = db.db("test");
-
-
-							console.log("I am ready to play a game in 620")
-							dbo.collection("users").updateOne({
-								_id: ObjectId(req.session.user_sid),
-								daily_task_rec: { $elemMatch: { date: { $gte: new Date(new Date().setDate(new Date().getDate() - 2)) } } }
-							}, { $inc: { "daily_task_rec.$.state": 1 } },
-
-							)
-							console.log("state added 1!!!!!")
-							res.send("state added 1!!!!!")
-
-						})
-					}
-				})
-			})
+		// 		dbo.collection("users").find({
+		// 			_id: ObjectId(req.session.user_sid)
+		// 		}).toArray(function (err, result) {
+		// 			state = result[0].daily_task_rec[result[0].daily_task_rec.length - 1].state;
+		// 			db.close()
+		// 			console.log("req.body.state_request in 611")
+		// 			console.log(req.body.state_request)
+		// 			if (
+		// 				state == 3 && req.body.state_request == "proceed button clicked in STEP 3" ||
+		// 				state == 4 && req.body.state_request == "I am ready to play a game" ||
+		// 				state == 5 && req.body.state_request == "proceed button clicked" ||
+		// 				state == 6 && req.body.state_request == "proceed button clicked in STEP 6") {
+		// 				MongoClient.connect(dbConfig.url, function (err, db) {
+		// 					console.log()
+		// 					if (err) throw err;
+		// 					var dbo = db.db("test");
 
 
+		// 					console.log("I am ready to play a game in 620")
+		// 					dbo.collection("users").updateOne({
+		// 						_id: ObjectId(req.session.user_sid),
+		// 						daily_task_rec: { $elemMatch: { date: { $gte: new Date(new Date().setDate(new Date().getDate() - 2)) } } }
+		// 					}, { $inc: { "daily_task_rec.$.state": 1 } },
+
+		// 					)
+		// 					console.log("state added 1!!!!!")
+		// 					res.send("state added 1!!!!!")
+
+		// 				})
+		// 			}
+		// 		})
+		// 	})
 
 
-		})
+
+
+		// })
 
 
 
@@ -1818,10 +1852,7 @@ module.exports = function (app) {
 
 
 
-		//THIS FUNCTION CHECKS WHICH STATE THE USER IS IN
-		//RETURNS AN INTEGER $GTE 0 && $LTE 7
-		app.get("/get_state", sessionChecker2, users.getState)
-
+		
 
 
 

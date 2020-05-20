@@ -10,7 +10,7 @@ var path = __basedir + '/views/';
 var navbar_top_ejs = fs.readFileSync(path + "components/navbar_top.ejs", 'utf-8');
 
 var footer = fs.readFileSync(path + "components/footer.ejs", 'utf-8');
-var progress = fs.readFileSync(path + "components/progress_bar.ejs","utf-8")
+var progress = fs.readFileSync(path + "components/progress_bar.ejs", "utf-8")
 
 
 exports.findAll = (req, res) => {
@@ -353,7 +353,7 @@ exports.getCoupon = (req, res) => {
 
             MongoClient.connect(dbConfig.url, function (err, db) {
                 if (err) throw err;
-                
+
                 var dbo = db.db("test");
 
                 dbo.collection("coupons_available").find().limit(5).toArray(function (err, result) {
@@ -366,11 +366,11 @@ exports.getCoupon = (req, res) => {
                         res.end(res.render(path + "coupon.ejs", {
                             coupons: result,
                             navbar: navbar_top_ejs,
-                            progress_bar :undefined,
+                            progress_bar: undefined,
                             back_button: undefined,
                             proceed_button: undefined,
                             footer: footer,
-                            css :UI_style
+                            css: UI_style
 
                         }));
                     } else {
@@ -378,10 +378,10 @@ exports.getCoupon = (req, res) => {
                             coupons: result,
                             back_button: "<button id='back' onclick='window.location.href='/minigames';'>Back</button>",
                             proceed_button: "<button id='proceed' onclick='window.location.href='/flow_final''>Proceed</button>",
-                            progress_bar :progress,
+                            progress_bar: progress,
                             navbar: navbar_top_ejs,
                             footer: footer,
-                            css :UI_style
+                            css: UI_style
 
                         });
                     }
@@ -426,7 +426,7 @@ exports.redeemCoupon = (req, res) => {
                     console.log(result)
                     user_points = result[0].points;
                     // db.close();
-                    MongoClient.connect(dbConfig.url, function(err, db){
+                    MongoClient.connect(dbConfig.url, function (err, db) {
                         if (req.session.user_sid && user_points && (user_points - points_needed) >= 0) {
                             console.log("redeem successful")
 
@@ -438,14 +438,14 @@ exports.redeemCoupon = (req, res) => {
                                     $push: { coupons_owned: id }
                                 },
                                 { new: true }
-                
+
                             )
                             db.close();
-                
+
                             res.send("redeem successful");
-                
+
                         }
-                        else{
+                        else {
                             res.send("you don't have enough points for redeeming!!!");
                         }
                     })
@@ -455,7 +455,7 @@ exports.redeemCoupon = (req, res) => {
         });
 
 
-        
+
 
 
     });
@@ -681,7 +681,7 @@ exports.admin_coupon_management = (req, res) => {
 
 //the user gains according points
 exports.addPoints = (req, res, n) => {
-   
+
     MongoClient.connect(dbConfig.url, function (err, db) {
         console.log("n=================================")
         console.log(n)
@@ -700,15 +700,19 @@ exports.addPoints = (req, res, n) => {
             { upsert: true }
         )
 
-        dbo.collection("users").updateOne(
-            {
-                // daily_task_rec: { $elemMatch: { "user_id": req.session.user_sid, date: { $lte: new Date() } } },
-                _id: ObjectId(req.session.user_sid),
-                daily_task_rec: { $elemMatch: { "state": { $lte: 10 }, date: { $gte: new Date(new Date().setDate(new Date().getDate() - 2)) } } },
-            },
-            { $inc: { "daily_task_rec.$.points_earned_today": n } },
-            // { upsert: true }
-        )
+        try {
+            dbo.collection("users").updateOne(
+                {
+                    // daily_task_rec: { $elemMatch: { "user_id": req.session.user_sid, date: { $lte: new Date() } } },
+                    _id: ObjectId(req.session.user_sid),
+                    daily_task_rec: { $elemMatch: { "state": { $lte: 10 }, date: { $gte: new Date(new Date().setDate(new Date().getDate() - 1)) } } },
+                },
+                { $inc: { "daily_task_rec.$.points_earned_today": n } },
+                { upsert: true, new: true }
+            )
+        } catch (err) {
+            console.log(err)
+        }
 
 
         //     dbo.collection("users").find({ "daily_task_rec": { $elemMatch :{ "user_id" :'5ebd0264a845395b60ce3d69'}}  
@@ -746,7 +750,7 @@ exports.addPoints = (req, res, n) => {
             if (err) throw err;
             // console.log(result);
 
-            
+
             db.close();
         });
 
@@ -758,96 +762,118 @@ exports.addPoints = (req, res, n) => {
 
 //gets the state the user is in
 exports.getState = (req, res) => {
-    let getState = null;
-    let res_arr = []
-
+    let state = null;
     MongoClient.connect(dbConfig.url, function (err, db) {
         if (err) throw err;
         var dbo = db.db("test");
 
-        dbo.collection("users").find(
-            {
-                _id: ObjectId(req.session.user_sid),
-                daily_task_rec: { $elemMatch: { date: { $gte: new Date(new Date().setDate(new Date().getDate() - 2)) } } }
-            }
-        ).toArray(function (err, result) {
-            let daily_task_array = []
-
-            // getState = result[0].daily_task_rec[result[0].daily_task_rec.length - 1].state
-            console.log("This is how the data schema is like:")
-            console.log(result)
-
-            console.log(new Date(new Date().setDate(new Date().getDate() - 2)))
-
-            //     if(result.length != 0){
-            //     console.log("Push the dates into an array and do comparison")
-            //      res_arr = result[0].daily_task_rec
-
-            let days_of_use = result.length
-            //     console.log("The variable shows the days of the user has been using it")
-            //     console.log(days_of_use)
-
-            //     for (var index in res_arr) {
-            //         daily_task_array.push(res_arr[index].date);
-            //     }
-
-
-            //     console.log("This is how the date array looks like:")
-            //     console.log(daily_task_array)
-
-            // }
-
+        dbo.collection("users").find({
+            _id: ObjectId(req.session.user_sid)
+        }).toArray(function (err, result) {
+            state = result[0].daily_task_rec[result[0].daily_task_rec.length - 1].state;
+            
+            console.log(state)
+            res.send(state+"")
             db.close()
-
-            if (result.length == 0) {
-                MongoClient.connect(dbConfig.url, function (err, db) {
-                    if (err) throw err;
-                    var dbo = db.db("test");
-                    console.log("in line 796 days_of_use")
-                    console.log(days_of_use)
-                    dbo.collection("users").updateOne(
-                        { _id: ObjectId(req.session.user_sid) },
-                        {
-                            $push: {
-                                daily_task_rec: {
-                                    user_id: req.session.user_id,
-                                    points_earned_today: 0,
-                                    date: new Date(),
-                                    finished_id: [],
-                                    state: 0,
-                                    day: days_of_use + 1
-                                }
-                            }
-                        },
-                        { new: true, upsert: true }
-
-
-                    )
-                    db.close()
-                    console.log("pushed?????????????????????????????")
-                })
-            } else {
-                MongoClient.connect(dbConfig.url, function (err, db) {
-                    if (err) throw err;
-                    var dbo = db.db("test");
-
-                    dbo.collection("users").find({
-                        _id: ObjectId(req.session.user_sid)
-                    }).toArray(function (err, result) {
-
-                        //find the work that needs to be done
-                        console.log("result.daily_task_rec.state")
-                        // console.log(result[0].daily_task_rec)
-                        console.log(result[0].daily_task_rec[result[0].daily_task_rec.length - 1].state)
-
-                        state = result[0].daily_task_rec[result[0].daily_task_rec.length - 1].state;
-                    })
-                })
-            }
-        })
-
     })
+   
+})
 }
+
+
+
+
+
+    // let getState = null;
+    // let res_arr = []
+
+    // MongoClient.connect(dbConfig.url, function (err, db) {
+    //     if (err) throw err;
+    //     var dbo = db.db("test");
+
+    //     dbo.collection("users").find(
+    //         {
+    //             _id: ObjectId(req.session.user_sid),
+    //             daily_task_rec: { $elemMatch: { date: { $gte: new Date(new Date().setDate(new Date().getDate() - 1)) } } }
+    //         }
+    //     ).toArray(function (err, result) {
+    //         let daily_task_array = []
+
+    //         // getState = result[0].daily_task_rec[result[0].daily_task_rec.length - 1].state
+    //         console.log("This is how the data schema is like:")
+    //         console.log(result)
+
+    //         console.log(new Date(new Date().setDate(new Date().getDate() - 2)))
+
+    //         //     if(result.length != 0){
+    //         //     console.log("Push the dates into an array and do comparison")
+    //         //      res_arr = result[0].daily_task_rec
+
+    //         let days_of_use = result.length
+    //         //     console.log("The variable shows the days of the user has been using it")
+    //         //     console.log(days_of_use)
+
+    //         //     for (var index in res_arr) {
+    //         //         daily_task_array.push(res_arr[index].date);
+    //         //     }
+
+
+    //         //     console.log("This is how the date array looks like:")
+    //         //     console.log(daily_task_array)
+
+    //         // }
+
+    //         db.close()
+
+    //         if (result.length == 0) {
+    //             MongoClient.connect(dbConfig.url, function (err, db) {
+    //                 if (err) throw err;
+    //                 var dbo = db.db("test");
+    //                 console.log("in line 796 days_of_use")
+    //                 console.log(days_of_use)
+    //                 dbo.collection("users").updateOne(
+    //                     { _id: ObjectId(req.session.user_sid) },
+    //                     {
+    //                         $push: {
+    //                             daily_task_rec: {
+    //                                 user_id: req.session.user_id,
+    //                                 points_earned_today: 0,
+    //                                 date: new Date(),
+    //                                 finished_id: [],
+    //                                 state: 0,
+    //                                 day: days_of_use + 1
+    //                             }
+    //                         }
+    //                     },
+    //                     { new: true, upsert: true }
+
+
+    //                 )
+    //                 db.close()
+    //                 console.log("pushed?????????????????????????????")
+    //             })
+    //         } else {
+    //             MongoClient.connect(dbConfig.url, function (err, db) {
+    //                 if (err) throw err;
+    //                 var dbo = db.db("test");
+
+    //                 dbo.collection("users").find({
+    //                     _id: ObjectId(req.session.user_sid)
+    //                 }).toArray(function (err, result) {
+
+    //                     //find the work that needs to be done
+    //                     console.log("result.daily_task_rec.state")
+    //                     // console.log(result[0].daily_task_rec)
+    //                     console.log(result[0].daily_task_rec[result[0].daily_task_rec.length - 1].state)
+
+    //                     state = result[0].daily_task_rec[result[0].daily_task_rec.length - 1].state;
+    //                 })
+    //             })
+    //         }
+    //     })
+
+    // })
+// }
 
 
 

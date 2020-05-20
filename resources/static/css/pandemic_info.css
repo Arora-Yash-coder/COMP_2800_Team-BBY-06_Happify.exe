@@ -14,7 +14,7 @@
         body {
             text-align: center;
             margin: 0;
-            background-color: #99F7AB;
+            /* background-color: #99F7AB; */
   color: #53131E;
         }
 
@@ -58,12 +58,18 @@
     font-size: 16px;
 
   }
+
+  #chart_container{
+      height: 60vh;
+  }
+
+  
         @media only screen and (max-width: 369px) {
             h1{
                 font-size: 30pt;
             }
             #container{
-                height:400vh;
+                height:200vh;
             }
             
         }
@@ -72,7 +78,7 @@
                 font-size: 30pt;
             }
              #container{
-                height:370vh;
+                height:200vh;
             }
             
         }
@@ -97,3 +103,6 @@
             
         }
         
+        #navbar{
+            z-index: 10;
+        }

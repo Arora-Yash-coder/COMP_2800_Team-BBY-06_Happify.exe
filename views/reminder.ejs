@@ -17,7 +17,7 @@
 
 <body>
     <div id="nav">
-    <%- navbar  %></div> 
+        <%- navbar  %></div>
     <div id='container'>
         <div>
             <h1>We will remind you to go to bed at</h1>
@@ -51,19 +51,22 @@
     </div>
     <footer id='footer'>Made by FutureCurves.</footer>
     <script>
-          $("#start_reminder").hide()
-
-
-          $("#cancel_reminder").hide()
+        $("#start_reminder").hide()
+        $("#cancel_reminder").hide()
 
         $("#start_reminder").click(() => {
             $("#start_reminder").hide()
             $("#cancel_reminder").show()
         })
 
+        $("#cancel_reminder").click(() => {
+            $("#start_reminder").show()
+            $("#cancel_reminder").hide()
+        })
 
 
-      
+
+
         function set_notification_time() {
 
 
@@ -89,6 +92,7 @@
 
         $("#confirm_time").click(() => {
             $("#start_reminder").show()
+            $("#confirm_time").hide()
         })
 
 
@@ -151,6 +155,14 @@
                     success: function (response) {
                         alert(response)
                         $("#cancel_reminder").show()
+                        $("#confirm_time").hide()
+                    },
+                    error: () => {
+                        navigator.serviceWorker.getRegistrations().then(function (registrations) {
+                            for (let registration of registrations) {
+                                registration.unregister();
+                            }
+                        })
                     }
                 });
             })
@@ -160,9 +172,9 @@
         function unregister() {
             navigator.serviceWorker.getRegistrations().then(function (registrations) {
                 for (let registration of registrations) {
-                    registration.unregister();
+                    registration.unregister({immediate: true});
                 }
-            }).then(()=>{
+            }).then(() => {
                 window.location.reload();
             })
         }
@@ -171,28 +183,28 @@
 
     </script>
     <script>
-    // When the user scrolls the page, execute myFunction
-window.onscroll = function() {myFunction()};
+        // When the user scrolls the page, execute myFunction
+        window.onscroll = function () { myFunction() };
 
-// Get the navbar
-var navbar = document.getElementById("nav");
+        // Get the navbar
+        var navbar = document.getElementById("nav");
 
-// Get the offset position of the navbar
-var sticky = navbar.offsetTop;
+        // Get the offset position of the navbar
+        var sticky = navbar.offsetTop;
 
-// Add the sticky class to the navbar when you reach its scroll position. Remove "sticky" when you leave the scroll position
-function myFunction() {
-  if (window.pageYOffset >= sticky) {
-    navbar.classList.add("sticky")
-  } else {
-    navbar.classList.remove("sticky");
-  }
-}
-    
-    
+        // Add the sticky class to the navbar when you reach its scroll position. Remove "sticky" when you leave the scroll position
+        function myFunction() {
+            if (window.pageYOffset >= sticky) {
+                navbar.classList.add("sticky")
+            } else {
+                navbar.classList.remove("sticky");
+            }
+        }
+
+
     </script>
     <!-- Go to www.addthis.com/dashboard to customize your tools -->
-<script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-5ec2cbf0773973c5"></script>
+    <script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-5ec2cbf0773973c5"></script>
 </body>
 
 </html>
