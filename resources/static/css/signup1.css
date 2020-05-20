@@ -1,89 +1,180 @@
 body {
+  /*
     background-image: url(./../img/background.png);
     background-size: cover;
-    width: 100%;
+*/
+  background-color: #FFE548;
+  width: 100%;
 }
-.container{
-      background-color:hsla(120, 60%, 2%, 0.6);
-      
-      /* filter:alpha(opacity=50); */
-      z-index:-1; 
-      /* opacity:0.8; */
+
+@media only screen and (max-width: 330px) {
+  #footer {
+    text-align: center;
+    bottom: 0;
+    margin-top: 130px;
+    color: #A63013;
+    clear: both;
+    position: relative;
+
+  }
+}
+@media only screen and (max-width: 360px) {
+    #footer {
+        text-align: center;
+        bottom: 0;
+        margin-top: 250px;
+        color: #A63013;
+        clear: both;
+        position: relative;
+
     }
-    #choice_tab{
-      display: inline;
-    }
-    #reg{
-     
-      /* background-color:hsla(120, 60%, 2%, 0.6) ; */
-      float: left;
-    }
-    #userForm{
-      margin: 0;
-    }
-    #log{
-      float: right;
-      margin: 0;
-      padding-top: 10px;
-      height: 50px;
-      width: 100px;
-/*      padding-right: 5px;*/
-      
-      background-color: rgb(0, 0, 0);
-    }
+}
+@media only screen and (min-width: 361px) {
+  #footer {
+    text-align: center;
+    bottom: 0;
+    margin-top: 300px;
+    color: #A63013;
+    clear: both;
+    position: relative;
+
+  }
+}
+
+@media only screen and (min-width: 600px) {
+  #footer {
+    text-align: center;
+    bottom: 0;
+    margin-top: 500px;
+    color: #A63013;
+    clear: both;
+    position: relative;
+    /*    font-size: 20pt;*/
+  }
+}
+
+@media only screen and (min-width: 1024px) {
+  #footer {
+    text-align: center;
+    bottom: 0;
+    margin-top: 850px;
+    color: #A63013;
+    clear: both;
+    position: relative;
+    /*    font-size: 25pt;*/
+  }
+}
+
+@media only screen and (min-width: 1200px) {
+  #footer {
+    text-align: center;
+    bottom: 0;
+    margin-top: 200px;
+    color: #A63013;
+    clear: both;
+    position: relative;
+    font-size: 18pt;
+  }
+}
+
+.container {
+  background-color: hsla(120, 60%, 2%, 0.6);
+
+  /* filter:alpha(opacity=50); */
+  z-index: -1;
+  /* opacity:0.8; */
+  /*    width: 90%;*/
+}
+
+#choice_tab {
+  display: inline;
+}
+
+#reg {
+
+  /* background-color:hsla(120, 60%, 2%, 0.6) ; */
+  float: left;
+}
+
+#userForm {
+  margin: 0;
+}
+
+#log {
+  float: right;
+  margin: 0;
+  padding-top: 10px;
+  height: 50px;
+  width: 100px;
+  /*      padding-right: 5px;*/
+
+  background-color: rgb(0, 0, 0);
+}
 
 
-    input[type="text"] {
-      margin-top: 20px;
-      margin-bottom: -1px;
-      border-bottom-left-radius: 0;
-      border-bottom-right-radius: 0;
-      font-size: 15pt;
-      height: 48px;
-      width: 340px;
-    }
+input[type="text"] {
+  margin-top: 20px;
+  margin-bottom: -1px;
+  border-bottom-left-radius: 0;
+  border-bottom-right-radius: 0;
+  font-size: 15pt;
+  height: 48px;
+  width: 340px;
+}
 
-    input[type="password"] {
-      margin-top: 20px;
-      margin-bottom: -1px;
-      border-bottom-left-radius: 0;
-      border-bottom-right-radius: 0;
-      font-size: 15pt;
-      height: 48px;
-      width: 340px;
-    }
+input[type="password"] {
+  margin-top: 20px;
+  margin-bottom: -1px;
+  border-bottom-left-radius: 0;
+  border-bottom-right-radius: 0;
+  font-size: 15pt;
+  height: 48px;
+  width: 340px;
+}
 
-    input[type="email"] {
-      margin-top: 20px;
-      margin-bottom: -1px;
-      border-bottom-left-radius: 0;
-      border-bottom-right-radius: 0;
-      font-size: 15pt;
-      height: 48px;
-      width: 340px;
-    }
-
-
-    #register {
-/*      margin-top: 10px;*/
-      background-color: transparent;
-      border: #3AB795 solid 1px;
-      color: #3AB795;
-      padding: 10px 26px;
-      text-align: center;
-      text-decoration: none;
-      display: inline-block;
-      font-size: 16px;
-    }
+input[type="email"] {
+  margin-top: 20px;
+  margin-bottom: -1px;
+  border-bottom-left-radius: 0;
+  border-bottom-right-radius: 0;
+  font-size: 15pt;
+  height: 48px;
+  width: 340px;
+}
 
 
+#register {
+  background-color: transparent;
+  border: #EEFCCE solid 1.5px;
+  color: #EEFCCE;
+  padding: 7px 26px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+/*  font-weight: bold;*/
 
-    .container {
-      text-align: center;
-      width: 370px;
-    }
+}
 
-    body {
-      color: white;
-    }
-    
+#register:hover {
+  background-color: white;
+  border: #53131E solid 1.5px;
+  color: #53131E;
+  padding: 7px 26px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+
+}
+
+
+
+.container {
+  text-align: center;
+  width: 370px;
+}
+
+body {
+  color: white;
+}
