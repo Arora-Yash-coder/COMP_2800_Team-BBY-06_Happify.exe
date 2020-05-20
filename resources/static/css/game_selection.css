@@ -399,6 +399,40 @@ img {
 
 }
 
+#games5 {
+    margin-left: 25px;
+    margin-right: 25px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    border-radius: 25px;
+    background-color: #D6F9DD;
+    grid-row: 4 / span 1;
+    display: grid;
+    grid-template-columns: 50% 50%;
+    border: solid 2px rgba(83, 19, 30, 0.7);
+}
+
+#games5_1 {
+    margin-top: auto;
+    margin-bottom: auto;
+    border-radius: 25px 0 0 25px;
+    /*            background-color: #B8D8BA;*/
+
+    grid-column: 1 / span 1;
+
+}
+
+#games5_2 {
+    margin-top: auto;
+    margin-bottom: auto;
+
+    border-radius: 0 25px 25px 0;
+
+
+    grid-column: 2 / span 1;
+
+}
+
 #header {
     grid-row: 1 / span 1;
 }
