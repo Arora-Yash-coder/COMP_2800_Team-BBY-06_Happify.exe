@@ -3,30 +3,10 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Counselling</title>
-    <link rel="stylesheet" href="/static/css/counselling.css">
+    <link rel="stylesheet" type="text/css" href="/static/css/Counselling.css">
     <link rel="stylesheet" href="/static/css/homepage.css">
     <link rel="stylesheet" type="text/css" href="/static/css/navbar.css">    
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
-
-    <style>
-        body{
-            text-align: center;
-        }
-        .header1{
-            margin: 10px;
-        }
-
-       .link{
-            text-decoration: underline;
-            color: blue;
-            font: bold;
-        }
-        .card{
-            display: block;
-        }
-
-
-    </style>
 
 
 
@@ -35,48 +15,59 @@
 
     <%-navbar%>
 
-    <span id = heading1>Mental Helath Services</span>
-    <div class="card">
-        <span class="header1">Outter Link</span>
-        <div class="card2" id = "card_link_1">
-            <span id="crisiscenter_span" class="card collapse" >Crisis Centre Website</span>
-            <ul id="crisiscenter_phone_no">
+    <span id = heading1><h1>Mental Health Services</h1></span>
+    <div id="card1">
+        <div id="card1_1">
+        <span class="header1">Outer Link</span></div>
+        
+        <div id="card1_2">
+        
+            <span class="header1">Crisis Centre Sources</span>
+            <ol id="crisiscenter_phone_no">
                 <li class="link" id="crisiscenter_website" onclick="window.location.href='https://crisiscentre.bc.ca/'"><i>BC Crisis Centre</i></li>
                 <li>Anywhere in BC 1-800-SUICIDE: 1-800-784-2433</li>
                 <li> Mental Health Support Line: 310-6789</li>
                 <li>Vancouver Coastal Regional Distress Line: 604-872-3311</li>
                 <li>Sunshine Coast/Sea to Sky: 1-866-661-3311</li>
                 <li> Seniors Distress Line: 604-872-1234</li>
-            </ul>
+            </ol>
 
-        </div>
-
-        <div class="card2">
-            <span id="self_help_span" class="card collapse">Self Help Articles</span>
-            <ul id="self_help">
+        
+</div>
+        
+        <div id="card1_3">
+        <div>
+            <span class="header1">Self Help Articles</span>
+            <ol id="self_help">
                 <li class="link" onclick="window.location.href='https://www.helpguide.org/articles/suicide-prevention/are-you-feeling-suicidal.htm'"><i>How To Releaf Suicidal Thoughts</i></li>
                 <li class="link" onclick="window.location.href='https://www.webmd.com/depression/guide/depression-living-managing'"><i>Depression Recovery</i></li>
-            </ul>
+            </ol>
         </div>
-
+</div>
         
         
     
         
     </div>
 
-    <div class="card">
-        <span></span>
-        <p>This service provides free text conselling with our volunteers</p>.
-        <p>Most of our volunteers are psychology students</p>
-        <button>Proceed</button>
+    <div id="card2">
+        <div id="card2_1">
+        <p>This service provides free text counselling with our volunteers.</p></div>
+        <div id="card2_2">
+        <p>Most of our volunteers are psychology students.</p></div>
+        
     </div>
+    <button>Proceed</button>
+    <footer id="footer">Made by FutureCurves.</footer>
 
     <script >
         $(".collapse ~ * ").hide()
         $(".collapse").click((e)=>{
-            $("#"+e.target.id+" ~ ul").toggle()
+            $("#"+e.target.id+" ~ ol").toggle()
         })
     </script>
+    <!-- Go to www.addthis.com/dashboard to customize your tools -->
+<script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-5ec2cbf0773973c5"></script>
+
 </body>
 </html>

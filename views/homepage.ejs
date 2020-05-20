@@ -47,27 +47,8 @@
 
                     </div>
                   
-                    <span> </span>
-                    <script>
-                        $.ajax({
-                            type: "get",
-                            url: "/COVID_NEWS",
-                           
-                            dataType: "json",
-                            success: function (response) {
-
-                                let title = response[0].title
-                                let link = response[0].url
-                                $("#latest_news_title").html(title)
-                                $("#latest_news_container").css("background-color","rgba(235,236,15,0.8)")
-                                $("#latest_news_url").css("background-color","red")
-                                $("#latest_news_container").mouseup(()=>{
-                                    window.location.href = link
-                                })
-                                console.log(response[0])
-                            }
-                        });
-                    </script>
+                    
+                    
                 </div>
 
                 <div class="Intel card2" onclick="window.location.href='/pandemic_info' ">
@@ -103,10 +84,10 @@
 
             <div id="redeem" class="card" onclick="window.location.href = '/coupon';">
 
-                <div id="redeem1 card1" >
+                <div id="redeem1" >
                     <h1 class="second">Redeem!</h1>
                 </div>
-                <div id="redeem2 card2">
+                <div id="redeem2">
                     <div id='image'>
 
                         <img id="redeem_img" src="img/coupon1.png">
@@ -116,10 +97,10 @@
             
             <div id="reminder" class="card" onclick="window.location.href = '/reminder';">
 
-                <div id="reminder1 card1">
+                <div id="reminder1">
                     <h1 class="second">Daily Reminders</h1>
                 </div>
-                <div id="reminder2 card2">
+                <div id="reminder2">
                     <div id='image'>
 
                         <img id="redeem_img" src="img/reminder1.png">
@@ -130,13 +111,13 @@
                         
             <div id="counselling" class="card" onclick="window.location.href = '/counselling';">
 
-                <div id="counselling card1">
+                <div id="counselling1">
                     <h1 class="second">Mental counselling</h1>
                 </div>
-                <div id="counselling card2">
+                <div id="counselling2">
                     <div id='image'>
 
-                        <img id="redeem_img" src="img/reminder1.png">
+                        <img id="redeem_img" src="img/mental1.png">
                     </div>
                 </div>
             </div>
@@ -147,7 +128,26 @@
 
             <%- footer %>
 
-           
+           <script>
+                        $.ajax({
+                            type: "get",
+                            url: "/COVID_NEWS",
+                           
+                            dataType: "json",
+                            success: function (response) {
+
+                                let title = response[0].title
+                                let link = response[0].url
+                                $("#latest_news_title").html(title)
+                                $("#latest_news_container").css("background-color","rgba(235,236,15,0.8)")
+                                $("#latest_news_url").css("background-color","red")
+                                $("#latest_news_container").mouseup(()=>{
+                                    window.location.href = link
+                                })
+                                console.log(response[0])
+                            }
+                        });
+                    </script>
             
             <script src="/static/js/get_points.js"></script>
             <script src='/static/js/homepage.js'></script>

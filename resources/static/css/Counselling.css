@@ -1,0 +1,254 @@
+body{
+            text-align: center;
+        }
+        .header1{
+            margin: 10px;
+        }
+
+       .link{
+            text-decoration: underline;
+            color: blue;
+            font: bold;
+        }
+        
+@media only screen and (max-width: 369px) {
+    .header1{
+        font-size: 20pt;
+        font-weight: bold;
+    }
+    #card1{
+    font-size: 25pt;
+    display:grid;
+    grid-template-rows: 5% 70% 25%;
+     background-color: #7BDFF2;
+  /*    border-radius: 25px;*/
+  /*    margin-left: 25px;*/
+  /*    margin-right: 25px;*/
+  padding-top: 10px;
+  padding-bottom: 10px;
+  margin-top: 10px;
+  margin-bottom: 10px;
+  color: #53131E;
+    height: 170vh;
+    
+    
+}
+    #card2{
+    font-size: 25pt;
+    display:grid;
+    grid-template-rows: 50% 50%;
+     background-color: #7BDFF2;
+  /*    border-radius: 25px;*/
+  /*    margin-left: 25px;*/
+  /*    margin-right: 25px;*/
+  padding-top: 10px;
+  padding-bottom: 10px;
+  margin-top: 10px;
+  margin-bottom: 10px;
+  color: #53131E;
+    height: 50vh;
+    
+    
+}
+    
+    #footer{
+        font-size: 20pt;
+    }
+        }
+
+
+@media only screen and (min-width: 370px) {
+    h1{
+        font-size: 25pt;
+    }
+    .header1{
+        font-size: 25pt;
+        font-weight: bold;
+    }
+     #card1{
+    font-size: 25pt;
+    display:grid;
+    grid-template-rows: 10% 70% 20%;
+     background-color: #7BDFF2;
+  /*    border-radius: 25px;*/
+  /*    margin-left: 25px;*/
+  /*    margin-right: 25px;*/
+  padding-top: 10px;
+  padding-bottom: 10px;
+  margin-top: 10px;
+  margin-bottom: 10px;
+  color: #53131E;
+    height: 142vh;
+    
+    
+}
+    #card2{
+    font-size: 25pt;
+    display:grid;
+    grid-template-rows: 50% 50%;
+     background-color: #7BDFF2;
+  /*    border-radius: 25px;*/
+  /*    margin-left: 25px;*/
+  /*    margin-right: 25px;*/
+  padding-top: 10px;
+  padding-bottom: 10px;
+  margin-top: 10px;
+  margin-bottom: 10px;
+  color: #53131E;
+    height: 40vh;
+    
+    
+}
+
+    #footer{
+        font-size: 20pt;
+    }
+        }
+
+
+@media only screen and (min-width: 600px) {
+     #card1{
+    font-size: 25pt;
+    display:grid;
+    grid-template-rows: 10% 60% 30%;
+     background-color: #7BDFF2;
+  /*    border-radius: 25px;*/
+  /*    margin-left: 25px;*/
+  /*    margin-right: 25px;*/
+  padding-top: 10px;
+  padding-bottom: 10px;
+  margin-top: 10px;
+  margin-bottom: 10px;
+  color: #53131E;
+    height: 65vh;
+    
+    
+}
+    #card2{
+    font-size: 25pt;
+    display:grid;
+    grid-template-rows: 50% 50%;
+     background-color: #7BDFF2;
+  /*    border-radius: 25px;*/
+  /*    margin-left: 25px;*/
+  /*    margin-right: 25px;*/
+  padding-top: 10px;
+  padding-bottom: 10px;
+  margin-top: 10px;
+  margin-bottom: 10px;
+  color: #53131E;
+    height: 25vh;
+    
+    
+}
+
+    #footer{
+        font-size: 20pt;
+    }
+        }
+
+@media only screen and (min-width: 1024px) {
+     #card1{
+    font-size: 25pt;
+    display:grid;
+    grid-template-rows: 10% 60% 30%;
+     background-color: #7BDFF2;
+  /*    border-radius: 25px;*/
+  /*    margin-left: 25px;*/
+  /*    margin-right: 25px;*/
+  padding-top: 10px;
+  padding-bottom: 10px;
+  margin-top: 10px;
+  margin-bottom: 10px;
+  color: #53131E;
+/*    height: 90vh;*/
+    
+    
+}
+    #card2{
+    font-size: 25pt;
+    display:grid;
+    grid-template-rows: 50% 50%;
+     background-color: #7BDFF2;
+  /*    border-radius: 25px;*/
+  /*    margin-left: 25px;*/
+  /*    margin-right: 25px;*/
+  padding-top: 10px;
+  padding-bottom: 10px;
+  margin-top: 10px;
+  margin-bottom: 10px;
+  color: #53131E;
+    height: 20vh;
+    
+    
+}
+
+    #footer{
+        margin-top: 200px;
+        font-size: 20pt;
+    }
+        }
+
+@media only screen and (min-width: 1200px) {
+     #card1{
+    font-size: 10pt;
+    display:grid;
+    grid-template-rows: 10% 60% 30%;
+     background-color: #7BDFF2;
+  /*    border-radius: 25px;*/
+  /*    margin-left: 25px;*/
+  /*    margin-right: 25px;*/
+  padding-top: 10px;
+  padding-bottom: 10px;
+  margin-top: 10px;
+  margin-bottom: 10px;
+  color: #53131E;
+    height: 250vh;
+    
+    
+}
+    #card2{
+    font-size: 10pt;
+    display:grid;
+    grid-template-rows: 50% 50%;
+     background-color: #7BDFF2;
+  /*    border-radius: 25px;*/
+  /*    margin-left: 25px;*/
+  /*    margin-right: 25px;*/
+  padding-top: 10px;
+  padding-bottom: 10px;
+  margin-top: 10px;
+  margin-bottom: 10px;
+  color: #53131E;
+    height: 50vh;
+    
+    
+}
+
+    #footer{
+        margin-top: 200px;
+        font-size: 20pt;
+    }
+        }
+
+#card1_1{
+    grid-row: 1 / span 1;
+    
+}
+#card1_2{
+    grid-row: 2 / span 1;
+}
+#card1_3{
+    grid-row: 3 / span 1;
+}
+
+#card2_1{
+    grid-row: 1 / span 1;
+    
+}
+#card2_2{
+    grid-row: 2 / span 1;
+}
+
+
+
