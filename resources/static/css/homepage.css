@@ -139,7 +139,7 @@ body {
 
     #footer {
         bottom: 0;
-        margin-top: 50px;
+        margin-top: 550px;
         color: #53131E;
         clear: both;
         position: relative;
@@ -228,13 +228,13 @@ body {
 
     #container {
 
-        height: 200vh;
+        height: 160vh;
     }
 
 
     #footer {
         bottom: 0;
-        margin-top: 50px;
+        margin-top: 650px;
         color: #53131E;
         clear: both;
         position: relative;
@@ -242,7 +242,7 @@ body {
     }
 }
 
-@media only screen and (min-width: 1024px) {
+@media only screen and (min-width: 1024px) and (max-width:1025px) {
     #container{
         margin-top: 10%;
     }
@@ -295,12 +295,12 @@ body {
 
     #container {
 
-        height: 150vh;
+        height: 130vh;
     }
 
     #footer {
         bottom: 0;
-        margin-top: 300px;
+        margin-top: 850px;
         color: #53131E;
         clear: both;
         position: relative;
@@ -366,7 +366,7 @@ body {
 
     #footer {
         bottom: 0;
-        margin-top: 50px;
+        margin-top: 550px;
         color: #53131E;
         clear: both;
         position: relative;

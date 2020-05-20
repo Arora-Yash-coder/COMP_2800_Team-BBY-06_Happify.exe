@@ -7,51 +7,61 @@ body{
 
        .link{
             text-decoration: underline;
-            color: red;
+            color: blue;
             font: bold;
         }
-        
 #card1{
-    background-color: #FFE8C2;
+     background-color: #FFE8C2;
 }
 #card2{
-    background-color: #FFE8C2;
+     background-color: #FFE8C2;
+}
+       
+/* The sticky class is added to the navbar with JS when it reaches its scroll position */
+.sticky {
+  position: fixed;
+  top: 0;
+  width: 100%;
+}
+#container{
+    margin-top: 40px;
 }
 @media only screen and (max-width: 369px) {
+    
     .header1{
         font-size: 20pt;
         font-weight: bold;
     }
     #card1{
     font-size: 25pt;
-    display:grid;
-    grid-template-rows: 5% 70% 25%;
-  
+    
+    
+    
   padding-top: 10px;
   padding-bottom: 10px;
   margin-top: 10px;
   margin-bottom: 10px;
   color: #A63013;
-    height: 170vh;
+    
     
     
 }
     #card2{
     font-size: 25pt;
-    display:grid;
-    grid-template-rows: 50% 50%;
-   
+    
+     
   padding-top: 10px;
   padding-bottom: 10px;
   margin-top: 10px;
   margin-bottom: 10px;
   color: #A63013;
-    height: 50vh;
+    
     
     
 }
     
     #footer{
+       
         font-size: 20pt;
     }
         }
@@ -67,34 +77,33 @@ body{
     }
      #card1{
     font-size: 25pt;
-    display:grid;
-    grid-template-rows: 10% 70% 20%;
+    
      
   padding-top: 10px;
   padding-bottom: 10px;
   margin-top: 10px;
   margin-bottom: 10px;
   color: #A63013;
-    height: 142vh;
+    
     
     
 }
     #card2{
     font-size: 25pt;
-    display:grid;
-    grid-template-rows: 50% 50%;
-     
+    
+   
   padding-top: 10px;
   padding-bottom: 10px;
   margin-top: 10px;
   margin-bottom: 10px;
   color: #A63013;
-    height: 40vh;
+   
     
     
 }
 
     #footer{
+        margin-top: 500px;
         font-size: 20pt;
     }
         }
@@ -103,29 +112,27 @@ body{
 @media only screen and (min-width: 600px) {
      #card1{
     font-size: 25pt;
-    display:grid;
-    grid-template-rows: 10% 60% 30%;
+    
      
   padding-top: 10px;
   padding-bottom: 10px;
   margin-top: 10px;
   margin-bottom: 10px;
   color: #A63013;
-    height: 65vh;
+   
     
     
 }
     #card2{
     font-size: 25pt;
-    display:grid;
-    grid-template-rows: 50% 50%;
+    
     
   padding-top: 10px;
   padding-bottom: 10px;
   margin-top: 10px;
   margin-bottom: 10px;
   color: #A63013;
-    height: 25vh;
+   
     
     
 }
@@ -135,11 +142,10 @@ body{
     }
         }
 
-@media only screen and (min-width: 1024px) {
+@media only screen and (min-width: 1024px) and (max-width: 1025px) {
      #card1{
     font-size: 25pt;
-    display:grid;
-    grid-template-rows: 10% 60% 30%;
+    
     
   padding-top: 10px;
   padding-bottom: 10px;
@@ -152,15 +158,14 @@ body{
 }
     #card2{
     font-size: 25pt;
-    display:grid;
-    grid-template-rows: 50% 50%;
+    
     
   padding-top: 10px;
   padding-bottom: 10px;
   margin-top: 10px;
   margin-bottom: 10px;
   color: #A63013;
-    height: 20vh;
+   
     
     
 }
@@ -171,32 +176,30 @@ body{
     }
         }
 
-@media only screen and (min-width: 1200px) {
+@media only screen and (min-width: 1026px) {
      #card1{
-    font-size: 10pt;
-    display:grid;
-    grid-template-rows: 10% 60% 30%;
-   
+    font-size: 4pt;
+    
+    
   padding-top: 10px;
   padding-bottom: 10px;
   margin-top: 10px;
   margin-bottom: 10px;
   color: #A63013;
-    height: 250vh;
+   
     
     
 }
     #card2{
-    font-size: 10pt;
-    display:grid;
-    grid-template-rows: 50% 50%;
+    font-size: 4pt;
+    
    
   padding-top: 10px;
   padding-bottom: 10px;
   margin-top: 10px;
   margin-bottom: 10px;
   color: #A63013;
-    height: 50vh;
+    
     
     
 }
@@ -207,24 +210,6 @@ body{
     }
         }
 
-#card1_1{
-    grid-row: 1 / span 1;
-    
-}
-#card1_2{
-    grid-row: 2 / span 1;
-}
-#card1_3{
-    grid-row: 3 / span 1;
-}
-
-#card2_1{
-    grid-row: 1 / span 1;
-    
-}
-#card2_2{
-    grid-row: 2 / span 1;
-}
 
 
 
