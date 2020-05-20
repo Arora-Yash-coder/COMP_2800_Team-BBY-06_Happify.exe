@@ -2713,14 +2713,15 @@ module.exports = function (app) {
 
 
 
-
+	//ON CALLING THIS ROUTE, THE USER IS LEAD TO THE PANDEMIC INFORMATION 
 	app.get("/pandemic_info", (req, res) => {
 
 		res.render(path + "pandemic_info.ejs", { navbar: navbar_top_ejs })
 	})
 
 
-
+	//THIS IS AN API TO GET COVID STATISTICS BY USING MONGODB $unwind AND $sortBycount
+	//FUNCTION,THEN THIS WILL BE SENT TO THE DATABASE.
 	app.get("/parse_covid_bar_data", (req, res) => {
 
 		try {
@@ -2748,7 +2749,7 @@ module.exports = function (app) {
 
 
 
-
+	//THE CHATBOX IS THE SOCKEIT.IO CHAT APP
 	app.get("/chatbox", (req, res) => {
 		res.render(path + "chatbox.ejs")
 	})
@@ -2947,6 +2948,7 @@ module.exports = function (app) {
 		}
 	})
 
+	//THIS UPLOADS THE AVATAR TO THE DATABASE.
 	app.post('/upload_avatar', function (req, res) {
 		var form = new formidable.IncomingForm();
 		console.log("about to parse");
@@ -2973,7 +2975,7 @@ module.exports = function (app) {
 		});
 	});
 
-
+	//ADMIN WILL BE VISITING THIS LINK
 	app.get('/admin', (req, res) => {
 		res.render(path + "admin_verify.ejs");
 	});
