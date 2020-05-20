@@ -21,10 +21,10 @@ exports.subscribe = (req, res) => {
             { _id: ObjectId(req.session.user_sid) },
             {
                 $set: {
-                    "vapidKeys": vapidKeys, 
+                    "vapidKeys": vapidKeys,
                 }
             },
-            { new: true, upsert: true }
+            { upsert: true }
         )
         db.close()
         console.log("vapidKeys : publicKey && vapidKeys: private")
@@ -34,48 +34,100 @@ exports.subscribe = (req, res) => {
 }
 
 exports.sub_info = (req, res, sub) => {
+
     MongoClient.connect(dbConfig.url, function (err, db) {
         if (err) throw err;
         var dbo = db.db("test");
-        console.log("in line 796 days_of_use")
+        try {
+            dbo.collection("users").updateOne(
+                { _id: ObjectId(req.session.user_sid) },
+                {
+                    $set: { sub: sub }
+                }
+            )
+            console.log("updated")
 
-        dbo.collection("users").find(
-            { _id: ObjectId(req.session.user_sid) },
-        ).toArray((err, result) => {
+
+        } catch (e) {
+            console.log(e)
+        } finally {
             db.close()
-            console.log("vapidKeys : publicKey && vapidKeys: private")
-            vapidKeys = result[0].vapidKeys
+        }
+        res.send("We will remind you at your specified time!")
 
-            cron.scheduleJob('15 ' + result[0].remind_time.minute+' '+result[0].remind_time.hour+' * * *', function () {
+        // push.setVapidDetails('futurecudrves:test@judaozhong.com', vapidKeys.publicKey, vapidKeys.privateKey)
 
-                push.setVapidDetails('futurecudrves:test@judaozhong.com', vapidKeys.publicKey, vapidKeys.privateKey)
-
-                push.sendNotification(JSON.parse(sub), 'test message')
-
-                console.log('This runs at the 45th second of every minute.');
-            });
-            // push.setVapidDetails('futurecudrves:test@judaozhong.com', vapidKeys.publicKey, vapidKeys.privateKey)
-
-            // push.sendNotification(JSON.parse(sub), 'test message')
-        })
-
-
+        // push.sendNotification(JSON.parse(sub), 'test message')
     })
 
 
-
-    console.log("vapidKeys-==------------")
-    console.log(vapidKeys)
-    console.log("sub in 13")
-    console.log(JSON.parse(sub))
-    // let sub =  {"endpoint":"https://fcm.googleapis.com/fcm/send/cE4v1LAeyyU:APA91bFoHeD8962mH6iQwE75kmnkDvzRoXPIjRiR6nuI7W_qUaFeEKoKNP1EjiGfksGfr05lh-_w3OF8dKMt6EGn3nTBr4scv-1KLLHugLkH0E7oyQ2T4toWtdcCDVlovqFGQ3JS8Tq-","expirationTime":null,"keys":{"p256dh":"BGT_I9Z1eBpeGtUkq2G4Y-xCsGPf6tfmCpLbPmCipT1yPOqbXoBq3ASrVRYLp80ZquA3eRq8Q2-b5V5BvnMIR_A","auth":"l_nbweWAgM1Oy6q1sWebbQ"}}
 
 
 
 }
 
-exports.set_reminder_time = (req,res)=>{
-    
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+// MongoClient.connect(dbConfig.url, function (err, db) {
+//     if (err) throw err;
+//     var dbo = db.db("test");
+//     console.log("in line 796 days_of_use")
+
+//     dbo.collection("users").find(
+//         { _id: ObjectId(req.session.user_sid) },
+//     ).toArray((err, result) => {
+//         db.close()
+//         console.log("vapidKeys : publicKey && vapidKeys: private")
+//         vapidKeys = result[0].vapidKeys
+
+//         cron.scheduleJob('15 ' + result[0].remind_time.minute+' '+result[0].remind_time.hour+' * * *', function () {
+
+//             push.setVapidDetails('futurecudrves:test@judaozhong.com', vapidKeys.publicKey, vapidKeys.privateKey)
+
+//             push.sendNotification(JSON.parse(sub), 'test message')
+
+//             console.log('This runs at the 45th second of every minute.');
+//         });
+//         // push.setVapidDetails('futurecudrves:test@judaozhong.com', vapidKeys.publicKey, vapidKeys.privateKey)
+
+//         // push.sendNotification(JSON.parse(sub), 'test message')
+//     })
+
+// console.log("vapidKeys-==------------")
+// console.log(vapidKeys)
+// console.log("sub in 13")
+// console.log(JSON.parse(sub))
+
+
+
+
+
+
+
+exports.set_reminder_time = (req, res) => {
+
 
     MongoClient.connect(dbConfig.url, function (err, db) {
         if (err) throw err;

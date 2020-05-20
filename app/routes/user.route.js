@@ -577,8 +577,8 @@ module.exports = function (app) {
 		})
 	});
 
-	app.get("/counselling",sessionChecker2, (req, res)=>{
-		res.render(path + "counselling.ejs",{navbar:navbar_top_ejs})
+	app.get("/counselling", sessionChecker2, (req, res) => {
+		res.render(path + "counselling.ejs", { navbar: navbar_top_ejs })
 	})
 
 	//subscribe web-push notification stuff
@@ -2440,10 +2440,7 @@ module.exports = function (app) {
 
 
 
-	// require csvtojson
-	var csv = require("csvtojson");
-	let csvFilePath = staticPath + "BCCDC_COVID19_Dashboard_Case_Details.csv"
-	//  // Convert a csv file with csvtojson
+
 
 
 	// // Parse large csv with stream / pipe (low mem consumption)
@@ -2502,31 +2499,175 @@ module.exports = function (app) {
 
 	const https = require('https');
 	app.get("/COVID_NEWS", (req, res) => {
-	
-		
+
+
 		var myPath = "https://newsapi.org/v2/top-headlines?country=ca&category=health&apiKey=8295de78f914447abfe4bc0c56f3d234";
-		
+
 
 		https.get(myPath, (resp) => {
-		  let data = '';
-		
-		  // A chunk of data has been recieved.
-		  resp.on('data', (chunk) => {
-			data += chunk;
-		  });
-		
-		  // The whole response has been received. Print out the result.
-		  resp.on('end', () => {
-			console.log(JSON.parse(data).articles[0]);
-			res.send(JSON.parse(data).articles)
-		  });
-		
+			let data = '';
+
+			// A chunk of data has been recieved.
+			resp.on('data', (chunk) => {
+				data += chunk;
+			});
+
+			// The whole response has been received. Print out the result.
+			resp.on('end', () => {
+				console.log(JSON.parse(data).articles[0]);
+				res.send(JSON.parse(data).articles)
+			});
+
 		}).on("error", (err) => {
-		  console.log("Error: " + err.message);
+			console.log("Error: " + err.message);
 		});
-		
+
 	})
 
+
+
+	/////////////////////////////////////////////////////////////////////////////////////////////////////
+	//	USING REQUEST MODULE TO DOWNLOAD THE COVID DATA FROM BCCDC
+	/////////////////////////////////////////////////////////////////////////////////////////////////////
+	const request = require('request')
+	const cron = require('node-schedule');
+
+	async function updateLatestData() {
+		const download = (url, path, callback) => {
+			request.head(url, (err, res, body) => {
+				request(url)
+					.pipe(fs.createWriteStream(path))
+					.on('close', callback)
+			})
+		}
+
+		const url = 'http://www.bccdc.ca/Health-Info-Site/Documents/BCCDC_COVID19_Dashboard_Case_Details.csv'
+		const path = staticPath + "BCCDC_COVID19_Dashboard_Case_Details.csv"
+
+		download(url, path, () => {
+			console.log('✅ Done!')
+		})
+
+
+	}
+
+
+	// require csvtojson
+	var csv = require("csvtojson");
+	var csvFilePath = staticPath + "BCCDC_COVID19_Dashboard_Case_Details.csv"
+
+	//每小时的第1分钟的第一秒，重新下载BCCDC的csv文件，然后把库给删了，再重新导入一次
+	cron.scheduleJob('1 1 * * * *', function () {
+		updateLatestData().then(() => {
+			try {
+				console.log("DeleteFormerData");
+				MongoClient.connect(dbConfig.url, function (err, db) {
+					if (err) throw err;
+					var dbo = db.db("test");
+					dbo.collection("covid_data").remove()
+				})
+			} catch (e) {
+				console.log(e);
+			}
+
+
+		}).then(
+			() => {
+
+				//  // Convert a csv file with csvtojson
+				console.log(csvFilePath)
+				csv().fromFile(csvFilePath)
+					.then(function (jsonArrayObj) { //when parse finished, result will be emitted here.
+						try {
+							console.log("about to insert");
+							MongoClient.connect(dbConfig.url, function (err, db) {
+								if (err) throw err;
+								var dbo = db.db("test");
+								dbo.collection("covid_data").insertMany(
+									jsonArrayObj
+								)
+							})
+						} catch (e) {
+							console.log(e);
+						}
+					})
+			}
+		)
+
+	})
+	//^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+	//							BCCDC DATA ACQUIRING AND PROCESSING
+	//////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+
+
+
+
+
+	///////////////////////////////////////////////////////////////////////////////////////////////////////
+	//					MONGODB MONITORING SCHEDULED PUSH FUNCTION
+	///////////////////////////////////////////////////////////////////////////////////////////////////////
+
+	var push = require('web-push')
+	cron.scheduleJob('10 * * * * *', function () {
+
+		MongoClient.connect(dbConfig.url, function (err, db) {
+			if (err) throw err;
+			var dbo = db.db("test");
+
+			try{
+				console.log("hour")
+					console.log(new Date().getHours())
+					console.log("minute")
+					console.log(new Date().getMinutes())
+			dbo.collection("users").find(
+				{
+					remind_time :{hour: new Date().getHours(), minute : new Date().getMinutes()}
+				}
+			).toArray((err, result) => {
+				
+				console.log(result)
+				for (var index in result) {
+					
+
+					if(result[index].vapidKeys && result[index].sub){
+						
+					console.log("vapidKeys")
+					let vapidKeys = result[index].vapidKeys;
+					console.log(vapidKeys)
+					let sub_info = result[index].sub
+					push.setVapidDetails('futurecudrves:test@judaozhong.com', vapidKeys.publicKey, vapidKeys.privateKey)
+					push.sendNotification(JSON.parse(sub_info), 'test message')
+				}
+					
+
+				}
+
+
+
+
+
+
+
+				console.log('This runs at the 45th second of every minute.');
+
+				// push.setVapidDetails('futurecudrves:test@judaozhong.com', vapidKeys.publicKey, vapidKeys.privateKey)
+
+				// push.sendNotification(JSON.parse(sub), 'test message')
+			})
+		}catch(e){
+			console.log(e)
+		}finally{
+			db.close()
+			console.log("Notification Function Done")
+		}
+
+		
+		})
+	})
+	//^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^//
+	//
+	//
 
 
 
@@ -2540,7 +2681,7 @@ module.exports = function (app) {
 
 	app.get("/pandemic_info", (req, res) => {
 
-		res.render(path + "pandemic_info.ejs",{navbar:navbar_top_ejs})
+		res.render(path + "pandemic_info.ejs", { navbar: navbar_top_ejs })
 	})
 
 
@@ -2573,7 +2714,7 @@ module.exports = function (app) {
 
 
 
-	app.get("/chatbox",(req,res)=>{
+	app.get("/chatbox", (req, res) => {
 		res.render(path + "chatbox.ejs")
 	})
 
