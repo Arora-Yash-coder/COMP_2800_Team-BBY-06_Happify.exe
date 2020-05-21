@@ -566,6 +566,7 @@ exports.searchCoupon = (req, res) => {
         // for (var i in req.body) {
         let search_input = req.body.serach_box
         console.log(search_input)
+        //construct a mongoDB search regex
         let regex_input = ".*" + search_input + ".*"
         let points_input = parseInt(req.body.serach_box)
         console.log(regex_input)
@@ -587,11 +588,16 @@ exports.searchCoupon = (req, res) => {
             db.close();
             // res.send(result)
             // res.redirect("/homepage")
-            res.render(path + "coupon.ejs", {
+            res.end(res.render(path + "coupon.ejs", {
                 coupons: result,
                 navbar: navbar_top_ejs,
-                footer: footer
-            })
+                footer: footer,
+                css: undefined,
+                progress_bar:progress,
+                proceed_button:"<button id='proceed' onclick='window.location.href='/flow_final''>Proceed</button>"
+
+            }))
+            db.close();
         });
     })
 }

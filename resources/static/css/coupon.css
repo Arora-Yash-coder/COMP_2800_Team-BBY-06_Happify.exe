@@ -4,7 +4,8 @@
 body {
     text-align: center;
     margin: 0;
-    background-color: #99F7AB;
+    /* background-color: #99F7AB; */
+    background-color: rgb(188, 247, 199);
     color: #53131E;
     height: 100vh;
 }
@@ -17,8 +18,19 @@ body {
 
 .confirm {
     font-size: 20pt;
+    border-color: rosybrown;
+}
+.yes {
+    border-width: 2px;
+    color: white;
+    background-color: seagreen;
 }
 
+.no {
+    border-width: 2px;
+    color: white;
+    background-color: rebeccapurple;
+}
 .points {
     font-size: 40pt;
 }
@@ -222,6 +234,7 @@ body {
     display: grid;
     grid-template-rows: 50% 50%;
     grid-template-columns: 50% 50%;
+    border-style: groove;
 }
 
 #description1 {
@@ -299,7 +312,7 @@ body {
 /* Styles for buttons */
 button {
     background-color: transparent;
-    border: #53131E solid 1.5px;
+    border: #53131E solid 2.5px;
     color: #53131E;
     padding: 7px 26px;
     text-align: center;

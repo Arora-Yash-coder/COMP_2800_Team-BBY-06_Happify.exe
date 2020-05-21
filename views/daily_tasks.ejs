@@ -57,7 +57,7 @@
       <% for (var i = 0; i < todo_item.length;  i++ ) { %>
       <% if(todo_item[i]){ %>
 
-      <div id='inner_<%= i%>'>
+      <div class="daily_cards" id='inner_<%= i%>'>
 
         <span class="taskid" id="taskid<%=todo_item[i].id%>"></span>
         <img class="daily_tasks_img" src="<%=todo_item[i].img%>" />

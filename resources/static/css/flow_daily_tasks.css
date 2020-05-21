@@ -38,6 +38,8 @@
      margin-top: 5px;
      margin-bottom: 5px;
      background-color: #7BDFF2;
+     border-style: groove;
+     /* background-color: rgb(174, 241, 255); */
      display: grid;
      grid-template-columns: 50% 50%;
      color: #53131E;
@@ -49,7 +51,7 @@
    body {
      text-align: center;
      margin: 0;
-     background-color: #99F7AB;
+     background-color: rgb(188, 247, 199);
      color: #53131E;
    }
 
@@ -98,7 +100,7 @@
 
      #footer {
        bottom: 0;
-       margin-top: 1350px;
+       margin-top: 100px;
        color: #53131E;
        clear: both;
        position: relative;
@@ -145,7 +147,7 @@
 
      #footer {
        bottom: 0;
-       margin-top: 2000px;
+       /* margin-top: 500px; */
        color: #53131E;
        clear: both;
        position: relative;
@@ -193,8 +195,8 @@
 
      #footer {
        bottom: 0;
-       margin-top: 2000px;
-       color: #53131E;
+       /* margin-top: 1100px; */
+       color:rgba(255, 255, 255, 0.00);
        clear: both;
        position: relative;
        /*        font-size: 15pt;*/
@@ -360,9 +362,10 @@
 
    /* Styles for each section. */
    #dailytask {
+     font-size: 16;
      margin-top: 10px;
-     margin-bottom: 10px;
-     background-color: #D6F9DD;
+     margin-bottom: 15%;
+     background-color: rgb(220, 243, 225);
      color: rgb(0, 2, 1);
    }
 
@@ -535,4 +538,11 @@
 
    tbody.collapse.in {
      display: table-row-group;
+   }
+
+   .daily_cards{
+     border-color: white;
+     border-radius: 5%;
+     border-style: ridge;
+     background-color: whitesmoke;
    }

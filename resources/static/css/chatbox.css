@@ -1,4 +1,4 @@
-/* CSS for chatbox */
+CSS for chatbox
 
 /* Styles for body */
 body {
@@ -10,13 +10,13 @@ body {
 
 /* Styles for message containers */
 #message-container {
-  width: 80%;
+  width: 99%;
   max-width: 1200px;
 }
 
 #message-container div {
-  background-color: #CCC;
-  padding: 5px;
+  background-color: rgb(25, 218, 192);
+  /* padding: 5px; */
 }
 
 #message-container div:nth-child(2n) {
@@ -30,10 +30,15 @@ body {
   bottom: 0;
   background-color: white;
   max-width: 1200px;
-  width: 80%;
+  width: 95vw;
   display: flex;
+  height: 100px;
 }
 
 #message-input {
   flex-grow: 1;
+}
+
+#back_button{
+  position: sticky;
 }

@@ -4,7 +4,8 @@
 body {
     text-align: center;
     margin: 0;
-    background-color: #99F7AB;
+    /* background-color: #99F7AB; */
+    background-color: rgb(188, 247, 199);
 }
 
 /* Sticky nav bars */
@@ -258,6 +259,7 @@ img {
     /*    border-radius: 25px;*/
     grid-row: 2 / span 1;
     background-color: #7BDFF2;
+    border-style: groove;
     display: grid;
     grid-template-columns: 50% 50%;
     color: #53131E;
@@ -444,7 +446,8 @@ img {
     margin: 0;
 
     overflow: hidden;
-    background-color: #75DBCD;
+    /* background-color: #75DBCD; */
+    background-color: rgb(188, 247, 199);
 }
 
 .list {

@@ -2,8 +2,9 @@
 
 /* Styles for body. */
 body {
-  background-color: #99F7AB;
+  /* background-color: #99F7AB; */
   width: 100%;
+  background-color: rgb(188, 247, 199);
 }
 
 /* Media queries for different devices. */

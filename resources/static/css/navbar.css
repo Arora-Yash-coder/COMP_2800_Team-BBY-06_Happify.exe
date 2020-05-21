@@ -4,7 +4,8 @@
 .container {
     list-style-type: none;
     margin: 0;
-
+    border-radius: 1px;
+   
     overflow: hidden;
     background-color: #4B7F52;
 }
@@ -28,3 +29,4 @@
 .list a:hover {
     background-color: rgb(65, 134, 125);
 }
+

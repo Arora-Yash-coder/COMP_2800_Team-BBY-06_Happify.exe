@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Counselling</title>
     <!-- styles -->
-    <link rel="stylesheet" type="text/css" href="/static/css/Counselling.css">
+    <link rel="stylesheet" type="text/css" href="/static/css/counselling.css">
     <link rel="stylesheet" href="/static/css/homepage.css">
     <link rel="stylesheet" type="text/css" href="/static/css/navbar.css">
     <!-- jquery -->
@@ -29,12 +29,16 @@
         <!-- First box -->
         <div id="card1">
             <div id="card1_1">
-                <span class="header1">Outer Link</span></div>
+                <span class="header1">Outer Link</span>
+                <span class="expand" id="card1_1_expand">+</span>
+                <span class="hide" id="card1_1_hide">-</span>
+            </div>
 
-            <div id="card1_2">
+            <div class ="card_content" id="card1_2">
 
-                <span class="header1">Crisis Centre Sources</span>
-                <ol id="crisiscenter_phone_no">
+                <h3 id="Crisis_Centre_Sources" class="header1">Crisis Centre Sources</h3>
+
+                <ul id="crisiscenter_phone_no">
                     <li class="link" id="crisiscenter_website"
                         onclick="window.location.href='https://crisiscentre.bc.ca/'"><i>BC Crisis Centre</i></li>
                     <li>Anywhere in BC 1-800-SUICIDE: 1-800-784-2433</li>
@@ -42,14 +46,19 @@
                     <li>Vancouver Coastal Regional Distress Line: 604-872-3311</li>
                     <li>Sunshine Coast/Sea to Sky: 1-866-661-3311</li>
                     <li> Seniors Distress Line: 604-872-1234</li>
-                </ol>
+                </ul>
 
 
             </div>
 
             <div id="card1_3">
+                <span class="header1">Self Help Articles</span>
+                <span class="expand" id="card1_3_expand">+</span>
+                <span class="hide" id="card1_3_hide">-</span>
+            </div>
+            <div  class ="card_content" id="card1_4">
                 <div>
-                    <span class="header1">Self Help Articles</span>
+                   
                     <ol id="self_help">
                         <li class="link"
                             onclick="window.location.href='https://www.helpguide.org/articles/suicide-prevention/are-you-feeling-suicidal.htm'">

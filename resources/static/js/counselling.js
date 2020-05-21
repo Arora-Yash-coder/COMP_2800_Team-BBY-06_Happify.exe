@@ -17,10 +17,23 @@
                 }
             }
 
-            //
-            $("#crisis_center").click(()=>{
-                 $("#crisis_center > *").hide()   
+             //card 1_2 related hide and show functions
+            $(".card1_1,.hide").hide()
+            $("#card1_2").hide()
+            $("#card1_1").click(()=>{
+                 $("#card1_2").toggle() 
+                 $("#card1_1_hide").toggle()
+                 $("#card1_1_expand").toggle()
             })
+
+            //card 1_4 related hide and show functions
+            $("#card1_4").hide()
+            $("#card1_3").click(()=>{
+                 $("#card1_4").toggle() 
+                 $("#card1_3_hide").toggle()
+                 $("#card1_3_expand").toggle()
+            })
+
 
             $("#proceed_button").click(()=>{
                 window.location.href="/chatbox"
@@ -29,3 +42,7 @@
             setTimeout(() => {
                 $("#coupert-ext").hide()
             }, 1000);
+
+
+
+           

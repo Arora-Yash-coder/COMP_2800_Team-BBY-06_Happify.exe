@@ -6,16 +6,21 @@
   <!-- Allow media queries -->
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <title>Chat App</title>
+  <title>Mental Health Suggestion Counselling</title>
   <!-- Socket io -->
   <script defer src="http://localhost:3000/socket.io/socket.io.js"></script>
   <!-- Chatbox js files -->
   <script defer src="/js/chatbox.js"></script>
   <!-- Styles -->
   <link rel="stylesheet" href="/static/css/chatbox.css">
+  <link rel="stylesheet" type="text/css" href="/static/css/navbar.css">
 </head>
 
+
 <body>
+  <%-navbar %> 
+  <button id="back_button">Leave Chat</button>
+  <div></div> 
   <div id="message-container"></div>
   <form id="send-container">
     <input type="text" id="message-input">

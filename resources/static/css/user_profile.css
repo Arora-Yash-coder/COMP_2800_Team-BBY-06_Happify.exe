@@ -3,8 +3,10 @@
 /* Styles for body. */
 body {
   text-align: center;
-  background-color: #99F7AB;
+  /* background-color: #99F7AB; */
+  background-color: rgb(188, 247, 199);
   color: #53131E;
+  
 }
 
 /* Styles for the sticky nav bar. */
@@ -71,7 +73,7 @@ body {
 
   #footer {
     bottom: 0;
-    margin-top: 50px;
+    margin-bottom: 80px;
     color: #53131E;
     clear: both;
     position: relative;
@@ -127,8 +129,9 @@ body {
 
 
   #footer {
+    margin-top: 15px;
     bottom: 0;
-    margin-top: 100px;
+    margin-bottom: 65px;
     color: #53131E;
     clear: both;
     position: relative;
@@ -338,7 +341,8 @@ h1 {
 
 /* mycoupons, myrecord */
 .card {
-  background-color: #D6F9DD;
+  /* background-color: #D6F9DD; */
+  background-color: floralwhite;
   border-radius: 25px;
   margin-left: 25px;
   margin-right: 25px;

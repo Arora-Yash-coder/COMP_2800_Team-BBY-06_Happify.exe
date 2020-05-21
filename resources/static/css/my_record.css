@@ -21,6 +21,7 @@
     display: grid;
     grid-template-columns: 50% 50%;
     color: #53131E;
+    border-style: groove;
 
 }
 
@@ -160,7 +161,7 @@
 body {
     text-align: center;
     margin: 0;
-    background-color: #99F7AB;
+    /* background-color: #99F7AB; */
     color: #53131E;
     display: inline;
 

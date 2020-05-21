@@ -180,7 +180,8 @@ module.exports = function (app) {
 						coupons: data,
 						navbar: navbar_top_ejs,
 						footer: footer,
-						css: result[0].UI_style
+						css: result[0].UI_style,
+						progress_bar : undefined
 					}));
 				});
 			});
@@ -999,9 +1000,30 @@ module.exports = function (app) {
 
 				state = result[0].daily_task_rec[result[0].daily_task_rec.length - 1].state;
 
-				//if the state property is less than 3, which indicates that user is 
+
+				if(state == -1){
+					MongoClient.connect(dbConfig.url, function (err, db) {
+						console.log()
+						if (err) throw err;
+						var dbo = db.db("test");
+
+
+						console.log("I am ready to play a game in 620")
+						dbo.collection("users").updateOne({
+							_id: ObjectId(req.session.user_sid),
+							daily_task_rec: { $elemMatch: { date: { $gte: new Date(new Date().setDate(new Date().getDate() - 2)) } } }
+						}, { $inc: { "daily_task_rec.$.state": 1 } },
+
+						)
+						console.log("state added 1!!!!!")
+						res.redirect("/daily_tasks")
+
+					})
+
+				}
+				//if the state property is not -1 but also less than 3, which indicates that user is 
 				//still in the "daily task" user flow.
-				if (state < 3) {
+				else if ( state >=0 &&state < 3) {
 					console.log("++++++++++++++archived++++++++++++++++++")
 					console.log(archived)
 					// console.log(result[0].daily_task_rec[result[0].daily_task_rec.length - 1].daily_task_archived)
@@ -1320,7 +1342,9 @@ module.exports = function (app) {
 
 	//THE CHATBOX IS THE SOCKEIT.IO CHAT APP
 	app.get("/chatbox", (req, res) => {
-		res.render(path + "chatbox.ejs")
+		res.render(path + "chatbox.ejs",{
+			navbar:navbar_top_ejs
+		})
 	})
 
 	//tic tac toe connection, it runs on port 81

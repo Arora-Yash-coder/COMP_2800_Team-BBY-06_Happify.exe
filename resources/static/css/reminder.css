@@ -3,8 +3,8 @@
 /* Some styles for body. */
 body {
   text-align: center;
-
-  background-color: #99F7AB;
+  background-color: rgb(188, 247, 199);
+  /* background-color: #99F7AB; */
   color: #53131E;
   margin: 0;
 }

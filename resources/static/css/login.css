@@ -2,7 +2,8 @@
 
 /* Styles for body. */
 body {
-  background-color: #99F7AB;
+  /* background-color: #99F7AB; */
+  background-color: rgb(188, 247, 199);
   width: 100%;
 }
 

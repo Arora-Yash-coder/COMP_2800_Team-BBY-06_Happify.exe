@@ -137,6 +137,7 @@ body {
     color: #53131E;
   }
 
+  /* card2 related styles */
   #card2 {
     font-size: 25pt;
     padding-top: 10px;
@@ -146,6 +147,7 @@ body {
     color: #53131E;
   }
 
+   /*footer related styles */
   #footer {
     margin-top: 200px;
     font-size: 20pt;
@@ -177,3 +179,26 @@ body {
     font-size: 20pt;
   }
 }
+
+#Crisis_Centre_Sources{
+  color: black;
+}
+
+.card_content{
+  border-radius: 25px;
+  border-style: groove;
+  background-color: whitesmoke;
+}
+
+.expand{
+  border-radius: 10px;
+  border-style: outset;
+  background-color: cornflowerblue;
+}
+
+.hide{
+  border-radius: 10px;
+  border-style: outset;
+  background-color: cornflowerblue;
+}
+

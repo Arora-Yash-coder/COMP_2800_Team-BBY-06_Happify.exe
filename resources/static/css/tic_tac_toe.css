@@ -5,8 +5,9 @@
      text-align: center;
      margin: 0;
      height: 100vh;
-     background-color: #99F7AB;
+     /* background-color: #99F7AB; */
      color: #53131E;
+     background-color: rgb(188, 247, 199);
  }
 
  /* Sticky nav bar. */

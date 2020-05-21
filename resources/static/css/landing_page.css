@@ -3,7 +3,8 @@
 /* Styles for body. */
 body {
     margin: 0;
-    background-color: #99F7AB;
+    /* background-color: #99F7AB; */
+    background-color: rgb(188, 247, 199);
 }
 
 /* media query for cell phones. */
@@ -11,7 +12,7 @@ body {
     #footer {
         text-align: center;
         bottom: 0;
-        margin-top: 170px;
+        margin-bottom: 170px;
         color: #53131E;
         clear: both;
         position: relative;
@@ -31,7 +32,7 @@ body {
     #footer {
         text-align: center;
         bottom: 0;
-        margin-top: 250px;
+        margin-top: 160px;
         color: #53131E;
         clear: both;
         position: relative;
@@ -51,7 +52,7 @@ body {
     #footer {
         text-align: center;
         bottom: 0;
-        margin-top: 450px;
+        margin-top: 310px;
         color: #53131E;
         clear: both;
         position: relative;
@@ -70,7 +71,7 @@ body {
     #footer {
         text-align: center;
         bottom: 0;
-        margin-top: 700px;
+        margin-bottom: 250px;
         color: #53131E;
         clear: both;
         position: relative;
@@ -89,7 +90,7 @@ body {
     #footer {
         text-align: center;
         bottom: 0;
-        margin-top: 940px;
+        margin-bottom: 110px;
         color: #53131E;
         clear: both;
         position: relative;
@@ -128,7 +129,8 @@ body {
 }
 
 div {
-    background-color: #99F7AB;
+    /* background-color: #99F7AB; */
+    background-color: rgb(188, 247, 199);
 
 }
 

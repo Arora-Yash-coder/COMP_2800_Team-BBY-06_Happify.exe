@@ -52,8 +52,11 @@ The repo has such folders:
     https.createServer(options, app).listen(443, function () {
         console.log('Https server listening on port ' + 3011);
     });
+6.  Download MongoDB Compass, then connect to the DB using this uri connection string:
+    >     mongodb://judao:mongomaster@multislang.ca:27017/?authSource=admin&readPreference=primary&appname=MongoDB%20Compass&ssl=false
+    The data for this app is in DB   __"test"__
+7.  Congradulations, you have finished setting up the Development Environment
 
-6.  Congradulations, you have finished
 
 
 
