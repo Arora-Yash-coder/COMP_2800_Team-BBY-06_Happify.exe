@@ -1,12 +1,12 @@
+/* CSS for signup page. */
+
+/* Styles for body. */
 body {
-  /*
-    background-image: url(./../img/background.png);
-    background-size: cover;
-*/
   background-color: #99F7AB;
   width: 100%;
 }
 
+/* Media queries for different devices. */
 @media only screen and (max-width: 330px) {
   #footer {
     text-align: center;
@@ -77,13 +77,12 @@ body {
   }
 }
 
+/* Background color for the signup box. */
 .container {
   background-color: hsla(120, 60%, 2%, 0.6);
-
-  /* filter:alpha(opacity=50); */
   z-index: -1;
-  /* opacity:0.8; */
-  /*    width: 90%;*/
+  text-align: center;
+  width: 370px;
 }
 
 #choice_tab {
@@ -91,8 +90,6 @@ body {
 }
 
 #reg {
-
-  /* background-color:hsla(120, 60%, 2%, 0.6) ; */
   float: left;
 }
 
@@ -106,12 +103,10 @@ body {
   padding-top: 10px;
   height: 50px;
   width: 100px;
-  /*      padding-right: 5px;*/
-
   background-color: rgb(0, 0, 0);
 }
 
-
+/* Some styles for input. */
 input[type="text"] {
   margin-top: 20px;
   margin-bottom: -1px;
@@ -142,7 +137,7 @@ input[type="email"] {
   width: 340px;
 }
 
-
+/* Register button. */
 #register {
   background-color: transparent;
   border: #53131E solid 1.5px;
@@ -152,8 +147,6 @@ input[type="email"] {
   text-decoration: none;
   display: inline-block;
   font-size: 16px;
-/*  font-weight: bold;*/
-
 }
 
 #register:hover {
@@ -168,13 +161,3 @@ input[type="email"] {
 
 }
 
-
-
-.container {
-  text-align: center;
-  width: 370px;
-}
-
-body {
-  color: white;
-}

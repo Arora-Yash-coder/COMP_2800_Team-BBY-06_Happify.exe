@@ -1,33 +1,56 @@
+/* CSS for reminder page. */
+
+/* Some styles for body. */
 body {
-  background-image: url(/static/img/background.png);
-  background-size: cover;
+  background-color: #FFE548;
+  color: #A63013;
   text-align: center;
   margin: 0;
 }
 
-body {
-    text-align: center;
-  
-    background-color: #FAC9B8;
-    color: #3AB795;
-}
+/* Media queries for different devices. */
 @media only screen and (max-width: 330px) {
+  button {
+    background-color: transparent;
+    border: #A63013 solid 1.5px;
+    color: #A63013;
+    padding: 7px 26px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 25px;
+    font-weight: bold;
+
+  }
+
+  button:hover {
+    background-color: white;
+    border: #A63013 solid 1.5px;
+    color: #A63013;
+    padding: 7px 26px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 25px;
+
+  }
+
   legend {
     font-size: 18pt;
   }
-    p {
+
+  p {
     font-size: 27pt;
   }
-    #container{
-        height: 100vh;
-    }
+
+  #container {
+    height: 100vh;
+  }
 
 
 
   #footer {
     bottom: 0;
-    
-    color: #53131E;
     clear: both;
     position: relative;
 
@@ -35,20 +58,45 @@ body {
 }
 
 @media only screen and (min-width: 370px) {
- legend {
+  button {
+    background-color: transparent;
+    border: #A63013 solid 1.5px;
+    color: #A63013;
+    padding: 7px 26px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 25px;
+    font-weight: bold;
+
+  }
+
+  button:hover {
+    background-color: white;
+    border: #A63013 solid 1.5px;
+    color: #A63013;
+    padding: 7px 26px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 25px;
+
+  }
+
+  legend {
     font-size: 20pt;
   }
-    p {
+
+  p {
     font-size: 27pt;
   }
-    #container{
-        height: 100vh;
-    }
+
+  #container {
+    height: 100vh;
+  }
 
   #footer {
     bottom: 0;
-    
-    color: #53131E;
     clear: both;
     position: relative;
 
@@ -59,16 +107,19 @@ body {
   legend {
     font-size: 20pt;
   }
-    p {
+
+  p {
     font-size: 27pt;
   }
-    #container{
-        height: 100vh;
-    }
+
+  #container {
+    height: 100vh;
+  }
+
   button {
     background-color: transparent;
-    border: #53131E solid 1.5px;
-    color: #53131E;
+    border: #A63013 solid 1.5px;
+    color: #A63013;
     padding: 7px 26px;
     text-align: center;
     text-decoration: none;
@@ -80,8 +131,8 @@ body {
 
   button:hover {
     background-color: white;
-    border: #53131E solid 1.5px;
-    color: #53131E;
+    border: #A63013 solid 1.5px;
+    color: #A63013;
     padding: 7px 26px;
     text-align: center;
     text-decoration: none;
@@ -93,11 +144,9 @@ body {
 
   #footer {
     bottom: 0;
-    
-    color: #53131E;
     clear: both;
     position: relative;
-    /*        font-size: 20pt;*/
+
   }
 }
 
@@ -105,13 +154,15 @@ body {
   legend {
     font-size: 27pt;
   }
-    #container{
-        height: 100vh;
-    }
-    button {
+
+  #container {
+    height: 100vh;
+  }
+
+  button {
     background-color: transparent;
-    border: #53131E solid 1.5px;
-    color: #53131E;
+    border: #A63013 solid 1.5px;
+    color: #A63013;
     padding: 7px 26px;
     text-align: center;
     text-decoration: none;
@@ -123,8 +174,8 @@ body {
 
   button:hover {
     background-color: white;
-    border: #53131E solid 1.5px;
-    color: #53131E;
+    border: #A63013 solid 1.5px;
+    color: #A63013;
     padding: 7px 26px;
     text-align: center;
     text-decoration: none;
@@ -132,10 +183,9 @@ body {
     font-size: 25px;
 
   }
+
   #footer {
     bottom: 0;
-    
-    color: #53131E;
     clear: both;
     position: relative;
     /*        font-size: 20pt;*/
@@ -146,13 +196,13 @@ body {
   legend {
     font-size: 20pt;
   }
-#container{
-        height: 95vh;
-    }
+
+  #container {
+    height: 95vh;
+  }
+
   #footer {
     bottom: 0;
-   
-    color: #53131E;
     clear: both;
     position: relative;
     font-size: 20pt;

@@ -1,32 +1,38 @@
+/* CSS for user profile page. */
+
+/* Styles for body. */
 body {
   text-align: center;
   background-color: #FFE548;
   color: #A63013;
-  /*
-    background-image: url(../img/background.png);
-    background-size: cover;
-*/
-
 }
 
+/* Styles for the sticky nav bar. */
 .sticky {
   position: fixed;
   top: 0;
   width: 100%;
-    margin-left: -8px;
+  margin-left: -8px;
 }
-.regular{
-    margin:-8px;
-    
+
+.regular {
+  margin: -8px;
+
 }
+
+/* Media queries for different devices. */
 @media only screen and (max-width: 369px) {
-    #wrapper{
-        margin-top: 15%;
-    }
+   /* To avoid the sticky nav bar. */
+  #wrapper {
+    margin-top: 15%;
+  }
+
+  /* UI Choice buttons. */
   #ui_choice {
     font-size: 15pt;
   }
 
+  /* Other elements' styles. */
   h2 {
     font-size: 20pt;
   }
@@ -39,6 +45,7 @@ body {
     font-size: 20pt;
   }
 
+  /* Styles for buttons. */
   button {
     background-color: transparent;
     border: #A63013 solid 1.5px;
@@ -48,8 +55,6 @@ body {
     text-decoration: none;
     display: inline-block;
     font-size: 16px;
-/*    font-weight: bold;*/
-
   }
 
   button:hover {
@@ -64,9 +69,6 @@ body {
 
   }
 
-
-
-
   #footer {
     bottom: 0;
     margin-top: 50px;
@@ -77,9 +79,10 @@ body {
 }
 
 @media only screen and (min-width: 370px) {
-    #wrapper{
-        margin-top: 15%;
-    }
+  #wrapper {
+    margin-top: 15%;
+  }
+
   #ui_choice {
     font-size: 15pt;
   }
@@ -105,7 +108,7 @@ body {
     text-decoration: none;
     display: inline-block;
     font-size: 16px;
-/*    font-weight: bold;*/
+    /*    font-weight: bold;*/
 
   }
 
@@ -134,9 +137,10 @@ body {
 }
 
 @media only screen and (min-width: 600px) {
-    #wrapper{
-        margin-top: 10%;
-    }
+  #wrapper {
+    margin-top: 10%;
+  }
+
   #ui_choice {
     font-size: 25pt;
   }
@@ -167,7 +171,7 @@ body {
     text-decoration: none;
     display: inline-block;
     font-size: 31px;
-/*    font-weight: bold;*/
+    /*    font-weight: bold;*/
 
   }
 
@@ -199,9 +203,10 @@ body {
 }
 
 @media only screen and (min-width: 1024px) {
-    #wrapper{
-        margin-top: 10%;
-    }
+  #wrapper {
+    margin-top: 10%;
+  }
+
   #ui_choice {
     font-size: 25pt;
   }
@@ -227,7 +232,7 @@ body {
     text-decoration: none;
     display: inline-block;
     font-size: 26px;
-/*    font-weight: bold;*/
+    /*    font-weight: bold;*/
 
   }
 
@@ -255,9 +260,10 @@ body {
 }
 
 @media only screen and (min-width: 1200px) {
-    #wrapper{
-        margin-top: 10%;
-    }
+  #wrapper {
+    margin-top: 10%;
+  }
+
   #ui_choice {
     font-size: 25pt;
   }
@@ -283,7 +289,7 @@ body {
     text-decoration: none;
     display: inline-block;
     font-size: 26px;
-/*    font-weight: bold;*/
+    /*    font-weight: bold;*/
 
   }
 
@@ -312,36 +318,18 @@ body {
 
 
 
-
+/* Styles for the title. */
 h1 {
   color: #A63013;
-  /*  font-size: 20pt;*/
   font-weight: bold;
 
 }
 
-.square_btn {
-  display: inline-block;
-  padding: 0.3em 1em;
-  text-decoration: none;
-  color: #A63013;
-  border: solid 2px #A63013;
-  border-radius: 3px;
-  transition: .4s;
-}
-
-.square_btn:hover {
-  background: #A63013;
-  color: white;
-}
 
 
-
+/* Container that contains the user's information. */
 #container {
   background-color: #FFE8C2;
-  /*    border-radius: 25px;*/
-  /*    margin-left: 25px;*/
-  /*    margin-right: 25px;*/
   padding-top: 10px;
   padding-bottom: 10px;
   margin-top: 10px;
@@ -365,35 +353,7 @@ h1 {
 }
 
 
-
-/*
-button {
-  background-color: transparent;
-  border: #53131E solid 1.5px;
-  color: #53131E;
-  padding: 7px 26px;
-  text-align: center;
-  text-decoration: none;
-  display: inline-block;
-  font-size: 16px;
-  margin-bottom: 20px;
-}
-
-button:hover {
-  background-color: white;
-  border: #53131E solid 1.5px;
-  color: #53131E;
-  padding: 7px 26px;
-  text-align: center;
-  text-decoration: none;
-  display: inline-block;
-  font-size: 16px;
-  margin-bottom: 20px;
-}
-*/
-
-
-
+/* Styles for avatar. */
 #avatar {
   width: 100px;
   height: 100px;
@@ -405,12 +365,7 @@ button:hover {
   display: none;
 }
 
+/* Style for submit button. */
 #submit {
   display: none;
 }
-
-/*
-  #logout {
-    color: #EF629F;
-    border: #EF629F solid 1px;
-  }*/

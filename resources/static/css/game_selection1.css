@@ -1,41 +1,32 @@
+/* CSS for mini games selection page */
+
+/* Styles for body. */
 body {
-    /*
-    background-image: url(/static/img/background.png);
-    background-size: cover;
-*/
     text-align: center;
     margin: 0;
     background-color: #FFE548;
 }
 
-
-  .sticky {
-  position: fixed;
-  top: 0;
-  width: 100%;
+/* Sticky nav bars */
+.sticky {
+    position: fixed;
+    top: 0;
+    width: 100%;
 }
-/*
-#proceedbtn{
-    margin-top: 15px;
-    height: 5vh;
-    
-}
-*/
 
+/* Media queries for different devices. */
 @media only screen and (max-width: 369px) {
-    #container{
-    margin-top: 15%;
-}
+    #container {
+        margin-top: 15%;
+    }
+
     #greeting {
         color: #A63013;
         font-size: 30pt;
     }
 
     #container {
-
-
         height: 200vh;
-
     }
 
     #footer {
@@ -48,9 +39,10 @@ body {
 }
 
 @media only screen and (min-width: 370px) {
-    #container{
-    margin-top: 15%;
-}
+    #container {
+        margin-top: 15%;
+    }
+
     #greeting {
         color: #A63013;
         font-size: 30pt;
@@ -74,9 +66,10 @@ body {
 }
 
 @media only screen and (min-width: 600px) {
-    #container{
-    margin-top: 10%;
-}
+    #container {
+        margin-top: 10%;
+    }
+
     #inner {
         font-size: 30pt;
     }
@@ -117,9 +110,10 @@ body {
 }
 
 @media only screen and (min-width: 1024px) {
-    #container{
-    margin-top: 10%;
-}
+    #container {
+        margin-top: 10%;
+    }
+
     #inner {
         font-size: 30pt;
     }
@@ -160,9 +154,10 @@ body {
 }
 
 @media only screen and (min-width: 1200px) {
-    #container{
-    margin-top: 10%;
-}
+    #container {
+        margin-top: 10%;
+    }
+
     #inner {
         font-size: 28pt;
     }
@@ -195,7 +190,7 @@ body {
     #footer {
         bottom: 0;
         /*      margin-top: 50px;*/
-              margin-top: 1000px;
+        margin-top: 1000px;
         color: #A63013;
         clear: both;
         position: relative;
@@ -204,7 +199,7 @@ body {
 }
 
 
-
+/* styles for images */
 img {
     object-fit: contain;
     max-width: 90%;
@@ -214,6 +209,7 @@ img {
     margin-right: auto;
 }
 
+/* Styles for welcome notes */
 #welcome {
     padding: 1px;
     margin: 0;
@@ -244,7 +240,7 @@ img {
 
 
 
-
+/* Grid for each of the five games */
 #inner {
     grid-row: 2 / span 1;
 
@@ -438,7 +434,7 @@ img {
 }
 
 
-
+/* Styles for nav bar */
 .container {
     list-style-type: none;
     margin: 0;
@@ -467,7 +463,7 @@ img {
 
 
 
-
+/* game images and animations */
 #game_img {
     /* width: 100px;
     height: 100px; */
@@ -587,6 +583,7 @@ img {
     }
 }
 
+/* Styles for buttons */
 button {
     background-color: transparent;
     border: #53131E solid 1.5px;
@@ -611,23 +608,13 @@ button:hover {
     font-size: 16px;
 
 }
-
+/* Proceed button styles */
 #proceed {
     margin-top: 10px;
     /*    float: right;*/
     font-weight: bold;
 }
 
-#back {
-    /*    float: left;*/
-}
-
-/*
-#footer {
-    margin-top: 50px;
-    color: #53131E;
-}
-*/
 
 
 /* bootstrap progress bar */

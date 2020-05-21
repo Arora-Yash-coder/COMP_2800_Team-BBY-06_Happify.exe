@@ -1,28 +1,32 @@
 /*CSS style of the homepage*/
+
+/* Some style for the body. */
 body {
-    /*
-    background-image: url(../img/background.png);
-    background-size: cover;
-*/
     text-align: center;
     margin: 0;
     background-color: #99F7AB;
     color: #53131E;
 }
+
+/* Styles for the sticky nav bar. */
 .sticky {
-  position: fixed;
-  top: 0;
-  width: 100%;
+    position: fixed;
+    top: 0;
+    width: 100%;
 }
 
+/* Media queries for different devices. */
 @media only screen and (max-width: 369px) {
-    #latest_news_container{
+    /* latest news font size. */
+    #latest_news_container {
         font-size: 12pt;
     }
-
-    #container{
+    /* To avoid the nav bar. */
+    #container {
         margin-top: 15%;
     }
+
+    /* title font size */
     h2 {
         font-size: 20pt;
     }
@@ -35,6 +39,7 @@ body {
         font-size: 20pt;
     }
 
+    /* buttons styles. */
     button {
         background-color: transparent;
         border: #53131E solid 1.5px;
@@ -60,22 +65,14 @@ body {
 
     }
 
-    #cong {
-        font-size: 30pt;
-        text-align: center;
-    }
 
-    #done {
-        font-size: 20pt;
-        text-align: center;
-    }
 
+    /* container size. */
     #container {
-
         height: 200vh;
     }
 
-
+    /* Styles regarding footer. */
     #footer {
         bottom: 0;
         margin-top: 350px;
@@ -86,9 +83,10 @@ body {
 }
 
 @media only screen and (min-width: 370px) {
-    #container{
+    #container {
         margin-top: 15%;
     }
+
     h2 {
         font-size: 20pt;
     }
@@ -126,15 +124,7 @@ body {
 
     }
 
-    #cong {
-        font-size: 30pt;
-        text-align: center;
-    }
 
-    #done {
-        font-size: 20pt;
-        text-align: center;
-    }
 
     #container {
 
@@ -152,10 +142,11 @@ body {
 }
 
 @media only screen and (min-width: 600px) {
-    #container{
+    #container {
         margin-top: 10%;
     }
-   .card{
+
+    .card {
         font-size: 25pt;
 
     }
@@ -164,19 +155,6 @@ body {
         font-size: 25pt;
 
     }
-
-    /* #reminder1 {
-        font-size: 25pt;
-
-    }
- */
-
-
-
-
-
-
-
 
     h2 {
         font-size: 30pt;
@@ -220,15 +198,6 @@ body {
 
     }
 
-    #cong {
-        font-size: 40pt;
-        text-align: center;
-    }
-
-    #done {
-        font-size: 30pt;
-        text-align: center;
-    }
 
     #container {
 
@@ -248,9 +217,10 @@ body {
 
 /* Media Query for 1024px to?????????????????????????? */
 @media only screen and (min-width: 1024px) and (max-width:1025px) {
-    #container{
+    #container {
         margin-top: 10%;
     }
+
     h2 {
         font-size: 30pt;
     }
@@ -288,15 +258,6 @@ body {
 
     }
 
-    #cong {
-        font-size: 40pt;
-        text-align: center;
-    }
-
-    #done {
-        font-size: 30pt;
-        text-align: center;
-    }
 
     #container {
 
@@ -315,10 +276,11 @@ body {
 
 /* Media Query for wider than 1024px  */
 @media only screen and (min-width: 1200px) {
-    
-    #container{
+
+    #container {
         margin-top: 10%;
     }
+
     h2 {
         font-size: 30pt;
     }
@@ -356,15 +318,6 @@ body {
 
     }
 
-    #cong {
-        font-size: 40pt;
-        text-align: center;
-    }
-
-    #done {
-        font-size: 30pt;
-        text-align: center;
-    }
 
     #container {
 
@@ -385,7 +338,7 @@ body {
 
 
 
-
+/* Styles for images. */
 img {
     object-fit: contain;
     max-width: 90%;
@@ -395,6 +348,7 @@ img {
     margin-right: auto;
 }
 
+/* Styles for welcome box. */
 #welcome {
     padding: 1px;
     margin: 0;
@@ -421,18 +375,16 @@ img {
 }
 
 
-
+/* Exclude the greeting box. */
 #inner {
     grid-row: 2 / span 1;
 
 }
 
+/* Stats box. */
 #stats {
-    /*    margin-left: 25px;*/
-    /*    margin-right: 25px;*/
     margin-top: 10px;
     margin-bottom: 10px;
-    /*    border-radius: 25px;*/
     grid-row: 2 / span 1;
     background-color: #7BDFF2;
     display: grid;
@@ -441,6 +393,7 @@ img {
 
 }
 
+/* Styles for each card. */
 .card {
     margin-left: 25px;
     margin-right: 25px;
@@ -488,9 +441,13 @@ img {
     grid-template-columns: 50% 50%;
     border: 2px solid rgba(83, 19, 30, 0.7);
 }
-#info2{
+
+/* info style. */
+#info2 {
     margin-top: 7%;
 }
+
+/* Styles for different cards. */
 #reminder {
     margin-left: 25px;
     margin-right: 25px;
@@ -503,12 +460,11 @@ img {
     grid-template-columns: 50% 50%;
     border: 2px solid rgba(83, 19, 30, 0.7);
 }
+
 #reminder1 {
     margin-top: auto;
     margin-bottom: auto;
     border-radius: 25px 0 0 25px;
-
-
     grid-column: 1 / span 1;
 
 }
@@ -517,11 +473,9 @@ img {
     margin-top: auto;
     margin-bottom: auto;
     border-radius: 0 25px 25px 0;
-
-
     grid-column: 2 / span 1;
-
 }
+
 #counselling {
     margin-left: 25px;
     margin-right: 25px;
@@ -534,25 +488,21 @@ img {
     grid-template-columns: 50% 50%;
     border: 2px solid rgba(83, 19, 30, 0.7);
 }
+
 #counselling1 {
     margin-top: auto;
     margin-bottom: auto;
     border-radius: 25px 0 0 25px;
-
-
     grid-column: 1 / span 1;
-
 }
 
 #counselling2 {
     margin-top: auto;
     margin-bottom: auto;
     border-radius: 0 25px 25px 0;
-
-
     grid-column: 2 / span 1;
-
 }
+
 #redeem {
     margin-left: 25px;
     margin-right: 25px;
@@ -570,21 +520,14 @@ img {
     margin-top: auto;
     margin-bottom: auto;
     border-radius: 25px 0 0 25px;
-    /*            background-color: #B8D8BA;*/
-
     grid-column: 1 / span 1;
-
 }
 
 #redeem2 {
     margin-top: auto;
     margin-bottom: auto;
-
     border-radius: 0 25px 25px 0;
-
-
     grid-column: 2 / span 1;
-
 }
 
 #header {
@@ -595,6 +538,7 @@ img {
     color: #EF629F;
 }
 
+/* Nav bar styles. */
 .container {
     list-style-type: none;
     margin: 0;
@@ -624,7 +568,8 @@ img {
 
 }
 
-#latest_news_container{
+/* Styles regarding the latest news and updates. */
+#latest_news_container {
     font-size: 15pt;
     border: black;
     border-radius: 15px;
@@ -632,108 +577,24 @@ img {
     border-style: dotted;
 }
 
-#info_div{
+#info_div {
     border-style: dashed;
 }
 
-#latest_news_url{
+#latest_news_url {
     float: none;
-    color:blue;
+    color: blue;
     text-decoration: underline;
     text-align: center;
 }
 
-#info_span{
-    color:blue;
+#info_span {
+    color: blue;
     text-decoration: underline;
     text-align: center;
 }
 
-#news_title{
-   
-   color: black;
+#news_title {
+
+    color: black;
 }
-
-
-
-
-
-/*
-#game_img {
-     width: 100px;
-    height: 100px; 
-    background-size: 10px;
-    background-color: none;
-    animation-name: gaming;
-    animation-delay: 3.5s;
-    animation-duration: 1.5s;
-  }
-  
-  @keyframes gaming {
-    0%   {background-color: none;}
-    10%   {background-color: red;}
-    15%  {background-color: yellow;}
-    25%  {background-color: rgb(255, 145, 0);}
-    35%  {background-color: rgb(0, 255, 234);}
-    55%  {background-color: beige;}
-    100% {background-color: green;}
-  }
-*/
-
-/*
-#daily_task_img{
-     width: 100px;
-    height: 100px; 
-    
-    background-color: none;
-    animation-name: shake;
-    animation-delay: 0.8s;
-    animation-duration: 1.6s;
-  }
-
-  @keyframes shake {
-    10%, 90% {
-    
-      transform: translate3d(-1px, 0, 0) rotate(15deg);
-    }
-    
-    20%, 80% {
-     
-      transform: translate3d(2px, 3px, 2px) rotate(-15deg);
-    }
-  
-    30%, 50%, 70% {
-      transform: translate3d(-4px, 0, 0) rotate(15deg);
-    }
-  
-    40%, 60% {
-      transform: translate3d(4px, 0, 0) rotate(-20deg);
-    }
-  }
-
-  #redeem_img{
-    visibility: hidden;
-    transform: translateX(-350px) translateY(-200px);
-    animation-name: bounce;
-    animation-timing-function: ease;
-    animation-duration: 1.8s;
-        animation-iteration-count: 1;
-        animation-delay: 5.8s;
-        animation-fill-mode: forwards;
-  }
-*/
-
-/*
-@keyframes bounce {
-    5%   { transform: scale(1,1)  rotate(10deg)  translateX(-200px) translateY(-200px);visibility: visible; }
-    30%  { transform: scale(1.1,.9) rotate(5deg) translateX(-50px)  translateY(-10px) ; }
-    50%   { transform: scale(1,1)   rotate(2deg)  translateX(-50px) translateY(-40px); }
-    60%  { transform: scale(1.1,.9)  rotate(-1deg) translateX(-20) translateY(-20); }
-    70%  { transform: scale(.9,1.1) translateY(-50px); }
-    90%  { transform: scale(1,1)    translateY(-10px); }
-    100% { transform: scale(1,1)    translateY(0) ;visibility: visible }
-}
-*/
-/* 
-
-.progress{display: none;} */

@@ -1,17 +1,22 @@
+/* CSS for redeem page */
+
+/* Styles for body.  */
 body {
     text-align: center;
     margin: 0;
-
     background-color: #FFE548;
     color: #A63013;
     height: 100vh;
 }
 
+/* The sticky class is added to the navbar with JS when it reaches its scroll position */
 .sticky {
-  position: fixed;
-  top: 0;
-  width: 100%;
+    position: fixed;
+    top: 0;
+    width: 100%;
 }
+
+/* Some point sizes. */
 .confirm {
     font-size: 20pt;
 }
@@ -24,61 +29,53 @@ body {
     font-size: 18pt;
 }
 
+/* Some styles for mobile phones. */
 @media only screen and (max-width: 369px) {
-    #content{
-    margin-top: 15%;
-}
+    #content {
+        margin-top: 15%;
+    }
+
     #greeting {
         color: #A63013;
         font-size: 30pt;
     }
 
-    #container {
-
-
-        /*    height: 120vh;*/
-
-    }
 
     #footer {
         bottom: 0;
         margin-top: 135px;
-/*        color: #53131E;*/
         clear: both;
         position: relative;
     }
 }
 
 @media only screen and (min-width: 370px) {
-    #content{
-    margin-top: 15%;
-}
+    #content {
+        margin-top: 15%;
+    }
+
     #greeting {
-/*        color: #EF629F;*/
         font-size: 30pt;
     }
 
-    #container {
-
-
-        /*    height: 110vh;*/
-
-    }
 
     #footer {
         bottom: 0;
         margin-top: 150px;
-/*        color: #53131E;*/
+        /*        color: #53131E;*/
         clear: both;
         position: relative;
         /*        font-size: 13pt;*/
     }
 }
 
+
+/* Some styles for mobile phones. */
 @media only screen and (min-width: 600px) {
-    #content{
-    margin-top: 10%;
-}
+    #content {
+        margin-top: 10%;
+    }
+
     h1 {
         font-size: 30pt;
     }
@@ -104,32 +101,24 @@ body {
         font-size: 40pt;
     }
 
-    #greeting {
-/*        color: #EF629F;*/
-
-    }
-
-    #container {
-
-
-        /*    height: 200vh;*/
-
-    }
 
     #footer {
         bottom: 0;
         margin-top: 150px;
-/*        color: #53131E;*/
+        /*        color: #53131E;*/
         clear: both;
         position: relative;
         /*        font-size: 20pt;*/
     }
 }
 
+
+/* Some styles for tablets. */
 @media only screen and (min-width: 1024px) {
-    #content{
-    margin-top: 10%;
-}
+    #content {
+        margin-top: 10%;
+    }
+
     h1 {
         font-size: 30pt;
     }
@@ -155,32 +144,24 @@ body {
         font-size: 40pt;
     }
 
-    #greeting {
-/*        color: #EF629F;*/
-
-    }
-
-    #container {
-
-
-        /*    height: 124vh;*/
-
-    }
 
     #footer {
         bottom: 0;
         margin-top: 150px;
-/*        color: #53131E;*/
+        /*        color: #53131E;*/
         clear: both;
         position: relative;
         /*        font-size: 20pt;*/
     }
 }
 
+
+/* Some styles for web pages. */
 @media only screen and (min-width: 1200px) {
-    #content{
-    margin-top: 10%;
-}
+    #content {
+        margin-top: 10%;
+    }
+
     h1 {
         font-size: 30pt;
     }
@@ -202,29 +183,16 @@ body {
         font-size: 40pt;
     }
 
-    #greeting {
-/*        color: #EF629F;*/
-
-    }
-
-    #container {
-
-
-        /*    height: 170vh;*/
-
-    }
 
     #footer {
         bottom: 0;
-        /*      margin-top: 50px;*/
-/*        color: #53131E;*/
         clear: both;
         position: relative;
         font-size: 20pt;
     }
 }
 
-
+/* Styles for buttons. */
 .square_btn_second {
     display: inline-block;
     padding: 0.3em 1em;
@@ -240,16 +208,12 @@ body {
     color: #A63013;
 }
 
-#container>div:nth-child(even) {
-/*    background-color: #FAC9B8;*/
-}
 
+
+/* Some styles for the points section */
 #stats {
-    /*    margin-left: 25px;*/
-    /*    margin-right: 25px;*/
     margin-top: 10px;
     margin-bottom: 10px;
-    /*    border-radius: 25px;*/
     grid-row: 2 / span 1;
     background-color: #FFE8C2;
     display: grid;
@@ -273,7 +237,6 @@ body {
 #pointsofar {
     grid-row: 1 / span 1;
     grid-column: 2 / span 1;
-
 }
 
 #pointofday {
@@ -282,19 +245,17 @@ body {
 }
 
 .top {
-/*    color: #53131E;*/
     font-size: 13pt;
     font-weight: bold;
 }
 
 
 .points {
-/*    color: #53131E;*/
     margin-top: -10px;
     font-weight: bold;
-    /*    font-size: 20pt;*/
 }
 
+/* Styles for description */
 .description {
     margin-left: 25px;
     margin-right: 25px;
@@ -305,7 +266,7 @@ body {
     grid-row: 1 / span 1;
     display: grid;
     grid-template-rows: 50% 50%;
-/*    color: #53131E;*/
+    /*    color: #53131E;*/
 }
 
 .title {
@@ -317,6 +278,7 @@ body {
 
 }
 
+/* Styles for coupons */
 .coupons {
     margin-left: 25px;
     margin-right: 25px;
@@ -327,10 +289,11 @@ body {
 
     display: block;
     grid-template-rows: 50% 50%;
-/*    color: #53131E;*/
+    /*    color: #53131E;*/
     border: solid 2px rgba(83, 19, 30, 0.7);
 }
 
+/* Some more button styles. */
 button {
     background-color: transparent;
     border: #A63013 solid 1.5px;
@@ -356,18 +319,7 @@ button:hover {
 
 }
 
-/*
-button {
-        background-color: white;  Green 
-        border: 1px solid #3AB795;
-        color: #3AB795;
-        padding: 10px 24px;
-        text-align: center;
-        text-decoration: none;
-        display: inline-block;
-        font-size: 16px;
-}
-*/
+
 #proceed {
     margin-top: 10px;
     /*            float: right;*/
@@ -377,10 +329,7 @@ button {
     float: left;
 }
 
-#footer {
-    /*    color: black;*/
-}
-
+/* Styles for search. */
 #search_function {
     margin-top: 10px;
     margin-bottom: 10px;

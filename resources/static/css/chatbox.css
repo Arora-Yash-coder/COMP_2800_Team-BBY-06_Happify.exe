@@ -1,34 +1,39 @@
+/* CSS for chatbox */
+
+/* Styles for body */
 body {
-    padding: 0;
-    margin: 0;
-    display: flex;
-    justify-content: center;
-  }
+  padding: 0;
+  margin: 0;
+  display: flex;
+  justify-content: center;
+}
 
-  #message-container {
-    width: 80%;
-    max-width: 1200px;
-  }
+/* Styles for message containers */
+#message-container {
+  width: 80%;
+  max-width: 1200px;
+}
 
-  #message-container div {
-    background-color: #CCC;
-    padding: 5px;
-  }
+#message-container div {
+  background-color: #CCC;
+  padding: 5px;
+}
 
-  #message-container div:nth-child(2n) {
-    background-color: #FFF;
-  }
+#message-container div:nth-child(2n) {
+  background-color: #FFF;
+}
 
-  #send-container {
-    position: fixed;
-    padding-bottom: 30px;
-    bottom: 0;
-    background-color: white;
-    max-width: 1200px;
-    width: 80%;
-    display: flex;
-  }
+/* Styles for send buttons */
+#send-container {
+  position: fixed;
+  padding-bottom: 30px;
+  bottom: 0;
+  background-color: white;
+  max-width: 1200px;
+  width: 80%;
+  display: flex;
+}
 
-  #message-input {
-    flex-grow: 1;
-  }
+#message-input {
+  flex-grow: 1;
+}

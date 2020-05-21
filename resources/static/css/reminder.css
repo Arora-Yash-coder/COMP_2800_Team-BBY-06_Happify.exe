@@ -1,31 +1,38 @@
+/* CSS for reminder page. */
 
+/* Some styles for body. */
 body {
-    text-align: center;
-  
+  text-align: center;
+
   background-color: #99F7AB;
   color: #53131E;
-    margin:0;
+  margin: 0;
 }
+
+/* This is related to the sticky nav bar. */
 .sticky {
   position: fixed;
   top: 0;
   width: 100%;
 }
 
-
+/* Media queries for different devices. */
 @media only screen and (max-width: 369px) {
-    #container{
-        margin-top: 15%;
-    }
+  #container {
+    margin-top: 15%;
+  }
+
   legend {
     font-size: 18pt;
   }
-    p {
+
+  p {
     font-size: 27pt;
   }
-    #container{
-        height: 100vh;
-    }
+
+  #container {
+    height: 100vh;
+  }
 
   button {
     background-color: transparent;
@@ -54,7 +61,7 @@ body {
 
   #footer {
     bottom: 0;
-    
+
     color: #53131E;
     clear: both;
     position: relative;
@@ -63,18 +70,22 @@ body {
 }
 
 @media only screen and (min-width: 370px) {
-    #container{
-        margin-top: 15%;
-    }
- legend {
+  #container {
+    margin-top: 15%;
+  }
+
+  legend {
     font-size: 20pt;
   }
-    p {
+
+  p {
     font-size: 27pt;
   }
-    #container{
-        height: 100vh;
-    }
+
+  #container {
+    height: 100vh;
+  }
+
   button {
     background-color: transparent;
     border: #53131E solid 1.5px;
@@ -99,9 +110,10 @@ body {
     font-size: 23px;
 
   }
+
   #footer {
     bottom: 0;
-    
+
     color: #53131E;
     clear: both;
     position: relative;
@@ -110,18 +122,22 @@ body {
 }
 
 @media only screen and (min-width: 600px) {
-    #container{
-        margin-top: 10%;
-    }
+  #container {
+    margin-top: 10%;
+  }
+
   legend {
     font-size: 20pt;
   }
-    p {
+
+  p {
     font-size: 27pt;
   }
-    #container{
-        height: 100vh;
-    }
+
+  #container {
+    height: 100vh;
+  }
+
   button {
     background-color: transparent;
     border: #53131E solid 1.5px;
@@ -150,7 +166,7 @@ body {
 
   #footer {
     bottom: 0;
-    
+
     color: #53131E;
     clear: both;
     position: relative;
@@ -159,16 +175,19 @@ body {
 }
 
 @media only screen and (min-width: 1024px) {
-    #container{
-        margin-top: 10%;
-    }
+  #container {
+    margin-top: 10%;
+  }
+
   legend {
     font-size: 27pt;
   }
-    #container{
-        height: 100vh;
-    }
-    button {
+
+  #container {
+    height: 100vh;
+  }
+
+  button {
     background-color: transparent;
     border: #53131E solid 1.5px;
     color: #53131E;
@@ -192,9 +211,10 @@ body {
     font-size: 25px;
 
   }
+
   #footer {
     bottom: 0;
-    
+
     color: #53131E;
     clear: both;
     position: relative;
@@ -203,18 +223,21 @@ body {
 }
 
 @media only screen and (min-width: 1200px) {
-    #container{
-        margin-top: 10%;
-    }
+  #container {
+    margin-top: 10%;
+  }
+
   legend {
     font-size: 20pt;
   }
-#container{
-        height: 95vh;
-    }
+
+  #container {
+    height: 95vh;
+  }
+
   #footer {
     bottom: 0;
-   
+
     color: #53131E;
     clear: both;
     position: relative;

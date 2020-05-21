@@ -1,29 +1,35 @@
+/* CSS for my user record page. */
+
+/* Some styles for the graph. */
 .graph {
-            background-color: rgba(255,255,240,0.9);
-            
-        }
-.sticky {
-  position: fixed;
-  top: 0;
-  width: 100%;
+    background-color: rgba(255, 255, 240, 0.9);
+
 }
+
+/* This is the style for the sticky nav bar. */
+.sticky {
+    position: fixed;
+    top: 0;
+    width: 100%;
+}
+
+/* Styles for stats. */
 #stats {
-    /*    margin-left: 25px;*/
-    /*    margin-right: 25px;*/
     margin-top: 5px;
     margin-bottom: 5px;
-    /*    border-radius: 25px;*/
-    
     background-color: #FFE8C2;
     display: grid;
     grid-template-columns: 50% 50%;
     color: #A63013;
 
 }
+
+/* Media queries for different devices. */
 @media only screen and (max-width: 330px) {
-    #container{
+    #container {
         margin-top: 16%;
     }
+
     #footer {
         text-align: center;
         bottom: 0;
@@ -33,12 +39,14 @@
         position: relative;
 
     }
-   
+
 }
+
 @media only screen and (max-width: 360px) {
-    #container{
+    #container {
         margin-top: 16%;
     }
+
     #footer {
         text-align: center;
         bottom: 0;
@@ -48,18 +56,20 @@
         position: relative;
 
     }
+
     #title {
-    padding-top: 12%;
-    text-align: center;
-    color: #A63013;
-    font-size: 20pt;
-}
+        padding-top: 12%;
+        text-align: center;
+        color: #A63013;
+        font-size: 20pt;
+    }
 }
 
 @media only screen and (min-width: 361px) {
-    #container{
+    #container {
         margin-top: 16%;
     }
+
     #footer {
         text-align: center;
         bottom: 0;
@@ -69,18 +79,20 @@
         position: relative;
         /*font-size: 15pt;*/
     }
+
     #title {
-    padding-top: 12%;
-    text-align: center;
-    color: #A63013;
-    font-size: 20pt;
-}
+        padding-top: 12%;
+        text-align: center;
+        color: #A63013;
+        font-size: 20pt;
+    }
 }
 
 @media only screen and (min-width: 600px) {
-    #container{
+    #container {
         margin-top: 10%;
     }
+
     #footer {
         text-align: center;
         bottom: 0;
@@ -90,18 +102,20 @@
         position: relative;
         /*    font-size: 20pt;*/
     }
+
     #title {
-    padding-top: 12%;
-    text-align: center;
-    color: #A63013;
-    font-size: 20pt;
-}
+        padding-top: 12%;
+        text-align: center;
+        color: #A63013;
+        font-size: 20pt;
+    }
 }
 
 @media only screen and (min-width: 1024px) {
-    #container{
+    #container {
         margin-top: 8%;
     }
+
     #footer {
         text-align: center;
         bottom: 0;
@@ -115,18 +129,20 @@
     h1 {
         font-size: 50pt;
     }
+
     #title {
-    padding-top: 10%;
-    text-align: center;
-    color: #A63013;
-    font-size: 20pt;
-}
+        padding-top: 10%;
+        text-align: center;
+        color: #A63013;
+        font-size: 20pt;
+    }
 }
 
 @media only screen and (min-width: 1200px) {
-    #container{
+    #container {
         margin-top: 12%;
     }
+
     #footer {
         text-align: center;
         bottom: 0;
@@ -136,120 +152,90 @@
         position: relative;
         font-size: 20pt;
     }
-    
+
 }
 
-        .square_btn {
-            display: inline-block;
-            padding: 0.3em 1em;
-            text-decoration: none;
-            color: #A63013;
-            border: solid 2px #A63013;
-            border-radius: 3px;
-            transition: .4s;
-        }
+/* Some styles for body. */
+body {
+    text-align: center;
+    margin: 0;
+    background-color: #FFE548;
+    color: #A63013;
+    /*            height: 120vh;*/
+    display: inline;
 
-        .square_btn:hover {
-            background: #A63013;
-            color: white;
-        }
+}
 
-        .square_btn_second {
-            display: inline-block;
-            padding: 0.3em 1em;
-            text-decoration: none;
-            color: #A63013;
-            border: solid 2px #A63013;
-            border-radius: 3px;
-            transition: .4s;
-        }
-
-        .square_btn_second:hover {
-            background: #A63013;
-            color: white;
-        }
-
-        body {
-            text-align: center;
-            margin: 0;
-            background-color: #FFE548;
-      color: #A63013;
-/*            height: 120vh;*/
-            display: inline;
-
-        }
-
-        img {
-            object-fit: contain;
-            max-width: 90%;
-            max-height: 95px;
-            display: block;
-            margin-left: auto;
-            margin-right: auto;
-        }
-
-        
-
-        .top {
-
-            color: #A63013;
-            font-size: 20pt;
-            font-weight: bold;
-        }
-
-        .points {
-            color: #A63013;
-            font-size: 20pt;
-            margin-top: -10px;
-            font-weight: bold;
-        }
-
-        #container {
-            /*            display: grid;*/
-            grid-template-rows: 17% 72% 1%;
-            height: 100vh;
-
-        }
-
-        #inner {
-            /* grid-row: 2 / span 1;
-            display: grid; */
-            grid-template-rows: 50% 50%;
-            height: 80vh;
-            margin-bottom: 20px;
-        }
-
-        
+/* Some styles for images. */
+img {
+    object-fit: contain;
+    max-width: 90%;
+    max-height: 95px;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
 
 
-        #header {
-            grid-row: 1 / span 1;
-        }
+/* Some styles for the rest of the elements. */
+.top {
 
-        #greeting {
-            color: #A63013;
-        }
+    color: #A63013;
+    font-size: 20pt;
+    font-weight: bold;
+}
 
-        .container {
-            list-style-type: none;
-            margin: 0;
+.points {
+    color: #A63013;
+    font-size: 20pt;
+    margin-top: -10px;
+    font-weight: bold;
+}
 
-            overflow: hidden;
-            background-color: #4B7F52;
-        }
+#container {
+    grid-template-rows: 17% 72% 1%;
+    height: 100vh;
 
-        .list {
-            float: left;
-        }
+}
 
-        .list a {
-            display: block;
-            color: white;
-            text-align: center;
-            padding: 14px 16px;
-            text-decoration: none;
-        }
+#inner {
+    grid-template-rows: 50% 50%;
+    height: 80vh;
+    margin-bottom: 20px;
+}
 
-        .list a:hover {
-            background-color: rgb(65, 134, 125);
-        }
+
+
+
+#header {
+    grid-row: 1 / span 1;
+}
+
+#greeting {
+    color: #A63013;
+}
+
+/* Some styles for the nav bar. */
+.container {
+    list-style-type: none;
+    margin: 0;
+
+    overflow: hidden;
+    background-color: #4B7F52;
+}
+
+.list {
+    float: left;
+}
+
+.list a {
+    display: block;
+    color: white;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+}
+
+.list a:hover {
+    background-color: rgb(65, 134, 125);
+}

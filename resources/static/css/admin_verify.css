@@ -1,9 +1,12 @@
+/* CSS for admin login */
+
+/* Some styles for body */
 body {
-  /*    background-image: url(./../img/background.png);*/
   background-color: #99F7AB;
   width: 100%;
 }
 
+/* Media queries for different devices. */
 @media only screen and (max-width: 330px) {
   #footer {
     text-align: center;
@@ -61,10 +64,11 @@ body {
     clear: both;
     position: relative;
     font-size: 18pt;
-      font-weight: normal;
+    font-weight: normal;
   }
 }
 
+/* Login buttons */
 #login {
   background-color: transparent;
   border: #53131E solid 1.5px;
@@ -74,8 +78,6 @@ body {
   text-decoration: none;
   display: inline-block;
   font-size: 16px;
-/*  font-weight: bold;*/
-
 }
 
 #login:hover {
@@ -90,14 +92,12 @@ body {
 
 }
 
+/* Background color and other styles for the login box. */
 .container {
   background-color: hsla(120, 60%, 2%, 0.6);
   text-align: center;
   width: 400px;
-  /* filter:alpha(opacity=50); */
   z-index: -1;
-  /* opacity:0.8; */
-  /*    width: 90%;*/
   width: 370px;
   color: white;
 }
@@ -107,7 +107,6 @@ body {
 }
 
 #log {
-
   float: right;
   margin: 0;
   padding-top: 10px;
@@ -130,32 +129,12 @@ body {
 
 
 
-
-/*
-  a {
-    color: white;
-  }
-*/
-
-
-
-
 #form-wrapper {
   padding-top: 10%;
 }
 
-/*
-    h1 {
-      color: white;
-      font-size: 40pt;
-    }
 
-    h3 {
-      color: white;
-      font-size: 30pt;
-    }
-*/
-
+/* Styles for inputs. */
 input[type="text"] {
   margin-top: 20px;
   margin-bottom: -1px;
@@ -175,24 +154,3 @@ input[type="password"] {
   width: 340px;
 
 }
-
-/*
-    input[type="submit"] {
-      margin-bottom: 23px;
-      border-top-left-radius: 0;
-      border-top-right-radius: 0;
-      width: 280px;
-      font-size: 15pt;
-        
-    }
-*/
-/*
-#footer{
-    text-align: center;
-    bottom: 0;
-      margin-top: 300px;
-      color: #53131E;
-      clear: both;
-      position: relative;
-    font-size: 18pt;
-}*/

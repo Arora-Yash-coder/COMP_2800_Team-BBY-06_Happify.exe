@@ -1,11 +1,17 @@
+/* CSS for about us */
+
+/* This styles the Easter Egg image. */
 #memeimg {
   width: 80%;
-  /* Start the shake animation and make the animation last for 0.5 seconds */
+  /* Start the shake animation and make the animation last for 1.5 seconds */
   animation: shake 1.5s;
 
-  /* When the animation is finished, start again */
-  /*  animation-iteration-count: infinite;*/
 }
+
+/* This is a shaking animation. I found this on W3 school.
+
+@author: W3school.
+@see: https://www.w3schools.com/howto/howto_css_shake_image.asp */
 
 @keyframes shake {
   0% {
@@ -53,15 +59,13 @@
   }
 }
 
+/* Please refer to the above. */
 #meme2img {
   width: 80%;
-  /* Start the shake animation and make the animation last for 0.5 seconds */
   animation: shake 1.5s;
-
-  /* When the animation is finished, start again */
-  /*  animation-iteration-count: infinite;*/
 }
 
+/* Please refer to the above. */
 @keyframes shake {
   0% {
     transform: translate(1px, 1px) rotate(0deg);
@@ -108,15 +112,13 @@
   }
 }
 
+/* Please refer to the above. */
 #meme3img {
   width: 80%;
-  /* Start the shake animation and make the animation last for 0.5 seconds */
   animation: shake 1.5s;
-
-  /* When the animation is finished, start again */
-  /*  animation-iteration-count: infinite;*/
 }
 
+/* Please refer to the above. */
 @keyframes shake {
   0% {
     transform: translate(1px, 1px) rotate(0deg);
@@ -164,24 +166,20 @@
 }
 
 
-
+/* Adds background color. */
 body {
   text-align: center;
-  /*    background-image: url(../img/background.png);*/
-  /*    background-size: cover;*/
   background-color: #99F7AB;
 }
 
+/* Styles the title. */
 h1 {
   color: #53131E;
-
 }
 
+/* Styles the intro. */
 .intro {
   background-color: #7BDFF2;
-  /*      border-radius: 25px;*/
-  /*      margin-left: 25px;*/
-  /*      margin-right: 25px;*/
   padding-top: 10px;
   padding-bottom: 10px;
   margin-top: 10px;
@@ -189,23 +187,20 @@ h1 {
   color: #53131E;
 }
 
+/* Styles the cards. */
 .one {
   background-color: #D6F9DD;
-  /*      border-radius: 25px;*/
-  /*      margin-left: 25px;*/
-  /*      margin-right: 25px;*/
   padding-top: 10px;
   padding-bottom: 10px;
   margin-top: 10px;
   margin-bottom: 10px;
   color: #53131E;
 }
+
+/* Styles the cards. */
 
 .two {
   background-color: #D6F9DD;
-  /*      border-radius: 25px;*/
-  /*      margin-left: 25px;*/
-  /*      margin-right: 25px;*/
   padding-top: 10px;
   padding-bottom: 10px;
   margin-top: 10px;
@@ -213,24 +208,30 @@ h1 {
   color: #53131E;
 }
 
+/* Styles the image. */
 img {
   max-width: 80%;
 }
 
+/* Media query for iPhone5. */
 @media only screen and (max-width: 330px) {
   .intro {
     font-size: 20pt;
   }
-    .one {
+
+  .one {
     font-size: 20pt;
   }
-.two {
+
+  .two {
     font-size: 20pt;
   }
-    h1{
-        font-size: 40pt;
-    }
-    a {
+
+  h1 {
+    font-size: 40pt;
+  }
+
+  a {
     font-size: 20pt;
   }
 
@@ -246,33 +247,38 @@ img {
   }
 }
 
+/* Media query for Samsung. */
 @media only screen and (max-width: 360px) {
-    #footer {
-        text-align: center;
-        bottom: 0;
-        margin-top: 50px;
-        color: #53131E;
-        clear: both;
-        position: relative;
+  #footer {
+    text-align: center;
+    bottom: 0;
+    margin-top: 50px;
+    color: #53131E;
+    clear: both;
+    position: relative;
 
-    }
+  }
 }
 
-
+/* Media query for other mobile phones. */
 @media only screen and (min-width: 361px) {
- .intro {
+  .intro {
     font-size: 20pt;
   }
-    .one {
+
+  .one {
     font-size: 20pt;
   }
-.two {
+
+  .two {
     font-size: 20pt;
   }
-    h1{
-        font-size: 40pt;
-    }
-    a {
+
+  h1 {
+    font-size: 40pt;
+  }
+
+  a {
     font-size: 20pt;
   }
 
@@ -287,20 +293,25 @@ img {
   }
 }
 
+/* Media query for other mobile tablets. */
 @media only screen and (min-width: 600px) {
   .intro {
     font-size: 25pt;
   }
-    .one {
+
+  .one {
     font-size: 25pt;
   }
-.two {
+
+  .two {
     font-size: 25pt;
   }
-    h1{
-        font-size: 50pt;
-    }
-    a {
+
+  h1 {
+    font-size: 50pt;
+  }
+
+  a {
     font-size: 25pt;
   }
 
@@ -311,36 +322,43 @@ img {
     color: #53131E;
     clear: both;
     position: relative;
-    /*        font-size: 20pt;*/
+
   }
 }
 
+/* Media query for iPad Pro. */
 @media only screen and (min-width: 1024px) {
   .intro {
     font-size: 25pt;
   }
-    .one {
+
+  .one {
     font-size: 25pt;
   }
-.two {
+
+  .two {
     font-size: 25pt;
   }
-    h1{
-        font-size: 50pt;
-    }
-    a {
+
+  h1 {
+    font-size: 50pt;
+  }
+
+  a {
     font-size: 25pt;
   }
+
   #footer {
     bottom: 0;
     margin-top: 50px;
     color: #53131E;
     clear: both;
     position: relative;
-    /*        font-size: 20pt;*/
+
   }
 }
 
+/* Media query for web pages. */
 @media only screen and (min-width: 1200px) {
   p {
     font-size: 20pt;
@@ -358,7 +376,12 @@ img {
 
 
 
+/* Styles for buttons.
+I got the inspiration from a personal website.
 
+@author: Frederico Dossena
+@see: https://fdossena.com/?p=html5cool/buttons/i.frag
+*/
 .square_btn_second {
   display: inline-block;
   padding: 0.3em 1em;
@@ -371,5 +394,4 @@ img {
 
 .square_btn_second:hover {
   background: white;
-  /*  color: #753e48;*/
 }

@@ -1,3 +1,6 @@
+   /* CSS for daily tasks page */    
+    
+    /* Some styles for buttons. */
     button {
       background-color: transparent;
       border: #A63013 solid 1.5px;
@@ -22,66 +25,34 @@
       font-size: 16px;
 
     }
-.sticky {
-  position: fixed;
-  top: 0;
-  width: 100%;
-}
 
-#stats {
-    /*    margin-left: 25px;*/
-    /*    margin-right: 25px;*/
-    margin-top: 5px;
-    margin-bottom: 5px;
-    /*    border-radius: 25px;*/
-    
-    background-color: #FFE8C2;
-    display: grid;
-    grid-template-columns: 50% 50%;
-    color: #A63013;
+    /* The sticky class is added to the navbar with JS when it reaches its scroll position */
+    .sticky {
+      position: fixed;
+      top: 0;
+      width: 100%;
+    }
 
-}
-
-
-    .square_btn {
-      display: inline-block;
-      padding: 0.3em 1em;
-      text-decoration: none;
+    /* Styles for stats. */
+    #stats {
+      margin-top: 5px;
+      margin-bottom: 5px;
+      background-color: #FFE8C2;
+      display: grid;
+      grid-template-columns: 50% 50%;
       color: #A63013;
-      border: solid 2px #A63013;
-      border-radius: 3px;
-      transition: .4s;
+
     }
 
-    .square_btn:hover {
-      background: rgb(240, 115, 169);
-      color: white;
-    }
-
-    .square_btn_second {
-      display: inline-block;
-      padding: 0.3em 1em;
-      text-decoration: none;
-      color: #A63013;
-      border: solid 2px #A63013;
-      border-radius: 3px;
-      transition: .4s;
-    }
-
-    .square_btn_second:hover {
-      background: #EF629F;
-      color: white;
-    }
-
+    /* Styles for body. */
     body {
       text-align: center;
       margin: 0;
-      /*        background-image: url(/static/img/background.png);*/
-      /*        background-size: cover;*/
       background-color: #FFE548;
       color: #A63013;
     }
 
+    /* Styles for images. */
     img {
       object-fit: contain;
       max-width: 90%;
@@ -102,23 +73,20 @@
     }
 
 
-
+    /* Media queries for different devices. */
     @media only screen and (max-width: 330px) {
       #container {
-          margin-top: 7%;
+        margin-top: 7%;
         height: 96vh;
 
       }
 
       .top {
-
-/*        color: #53131E;*/
         font-size: 30pt;
         font-weight: bold;
       }
 
       .points {
-/*        color: #53131E;*/
         font-size: 20pt;
         margin-top: -10px;
         font-weight: bold;
@@ -127,13 +95,12 @@
       #footer {
         bottom: 0;
         margin-top: 1350px;
-/*        color: #53131E;*/
         clear: both;
         position: relative;
       }
     }
 
-@media only screen and (max-width: 360px) {
+    @media only screen and (max-width: 360px) {
       button {
         font-size: 20pt;
       }
@@ -147,25 +114,21 @@
       }
 
       #container {
- margin-top: 10%;
+        margin-top: 10%;
         height: 97vh;
 
       }
 
       #greeting {
-/*        color: #53131E;*/
         font-size: 15pt;
       }
 
       .top {
-
-/*        color: #53131E;*/
         font-size: 30pt;
         font-weight: bold;
       }
 
       .points {
-/*        color: #53131E;*/
         font-size: 20pt;
         margin-top: -10px;
         font-weight: bold;
@@ -174,10 +137,8 @@
       #footer {
         bottom: 0;
         margin-top: 2000px;
-/*        color: #53131E;*/
         clear: both;
         position: relative;
-        /*        font-size: 15pt;*/
       }
     }
 
@@ -201,19 +162,15 @@
       }
 
       #greeting {
-/*        color: #53131E;*/
         font-size: 15pt;
       }
 
       .top {
-
-/*        color: #53131E;*/
         font-size: 30pt;
         font-weight: bold;
       }
 
       .points {
-/*        color: #53131E;*/
         font-size: 20pt;
         margin-top: -10px;
         font-weight: bold;
@@ -222,10 +179,8 @@
       #footer {
         bottom: 0;
         margin-top: 2000px;
-/*        color: #53131E;*/
         clear: both;
         position: relative;
-        /*        font-size: 15pt;*/
       }
     }
 
@@ -246,19 +201,19 @@
       }
 
       #greeting {
-/*        color: #53131E;*/
+        /*        color: #53131E;*/
         font-size: 25pt;
       }
 
       .top {
 
-/*        color: #53131E;*/
+        /*        color: #53131E;*/
         font-size: 40pt;
         font-weight: bold;
       }
 
       .points {
-/*        color: #53131E;*/
+        /*        color: #53131E;*/
         font-size: 30pt;
         margin-top: -10px;
         font-weight: bold;
@@ -267,7 +222,7 @@
       #footer {
         bottom: 0;
         margin-top: 2000px;
-/*        color: #53131E;*/
+        /*        color: #53131E;*/
         clear: both;
         position: relative;
         /*        font-size: 20pt;*/
@@ -294,19 +249,19 @@
       }
 
       #greeting {
-/*        color: #53131E;*/
+        /*        color: #53131E;*/
         font-size: 30pt;
       }
 
       .top {
 
-/*        color: #53131E;*/
+        /*        color: #53131E;*/
         font-size: 40pt;
         font-weight: bold;
       }
 
       .points {
-/*        color: #53131E;*/
+        /*        color: #53131E;*/
         font-size: 30pt;
         margin-top: -10px;
         font-weight: bold;
@@ -315,7 +270,7 @@
       #footer {
         bottom: 0;
         margin-top: 2000px;
-/*        color: #53131E;*/
+        /*        color: #53131E;*/
         clear: both;
         position: relative;
       }
@@ -341,19 +296,19 @@
       }
 
       #greeting {
-/*        color: #53131E;*/
+        /*        color: #53131E;*/
         font-size: 30pt;
       }
 
       .top {
 
-/*        color: #53131E;*/
+        /*        color: #53131E;*/
         font-size: 40pt;
         font-weight: bold;
       }
 
       .points {
-/*        color: #53131E;*/
+        /*        color: #53131E;*/
         font-size: 30pt;
         margin-top: -10px;
         font-weight: bold;
@@ -362,10 +317,10 @@
       #footer {
         bottom: 0;
         margin-top: 700px;
-/*        color: #53131E;*/
+        /*        color: #53131E;*/
         clear: both;
         position: relative;
-          font-size: 20pt;
+        font-size: 20pt;
       }
 
       p {
@@ -373,11 +328,12 @@
       }
     }
 
+    /* Styles for to do list */
     .to_do_title {
 
       color: brown;
       background-color: transparent;
-/*      opacity: 0.5;*/
+      /*      opacity: 0.5;*/
       font-size: 22pt;
     }
 
@@ -385,12 +341,10 @@
       opacity: 1.0;
     }
 
+    /* Styles for each section. */
     #dailytask {
-      /*        margin-left: 25px;*/
-      /*        margin-right: 25px;*/
       margin-top: 10px;
       margin-bottom: 10px;
-      /*        border-radius: 25px;*/
       background-color: #EEFCCE;
 
 
@@ -456,34 +410,20 @@
       margin-top: auto;
       margin-bottom: auto;
       border-radius: 25px 0 0 25px;
-
-
     }
 
     #selection3 {
       margin-top: auto;
       margin-bottom: auto;
       border-radius: 0 25px 25px 0;
-
-
-
     }
-
-    #header {}
-
-
-
-
-    /* #title_0 ~ div > div > button{
-  display: none;
-} */
 
 
     .title~* {
       display: none;
     }
 
-    /* boostrap */
+    /* boostrap for progress bar*/
     @-webkit-keyframes progress-bar-stripes {
       from {
         background-position: 1rem 0;

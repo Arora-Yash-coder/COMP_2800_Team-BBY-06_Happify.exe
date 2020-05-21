@@ -1,99 +1,112 @@
-   .regular{
-           margin-top: -20px;
-        }
-        
-        
-        
-        
-        .sticky {
-  position: fixed;
-  top: 0;
-  width: 100%;
-}
-        html,
-        body {
-            text-align: center;
-            margin: 0;
-            background-color: #FFE548;
-  color: #A63013;
-        }
+    /* CSS for pandemic info page. */
+    
+    /* These styles relate to the sticky nav bar. */
+     .regular {
+         margin-top: -20px;
+     }
 
-        .graph {
-            width: 100%;
-            /* height: 100px; */
-        }
+     .sticky {
+         position: fixed;
+         top: 0;
+         width: 100%;
+     }
 
-        #chartdiv {
-            height: 55%;
-        }
+     /* Styles for the body. */
+     html,
+     body {
+         text-align: center;
+         margin: 0;
+         background-color: #FFE548;
+         color: #A63013;
+     }
 
-        #chart_container {
-            text-align: center;
-            
-        }
-        #container{
-            margin-top:50px;
-        }
-        button {
-    background-color: transparent;
-    border: #A63013 solid 1.5px;
-    color: #A63013;
-    padding: 7px 26px;
-    text-align: center;
-    text-decoration: none;
-    display: inline-block;
-    font-size: 16px;
-    font-weight: bold;
+     /* Graphs. */
+     .graph {
+         width: 100%;
+     }
 
-  }
+     #chartdiv {
+         height: 55%;
+     }
 
-  button:hover {
-    background-color: white;
-    border: #A63013 solid 1.5px;
-    color: #A63013;
-    padding: 7px 26px;
-    text-align: center;
-    text-decoration: none;
-    display: inline-block;
-    font-size: 16px;
+     #chart_container {
+         text-align: center;
 
-  }
-        @media only screen and (max-width: 369px) {
-            h1{
-                font-size: 30pt;
-            }
-            #container{
-                height:400vh;
-            }
-            
-        }
-        @media only screen and (min-width: 370px) {
-            h1{
-                font-size: 30pt;
-            }
-             #container{
-                height:370vh;
-            }
-            
-        }
-        @media only screen and (min-width: 600px) {
-            h1{
-                font-size: 40pt;
-            }
-            #container{
-                height:450vh;
-            }
-            
-        }
-        @media only screen and (min-width: 1024px) {
-            h1{
-                font-size: 40pt;
-            }
-        }
-        @media only screen and (min-width: 1200px) {
-            #footer{
-                font-size:20px;
-            }
-            
-        }
-        
+     }
+
+     #container {
+         margin-top: 50px;
+     }
+
+     /* Styles for the buttons. */
+     button {
+         background-color: transparent;
+         border: #A63013 solid 1.5px;
+         color: #A63013;
+         padding: 7px 26px;
+         text-align: center;
+         text-decoration: none;
+         display: inline-block;
+         font-size: 16px;
+         font-weight: bold;
+
+     }
+
+     button:hover {
+         background-color: white;
+         border: #A63013 solid 1.5px;
+         color: #A63013;
+         padding: 7px 26px;
+         text-align: center;
+         text-decoration: none;
+         display: inline-block;
+         font-size: 16px;
+
+     }
+
+     /* media queries for different devices. */
+     @media only screen and (max-width: 369px) {
+         h1 {
+             font-size: 30pt;
+         }
+
+         #container {
+             height: 400vh;
+         }
+
+     }
+
+     @media only screen and (min-width: 370px) {
+         h1 {
+             font-size: 30pt;
+         }
+
+         #container {
+             height: 370vh;
+         }
+
+     }
+
+     @media only screen and (min-width: 600px) {
+         h1 {
+             font-size: 40pt;
+         }
+
+         #container {
+             height: 450vh;
+         }
+
+     }
+
+     @media only screen and (min-width: 1024px) {
+         h1 {
+             font-size: 40pt;
+         }
+     }
+
+     @media only screen and (min-width: 1200px) {
+         #footer {
+             font-size: 20px;
+         }
+
+     }

@@ -1,7 +1,12 @@
-#sanitizer{
-    height: 40vh;
-  }
-body{
-    background: #99F7AB;
-    color: #53131E;
+/* CSS for 404 page */
+
+/* The sanitizer picture */
+#sanitizer {
+  height: 40vh;
+}
+
+/* Sets the background color and font color. */
+body {
+  background: #99F7AB;
+  color: #53131E;
 }

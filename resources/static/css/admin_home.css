@@ -1,23 +1,31 @@
+/*CSS style of the admin homepage*/
+
+/* Some CSS for body. */
 body {
-  /*
-    background-image: url(./../img/background.png);
-    background-size: cover;
-*/
-    color: #53131E;
+  color: #53131E;
   background-color: #99F7AB;
   width: 100%;
 }
-h1{
-    text-align: center;
-    color: white;
+
+/* Some styles for title */
+h1 {
+  text-align: center;
+  color: white;
 }
-#button{
-    text-align: center;
+
+/* Align the button. */
+#button {
+  text-align: center;
 }
-#container{
-    margin-top: 15%;
+
+/* Align the container */
+#container {
+  margin-top: 15%;
 }
+
+/* Media queries for different devices. */
 @media only screen and (max-width: 330px) {
+  /* Styles for footer */
   #footer {
     text-align: center;
     bottom: 0;
@@ -27,29 +35,31 @@ h1{
     position: relative;
 
   }
-        button {
-      background-color: transparent;
-      border: #53131E solid 1.5px;
-      color: #53131E;
-      padding: 7px 26px;
-      text-align: center;
-      text-decoration: none;
-      display: inline-block;
-      font-size: 14pt;
-      font-weight: 300;
-}
+
+  /* Styles for buttons. */
+  button {
+    background-color: transparent;
+    border: #53131E solid 1.5px;
+    color: #53131E;
+    padding: 7px 26px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 14pt;
+    font-weight: 300;
+  }
 
 
-button:hover {
-      background-color: white;
-      border: #53131E solid 1.5px;
-      color: #53131E;
-      padding: 7px 26px;
-      text-align: center;
-      text-decoration: none;
-      display: inline-block;
-      font-size: 14pt;
-}
+  button:hover {
+    background-color: white;
+    border: #53131E solid 1.5px;
+    color: #53131E;
+    padding: 7px 26px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 14pt;
+  }
 }
 
 @media only screen and (min-width: 370px) {
@@ -62,29 +72,30 @@ button:hover {
     position: relative;
 
   }
-        button {
-      background-color: transparent;
-      border: #53131E solid 1.5px;
-      color: #53131E;
-      padding: 7px 26px;
-      text-align: center;
-      text-decoration: none;
-      display: inline-block;
-      font-size: 14pt;
-      font-weight: 300;
-}
+
+  button {
+    background-color: transparent;
+    border: #53131E solid 1.5px;
+    color: #53131E;
+    padding: 7px 26px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 14pt;
+    font-weight: 300;
+  }
 
 
-button:hover {
-      background-color: white;
-      border: #53131E solid 1.5px;
-      color: #53131E;
-      padding: 7px 26px;
-      text-align: center;
-      text-decoration: none;
-      display: inline-block;
-      font-size: 14pt;
-}
+  button:hover {
+    background-color: white;
+    border: #53131E solid 1.5px;
+    color: #53131E;
+    padding: 7px 26px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 14pt;
+  }
 }
 
 @media only screen and (min-width: 600px) {
@@ -96,36 +107,38 @@ button:hover {
     clear: both;
     position: relative;
     /*    font-size: 20pt;*/
-      
+
   }
-    h1{
+
+  h1 {
     text-align: center;
     color: white;
-        font-size: 40pt;
-}
-        button {
-      background-color: transparent;
-      border: #53131E solid 1.5px;
-      color: #53131E;
-      padding: 7px 26px;
-      text-align: center;
-      text-decoration: none;
-      display: inline-block;
-      font-size: 20pt;
-      font-weight: 300;
-}
+    font-size: 40pt;
+  }
+
+  button {
+    background-color: transparent;
+    border: #53131E solid 1.5px;
+    color: #53131E;
+    padding: 7px 26px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 20pt;
+    font-weight: 300;
+  }
 
 
-button:hover {
-      background-color: white;
-      border: #53131E solid 1.5px;
-      color: #53131E;
-      padding: 7px 26px;
-      text-align: center;
-      text-decoration: none;
-      display: inline-block;
-      font-size: 20pt;
-}
+  button:hover {
+    background-color: white;
+    border: #53131E solid 1.5px;
+    color: #53131E;
+    padding: 7px 26px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 20pt;
+  }
 }
 
 @media only screen and (min-width: 1024px) {
@@ -138,34 +151,36 @@ button:hover {
     position: relative;
     /*    font-size: 25pt;*/
   }
-    h1{
+
+  h1 {
     text-align: center;
     color: white;
-        font-size: 40pt;
-}
-    button {
-      background-color: transparent;
-      border: #53131E solid 1.5px;
-      color: #53131E;
-      padding: 7px 26px;
-      text-align: center;
-      text-decoration: none;
-      display: inline-block;
-      font-size: 20pt;
-      font-weight: 300;
-}
+    font-size: 40pt;
+  }
+
+  button {
+    background-color: transparent;
+    border: #53131E solid 1.5px;
+    color: #53131E;
+    padding: 7px 26px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 20pt;
+    font-weight: 300;
+  }
 
 
-button:hover {
-      background-color: white;
-      border: #53131E solid 1.5px;
-      color: #53131E;
-      padding: 7px 26px;
-      text-align: center;
-      text-decoration: none;
-      display: inline-block;
-      font-size: 20pt;
-}
+  button:hover {
+    background-color: white;
+    border: #53131E solid 1.5px;
+    color: #53131E;
+    padding: 7px 26px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 20pt;
+  }
 }
 
 @media only screen and (min-width: 1200px) {
@@ -178,27 +193,28 @@ button:hover {
     position: relative;
     font-size: 18pt;
   }
-        button {
-      background-color: transparent;
-      border: #53131E solid 1.5px;
-      color: #53131E;
-      padding: 7px 26px;
-      text-align: center;
-      text-decoration: none;
-      display: inline-block;
-      font-size: 20pt;
-      font-weight: 300;
-}
+
+  button {
+    background-color: transparent;
+    border: #53131E solid 1.5px;
+    color: #53131E;
+    padding: 7px 26px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 20pt;
+    font-weight: 300;
+  }
 
 
-button:hover {
-      background-color: white;
-      border: #53131E solid 1.5px;
-      color: #53131E;
-      padding: 7px 26px;
-      text-align: center;
-      text-decoration: none;
-      display: inline-block;
-      font-size: 20pt;
-}
+  button:hover {
+    background-color: white;
+    border: #53131E solid 1.5px;
+    color: #53131E;
+    padding: 7px 26px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 20pt;
+  }
 }

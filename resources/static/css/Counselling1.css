@@ -1,215 +1,178 @@
-body{
-            text-align: center;
-        }
-        .header1{
-            margin: 10px;
-        }
+/* CSS for mental assistance page */
 
-       .link{
-            text-decoration: underline;
-            color: blue;
-            font: bold;
-        }
-#card1{
-     background-color: #FFE8C2;
+/* Styles the background color. */
+body {
+  text-align: center;
 }
-#card2{
-     background-color: #FFE8C2;
+/* Heading font size. */
+.header1 {
+  margin: 10px;
 }
-       
+/* Some colors for the outer links. */
+.link {
+  text-decoration: underline;
+  color: blue;
+  font: bold;
+}
+
+/* Background colors for the sections. */
+#card1 {
+  background-color: #FFE8C2;
+}
+
+#card2 {
+  background-color: #FFE8C2;
+}
+
 /* The sticky class is added to the navbar with JS when it reaches its scroll position */
 .sticky {
   position: fixed;
   top: 0;
   width: 100%;
 }
-#container{
-    margin-top: 40px;
+
+/* This is to ensure the content is not covered by the nav bar. */
+#container {
+  margin-top: 40px;
 }
+/* Some styles for mobile phones. */
 @media only screen and (max-width: 369px) {
-    
-    .header1{
-        font-size: 20pt;
-        font-weight: bold;
-    }
-    #card1{
-    font-size: 25pt;
-    
-    
-    
-  padding-top: 10px;
-  padding-bottom: 10px;
-  margin-top: 10px;
-  margin-bottom: 10px;
-  color: #A63013;
-    
-    
-    
-}
-    #card2{
-    font-size: 25pt;
-    
-     
-  padding-top: 10px;
-  padding-bottom: 10px;
-  margin-top: 10px;
-  margin-bottom: 10px;
-  color: #A63013;
-    
-    
-    
-}
-    
-    #footer{
-       
-        font-size: 20pt;
-    }
-        }
 
+  .header1 {
+    font-size: 20pt;
+    font-weight: bold;
+  }
 
+  #card1 {
+    font-size: 25pt;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    color: #A63013;
+  }
+
+  #card2 {
+    font-size: 25pt;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    color: #A63013;
+  }
+
+  #footer {
+    font-size: 20pt;
+  }
+}
+
+/* Some styles for bigger cell phones. */
 @media only screen and (min-width: 370px) {
-    h1{
-        font-size: 25pt;
-    }
-    .header1{
-        font-size: 25pt;
-        font-weight: bold;
-    }
-     #card1{
+  h1 {
     font-size: 25pt;
-    
-     
-  padding-top: 10px;
-  padding-bottom: 10px;
-  margin-top: 10px;
-  margin-bottom: 10px;
-  color: #A63013;
-    
-    
-    
-}
-    #card2{
+  }
+
+  .header1 {
     font-size: 25pt;
-    
-   
-  padding-top: 10px;
-  padding-bottom: 10px;
-  margin-top: 10px;
-  margin-bottom: 10px;
-  color: #A63013;
-   
-    
-    
+    font-weight: bold;
+  }
+
+  #card1 {
+    font-size: 25pt;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    color: #A63013;
+  }
+
+  #card2 {
+    font-size: 25pt;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    color: #A63013;
+  }
+
+  #footer {
+    margin-top: 500px;
+    font-size: 20pt;
+  }
 }
 
-    #footer{
-        margin-top: 500px;
-        font-size: 20pt;
-    }
-        }
-
-
+/* Some styles for tablets. */
 @media only screen and (min-width: 600px) {
-     #card1{
+  #card1 {
     font-size: 25pt;
-    
-     
-  padding-top: 10px;
-  padding-bottom: 10px;
-  margin-top: 10px;
-  margin-bottom: 10px;
-  color: #A63013;
-   
-    
-    
-}
-    #card2{
+    padding-top: 10px;
+    padding-bottom: 10px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    color: #A63013;
+  }
+
+  #card2 {
     font-size: 25pt;
-    
-    
-  padding-top: 10px;
-  padding-bottom: 10px;
-  margin-top: 10px;
-  margin-bottom: 10px;
-  color: #A63013;
-   
-    
-    
+    padding-top: 10px;
+    padding-bottom: 10px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    color: #A63013;
+  }
+
+  #footer {
+    font-size: 20pt;
+  }
 }
-
-    #footer{
-        font-size: 20pt;
-    }
-        }
-
+/* Styles for iPad Pro. */
 @media only screen and (min-width: 1024px) and (max-width: 1025px) {
-     #card1{
+  #card1 {
     font-size: 25pt;
-    
-    
-  padding-top: 10px;
-  padding-bottom: 10px;
-  margin-top: 10px;
-  margin-bottom: 10px;
-  color: #A63013;
-/*    height: 90vh;*/
-    
-    
-}
-    #card2{
+    padding-top: 10px;
+    padding-bottom: 10px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    color: #A63013;
+  }
+
+  #card2 {
     font-size: 25pt;
-    
-    
-  padding-top: 10px;
-  padding-bottom: 10px;
-  margin-top: 10px;
-  margin-bottom: 10px;
-  color: #A63013;
-   
-    
-    
+    padding-top: 10px;
+    padding-bottom: 10px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    color: #A63013;
+  }
+
+  #footer {
+    margin-top: 200px;
+    font-size: 20pt;
+  }
 }
 
-    #footer{
-        margin-top: 200px;
-        font-size: 20pt;
-    }
-        }
-
+/* Styles for web pages. */
 @media only screen and (min-width: 1026px) {
-     #card1{
+  #card1 {
     font-size: 4pt;
-    
-    
-  padding-top: 10px;
-  padding-bottom: 10px;
-  margin-top: 10px;
-  margin-bottom: 10px;
-  color: #A63013;
-   
-    
-    
-}
-    #card2{
+    padding-top: 10px;
+    padding-bottom: 10px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    color: #A63013;
+  }
+
+  #card2 {
     font-size: 4pt;
-    
-   
-  padding-top: 10px;
-  padding-bottom: 10px;
-  margin-top: 10px;
-  margin-bottom: 10px;
-  color: #A63013;
-    
-    
-    
+    padding-top: 10px;
+    padding-bottom: 10px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    color: #A63013;
+  }
+
+  #footer {
+    margin-top: 200px;
+    font-size: 20pt;
+  }
 }
-
-    #footer{
-        margin-top: 200px;
-        font-size: 20pt;
-    }
-        }
-
-
-
-

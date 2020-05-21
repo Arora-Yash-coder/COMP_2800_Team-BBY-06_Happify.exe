@@ -1,9 +1,12 @@
+/* CSS for log in. */
+
+/* Styles for body. */
 body {
-  /*    background-image: url(./../img/background.png);*/
   background-color: #FFE548;
   width: 100%;
 }
 
+/* Media queries for different devices. */
 @media only screen and (max-width: 330px) {
   #footer {
     text-align: center;
@@ -15,17 +18,19 @@ body {
 
   }
 }
-@media only screen and (max-width: 360px) {
-    #footer {
-        text-align: center;
-        bottom: 0;
-        margin-top: 250px;
-        color: #A63013;
-        clear: both;
-        position: relative;
 
-    }
+@media only screen and (max-width: 360px) {
+  #footer {
+    text-align: center;
+    bottom: 0;
+    margin-top: 250px;
+    color: #A63013;
+    clear: both;
+    position: relative;
+
+  }
 }
+
 @media only screen and (min-width: 361px) {
   #footer {
     text-align: center;
@@ -71,20 +76,32 @@ body {
     clear: both;
     position: relative;
     font-size: 18pt;
-      font-weight: normal;
+    font-weight: normal;
   }
 }
 
+/* Some styles for buttons. */
 button {
   background-color: transparent;
-  border: #EEFCCE solid 1.5px;
-  color: #EEFCCE;
+  border: #A63013 solid 1.5px;
+  color: #A63013;
   padding: 7px 26px;
   text-align: center;
   text-decoration: none;
   display: inline-block;
   font-size: 16px;
-/*  font-weight: bold;*/
+  /*  font-weight: bold;*/
+}
+
+button:hover {
+  background-color: white;
+  border: rgb(151, 34, 54) solid 1.5px;
+  color: rgb(170, 67, 84);
+  padding: 7px 26px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
 
 }
 
@@ -104,10 +121,7 @@ button {
   background-color: hsla(120, 60%, 2%, 0.6);
   text-align: center;
   width: 400px;
-  /* filter:alpha(opacity=50); */
   z-index: -1;
-  /* opacity:0.8; */
-  /*    width: 90%;*/
   width: 370px;
   color: white;
 }
@@ -117,7 +131,6 @@ button {
 }
 
 #log {
-
   float: right;
   margin: 0;
   padding-top: 10px;
@@ -141,31 +154,11 @@ button {
 
 
 
-/*
-  a {
-    color: white;
-  }
-*/
-
-
-
-
 #form-wrapper {
   padding-top: 10%;
 }
 
-/*
-    h1 {
-      color: white;
-      font-size: 40pt;
-    }
-
-    h3 {
-      color: white;
-      font-size: 30pt;
-    }
-*/
-
+/* Some styles for the input. */
 input[type="text"] {
   margin-top: 20px;
   margin-bottom: -1px;
@@ -186,54 +179,18 @@ input[type="password"] {
 
 }
 
-/*
-    input[type="submit"] {
-      margin-bottom: 23px;
-      border-top-left-radius: 0;
-      border-top-right-radius: 0;
-      width: 280px;
-      font-size: 15pt;
-        
-    }
-*/
-/*
-#footer{
-    text-align: center;
-    bottom: 0;
-      margin-top: 300px;
-      color: #53131E;
-      clear: both;
-      position: relative;
-    font-size: 18pt;
-}*/
 
-
-body{
+body {
   text-align: center;
 }
 
-button:hover {
+
+
+/* Selection for the other UI. */
+#ui_choice_1 {
+  color: #A63013;
+}
+
+#ui_choice_1:hover {
   background-color: white;
-  border: rgb(151, 34, 54) solid 1.5px;
-  color: rgb(170, 67, 84);
-  padding: 7px 26px;
-  text-align: center;
-  text-decoration: none;
-  display: inline-block;
-  font-size: 16px;
-
-}
-
-#ui_choice_1{
-
- color: chocolate;
-  
-
-}
-
-#ui_choice_1:hover{
-
-  background-image: url(/static/img/background.png);
-  
-
 }

@@ -1,31 +1,38 @@
+/* CSS for my acquired coupon page. */
+
+/* Some styles for body. */
 body {
     text-align: center;
     margin: 0;
-    /*      background-image: url(../img/background.png);*/
-    /*      background-size: cover;*/
-    /*  height: 120vh;*/
+
     background-color: #99F7AB;
     color: #53131E;
 }
 
+/* Some styles for the points. */
 .points {
     font-weight: bold;
     font-size: 40pt;
 }
+
+/* This is to make the nav bar sticky to the top. */
 .sticky {
-  position: fixed;
-  top: 0;
-  width: 100%;
+    position: fixed;
+    top: 0;
+    width: 100%;
 }
+
 .description {
     font-size: 18pt;
 }
 
+/* Media queries for different devices. */
 @media only screen and (max-width: 369px) {
-    #wrapper{
-        
+    #wrapper {
+
         margin-top: 15%;
     }
+
     #greeting {
         color: #EF629F;
         font-size: 30pt;
@@ -34,7 +41,7 @@ body {
     #container {
 
 
-            height: 120vh;
+        height: 120vh;
 
     }
 
@@ -48,10 +55,11 @@ body {
 }
 
 @media only screen and (min-width: 370px) {
-    #wrapper{
-        
+    #wrapper {
+
         margin-top: 15%;
     }
+
     #greeting {
         color: #EF629F;
         font-size: 30pt;
@@ -60,7 +68,7 @@ body {
     #container {
 
 
-            height: 110vh;
+        height: 110vh;
 
     }
 
@@ -75,10 +83,11 @@ body {
 }
 
 @media only screen and (min-width: 600px) {
-    #wrapper{
-        
+    #wrapper {
+
         margin-top: 10%;
     }
+
     h1 {
         font-size: 30pt;
     }
@@ -108,7 +117,7 @@ body {
     #container {
 
 
-            height: 200vh;
+        height: 200vh;
 
     }
 
@@ -123,10 +132,11 @@ body {
 }
 
 @media only screen and (min-width: 1024px) {
-    #wrapper{
-        
+    #wrapper {
+
         margin-top: 10%;
     }
+
     h1 {
         font-size: 30pt;
     }
@@ -171,10 +181,11 @@ body {
 }
 
 @media only screen and (min-width: 1200px) {
-    #wrapper{
-        
+    #wrapper {
+
         margin-top: 10%;
     }
+
     h1 {
         font-size: 30pt;
     }
@@ -218,25 +229,8 @@ body {
     }
 }
 
-.square_btn_second {
-    display: inline-block;
-    padding: 0.3em 1em;
-    text-decoration: none;
-    color: #3AB795;
-    border: solid 2px #3AB795;
-    border-radius: 3px;
-    transition: .4s;
-}
 
-.square_btn_second:hover {
-    background: #EF629F;
-    color: white;
-}
-
-#container>div:nth-child(even) {
-    /*  background-color: #FAC9B8;*/
-}
-
+/* Some styles for coupons. */
 .coupons {
     margin-left: 25px;
     margin-right: 25px;
@@ -250,12 +244,10 @@ body {
     border: solid 2px rgba(83, 19, 30, 0.7);
 }
 
+/* Some styles for the stats section. */
 #stats {
-    /*        margin-left: 25px;*/
-    /*        margin-right: 25px;*/
     margin-top: 10px;
     margin-bottom: 10px;
-    /*    border-radius: 25px;*/
     grid-row: 2 / span 1;
     background-color: #7BDFF2;
     display: grid;

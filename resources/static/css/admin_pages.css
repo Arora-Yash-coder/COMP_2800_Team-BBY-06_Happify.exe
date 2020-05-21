@@ -1,5 +1,6 @@
-/*@import url("https://fonts.googleapis.com/css?family=Lato:400,400i,700");*/
+/* CSS for admin adding and deleting coupon pages. */
 
+/* Styles for body. */
 body {
   display: -webkit-box;
   display: flex;
@@ -9,13 +10,19 @@ body {
   align-items: center;
   /* height: 100vh; */
   background: #99F7AB;
-    color: #53131E;
-}
-#container{
-    margin-top: 2%;
+  color: #53131E;
 }
 
+/* Align the container */
+#container {
+  margin-top: 2%;
+}
 
+/* To do list */
+/* Please note that the following styles have been adapted from BCIT D2L. */
+
+/* @author: BCIT */
+/* @see: learn.bcit.ca */
 .todo-list {
   display: -webkit-box;
   display: flex;
@@ -30,8 +37,8 @@ body {
 .todo-list .todo-list__title {
   padding: 3px 6px;
   color: #53131E;
-/*  background-color: #99F7AB;*/
-    font-size: 20pt;
+  /*  background-color: #99F7AB;*/
+  font-size: 20pt;
 }
 
 .todo-list .todo-list__label {
@@ -41,7 +48,7 @@ body {
   align-items: center;
   margin: 40px 0;
   font-size: 24px;
-/*  font-family: Lato, sans-serif;*/
+  /*  font-family: Lato, sans-serif;*/
   color: #53131E;
   cursor: pointer;
 }
@@ -108,49 +115,44 @@ body {
   transform-origin: left;
 }
 
+/* Textarea styles */
 textarea {
   margin-top: 20px;
   width: 260px;
   height: 280px;
   font-size: 24px;
-/*  font-family: Lato, sans-serif;*/
   color: #53131E;
   cursor: pointer;
   background: #162740;
   margin-bottom: 20px;
 }
 
-/*
+/* Some button styles. */
 button {
-  font-size: 24px;
-  font-family: Lato, sans-serif;
-  background-color: bisque;
-}
-*/
-    button {
-      background-color: transparent;
-      border: #53131E solid 1.5px;
-      color: #53131E;
-      padding: 7px 26px;
-      text-align: center;
-      text-decoration: none;
-      display: inline-block;
-      font-size: 17pt;
-      font-weight: 300;
+  background-color: transparent;
+  border: #53131E solid 1.5px;
+  color: #53131E;
+  padding: 7px 26px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 17pt;
+  font-weight: 300;
 }
 
 
 button:hover {
-      background-color: white;
-      border: #53131E solid 1.5px;
-      color: #53131E;
-      padding: 7px 26px;
-      text-align: center;
-      text-decoration: none;
-      display: inline-block;
-      font-size: 17pt;
+  background-color: white;
+  border: #53131E solid 1.5px;
+  color: #53131E;
+  padding: 7px 26px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 17pt;
 }
 
+/* Some styles for hyperlinks. */
 a {
   color: #53131E;
   height: 24px;
@@ -163,20 +165,24 @@ a {
   color: aliceblue;
 }
 
+/* Records */
 .records {
   margin: 40px;
 }
-#delete{
-    margin-left: -29px;
+
+/* Delete button */
+#delete {
+  margin-left: -29px;
 }
-#title{
-    text-align: center;
-    color: #53131E;
+
+/* Title styles */
+#title {
+  text-align: center;
+  color: #53131E;
 }
-#back{
-    text-align: center;
-    margin-left: 45%;
-}
-form{
-/*    text-align: center;*/
+
+/* Back buttons */
+#back {
+  text-align: center;
+  margin-left: 45%;
 }
