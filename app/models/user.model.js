@@ -1,22 +1,6 @@
 const mongoose = require('mongoose');
 
 
-// {
-//   "_id": {
-//       "$oid": "5ebc8b651b19be4e90f599de"
-//   },
-//   "id": {
-//       "$numberInt": "1"
-//   },
-//   "title": "ThunderBird",
-//   "paragraph": ["Thunderbird, a supernatural creature prominent in Northwest Coast Indigenous myths. Thunder and lightning are attributed to the thunderbird, which produces thunder by flapping its wings and  lightning by opening and closing its eyes. The thunderbird is said to hunt whales, using its wings to shoot arrows.", "Among some Plains First Nations, thunderstorms are a contest between the thunderbird and a huge rattlesnake. Individuals who had been struck by lightning and survived often became Shamans, for they had received the power of the monster bird."],
-//   "img": "/static/img/daily_tasks/1/bird.jpg",
-//   "bgm": "/static/sound/task_1.mp3",
-//   "source": "https://www.thecanadianencyclopedia.ca/article/thunderbird",
-//   "question": "How is one considered a shaman",
-//   "choices": ["When they become enlightened", "By vote of the tribe", "if they survive a lighting strike"],
-//   "answer": "if they survive a lighting strike"
-// }
 
 
 
@@ -34,6 +18,7 @@ const DailyTaskSchema = mongoose.Schema({
 
 var d = new Date();
 
+//THE DEFAULT TASK WILL BE INITIALIZED INTO THE USER SCHEMA
 const defaultTask =
 {
   id:1,
@@ -71,6 +56,7 @@ const defaultUserTask = {
   finished: false,
 }
 
+//daily_task_rec IS THE MODEL OF DAILY TASK RECORD 
 const daily_task_rec ={
   day : 1,
   finished_id : [2,3],
@@ -115,7 +101,7 @@ const UserSchema = mongoose.Schema({
 
 
 
-
+//Admin Schema IS THE USER SCHEMA FOR AN ADMINISTRATOR.
 const AdminSchema = mongoose.Schema({
   //for login purposes
   username: {
@@ -150,6 +136,36 @@ const AdminSchema = mongoose.Schema({
 
 
 
-//make it global
+//MAKE USER GLOBAL
 var User = mongoose.model('User', UserSchema);
 module.exports = User;
+
+
+
+
+
+
+// {
+//   "_id": {
+//       "$oid": "5ebc8b651b19be4e90f599de"
+//   },
+//   "id": {
+//       "$numberInt": "1"
+//   },
+//   "title": "ThunderBird",
+//   "paragraph": ["Thunderbird, a supernatural creature prominent in Northwest Coast Indigenous myths. Thunder and lightning are attributed to the thunderbird, which produces thunder by flapping its wings and  lightning by opening and closing its eyes. The thunderbird is said to hunt whales, using its wings to shoot arrows.", "Among some Plains First Nations, thunderstorms are a contest between the thunderbird and a huge rattlesnake. Individuals who had been struck by lightning and survived often became Shamans, for they had received the power of the monster bird."],
+//   "img": "/static/img/daily_tasks/1/bird.jpg",
+//   "bgm": "/static/sound/task_1.mp3",
+//   "source": "https://www.thecanadianencyclopedia.ca/article/thunderbird",
+//   "question": "How is one considered a shaman",
+//   "choices": ["When they become enlightened", "By vote of the tribe", "if they survive a lighting strike"],
+//   "answer": "if they survive a lighting strike"
+// }
+
+
+
+
+
+
+
+

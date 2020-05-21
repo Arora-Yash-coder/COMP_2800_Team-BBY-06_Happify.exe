@@ -19,17 +19,23 @@ module.exports = function (app) {
 	///////////////////////////////////////////////////////////
 
 
-	//needless to say
+	//THIS IS THE MODULE TO RUN HTTP SERVER.
 	var express = require("express");
+	
+	//PURE-JAVASCRIPT IMPLEMENTATION OF MANY WEB STANDARDS,
 	const { JSDOM } = require('jsdom');
 
+
 	var router = express.Router();
+
+
 	const fs = require('fs');
-	// const ejs = require('ejs');
+
 
 
 	//"users" IS THE MODULE WITH FUNCTIONS THAT ARE IN 
 	const users = require('../controllers/user.controller.js');
+
 	//"pusher" IS THE MODULE WITH FUNCTIONS RELATED TO Web-Push API
 	const pusher = require('../controllers/push.controller.js');
 
@@ -59,7 +65,8 @@ module.exports = function (app) {
 
 
 
-
+	//EXPRESS-SESSION IS FOR DEALING WITH SESSION REQUESTS
+	//IT IS NECESSARY FOR A RESTFUL API.
 	var session = require('express-session');
 
 	app.use(cookieParser());
@@ -127,20 +134,20 @@ module.exports = function (app) {
 
 	};
 
-
+	//CHECKS IF THE USER HAS LOGGED IN OR NOT, (CREATED FOR TESTING PURPOSES, NOT IN USE)
 	app.get('/checkstatus', sessionChecker, (req, res) => {
 		res.redirect('/login');
 		res.end();
 	});
 
 
-
+	//THE COUPON PAGE LINK, THE USER WILL BE SENT A LIST OF COUPONS
 	app.get('/coupon', sessionChecker2, users.getCoupon);
 
 	// var body_ejs = fs.readFileSync(path + "components/homepage_body.ejs", 'utf-8');
 	var navbar_top_ejs = fs.readFileSync(path + "components/navbar_top.ejs", 'utf-8');
 
-
+	//THE FOOTER COMPONENT OF THE PAGES, IT'S A EJS
 	var footer = fs.readFileSync(path + "components/footer.ejs", 'utf-8');
 
 	/////////////////////////////////////////////////////////////////////////////////////////////
@@ -160,17 +167,8 @@ module.exports = function (app) {
 				_id: ObjectId(req.session.user_sid)
 
 			}).toArray(function (err, result) {
-
-				//  dbo.collection("coupons_available").aggregate(
-				// 	{$group : { id : 'users.$coupons_owned', count : {$sum : 1}}}
-
-				//  ).toArray((err,aggregate)=>{
-				// 	console.log("aggregate in line 148")
-				// 	console.log(aggregate)
-				//  })
-
-
-
+				
+				//FETCH THE ITEMS OF THE USER'S OWNED COUPONS FROM THE LIST 
 				coupon_id_array = result[0].coupons_owned;
 
 				dbo.collection("coupons_available").find({
@@ -294,33 +292,44 @@ module.exports = function (app) {
 	//THIS API SENDS THE USER TO THE DATABASE
 	app.get("/homepage", sessionChecker2, (req, res) => {
 
-		console.log("req.session.UI_style in 267")
+		console.log("req.session.UI_style in --------------LINE 295--------------")
 		console.log(req.session.UI_style)
+
+
+		//STATE IS A GLOBAL VARIABLE, WHICH WILL BE GRANTED VALUE LATER.
+		//MAKE IT NULL IS FOR CHECKING.
 		let state = null;
 
-		console.log(state)
-
-
+		//CONNECTION PHRASE
 		MongoClient.connect(dbConfig.url, function (err, db) {
 			if (err) throw err;
 			var dbo = db.db("test");
-
+			//THE QUERY IS TO SEARCH THE USER'S STAE FROM THE DB.
 			dbo.collection("users").find({
 				_id: ObjectId(req.session.user_sid)
 			}).toArray(function (err, result) {
+
 				state = result[0].daily_task_rec[result[0].daily_task_rec.length - 1].state
-				console.log("state==================================================")
+				console.log("------------------got  state====================LINE 313 in user.route")
 				console.log(state)
+				
+				//THE USER HAS NOT YET FINISHED THE DAILY TASKS
 				if (state <= 3) {
 					res.redirect("/daily_tasks")
 				}
+
+				//BETWEEN STATE 4 AND 5 ARE THE GAME PLAY.
 				else if (state >= 4 && state <= 5) {
 					users.addPoints(req, res, 10)
 					res.redirect("/minigames")
 				}
+
+				//AT THE STATE OF 6, THE USER WILL BE DIRECTED TO /coupon
 				else if (state > 5 && state <= 6) {
 					res.redirect("/coupon")
 				}
+
+				//THE UI STYLE IS PLUGGED FROM THE DB.
 				else {
 					console.log("req.session.UI_style-----------")
 					console.log(req.session.UI_style)
@@ -336,8 +345,9 @@ module.exports = function (app) {
 
 	})
 
-
-	app.get("/set_state_back_to_zero",(req,res)=>{
+	
+	//IT SET'S THE STAET BACK TO ZERO ON THE USER'S EXIT.
+	app.get("/set_state_back_to_zero", (req, res) => {
 		MongoClient.connect(dbConfig.url, function (err, db) {
 			console.log()
 			if (err) throw err;
@@ -362,11 +372,12 @@ module.exports = function (app) {
 	})
 
 
-	//the minigame entrance
+	//ON ENTERING THE MINIGAME PAGE
 	app.get("/minigames", sessionChecker2, (req, res) => {
 
 		let state = null;
 
+		//FIRST CONNECT AND CHECK THE STATE THE USER IS CURRENTLY IN
 		MongoClient.connect(dbConfig.url, function (err, db) {
 			if (err) throw err;
 			var dbo = db.db("test");
@@ -375,9 +386,9 @@ module.exports = function (app) {
 				_id: ObjectId(req.session.user_sid)
 			}).toArray(function (err, result) {
 
-				//THE "state" PROPERTY IS STORED IN THE FOLLOWING DATA STRUCTURE IN THE DB:
-				//result[0].daily_task_rec[result[0].daily_task_rec.length - 1].state;
-				//WHILE THE VARIABLE "state" gets access to the data.
+				//THE "STATE" PROPERTY IS STORED IN THE FOLLOWING DATA STRUCTURE IN THE DB:
+				//RESULT[0].DAILY_TASK_REC[RESULT[0].DAILY_TASK_REC.LENGTH - 1].STATE;
+				//WHILE THE VARIABLE "STATE" GETS ACCESS TO THE DATA.
 				state = result[0].daily_task_rec[result[0].daily_task_rec.length - 1].state;
 
 				//IF THE USER IS AT A STATE OF 4, THEN THE USER SHOULD BE SENT TO THE GAME SECLECTION MENU
@@ -394,9 +405,11 @@ module.exports = function (app) {
 
 					}));
 				}
+				//THE USER WILL BE DIRECTED BACK TO THE HOMEPAGE FOR NOT VISITING THE RIGHT PAGE AT THIS STATE.
 				else if (state < 4) {
 					res.redirect('/homepage');
 				}
+				//THE USER HAS FINISHED PLAYING A GAME SO IT IS ALLOWED TO PROCEED. 
 				else if (state == 5) {
 					res.end(res.render(path + "games_selection.ejs", {
 						navbar: navbar_top_ejs,
@@ -410,6 +423,8 @@ module.exports = function (app) {
 					}));
 				}
 
+				//THIS IS THE STATE TO SEND THE GAME SELECTION PAGE.
+				//THIS IS IN THE USER FLOW OF PLAYING A GAME SO NO PROCEED BUTTON WILL BE GIVEN.
 				else if (state == 6) {
 					res.end(res.render(path + "games_selection.ejs", {
 						navbar: navbar_top_ejs,
@@ -420,6 +435,7 @@ module.exports = function (app) {
 						css: result[0].UI_style
 					}));
 				}
+				//THE 
 				else {
 					res.end(res.render(path + "games_selection.ejs", {
 						navbar: navbar_top_ejs,
@@ -505,7 +521,7 @@ module.exports = function (app) {
 		res.redirect("/minigames/chess")
 	})
 
-
+	//POSTS THE USER'S UCI MESSAGE TO THE STOCKFISH
 	app.post("/minigames/chess", (req, res) => {
 		console.log("req.body")
 		console.log(req.body)
@@ -514,7 +530,7 @@ module.exports = function (app) {
 		console.log(req.body["uci"])
 		stockfishes[id].postMessage(uci[id] + " " + req.body["uci"]);
 		uci[id] = uci[id] + " " + req.body["uci"]
-		console.log("-=---------=-=-=-=-=-=-uic[id]-=-=-=-=-=-=-=-=-=-=-=-=");
+		console.log("-=----PLAYER--=-=-=-=-=-=-uic[id]-=-=-=-=-=-=-=-=-=-=-=-=");
 		console.log(uci[id]);
 		stockfishes[id].postMessage("go infinite");
 		setTimeout(() => {
@@ -522,10 +538,12 @@ module.exports = function (app) {
 			stockfishes[id].postMessage("d");
 		}, 100);
 
-
+		//STOCKFISH LIBRARY FUNCTION, INVOKED ON RECEIVING A UCI MESSAGE.
 		stockfishes[id].onmessage = function (message) {
+			//GET THE KEYWORD WHERE THE STOCKFISH RETURNS A BESTMOVE
+			//KEY WORD.
 			if (message.startsWith("bestmove")) {
-
+				//THE NEXT MOVE WILL BE SPLIT BY SPACES.
 				next_move = message.split(" ")
 
 			}
@@ -571,7 +589,7 @@ module.exports = function (app) {
 
 
 
-
+	//THIS IS THE PAGE THE USER WILLL SEE UPON VISITING THE ROOT
 	app.get('/', (req, res) => {
 		res.sendFile(staticPath + "landing_page.html");
 	});
@@ -761,173 +779,6 @@ module.exports = function (app) {
 
 
 	})
-
-
-
-
-	// app.get('/daily_tasks', function (req, res) {
-
-	// 	function get_stuff_to_send(){
-
-	// 	}
-
-
-	// 	let state = null;
-
-	// 	MongoClient.connect(dbConfig.url, function (err, db) {
-	// 		if (err) throw err;
-	// 		var dbo = db.db("test");
-
-	// 		dbo.collection("users").find({
-	// 			_id: ObjectId(req.session.user_sid)
-	// 		}).toArray(function (err, result) {
-
-	// 			//find the work that needs to be done
-	// 			console.log("result.daily_task_rec.state")
-	// 			// console.log(result[0].daily_task_rec)
-	// 			console.log(result[0].daily_task_rec[result[0].daily_task_rec.length - 1].state)
-
-	// 			state = result[0].daily_task_rec[result[0].daily_task_rec.length - 1].state;
-
-	// 			//if the state property is less than 3, which indicates that user is 
-	// 			//still in the "daily task" user flow.
-	// 			if (state < 3) {
-	// 				//then we will go to the db and find the number of items
-	// 				dbo.collection("daily_tasks").find({
-	// 				// 3 - state means the number of items to find	
-	// 				}).limit(3 - state).toArray(function (err, data) {
-
-
-
-	// 					console.log("the stuff to show -=------------------------------------------")
-	// 					console.log(data)
-
-	// 					db.close()
-
-
-
-	// 					// MongoClient.connect(dbConfig.url, function (err, db) {
-	// 					// 	console.log("added_item")
-	// 					// 	console.log(added_item)
-	// 					// 	if (err) throw err;
-	// 					// 	var dbo = db.db("test");
-	// 					// 	dbo.collection("users").updateOne(
-	// 					// 		{ _id: ObjectId(req.session.user_sid) },
-	// 					// 		{
-	// 					// 			$push: { daily_task_archived: { $each: added_item } }
-	// 					// 		},
-	// 					// 		{ new: true, upsert: true }
-	// 					// 	)
-	// 					// })
-
-	// 					res.end(res.render(path + "daily_tasks.ejs", {
-	// 						todo_item: data,
-	// 						navbar: undefined,
-	// 						proceed_button: undefined,
-	// 						footer: footer
-	// 					}));
-	// 				});
-	// 			}
-
-	// 			else if (state >= 3) {
-	// 				res.end(res.render(path + "daily_tasks.ejs", {
-	// 					todo_item: undefined,
-	// 					navbar: undefined,
-	// 					proceed_button: '<button id="proceed" onclick="window.location.href="/minigames"">Proceed</button>',
-	// 					footer: footer
-	// 				}));
-	// 			}
-	// 		});
-
-	// 	});
-
-
-
-
-
-
-
-	// 	// let user = null;
-	// 	// //indicating how many items left to be added into the array
-	// 	// let n_to_go = 0;
-	// 	// //used to store the upcoming tasks' ids
-	// 	// let go_ahead = []
-	// 	// MongoClient.connect(dbConfig.url, function (err, db) {
-	// 	// 	if (err) throw err;
-	// 	// 	var dbo = db.db("test");
-	// 	// 	dbo.collection("users").findOne({
-	// 	// 		_id: ObjectId(req.session.user_sid)
-	// 	// 	}).then(result => {
-	// 	// 		//if the user exists
-	// 	// 		if (result) {
-	// 	// 			//if the user has not yet finished the tasks
-	// 	// 			if (result.daily_task_rec[0].finished_id.length != 0) {
-	// 	// 				//the array is needed afterwards
-	// 	// 				go_ahead = result.daily_task_rec[0].finished_id;
-	// 	// 				//the number of stuff to go
-	// 	// 				n_to_go = 3 - go_ahead.length;
-	// 	// 			} else {
-	// 	// 				n_to_go = 3
-	// 	// 				go_ahead = [0]
-	// 	// 			}
-	// 	// 		}
-	// 	// 	}).then(() => { })
-
-	// 	// 	let added_item = []
-	// 	// 	//find those that's not in the done list
-	// 	// 	dbo.collection("daily_tasks").find({
-	// 	// 		"id": { $nin: go_ahead }
-	// 	// 	}).limit(n_to_go).toArray((err, daily_tasks) => {
-
-	// 	// 		console.log("go_ahead")
-	// 	// 		console.log(go_ahead)
-	// 	// 		console.log("n_to_go")
-	// 	// 		console.log(n_to_go)
-	// 	// 		console.log("daily_tasks")
-	// 	// 		console.log(daily_tasks)
-
-
-	// 	// 		for (var i in daily_tasks) {
-	// 	// 			added_item.push(daily_tasks[i].id)
-	// 	// 		}
-	// 	// 		console.log("=============added===daily_tasks===========================")
-	// 	// 		console.log(added_item)
-
-	// 	// 		res.render(path + "daily_tasks.ejs", {
-	// 	// 			navbar: undefined,
-	// 	// 			todolist: daily_tasks,
-	// 	// 			todo_item: daily_tasks,
-	// 	// 			footer: footer
-	// 	// 		})
-	// 	// 	})
-
-	// 	// 	dbo.collection("users").updateOne(
-	// 	// 		{ _id: ObjectId(req.session.user_sid) },
-	// 	// 		{
-	// 	// 			$push: { daily_task_archived: { $each: added_item } }
-	// 	// 		},
-	// 	// 		{ new: true, upsert: true }
-
-	// 	// 	)
-
-	// 	// 	for (var i in added_item) {
-	// 	// 		console.log("==========================added_item[i]")
-	// 	// 		console.log(added_item[i])
-
-	// 	// 	}
-
-	// 	// 	db.close();
-
-	// 	// });
-
-
-
-
-
-
-
-
-	// });
 
 
 
@@ -1244,7 +1095,7 @@ module.exports = function (app) {
 					state = result[0].daily_task_rec[result[0].daily_task_rec.length - 1].state
 					console.log("state==================================================")
 					console.log(state)
-					if ( state >= 0 &&state <= 3 ) {
+					if (state >= 0 && state <= 3) {
 						res.redirect("/daily_tasks")
 					}
 					else if (state >= 4 && state <= 5) {
@@ -1633,227 +1484,7 @@ module.exports = function (app) {
 
 		})
 
-		//BY VISITING THIS LINK, THE USER'S STATE WILL BE INCREASE 1
-		//EVENT TRIGGERED BY ANSWERING THE ANSWERS CORRECTLY
-		// app.post('/state_add', sessionChecker2, (req, res) => {
-
-		// 	let state = null;
-
-		// 	MongoClient.connect(dbConfig.url, function (err, db) {
-		// 		if (err) throw err;
-		// 		var dbo = db.db("test");
-
-		// 		dbo.collection("users").find({
-		// 			_id: ObjectId(req.session.user_sid)
-		// 		}).toArray(function (err, result) {
-		// 			state = result[0].daily_task_rec[result[0].daily_task_rec.length - 1].state;
-		// 			db.close()
-		// 			console.log("req.body.state_request in 611")
-		// 			console.log(req.body.state_request)
-		// 			if (
-		// 				state == 3 && req.body.state_request == "proceed button clicked in STEP 3" ||
-		// 				state == 4 && req.body.state_request == "I am ready to play a game" ||
-		// 				state == 5 && req.body.state_request == "proceed button clicked" ||
-		// 				state == 6 && req.body.state_request == "proceed button clicked in STEP 6") {
-		// 				MongoClient.connect(dbConfig.url, function (err, db) {
-		// 					console.log()
-		// 					if (err) throw err;
-		// 					var dbo = db.db("test");
-
-
-		// 					console.log("I am ready to play a game in 620")
-		// 					dbo.collection("users").updateOne({
-		// 						_id: ObjectId(req.session.user_sid),
-		// 						daily_task_rec: { $elemMatch: { date: { $gte: new Date(new Date().setDate(new Date().getDate() - 2)) } } }
-		// 					}, { $inc: { "daily_task_rec.$.state": 1 } },
-
-		// 					)
-		// 					console.log("state added 1!!!!!")
-		// 					res.send("state added 1!!!!!")
-
-		// 				})
-		// 			}
-		// 		})
-		// 	})
-
-
-
-
-		// })
-
-
-
-
-		// app.get('/daily_tasks', function (req, res) {
-
-		// 	function get_stuff_to_send(){
-
-		// 	}
-
-
-		// 	let state = null;
-
-		// 	MongoClient.connect(dbConfig.url, function (err, db) {
-		// 		if (err) throw err;
-		// 		var dbo = db.db("test");
-
-		// 		dbo.collection("users").find({
-		// 			_id: ObjectId(req.session.user_sid)
-		// 		}).toArray(function (err, result) {
-
-		// 			//find the work that needs to be done
-		// 			console.log("result.daily_task_rec.state")
-		// 			// console.log(result[0].daily_task_rec)
-		// 			console.log(result[0].daily_task_rec[result[0].daily_task_rec.length - 1].state)
-
-		// 			state = result[0].daily_task_rec[result[0].daily_task_rec.length - 1].state;
-
-		// 			//if the state property is less than 3, which indicates that user is 
-		// 			//still in the "daily task" user flow.
-		// 			if (state < 3) {
-		// 				//then we will go to the db and find the number of items
-		// 				dbo.collection("daily_tasks").find({
-		// 				// 3 - state means the number of items to find	
-		// 				}).limit(3 - state).toArray(function (err, data) {
-
-
-
-		// 					console.log("the stuff to show -=------------------------------------------")
-		// 					console.log(data)
-
-		// 					db.close()
-
-
-
-		// 					// MongoClient.connect(dbConfig.url, function (err, db) {
-		// 					// 	console.log("added_item")
-		// 					// 	console.log(added_item)
-		// 					// 	if (err) throw err;
-		// 					// 	var dbo = db.db("test");
-		// 					// 	dbo.collection("users").updateOne(
-		// 					// 		{ _id: ObjectId(req.session.user_sid) },
-		// 					// 		{
-		// 					// 			$push: { daily_task_archived: { $each: added_item } }
-		// 					// 		},
-		// 					// 		{ new: true, upsert: true }
-		// 					// 	)
-		// 					// })
-
-		// 					res.end(res.render(path + "daily_tasks.ejs", {
-		// 						todo_item: data,
-		// 						navbar: undefined,
-		// 						proceed_button: undefined,
-		// 						footer: footer
-		// 					}));
-		// 				});
-		// 			}
-
-		// 			else if (state >= 3) {
-		// 				res.end(res.render(path + "daily_tasks.ejs", {
-		// 					todo_item: undefined,
-		// 					navbar: undefined,
-		// 					proceed_button: '<button id="proceed" onclick="window.location.href="/minigames"">Proceed</button>',
-		// 					footer: footer
-		// 				}));
-		// 			}
-		// 		});
-
-		// 	});
-
-
-
-
-
-
-
-		// 	// let user = null;
-		// 	// //indicating how many items left to be added into the array
-		// 	// let n_to_go = 0;
-		// 	// //used to store the upcoming tasks' ids
-		// 	// let go_ahead = []
-		// 	// MongoClient.connect(dbConfig.url, function (err, db) {
-		// 	// 	if (err) throw err;
-		// 	// 	var dbo = db.db("test");
-		// 	// 	dbo.collection("users").findOne({
-		// 	// 		_id: ObjectId(req.session.user_sid)
-		// 	// 	}).then(result => {
-		// 	// 		//if the user exists
-		// 	// 		if (result) {
-		// 	// 			//if the user has not yet finished the tasks
-		// 	// 			if (result.daily_task_rec[0].finished_id.length != 0) {
-		// 	// 				//the array is needed afterwards
-		// 	// 				go_ahead = result.daily_task_rec[0].finished_id;
-		// 	// 				//the number of stuff to go
-		// 	// 				n_to_go = 3 - go_ahead.length;
-		// 	// 			} else {
-		// 	// 				n_to_go = 3
-		// 	// 				go_ahead = [0]
-		// 	// 			}
-		// 	// 		}
-		// 	// 	}).then(() => { })
-
-		// 	// 	let added_item = []
-		// 	// 	//find those that's not in the done list
-		// 	// 	dbo.collection("daily_tasks").find({
-		// 	// 		"id": { $nin: go_ahead }
-		// 	// 	}).limit(n_to_go).toArray((err, daily_tasks) => {
-
-		// 	// 		console.log("go_ahead")
-		// 	// 		console.log(go_ahead)
-		// 	// 		console.log("n_to_go")
-		// 	// 		console.log(n_to_go)
-		// 	// 		console.log("daily_tasks")
-		// 	// 		console.log(daily_tasks)
-
-
-		// 	// 		for (var i in daily_tasks) {
-		// 	// 			added_item.push(daily_tasks[i].id)
-		// 	// 		}
-		// 	// 		console.log("=============added===daily_tasks===========================")
-		// 	// 		console.log(added_item)
-
-		// 	// 		res.render(path + "daily_tasks.ejs", {
-		// 	// 			navbar: undefined,
-		// 	// 			todolist: daily_tasks,
-		// 	// 			todo_item: daily_tasks,
-		// 	// 			footer: footer
-		// 	// 		})
-		// 	// 	})
-
-		// 	// 	dbo.collection("users").updateOne(
-		// 	// 		{ _id: ObjectId(req.session.user_sid) },
-		// 	// 		{
-		// 	// 			$push: { daily_task_archived: { $each: added_item } }
-		// 	// 		},
-		// 	// 		{ new: true, upsert: true }
-
-		// 	// 	)
-
-		// 	// 	for (var i in added_item) {
-		// 	// 		console.log("==========================added_item[i]")
-		// 	// 		console.log(added_item[i])
-
-		// 	// 	}
-
-		// 	// 	db.close();
-
-		// 	// });
-
-
-
-
-
-
-
-
-		// });
-
-
-
-
-
-		
-
+	
 
 
 
@@ -1883,7 +1514,7 @@ module.exports = function (app) {
 
 					//if the state property is less than 3, which indicates that user is 
 					//still in the "daily task" user flow.
-					if ( state >=0 && state < 3) {
+					if (state >= 0 && state < 3) {
 						console.log("++++++++++++++archived++++++++++++++++++")
 						console.log(archived)
 						// console.log(result[0].daily_task_rec[result[0].daily_task_rec.length - 1].daily_task_archived)
@@ -1976,7 +1607,7 @@ module.exports = function (app) {
 							css: result[0].UI_style
 						}));
 					}
-					else{
+					else {
 
 					}
 				});
@@ -2343,7 +1974,7 @@ module.exports = function (app) {
 
 
 
-
+	//BY VISITING THIS
 	app.get('/daily_tasks', sessionChecker2, function (req, res) {
 		console.log("req.session.user_sid")
 		console.log(req.session.user_sid)
@@ -2394,8 +2025,8 @@ module.exports = function (app) {
 							console.log("in 712  the stuff to show---------------------------- ")
 							console.log(added_item)
 							if (data[index]) {
-								if(index <= 2)
-								added_item.push(data[index].id)
+								if (index <= 2)
+									added_item.push(data[index].id)
 							}
 
 						}
@@ -2479,19 +2110,6 @@ module.exports = function (app) {
 
 
 	// // Parse large csv with stream / pipe (low mem consumption)
-	// csv()
-	// 	.fromStream(readableStream)
-	// 	.subscribe(function (jsonObj) { //single json object will be emitted for each csv line
-	// 		// parse each json asynchronousely
-	// 		return new Promise(function (resolve, reject) {
-	// 			asyncStoreToDb(json, function () { resolve() })
-	// 		})
-	// 	})
-
-	// //Use async / await
-	// const jsonArray = await csv().fromFile(filePath);
-
-
 	app.get("/parse_covid_line_data", (req, res) => {
 
 		try {
@@ -2511,23 +2129,6 @@ module.exports = function (app) {
 		} catch (e) {
 			console.log(e);
 		}
-
-		// console.log(csvFilePath)
-		// csv().fromFile(csvFilePath)
-		// 	.then(function (jsonArrayObj) { //when parse finished, result will be emitted here.
-		// 		try {
-		// 			console.log("about to insert");
-		// 			MongoClient.connect(dbConfig.url, function (err, db) {
-		// 				if (err) throw err;
-		// 				var dbo = db.db("test");
-		// 				dbo.collection("covid_data").insertMany(
-		// 					jsonArrayObj
-		// 				)
-		// 			})
-		// 		} catch (e) {
-		// 			console.log(e);
-		// 		}
-		// 	})
 	})
 
 
@@ -2650,54 +2251,49 @@ module.exports = function (app) {
 			if (err) throw err;
 			var dbo = db.db("test");
 
-			try{
+			try {
 				console.log("hour")
-					console.log(new Date().getHours())
-					console.log("minute")
-					console.log(new Date().getMinutes())
-			dbo.collection("users").find(
-				{
-					remind_time :{hour: new Date().getHours(), minute : new Date().getMinutes()}
-				}
-			).toArray((err, result) => {
-				
-				console.log(result)
-				for (var index in result) {
-					
+				console.log(new Date().getHours())
+				console.log("minute")
+				console.log(new Date().getMinutes())
+				dbo.collection("users").find(
+					{
+						remind_time: { hour: new Date().getHours(), minute: new Date().getMinutes() }
+					}
+				).toArray((err, result) => {
 
-					if(result[index].vapidKeys && result[index].sub){
-						
-					console.log("vapidKeys")
-					let vapidKeys = result[index].vapidKeys;
-					console.log(vapidKeys)
-					let sub_info = result[index].sub
-					push.setVapidDetails('futurecudrves:test@judaozhong.com', vapidKeys.publicKey, vapidKeys.privateKey)
-					push.sendNotification(JSON.parse(sub_info), 'test message')
-				}
-					
-
-				}
+					console.log(result)
+					for (var index in result) {
 
 
+						if (result[index].vapidKeys && result[index].sub) {
+
+							console.log("vapidKeys")
+							let vapidKeys = result[index].vapidKeys;
+							console.log(vapidKeys)
+							let sub_info = result[index].sub
+							push.setVapidDetails('futurecudrves:test@judaozhong.com', vapidKeys.publicKey, vapidKeys.privateKey)
+							push.sendNotification(JSON.parse(sub_info), 'test message')
+						}
 
 
+					}
+					console.log('This runs at the 10 th second of every minute.')
+					console.log("Checks the DB for the list of pushes and then reminds the user")
+					console.log("done!")
+
+					// push.setVapidDetails('futurecudrves:test@judaozhong.com', vapidKeys.publicKey, vapidKeys.privateKey)
+
+					// push.sendNotification(JSON.parse(sub), 'test message')
+				})
+			} catch (e) {
+				console.log(e)
+			} finally {
+				db.close()
+				console.log("Notification Function Done")
+			}
 
 
-
-				console.log('This runs at the 45th second of every minute.');
-
-				// push.setVapidDetails('futurecudrves:test@judaozhong.com', vapidKeys.publicKey, vapidKeys.privateKey)
-
-				// push.sendNotification(JSON.parse(sub), 'test message')
-			})
-		}catch(e){
-			console.log(e)
-		}finally{
-			db.close()
-			console.log("Notification Function Done")
-		}
-
-		
 		})
 	})
 	//^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^//
@@ -2807,14 +2403,16 @@ module.exports = function (app) {
 	})
 
 
-	//vote down the daily task(not in use)
+	//VOTE DOWN THE DAILY TASK (WRITTEN FOR FORMER FUNCTIONS BUT ARE NOT IN USE NOW)
 	app.route('/getDailyTasks/dislikeTask').post(users.taskDislike);
 
-	//vote up the daily task(not in use)
+	//VOTE UP THE DAILY TASK (WRITTEN FOR FORMER FUNCTIONS BUT ARE NOT IN USE NOW)
 	app.route('/getDailyTasks/likeTask').post(users.taskLike);
 
-
+	//VOTE DOWN THE DAILY TASK (WRITTEN FOR FORMER FUNCTIONS BUT ARE NOT IN USE NOW)
 	app.route('/getDailyTasks/dislikeKnowledge').post(users.knowledgeDislike);
+
+	//VOTE DOWN THE DAILY TASK (WRITTEN FOR FORMER FUNCTIONS BUT ARE NOT IN USE NOW)
 	app.route('/getDailyTasks/likeKnowledge').post(users.knowledgeLike);
 
 
@@ -2824,7 +2422,7 @@ module.exports = function (app) {
 
 
 	//=====================REGISTER PAGE=================================================================================
-
+	//The route to register
 	app.route('/register')
 		.get(sessionChecker, (req, res) => {
 			res.sendFile(staticPath + "signup.html");
@@ -2844,6 +2442,7 @@ module.exports = function (app) {
 				});
 		});
 
+	//The route to login		
 	app.route('/login')
 		.get(sessionChecker, (req, res) => {
 			res.render(path + 'login.ejs', { css: req.session.ui_choice });
@@ -2928,17 +2527,17 @@ module.exports = function (app) {
 	//imported for dealing with submitted pictures
 	var formidable = require('formidable');
 
-	//
+	//THIS IS AN API PROVIDED TO THE USER TO CHECK THE SYSTEM TIME.
 	app.post("/check_time", (req, res) => {
 		console.log("time should be in here++++++++++++++++++++++++++++++")
 		let client_timestamp = Date.parse(req.body.d)
 		let server_timestamp = Date.now();
 
-		//if the client time exceeds 5am
-		//and the client has not done all the tasks
-		//go and find the stuff in the db.
-		//in the result array, look for those with "true" -> render differently
-		//                     look for those with "false"-> render normally
+		//IF THE CLIENT TIME EXCEEDS 5AM
+		//AND THE CLIENT HAS NOT DONE ALL THE TASKS
+		//GO AND FIND THE STUFF IN THE DB.
+		//IN THE RESULT ARRAY, LOOK FOR THOSE WITH "TRUE" -> RENDER DIFFERENTLY
+		//                     LOOK FOR THOSE WITH "FALSE"-> RENDER NORMALLY
 
 		if (client_timestamp > server_timestamp + 3600 * 1000 * 12 || client_timestamp < server_timestamp - 3600 * 1000 * 12) {
 			console.log("the user is trying to cheat!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!")
@@ -2948,7 +2547,7 @@ module.exports = function (app) {
 		}
 	})
 
-	//THIS UPLOADS THE AVATAR TO THE DATABASE.
+	//THIS UPLOADS THE AVATAR TO THE SERVER.
 	app.post('/upload_avatar', function (req, res) {
 		var form = new formidable.IncomingForm();
 		console.log("about to parse");
@@ -2962,9 +2561,11 @@ module.exports = function (app) {
 			if (req.session.user_sid != undefined && req.session != null) {
 				let dir = "resources/" + req.session.user_sid;
 
+				//IF THE USER'S AVATAR FOLDER IS NOT THERE, IT CREATES A FOLDER FOR IT 
 				if (!fs.existsSync(dir)) {
 					fs.mkdirSync(dir);
 				}
+				//IF THE AVATAR EXISTS, THEN 
 				if (fs.existsSync(dir)) {
 					fs.writeFileSync(dir + "/avatar.png", fs.readFileSync(files.upload.path));
 					res.redirect("/user_profile");
@@ -2985,7 +2586,7 @@ module.exports = function (app) {
 		res.render(path + "admin_home.ejs");
 	});
 
-	//
+	//THIS API FINDS ALL THE COUPONS AND SHOW THEM TO THE ADMIN.
 	app.get('/admin_coupon', (req, res) => {
 		console.log("searching")
 		MongoClient.connect(dbConfig.url, function (err, db) {
@@ -3004,10 +2605,11 @@ module.exports = function (app) {
 				console.log(render)
 
 				db.close();
+				//RENDERS THE WHOLE PAGE TO THE USER
 				res.render(path + "admin_coupon.ejs", { todolist: render });
 				console.log("RENDERED===================================");
 			});
-			// res.render("pages/index", { todolist: render });
+			
 		});
 	});
 
@@ -3021,42 +2623,6 @@ module.exports = function (app) {
 
 		console.log(req.body)
 
-		// MongoClient.connect(dbConfig.url, function (err, db) {
-
-
-		// 	if (err) throw err;
-		// 	var dbo = db.db("test");
-		// 	dbo.collection("coupons_available").find({}).count().toArray((err, num_of_coupons_available) => {
-
-		// 		console.log("num_of_coupons_available")
-		// 		console.log(num_of_coupons_available)
-
-		// 		db.close()
-
-		// 		//connect
-		// 		MongoClient.connect(dbConfig.url, function (err, db) {
-		// 			if (err) throw err;
-		// 			var dbo = db.db("test");
-
-		// 			dbo.collection("coupons_available").updateOne(
-		// 				//find the correct ObjectID
-		// 				{
-		// 				},
-		// 				{
-		// 					//push each item
-		// 					$addToSet: { id: num_of_coupons_available },
-		// 					//the $addToSet operator is to avoid repeating the items
-		// 					$set: { "daily_task_rec.$.user_id": req.session.user_sid }
-		// 				},
-		// 				{ new: true, upsert: true }
-		// 			)
-		// 		})
-		// 	})
-
-
-
-
-		// })
 	});
 
 
@@ -3085,10 +2651,399 @@ module.exports = function (app) {
 	})
 
 
-
+	//ANY OTHER ROUTE WILL RESULT IN A 404 PAGE.
 	app.use('*', (req, res) => {
 		res.sendFile(path + "404.html");
 	});
+
+
+	
+
+
+	// app.get('/daily_tasks', function (req, res) {
+
+	// 	function get_stuff_to_send(){
+
+	// 	}
+
+
+	// 	let state = null;
+
+	// 	MongoClient.connect(dbConfig.url, function (err, db) {
+	// 		if (err) throw err;
+	// 		var dbo = db.db("test");
+
+	// 		dbo.collection("users").find({
+	// 			_id: ObjectId(req.session.user_sid)
+	// 		}).toArray(function (err, result) {
+
+	// 			//find the work that needs to be done
+	// 			console.log("result.daily_task_rec.state")
+	// 			// console.log(result[0].daily_task_rec)
+	// 			console.log(result[0].daily_task_rec[result[0].daily_task_rec.length - 1].state)
+
+	// 			state = result[0].daily_task_rec[result[0].daily_task_rec.length - 1].state;
+
+	// 			//if the state property is less than 3, which indicates that user is 
+	// 			//still in the "daily task" user flow.
+	// 			if (state < 3) {
+	// 				//then we will go to the db and find the number of items
+	// 				dbo.collection("daily_tasks").find({
+	// 				// 3 - state means the number of items to find	
+	// 				}).limit(3 - state).toArray(function (err, data) {
+
+
+
+	// 					console.log("the stuff to show -=------------------------------------------")
+	// 					console.log(data)
+
+	// 					db.close()
+
+
+
+	// 					// MongoClient.connect(dbConfig.url, function (err, db) {
+	// 					// 	console.log("added_item")
+	// 					// 	console.log(added_item)
+	// 					// 	if (err) throw err;
+	// 					// 	var dbo = db.db("test");
+	// 					// 	dbo.collection("users").updateOne(
+	// 					// 		{ _id: ObjectId(req.session.user_sid) },
+	// 					// 		{
+	// 					// 			$push: { daily_task_archived: { $each: added_item } }
+	// 					// 		},
+	// 					// 		{ new: true, upsert: true }
+	// 					// 	)
+	// 					// })
+
+	// 					res.end(res.render(path + "daily_tasks.ejs", {
+	// 						todo_item: data,
+	// 						navbar: undefined,
+	// 						proceed_button: undefined,
+	// 						footer: footer
+	// 					}));
+	// 				});
+	// 			}
+
+	// 			else if (state >= 3) {
+	// 				res.end(res.render(path + "daily_tasks.ejs", {
+	// 					todo_item: undefined,
+	// 					navbar: undefined,
+	// 					proceed_button: '<button id="proceed" onclick="window.location.href="/minigames"">Proceed</button>',
+	// 					footer: footer
+	// 				}));
+	// 			}
+	// 		});
+
+	// 	});
+
+
+
+
+
+
+
+	// 	// let user = null;
+	// 	// //indicating how many items left to be added into the array
+	// 	// let n_to_go = 0;
+	// 	// //used to store the upcoming tasks' ids
+	// 	// let go_ahead = []
+	// 	// MongoClient.connect(dbConfig.url, function (err, db) {
+	// 	// 	if (err) throw err;
+	// 	// 	var dbo = db.db("test");
+	// 	// 	dbo.collection("users").findOne({
+	// 	// 		_id: ObjectId(req.session.user_sid)
+	// 	// 	}).then(result => {
+	// 	// 		//if the user exists
+	// 	// 		if (result) {
+	// 	// 			//if the user has not yet finished the tasks
+	// 	// 			if (result.daily_task_rec[0].finished_id.length != 0) {
+	// 	// 				//the array is needed afterwards
+	// 	// 				go_ahead = result.daily_task_rec[0].finished_id;
+	// 	// 				//the number of stuff to go
+	// 	// 				n_to_go = 3 - go_ahead.length;
+	// 	// 			} else {
+	// 	// 				n_to_go = 3
+	// 	// 				go_ahead = [0]
+	// 	// 			}
+	// 	// 		}
+	// 	// 	}).then(() => { })
+
+	// 	// 	let added_item = []
+	// 	// 	//find those that's not in the done list
+	// 	// 	dbo.collection("daily_tasks").find({
+	// 	// 		"id": { $nin: go_ahead }
+	// 	// 	}).limit(n_to_go).toArray((err, daily_tasks) => {
+
+	// 	// 		console.log("go_ahead")
+	// 	// 		console.log(go_ahead)
+	// 	// 		console.log("n_to_go")
+	// 	// 		console.log(n_to_go)
+	// 	// 		console.log("daily_tasks")
+	// 	// 		console.log(daily_tasks)
+
+
+	// 	// 		for (var i in daily_tasks) {
+	// 	// 			added_item.push(daily_tasks[i].id)
+	// 	// 		}
+	// 	// 		console.log("=============added===daily_tasks===========================")
+	// 	// 		console.log(added_item)
+
+	// 	// 		res.render(path + "daily_tasks.ejs", {
+	// 	// 			navbar: undefined,
+	// 	// 			todolist: daily_tasks,
+	// 	// 			todo_item: daily_tasks,
+	// 	// 			footer: footer
+	// 	// 		})
+	// 	// 	})
+
+	// 	// 	dbo.collection("users").updateOne(
+	// 	// 		{ _id: ObjectId(req.session.user_sid) },
+	// 	// 		{
+	// 	// 			$push: { daily_task_archived: { $each: added_item } }
+	// 	// 		},
+	// 	// 		{ new: true, upsert: true }
+
+	// 	// 	)
+
+	// 	// 	for (var i in added_item) {
+	// 	// 		console.log("==========================added_item[i]")
+	// 	// 		console.log(added_item[i])
+
+	// 	// 	}
+
+	// 	// 	db.close();
+
+	// 	// });
+
+
+
+
+
+
+
+
+	// });
+
+		//BY VISITING THIS LINK, THE USER'S STATE WILL BE INCREASE 1
+		//EVENT TRIGGERED BY ANSWERING THE ANSWERS CORRECTLY
+		// app.post('/state_add', sessionChecker2, (req, res) => {
+
+		// 	let state = null;
+
+		// 	MongoClient.connect(dbConfig.url, function (err, db) {
+		// 		if (err) throw err;
+		// 		var dbo = db.db("test");
+
+		// 		dbo.collection("users").find({
+		// 			_id: ObjectId(req.session.user_sid)
+		// 		}).toArray(function (err, result) {
+		// 			state = result[0].daily_task_rec[result[0].daily_task_rec.length - 1].state;
+		// 			db.close()
+		// 			console.log("req.body.state_request in 611")
+		// 			console.log(req.body.state_request)
+		// 			if (
+		// 				state == 3 && req.body.state_request == "proceed button clicked in STEP 3" ||
+		// 				state == 4 && req.body.state_request == "I am ready to play a game" ||
+		// 				state == 5 && req.body.state_request == "proceed button clicked" ||
+		// 				state == 6 && req.body.state_request == "proceed button clicked in STEP 6") {
+		// 				MongoClient.connect(dbConfig.url, function (err, db) {
+		// 					console.log()
+		// 					if (err) throw err;
+		// 					var dbo = db.db("test");
+
+
+		// 					console.log("I am ready to play a game in 620")
+		// 					dbo.collection("users").updateOne({
+		// 						_id: ObjectId(req.session.user_sid),
+		// 						daily_task_rec: { $elemMatch: { date: { $gte: new Date(new Date().setDate(new Date().getDate() - 2)) } } }
+		// 					}, { $inc: { "daily_task_rec.$.state": 1 } },
+
+		// 					)
+		// 					console.log("state added 1!!!!!")
+		// 					res.send("state added 1!!!!!")
+
+		// 				})
+		// 			}
+		// 		})
+		// 	})
+
+
+
+
+		// })
+
+
+
+
+		// app.get('/daily_tasks', function (req, res) {
+
+		// 	function get_stuff_to_send(){
+
+		// 	}
+
+
+		// 	let state = null;
+
+		// 	MongoClient.connect(dbConfig.url, function (err, db) {
+		// 		if (err) throw err;
+		// 		var dbo = db.db("test");
+
+		// 		dbo.collection("users").find({
+		// 			_id: ObjectId(req.session.user_sid)
+		// 		}).toArray(function (err, result) {
+
+		// 			//find the work that needs to be done
+		// 			console.log("result.daily_task_rec.state")
+		// 			// console.log(result[0].daily_task_rec)
+		// 			console.log(result[0].daily_task_rec[result[0].daily_task_rec.length - 1].state)
+
+		// 			state = result[0].daily_task_rec[result[0].daily_task_rec.length - 1].state;
+
+		// 			//if the state property is less than 3, which indicates that user is 
+		// 			//still in the "daily task" user flow.
+		// 			if (state < 3) {
+		// 				//then we will go to the db and find the number of items
+		// 				dbo.collection("daily_tasks").find({
+		// 				// 3 - state means the number of items to find	
+		// 				}).limit(3 - state).toArray(function (err, data) {
+
+
+
+		// 					console.log("the stuff to show -=------------------------------------------")
+		// 					console.log(data)
+
+		// 					db.close()
+
+
+
+		// 					// MongoClient.connect(dbConfig.url, function (err, db) {
+		// 					// 	console.log("added_item")
+		// 					// 	console.log(added_item)
+		// 					// 	if (err) throw err;
+		// 					// 	var dbo = db.db("test");
+		// 					// 	dbo.collection("users").updateOne(
+		// 					// 		{ _id: ObjectId(req.session.user_sid) },
+		// 					// 		{
+		// 					// 			$push: { daily_task_archived: { $each: added_item } }
+		// 					// 		},
+		// 					// 		{ new: true, upsert: true }
+		// 					// 	)
+		// 					// })
+
+		// 					res.end(res.render(path + "daily_tasks.ejs", {
+		// 						todo_item: data,
+		// 						navbar: undefined,
+		// 						proceed_button: undefined,
+		// 						footer: footer
+		// 					}));
+		// 				});
+		// 			}
+
+		// 			else if (state >= 3) {
+		// 				res.end(res.render(path + "daily_tasks.ejs", {
+		// 					todo_item: undefined,
+		// 					navbar: undefined,
+		// 					proceed_button: '<button id="proceed" onclick="window.location.href="/minigames"">Proceed</button>',
+		// 					footer: footer
+		// 				}));
+		// 			}
+		// 		});
+
+		// 	});
+
+
+
+
+
+
+
+		// 	// let user = null;
+		// 	// //indicating how many items left to be added into the array
+		// 	// let n_to_go = 0;
+		// 	// //used to store the upcoming tasks' ids
+		// 	// let go_ahead = []
+		// 	// MongoClient.connect(dbConfig.url, function (err, db) {
+		// 	// 	if (err) throw err;
+		// 	// 	var dbo = db.db("test");
+		// 	// 	dbo.collection("users").findOne({
+		// 	// 		_id: ObjectId(req.session.user_sid)
+		// 	// 	}).then(result => {
+		// 	// 		//if the user exists
+		// 	// 		if (result) {
+		// 	// 			//if the user has not yet finished the tasks
+		// 	// 			if (result.daily_task_rec[0].finished_id.length != 0) {
+		// 	// 				//the array is needed afterwards
+		// 	// 				go_ahead = result.daily_task_rec[0].finished_id;
+		// 	// 				//the number of stuff to go
+		// 	// 				n_to_go = 3 - go_ahead.length;
+		// 	// 			} else {
+		// 	// 				n_to_go = 3
+		// 	// 				go_ahead = [0]
+		// 	// 			}
+		// 	// 		}
+		// 	// 	}).then(() => { })
+
+		// 	// 	let added_item = []
+		// 	// 	//find those that's not in the done list
+		// 	// 	dbo.collection("daily_tasks").find({
+		// 	// 		"id": { $nin: go_ahead }
+		// 	// 	}).limit(n_to_go).toArray((err, daily_tasks) => {
+
+		// 	// 		console.log("go_ahead")
+		// 	// 		console.log(go_ahead)
+		// 	// 		console.log("n_to_go")
+		// 	// 		console.log(n_to_go)
+		// 	// 		console.log("daily_tasks")
+		// 	// 		console.log(daily_tasks)
+
+
+		// 	// 		for (var i in daily_tasks) {
+		// 	// 			added_item.push(daily_tasks[i].id)
+		// 	// 		}
+		// 	// 		console.log("=============added===daily_tasks===========================")
+		// 	// 		console.log(added_item)
+
+		// 	// 		res.render(path + "daily_tasks.ejs", {
+		// 	// 			navbar: undefined,
+		// 	// 			todolist: daily_tasks,
+		// 	// 			todo_item: daily_tasks,
+		// 	// 			footer: footer
+		// 	// 		})
+		// 	// 	})
+
+		// 	// 	dbo.collection("users").updateOne(
+		// 	// 		{ _id: ObjectId(req.session.user_sid) },
+		// 	// 		{
+		// 	// 			$push: { daily_task_archived: { $each: added_item } }
+		// 	// 		},
+		// 	// 		{ new: true, upsert: true }
+
+		// 	// 	)
+
+		// 	// 	for (var i in added_item) {
+		// 	// 		console.log("==========================added_item[i]")
+		// 	// 		console.log(added_item[i])
+
+		// 	// 	}
+
+		// 	// 	db.close();
+
+		// 	// });
+
+
+
+
+
+
+
+
+		// });
+
+
+
+
+
+
 
 
 

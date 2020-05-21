@@ -36,7 +36,12 @@ MongoClient.connect(dbConfig.url, function (err, db) {
   if (err) throw err;
 })
 
+
+
+
+require('./app/routes/multiplayer.route.js')(app);
 require('./app/routes/user.route.js')(app);
+
 
 
 //fs is the file reader sync module
@@ -86,7 +91,8 @@ io.on('connection', socket => {
     users[socket.id] = name
     socket.broadcast.emit('user-connected', name)
   })
-  socket.on('send-chat-message', message => {
+  //
+  socket.on('send-text-message', message => {
     socket.broadcast.emit('chat-message', { message: message, name: users[socket.id] })
   })
   socket.on('disconnect', () => {
