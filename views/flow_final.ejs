@@ -12,30 +12,33 @@
 </head>
 
 <body>
+    <!-- Nav bar -->
     <nav id="navbar">
-    <%- navbar %></nav>
+        <%- navbar %></nav>
     <div id="container">
-    <p id="cong">Congratulations!</p>
-    <p id="done">You are done for today!</p>
-    <div class="progress">
-        <div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100"></div>
-      </div>
-    <div id="button_container">
-
-       
-        <button id="homepage" onclick="window.location.href='/homepage'">Homepage
+        <p id="cong">Congratulations!</p>
+        <p id="done">You are done for today!</p>
+        <!-- Progress bar bootstrap -->
+        <div class="progress">
+            <div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" aria-valuenow="75"
+                aria-valuemin="0" aria-valuemax="100"></div>
+        </div>
+        <div id="button_container">
 
             <!--    go to homepage function-->
-        </button>
-    </div>
+            <button id="homepage" onclick="window.location.href='/homepage'">Homepage
+
+            </button>
         </div>
+    </div>
+    <!-- Footer -->
     <footer>Made by FutureCurves.</footer>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
-    <!-- Go to www.addthis.com/dashboard to customize your tools -->
+
     <script src="/static/js/flow_final.js"> </script>
     <script src='/static/js/navbar_top.js'></script>
-    
-<script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-5ec2cbf0773973c5"></script>
+    <!-- Share on social media function -->
+    <script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-5ec2cbf0773973c5"></script>
 </body>
 
 </html>

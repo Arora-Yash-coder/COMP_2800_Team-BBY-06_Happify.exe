@@ -2,198 +2,195 @@
 
 <head>
     <meta charset="UTF-8">
+    <!-- allow media queries -->
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Pandemic Data</title>.
+    <!-- styles -->
     <link rel="stylesheet" type="text/css" href="/static/css/navbar.css">
 
     <link rel="stylesheet" type="text/css" href="/static/css/pandemic_info.css">
 </head>
 
 <body>
+    <!-- jquery -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.3/Chart.bundle.min.js"></script>
+    <!-- nav bar -->
     <div id="navbar" class='regular'>
 
-    
-    <%-navbar%>
-    
-    
+        
+        <%-navbar%>
+
+
     </div>
     <div id="container">
         <h1 id="title">
-        Pandemic Info
+            Pandemic Info
         </h1>
-    <div class="graph" id="line_graph">
-        <canvas id="line-chart" width="40" height="50"></canvas>
-    </div>
-
-
-    <div class="graph" id="bar_graph">
-        <canvas id="bar-chart" width="40" height="50"></canvas>
-    </div>
-
-    
-<div id="buttons">
-    <button id="line_graph_button">See Historical Pandemic Trend</button>
-    <button id="bar_graph_button">See Pandemic Distribution </button>
+        <div class="graph" id="line_graph">
+            <canvas id="line-chart" width="40" height="50"></canvas>
         </div>
 
 
-    <script>
-        $("#line_graph_button").click(() => {
-            $("#line_graph").show()
-            $("#bar_graph").hide()
-        })
+        <div class="graph" id="bar_graph">
+            <canvas id="bar-chart" width="40" height="50"></canvas>
+        </div>
 
-        $("#bar_graph_button").click(() => {
-            $("#bar_graph").show()
-            $("#line_graph").hide()
-        })
+        <!-- buttons for pandemic trend and distribution -->
+        <div id="buttons">
+            <button id="line_graph_button">See Historical Pandemic Trend</button>
+            <button id="bar_graph_button">See Pandemic Distribution </button>
+        </div>
 
 
-        var days = []
-        var infected_num = []
-        async function getLineData() {
-            console.log("doing")
-            let get_data = await $.ajax({
-                type: "get",
-                url: "/parse_covid_line_data",
+        <script>
+            $("#line_graph_button").click(() => {
+                $("#line_graph").show()
+                $("#bar_graph").hide()
+            })
 
-                dataType: "json",
-                success: function (response) {
-                    data = response
-                    console.log(data)
+            $("#bar_graph_button").click(() => {
+                $("#bar_graph").show()
+                $("#line_graph").hide()
+            })
 
-                    for (var i in data) {
-                        console.log(data[i]._id)
-                        days.push(data[i]._id.substring(5))
-                        console.log(data[i].count)
-                        infected_num.push(data[i].count)
+
+            var days = []
+            var infected_num = []
+            async function getLineData() {
+                console.log("doing")
+                let get_data = await $.ajax({
+                    type: "get",
+                    url: "/parse_covid_line_data",
+
+                    dataType: "json",
+                    success: function (response) {
+                        data = response
+                        console.log(data)
+
+                        for (var i in data) {
+                            console.log(data[i]._id)
+                            days.push(data[i]._id.substring(5))
+                            console.log(data[i].count)
+                            infected_num.push(data[i].count)
+                        }
+                        return
+
+
                     }
-                    return
+                });
+            }
 
+            //line chart
+            async function drawLineGraph() {
+                new Chart(document.getElementById("line-chart"), {
+                    type: 'line',
+                    data: {
+                        //days
+                        labels: days,
 
-                }
-            });
-        }
+                        datasets: [{
+                                data: infected_num,
+                                label: "COVID NEWLY CONFIRMED CASES",
+                                borderColor: "#3e95cd",
+                                fill: true
+                            },
+                            // {
+                            // 	data: [86, 114, 106, 106, 107, 111, 133, 221, 783, 2478],
+                            // 	label: "Coupons Redeemed",
+                            // 	borderColor: "#3e95cd",
+                            // 	fill: false
+                            // }, 
 
-        //line chart
-        async function drawLineGraph() {
-            new Chart(document.getElementById("line-chart"), {
-                type: 'line',
-                data: {
-                    //days
-                    labels: days,
-
-                    datasets: [{
-                        data: infected_num,
-                        label: "COVID NEWLY CONFIRMED CASES",
-                        borderColor: "#3e95cd",
-                        fill: true
+                        ]
                     },
-                        // {
-                        // 	data: [86, 114, 106, 106, 107, 111, 133, 221, 783, 2478],
-                        // 	label: "Coupons Redeemed",
-                        // 	borderColor: "#3e95cd",
-                        // 	fill: false
-                        // }, 
-
-                    ]
-                },
-                options: {
-                    title: {
-                        display: true,
-                        text: 'User Record'
-                    }
-                }
-            });
-
-        }
-
-
-
-        var distribution = {
-            "4 Vancouver Island": null,
-            "2 Fraser": null,
-            "1 Interior": null,
-            "3 Vancouver Coastal": null,
-            "5 Northen": null,
-
-        };
-        var section = [];
-        var infected_num_section = [];
-        async function getBarData() {
-            console.log("doing")
-            let get_data = await $.ajax({
-                type: "get",
-                url: "/parse_covid_bar_data",
-
-                dataType: "json",
-                success: function (response) {
-                    data = response
-                    console.log(data)
-
-                    for (var i in data) {
-                        console.log(data[i]._id)
-                        section.push(data[i]._id)
-                        console.log(data[i].count)
-                        infected_num_section.push(data[i].count)
-
-                        if (data[i]._id == "Vancouver Island") {
-                            distribution["4 Vancouver Island"] = data[i].count
-                        }
-                        else if (data[i]._id == "Fraser") {
-                            distribution["2 Fraser"] = data[i].count
-
-                        }
-                        else if (data[i]._id == "Interior") {
-                            distribution["1 Interior"] = data[i].count
-
-                        }
-                        else if (data[i]._id == "Vancouver Coastal") {
-                            distribution["3 Vancouver Coastal"] = data[i].count
-
-                        }
-                        else {
-                            distribution["5 Northern"] = data[i].count
-
+                    options: {
+                        title: {
+                            display: true,
+                            text: 'User Record'
                         }
                     }
-                    return
+                });
+
+            }
 
 
-                }
-            });
-        }
 
-        async function drawBarGraph() {
+            var distribution = {
+                "4 Vancouver Island": null,
+                "2 Fraser": null,
+                "1 Interior": null,
+                "3 Vancouver Coastal": null,
+                "5 Northen": null,
 
-            //radar chart
-            new Chart(document.getElementById("bar-chart"), {
-                type: 'polarArea',
-                data: {
-                    labels: section,
-                    datasets: [
-                        {
+            };
+            var section = [];
+            var infected_num_section = [];
+            async function getBarData() {
+                console.log("doing")
+                let get_data = await $.ajax({
+                    type: "get",
+                    url: "/parse_covid_bar_data",
+
+                    dataType: "json",
+                    success: function (response) {
+                        data = response
+                        console.log(data)
+
+                        for (var i in data) {
+                            console.log(data[i]._id)
+                            section.push(data[i]._id)
+                            console.log(data[i].count)
+                            infected_num_section.push(data[i].count)
+
+                            if (data[i]._id == "Vancouver Island") {
+                                distribution["4 Vancouver Island"] = data[i].count
+                            } else if (data[i]._id == "Fraser") {
+                                distribution["2 Fraser"] = data[i].count
+
+                            } else if (data[i]._id == "Interior") {
+                                distribution["1 Interior"] = data[i].count
+
+                            } else if (data[i]._id == "Vancouver Coastal") {
+                                distribution["3 Vancouver Coastal"] = data[i].count
+
+                            } else {
+                                distribution["5 Northern"] = data[i].count
+
+                            }
+                        }
+                        return
+
+
+                    }
+                });
+            }
+
+            async function drawBarGraph() {
+
+                //radar chart
+                new Chart(document.getElementById("bar-chart"), {
+                    type: 'polarArea',
+                    data: {
+                        labels: section,
+                        datasets: [{
                             label: "Cases",
 
                             backgroundColor: "rgba(179,181,198,0.6)",
                             borderColor: "rgba(227,71,43,1)",
 
                             data: infected_num_section
+                        }]
+                    },
+                    options: {
+                        title: {
+                            display: true,
+                            // text: 'Distribution in % of world population'
                         }
-                    ]
-                },
-                options: {
-                    title: {
-                        display: true,
-                        // text: 'Distribution in % of world population'
                     }
-                }
-            });
+                });
 
-        }
-
+            }
 
 
 
@@ -215,13 +212,14 @@
 
 
 
-        getLineData().then(() => {
-            drawLineGraph()
-        }).then(() => {
-            getBarData().then(() => {
-                drawBarGraph().then(drawMap())
+
+            getLineData().then(() => {
+                drawLineGraph()
+            }).then(() => {
+                getBarData().then(() => {
+                    drawBarGraph().then(drawMap())
+                })
             })
-        })
 
 
 
@@ -237,64 +235,64 @@
 
 
 
-        // drawGraph()
-        $(".choice_btn").click((e) => {
-            $(e.target.parentNode.parentNode).css("display", "none")
-            $(e.target.parentNode.parentNode).css("height", "0")
-            $(e.target.parentNode.parentNode).remove()
-        })
-
-
-
-    </script>
+            // drawGraph()
+            $(".choice_btn").click((e) => {
+                $(e.target.parentNode.parentNode).css("display", "none")
+                $(e.target.parentNode.parentNode).css("height", "0")
+                $(e.target.parentNode.parentNode).remove()
+            })
+        </script>
 
 
 
 
 
-    <!--                                               -->
+        
 
-    <script src="https://www.amcharts.com/lib/4/core.js"></script>
-    <script src="https://www.amcharts.com/lib/4/maps.js"></script>
-    <!-- <script src="/static/js/jsonformatter.js"></script> -->
+        <!-- Maps -->
+        <script src="https://www.amcharts.com/lib/4/core.js"></script>
+        <script src="https://www.amcharts.com/lib/4/maps.js"></script>
+        <!-- <script src="/static/js/jsonformatter.js"></script> -->
 
-
-    <div id="chart_container">
-        <h2>See Distribution</h2>
-        <div id="chartdiv"></div>
-        <p id="info"> </p>
+        <!-- map -->
+        <div id="chart_container">
+            <h2>See Distribution</h2>
+            <div id="chartdiv"></div>
+            <p id="info"> </p>
+        </div>
     </div>
-</div>
-<footer id="footer">Made by FutureCurves.</footer>
+    <!-- footer -->
+    <footer id="footer">Made by FutureCurves.</footer>
 
     <script>
-     
+
 
     </script>
 
 
 
-<script>
-    
-    // When the user scrolls the page, execute myFunction
-window.onscroll = function() {myFunction()};
+    <script>
+        // When the user scrolls the page, execute myFunction
+        window.onscroll = function () {
+            myFunction()
+        };
 
-// Get the navbar
-var navbar = document.getElementById("navbar");
+        // Get the navbar
+        var navbar = document.getElementById("navbar");
 
-// Get the offset position of the navbar
-var sticky = navbar.offsetTop;
+        // Get the offset position of the navbar
+        var sticky = navbar.offsetTop;
 
-// Add the sticky class to the navbar when you reach its scroll position. Remove "sticky" when you leave the scroll position
-function myFunction() {
-  if (window.pageYOffset >= sticky) {
-      navbar.classList.remove("regular");
-    navbar.classList.add("sticky");
-  } else {
-    navbar.classList.remove("sticky");
-      navbar.classList.add("regular");
-  }
-}
+        // Add the sticky class to the navbar when you reach its scroll position. Remove "sticky" when you leave the scroll position
+        function myFunction() {
+            if (window.pageYOffset >= sticky) {
+                navbar.classList.remove("regular");
+                navbar.classList.add("sticky");
+            } else {
+                navbar.classList.remove("sticky");
+                navbar.classList.add("regular");
+            }
+        }
     </script>
 
 
@@ -306,8 +304,8 @@ function myFunction() {
 
 
 
-<!-- Go to www.addthis.com/dashboard to customize your tools -->
-<script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-5ec2cbf0773973c5"></script>
+    <!-- share on social media -->
+    <script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-5ec2cbf0773973c5"></script>
 
 
 
