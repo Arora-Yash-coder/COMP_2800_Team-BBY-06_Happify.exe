@@ -4,55 +4,54 @@
 <head>
   <title>Register/Login</title>
   <meta charset="utf-8">
+  <!-- allow media queries -->
   <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <!-- bootstrap -->
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-  
+
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
   <script src="static/js/getrequest.js"></script>
   <script src="static/js/postrequest.js"></script>
+  <!-- styles -->
   <link rel="stylesheet" type="text/css" href="/static/css/signup.css">
-  
+
 </head>
 
 <body>
   <div class="container">
-    <!--<div class="col-sm-4">-->
+
     <div id="choice_tab">
       <h3 id="reg">Registration</h3>
       <h3 id="log">Login</h3>
     </div>
     <div>
       <form id="userForm" action="/api/users/register" method="post">
-
-        <!--			<label for="username">Username:</label>-->
+        <!-- user name -->
         <input type="text" class="form-control" id="username" name="username" placeholder="Enter Username" />
 
 
 
-        <!--			<label for="password">Password:</label>-->
+        <!-- password -->
         <input type="password" class="form-control" id="password" name="password" min="6" maxlength="16"
           placeholder="Enter Password" />
 
-
-        <!--			<label for="email">Email:</label>-->
+        <!-- email -->
         <input type="email" class="form-control" id="email" name="email" placeholder="Enter Email" />
 
-
-        <!--			<label for="firstname">First Name:</label>-->
+        <!-- first name -->
         <input type="text" class="form-control" id="firstname" name="firstname" placeholder="Enter First Name" />
 
-
-        <!--			<label for="lastname">Last Name:</label>-->
+        <!-- last name -->
         <input type="text" class="form-control" id="lastname" name="lastname" placeholder="Enter Last Name" />
 
 
-
-        <!--			<label for="phoneno">Phone Number:</label>-->
+        <!-- phone no -->
         <input type="text" class="form-control" id="phoneno" name="phoneno" value="1-"
           pattern="\d[-]\d\d\d\d\d\d\d\d\d\d" placeholder="Enter Phone Number e.g. 1-1234567890" />
         <label for="phoneno">(e.g. 1-1234567890)</label>
-        <!--			<textarea>dss</textarea>-->
+
         <br>
         <button id="register" type="submit">Submit</button>
         <br>
@@ -61,16 +60,15 @@
     <div id="postResultDiv">
     </div>
     <br>
-    
-    <!--</div>	-->
+
   </div>
-    <div id="footer">
-        Made by FutureCurves.
-    </div>
+  <div id="footer">
+    Made by FutureCurves.
+  </div>
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-    <script src="/static/js/signup.js"></script>
-    <!-- Go to www.addthis.com/dashboard to customize your tools -->
-<script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-5ec2cbf0773973c5"></script>
+  <script src="/static/js/signup.js"></script>
+  <!-- share on social media -->
+  <script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-5ec2cbf0773973c5"></script>
 </body>
 
 </html>

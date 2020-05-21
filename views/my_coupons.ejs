@@ -3,8 +3,10 @@
 
 <head>
   <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+  <!-- styles -->
   <link rel="stylesheet" type="text/css" href="static/css/navbar<%=css%>.css">
   <link rel="stylesheet" type="text/css" href="static/css/my_coupons<%=css%>.css">
+  <!-- allow media queries -->
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>My Coupons</title>
 
@@ -12,10 +14,12 @@
 </head>
 
 <body>
+  <!-- nav bar -->
     <nav id="navbar">
     <%- navbar %></nav>
     <div id="wrapper">
   <h1>My Acquired Coupons</h1>
+  <!-- user status -->
     <div id="stats">
             <h2>All points you earned: </h2>
                 <h2 id='pointsofar'></h2>
@@ -25,6 +29,7 @@
             </div>
   
   <div id='container'>
+    <!-- reads the coupons -->
     <% for (var i = 0; i < coupons.length;  i++ ) { %>
     <div class="coupons" id="coupons_<%= i+1 %>">
       <div class="coupon" id="coupon_<%= i+1 %>">
@@ -40,10 +45,11 @@
     <% } %>
   </div>
 </div>
+<!-- footer -->
   <%- footer %> 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
         <script src='/static/js/my_coupon.js'></script>
-    <!-- Go to www.addthis.com/dashboard to customize your tools -->
+    <!-- share on social media -->
 <script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-5ec2cbf0773973c5"></script>
 
 </body>

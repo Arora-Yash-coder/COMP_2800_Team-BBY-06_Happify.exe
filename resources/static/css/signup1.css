@@ -94,6 +94,7 @@ body {
 
 #reg {
   float: left;
+  color: white;
 }
 
 #userForm {
@@ -107,6 +108,7 @@ body {
   height: 50px;
   width: 100px;
   background-color: rgb(0, 0, 0);
+  color: white;
 }
 
 /* Some styles for input. */

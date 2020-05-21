@@ -3,27 +3,32 @@
 
 <head>
   <meta charset="UTF-8">
+  <!-- Allow media queries -->
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <!-- Styles -->
   <link rel="stylesheet" type="text/css" href="/static/css/navbar<%=css%>.css">
   <link rel="stylesheet" type="text/css" href="/static/css/flow_daily_tasks<%=css%>.css">
+  <!-- jquery -->
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+  <!-- bootstrap -->
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
   <title>Daily tasks</title>
-  <!-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css"> -->
+
 
 </head>
 
 <body>
+  <!-- nav bar -->
   <div id="navbar">
     <%- navbar%></div>
   <div id='container'>
 
     <div id="header">
-      <!--      <div style="float: right">Step 1 of 3</div>-->
+    
       <br>
       <div id="greeting">
         <p class='top'>Daily tasks</p>
-        <!--        <p class='points' id="show_points"> Current Points: &nbsp;&nbsp;</p>-->
+        <!-- user stats -->
         <div id="stats">
           <h2>All points you earned: </h2>
           <h2 id='pointsofar'></h2>
@@ -36,6 +41,7 @@
 
     </div>
 
+    <!-- Bootstrap for progress bar -->
     <div class="progress">
       <div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" aria-valuenow="75"
         aria-valuemin="0" aria-valuemax="100" style="width:<%=progress_percentage %>"></div>
@@ -43,7 +49,7 @@
     </div>
 
 
-
+    <!-- daily tasks -->
     <div id="dailytask">
       <% if (todo_item != undefined || todo_item != null) { %>
 
@@ -93,13 +99,14 @@
 
 
   </div>
+  <!-- footer -->
   <%- footer %>
 
-
+  <!-- js files -->
   <script src='/static/js/navbar_top.js'></script>
   <script src='/static/js/daily_tasks.js'></script>
 
-  <!-- Go to www.addthis.com/dashboard to customize your tools -->
+  <!-- share on social media -->
   <script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-5ec2cbf0773973c5"></script>
   <script>
 

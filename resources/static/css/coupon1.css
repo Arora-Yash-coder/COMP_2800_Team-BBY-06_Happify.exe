@@ -1,22 +1,21 @@
-/* CSS for redeem page */
+/* CSS for coupon page */
 
-/* Styles for body.  */
+/* styles for body */
+
 body {
     text-align: center;
     margin: 0;
+
     background-color: #FFE548;
     color: #A63013;
     height: 100vh;
 }
-
-/* The sticky class is added to the navbar with JS when it reaches its scroll position */
+/* sticky nav bar */
 .sticky {
-    position: fixed;
-    top: 0;
-    width: 100%;
+  position: fixed;
+  top: 0;
+  width: 100%;
 }
-
-/* Some point sizes. */
 .confirm {
     font-size: 20pt;
 }
@@ -29,12 +28,12 @@ body {
     font-size: 18pt;
 }
 
-/* Some styles for mobile phones. */
-@media only screen and (max-width: 369px) {
-    #content {
-        margin-top: 15%;
-    }
 
+/* media queries for different devices */
+@media only screen and (max-width: 369px) {
+    #content{
+    margin-top: 15%;
+}
     #greeting {
         color: #A63013;
         font-size: 30pt;
@@ -50,10 +49,9 @@ body {
 }
 
 @media only screen and (min-width: 370px) {
-    #content {
-        margin-top: 15%;
-    }
-
+    #content{
+    margin-top: 15%;
+}
     #greeting {
         font-size: 30pt;
     }
@@ -62,20 +60,17 @@ body {
     #footer {
         bottom: 0;
         margin-top: 150px;
-        /*        color: #53131E;*/
+/*        color: #53131E;*/
         clear: both;
         position: relative;
         /*        font-size: 13pt;*/
     }
 }
 
-
-/* Some styles for mobile phones. */
 @media only screen and (min-width: 600px) {
-    #content {
-        margin-top: 10%;
-    }
-
+    #content{
+    margin-top: 10%;
+}
     h1 {
         font-size: 30pt;
     }
@@ -105,20 +100,17 @@ body {
     #footer {
         bottom: 0;
         margin-top: 150px;
-        /*        color: #53131E;*/
+/*        color: #53131E;*/
         clear: both;
         position: relative;
         /*        font-size: 20pt;*/
     }
 }
 
-
-/* Some styles for tablets. */
 @media only screen and (min-width: 1024px) {
-    #content {
-        margin-top: 10%;
-    }
-
+    #content{
+    margin-top: 10%;
+}
     h1 {
         font-size: 30pt;
     }
@@ -148,20 +140,17 @@ body {
     #footer {
         bottom: 0;
         margin-top: 150px;
-        /*        color: #53131E;*/
+/*        color: #53131E;*/
         clear: both;
         position: relative;
         /*        font-size: 20pt;*/
     }
 }
 
-
-/* Some styles for web pages. */
 @media only screen and (min-width: 1200px) {
-    #content {
-        margin-top: 10%;
-    }
-
+    #content{
+    margin-top: 10%;
+}
     h1 {
         font-size: 30pt;
     }
@@ -184,6 +173,7 @@ body {
     }
 
 
+
     #footer {
         bottom: 0;
         clear: both;
@@ -192,28 +182,13 @@ body {
     }
 }
 
-/* Styles for buttons. */
-.square_btn_second {
-    display: inline-block;
-    padding: 0.3em 1em;
-    text-decoration: none;
-    color: #A63013;
-    border: solid 2px #A63013;
-    border-radius: 3px;
-    transition: .4s;
-}
 
-.square_btn_second:hover {
-    background: white;
-    color: #A63013;
-}
-
-
-
-/* Some styles for the points section */
+/* user stats section */
 #stats {
+
     margin-top: 10px;
     margin-bottom: 10px;
+    /*    border-radius: 25px;*/
     grid-row: 2 / span 1;
     background-color: #FFE8C2;
     display: grid;
@@ -237,6 +212,7 @@ body {
 #pointsofar {
     grid-row: 1 / span 1;
     grid-column: 2 / span 1;
+
 }
 
 #pointofday {
@@ -245,17 +221,19 @@ body {
 }
 
 .top {
+/*    color: #53131E;*/
     font-size: 13pt;
     font-weight: bold;
 }
 
 
 .points {
+/*    color: #53131E;*/
     margin-top: -10px;
     font-weight: bold;
+    /*    font-size: 20pt;*/
 }
 
-/* Styles for description */
 .description {
     margin-left: 25px;
     margin-right: 25px;
@@ -266,7 +244,7 @@ body {
     grid-row: 1 / span 1;
     display: grid;
     grid-template-rows: 50% 50%;
-    /*    color: #53131E;*/
+/*    color: #53131E;*/
 }
 
 .title {
@@ -278,7 +256,7 @@ body {
 
 }
 
-/* Styles for coupons */
+/* coupons styles */
 .coupons {
     margin-left: 25px;
     margin-right: 25px;
@@ -289,11 +267,11 @@ body {
 
     display: block;
     grid-template-rows: 50% 50%;
-    /*    color: #53131E;*/
+/*    color: #53131E;*/
     border: solid 2px rgba(83, 19, 30, 0.7);
 }
 
-/* Some more button styles. */
+/* buttons */
 button {
     background-color: transparent;
     border: #A63013 solid 1.5px;
@@ -319,7 +297,7 @@ button:hover {
 
 }
 
-
+/* Back and proceed buttons */
 #proceed {
     margin-top: 10px;
     /*            float: right;*/
@@ -329,7 +307,7 @@ button:hover {
     float: left;
 }
 
-/* Styles for search. */
+/* Search */
 #search_function {
     margin-top: 10px;
     margin-bottom: 10px;

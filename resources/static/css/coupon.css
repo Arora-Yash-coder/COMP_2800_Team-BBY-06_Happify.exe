@@ -1,6 +1,6 @@
-/* CSS for redeem page */
+/* CSS for coupon page */
 
-/* Styles for body.  */
+/* styles for body */
 body {
     text-align: center;
     margin: 0;
@@ -8,15 +8,13 @@ body {
     color: #53131E;
     height: 100vh;
 }
-
-/* The sticky class is added to the navbar with JS when it reaches its scroll position */
+/* sticky nav bar */
 .sticky {
     position: fixed;
     top: 0;
     width: 100%;
 }
 
-/* Some point sizes. */
 .confirm {
     font-size: 20pt;
 }
@@ -29,7 +27,7 @@ body {
     font-size: 18pt;
 }
 
-/* Some styles for mobile phones. */
+/* media queries for different devices */
 @media only screen and (max-width: 369px) {
     #content {
         margin-top: 15%;
@@ -40,6 +38,7 @@ body {
         font-size: 30pt;
     }
 
+
     #footer {
         bottom: 0;
         margin-top: 135px;
@@ -48,7 +47,7 @@ body {
         position: relative;
     }
 }
-/* Some styles for mobile phones. */
+
 @media only screen and (min-width: 370px) {
     #content {
         margin-top: 15%;
@@ -58,6 +57,7 @@ body {
         color: #EF629F;
         font-size: 30pt;
     }
+
 
 
     #footer {
@@ -70,7 +70,6 @@ body {
     }
 }
 
-/* Some styles for mobile phones. */
 @media only screen and (min-width: 600px) {
     #content {
         margin-top: 10%;
@@ -117,7 +116,6 @@ body {
     }
 }
 
-/* Some styles for tablets. */
 @media only screen and (min-width: 1024px) {
     #content {
         margin-top: 10%;
@@ -164,7 +162,6 @@ body {
     }
 }
 
-/* Some styles for web pages. */
 @media only screen and (min-width: 1200px) {
     #content {
         margin-top: 10%;
@@ -207,26 +204,16 @@ body {
     }
 }
 
-/* Styles for buttons */
-.square_btn_second {
-    display: inline-block;
-    padding: 0.3em 1em;
-    text-decoration: none;
-    color: #53131e;
-    border: solid 2px #53131e;
-    border-radius: 3px;
-    transition: .4s;
-}
 
-.square_btn_second:hover {
-    background: white;
-    color: #753e48;
-}
 
-/* Some styles for the points section */
+
+/* User stats section */
 #stats {
+    /*    margin-left: 25px;*/
+    /*    margin-right: 25px;*/
     margin-top: 10px;
     margin-bottom: 10px;
+    /*    border-radius: 25px;*/
     grid-row: 2 / span 1;
     background-color: #7BDFF2;
     display: grid;
@@ -271,7 +258,7 @@ body {
     font-weight: bold;
     /*    font-size: 20pt;*/
 }
-/* Styles for description */
+
 .description {
     margin-left: 25px;
     margin-right: 25px;
@@ -294,7 +281,7 @@ body {
 
 }
 
-/* Styles for coupons */
+/* styles for cards */
 .coupons {
     margin-left: 25px;
     margin-right: 25px;
@@ -309,7 +296,7 @@ body {
     border: solid 2px rgba(83, 19, 30, 0.7);
 }
 
-/* More styles for buttons. */
+/* Styles for buttons */
 button {
     background-color: transparent;
     border: #53131E solid 1.5px;
@@ -335,17 +322,16 @@ button:hover {
 
 }
 
+/* proceed and back buttons */
 #proceed {
     margin-top: 10px;
-    /*            float: right;*/
 }
 
 #back {
     float: left;
 }
 
-
-/* Styles for search. */
+/* search */
 #search_function {
     margin-top: 10px;
     margin-bottom: 10px;
