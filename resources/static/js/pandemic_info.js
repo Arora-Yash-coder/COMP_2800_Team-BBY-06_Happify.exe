@@ -100,13 +100,15 @@ async function getBarData() {
         success: function (response) {
             data = response
             console.log(data)
-
+            //DATA PROCESSING, IT SENDS THE DATA INTO THE FORMAT I WANT
             for (var i in data) {
                 console.log(data[i]._id)
                 section.push(data[i]._id)
                 console.log(data[i].count)
                 infected_num_section.push(data[i].count)
-
+                //IF THE ID IS VANCOUVER ISLAND
+                //PUT INTO THE OBJECT '4 Vancouver Island'
+                //ALL THE SAME FOR OTHER AREAS.
                 if (data[i]._id == "Vancouver Island") {
                     distribution["4 Vancouver Island"] = data[i].count
                 } else if (data[i]._id == "Fraser") {
