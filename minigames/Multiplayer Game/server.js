@@ -6,7 +6,7 @@ let players = [];
 let laser = [];
 let io = socket(server);
 
-
+//Keeps Track of all the Players
 function Player(id, x, y, imgIndex) {
     this.id = id,
         this.x = x,
@@ -14,30 +14,29 @@ function Player(id, x, y, imgIndex) {
         this.imgIndex = imgIndex;
 }
 
-
+//Connection
 app.use(express.static('public'));
 app.get("/", (req, res) => {
     res.sendFile("/index.html");
 });
 
-
+//Refreshes Players every 5ms
 setInterval(heartbeat, 1000 / 200);
 function heartbeat() {
     io.sockets.emit('heartbeat', players);
 }
 
-function dist(x1, y1, x2, y2) {
-    return Math.sqrt(Math.pow((x1 - x2), 2) + Math.pow((y1 - y2), 2));
-}
+
 
 
 io.sockets.on('connection', function (socket) {
-
+    //On Connection Creates a new Player
     socket.on('start', function (user) {
         let newPlayer = new Player(socket.id, user.x, user.y, user.imgIndex);
         players.push(newPlayer);
     })
 
+    //Updates all the Players 
     socket.on('update', function (user) {
         let play;
         for (let i = 0; i < players.length; i++) {
@@ -51,13 +50,17 @@ io.sockets.on('connection', function (socket) {
             play.imgIndex = user.imgIndex;
         }
     })
+
+    //It Updates all the Bullets on the Server
     socket.on('updateLaser', function (userLaser) {
         laser = userLaser;
         io.sockets.emit('updateLaserServer', laser);
     })
+    //When a collision is detected it removes the Laser
     socket.on('removeLaser', function (data) {
         io.to(data.uid).emit("removeLaserClient", data);
     })
+    // When a Player Gets Killed it refreshes all the clients
     socket.on('removeUser', function (data) {
         for (let i = 0; i < players.length; i++) {
             if (data == players[i].id) {
@@ -66,9 +69,8 @@ io.sockets.on('connection', function (socket) {
         }
         io.sockets.emit('heartbeat', players);
     })
-
+    // When a Player Disconnects it refreshes all the clients
     socket.on("disconnect", function(s) {
-
         for (let i = 0; i < players.length; i++) {
             if (socket.id == players[i].id) {
                 players.splice(i, 1);
@@ -76,9 +78,4 @@ io.sockets.on('connection', function (socket) {
         }
         io.sockets.emit('heartbeat', players);
     });
-    
-
-
-
-
 })
