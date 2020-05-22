@@ -1,3 +1,19 @@
+
+//THIS FILE HAS TO BE PUT HERE TO TAKE EFFECT!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+
+//THIS FILE HAS TO BE PUT HERE TO TAKE EFFECT!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+
+//THIS FILE HAS TO BE PUT HERE TO TAKE EFFECT!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+
+
+//SW START
+//SOURCE:https://developers.google.com/web/ilt/pwa/introduction-to-push-notifications?hl=fr
+//HELPED BY SOURCE
+
+//THIS IS THE SERVICE WORKER FILE TO BE LOADED TO THE BROWSER
+//WHEN THE USER GOES INTO THE REMINDER FUNCTION.
+//IT WILL BE REGISTERED ONCE THE USER 
+//HAS HIT THE START REMINDER BUTTON
 self.addEventListener('push', function(e) {
   var timestamp = Date.now();
   var options = {
@@ -21,3 +37,8 @@ self.addEventListener('push', function(e) {
     self.registration.showNotification('Go To Bed Early!', options)
     
 });
+
+
+//SW END
+//SOURCE:https://developers.google.com/web/ilt/pwa/introduction-to-push-notifications?hl=fr
+//HELPED BY SOURCE

@@ -39,50 +39,11 @@ async function getLineData() {
     });
 }
 
-//LINE CHART
+//LINE CHART start
 //DRAWING LINE GRPAH
 //HELPED BY THIS DOCUMENT SOURCE: https://tobiasahlin.com/blog/chartjs-charts-to-get-you-started/
 //CONETNET:
-/**
- * 
- * 
- * 
- * async function drawLineGraph() {
-    new Chart(document.getElementById("line-chart"), {
-        type: 'line',
-        data: {
-            //days
-            labels: days,
 
-            datasets: [{
-                    data: infected_num,
-                    label: "COVID NEWLY CONFIRMED CASES",
-                    borderColor: "#3e95cd",
-                    fill: true
-                },
-        
-            ]
-        },
-        options: {
-            title: {
-                display: true,
-                text: 'CASE DISTRIBUTION'
-            }
-        }
-    });
-
-}
- * 
- * 
- * 
- * 
- * 
- * 
- * 
- * 
- * 
- * 
- */
 async function drawLineGraph() {
     new Chart(document.getElementById("line-chart"), {
         type: 'line',
@@ -108,6 +69,10 @@ async function drawLineGraph() {
     });
 
 }
+//LINE CHART end
+//DRAWING LINE GRPAH
+//HELPED BY THIS DOCUMENT SOURCE: https://tobiasahlin.com/blog/chartjs-charts-to-get-you-started/
+
 
 
 //distribution IS AN OBJECT THAT WILL BE STORING 
@@ -169,33 +134,10 @@ async function getBarData() {
     });
 }
 
-//RADAR CHART
+//RADAR CHART start
 //DRAWING RADAR GRPAH
 //HELPED BY THIS DOCUMENT SOURCE: https://tobiasahlin.com/blog/chartjs-charts-to-get-you-started/
 //CONETNET:
-/**  new Chart(document.getElementById("bar-chart"), {
-        type: 'polarArea',
-        data: {
-            labels: section,
-            datasets: [{
-                //THE HEADER OF THE CHART
-                label: "Cases",
-
-                backgroundColor: "rgba(179,181,198,0.6)",
-                borderColor: "rgba(227,71,43,1)",
-
-                data: infected_num_section
-            }]
-        },
-        options: {
-            title: {
-                display: true,
-                // text: 'Distribution in % of world population'
-            }
-        }
-    });*/
-
-
 
 //THE FUNCTION TO DEPICT THE BAR CHART
 async function drawBarGraph() {
@@ -224,7 +166,9 @@ async function drawBarGraph() {
 
 }
 
-
+//RADAR CHART end
+//DRAWING RADAR GRPAH
+//HELPED BY THIS DOCUMENT SOURCE: https://tobiasahlin.com/blog/chartjs-charts-to-get-you-started/
 
 
 
@@ -250,64 +194,11 @@ $(".choice_btn").click((e) => {
 
 //DRAWS THE MAP
 async function drawMap() {
+    //ANCHARTS MAP start
     //THE FOLLOWING CODE IS FINISHED WITH THE HELP OF THE OFFCIAL DOCUMENT OF 
     //AMCHARTS
     //SOURCE: https://www.amcharts.com/docs/v4/chart-types/map/
-    /**CONTENT:
-     *  var chart = am4core.create("chartdiv", am4maps.MapChart);
-
-    // SET MAP DEFINITION
-    chart.geodataSource.url = "/static/BC-HA-map.min.json"
-
-    chart.data = distribution;
-    // SET PROJECTION
-    chart.projection = new am4maps.projections.Mercator();
-
-    // CREATE MAP POLYGON SERIES
-    var polygonSeries = chart.series.push(new am4maps.MapPolygonSeries());
-
-    // MAKE MAP LOAD POLYGON (LIKE COUNTRY NAMES) DATA FROM GEOJSON
-    polygonSeries.useGeodata = true;
-
-    // CONFIGURE SERIES
-    var polygonTemplate = polygonSeries.mapPolygons.template;
   
-    //HA_Title IS THE TITLE IN THE SHP FILE.
-    polygonTemplate.tooltipText = "{HA_Title}" ;
-
-   
-
-        // polygonTemplate.fill = am4core.color("#74B266");
-
-        polygonTemplate.events.on("hit", function (ev) {
-        var data = ev.target.dataItem.dataContext;
-        var info = document.getElementById("info");
-        console.log("312 data")
-        console.log(distribution)
-        console.log("title")
-        let a = data.HA_Title
-        console.log(a)
-        
-        //APPENDS THE CASE INFO INTO THE HTML DIV.
-        info.innerHTML = "<h3>" + distribution[a]+ "cases" +" </h3>";
-    
-    })
-
-
-        // CREATE HOVER STATE AND SET ALTERNATIVE FILL COLOR
-        var hs = polygonTemplate.states.create("hover");
-        hs.properties.fill = am4core.color("#367B25");
-
-        chart.seriesContainer.draggable = false;
-        chart.seriesContainer.resizable = false;
-        chart.maxZoomLevel = 1;
-        // DISABLED ZOOM CONTROL HERE
-        // chart.zoomControl = new am4maps.ZoomControl();
-
-
-    }
-     * 
-     */
 
     console.log("{HA_Title}")
     console.log("data in line 232")
@@ -387,3 +278,8 @@ async function drawMap() {
             navbar.classList.add("regular");
         }
     }
+    //ANCHARTS MAP end
+    //THE FOLLOWING CODE IS FINISHED WITH THE HELP OF THE OFFCIAL DOCUMENT OF 
+    //AMCHARTS
+    //SOURCE: https://www.amcharts.com/docs/v4/chart-types/map/
+  

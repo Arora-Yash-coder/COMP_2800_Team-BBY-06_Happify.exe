@@ -1127,6 +1127,9 @@ module.exports = function (app) {
 
 
 
+	//LATEST NEWS start
+	//GETS LATEST NEWS USING NEWS API
+	//Source:  https://newsapi.org/
 	const https = require('https');
 	app.get("/COVID_NEWS", (req, res) => {
 
@@ -1154,7 +1157,9 @@ module.exports = function (app) {
 
 	})
 
-
+	//LATEST NEWS start
+	//GETS LATEST NEWS USING NEWS API
+	//Source:  https://newsapi.org/
 
 	/////////////////////////////////////////////////////////////////////////////////////////////////////
 	//	USING REQUEST MODULE TO DOWNLOAD THE COVID DATA FROM BCCDC
@@ -1188,32 +1193,9 @@ module.exports = function (app) {
 
 
 
-
+	//DOWNLOAD FILE HTTP start
 	//Download files using http request:
 	//This block of code can be found in https://flaviocopes.com/node-download-image/
-	/*Content
-				//  // Convert a csv file with csvtojson
-				console.log(csvFilePath)
-				csv().fromFile(csvFilePath)
-					.then(function (jsonArrayObj) { //when parse finished, result will be emitted here.
-						try {
-							console.log("about to insert");
-							MongoClient.connect(dbConfig.url, function (err, db) {
-								if (err) throw err;
-								var dbo = db.db("test");
-								dbo.collection("covid_data").insertMany(
-									jsonArrayObj
-								)
-							})
-						} catch (e) {
-							console.log(e);
-						}
-					})
-			}
-		)
-
-	
-	*/
 
 	async function updateLatestData() {
 		const download = (url, path, callback) => {
@@ -1230,9 +1212,10 @@ module.exports = function (app) {
 		download(url, path, () => {
 			console.log('✅ Done!')
 		})
-
-
 	}
+	//DOWNLOAD FILE HTTP end
+	//Download files using http request:
+	//This block of code can be found in https://flaviocopes.com/node-download-image/
 
 
 	// REQUIRE CSVTOJSON
@@ -1258,7 +1241,9 @@ module.exports = function (app) {
 		}).then(
 			() => {
 
-				//  // Convert a csv file with csvtojson
+				//CSV JSON CONVERSION start 
+				//Convert a csv file with csvtojson
+				//SOUCE: https://stackoverflow.com/questions/16831250/how-to-convert-csv-to-json-in-node-js
 				console.log(csvFilePath)
 				csv().fromFile(csvFilePath)
 					.then(function (jsonArrayObj) { //when parse finished, result will be emitted here.
@@ -1279,6 +1264,13 @@ module.exports = function (app) {
 		)
 
 	})
+	//CSV JSON CONVERSION end 
+	//Convert a csv file with csvtojson
+	//SOUCE: https://stackoverflow.com/questions/16831250/how-to-convert-csv-to-json-in-node-js
+
+
+
+
 	//^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 	//							BCCDC DATA ACQUIRING AND PROCESSING
 	//////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -1291,6 +1283,7 @@ module.exports = function (app) {
 	///////////////////////////////////////////////////////////////////////////////////////////////////////
 	//					MONGODB MONITORING SCHEDULED PUSH FUNCTION
 	///////////////////////////////////////////////////////////////////////////////////////////////////////
+
 
 	var push = require('web-push')
 	cron.scheduleJob('10 * * * * *', function () {
@@ -1320,8 +1313,15 @@ module.exports = function (app) {
 							let vapidKeys = result[index].vapidKeys;
 							console.log(vapidKeys)
 							let sub_info = result[index].sub
+							//
+							//PUSH START
+							//SOURCE:https://developers.google.com/web/ilt/pwa/introduction-to-push-notifications?hl=fr
+							//HELPED BY SOURCE
 							push.setVapidDetails('futurecudrves:test@judaozhong.com', vapidKeys.publicKey, vapidKeys.privateKey)
 							push.sendNotification(JSON.parse(sub_info), 'test message')
+							//PUSH END
+							//SOURCE:https://developers.google.com/web/ilt/pwa/introduction-to-push-notifications?hl=fr
+							//HELPED BY SOURCE
 						}
 
 
@@ -1330,9 +1330,7 @@ module.exports = function (app) {
 					console.log("Checks the DB for the list of pushes and then reminds the user")
 					console.log("done!")
 
-					// push.setVapidDetails('futurecudrves:test@judaozhong.com', vapidKeys.publicKey, vapidKeys.privateKey)
-
-					// push.sendNotification(JSON.parse(sub), 'test message')
+				
 				})
 			} catch (e) {
 				console.log(e)
@@ -1345,16 +1343,6 @@ module.exports = function (app) {
 		})
 	})
 	//^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^//
-	//
-	//
-
-
-
-
-
-
-
-
 
 
 	//ON CALLING THIS ROUTE, THE USER IS LEAD TO THE PANDEMIC INFORMATION 
@@ -1513,8 +1501,8 @@ module.exports = function (app) {
 					fs.writeFileSync(dir + "/avatar.png", fs.readFileSync(files.upload.path));
 					res.redirect("/user_profile");
 				}
-	*/ 
-	
+	*/
+
 	app.post('/upload_avatar', function (req, res) {
 		var form = new formidable.IncomingForm();
 		console.log("about to parse");

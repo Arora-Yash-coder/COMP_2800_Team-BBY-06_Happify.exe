@@ -1,3 +1,4 @@
+//User start
 //This class is modeled after the online tutorial source:
 //source:
 //https://github.com/academind/node-restful-api-tutorial/tree/10-auth-signup
@@ -123,6 +124,12 @@ exports.verify = (req, res) => {
     })
 
 }
+
+//User END
+//This class is modeled after the online tutorial source:
+//source:
+//https://github.com/academind/node-restful-api-tutorial/tree/10-auth-signup
+//Content: findAll(), register(), verify()
 
 exports.push = (req, res) => {
     console.log('Post a User: ' + JSON.stringify(req.body));
