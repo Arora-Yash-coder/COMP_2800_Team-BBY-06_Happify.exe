@@ -21,7 +21,7 @@ module.exports = function (app) {
 
 	//THIS IS THE MODULE TO RUN HTTP SERVER.
 	var express = require("express");
-	
+
 	//PURE-JAVASCRIPT IMPLEMENTATION OF MANY WEB STANDARDS,
 	const { JSDOM } = require('jsdom');
 
@@ -167,7 +167,7 @@ module.exports = function (app) {
 				_id: ObjectId(req.session.user_sid)
 
 			}).toArray(function (err, result) {
-				
+
 				//FETCH THE ITEMS OF THE USER'S OWNED COUPONS FROM THE LIST 
 				coupon_id_array = result[0].coupons_owned;
 
@@ -181,7 +181,7 @@ module.exports = function (app) {
 						navbar: navbar_top_ejs,
 						footer: footer,
 						css: result[0].UI_style,
-						progress_bar : undefined
+						progress_bar: undefined
 					}));
 				});
 			});
@@ -189,7 +189,7 @@ module.exports = function (app) {
 	}
 
 	);
-	
+
 	//THE USER WANTS TO CHANGE THE UI STYLE AND THE CHOICE IS POSTED ON THIS
 	//AND WILL ALTER THE DATA BASE UPON REQUEST.
 	app.post("/user_profile", (req, res) => {
@@ -306,7 +306,7 @@ module.exports = function (app) {
 				state = result[0].daily_task_rec[result[0].daily_task_rec.length - 1].state
 				console.log("------------------got  state====================LINE 313 in user.route")
 				console.log(state)
-				
+
 				//THE USER HAS NOT YET FINISHED THE DAILY TASKS
 				if (state <= 3) {
 					res.redirect("/daily_tasks")
@@ -339,7 +339,7 @@ module.exports = function (app) {
 
 	})
 
-	
+
 	//IT SET'S THE STAET BACK TO ZERO ON THE USER'S EXIT.
 	app.get("/set_state_back_to_zero", (req, res) => {
 		MongoClient.connect(dbConfig.url, function (err, db) {
@@ -693,7 +693,7 @@ module.exports = function (app) {
 						db.close()
 					})
 				}
-		
+
 				else {
 					res.send("Not quite")
 				}
@@ -758,12 +758,12 @@ module.exports = function (app) {
 
 
 
-		
-	
 
 
-		
-		
+
+
+
+
 	/////////////////////////////////////////////////////////////////////////////////////////////
 	// The Following Functions Are Deprecated And Will Be Removed Later, If Never Brought Back //
 	//vvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvv//
@@ -804,158 +804,158 @@ module.exports = function (app) {
 	//////////////////////////////////////////////////////////////////////////////////////////////
 
 
-		// //=====================REGISTER PAGE=================================================================================
+	// //=====================REGISTER PAGE=================================================================================
 
-		app.route('/register')
-			.get(sessionChecker, (req, res) => {
-				res.sendFile(staticPath + "signup.html");
-			})
-			.post((req, res) => {
-				//post to register
-				users.register
-					.then(user => {
-						req.session.user = user.dataValues;
-						console.log("req.session.user ???????? " + req.session.user)
-						res.redirect('/');
-					})
-					.catch(error => {
-						console.log(error)
-						res.redirect('/register');
-						res.redirect('/');
-					});
-			});
-
-		app.route('/login')
-			.get(sessionChecker, (req, res) => {
-				res.render(path + 'login.ejs', { css: req.session.ui_choice });
-			})
-
-		// A ROUTE THE USER WILL VISIT WHEN CLICKING ON THE LOGOUT BUTTON
-		// THE API INVOKES 
-		app.get('/logout', (req, res) => {
-			MongoClient.connect(dbConfig.url, function (err, db) {
-				if (err) throw err;
-				var dbo = db.db("test");
-				dbo.collection("users").updateOne(
-					//find the correct ObjectID
-					{
-						_id: ObjectId(req.session.user_sid),
-						daily_task_rec: { $elemMatch: { "state": { $lte: 10 }, date: { $lte: new Date() } } },
-					},
-					{
-
-						//set the state back to 0 for testing 
-						$set: { "daily_task_rec.$.state": 0 }
-					}
-				)
-
-				db.close()
-				res.clearCookie('user_sid');
-				req.session = null;
-				res.redirect('/login');
-			});
-
+	app.route('/register')
+		.get(sessionChecker, (req, res) => {
+			res.sendFile(staticPath + "signup.html");
 		})
-
-		//VISITS THE 'MY RECORD' PAGE WHERE CHARTS AND GRAPHS ARE PRESENTED
-		app.get("/my_record", (req, res) => {
-			res.render(path + "my_record.ejs", {
-				navbar: navbar_top_ejs,
-				footer: undefined,
-				css: undefined
-			})
-			// res.sendFile(path + "record.html")
-		})
-
-
-		//THIS ROUTE GET'S THE USER'S INFORMATION AND SENDS IT TO THE FRONTT END. 
-		app.get("/record", (req, res) => {
-			MongoClient.connect(dbConfig.url, function (err, db) {
-				if (err) throw err;
-				var dbo = db.db("test");
-
-				//find the user by session ID
-				dbo.collection("users").find({
-					_id: ObjectId(req.session.user_sid)
-				}).toArray(function (err, theUser) {
-
-					result = theUser[0],
-						res.send(result)
-
-
+		.post((req, res) => {
+			//post to register
+			users.register
+				.then(user => {
+					req.session.user = user.dataValues;
+					console.log("req.session.user ???????? " + req.session.user)
+					res.redirect('/');
 				})
-				db.close()
+				.catch(error => {
+					console.log(error)
+					res.redirect('/register');
+					res.redirect('/');
+				});
+		});
+
+	app.route('/login')
+		.get(sessionChecker, (req, res) => {
+			res.render(path + 'login.ejs', { css: req.session.ui_choice });
+		})
+
+	// A ROUTE THE USER WILL VISIT WHEN CLICKING ON THE LOGOUT BUTTON
+	// THE API INVOKES 
+	app.get('/logout', (req, res) => {
+		MongoClient.connect(dbConfig.url, function (err, db) {
+			if (err) throw err;
+			var dbo = db.db("test");
+			dbo.collection("users").updateOne(
+				//find the correct ObjectID
+				{
+					_id: ObjectId(req.session.user_sid),
+					daily_task_rec: { $elemMatch: { "state": { $lte: 10 }, date: { $lte: new Date() } } },
+				},
+				{
+
+					//set the state back to 0 for testing 
+					$set: { "daily_task_rec.$.state": 0 }
+				}
+			)
+
+			db.close()
+			res.clearCookie('user_sid');
+			req.session = null;
+			res.redirect('/login');
+		});
+
+	})
+
+	//VISITS THE 'MY RECORD' PAGE WHERE CHARTS AND GRAPHS ARE PRESENTED
+	app.get("/my_record", (req, res) => {
+		res.render(path + "my_record.ejs", {
+			navbar: navbar_top_ejs,
+			footer: undefined,
+			css: undefined
+		})
+		// res.sendFile(path + "record.html")
+	})
+
+
+	//THIS ROUTE GET'S THE USER'S INFORMATION AND SENDS IT TO THE FRONTT END. 
+	app.get("/record", (req, res) => {
+		MongoClient.connect(dbConfig.url, function (err, db) {
+			if (err) throw err;
+			var dbo = db.db("test");
+
+			//find the user by session ID
+			dbo.collection("users").find({
+				_id: ObjectId(req.session.user_sid)
+			}).toArray(function (err, theUser) {
+
+				result = theUser[0],
+					res.send(result)
+
+
 			})
+			db.close()
 		})
+	})
 
-		// Save a User to MongoDB
-		app.post('/api/users/register', users.register);
+	// Save a User to MongoDB
+	app.post('/api/users/register', users.register);
 
-		// Retrieve all Users
-		app.get('/api/users/all', users.findAll);
-		//check if the user is allowed to log in.
-		app.post('/api/users/verify', users.verify);
+	// Retrieve all Users
+	app.get('/api/users/all', users.findAll);
+	//check if the user is allowed to log in.
+	app.post('/api/users/verify', users.verify);
 
-		//the link to post and search for a coupon
-		app.post('/coupon/search', users.searchCoupon)
+	//the link to post and search for a coupon
+	app.post('/coupon/search', users.searchCoupon)
 
-		app.post("/getKey", (req, res) => {
-			res.send('BHzTemBBukw8OY7qXGqtXPPIGSr-TyACw3rNEcmsBTx2gEJQ2YECWff5oBMb9fRss7vhn3a6ATNxucmb52zHM2U')
-		})
+	app.post("/getKey", (req, res) => {
+		res.send('BHzTemBBukw8OY7qXGqtXPPIGSr-TyACw3rNEcmsBTx2gEJQ2YECWff5oBMb9fRss7vhn3a6ATNxucmb52zHM2U')
+	})
 
-		//imported for dealing with submitted pictures
-		var formidable = require('formidable');
+	//imported for dealing with submitted pictures
+	var formidable = require('formidable');
 
-		//
-		app.post("/check_time", (req, res) => {
-			console.log("time should be in here++++++++++++++++++++++++++++++")
-			let client_timestamp = Date.parse(req.body.d)
-			let server_timestamp = Date.now();
+	//
+	app.post("/check_time", (req, res) => {
+		console.log("time should be in here++++++++++++++++++++++++++++++")
+		let client_timestamp = Date.parse(req.body.d)
+		let server_timestamp = Date.now();
 
-			//if the client time exceeds 5am
-			//and the client has not done all the tasks
-			//go and find the stuff in the db.
-			//in the result array, look for those with "true" -> render differently
-			//                     look for those with "false"-> render normally
+		//if the client time exceeds 5am
+		//and the client has not done all the tasks
+		//go and find the stuff in the db.
+		//in the result array, look for those with "true" -> render differently
+		//                     look for those with "false"-> render normally
 
-			if (client_timestamp > server_timestamp + 3600 * 1000 * 12 || client_timestamp < server_timestamp - 3600 * 1000 * 12) {
-				console.log("the user is trying to cheat!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!")
-			}
-			else {
-				console.log("the user is finishing all the tasks")
-			}
-		})
-
-
-
-	
-		
-	
+		if (client_timestamp > server_timestamp + 3600 * 1000 * 12 || client_timestamp < server_timestamp - 3600 * 1000 * 12) {
+			console.log("the user is trying to cheat!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!")
+		}
+		else {
+			console.log("the user is finishing all the tasks")
+		}
+	})
 
 
-		//BY VISITING "/coupon/delete" THE ADMIN CAN DELETE A COUPON BY ITS ID(INVOKED UPON CLICKING ON THE BTN)
-		app.post("/coupon/delete", (req, res) => {
-			ids_to_delete = req.body["checked[]"]
-			ids = []
-			for (var each in ids_to_delete) {
-
-				ids.push(parseInt(ids_to_delete[each]))
-			}
-			console.log(ids)
-			MongoClient.connect(dbConfig.url, function (err, db) {
-				if (err) throw err;
-				var dbo = db.db("test");
-
-				dbo.collection("coupons_available").remove(
-					{
-						id: { $in: ids }
-					}
-
-				)
-			});
 
 
-		})
+
+
+
+
+	//BY VISITING "/coupon/delete" THE ADMIN CAN DELETE A COUPON BY ITS ID(INVOKED UPON CLICKING ON THE BTN)
+	app.post("/coupon/delete", (req, res) => {
+		ids_to_delete = req.body["checked[]"]
+		ids = []
+		for (var each in ids_to_delete) {
+
+			ids.push(parseInt(ids_to_delete[each]))
+		}
+		console.log(ids)
+		MongoClient.connect(dbConfig.url, function (err, db) {
+			if (err) throw err;
+			var dbo = db.db("test");
+
+			dbo.collection("coupons_available").remove(
+				{
+					id: { $in: ids }
+				}
+
+			)
+		});
+
+
+	})
 
 
 
@@ -1001,7 +1001,7 @@ module.exports = function (app) {
 				state = result[0].daily_task_rec[result[0].daily_task_rec.length - 1].state;
 
 
-				if(state == -1){
+				if (state == -1) {
 					MongoClient.connect(dbConfig.url, function (err, db) {
 						console.log()
 						if (err) throw err;
@@ -1023,7 +1023,7 @@ module.exports = function (app) {
 				}
 				//if the state property is not -1 but also less than 3, which indicates that user is 
 				//still in the "daily task" user flow.
-				else if ( state >=0 &&state < 3) {
+				else if (state >= 0 && state < 3) {
 					console.log("++++++++++++++archived++++++++++++++++++")
 					console.log(archived)
 					// console.log(result[0].daily_task_rec[result[0].daily_task_rec.length - 1].daily_task_archived)
@@ -1159,8 +1159,61 @@ module.exports = function (app) {
 	/////////////////////////////////////////////////////////////////////////////////////////////////////
 	//	USING REQUEST MODULE TO DOWNLOAD THE COVID DATA FROM BCCDC
 	/////////////////////////////////////////////////////////////////////////////////////////////////////
+
+
+	//Scheduled web-push notification:
+	//This Scheduled web-push notification block of code was adapted from code found here:
+	//Source:https://learn.bcit.ca/d2l/le/content/620723/viewContent/4590304/View
+	/*Content:
+	  cron.scheduleJob('15 ' + result[0].remind_time.minute+' '+result[0].remind_time.hour+' * * *', function () {
+	
+	//             push.setVapidDetails('futurecudrves:test@judaozhong.com', vapidKeys.publicKey, vapidKeys.privateKey)
+	
+	//             push.sendNotification(JSON.parse(sub), 'test message')
+	
+	//             console.log('This runs at the 45th second of every minute.');
+	//         });
+	//         // push.setVapidDetails('futurecudrves:test@judaozhong.com', vapidKeys.publicKey, vapidKeys.privateKey)
+	
+	//         // push.sendNotification(JSON.parse(sub), 'test message')
+	//     })
+	
+	
+	*/
+
+
 	const request = require('request')
 	const cron = require('node-schedule');
+
+
+
+
+
+	//Download files using http request:
+	//This block of code can be found in https://flaviocopes.com/node-download-image/
+	/*Content
+				//  // Convert a csv file with csvtojson
+				console.log(csvFilePath)
+				csv().fromFile(csvFilePath)
+					.then(function (jsonArrayObj) { //when parse finished, result will be emitted here.
+						try {
+							console.log("about to insert");
+							MongoClient.connect(dbConfig.url, function (err, db) {
+								if (err) throw err;
+								var dbo = db.db("test");
+								dbo.collection("covid_data").insertMany(
+									jsonArrayObj
+								)
+							})
+						} catch (e) {
+							console.log(e);
+						}
+					})
+			}
+		)
+
+	
+	*/
 
 	async function updateLatestData() {
 		const download = (url, path, callback) => {
@@ -1188,7 +1241,7 @@ module.exports = function (app) {
 
 	//每小时的第1分钟的第一秒，重新下载BCCDC的csv文件，然后把库给删了，再重新导入一次
 	//UPDATES THE CSV FROM BCCDC ONCE AN HOUR, AT THE FIRST SECOND OF THE FIRST MINUTE
-	cron.scheduleJob('1 1 * * * *', function () {
+	cron.scheduleJob('1 17 * * * *', function () {
 		updateLatestData().then(() => {
 			try {
 				console.log("DeleteFormerData");
@@ -1323,7 +1376,7 @@ module.exports = function (app) {
 				dbo.collection("covid_data").aggregate(
 					[{ $unwind: "$HA" }, { $sortByCount: "$HA" }]
 				).sort({ _id: 1 }).toArray(function (err, infected) {
-
+					console.log("infected people count in line 1379")
 					console.log(infected)
 					res.send(infected)
 				})
@@ -1342,8 +1395,8 @@ module.exports = function (app) {
 
 	//THE CHATBOX IS THE SOCKEIT.IO CHAT APP
 	app.get("/chatbox", (req, res) => {
-		res.render(path + "chatbox.ejs",{
-			navbar:navbar_top_ejs
+		res.render(path + "chatbox.ejs", {
+			navbar: navbar_top_ejs
 		})
 	})
 
@@ -1377,63 +1430,6 @@ module.exports = function (app) {
 	app.route('/user_profile/setProfile').post(users.setProfile);
 
 
-
-
-
-		//The ro//=====================REGISTER PAGE=================================================================================
-	//The route to register
-	// app.route('/register')
-	// 	.get(sessionChecker, (req, res) => {
-	// 		res.sendFile(staticPath + "signup.html");
-	// 	})
-	// 	.post((req, res) => {
-	// 		//post to register
-	// 		users.register
-	// 			.then(user => {
-	// 				req.session.user = user.dataValues;
-	// 				console.log("req.session.user ???????? " + req.session.user)
-	// 				res.redirect('/');
-	// 			})
-	// 			.catch(error => {
-	// 				console.log(error)
-	// 				res.redirect('/register');
-	// 				res.redirect('/');
-	// 			});
-	// 	});
-
-	// //The route to login		
-	// app.route('/login')
-	// 	.get(sessionChecker, (req, res) => {
-	// 		res.render(path + 'login.ejs', { css: req.session.ui_choice });
-	// 	})
-
-	// // A ROUTE THE USER WILL VISIT WHEN CLICKING ON THE LOGOUT BUTTON
-	// // THE API INVOKES 
-	// app.get('/logout', (req, res) => {
-	// 	MongoClient.connect(dbConfig.url, function (err, db) {
-	// 		if (err) throw err;
-	// 		var dbo = db.db("test");
-	// 		dbo.collection("users").updateOne(
-	// 			//find the correct ObjectID
-	// 			{
-	// 				_id: ObjectId(req.session.user_sid),
-	// 				daily_task_rec: { $elemMatch: { "state": { $lte: 10 }, date: { $lte: new Date() } } },
-	// 			},
-	// 			{
-
-	// 				//set the state back to 0 for testing 
-	// 				$set: { "daily_task_rec.$.state": 0 }
-	// 			}
-	// 		)
-
-	// 		db.close()
-	// 		res.clearCookie('user_sid');
-	// 		req.session = null;
-	// 		res.redirect('/login');
-	// 	});
-	// })
-
-	
 
 	//VISITS THE 'MY RECORD' PAGE WHERE CHARTS AND GRAPHS ARE PRESENTED
 	app.get("/my_record", (req, res) => {
@@ -1477,6 +1473,7 @@ module.exports = function (app) {
 	//the link to post and search for a coupon
 	app.post('/coupon/search', users.searchCoupon)
 
+	//get api key and send to the front end
 	app.post("/getKey", (req, res) => {
 		res.send('BHzTemBBukw8OY7qXGqtXPPIGSr-TyACw3rNEcmsBTx2gEJQ2YECWff5oBMb9fRss7vhn3a6ATNxucmb52zHM2U')
 	})
@@ -1505,6 +1502,19 @@ module.exports = function (app) {
 	})
 
 	//THIS UPLOADS THE AVATAR TO THE SERVER.
+	//Source: https://stackoverflow.com/questions/21194934/how-to-create-a-directory-if-it-doesnt-exist-using-node-js
+	/*content:
+			//IF THE USER'S AVATAR FOLDER IS NOT THERE, IT CREATES A FOLDER FOR IT 
+				if (!fs.existsSync(dir)) {
+					fs.mkdirSync(dir);
+				}
+				//IF THE AVATAR EXISTS, THEN 
+				if (fs.existsSync(dir)) {
+					fs.writeFileSync(dir + "/avatar.png", fs.readFileSync(files.upload.path));
+					res.redirect("/user_profile");
+				}
+	*/ 
+	
 	app.post('/upload_avatar', function (req, res) {
 		var form = new formidable.IncomingForm();
 		console.log("about to parse");
@@ -1566,30 +1576,30 @@ module.exports = function (app) {
 				res.render(path + "admin_coupon.ejs", { todolist: render });
 				console.log("RENDERED===================================");
 			});
-			
+
 		});
 	});
 
-		//posts the user password to check if the person is an admin
-		app.post('api/users/admin', (req, res) => {
-			users.verifyAdmin
-		});
+	//posts the user password to check if the person is an admin
+	app.post('api/users/admin', (req, res) => {
+		users.verifyAdmin
+	});
 
-		//add one coupon to the db
-		app.post('/coupon/add', (req, res) => {
+	//add one coupon to the db
+	app.post('/coupon/add', (req, res) => {
 
-			console.log(req.body)
+		console.log(req.body)
 
-		});
-	
-
+	});
 
 
-	
 
 
-	
-	
+
+
+
+
+
 
 
 	//ANY OTHER ROUTE WILL RESULT IN A 404 PAGE.

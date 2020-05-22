@@ -1,3 +1,7 @@
+//This class is modeled after the online tutorial source:
+//source:
+//https://github.com/academind/node-restful-api-tutorial/tree/10-auth-signup
+//Content: findAll(), register(), verify()
 var MongoClient = require('mongodb').MongoClient;
 //User is a mongoDB schema, which defines how a data object should look like
 const User = require('../models/user.model.js');

@@ -21,17 +21,20 @@ var ObjectId = require('mongodb').ObjectID;
 //step 1:get VapidIDkeys:
 
 //push.generateVAPIDKeys() IS THE FUNCTION TO GET A VAPIDKey FROM THE MODULE
-
+//
 ///////////////////////////////////////////////////////////////////////////////
+
+
 
 
 //VAPIDKeys IS PUT OUTSIDE SINCE WE WANT IT TO BE A GLOBAL VARIABLE
 //IT SHOULD BE ABLE TO BE ACCESSED BY THE WHOLE REQUEST FROM THE SESSION
 let vapidKeys
 
+
+
 //NOW WE ARE GOING TO EXPORT THIS subscribe(req,res) FUNCTION FOR FURTHER USAGE
 //THIS FUNCTION READS IN A REQUEST AND GIVES A CALLBACK OF res.
-//
 exports.subscribe = (req, res) => {
     //AS IN STEP 1(LINE 21), WE NEED A VAPIDKey TO DO THE WEBPUSH
     vapidKeys = push.generateVAPIDKeys();
