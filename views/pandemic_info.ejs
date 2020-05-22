@@ -1,0 +1,75 @@
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <!-- allow media queries -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pandemic Data</title>.
+    <!-- styles -->
+    <link rel="stylesheet" type="text/css" href="/static/css/navbar.css">
+    <link rel="stylesheet" type="text/css" href="/static/css/pandemic_info.css">
+</head>
+
+<body>
+    <!-- jquery -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.3/Chart.bundle.min.js"></script>
+    <!-- nav bar -->
+    <div id="navbar" class='regular'>
+
+        
+        <%-navbar%>
+
+
+    </div>
+    <div id="container">
+        <h1 id="title">
+            Pandemic Info
+        </h1>
+        <div class="graph" id="line_graph">
+            <canvas id="line-chart" width="40" height="50"></canvas>
+        </div>
+
+
+        <div class="graph" id="bar_graph">
+            <canvas id="bar-chart" width="40" height="50"></canvas>
+        </div>
+
+        <!-- buttons for pandemic trend and distribution -->
+        <div id="buttons">
+            <button id="line_graph_button">See Historical Pandemic Trend</button>
+            <button id="bar_graph_button">See Pandemic Distribution </button>
+        </div>
+
+
+        <script>
+          
+        </script>
+
+
+        <!-- Maps -->
+        <script src="https://www.amcharts.com/lib/4/core.js"></script>
+        <script src="https://www.amcharts.com/lib/4/maps.js"></script>
+        <!-- <script src="/static/js/jsonformatter.js"></script> -->
+
+        <!-- map -->
+        <div id="chart_container">
+            <h2>See Distribution</h2>
+            <div id="chartdiv"></div>
+            <p id="info"> </p>
+        </div>
+    </div>
+    <!-- footer -->
+    <footer id="footer">Made by FutureCurves.</footer>
+
+    <script src="/static/js/pandemic_info.js">    </script>
+
+    <!-- share on social media -->
+    <script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-5ec2cbf0773973c5"></script>
+
+
+
+
+</body>
+
+</html>

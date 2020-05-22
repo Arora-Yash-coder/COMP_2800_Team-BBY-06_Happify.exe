@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+  <!-- allow media queries -->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>User Profile</title>
+  <!-- styles -->
+  <link rel="stylesheet" type="text/css" href="/static/css/user_profile<%=css%>">
+  <link rel="stylesheet" type="text/css" href="/static/css/navbar<%=css%>">
+
+</head>
+
+<body>
+  <!-- nav bar -->
+  <header id="head" class='regular'>
+    <%- navbar %></header>
+  <div id="wrapper">
+    <h1>User Profile</h1>
+
+    <!-- Source of the image: google -->
+    <img id="avatar" class="avatar" src="/img/avatar.png">
+    <!-- 2 modes -->
+    <div id='ui_choice'>
+      <span>Color Scheme: </span><br />
+      <button class="ui_choice" id='ui_choice_0'>Happy mode</button>
+      <button class="ui_choice" id='ui_choice_1'>Fire mode</button>
+    </div>
+    <!-- avatar -->
+    <form action="/upload_avatar" enctype="multipart/form-data" method="post">
+      <input type="file" class="avatar" id="upload" name="upload">
+      <input type="submit" id="submit" value="Upload file">
+
+    </form>
+
+    <!-- container for user info -->
+    <div id="container">
+      <form id="userForm" action="/api/users/register" method="post">
+        <div id="username">Username</div>
+        <input id="usernameinput" rows="1" placeholder='Username' name="username" ;>
+        <div id="password">Password
+
+        </div>
+        <input id="passwordinput" rows="1" type="password" placeholder='Password' name="password" min="6"
+          maxlength="16">
+        <div id="firstname">First Name
+
+        </div>
+        <input id="firstnameinput" rows="1" placeholder='Firstname' name="firstname">
+        <div id="lastname">Last Name
+
+        </div>
+        <input id="lastnameinput" rows="1" placeholder='Lastname' name="lastname">
+        <div id="email">Email
+
+        </div>
+        <input id="emailinput" rows="1" placeholder='Email' type="email" name="email">
+        <div id="phoneno">Phone Number
+
+        </div>
+        <input id="phonenoinput" rows="1" placeholder='Phone Number, starting with 1-' name="phoneno">
+        <br>
+      </form>
+    </div>
+    <!-- Save function -->
+    <button type="button" onclick="save()" id="save">Update Info</button>
+    <!-- Logout function -->
+    <button id="logout">Log out</button>
+    <br>
+    <!-- my coupons -->
+    <div class="card" id="mycoupons">
+
+      <h2>My Coupons</h2>
+    </div>
+
+    <!-- my records -->
+    <div class="card" id="myrecord" onclick="window.location.href='/my_record'">
+
+      <h2>My Record</h2>
+    </div>
+
+    
+    
+    <!-- Footer -->
+    <%- footer %>
+  </div>
+
+  <!-- jquery -->
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+
+  <!-- js files -->
+  <script src='/static/js/user_profile.js'></script>
+  <script src='/static/js/navbar_top.js'></script>
+  <!-- share on social media -->
+  <script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-5ec2cbf0773973c5"></script>
+</body>
+
+</html>

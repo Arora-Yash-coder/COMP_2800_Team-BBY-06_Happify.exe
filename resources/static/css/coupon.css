@@ -1,0 +1,404 @@
+/* CSS for coupon page */
+
+/* styles for body */
+body {
+    text-align: center;
+    margin: 0;
+    /* background-color: #99F7AB; */
+    background-color: rgb(188, 247, 199);
+    color: #53131E;
+    height: 100vh;
+}
+/* sticky nav bar */
+.sticky {
+    position: fixed;
+    top: 0;
+    width: 100%;
+}
+
+.confirm {
+    font-size: 20pt;
+    border-color: rosybrown;
+}
+.yes {
+    border-width: 2px;
+    color: white;
+    background-color: seagreen;
+}
+
+.no {
+    border-width: 2px;
+    color: white;
+    background-color: rebeccapurple;
+}
+.points {
+    font-size: 40pt;
+}
+
+.description {
+    font-size: 18pt;
+}
+
+/* media queries for different devices */
+@media only screen and (max-width: 369px) {
+    #content {
+        margin-top: 15%;
+    }
+
+    #greeting {
+        color: #EF629F;
+        font-size: 30pt;
+    }
+
+
+    #footer {
+        bottom: 0;
+        margin-top: 135px;
+        color: #53131E;
+        clear: both;
+        position: relative;
+    }
+}
+
+@media only screen and (min-width: 370px) {
+    #content {
+        margin-top: 15%;
+    }
+
+    #greeting {
+        color: #EF629F;
+        font-size: 30pt;
+    }
+
+
+
+    #footer {
+        bottom: 0;
+        margin-top: 150px;
+        color: #53131E;
+        clear: both;
+        position: relative;
+        /*        font-size: 13pt;*/
+    }
+}
+
+@media only screen and (min-width: 600px) {
+    #content {
+        margin-top: 10%;
+    }
+
+    h1 {
+        font-size: 30pt;
+    }
+
+    #inner {
+        font-size: 30pt;
+    }
+
+    #search {
+        font-size: 27pt;
+    }
+
+    #proceed {
+        font-size: 27pt;
+        margin-top: 10px;
+    }
+
+    #stats {
+        font-size: 30pt;
+    }
+
+    #welcome {
+        font-size: 40pt;
+    }
+
+    #greeting {
+        color: #EF629F;
+
+    }
+
+
+    #footer {
+        bottom: 0;
+        margin-top: 150px;
+        color: #53131E;
+        clear: both;
+        position: relative;
+        /*        font-size: 20pt;*/
+    }
+}
+
+@media only screen and (min-width: 1024px) {
+    #content {
+        margin-top: 10%;
+    }
+
+    h1 {
+        font-size: 30pt;
+    }
+
+    #inner {
+        font-size: 30pt;
+    }
+
+    #search {
+        font-size: 27pt;
+    }
+
+    #proceed {
+        font-size: 27pt;
+        margin-top: 10px;
+    }
+
+    #stats {
+        font-size: 30pt;
+    }
+
+    #welcome {
+        font-size: 40pt;
+    }
+
+    #greeting {
+        color: #EF629F;
+
+    }
+
+
+    #footer {
+        bottom: 0;
+        margin-top: 150px;
+        color: #53131E;
+        clear: both;
+        position: relative;
+        /*        font-size: 20pt;*/
+    }
+}
+
+@media only screen and (min-width: 1200px) {
+    #content {
+        margin-top: 10%;
+    }
+
+    h1 {
+        font-size: 30pt;
+    }
+
+    #inner {
+        font-size: 28pt;
+    }
+
+    #proceed {
+        font-size: 27pt;
+        margin-top: 10px;
+    }
+
+    #stats {
+        font-size: 30pt;
+    }
+
+    #welcome {
+        font-size: 40pt;
+    }
+
+    #greeting {
+        color: #EF629F;
+
+    }
+
+
+    #footer {
+        bottom: 0;
+        /*      margin-top: 50px;*/
+        color: #53131E;
+        clear: both;
+        position: relative;
+        font-size: 20pt;
+    }
+}
+
+
+
+
+/* User stats section */
+#stats {
+    /*    margin-left: 25px;*/
+    /*    margin-right: 25px;*/
+    margin-top: 10px;
+    margin-bottom: 10px;
+    /*    border-radius: 25px;*/
+    grid-row: 2 / span 1;
+    background-color: #7BDFF2;
+    display: grid;
+    grid-template-columns: 50% 50%;
+    color: #53131E;
+    display: grid;
+    grid-template-rows: 50% 50%;
+    grid-template-columns: 50% 50%;
+    border-style: groove;
+}
+
+#description1 {
+    grid-row: 1 / span 1;
+    grid-column: 1 / span 1;
+}
+
+#description2 {
+    grid-row: 2 / span 1;
+    grid-column: 1 / span 1;
+}
+
+#pointsofar {
+    grid-row: 1 / span 1;
+    grid-column: 2 / span 1;
+
+}
+
+#pointofday {
+    grid-row: 2 / span 1;
+    grid-column: 2 / span 1;
+}
+
+.top {
+    color: #53131E;
+    font-size: 13pt;
+    font-weight: bold;
+}
+
+
+.points {
+    color: #53131E;
+    margin-top: -10px;
+    font-weight: bold;
+    /*    font-size: 20pt;*/
+}
+
+.description {
+    margin-left: 25px;
+    margin-right: 25px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    border-radius: 25px;
+
+    grid-row: 1 / span 1;
+    display: grid;
+    grid-template-rows: 50% 50%;
+    color: #53131E;
+}
+
+.title {
+    padding: 15px;
+    margin-top: auto;
+    margin-bottom: auto;
+    border-radius: 25px 0 0 25px;
+
+
+}
+
+/* styles for cards */
+.coupons {
+    margin-left: 25px;
+    margin-right: 25px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    border-radius: 25px;
+    background-color: #D6F9DD;
+
+    display: block;
+    grid-template-rows: 50% 50%;
+    color: #53131E;
+    border: solid 2px rgba(83, 19, 30, 0.7);
+}
+
+/* Styles for buttons */
+button {
+    background-color: transparent;
+    border: #53131E solid 2.5px;
+    color: #53131E;
+    padding: 7px 26px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    font-weight: bold;
+
+}
+
+button:hover {
+    background-color: white;
+    border: #53131E solid 1.5px;
+    color: #53131E;
+    padding: 7px 26px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+
+}
+
+/* proceed and back buttons */
+#proceed {
+    margin-top: 10px;
+}
+
+#back {
+    float: left;
+}
+
+/* search */
+#search_function {
+    margin-top: 10px;
+    margin-bottom: 10px;
+
+}
+
+
+/* bootstrap progress bar */
+.progress {
+    display: -ms-flexbox;
+    display: flex;
+    height: 1rem;
+    overflow: hidden;
+    line-height: 0;
+    font-size: 0.75rem;
+    background-color: #e9ecef;
+    border-radius: 0.25rem;
+}
+
+.progress-bar {
+    display: -ms-flexbox;
+    display: flex;
+    -ms-flex-direction: column;
+    flex-direction: column;
+    -ms-flex-pack: center;
+    justify-content: center;
+    overflow: hidden;
+    color: #fff;
+    text-align: center;
+    white-space: nowrap;
+    background-color: #007bff;
+    transition: width 0.6s ease;
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .progress-bar {
+        transition: none;
+    }
+}
+
+.progress-bar-striped {
+    background-image: linear-gradient(45deg, rgba(255, 255, 255, 0.15) 25%, transparent 25%, transparent 50%, rgba(255, 255, 255, 0.15) 50%, rgba(255, 255, 255, 0.15) 75%, transparent 75%, transparent);
+    background-size: 1rem 1rem;
+}
+
+.progress-bar-animated {
+    width: 75%;
+    -webkit-animation: progress-bar-stripes 1s linear infinite;
+    animation: progress-bar-stripes 1s linear infinite;
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .progress-bar-animated {
+        -webkit-animation: none;
+        animation: none;
+    }
+}

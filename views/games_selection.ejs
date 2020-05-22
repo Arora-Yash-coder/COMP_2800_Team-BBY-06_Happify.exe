@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <!-- Media queries -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Styles -->
+    <link rel="stylesheet" type="text/css" href="/static/css/game_selection<%=css%>.css">
+    <link rel="stylesheet" type="text/css" href="/static/css/navbar<%=css%>.css">
+    <title>Mini Games!</title>
+
+</head>
+
+<body>
+    <!-- Nav bar -->
+    <div id="navbar">
+        <%- navbar%></div>
+    <div id='container'>
+        <div id="header">
+
+            <div id="greeting">
+
+                <p class='top' id="welcome">Feel like playing a game? Choose a game to play</p>
+            </div>
+
+        </div>
+        <div id='inner'>
+            <!-- Some stats of the user -->
+            <div id="stats">
+                <h2>All points you earned: </h2>
+                <h2 id='pointsofar'></h2>
+                <h2>You earned today: </h2>
+                <h2 id='pointofday'></h2>
+
+            </div>
+
+            <!-- bootstrap progress bar -->
+            <%-progress_bar%>
+
+            <!-- Proceed button -->
+            <%- proceed_button  %>
+
+
+            <div id='inner'>
+                <!-- Chess game -->
+                <div class="minigame" id="games1" onclick="window.location.href ='/minigames/chess' ">
+
+
+                    <div id='games1_1'>
+                        <h1 class="first">Chess Game</h1>
+                    </div>
+                    <div id='games1_2'>
+                        <div id='image'>
+                            <img src="static/img/chess2.png">
+                        </div>
+                    </div>
+
+                </div>
+
+                <!-- Tic tac toe game -->
+                <div class="minigame" id="games2" onclick="window.location.href = '/games/ttt'">
+                    <div id="games2_1">
+                        <h1 class="first">Tic Tac Toe</h1>
+                    </div>
+                    <div id="games2_2">
+                        <div id='image'>
+                            <img src="static/img/tic1.png">
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Snake game -->
+                <div class="minigame" id="games3" onclick="window.location.href = '/static/minigames/snake.html'">
+                    <div id="games3_1">
+                        <h1 class="first">Snake Eater</h1>
+                    </div>
+                    <div id="games3_2">
+                        <div id='image'>
+                            <img src="static/img/snake2.png">
+                        </div>
+                    </div>
+
+                </div>
+
+                <!-- Zombie shooter game -->
+                <div class="minigame" id="games4" onclick="window.location.href = '/static/minigames/zombie.html';">
+
+                    <div id="games4_1">
+                        <h1 class="first">Shooter Game</h1>
+                    </div>
+                    <div id="games4_2">
+                        <div id='image'>
+
+                            <img src="static/img/game1.png">
+                        </div>
+                    </div>
+
+                </div>
+
+
+                <!-- Multiplayer game -->
+                <div class="minigame" id="games5" onclick="window.location.href = '/static/minigames/multiplayer';">
+
+                    <div id="games5_1">
+                        <h1 class="first">Multiplayer Game</h1>
+                    </div>
+                    <div id="games5_2">
+                        <div id='image'>
+
+                            <img src="static/img/multiplayer1.png">
+                        </div>
+                    </div>
+
+                </div>
+
+
+
+
+
+            </div>
+
+        </div>
+    </div>
+    <!-- Footer -->
+    <%- footer %>
+
+
+    <!-- jquery -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+    <!-- JS files -->
+    <script src='/static/js/games_selection.js'></script>
+    <script src='/static/js/navbar_top.js'></script>
+
+    <!-- Share on social media -->
+    <script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-5ec2cbf0773973c5"></script>
+</body>
+
+</html>
