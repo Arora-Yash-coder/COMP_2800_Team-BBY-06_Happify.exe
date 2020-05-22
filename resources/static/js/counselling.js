@@ -45,4 +45,8 @@
 
 
 
+$(".collapse ~ * ").hide()
+        $(".collapse").click((e) => {
+            $("#" + e.target.id + " ~ ol").toggle()
+        })
            

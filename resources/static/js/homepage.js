@@ -42,3 +42,22 @@ $("#covid_intel").click(() => {
 })
 
 // $("#info_div").css("background-color","burlywood")
+
+$.ajax({
+            type: "get",
+            url: "/COVID_NEWS",
+
+            dataType: "json",
+            success: function (response) {
+
+                let title = response[0].title
+                let link = response[0].url
+                $("#latest_news_title").html(title)
+
+
+                $("#latest_news_container").mouseup(() => {
+                    window.location.href = link
+                })
+                console.log(response[0])
+            }
+        });
