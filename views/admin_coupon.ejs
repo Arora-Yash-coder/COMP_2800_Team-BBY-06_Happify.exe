@@ -3,73 +3,72 @@
 
 <head>
     <meta charset="UTF-8">
+    <!-- Allow media queries -->
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Coupon Management</title>
+    <title>Coupon Management Workstation</title>
+    <!-- Styles -->
     <link rel="stylesheet" href="/static/css/admin_pages.css">
 </head>
 
 <body>
-
-    <!-- Create your form here -->
-    <fieldset class="todo-list">
-        <legend class="todo-list__title">Items Goes Here</legend>
-
+    <div id="container">
         <form action="/coupon/add" method="post">
-            <div id="items_to_submit">
-                <div>
-                    <label class="todo-list__title" for="id_1">id</label>
-                    <input name="id" class="to_do_items" id="id_1" type="text">
-                    <label class="todo-list__title" for="">title</label>
-                    <input name="title" class="to_do_items" id="title_1" type="text">
-                    <label class="todo-list__title" for="">description</label>
-                    <input name="description" class="to_do_items" id="description_1" type="text">
-                    <label class="todo-list__title" for="">points</label>
-                    <input name="points" class="to_do_items" id="points_1" type="text"><br />
-                </div>
-            </div>
-            <button type="submit">Submit</button>
-            <button id="add_item">+</button>
-            <!-- <button id="submit">test</button> -->
+
+            <button type="submit" id='back'>Back</button>
+
         </form>
-        
-
-
-
+        <h1 id='title'>
+            Coupon Management
+        </h1>
         <fieldset class="todo-list">
-            <legend class="todo-list__title">Existing Coupons</legend>
 
-            <%  if(todolist) { %>
-            <% for( var i=0; i < todolist.length; i++) { %>
-            <% console.log(todolist) %>
-            <label class="todo-list__label records">
-                <input type="checkbox" class="checkboxes" id="<%=todolist[i].id%> " />
-                <i class="check"></i>
+            <form action="/coupon/add" method="post">
+                <div id="items_to_submit">
+                    <div>
+                        <label class="todo-list__title" for="">Title</label>
+                        <input name="title" class="to_do_items" id="title_1" type="text">
+                        <label class="todo-list__title" for="">Description</label>
+                        <input name="description" class="to_do_items" id="description_1" type="text">
+                        <label class="todo-list__title" for="">Points</label>
+                        <input name="points" class="to_do_items" id="points_1" type="text"><br />
+                    </div>
+                </div>
+                <br><br>
+                <button type="submit">Submit</button>
+                <button id="add_item">+</button>
+            </form>
 
-                <span><%= todolist[i].id %></span>
-                <span><%= todolist[i].title %></span>
-                <span><%= todolist[i].description %></span>
-                <span><%= todolist[i].points%></span>
 
-            </label>
-            <% } %>
-            <% } %>
+<!-- Existing coupons -->
+            <fieldset class="todo-list">
+                <legend class="todo-list__title">Existing Coupons</legend>
 
-            <!-- <button id="update">update</button> -->
-            <button id="delete">delete</button>
+                <%  if(todolist) { %>
+                <% for( var i=0; i < todolist.length; i++) { %>
+                <% console.log(todolist) %>
+                <label class="todo-list__label records">
+                    <input type="checkbox" class="checkboxes" id="<%=todolist[i].id%> " />
+                    <i class="check"></i>
+
+                    <span><%= todolist[i].id %></span>
+                    <span><%= todolist[i].title %></span>
+                    <span><%= todolist[i].description %></span>
+                    <span><%= todolist[i].points%></span>
+
+                </label>
+                <% } %>
+                <% } %>
+
+                <button id="delete">Delete</button>
+
+            </fieldset>
+
 
         </fieldset>
 
+    </div>
 
-
-
-
-
-
-
-
-    </fieldset>
-
-
+    <!-- JQuery and JavaScript files -->
     <script src="https://ajax.aspnetcdn.com/ajax/jQuery/jquery-3.4.1.min.js"></script>
     <script src='/static/js/admin_coupon.js'></script>
 

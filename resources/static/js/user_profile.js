@@ -1,4 +1,29 @@
- //=====================upload==========avatar====================
+//Sticking nav bar
+// When the user scrolls the page, execute myFunction
+window.onscroll = function() {myFunction()};
+
+// Get the navbar
+var navbar = document.getElementById("head");
+
+// Get the offset position of the navbar
+var sticky = navbar.offsetTop;
+
+// Add the sticky class to the navbar when you reach its scroll position. Remove "sticky" when you leave the scroll position
+function myFunction() {
+  if (window.pageYOffset >= sticky) {
+      navbar.classList.remove("regular");
+    navbar.classList.add("sticky");
+  } else {
+    navbar.classList.remove("sticky");
+      navbar.classList.add("regular");
+  }
+}
+
+
+
+
+
+//=====================upload==========avatar====================
     $(document).ready(function () {
 
 
@@ -197,3 +222,24 @@
     $("#logout").click(() => {
       window.location.href = "/logout";
     })
+
+   
+    $(".ui_choice").click((e)=>{
+
+      console.log("e.target.id ")
+      console.log(e.target.id.substring(10))
+      let ui_choice = e.target.id.substring(10)
+      $.ajax({
+        type: "post",
+        url: "/user_profile",
+        data:{ui_choice},
+        dataType: "text",
+        success: function (response) {
+          alert("Your Choice Will Be Effective for Other Pages When You Log In Next Time!!")
+          window.location.reload()
+        }
+      });
+    })
+
+
+    

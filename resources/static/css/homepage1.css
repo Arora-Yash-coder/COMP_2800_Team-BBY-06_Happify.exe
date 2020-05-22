@@ -1,0 +1,593 @@
+/*CSS style of the homepage*/
+
+/* Some style for the body. */
+body {
+    text-align: center;
+    margin: 0;
+    background-color: #FFE548;
+    color: #A63013;
+}
+
+/* Styles for the sticky nav bar. */
+.sticky {
+    position: fixed;
+    top: 0;
+    width: 100%;
+}
+
+/* Media queries for different devices. */
+@media only screen and (max-width: 369px) {
+    /* latest news font size. */
+    #latest_news_container {
+        font-size: 12pt;
+    }
+    /* To avoid the nav bar. */
+    #container {
+        margin-top: 15%;
+    }
+
+    /* title font size */
+    h2 {
+        font-size: 20pt;
+    }
+
+    .top {
+        font-size: 20pt;
+    }
+
+    #header {
+        font-size: 20pt;
+    }
+
+    /* buttons styles. */
+    button {
+        background-color: transparent;
+        border: #A63013 solid 1.5px;
+        color: #A63013;
+        padding: 7px 26px;
+        text-align: center;
+        text-decoration: none;
+        display: inline-block;
+        font-size: 16px;
+        font-weight: bold;
+
+    }
+
+    button:hover {
+        background-color: white;
+        border: #A63013 solid 1.5px;
+        color: #A63013;
+        padding: 7px 26px;
+        text-align: center;
+        text-decoration: none;
+        display: inline-block;
+        font-size: 16px;
+
+    }
+
+
+
+    /* container size. */
+    #container {
+        height: 200vh;
+    }
+
+    /* Styles regarding footer. */
+    #footer {
+        bottom: 0;
+        margin-top: 350px;
+        color: #A63013;
+        clear: both;
+        position: relative;
+    }
+}
+
+@media only screen and (min-width: 370px) {
+    #container {
+        margin-top: 15%;
+    }
+
+    h2 {
+        font-size: 20pt;
+    }
+
+    .top {
+        font-size: 20pt;
+    }
+
+    #header {
+        font-size: 20pt;
+    }
+
+    button {
+        background-color: transparent;
+        border: #A63013 solid 1.5px;
+        color: #A63013;
+        padding: 7px 26px;
+        text-align: center;
+        text-decoration: none;
+        display: inline-block;
+        font-size: 16px;
+        font-weight: bold;
+
+    }
+
+    button:hover {
+        background-color: white;
+        border: #A63013 solid 1.5px;
+        color: #A63013;
+        padding: 7px 26px;
+        text-align: center;
+        text-decoration: none;
+        display: inline-block;
+        font-size: 16px;
+
+    }
+
+
+
+    #container {
+
+        height: 200vh;
+    }
+
+    #footer {
+        bottom: 0;
+        margin-top: 550px;
+        color: #A63013;
+        clear: both;
+        position: relative;
+        /*        font-size: 15pt;*/
+    }
+}
+
+@media only screen and (min-width: 600px) {
+    #container {
+        margin-top: 10%;
+    }
+
+    .card {
+        font-size: 25pt;
+
+    }
+
+    .card1 {
+        font-size: 25pt;
+
+    }
+
+    h2 {
+        font-size: 30pt;
+    }
+
+    .top {
+        font-size: 30pt;
+    }
+
+    #header {
+        font-size: 30pt;
+    }
+
+    #button_container {
+        margin-top: 20px;
+        text-align: center;
+    }
+
+    button {
+        background-color: transparent;
+        border: #A63013 solid 1.5px;
+        color: #A63013;
+        padding: 7px 26px;
+        text-align: center;
+        text-decoration: none;
+        display: inline-block;
+        font-size: 24px;
+        font-weight: bold;
+
+    }
+
+    button:hover {
+        background-color: white;
+        border: #A63013 solid 1.5px;
+        color: #A63013;
+        padding: 7px 26px;
+        text-align: center;
+        text-decoration: none;
+        display: inline-block;
+        font-size: 24px;
+
+    }
+
+
+    #container {
+
+        height: 160vh;
+    }
+
+
+    #footer {
+        bottom: 0;
+        margin-top: 650px;
+        color: #A63013;
+        clear: both;
+        position: relative;
+        /*        font-size: 20pt;*/
+    }
+}
+
+/* Media Query for 1024px to?????????????????????????? */
+@media only screen and (min-width: 1024px) and (max-width:1025px) {
+    #container {
+        margin-top: 10%;
+    }
+
+    h2 {
+        font-size: 30pt;
+    }
+
+    .top {
+        font-size: 30pt;
+    }
+
+    #header {
+        font-size: 30pt;
+    }
+
+    button {
+        background-color: transparent;
+        border: #A63013 solid 1.5px;
+        color: #A63013;
+        padding: 7px 26px;
+        text-align: center;
+        text-decoration: none;
+        display: inline-block;
+        font-size: 26px;
+        font-weight: bold;
+
+    }
+
+    button:hover {
+        background-color: white;
+        border: #A63013 solid 1.5px;
+        color: #A63013;
+        padding: 7px 26px;
+        text-align: center;
+        text-decoration: none;
+        display: inline-block;
+        font-size: 26px;
+
+    }
+
+
+    #container {
+
+        height: 130vh;
+    }
+
+    #footer {
+        bottom: 0;
+        margin-top: 850px;
+        color: #A63013;
+        clear: both;
+        position: relative;
+        /*        font-size: 20pt;*/
+    }
+}
+
+/* Media Query for wider than 1024px  */
+@media only screen and (min-width: 1200px) {
+
+    #container {
+        margin-top: 10%;
+    }
+
+    h2 {
+        font-size: 30pt;
+    }
+
+    .top {
+        font-size: 30pt;
+    }
+
+    #header {
+        font-size: 30pt;
+    }
+
+    button {
+        background-color: transparent;
+        border: #A63013 solid 1.5px;
+        color: #A63013;
+        padding: 7px 26px;
+        text-align: center;
+        text-decoration: none;
+        display: inline-block;
+        font-size: 26px;
+        font-weight: bold;
+
+    }
+
+    button:hover {
+        background-color: white;
+        border: #A63013 solid 1.5px;
+        color: #A63013;
+        padding: 7px 26px;
+        text-align: center;
+        text-decoration: none;
+        display: inline-block;
+        font-size: 26px;
+
+    }
+
+
+    #container {
+
+        height: 500vh;
+    }
+
+    #footer {
+        bottom: 0;
+        margin-top: 550px;
+        color: #A63013;
+        clear: both;
+        position: relative;
+        font-size: 20pt;
+    }
+}
+
+
+
+
+
+/* Styles for images. */
+img {
+    object-fit: contain;
+    max-width: 90%;
+    max-height: 95px;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+/* Styles for welcome box. */
+#welcome {
+    padding: 1px;
+    margin: 0;
+}
+
+
+
+.second {
+    color: #A63013;
+
+}
+
+.top {
+    color: #A63013;
+    /*    font-size: 20pt;*/
+    font-weight: bold;
+    margin-bottom: 10px;
+}
+
+.username {
+    color: #A63013;
+    margin-top: 5px;
+    font-weight: bold;
+}
+
+
+/* Exclude the greeting box. */
+#inner {
+    grid-row: 2 / span 1;
+
+}
+
+/* Stats box. */
+#stats {
+    margin-top: 10px;
+    margin-bottom: 10px;
+    grid-row: 2 / span 1;
+    background-color: #FFE8C2;
+    display: grid;
+    grid-template-columns: 50% 50%;
+    color: #A63013;
+
+}
+
+/* Styles for each card. */
+.card {
+    margin-left: 25px;
+    margin-right: 25px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    border-radius: 25px;
+    border: 2px solid rgba(83, 19, 30, 0.7);
+    grid-row: 2 / span 1;
+    background-color: #EEFCCE;
+    display: grid;
+    grid-template-columns: 50% 50%;
+
+
+}
+
+.card1 {
+    margin-top: auto;
+    margin-bottom: auto;
+    border-radius: 25px 0 0 25px;
+
+
+    grid-column: 1 / span 1;
+
+}
+
+.card2 {
+    margin-top: auto;
+    margin-bottom: auto;
+    border-radius: 0 25px 25px 0;
+
+
+    grid-column: 2 / span 1;
+
+}
+
+.card {
+    margin-left: 25px;
+    margin-right: 25px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    border-radius: 25px;
+    background-color: #EEFCCE;
+    grid-row: 3 / span 1;
+    display: grid;
+    grid-template-columns: 50% 50%;
+    border: 2px solid rgba(83, 19, 30, 0.7);
+}
+
+/* info style. */
+#info2 {
+    margin-top: 7%;
+}
+
+/* Styles for different cards. */
+#reminder {
+    margin-left: 25px;
+    margin-right: 25px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    border-radius: 25px;
+    background-color: #EEFCCE;
+    grid-row: 4 / span 1;
+    display: grid;
+    grid-template-columns: 50% 50%;
+    border: 2px solid rgba(83, 19, 30, 0.7);
+}
+
+#reminder1 {
+    margin-top: auto;
+    margin-bottom: auto;
+    border-radius: 25px 0 0 25px;
+    grid-column: 1 / span 1;
+
+}
+
+#reminder2 {
+    margin-top: auto;
+    margin-bottom: auto;
+    border-radius: 0 25px 25px 0;
+    grid-column: 2 / span 1;
+}
+
+#counselling {
+    margin-left: 25px;
+    margin-right: 25px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    border-radius: 25px;
+    background-color: #EEFCCE;
+    grid-row: 4 / span 1;
+    display: grid;
+    grid-template-columns: 50% 50%;
+    border: 2px solid rgba(83, 19, 30, 0.7);
+}
+
+#counselling1 {
+    margin-top: auto;
+    margin-bottom: auto;
+    border-radius: 25px 0 0 25px;
+    grid-column: 1 / span 1;
+}
+
+#counselling2 {
+    margin-top: auto;
+    margin-bottom: auto;
+    border-radius: 0 25px 25px 0;
+    grid-column: 2 / span 1;
+}
+
+#redeem {
+    margin-left: 25px;
+    margin-right: 25px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    border-radius: 25px;
+    background-color: #EEFCCE;
+    grid-row: 4 / span 1;
+    display: grid;
+    grid-template-columns: 50% 50%;
+    border: 2px solid rgba(83, 19, 30, 0.7);
+}
+
+#redeem1 {
+    margin-top: auto;
+    margin-bottom: auto;
+    border-radius: 25px 0 0 25px;
+    grid-column: 1 / span 1;
+}
+
+#redeem2 {
+    margin-top: auto;
+    margin-bottom: auto;
+    border-radius: 0 25px 25px 0;
+    grid-column: 2 / span 1;
+}
+
+#header {
+    grid-row: 1 / span 1;
+}
+
+/* Nav bar styles. */
+.container {
+    list-style-type: none;
+    margin: 0;
+
+    overflow: hidden;
+    background-color: #75DBCD;
+}
+
+.list {
+    float: left;
+}
+
+.list a {
+    display: block;
+    color: white;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+}
+
+.list a:hover {
+    background-color: rgb(65, 134, 125);
+}
+
+
+
+/* Styles regarding the latest news and updates. */
+#latest_news_container {
+    font-size: 15pt;
+    border: black;
+    border-radius: 15px;
+    margin: 10px;
+    border-style: dotted;
+}
+
+#info_div {
+    border-style: dashed;
+}
+
+#latest_news_url {
+    float: none;
+    color: blue;
+    text-decoration: underline;
+    text-align: center;
+}
+
+#info_span {
+    color: blue;
+    text-decoration: underline;
+    text-align: center;
+}
+
+#news_title {
+
+    color: black;
+}

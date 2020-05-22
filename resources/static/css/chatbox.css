@@ -1,0 +1,44 @@
+CSS for chatbox
+
+/* Styles for body */
+body {
+  padding: 0;
+  margin: 0;
+  display: flex;
+  justify-content: center;
+}
+
+/* Styles for message containers */
+#message-container {
+  width: 99%;
+  max-width: 1200px;
+}
+
+#message-container div {
+  background-color: rgb(25, 218, 192);
+  /* padding: 5px; */
+}
+
+#message-container div:nth-child(2n) {
+  background-color: #FFF;
+}
+
+/* Styles for send buttons */
+#send-container {
+  position: fixed;
+  padding-bottom: 30px;
+  bottom: 0;
+  background-color: white;
+  max-width: 1200px;
+  width: 95vw;
+  display: flex;
+  height: 100px;
+}
+
+#message-input {
+  flex-grow: 1;
+}
+
+#back_button{
+  position: sticky;
+}

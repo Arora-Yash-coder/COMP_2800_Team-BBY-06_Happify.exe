@@ -1,35 +1,17 @@
+/* CSS for about us */
+
+/* This styles the Easter Egg image. */
 #memeimg {
-<<<<<<< HEAD
-       width: 80%;
-=======
   width: 80%;
->>>>>>> judao_tiffany_backend
-  /* Start the shake animation and make the animation last for 0.5 seconds */
+  /* Start the shake animation and make the animation last for 1.5 seconds */
   animation: shake 1.5s;
 
-  /* When the animation is finished, start again */
-<<<<<<< HEAD
-/*  animation-iteration-count: infinite;*/
 }
 
-@keyframes shake {
-  0% { transform: translate(1px, 1px) rotate(0deg); }
-  10% { transform: translate(-1px, -2px) rotate(-1deg); }
-  20% { transform: translate(-3px, 0px) rotate(1deg); }
-  30% { transform: translate(3px, 2px) rotate(0deg); }
-  40% { transform: translate(1px, -1px) rotate(1deg); }
-  50% { transform: translate(-1px, 2px) rotate(-1deg); }
-  60% { transform: translate(-3px, 1px) rotate(0deg); }
-  70% { transform: translate(3px, 1px) rotate(-1deg); }
-  80% { transform: translate(-1px, -1px) rotate(1deg); }
-  90% { transform: translate(1px, 2px) rotate(0deg); }
-  100% { transform: translate(1px, -2px) rotate(-1deg); }
-}
-#meme2img {
-       width: 80%;
-=======
-  /*  animation-iteration-count: infinite;*/
-}
+/* This is a shaking animation. I found this on W3 school.
+
+@author: W3school.
+@see: https://www.w3schools.com/howto/howto_css_shake_image.asp */
 
 @keyframes shake {
   0% {
@@ -77,36 +59,13 @@
   }
 }
 
+/* Please refer to the above. */
 #meme2img {
   width: 80%;
->>>>>>> judao_tiffany_backend
-  /* Start the shake animation and make the animation last for 0.5 seconds */
   animation: shake 1.5s;
-
-  /* When the animation is finished, start again */
-<<<<<<< HEAD
-/*  animation-iteration-count: infinite;*/
 }
 
-@keyframes shake {
-  0% { transform: translate(1px, 1px) rotate(0deg); }
-  10% { transform: translate(-1px, -2px) rotate(-1deg); }
-  20% { transform: translate(-3px, 0px) rotate(1deg); }
-  30% { transform: translate(3px, 2px) rotate(0deg); }
-  40% { transform: translate(1px, -1px) rotate(1deg); }
-  50% { transform: translate(-1px, 2px) rotate(-1deg); }
-  60% { transform: translate(-3px, 1px) rotate(0deg); }
-  70% { transform: translate(3px, 1px) rotate(-1deg); }
-  80% { transform: translate(-1px, -1px) rotate(1deg); }
-  90% { transform: translate(1px, 2px) rotate(0deg); }
-  100% { transform: translate(1px, -2px) rotate(-1deg); }
-}
-#meme3img {
-       width: 80%;
-=======
-  /*  animation-iteration-count: infinite;*/
-}
-
+/* Please refer to the above. */
 @keyframes shake {
   0% {
     transform: translate(1px, 1px) rotate(0deg);
@@ -153,83 +112,13 @@
   }
 }
 
+/* Please refer to the above. */
 #meme3img {
   width: 80%;
->>>>>>> judao_tiffany_backend
-  /* Start the shake animation and make the animation last for 0.5 seconds */
   animation: shake 1.5s;
-
-  /* When the animation is finished, start again */
-<<<<<<< HEAD
-/*  animation-iteration-count: infinite;*/
 }
 
-@keyframes shake {
-  0% { transform: translate(1px, 1px) rotate(0deg); }
-  10% { transform: translate(-1px, -2px) rotate(-1deg); }
-  20% { transform: translate(-3px, 0px) rotate(1deg); }
-  30% { transform: translate(3px, 2px) rotate(0deg); }
-  40% { transform: translate(1px, -1px) rotate(1deg); }
-  50% { transform: translate(-1px, 2px) rotate(-1deg); }
-  60% { transform: translate(-3px, 1px) rotate(0deg); }
-  70% { transform: translate(3px, 1px) rotate(-1deg); }
-  80% { transform: translate(-1px, -1px) rotate(1deg); }
-  90% { transform: translate(1px, 2px) rotate(0deg); }
-  100% { transform: translate(1px, -2px) rotate(-1deg); }
-}
-
-
-
-body {
-    text-align: center;
-    background-image: url(../img/background.png);
-    background-size: cover;
-  }
-
-  h1 {
-    color: #3AB795;
-
-  }
-  .intro{
-      background-color: #B8D8BA;
-      border-radius: 25px;
-      margin-left: 25px;
-      margin-right: 25px;
-      padding-top: 10px;
-      padding-bottom: 10px;
-      margin-top: 10px;
-      margin-bottom: 10px;
-      color: #EF629F;
-    }
-    .one{
-        background-color: #FAC9B8;
-      border-radius: 25px;
-      margin-left: 25px;
-      margin-right: 25px;
-      padding-top: 10px;
-      padding-bottom: 10px;
-      margin-top: 10px;
-      margin-bottom: 10px;  
-      color: #3AB795;
-    }
-    .two{
-        background-color: #B8D8BA;
-      border-radius: 25px;
-      margin-left: 25px;
-      margin-right: 25px;
-      padding-top: 10px;
-      padding-bottom: 10px;
-      margin-top: 10px;
-      margin-bottom: 10px;
-      color: #EF629F;
-    }
-    img{
-        max-width: 80%;
-    }
-=======
-  /*  animation-iteration-count: infinite;*/
-}
-
+/* Please refer to the above. */
 @keyframes shake {
   0% {
     transform: translate(1px, 1px) rotate(0deg);
@@ -277,24 +166,20 @@ body {
 }
 
 
-
+/* Adds background color. */
 body {
   text-align: center;
-  /*    background-image: url(../img/background.png);*/
-  /*    background-size: cover;*/
-  background-color: #99F7AB;
+  /* background-color: #99F7AB; */
 }
 
+/* Styles the title. */
 h1 {
-  color: white;
-
+  color: #53131E;
 }
 
+/* Styles the intro. */
 .intro {
   background-color: #7BDFF2;
-  /*      border-radius: 25px;*/
-  /*      margin-left: 25px;*/
-  /*      margin-right: 25px;*/
   padding-top: 10px;
   padding-bottom: 10px;
   margin-top: 10px;
@@ -302,23 +187,20 @@ h1 {
   color: #53131E;
 }
 
+/* Styles the cards. */
 .one {
   background-color: #D6F9DD;
-  /*      border-radius: 25px;*/
-  /*      margin-left: 25px;*/
-  /*      margin-right: 25px;*/
   padding-top: 10px;
   padding-bottom: 10px;
   margin-top: 10px;
   margin-bottom: 10px;
   color: #53131E;
 }
+
+/* Styles the cards. */
 
 .two {
   background-color: #D6F9DD;
-  /*      border-radius: 25px;*/
-  /*      margin-left: 25px;*/
-  /*      margin-right: 25px;*/
   padding-top: 10px;
   padding-bottom: 10px;
   margin-top: 10px;
@@ -326,66 +208,180 @@ h1 {
   color: #53131E;
 }
 
+/* Styles the image. */
 img {
   max-width: 80%;
 }
 
-/*
->>>>>>> judao_tiffany_backend
-    button {
-    background-color: white;
-    border: #3AB795 solid 1px;
-    color: #3AB795;
-    padding: 7px 26px;
-    text-align: center;
-    text-decoration: none;
-    display: inline-block;
-    font-size: 16px;
-      margin-bottom: 20px;
+/* Media query for iPhone5. */
+@media only screen and (max-width: 330px) {
+  .intro {
+    font-size: 20pt;
   }
-<<<<<<< HEAD
-=======
-*/
-#footer {
-  margin-top: 10px;
-  color: #53131E;
+
+  .one {
+    font-size: 20pt;
+  }
+
+  .two {
+    font-size: 20pt;
+  }
+
+  h1 {
+    font-size: 40pt;
+  }
+
+  a {
+    font-size: 20pt;
+  }
+
+
+
+  #footer {
+    bottom: 0;
+    margin-top: 40px;
+    color: #53131E;
+    clear: both;
+    position: relative;
+
+  }
 }
 
-/*
->>>>>>> judao_tiffany_backend
-.square_btn {
-            display: inline-block;
-            padding: 0.3em 1em;
-            text-decoration: none;
-            color: #EF629F;
-            border: solid 2px #EF629F;
-            border-radius: 3px;
-            transition: .4s;
-        }
+/* Media query for Samsung. */
+@media only screen and (max-width: 360px) {
+  #footer {
+    text-align: center;
+    bottom: 0;
+    margin-top: 50px;
+    color: #53131E;
+    clear: both;
+    position: relative;
 
-        .square_btn:hover {
-            background: #EF629F;
-            color: white;
-        }
-<<<<<<< HEAD
+  }
+}
 
-        .square_btn_second {
-            display: inline-block;
-            padding: 0.3em 1em;
-            text-decoration: none;
-            color: #3AB795;
-            border: solid 2px #3AB795;
-            border-radius: 3px;
-            transition: .4s;
-        }
+/* Media query for other mobile phones. */
+@media only screen and (min-width: 361px) {
+  .intro {
+    font-size: 20pt;
+  }
 
-        .square_btn_second:hover {
-            background: #EF629F;
-            color: white;
-        }
-=======
+  .one {
+    font-size: 20pt;
+  }
+
+  .two {
+    font-size: 20pt;
+  }
+
+  h1 {
+    font-size: 40pt;
+  }
+
+  a {
+    font-size: 20pt;
+  }
+
+
+  #footer {
+    bottom: 0;
+    margin-top: 52px;
+    color: #53131E;
+    clear: both;
+    position: relative;
+
+  }
+}
+
+/* Media query for other mobile tablets. */
+@media only screen and (min-width: 600px) {
+  .intro {
+    font-size: 25pt;
+  }
+
+  .one {
+    font-size: 25pt;
+  }
+
+  .two {
+    font-size: 25pt;
+  }
+
+  h1 {
+    font-size: 50pt;
+  }
+
+  a {
+    font-size: 25pt;
+  }
+
+
+  #footer {
+    bottom: 0;
+    margin-top: 67px;
+    color: #53131E;
+    clear: both;
+    position: relative;
+
+  }
+}
+
+/* Media query for iPad Pro. */
+@media only screen and (min-width: 1024px) {
+  .intro {
+    font-size: 25pt;
+  }
+
+  .one {
+    font-size: 25pt;
+  }
+
+  .two {
+    font-size: 25pt;
+  }
+
+  h1 {
+    font-size: 50pt;
+  }
+
+  a {
+    font-size: 25pt;
+  }
+
+  #footer {
+    bottom: 0;
+    margin-top: 50px;
+    color: #53131E;
+    clear: both;
+    position: relative;
+
+  }
+}
+
+/* Media query for web pages. */
+@media only screen and (min-width: 1200px) {
+  p {
+    font-size: 20pt;
+  }
+
+  #footer {
+    bottom: 0;
+    margin-top: 50px;
+    color: #53131E;
+    clear: both;
+    position: relative;
+    font-size: 20pt;
+  }
+}
+
+
+
+/* Styles for buttons.
+I got the inspiration from a personal website.
+
+@author: Frederico Dossena
+@see: https://fdossena.com/?p=html5cool/buttons/i.frag
 */
-
 .square_btn_second {
   display: inline-block;
   padding: 0.3em 1em;
@@ -398,6 +394,4 @@ img {
 
 .square_btn_second:hover {
   background: white;
-  color: #753e48;
 }
->>>>>>> judao_tiffany_backend

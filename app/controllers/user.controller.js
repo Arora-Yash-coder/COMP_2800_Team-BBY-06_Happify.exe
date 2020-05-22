@@ -1,3 +1,8 @@
+//User start
+//This class is modeled after the online tutorial source:
+//source:
+//https://github.com/academind/node-restful-api-tutorial/tree/10-auth-signup
+//Content: findAll(), register(), verify()
 var MongoClient = require('mongodb').MongoClient;
 //User is a mongoDB schema, which defines how a data object should look like
 const User = require('../models/user.model.js');
@@ -6,6 +11,15 @@ var bodyParser = require('body-parser');
 const dbConfig = require('../config/mongodb.config.js');
 // save is a function that saves the stringified data into the mongo Obj
 // Fetch all Users
+var path = __basedir + '/views/';
+var navbar_top_ejs = fs.readFileSync(path + "components/navbar_top.ejs", 'utf-8');
+
+var footer = fs.readFileSync(path + "components/footer.ejs", 'utf-8');
+var progress = fs.readFileSync(path + "components/progress_bar.ejs", "utf-8")
+
+
+//THIS IS A FUNCTION FOR TESTING THE FUNCTIONALITIES OF THE MONGOOSE DRIVER
+//IT SHOWS ALL THE RECORDS WITH THE SCHEMA OF User.
 exports.findAll = (req, res) => {
     console.log("Fetch all Users");
 
@@ -19,12 +33,12 @@ exports.findAll = (req, res) => {
         });
 };
 
+//THIS IS A FUNCTION INVOKED WHEN THE USER REGISTERS
 exports.register = (req, res) => {
     console.log(req.body);
     console.log('Post a User: ' + JSON.stringify(req.body));
 
-    //now create a User Object
-    //note that the "req.body" prefix 
+    //THE REGISTER AJAX BODY WILL BE USED TO CREATE A USER
     const user = new User({
         username: req.body.username,
         password: req.body.password,
@@ -33,37 +47,17 @@ exports.register = (req, res) => {
         firstname: req.body.firstname,
         lastname: req.body.lastname
     });
-
-
-    // Save a Customer in the MongoDB
-    // user.save()
-    //     .then(data => {
-    //         res.send(data);
-    //     }).catch(err => {
-    //         res.status(500).send({
-    //             message: err.message
-    //         });
-    //     });
-
+    //POPULATES THE NEWLY CREATED OBJECT SHOWN ABOBE, INTO THE DATABASE.
     User.create(user);
 
     res.redirect('/login');
 };
 
+
+//THIS IS A FUNCTION TO PARSE A STRING INTO A MONGO OBJECTID
+//THE MONGODB OBJECT ID(_id) IS UNIQUE FOR EACH OF THE DATABASE OBJECT 
 var ObjectId = require('mongodb').ObjectID;
 exports.verify = (req, res) => {
-    // MongoClient.connect(dbConfig.url, function (err, db) {
-    //     console.log("n=================================")
-    //     console.log()
-    //     if (err) throw err;
-    //     var dbo = db.db("test");
-    //     dbo.collection("users").updateOne(
-    //         { daily_task_rec: { $elemMatch:  { _id: ObjectId(req.session.user_sid),date: { $lte: new Date() } } } },
-    //         { $set: { "daily_task_rec.$.user_id": req.session.user_id } },
-    //         { upsert: true }
-    //     )
-    //     res.end();
-    // })
 
     let usn = req.body.username;
     let successMsg = " login successful";
@@ -88,12 +82,23 @@ exports.verify = (req, res) => {
                 console.log(theUser.toObject().username + successMsg)
                 req.session.user_sid = theUser.toObject()._id;
                 req.cookies.user_sid = theUser._id;
+                console.log("theUser.UI_style=============== in 91")
+                console.log(theUser)
+                console.log(theUser.password)
+                console.log(theUser.UI_style)
+
+                req.session.UI_style = theUser.UI_style;
+                console.log("theUser.UI_style=============== in 95")
+                console.log(req.session.UI_style)
                 req.cookies.sub = "null";
+                req.cookies.UI_style = theUser.UI_style;
                 res.cookie({
                     "user_sid": theUser._id,
-                    "sub": "null"
+                    "sub": "null",
+                    "UI_style": theUser.UI_style
                 })
-                console.log("res.cookies======================" + res.cookies)
+                console.log("req.cookies======================")
+                console.log(req.cookies)
                 // console.log("req.session.user_sid" + req.session.user_sid);
                 // res.send(successMsg);
                 console.log("redirecting to homepage----------")
@@ -119,6 +124,12 @@ exports.verify = (req, res) => {
     })
 
 }
+
+//User END
+//This class is modeled after the online tutorial source:
+//source:
+//https://github.com/academind/node-restful-api-tutorial/tree/10-auth-signup
+//Content: findAll(), register(), verify()
 
 exports.push = (req, res) => {
     console.log('Post a User: ' + JSON.stringify(req.body));
@@ -250,10 +261,7 @@ exports.knowledgeLike = function (req, res) {
 
 
 
-<<<<<<< HEAD
-=======
 //get user profile
->>>>>>> judao_tiffany_backend
 exports.getProfile = function (req, res) {
     res.setHeader('Content-Type', 'application/json');
     MongoClient.connect(dbConfig.url, function (err, db) {
@@ -325,7 +333,6 @@ var navbar_top_ejs = fs.readFileSync(path + "components/navbar_top.ejs", 'utf-8'
 var footer = fs.readFileSync(path + "components/footer.ejs", 'utf-8');
 exports.getCoupon = (req, res) => {
     let state = null;
-<<<<<<< HEAD
     MongoClient.connect(dbConfig.url, function (err, db) {
         if (err) throw err;
         var dbo = db.db("test");
@@ -333,75 +340,58 @@ exports.getCoupon = (req, res) => {
         dbo.collection("users").find({
             _id: ObjectId(req.session.user_sid)
         }).toArray(function (err, result) {
-
-
             state = result[0].daily_task_rec[result[0].daily_task_rec.length - 1].state;
-        })
+            db.close()
+            UI_style = result[0].UI_style
 
-    })
+            MongoClient.connect(dbConfig.url, function (err, db) {
+                if (err) throw err;
 
+                var dbo = db.db("test");
 
+                dbo.collection("coupons_available").find().limit(5).toArray(function (err, result) {
+                    if (err) throw err;
+                    console.log(result)
 
+                    db.close();
 
-    // res.setHeader('Content-Type', 'application/json');
-=======
->>>>>>> judao_tiffany_backend
-    MongoClient.connect(dbConfig.url, function (err, db) {
-        if (err) throw err;
-        var dbo = db.db("test");
+                    if (state >= 7) {
+                        res.end(res.render(path + "coupon.ejs", {
+                            coupons: result,
+                            navbar: navbar_top_ejs,
+                            progress_bar: undefined,
+                            back_button: undefined,
+                            proceed_button: undefined,
+                            footer: footer,
+                            css: UI_style
 
-        dbo.collection("users").find({
-            _id: ObjectId(req.session.user_sid)
-        }).toArray(function (err, result) {
+                        }));
+                    } else {
+                        res.render(path + "coupon.ejs", {
+                            coupons: result,
+                            back_button: "<button id='back' onclick='window.location.href='/minigames';'>Back</button>",
+                            proceed_button: "<button id='proceed' onclick='window.location.href='/flow_final''>Proceed</button>",
+                            progress_bar: progress,
+                            navbar: navbar_top_ejs,
+                            footer: footer,
+                            css: UI_style
 
+                        });
+                    }
+                    //    res.send( { result });
 
-            state = result[0].daily_task_rec[result[0].daily_task_rec.length - 1].state;
-        })
-
-    })
-
-
-
-
-    // res.setHeader('Content-Type', 'application/json');
-    MongoClient.connect(dbConfig.url, function (err, db) {
-        if (err) throw err;
-        var dbo = db.db("test");
-
-        dbo.collection("coupons_available").find().limit(5).toArray(function (err, result) {
-            if (err) throw err;
-            console.log(result)
-
-            db.close();
-
-            if (state >= 7) {
-                res.end(res.render(path + "coupon.ejs", {
-                    coupons: result,
-                    navbar: navbar_top_ejs,
-                    back_button: undefined,
-                    proceed_button: undefined,
-                    footer: footer,
-
-                }));
-            } else {
-                res.render(path + "coupon.ejs", {
-                    coupons: result,
-                    back_button: "<button id='back' onclick='window.location.href='/minigames';'>Back</button>",
-                    proceed_button: "<button id='proceed' onclick='window.location.href='./flow_final.html''>Proceed</button>",
-                    navbar: undefined,
-                    footer: footer
                 });
-            }
-            //    res.send( { result });
+            });
+        })
 
-        });
-    });
+    })
+
 }
 let points_needed = undefined;
 let user_points;
 exports.redeemCoupon = (req, res) => {
     // res.setHeader('Content-Type', 'application/json');
-
+    let user_points = -1;
     let id = parseInt(req.body["id"])
     MongoClient.connect(dbConfig.url, function (err, db) {
 
@@ -418,59 +408,49 @@ exports.redeemCoupon = (req, res) => {
             console.log("The user needs so many points to redeem!!!!!!!!! ");
             console.log(result[0].points);
             points_needed = result[0].points;
-            db.close();
-
-        });
-
-
-        dbo.collection("users").find({
-            _id: ObjectId(req.session.user_sid)
-        }).toArray(function (err, result) {
-
-            if (result[0]) {
-                if (result[0].points >= 0) {
+            // db.close();
+            MongoClient.connect(dbConfig.url, function (err, db) {
+                console.log("416 req.session.user_sid")
+                console.log(req.session.user_sid)
+                dbo.collection("users").find({
+                    _id: ObjectId(req.session.user_sid)
+                }).toArray(function (err, result) {
+                    console.log("419 ------------------------- result")
+                    console.log(result)
                     user_points = result[0].points;
-                } else {
-                    console.log("go ahead")
-                }
-            } else {
-                console.log("user doesn't has any points")
-            }
+                    // db.close();
+                    MongoClient.connect(dbConfig.url, function (err, db) {
+                        if (req.session.user_sid && user_points && (user_points - points_needed) >= 0) {
+                            console.log("redeem successful")
 
-            console.log("req.session.result")
-            console.log(result)
+                            dbo.collection("users").updateOne(
+                                { _id: ObjectId(req.session.user_sid) },
+                                {
+                                    $inc: { points: -points_needed },
+                                    // "daily_task_rec.$.points_earned_today"
+                                    $push: { coupons_owned: id }
+                                },
+                                { new: true }
 
-            console.log("req.session.user_sid")
-            console.log(req.session.user_sid)
+                            )
+                            db.close();
 
-            if (err || !req.session.user_sid) {
-                //need to link to the front end
-                console.log("not working")
-                // res.end(res.send("you need to log in first!!!!"));
+                            res.send("redeem successful");
 
-                //   throw err;
-            }
+                        }
+                        else {
+                            res.send("you don't have enough points for redeeming!!!");
+                        }
+                    })
+                });
+
+            })
         });
 
-        if (req.session.user_sid && user_points && (user_points - points_needed) >= 0) {
-            console.log("redeem successful")
-            console.log(-points_needed);
-            console.log("id===================================");
-            console.log(id);
-            dbo.collection("users").updateOne(
-                { _id: ObjectId(req.session.user_sid) },
-                {
-                    $inc: { points: -points_needed },
-                    $push: { coupons_owned: id }
-                },
-                { new: true }
 
-            )
-            db.close();
 
-            res.send("redeem successful");
 
-        }
+
     });
 }
 
@@ -502,11 +482,7 @@ exports.viewOwnedCoupons = (req, res) => {
 
 }
 
-<<<<<<< HEAD
-
-=======
 //show the user's points
->>>>>>> judao_tiffany_backend
 exports.getUserPoints = (req, res) => {
     // res.setHeader('Content-Type', 'application/json');
 
@@ -534,16 +510,6 @@ exports.getUserPoints = (req, res) => {
         dbo.collection("users").find({
             _id: ObjectId(req.session.user_sid)
         }).toArray(function (err, result) {
-<<<<<<< HEAD
-
-            if (result[0]) {
-                if (result[0].points >= 0) {
-                    user_points = result[0].points;
-                } else {
-                    console.log("go ahead")
-                }
-            } else {
-=======
             //if the user exists
             if (result[0]) {
                 //if the user's points are 0 or positive
@@ -556,7 +522,6 @@ exports.getUserPoints = (req, res) => {
                 }
             } else {
                 //show user points failed
->>>>>>> judao_tiffany_backend
                 console.log("user doesn't has any points")
             }
 
@@ -597,12 +562,8 @@ exports.getUserPoints = (req, res) => {
     });
 }
 
-<<<<<<< HEAD
-
-=======
 //reads the user's input and search the items on the backend
 //returns the results in arrays
->>>>>>> judao_tiffany_backend
 exports.searchCoupon = (req, res) => {
     res.setHeader('Content-Type', 'application/json');
 
@@ -616,6 +577,7 @@ exports.searchCoupon = (req, res) => {
         // for (var i in req.body) {
         let search_input = req.body.serach_box
         console.log(search_input)
+        //construct a mongoDB search regex
         let regex_input = ".*" + search_input + ".*"
         let points_input = parseInt(req.body.serach_box)
         console.log(regex_input)
@@ -637,20 +599,21 @@ exports.searchCoupon = (req, res) => {
             db.close();
             // res.send(result)
             // res.redirect("/homepage")
-            res.render(path + "coupon.ejs", {
+            res.end(res.render(path + "coupon.ejs", {
                 coupons: result,
                 navbar: navbar_top_ejs,
-                footer: footer
-            })
+                footer: footer,
+                css: undefined,
+                progress_bar:progress,
+                proceed_button:"<button id='proceed' onclick='window.location.href='/flow_final''>Proceed</button>"
+
+            }))
+            db.close();
         });
     })
 }
 
-<<<<<<< HEAD
-
-=======
 //the admin wants to log in
->>>>>>> judao_tiffany_backend
 exports.verifyAdmin = (req, res) => {
     let usn = req.body.username;
     let successMsg = " login successful";
@@ -661,61 +624,10 @@ exports.verifyAdmin = (req, res) => {
 
 
 
-    var path = __basedir + '/views/';
-    var navbar_top_ejs = fs.readFileSync(path + "components/navbar_top.ejs", 'utf-8');
-
-    var footer = fs.readFileSync(path + "components/footer.ejs", 'utf-8');
-<<<<<<< HEAD
 
 
 
-
-    MongoClient.connect(dbConfig.url, function (err, db) {
-        if (err) throw err;
-        var dbo = db.db("admin");
-        dbo.collection("users").findOne({ "username": usn }).then(function (theUser) {
-            //if the user exists
-            if (theUser) {
-                //and the password corresponds to the username from the DB
-                if (theUser.toObject().password == req.body.password) {
-                    console.log(theUser.toObject().username + successMsg)
-                    req.session.user_sid = theUser.toObject()._id;
-                    req.cookies.user_sid = theUser._id;
-                    req.cookies.sub = "null";
-                    res.cookie({
-                        "user_sid": theUser._id,
-                        "sub": "null"
-                    })
-                    console.log("res.cookies======================" + res.cookies)
-                    // console.log("req.session.user_sid" + req.session.user_sid);
-                    // res.send(successMsg);
-                    console.log("redirecting to homepage----------")
-                    res.redirect("/homepage")
-                    // res.redirect("/homepage")
-                    res.end()
-                }
-                //but the password was not right
-                else {
-                    console.log(incorrectMsg)
-                    res.send(incorrectMsg);
-
-                }
-                //the user doesn't even exist
-            } else {
-                console.log(usrnameNotFoundMsg);
-=======
->>>>>>> judao_tiffany_backend
-
-                res.send(usrnameNotFoundMsg);
-
-            }
-
-
-<<<<<<< HEAD
-        })
-
-    })
-=======
+    //
     MongoClient.connect(dbConfig.url, function (err, db) {
         if (err) throw err;
         var dbo = db.db("admin");
@@ -764,12 +676,11 @@ exports.verifyAdmin = (req, res) => {
 exports.admin_coupon_management = (req, res) => {
     console.log("searching")
 
->>>>>>> judao_tiffany_backend
 }
 
 //the user gains according points
 exports.addPoints = (req, res, n) => {
-    res.setHeader('Content-Type', 'application/json');
+
     MongoClient.connect(dbConfig.url, function (err, db) {
         console.log("n=================================")
         console.log(n)
@@ -788,41 +699,21 @@ exports.addPoints = (req, res, n) => {
             { upsert: true }
         )
 
-        dbo.collection("users").updateOne(
-            {
-                // daily_task_rec: { $elemMatch: { "user_id": req.session.user_sid, date: { $lte: new Date() } } },
-                daily_task_rec: { $elemMatch: { "state": { $lte: 10 }, date: { $gte: new Date(new Date().setDate(new Date().getDate() - 2)) } } },
-            },
-            { $inc: { "daily_task_rec.$.points_earned_today": n } },
-            // { upsert: true }
-        )
+        try {
+            dbo.collection("users").updateOne(
+                {
+                    // daily_task_rec: { $elemMatch: { "user_id": req.session.user_sid, date: { $lte: new Date() } } },
+                    _id: ObjectId(req.session.user_sid),
+                    daily_task_rec: { $elemMatch: { "state": { $lte: 10 }, date: { $gte: new Date(new Date().setDate(new Date().getDate() - 1)) } } },
+                },
+                { $inc: { "daily_task_rec.$.points_earned_today": n } },
+                { upsert: true, new: true }
+            )
+        } catch (err) {
+            console.log(err)
+        }
 
-
-        //     dbo.collection("users").find({ "daily_task_rec": { $elemMatch :{ "user_id" :'5ebd0264a845395b60ce3d69'}}  
-        // }).toArray(function (err, result) {
-        //         console.log("array result------------------------")
-        //         console.log(result)
-        //         if (err) throw err;
-        //         db.close();
-        //     });
-
-
-
-        //     dbo.collection("users").find({ "daily_task_rec": { $elemMatch : {points_earned_today :0} } 
-        // }).toArray(function (err, result) {
-        //         console.log("array daily_task_rec------------------------")
-        //         console.log(result)
-        //         if (err) throw err;
-        //         db.close();
-        //     });
-
-
-
-
-
-
-
-
+        //THIS IS NOT NECESSARY BUT IT'S GOOD FOR THE ADMIN TO TAKE A LOOK LATER ON THE 
         dbo.collection("users").find({
             _id: ObjectId(req.session.user_sid)
         }).toArray(function (err, result) {
@@ -833,7 +724,7 @@ exports.addPoints = (req, res, n) => {
             if (err) throw err;
             // console.log(result);
 
-            res.send("Nice, Congrats");
+
             db.close();
         });
 
@@ -845,96 +736,120 @@ exports.addPoints = (req, res, n) => {
 
 //gets the state the user is in
 exports.getState = (req, res) => {
-    let getState = null;
-    let res_arr = []
-    
+    let state = null;
     MongoClient.connect(dbConfig.url, function (err, db) {
         if (err) throw err;
         var dbo = db.db("test");
 
-        dbo.collection("users").find(
-            {
-                _id: ObjectId(req.session.user_sid),
-                daily_task_rec: { $elemMatch: { date: { $gte: new Date(new Date().setDate(new Date().getDate() - 2)) } } }
-            }
-        ).toArray(function (err, result) {
-            let daily_task_array = []
+        dbo.collection("users").find({
+            _id: ObjectId(req.session.user_sid)
+        }).toArray(function (err, result) {
+            state = result[0].daily_task_rec[result[0].daily_task_rec.length - 1].state;
 
-            // getState = result[0].daily_task_rec[result[0].daily_task_rec.length - 1].state
-            console.log("This is how the data schema is like:")
-            console.log(result)
-
-            console.log(new Date(new Date().setDate(new Date().getDate() - 2)))
-
-        //     if(result.length != 0){
-        //     console.log("Push the dates into an array and do comparison")
-        //      res_arr = result[0].daily_task_rec
-
-        let days_of_use  = result.length
-        //     console.log("The variable shows the days of the user has been using it")
-        //     console.log(days_of_use)
-
-        //     for (var index in res_arr) {
-        //         daily_task_array.push(res_arr[index].date);
-        //     }
-
-
-        //     console.log("This is how the date array looks like:")
-        //     console.log(daily_task_array)
-
-        // }
-
+            console.log(state)
+            res.send(state + "")
             db.close()
-
-            if (result.length == 0) {
-                MongoClient.connect(dbConfig.url, function (err, db) {
-                    if (err) throw err;
-                    var dbo = db.db("test");
-                    console.log("in line 796 days_of_use")
-                    console.log(days_of_use)
-                    dbo.collection("users").updateOne(
-                        { _id: ObjectId(req.session.user_sid) },
-                        {
-                            $push: {
-                                daily_task_rec: {
-                                    user_id: req.session.user_id,
-                                    points_earned_today: 0,
-                                    date: new Date(),
-                                    finished_id: [],
-                                    state: 0,
-                                    day: days_of_use + 1
-                                }
-                            }
-                        },
-                        { new: true, upsert: true }
-
-                       
-                    )
-                    db.close()
-                    console.log("pushed?????????????????????????????")
-                })
-            } else {
-                MongoClient.connect(dbConfig.url, function (err, db) {
-                    if (err) throw err;
-                    var dbo = db.db("test");
-
-                    dbo.collection("users").find({
-                        _id: ObjectId(req.session.user_sid)
-                    }).toArray(function (err, result) {
-
-                        //find the work that needs to be done
-                        console.log("result.daily_task_rec.state")
-                        // console.log(result[0].daily_task_rec)
-                        console.log(result[0].daily_task_rec[result[0].daily_task_rec.length - 1].state)
-
-                        state = result[0].daily_task_rec[result[0].daily_task_rec.length - 1].state;
-                    })
-                })
-            }
         })
 
     })
 }
+
+
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+//                           ARCHIVED CODE, USED FOR FUTURE FUNCTIONS OR SIMPLY A BACKUP.
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+// let getState = null;
+// let res_arr = []
+
+// MongoClient.connect(dbConfig.url, function (err, db) {
+//     if (err) throw err;
+//     var dbo = db.db("test");
+
+//     dbo.collection("users").find(
+//         {
+//             _id: ObjectId(req.session.user_sid),
+//             daily_task_rec: { $elemMatch: { date: { $gte: new Date(new Date().setDate(new Date().getDate() - 1)) } } }
+//         }
+//     ).toArray(function (err, result) {
+//         let daily_task_array = []
+
+//         // getState = result[0].daily_task_rec[result[0].daily_task_rec.length - 1].state
+//         console.log("This is how the data schema is like:")
+//         console.log(result)
+
+//         console.log(new Date(new Date().setDate(new Date().getDate() - 2)))
+
+//         //     if(result.length != 0){
+//         //     console.log("Push the dates into an array and do comparison")
+//         //      res_arr = result[0].daily_task_rec
+
+//         let days_of_use = result.length
+//         //     console.log("The variable shows the days of the user has been using it")
+//         //     console.log(days_of_use)
+
+//         //     for (var index in res_arr) {
+//         //         daily_task_array.push(res_arr[index].date);
+//         //     }
+
+
+//         //     console.log("This is how the date array looks like:")
+//         //     console.log(daily_task_array)
+
+//         // }
+
+//         db.close()
+
+//         if (result.length == 0) {
+//             MongoClient.connect(dbConfig.url, function (err, db) {
+//                 if (err) throw err;
+//                 var dbo = db.db("test");
+//                 console.log("in line 796 days_of_use")
+//                 console.log(days_of_use)
+//                 dbo.collection("users").updateOne(
+//                     { _id: ObjectId(req.session.user_sid) },
+//                     {
+//                         $push: {
+//                             daily_task_rec: {
+//                                 user_id: req.session.user_id,
+//                                 points_earned_today: 0,
+//                                 date: new Date(),
+//                                 finished_id: [],
+//                                 state: 0,
+//                                 day: days_of_use + 1
+//                             }
+//                         }
+//                     },
+//                     { new: true, upsert: true }
+
+
+//                 )
+//                 db.close()
+//                 console.log("pushed?????????????????????????????")
+//             })
+//         } else {
+//             MongoClient.connect(dbConfig.url, function (err, db) {
+//                 if (err) throw err;
+//                 var dbo = db.db("test");
+
+//                 dbo.collection("users").find({
+//                     _id: ObjectId(req.session.user_sid)
+//                 }).toArray(function (err, result) {
+
+//                     //find the work that needs to be done
+//                     console.log("result.daily_task_rec.state")
+//                     // console.log(result[0].daily_task_rec)
+//                     console.log(result[0].daily_task_rec[result[0].daily_task_rec.length - 1].state)
+
+//                     state = result[0].daily_task_rec[result[0].daily_task_rec.length - 1].state;
+//                 })
+//             })
+//         }
+//     })
+
+// })
+// }
+
 
 
 
@@ -947,114 +862,118 @@ exports.getState = (req, res) => {
 //         if (err) throw err;
 //         var dbo = db.db("test");
 
-<<<<<<< HEAD
-exports.admin_coupon_management = (req, res) => {
-    console.log("searching")
-
-}
-
-exports.addPoints = (req, res, n) => {
-    res.setHeader('Content-Type', 'application/json');
-    MongoClient.connect(dbConfig.url, function (err, db) {
-        console.log("n=================================")
-        console.log(n)
-
-
-
-
-        if (err) throw err;
-        var dbo = db.db("test");
-        let id = parseInt(req.body["id"])
-        console.log(id)
-        console.log("^^^^^^^id")
-        dbo.collection("users").updateOne(
-            { _id: ObjectId(req.session.user_sid) },
-            { $inc: { points: n } },
-            { upsert: true }
-        )
-
-        dbo.collection("users").updateOne(
-            {
-                // daily_task_rec: { $elemMatch: { "user_id": req.session.user_sid, date: { $lte: new Date() } } },
-                daily_task_rec: { $elemMatch: { "state": { $lte: 10 }, date: { $lte: new Date() } } },
-            },
-            { $inc: { "daily_task_rec.$.points_earned_today": n } },
-            // { upsert: true }
-        )
-
-
-        //     dbo.collection("users").find({ "daily_task_rec": { $elemMatch :{ "user_id" :'5ebd0264a845395b60ce3d69'}}  
-        // }).toArray(function (err, result) {
-        //         console.log("array result------------------------")
-        //         console.log(result)
-        //         if (err) throw err;
-        //         db.close();
-        //     });
-
-
-
-        //     dbo.collection("users").find({ "daily_task_rec": { $elemMatch : {points_earned_today :0} } 
-        // }).toArray(function (err, result) {
-        //         console.log("array daily_task_rec------------------------")
-        //         console.log(result)
-        //         if (err) throw err;
-        //         db.close();
-        //     });
-
-
-
-=======
 //         dbo.collection("users").find({
 //             _id: ObjectId(req.session.user_sid)
 //         }).toArray(function (err, result) {
 //             getState = result[0].daily_task_rec[result[0].daily_task_rec.length - 1].state
 //             console.log("+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++getState")
->>>>>>> judao_tiffany_backend
 
 //         })
 //     })
 
-<<<<<<< HEAD
-
-
-
-        dbo.collection("users").find({
-            _id: ObjectId(req.session.user_sid)
-        }).toArray(function (err, result) {
-            console.log("req.session.result")
-            console.log(result)
-            console.log("req.session.user_sid")
-            console.log(req.session.user_sid)
-            if (err) throw err;
-            // console.log(result);
-
-            res.send("Nice, Congrats");
-            db.close();
-        });
-
-
-
-
-    });
-}
-
-exports.getState = (req, res) => {
-    let getState = null;
-
-    MongoClient.connect(dbConfig.url, function (err, db) {
-        if (err) throw err;
-        var dbo = db.db("test");
-
-        dbo.collection("users").find({
-            _id: ObjectId(req.session.user_sid)
-        }).toArray(function (err, result) {
-            getState = result[0].daily_task_rec[result[0].daily_task_rec.length - 1].state
-            console.log("+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++getState")
-            
-        })
-    })
-
-}
-=======
 // }
->>>>>>> judao_tiffany_backend
+
+
+// MongoClient.connect(dbConfig.url, function (err, db) {
+//     console.log("n=================================")
+//     console.log()
+//     if (err) throw err;
+//     var dbo = db.db("test");
+//     dbo.collection("users").updateOne(
+//         { daily_task_rec: { $elemMatch: { _id: ObjectId(req.session.user_sid), date: { $lte: new Date() } } } },
+//         { $set: { "daily_task_rec.$.user_id": req.session.user_id } },
+//         { upsert: true }
+//     )
+//     res.end();
+// })
+
+
+
+
+
+
+
+
+
+
+
+//         ANOTHER VERSION OF ADD POINTS
+// exports.addPoints = (req, res, n) => {
+
+//     MongoClient.connect(dbConfig.url, function (err, db) {
+//         console.log("n=================================")
+//         console.log(n)
+
+
+
+
+//         if (err) throw err;
+//         var dbo = db.db("test");
+//         let id = parseInt(req.body["id"])
+//         console.log(id)
+//         console.log("^^^^^^^id")
+//         dbo.collection("users").updateOne(
+//             { _id: ObjectId(req.session.user_sid) },
+//             { $inc: { points: n } },
+//             { upsert: true }
+//         )
+
+//         try {
+//             dbo.collection("users").updateOne(
+//                 {
+//                     // daily_task_rec: { $elemMatch: { "user_id": req.session.user_sid, date: { $lte: new Date() } } },
+//                     _id: ObjectId(req.session.user_sid),
+//                     daily_task_rec: { $elemMatch: { "state": { $lte: 10 }, date: { $gte: new Date(new Date().setDate(new Date().getDate() - 1)) } } },
+//                 },
+//                 { $inc: { "daily_task_rec.$.points_earned_today": n } },
+//                 { upsert: true, new: true }
+//             )
+//         } catch (err) {
+//             console.log(err)
+//         }
+
+
+//         //     dbo.collection("users").find({ "daily_task_rec": { $elemMatch :{ "user_id" :'5ebd0264a845395b60ce3d69'}}  
+//         // }).toArray(function (err, result) {
+//         //         console.log("array result------------------------")
+//         //         console.log(result)
+//         //         if (err) throw err;
+//         //         db.close();
+//         //     });
+
+
+
+//         //     dbo.collection("users").find({ "daily_task_rec": { $elemMatch : {points_earned_today :0} } 
+//         // }).toArray(function (err, result) {
+//         //         console.log("array daily_task_rec------------------------")
+//         //         console.log(result)
+//         //         if (err) throw err;
+//         //         db.close();
+//         //     });
+
+
+
+
+
+
+
+
+//         dbo.collection("users").find({
+//             _id: ObjectId(req.session.user_sid)
+//         }).toArray(function (err, result) {
+//             console.log("req.session.result")
+//             console.log(result)
+//             console.log("req.session.user_sid")
+//             console.log(req.session.user_sid)
+//             if (err) throw err;
+//             // console.log(result);
+
+
+//             db.close();
+//         });
+
+
+
+
+//     });
+// }

@@ -3,245 +3,52 @@
 
 <head>
     <meta charset="UTF-8">
+    <!-- allow media queries -->
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-    <title>My Record</title>
-    <style>
-        .square_btn {
-            display: inline-block;
-            padding: 0.3em 1em;
-            text-decoration: none;
-            color: #EF629F;
-            border: solid 2px #EF629F;
-            border-radius: 3px;
-            transition: .4s;
-        }
-
-        .square_btn:hover {
-            background: #EF629F;
-            color: white;
-        }
-
-        .square_btn_second {
-            display: inline-block;
-            padding: 0.3em 1em;
-            text-decoration: none;
-            color: #3AB795;
-            border: solid 2px #3AB795;
-            border-radius: 3px;
-            transition: .4s;
-        }
-
-        .square_btn_second:hover {
-            background: #EF629F;
-            color: white;
-        }
-
-        body {
-            text-align: center;
-            margin: 0;
-            background-image: url(../img/background.png);
-            background-size: cover;
-            height:120vh;
-
-        }
-
-        img {
-            object-fit: contain;
-            max-width: 90%;
-            max-height: 95px;
-            display: block;
-            margin-left: auto;
-            margin-right: auto;
-        }
-
-        .first {
-            color: #EF629F;
-
-        }
-
-        .second {
-            color: #3AB795;
-
-        }
-
-        .top {
-
-            color: #3AB795;
-            font-size: 20pt;
-            font-weight: bold;
-        }
-
-        .points {
-            color: #EF629F;
-            font-size: 20pt;
-            margin-top: -10px;
-            font-weight: bold;
-        }
-
-        #container {
-            /*            display: grid;*/
-            grid-template-rows: 17% 72% 1%;
-            height: 100vh;
-
-        }
-
-        #inner {
-            grid-row: 2 / span 1;
-            display: grid;
-            grid-template-rows: 50% 50%;
-            height: 80vh;
-            margin-bottom: 20px;
-        }
-
-        #sleep {
-            margin-left: 25px;
-            margin-right: 25px;
-            margin-top: 10px;
-            margin-bottom: 10px;
-            border-radius: 25px;
-            background-color: #B8D8BA;
-            grid-row: 1 / span 1;
-            display: grid;
-            grid-template-rows: 50% 50%;
-            color: #EF629F;
-        }
-
-        #sleep1 {
-            padding: 15px;
-            margin-top: auto;
-            margin-bottom: auto;
-            border-radius: 25px 0 0 25px;
-
-
-            grid-row: 1 / span 1;
-
-        }
-
-        #selection {
-            margin-top: auto;
-            margin-bottom: auto;
-            border-radius: 0 25px 25px 0;
-
-
-            grid-row: 2 / span 1;
-
-        }
-
-
-        #eat {
-            margin-left: 25px;
-            margin-right: 25px;
-            margin-top: 10px;
-            margin-bottom: 10px;
-            border-radius: 25px;
-            grid-row: 2 / span 1;
-            background-color: #FAC9B8;
-            display: grid;
-            grid-template-rows: 50% 50%;
-            color: #3AB795;
-        }
-
-        #eat1 {
-            padding: 30px;
-            margin-top: auto;
-            margin-bottom: auto;
-            border-radius: 25px 0 0 25px;
-
-
-            grid-row: 1 / span 1;
-
-        }
-
-        #selection2 {
-            margin-top: auto;
-            margin-bottom: auto;
-            border-radius: 0 25px 25px 0;
-
-
-            grid-row: 2 / span 1;
-
-        }
-
-
-        #header {
-            grid-row: 1 / span 1;
-        }
-
-        #greeting {
-            color: #EF629F;
-        }
-
-        .container {
-            list-style-type: none;
-            margin: 0;
-
-            overflow: hidden;
-            background-color: #75DBCD;
-        }
-
-        .list {
-            float: left;
-        }
-
-        .list a {
-            display: block;
-            color: white;
-            text-align: center;
-            padding: 14px 16px;
-            text-decoration: none;
-        }
-
-        .list a:hover {
-            background-color: rgb(65, 134, 125);
-        }
-    </style>
-</head>
-
-<body>
-    <div id='container'>
-        <div id="header">
-            <%-navbar %>
-            <div id="greeting">
-                <p class='top'>My health</p>
-                <p class='points'> Current Points: </p>
-
-
-            </div>
-
-        </div>
-        <div id='inner'>
-            <div id="sleep">
-                <div id='sleep1'>
-                    <h1>Did you sleep well?</h1>
-                    <p>Sleep repairs you.</p>
-                </div>
-                <div id='selection'>
-
-                    <a href="#" class="square_btn">Yes</a>
-                    <a href="#" class="square_btn">No</a>
-                </div>
-            </div>
-
-            <div id="eat">
-                <div id='eat1'>
-                    <h1>Did you eat well?</h1>
-                    <p>Eat healthy foods.</p>
-                </div>
-                <div id='selection2'>
-                    <a href="#" class="square_btn_second">Yes</a>
-                    <a href="#" class="square_btn_second">No</a>
-                </div>
-            </div>
-
-
-        </div>
-       
-    </div>
-    <br>
-    <%- footer %> 
+    <!-- jquery -->
+    <script src="https://code.jquery.com/jquery-3.5.1.min.js"
+        integrity="sha256-9/aliU8dGd2tb6OSsuzixeV4y/faTqgFtohetphbbj0=" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.3/Chart.bundle.min.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+    <!-- styles -->
+    <link rel="stylesheet" type="text/css" href="/static/css/my_record<%=css%>.css">
+    <title>My Record</title>
+    < </head> <body>
+        <!-- nav bar -->
+        <nav id='navbar'>
+            <%-navbar %></nav>
+        <div id='container'>
+            <div id="header">
+                <h1 class='top'>My Record</h1>
+                <!-- stats -->
+                <div id="stats">
+                    <h2>All points you earned: </h2>
+                    <h2 id='pointsofar'></h2>
+                    <h2>You earned today: </h2>
+                    <h2 id='pointofday'></h2>
+                </div>
+            </div>
+            <div id='inner'>
+                <div class="graph" id="line_graph">
+                    <canvas id="line-chart" width="40" height="50"></canvas>
+                </div>
 
-</body>
+                <div class="graph" id="radar_graph">
+                    <canvas id="radar-chart" width="40" height="50"></canvas>
+                </div>
+            </div>
+
+        </div>
+        <br>
+        <!-- footer -->
+        <footer id='footer'>
+            <%- footer %></footer>
+
+        <!-- js files  -->
+        <script src='/static/js/my_record.js'></script>
+        <!-- share on social media -->
+        <script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-5ec2cbf0773973c5">
+        </script>
+        </body>
 
 </html>

@@ -1,0 +1,243 @@
+/* CSS for my user record page. */
+
+/* Some styles for the graph. */
+.graph {
+    background-color: rgba(255, 255, 240, 0.9);
+
+}
+
+/* This is the style for the sticky nav bar. */
+.sticky {
+    position: fixed;
+    top: 0;
+    width: 100%;
+}
+
+/* Styles for stats. */
+#stats {
+    margin-top: 5px;
+    margin-bottom: 5px;
+    background-color: #7BDFF2;
+    display: grid;
+    grid-template-columns: 50% 50%;
+    color: #53131E;
+    border-style: groove;
+
+}
+
+/* Media queries for different devices. */
+@media only screen and (max-width: 330px) {
+    #container {
+        margin-top: 16%;
+    }
+
+    #footer {
+        text-align: center;
+        bottom: 0;
+        margin-top: 500px;
+        color: #53131E;
+        clear: both;
+        position: relative;
+
+    }
+
+}
+
+@media only screen and (max-width: 360px) {
+    #container {
+        margin-top: 16%;
+    }
+
+    #footer {
+        text-align: center;
+        bottom: 0;
+        margin-top: 500px;
+        color: #53131E;
+        clear: both;
+        position: relative;
+
+    }
+
+    #title {
+        padding-top: 12%;
+        text-align: center;
+        color: #53131e;
+        font-size: 20pt;
+    }
+}
+
+@media only screen and (min-width: 361px) {
+    #container {
+        margin-top: 16%;
+    }
+
+    #footer {
+        text-align: center;
+        bottom: 0;
+        margin-top: 500px;
+        color: #53131E;
+        clear: both;
+        position: relative;
+        /*font-size: 15pt;*/
+    }
+
+    #title {
+        padding-top: 12%;
+        text-align: center;
+        color: #53131e;
+        font-size: 20pt;
+    }
+}
+
+@media only screen and (min-width: 600px) {
+    #container {
+        margin-top: 10%;
+    }
+
+    #footer {
+        text-align: center;
+        bottom: 0;
+        margin-top: 700px;
+        color: #53131E;
+        clear: both;
+        position: relative;
+        /*    font-size: 20pt;*/
+    }
+
+    #title {
+        padding-top: 12%;
+        text-align: center;
+        color: #53131e;
+        font-size: 20pt;
+    }
+}
+
+@media only screen and (min-width: 1024px) {
+    #container {
+        margin-top: 8%;
+    }
+
+    #footer {
+        text-align: center;
+        bottom: 0;
+        margin-top: 940px;
+        color: #53131E;
+        clear: both;
+        position: relative;
+        /*    font-size: 25pt;*/
+    }
+
+    h1 {
+        font-size: 50pt;
+    }
+
+    #title {
+        padding-top: 10%;
+        text-align: center;
+        color: #53131e;
+        font-size: 20pt;
+    }
+}
+
+@media only screen and (min-width: 1200px) {
+    #container {
+        margin-top: 12%;
+    }
+
+    #footer {
+        text-align: center;
+        bottom: 0;
+        margin-top: 500px;
+        color: #53131E;
+        clear: both;
+        position: relative;
+        font-size: 20pt;
+    }
+
+}
+
+
+/* Some styles for body. */
+body {
+    text-align: center;
+    margin: 0;
+    /* background-color: #99F7AB; */
+    color: #53131E;
+    display: inline;
+
+}
+
+/* Some styles for images. */
+img {
+    object-fit: contain;
+    max-width: 90%;
+    max-height: 95px;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+
+/* Some styles for the rest of the elements. */
+.top {
+
+    color: #53131E;
+    font-size: 20pt;
+    font-weight: bold;
+}
+
+.points {
+    color: #EF629F;
+    font-size: 20pt;
+    margin-top: -10px;
+    font-weight: bold;
+}
+
+#container {
+    /*            display: grid;*/
+    grid-template-rows: 17% 72% 1%;
+    height: 100vh;
+
+}
+
+#inner {
+    /* grid-row: 2 / span 1;
+            display: grid; */
+    grid-template-rows: 50% 50%;
+    height: 80vh;
+    margin-bottom: 20px;
+}
+
+
+#header {
+    grid-row: 1 / span 1;
+}
+
+#greeting {
+    color: #EF629F;
+}
+
+/* Some styles for the nav bar. */
+.container {
+    list-style-type: none;
+    margin: 0;
+
+    overflow: hidden;
+    background-color: #4B7F52;
+}
+
+.list {
+    float: left;
+}
+
+.list a {
+    display: block;
+    color: white;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+}
+
+.list a:hover {
+    background-color: rgb(65, 134, 125);
+}

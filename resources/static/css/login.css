@@ -1,100 +1,88 @@
+/* CSS for log in. */
+
+/* Styles for body. */
 body {
-<<<<<<< HEAD
-    background-image: url(./../img/background.png);
-    width: 100%;
-  }
-#login{
-    background-color: transparent;
-      border: #3AB795 solid 1px;
-      color: #3AB795;
-      padding: 10px 26px;
-      text-align: center;
-      text-decoration: none;
-      display: inline-block;
-      font-size: 16px;
-    
-}
-.container {
-    background-color: hsla(120, 60%, 2%, 0.6);
-    text-align: center;
-    width: 400px;
-    /* filter:alpha(opacity=50); */
-    z-index: -1;
-    /* opacity:0.8; */
-  }
-
-  #choice_tab {
-    display: inline;
-  }
-
-  #log {
-
-    float: right;
-      margin: 0;
-    padding-top: 10px;
-    height: 50px;
-    width: 120px;
-    padding-right: 20px;
-  }
-
-  #reg{
-    float: left;
-    margin: 0;
-    padding-top: 10px;
-    height: 50px;
-    width: 50%;
-    padding-right: 5%;
-    background-color: rgb(0, 0, 0);
-    
-  }
-
-
-  @import "bourbon";
-
-  a {
-    color: white;
-  }
-
-
-  @media only screen and (min-width: 1024px) {
-       #log {
-
-    float: right;
-      margin: 0;
-/*    padding-top: 10px;*/
-    height: 50px;
-    width: 120px;
-    padding-right: 20px;
-  }
-
-  #reg{
-    float: left;
-    margin: 0;
-/*    padding-top: 10px;*/
-    height: 50px;
-    width: 60%;
-    padding-right: 5%;
-    background-color: rgb(0, 0, 0);
-    
-  }
-    body {
-     
-      text-align: center;
-      background-size: cover;
-      height: 100vh;
-    }
-
-    #form-wrapper {
-      padding-top: 10%;
-    }
-
-=======
-  /*    background-image: url(./../img/background.png);*/
-  background-color: #99F7AB;
+  /* background-color: #99F7AB; */
+  background-color: rgb(188, 247, 199);
   width: 100%;
 }
 
-#login {
+/* Media queries for different devices. */
+@media only screen and (max-width: 330px) {
+  #footer {
+    text-align: center;
+    bottom: 0;
+    margin-top: 280px;
+    color: #53131E;
+    clear: both;
+    position: relative;
+
+  }
+}
+
+@media only screen and (max-width: 360px) {
+  #footer {
+    text-align: center;
+    bottom: 0;
+    margin-top: 250px;
+    color: #53131E;
+    clear: both;
+    position: relative;
+
+  }
+}
+
+@media only screen and (min-width: 361px) {
+  #footer {
+    text-align: center;
+    bottom: 0;
+    margin-top: 450px;
+    color: #53131E;
+    clear: both;
+    position: relative;
+
+  }
+}
+
+@media only screen and (min-width: 600px) {
+  #footer {
+    text-align: center;
+    bottom: 0;
+    margin-top: 650px;
+    color: #53131E;
+    clear: both;
+    position: relative;
+    /*    font-size: 20pt;*/
+  }
+}
+
+@media only screen and (min-width: 1024px) {
+  #footer {
+    text-align: center;
+    bottom: 0;
+    margin-top: 1000px;
+    color: #53131E;
+    clear: both;
+    position: relative;
+    /*    font-size: 25pt;*/
+  }
+}
+
+@media only screen and (min-width: 1200px) {
+  #footer {
+    text-align: center;
+    bottom: 0;
+    margin-top: 350px;
+    color: #53131E;
+    clear: both;
+    position: relative;
+    font-size: 18pt;
+    font-weight: normal;
+  }
+}
+
+/* Some styles for buttons. */
+button {
   background-color: transparent;
   border: #53131E solid 1.5px;
   color: #53131E;
@@ -103,7 +91,17 @@ body {
   text-decoration: none;
   display: inline-block;
   font-size: 16px;
-  font-weight: bold;
+}
+
+button:hover {
+  background-color: white;
+  border: rgb(151, 34, 54) solid 1.5px;
+  color: rgb(170, 67, 84);
+  padding: 7px 26px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
 
 }
 
@@ -135,6 +133,7 @@ body {
   display: inline;
 }
 
+/* Log selection. */
 #log {
 
   float: right;
@@ -145,6 +144,7 @@ body {
   padding-right: 20px;
 }
 
+/* Registration selection. */
 #reg {
   float: left;
   margin: 0;
@@ -158,14 +158,6 @@ body {
 }
 
 
-@import "bourbon";
-
-/*
-  a {
-    color: white;
-  }
-*/
-
 
 
 
@@ -173,42 +165,8 @@ body {
   padding-top: 10%;
 }
 
-/*
->>>>>>> judao_tiffany_backend
-    h1 {
-      color: white;
-      font-size: 40pt;
-    }
 
-    h3 {
-      color: white;
-      font-size: 30pt;
-    }
-<<<<<<< HEAD
-
-    input[type="text"] {
-      margin-top: 20px;
-      margin-bottom: -1px;
-      border-bottom-left-radius: 0;
-      border-bottom-right-radius: 0;
-      font-size: 15pt;
-      height: 48px;
-      width: 360px;
-    }
-
-    input[type="password"] {
-      margin-bottom: 23px;
-      border-top-left-radius: 0;
-      border-top-right-radius: 0;
-      font-size: 15pt;
-      height: 48px;
-      width: 360px;
-
-    }
-
-=======
-*/
-
+/* Some styles for the input. */
 input[type="text"] {
   margin-top: 20px;
   margin-bottom: -1px;
@@ -229,150 +187,19 @@ input[type="password"] {
 
 }
 
-/*
->>>>>>> judao_tiffany_backend
-    input[type="submit"] {
-      margin-bottom: 23px;
-      border-top-left-radius: 0;
-      border-top-right-radius: 0;
-      width: 280px;
-      font-size: 15pt;
-<<<<<<< HEAD
-
-    }
-
-  }
-
-  @media only screen and (max-width: 1023px) {
-    body {
-      margin: 0;
-     
-      text-align: center;
-      background-size: cover;
-      height: 100vh;
-    }
-
-    #form-wrapper {
-      padding-top: 30%;
-    }
-
-    h1 {
-      color: white;
-    }
-
-    h3 {
-      color: white;
-    }
-
-    input[type="text"] {
-      margin-bottom: -1px;
-      border-bottom-left-radius: 0;
-      border-bottom-right-radius: 0;
-      width: 300px;
-    }
-
-    input[type="password"] {
-      margin-bottom: 20px;
-      border-top-left-radius: 0;
-      border-top-right-radius: 0;
-      width: 300px;
-
-    }
-
-    input[type="submit"] {
-      margin-bottom: 20px;
-      border-top-left-radius: 0;
-      border-top-right-radius: 0;
-      /*      width: 300px;*/
-      width: 100%;
-    }
-
-  }
 
 
-  @media only screen and (max-width: 399px) {
-   
+/* Align everything in the middle. */
+body {
+  text-align: center;
+}
 
-    #form-wrapper {
-      padding-top: 30%;
-    }
 
-    h1 {
-      color: white;
-    }
+/* Selection for the other UI. */
+#ui_choice_1 {
+  color: #53131E;
+}
 
-    h3 {
-      color: white;
-    }
-
-    input[type="text"] {
-      margin-bottom: -1px;
-      border-bottom-left-radius: 0;
-      border-bottom-right-radius: 0;
-      width: 300px;
-    }
-
-    input[type="password"] {
-      margin-bottom: 20px;
-      border-top-left-radius: 0;
-      border-top-right-radius: 0;
-      width: 300px;
-    }
-
-    input[type="submit"] {
-      margin-bottom: 20px;
-      border-top-left-radius: 0;
-      border-top-right-radius: 0;
-      /*      width: 300px;*/
-      width: 100%;
-    }
-  }
-
-  /*        for iphone X*/
-  @media only screen and (device-width : 375px) and (device-height : 812px) and (-webkit-device-pixel-ratio : 3) {
-    body {
-      
-      text-align: center;
-      background-size: cover;
-      height: 100vh;
-    }
-
-    #form-wrapper {
-      padding-top: 35%;
-    }
-
-    h1 {
-      color: white;
-    }
-
-    h3 {
-      color: white;
-    }
-
-    input[type="text"] {
-      margin-bottom: -1px;
-      border-bottom-left-radius: 0;
-      border-bottom-right-radius: 0;
-      width: 300px;
-    }
-
-    input[type="password"] {
-      margin-bottom: 20px;
-      border-top-left-radius: 0;
-      border-top-right-radius: 0;
-      width: 300px;
-    }
-
-    input[type="submit"] {
-      margin-bottom: 20px;
-      border-top-left-radius: 0;
-      border-top-right-radius: 0;
-      /*      width: 300px;*/
-      width: 100%;
-    }
-  }
-=======
-        
-    }
-*/
->>>>>>> judao_tiffany_backend
+#ui_choice_1:hover {
+  background-color: white;
+}

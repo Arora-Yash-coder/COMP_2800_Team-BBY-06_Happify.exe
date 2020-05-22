@@ -1,18 +1,29 @@
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
+    <!-- Allow media queries -->
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<<<<<<< HEAD
-    <title>Document</title>
-=======
+    <!-- Styles -->
+    <link rel="stylesheet" type="text/css" href="/static/css/admin_home.css">
     <title>Admin Home</title>
-    <link rel="stylesheet" type="text/css" href="static/css/admin_home.css">
->>>>>>> judao_tiffany_backend
 </head>
+
 <body>
     <div>
-        <button onclick="window.location.href ='/admin_coupon' ">coupon management</button>
-        <button></button>
+        <div id='container'>
+            <h1>Welcome to the Admin Workstation!</h1>
+            <div id='button'>
+                <!-- go to upload or delete coupons -->
+                <button onclick="window.location.href ='/admin_coupon' ">Coupon management (Desktop)</button>
+                <br><br>
+                <!-- Log out functions -->
+                <button onclick="window.location.href ='/admin_coupon' ">Log out</button>
+            </div>
+        </div>
+        <!-- Footer -->
+        <footer id='footer'>Made by FutureCurves.</footer>
     </div>
 </body>
+
 </html>

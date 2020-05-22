@@ -1,4 +1,15 @@
+window.onscroll = function() {myNavbar()};
 
+var navbar = document.getElementById("navbar");
+var sticky = navbar.offsetTop;
+
+function myNavbar() {
+  if (window.pageYOffset >= sticky) {
+    navbar.classList.add("sticky")
+  } else {
+    navbar.classList.remove("sticky");
+  }
+}
 
 
 
@@ -86,7 +97,7 @@ $(".no").click((e) => {
 
 $(".yes").click((e) => {
     redeem_id = $(e.target).attr("name");
-
+    let this_coupon = $(e.target)
     //redeem a coupon, the coupon is now available in my_profile page
     $.ajax({
         type: "post",
@@ -95,15 +106,20 @@ $(".yes").click((e) => {
         dataType: "text",
         success: function (response) {
             alert(response)
+            if(response == "redeem successful"){
+                window.location.reload()
+            }else if(response == "you don't have enough points for redeeming!!!"){
+                 this_coupon.css("background-color","grey")
+            }else{
+                window.location.reload()
+            }
         },
         error: function (xhr, ajaxOptions, thrownError) {
             alert(xhr.status);
             alert(thrownError);
+            window.location.reload()
         }
-<<<<<<< HEAD
-=======
-        
->>>>>>> judao_tiffany_backend
+
     })
 
 
@@ -132,11 +148,27 @@ $(".yes").click((e) => {
     })
 
 
-<<<<<<< HEAD
 
-=======
-setTimeout(()=>{window.location.replace('/coupon')},120);
->>>>>>> judao_tiffany_backend
+
+
+    // setTimeout(() => { window.location.replace('/coupon') }, 120);
 });
 
+
+
+$("#proceed").click(() => {
+
+    let state_request = "proceed button clicked in STEP 6";
+    console.log(state_request)
+    $.ajax({
+        type: "post",
+        url: "/state_add",
+        data: { state_request },
+        dataType: "text",
+        success: function (response) {
+            window.location.replace('/flow_final')
+
+        }
+    });
+})
 

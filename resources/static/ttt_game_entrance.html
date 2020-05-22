@@ -3,67 +3,49 @@
 
 <head>
     <meta charset="UTF-8">
+    <!-- allow media queries -->
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<<<<<<< HEAD
-    
-  <title>Tic-Tac-Toeeee</title>
-    <link rel="stylesheet" type="text/css" href="/static/css/navbar.css">
-    <link rel="stylesheet" type="text/css" href="/static/css/tic_tac_toe.css">
-    
-     <style>
-
-      
-=======
 
     <title>Tic-Tac-Toeeee</title>
+    <!-- styles -->
     <link rel="stylesheet" type="text /css" href="/static/css/navbar.css">
     <link rel="stylesheet" type="text/css" href="/static/css/tic_tac_toe.css">
 
     <style>
 
 
->>>>>>> judao_tiffany_backend
     </style>
 </head>
 
 <body>
-    <div id='container'>
-        <div id="header">
-            <nav>
+    <!-- nav bar -->
+    <nav id='navbar'>
                 <ul class="container">
                     <li class="list"><a href="/homepage">Home</a></li>
 
-<<<<<<< HEAD
-<!--      <li class="list"><a href="/minigames">Mini Games</a></li>-->
-      <li class="list" style="float: right;"><a href="/user_profile"><img src="/static/img/shape.png"
-            width="20px" height="20px"> </a></li>
-
-    </ul>
-  </nav>
-            <div id="greeting"><p class='top'>Tic-Tac-Toe</p></div>
-            <div id="stats">
-            <h2>All points you earned: </h2>
-=======
-                    <!--      <li class="list"><a href="/minigames">Mini Games</a></li>-->
                     <li class="list" style="float: right;"><a href="/user_profile"><img src="/static/img/shape.png"
                                 width="20px" height="20px"> </a></li>
 
                 </ul>
             </nav>
+    <div id='container'>
+        <div id="header">
+            
             <div id="greeting">
                 <p class='top'>Tic-Tac-Toe</p>
             </div>
+            <!-- user stats -->
             <div id="stats">
                 <h2>All points you earned: </h2>
->>>>>>> judao_tiffany_backend
                 <h2 id='pointsofar'></h2>
                 <h2>You earned today: </h2>
                 <h2 id='pointofday'></h2>
-                <h2>
-                </h2>
+                
             </div>
 
         </div>
+        <!-- nurse version -->
+        <button onclick="window.location.replace('/minigames')" id="back">Back</button>
         <div id='inner'>
             <div id="first" onclick="window.location.href = 'https://tictactoenurse.netlify.app';">
                 <div id='first1'>
@@ -76,6 +58,7 @@
                 </div>
             </div>
 
+            <!-- mask version -->
             <div id="second" onclick="window.location.href = 'https://tictactoemask.netlify.app';">
                 <div id='second1'>
                     <h1>Mask</h1>
@@ -86,6 +69,8 @@
                     </div>
                 </div>
             </div>
+
+            <!-- sanitizer version -->
             <div id="third" onclick="window.location.href = 'https://tictactoesanitizer.netlify.app';">
                 <div id='third1'>
                     <h1>Sanitizer</h1>
@@ -101,11 +86,13 @@
 
 
         </div>
-        <button onclick="window.location.replace('/minigames')">Back</button>
+        <!-- footer -->
         <div id='footer'>Made by FutureCurves.</div>
     </div>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
     <script src="/static/js/ttt_game_entrance.js"></script>
+    <!-- Share on social media -->
+<script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-5ec2cbf0773973c5"></script>
 </body>
 
 </html>

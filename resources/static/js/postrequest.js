@@ -17,7 +17,7 @@ $(document).ready(function () {
 			username: $("#username").val(),
 			password: $("#password").val()
 		}
-
+		//judgement if the password is a pass or not.
 		$.ajax({
 			type: "POST",
 			contentType: "application/json",
@@ -43,6 +43,7 @@ $(document).ready(function () {
 				}
 
 			},
+			//alert error on failure.
 			error: function (e) {
 				alert("Error!")
 				console.log("ERROR: ", e);

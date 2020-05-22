@@ -1,0 +1,119 @@
+  /* CSS for pandemic info page. */
+  
+  /* These styles relate to the sticky nav bar. */
+  .regular {
+      margin-top: -20px;
+  }
+
+  .sticky {
+      position: fixed;
+      top: 0;
+      width: 100%;
+  }
+
+  #navbar {
+      z-index: 10;
+  }
+
+  /* Styles for the body. */
+  html,
+  body {
+      text-align: center;
+      margin: 0;
+      color: #53131E;
+  }
+
+  /* Graphs. */
+  .graph {
+      width: 100%;
+  }
+
+  #chartdiv {
+      height: 55%;
+  }
+
+  #chart_container {
+      text-align: center;
+
+  }
+
+  #container {
+      margin-top: 50px;
+  }
+
+  /* Styles for the buttons. */
+  button {
+      background-color: transparent;
+      border: #53131E solid 1.5px;
+      color: #53131E;
+      padding: 7px 26px;
+      text-align: center;
+      text-decoration: none;
+      display: inline-block;
+      font-size: 16px;
+      font-weight: bold;
+
+  }
+
+  button:hover {
+      background-color: white;
+      border: #53131E solid 1.5px;
+      color: #53131E;
+      padding: 7px 26px;
+      text-align: center;
+      text-decoration: none;
+      display: inline-block;
+      font-size: 16px;
+
+  }
+
+  #chart_container {
+      height: 60vh;
+  }
+
+  /* media queries for different devices. */
+  @media only screen and (max-width: 369px) {
+      h1 {
+          font-size: 30pt;
+      }
+
+      #container {
+          height: 200vh;
+      }
+
+  }
+
+  @media only screen and (min-width: 370px) {
+      h1 {
+          font-size: 30pt;
+      }
+
+      #container {
+          height: 200vh;
+      }
+
+  }
+
+  @media only screen and (min-width: 600px) {
+      h1 {
+          font-size: 40pt;
+      }
+
+      #container {
+          height: 450vh;
+      }
+
+  }
+
+  @media only screen and (min-width: 1024px) {
+      h1 {
+          font-size: 40pt;
+      }
+  }
+
+  @media only screen and (min-width: 1200px) {
+      #footer {
+          font-size: 20px;
+      }
+
+  }

@@ -1,165 +1,336 @@
-/*
-.container {
-    list-style-type: none;
-    margin: 0;
+/* CSS for user profile page. */
 
-    overflow: hidden;
-    background-color: #75DBCD;
+/* Styles for body. */
+body {
+  text-align: center;
+  /* background-color: #99F7AB; */
+  background-color: rgb(188, 247, 199);
+  color: #53131E;
+  
+}
+
+/* Styles for the sticky nav bar. */
+.sticky {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  margin-left: -8px;
+}
+
+.regular {
+  margin: -8px;
+
+}
+
+/* Media queries for different devices. */
+@media only screen and (max-width: 369px) {
+  /* To avoid the sticky nav bar. */
+  #wrapper {
+    margin-top: 15%;
   }
 
-  .list {
-    float: left;
+  /* UI Choice buttons. */
+  #ui_choice {
+    font-size: 15pt;
   }
 
-  .list a {
-    display: block;
-    color: white;
-    text-align: center;
-    padding: 14px 16px;
-    text-decoration: none;
-  }
-
-  .list a:hover {
-    background-color: rgb(65, 134, 125);
-  }
-*/
-
-<<<<<<< HEAD
-  body {
-    text-align: center;
-    background-image: url(../img/background.png);
-    background-size: cover;
-    height:120vh;
-  }
-  #head{
-        margin: -8px;
-        
-  }
-  h1 {
-    color: #3AB795;
+  /* Other elements' styles. */
+  h2 {
     font-size: 20pt;
-    font-weight: bold;
-
   }
 
-  .square_btn {
-    display: inline-block;
-    padding: 0.3em 1em;
-    text-decoration: none;
-    color: #EF629F;
-    border: solid 2px #EF629F;
-    border-radius: 3px;
-    transition: .4s;
+  .top {
+    font-size: 20pt;
   }
 
-  .square_btn:hover {
-    background: #EF629F;
-    color: white;
+  #header {
+    font-size: 20pt;
   }
 
-
-
-  #container {
-    background-color: #FAC9B8;
-/*    border-radius: 25px;*/
-    margin-left: 25px;
-    margin-right: 25px;
-    padding-top: 10px;
-    padding-bottom: 10px;
-    margin-top: 10px;
-    margin-bottom: 10px;
-    color: #3AB795;
-  }
-
-  #mycoupons {
-    background-color: #FAC9B8;
-    border-radius: 25px;
-    margin-left: 25px;
-    margin-right: 25px;
-    padding-top: 10px;
-    padding-bottom: 10px;
-    margin-top: 10px;
-    margin-bottom: 10px;
-    color: #3AB795;
-  }
-
+  /* Styles for buttons. */
   button {
-    background-color: white;
-    border: #3AB795 solid 1px;
-    color: #3AB795;
+    background-color: transparent;
+    border: #53131E solid 1.5px;
+    color: #53131E;
     padding: 7px 26px;
     text-align: center;
     text-decoration: none;
     display: inline-block;
     font-size: 16px;
-    margin-bottom: 20px;
   }
 
-  #avatar {
-    width: 100px;
-    height: 100px;
-    border-radius: 50%;
-    background-image: url(avatar.png);
+  button:hover {
+    background-color: white;
+    border: #53131E solid 1.5px;
+    color: #53131E;
+    padding: 7px 26px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
   }
 
-  #upload {
-    display: none;
-  }
 
-  #submit {
-    display: none;
+  #footer {
+    bottom: 0;
+    margin-bottom: 80px;
+    color: #53131E;
+    clear: both;
+    position: relative;
   }
-
-  #logout {
-    color: #EF629F;
-    border: #EF629F solid 1px;
-  }
-=======
-body {
-  text-align: center;
-  background-color: #99F7AB;
-  color: #53131E;
-  /*
-    background-image: url(../img/background.png);
-    background-size: cover;
-*/
-  height: 120vh;
 }
 
-#head {
-  margin: -8px;
+@media only screen and (min-width: 370px) {
+  #wrapper {
+    margin-top: 15%;
+  }
 
+  #ui_choice {
+    font-size: 15pt;
+  }
+
+  h2 {
+    font-size: 20pt;
+  }
+
+  .top {
+    font-size: 20pt;
+  }
+
+  #header {
+    font-size: 20pt;
+  }
+
+  button {
+    background-color: transparent;
+    border: #53131E solid 1.5px;
+    color: #53131E;
+    padding: 7px 26px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    /*    font-weight: bold;*/
+
+  }
+
+  button:hover {
+    background-color: white;
+    border: #53131E solid 1.5px;
+    color: #53131E;
+    padding: 7px 26px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+
+  }
+
+
+
+  #footer {
+    margin-top: 15px;
+    bottom: 0;
+    margin-bottom: 65px;
+    color: #53131E;
+    clear: both;
+    position: relative;
+    /*        font-size: 15pt;*/
+  }
 }
 
+@media only screen and (min-width: 600px) {
+  #wrapper {
+    margin-top: 10%;
+  }
+
+  #ui_choice {
+    font-size: 25pt;
+  }
+
+  h1 {
+    font-size: 40pt;
+  }
+
+  .top {
+    font-size: 30pt;
+  }
+
+  #header {
+    font-size: 30pt;
+  }
+
+  #button_container {
+    margin-top: 20px;
+    text-align: center;
+  }
+
+  button {
+    background-color: transparent;
+    border: #53131E solid 1.5px;
+    color: #53131E;
+    padding: 7px 26px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 31px;
+    /*    font-weight: bold;*/
+
+  }
+
+  button:hover {
+    background-color: white;
+    border: #53131E solid 1.5px;
+    color: #53131E;
+    padding: 7px 26px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 31px;
+
+  }
+
+
+  #container {
+    font-size: 20pt;
+  }
+
+  #footer {
+    bottom: 0;
+    margin-top: 80px;
+    color: #53131E;
+    clear: both;
+    position: relative;
+    /*        font-size: 20pt;*/
+  }
+}
+
+@media only screen and (min-width: 1024px) {
+  #wrapper {
+    margin-top: 10%;
+  }
+
+  #ui_choice {
+    font-size: 25pt;
+  }
+
+  h2 {
+    font-size: 30pt;
+  }
+
+  .top {
+    font-size: 30pt;
+  }
+
+  #header {
+    font-size: 30pt;
+  }
+
+  button {
+    background-color: transparent;
+    border: #53131E solid 1.5px;
+    color: #53131E;
+    padding: 7px 26px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 26px;
+    /*    font-weight: bold;*/
+
+  }
+
+  button:hover {
+    background-color: white;
+    border: #53131E solid 1.5px;
+    color: #53131E;
+    padding: 7px 26px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 26px;
+
+  }
+
+
+  #footer {
+    bottom: 0;
+    margin-top: 400px;
+    color: #53131E;
+    clear: both;
+    position: relative;
+    /*        font-size: 20pt;*/
+  }
+}
+
+@media only screen and (min-width: 1200px) {
+  #wrapper {
+    margin-top: 10%;
+  }
+
+  #ui_choice {
+    font-size: 25pt;
+  }
+
+  h2 {
+    font-size: 30pt;
+  }
+
+  .top {
+    font-size: 30pt;
+  }
+
+  #header {
+    font-size: 30pt;
+  }
+
+  button {
+    background-color: transparent;
+    border: #53131E solid 1.5px;
+    color: #53131E;
+    padding: 7px 26px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 26px;
+    /*    font-weight: bold;*/
+
+  }
+
+  button:hover {
+    background-color: white;
+    border: #53131E solid 1.5px;
+    color: #53131E;
+    padding: 7px 26px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 26px;
+
+  }
+
+
+  #footer {
+    bottom: 0;
+    margin-top: 100px;
+    color: #53131E;
+    clear: both;
+    position: relative;
+    font-size: 20pt;
+  }
+}
+
+/* Styles for the title. */
 h1 {
   color: #53131E;
-  font-size: 20pt;
   font-weight: bold;
 
 }
 
-.square_btn {
-  display: inline-block;
-  padding: 0.3em 1em;
-  text-decoration: none;
-  color: #EF629F;
-  border: solid 2px #EF629F;
-  border-radius: 3px;
-  transition: .4s;
-}
-
-.square_btn:hover {
-  background: #EF629F;
-  color: white;
-}
 
 
-
+/* Container that contains the user's information. */
 #container {
   background-color: #7BDFF2;
-  /*    border-radius: 25px;*/
-  /*    margin-left: 25px;*/
-  /*    margin-right: 25px;*/
   padding-top: 10px;
   padding-bottom: 10px;
   margin-top: 10px;
@@ -167,8 +338,11 @@ h1 {
   color: #53131E;
 }
 
-#mycoupons {
-  background-color: #D6F9DD;
+
+/* mycoupons, myrecord */
+.card {
+  /* background-color: #D6F9DD; */
+  background-color: floralwhite;
   border-radius: 25px;
   margin-left: 25px;
   margin-right: 25px;
@@ -180,32 +354,8 @@ h1 {
   border: solid 2px rgba(83, 19, 30, 0.7);
 }
 
-button {
-  background-color: transparent;
-  border: #53131E solid 1.5px;
-  color: #53131E;
-  padding: 7px 26px;
-  text-align: center;
-  text-decoration: none;
-  display: inline-block;
-  font-size: 16px;
-  margin-bottom: 20px;
-}
 
-button:hover {
-  background-color: white;
-  border: #53131E solid 1.5px;
-  color: #53131E;
-  padding: 7px 26px;
-  text-align: center;
-  text-decoration: none;
-  display: inline-block;
-  font-size: 16px;
-  margin-bottom: 20px;
-}
-
-
-
+/* Styles for avatar. */
 #avatar {
   width: 100px;
   height: 100px;
@@ -217,16 +367,7 @@ button:hover {
   display: none;
 }
 
+/* Style for submit button. */
 #submit {
   display: none;
 }
-
-/*
-  #logout {
-    color: #EF629F;
-    border: #EF629F solid 1px;
-  }*/
-#footer{
-    margin-top: 200px;
-}
->>>>>>> judao_tiffany_backend

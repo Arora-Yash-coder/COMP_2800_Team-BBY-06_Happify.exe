@@ -1,20 +1,209 @@
+/* CSS for mini games selection page */
+
+/* Styles for body. */
 body {
-<<<<<<< HEAD
-    background-image: url(/static/img/background.png);
-    background-size: cover;
     text-align: center;
     margin: 0;
-=======
-    /*
-    background-image: url(/static/img/background.png);
-    background-size: cover;
-*/
-    text-align: center;
-    margin: 0;
-    background-color: #99F7AB;
->>>>>>> judao_tiffany_backend
+    /* background-color: #99F7AB; */
+    background-color: rgb(188, 247, 199);
 }
 
+/* Sticky nav bars */
+.sticky {
+    position: fixed;
+    top: 0;
+    width: 100%;
+}
+
+/* Media queries for different devices. */
+@media only screen and (max-width: 369px) {
+    #container {
+        margin-top: 15%;
+    }
+
+    #greeting {
+        color: #EF629F;
+        font-size: 30pt;
+    }
+
+    #container {
+
+
+        height: 200vh;
+
+    }
+
+    #footer {
+        bottom: 0;
+        margin-top: 130px;
+        color: #53131E;
+        clear: both;
+        position: relative;
+    }
+}
+
+@media only screen and (min-width: 370px) {
+    #container {
+        margin-top: 15%;
+    }
+
+    #greeting {
+        color: #EF629F;
+        font-size: 30pt;
+    }
+
+    #container {
+
+
+        height: 200vh;
+
+    }
+
+    #footer {
+        bottom: 0;
+        margin-top: 50px;
+        color: #53131E;
+        clear: both;
+        position: relative;
+        /*        font-size: 13pt;*/
+    }
+}
+
+@media only screen and (min-width: 600px) {
+    #container {
+        margin-top: 10%;
+    }
+
+    #inner {
+        font-size: 30pt;
+    }
+
+    #proceed {
+        font-size: 27pt;
+        margin-top: 10px;
+    }
+
+    #stats {
+        font-size: 30pt;
+    }
+
+    #welcome {
+        font-size: 40pt;
+    }
+
+    #greeting {
+        color: #EF629F;
+
+    }
+
+    #container {
+
+
+        height: 200vh;
+
+    }
+
+    #footer {
+        bottom: 0;
+        margin-top: 50px;
+        color: #53131E;
+        clear: both;
+        position: relative;
+        /*        font-size: 20pt;*/
+    }
+}
+
+@media only screen and (min-width: 1024px) {
+    #container {
+        margin-top: 10%;
+    }
+
+    #inner {
+        font-size: 30pt;
+    }
+
+    #proceed {
+        font-size: 27pt;
+        margin-top: 10px;
+    }
+
+    #stats {
+        font-size: 30pt;
+    }
+
+    #welcome {
+        font-size: 40pt;
+    }
+
+    #greeting {
+        color: #EF629F;
+
+    }
+
+    #container {
+
+
+        height: 200vh;
+
+    }
+
+    #footer {
+        bottom: 0;
+        margin-top: 50px;
+        color: #53131E;
+        clear: both;
+        position: relative;
+        /*        font-size: 20pt;*/
+    }
+}
+
+@media only screen and (min-width: 1200px) {
+    #container {
+        margin-top: 10%;
+    }
+
+    #inner {
+        font-size: 28pt;
+    }
+
+    #proceed {
+        font-size: 27pt;
+        margin-top: 10px;
+    }
+
+    #stats {
+        font-size: 30pt;
+    }
+
+    #welcome {
+        font-size: 40pt;
+    }
+
+    #greeting {
+        color: #EF629F;
+
+    }
+
+    #container {
+
+
+        height: 200vh;
+
+    }
+
+    #footer {
+        bottom: 0;
+        /*      margin-top: 50px;*/
+        margin-top: 1000px;
+        color: #53131E;
+        clear: both;
+        position: relative;
+        font-size: 20pt;
+    }
+}
+
+
+/* styles for images */
 img {
     object-fit: contain;
     max-width: 90%;
@@ -24,119 +213,71 @@ img {
     margin-right: auto;
 }
 
-<<<<<<< HEAD
-#welcome{
-=======
+
+/* Styles for welcome notes */
 #welcome {
->>>>>>> judao_tiffany_backend
     padding: 1px;
     margin: 0;
 }
 
 .first {
-<<<<<<< HEAD
-    color: #3AB795;
-=======
     color: #53131E;
->>>>>>> judao_tiffany_backend
 
 }
 
 .second {
-<<<<<<< HEAD
-    color: #EF629F;
-=======
     color: #53131E;
->>>>>>> judao_tiffany_backend
 
 }
 
 .top {
-<<<<<<< HEAD
-    color: #3AB795;
-=======
     color: #53131E;
->>>>>>> judao_tiffany_backend
     font-size: 20pt;
     font-weight: bold;
     margin-bottom: 10px;
 }
 
 .username {
-<<<<<<< HEAD
-    color: #EF629F;
-=======
     color: #53131E;
->>>>>>> judao_tiffany_backend
     margin-top: 5px;
     font-weight: bold;
 }
 
 
-#container {
 
-
-    height: 100vh;
-
-}
-
+/* Grid for each of the five games */
 #inner {
     grid-row: 2 / span 1;
-<<<<<<< HEAD
-    
-}
-#stats {
-    margin-left: 25px;
-    margin-right: 25px;
-    margin-top: 10px;
-    margin-bottom: 10px;
-/*    border-radius: 25px;*/
-    grid-row: 2 / span 1;
-    background-color: #FAC9B8;
-    display: grid;
-    grid-template-columns: 50% 50%;
-    color: #3AB795;
-
-}
-=======
 
 }
 
 #stats {
     /*    margin-left: 25px;*/
     /*    margin-right: 25px;*/
-    margin-top: 10px;
-    margin-bottom: 10px;
+    margin-top: 5px;
+    margin-bottom: 5px;
     /*    border-radius: 25px;*/
     grid-row: 2 / span 1;
     background-color: #7BDFF2;
+    border-style: groove;
     display: grid;
     grid-template-columns: 50% 50%;
     color: #53131E;
 
 }
 
->>>>>>> judao_tiffany_backend
 #games1 {
     margin-left: 25px;
     margin-right: 25px;
     margin-top: 10px;
     margin-bottom: 10px;
     border-radius: 25px;
-<<<<<<< HEAD
-    background-color: #FAC9B8;
-    grid-row: 1 / span 1;
-    display: grid;
-    grid-template-columns: 50% 50%;
-    color:#EF629F;
-=======
     background-color: #D6F9DD;
     grid-row: 1 / span 1;
     display: grid;
     grid-template-columns: 50% 50%;
     color: #53131E;
     border: solid 2px rgba(83, 19, 30, 0.7);
->>>>>>> judao_tiffany_backend
 }
 
 #games1_1 {
@@ -166,18 +307,11 @@ img {
     margin-bottom: 10px;
     border-radius: 25px;
     grid-row: 2 / span 1;
-<<<<<<< HEAD
-    background-color: #FAC9B8;
-    display: grid;
-    grid-template-columns: 50% 50%;
-    color:#EF629F;
-=======
     background-color: #D6F9DD;
     display: grid;
     grid-template-columns: 50% 50%;
     color: #53131E;
     border: solid 2px rgba(83, 19, 30, 0.7);
->>>>>>> judao_tiffany_backend
 }
 
 #games2_1 {
@@ -206,19 +340,11 @@ img {
     margin-top: 10px;
     margin-bottom: 10px;
     border-radius: 25px;
-<<<<<<< HEAD
-    background-color: #FAC9B8;
-    grid-row: 3 / span 1;
-    display: grid;
-    grid-template-columns: 50% 50%;
-
-=======
     background-color: #D6F9DD;
     grid-row: 3 / span 1;
     display: grid;
     grid-template-columns: 50% 50%;
     border: solid 2px rgba(83, 19, 30, 0.7);
->>>>>>> judao_tiffany_backend
 }
 
 #games3_1 {
@@ -247,18 +373,11 @@ img {
     margin-top: 10px;
     margin-bottom: 10px;
     border-radius: 25px;
-<<<<<<< HEAD
-    background-color: #FAC9B8;
-    grid-row: 4 / span 1;
-    display: grid;
-    grid-template-columns: 50% 50%;
-=======
     background-color: #D6F9DD;
     grid-row: 4 / span 1;
     display: grid;
     grid-template-columns: 50% 50%;
     border: solid 2px rgba(83, 19, 30, 0.7);
->>>>>>> judao_tiffany_backend
 }
 
 #games4_1 {
@@ -282,20 +401,53 @@ img {
 
 }
 
+#games5 {
+    margin-left: 25px;
+    margin-right: 25px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    border-radius: 25px;
+    background-color: #D6F9DD;
+    grid-row: 4 / span 1;
+    display: grid;
+    grid-template-columns: 50% 50%;
+    border: solid 2px rgba(83, 19, 30, 0.7);
+}
+
+#games5_1 {
+    margin-top: auto;
+    margin-bottom: auto;
+    border-radius: 25px 0 0 25px;
+    /*            background-color: #B8D8BA;*/
+
+    grid-column: 1 / span 1;
+
+}
+
+#games5_2 {
+    margin-top: auto;
+    margin-bottom: auto;
+
+    border-radius: 0 25px 25px 0;
+
+
+    grid-column: 2 / span 1;
+
+}
+
 #header {
     grid-row: 1 / span 1;
 }
 
-#greeting {
-    color: #EF629F;
-}
 
+/* Styles for nav bar */
 .container {
     list-style-type: none;
     margin: 0;
 
     overflow: hidden;
-    background-color: #75DBCD;
+    /* background-color: #75DBCD; */
+    background-color: rgb(188, 247, 199);
 }
 
 .list {
@@ -318,7 +470,7 @@ img {
 
 
 
-
+/* game images and animations */
 #game_img {
     /* width: 100px;
     height: 100px; */
@@ -327,24 +479,6 @@ img {
     animation-name: gaming;
     animation-delay: 3.5s;
     animation-duration: 1.5s;
-<<<<<<< HEAD
-  }
-  
-  @keyframes gaming {
-    0%   {background-color: none;}
-    10%   {background-color: red;}
-    15%  {background-color: yellow;}
-    25%  {background-color: rgb(255, 145, 0);}
-    35%  {background-color: rgb(0, 255, 234);}
-    55%  {background-color: beige;}
-    100% {background-color: green;}
-  }
-
-#daily_task_img{
-    /* width: 100px;
-    height: 100px; */
-    
-=======
 }
 
 @keyframes gaming {
@@ -381,36 +515,10 @@ img {
     /* width: 100px;
     height: 100px; */
 
->>>>>>> judao_tiffany_backend
     background-color: none;
     animation-name: shake;
     animation-delay: 0.8s;
     animation-duration: 1.6s;
-<<<<<<< HEAD
-  }
-
-  @keyframes shake {
-    10%, 90% {
-    
-      transform: translate3d(-1px, 0, 0) rotate(15deg);
-    }
-    
-    20%, 80% {
-     
-      transform: translate3d(2px, 3px, 2px) rotate(-15deg);
-    }
-  
-    30%, 50%, 70% {
-      transform: translate3d(-4px, 0, 0) rotate(15deg);
-    }
-  
-    40%, 60% {
-      transform: translate3d(4px, 0, 0) rotate(-20deg);
-    }
-  }
-
-  #redeem_img{
-=======
 }
 
 @keyframes shake {
@@ -440,47 +548,11 @@ img {
 }
 
 #redeem_img {
->>>>>>> judao_tiffany_backend
     visibility: hidden;
     transform: translateX(-350px) translateY(-200px);
     animation-name: bounce;
     animation-timing-function: ease;
     animation-duration: 1.8s;
-<<<<<<< HEAD
-        animation-iteration-count: 1;
-        animation-delay: 5.8s;
-        animation-fill-mode: forwards;
-  }
-
-@keyframes bounce {
-    5%   { transform: scale(1,1)  rotate(10deg)  translateX(-200px) translateY(-200px);visibility: visible; }
-    30%  { transform: scale(1.1,.9) rotate(5deg) translateX(-50px)  translateY(-10px) ; }
-    50%   { transform: scale(1,1)   rotate(2deg)  translateX(-50px) translateY(-40px); }
-    60%  { transform: scale(1.1,.9)  rotate(-1deg) translateX(-20) translateY(-20); }
-    70%  { transform: scale(.9,1.1) translateY(-50px); }
-    90%  { transform: scale(1,1)    translateY(-10px); }
-    100% { transform: scale(1,1)    translateY(0) ;visibility: visible }
-}
-
-button {
-        background-color: white; /* Green */
-        border: 1px solid #3AB795;
-        color: #3AB795;
-        padding: 10px 24px;
-        text-align: center;
-        text-decoration: none;
-        display: inline-block;
-        font-size: 16px;
-}
-#proceed{
-        float: right;
-}
-#back{
-        float: left;
-}
-#footer{
-    color: black;
-=======
     animation-iteration-count: 1;
     animation-delay: 5.8s;
     animation-fill-mode: forwards;
@@ -518,6 +590,7 @@ button {
     }
 }
 
+/* Styles for buttons */
 button {
     background-color: transparent;
     border: #53131E solid 1.5px;
@@ -543,19 +616,14 @@ button:hover {
 
 }
 
+/* Proceed button styles */
 #proceed {
-    float: right;
+    margin-top: 10px;
+    /*    float: right;*/
+    font-weight: bold;
 }
 
-#back {
-    float: left;
-}
 
-#footer {
-    margin-top: 100px;
-    color: #53131E;
->>>>>>> judao_tiffany_backend
-}
 
 
 /* bootstrap progress bar */
@@ -568,15 +636,9 @@ button:hover {
     font-size: 0.75rem;
     background-color: #e9ecef;
     border-radius: 0.25rem;
-<<<<<<< HEAD
-  }
-  
-  .progress-bar {
-=======
 }
 
 .progress-bar {
->>>>>>> judao_tiffany_backend
     display: -ms-flexbox;
     display: flex;
     -ms-flex-direction: column;
@@ -589,33 +651,6 @@ button:hover {
     white-space: nowrap;
     background-color: #007bff;
     transition: width 0.6s ease;
-<<<<<<< HEAD
-  }
-  
-  @media (prefers-reduced-motion: reduce) {
-    .progress-bar {
-      transition: none;
-    }
-  }
-  
-  .progress-bar-striped {
-    background-image: linear-gradient(45deg, rgba(255, 255, 255, 0.15) 25%, transparent 25%, transparent 50%, rgba(255, 255, 255, 0.15) 50%, rgba(255, 255, 255, 0.15) 75%, transparent 75%, transparent);
-    background-size: 1rem 1rem;
-  }
-  
-  .progress-bar-animated {
-     width: 65%;
-    -webkit-animation: progress-bar-stripes 1s linear infinite;
-    animation: progress-bar-stripes 1s linear infinite;
-  }
-  
-  @media (prefers-reduced-motion: reduce) {
-    .progress-bar-animated {
-      -webkit-animation: none;
-      animation: none;
-    }
-  }
-=======
 }
 
 @media (prefers-reduced-motion: reduce) {
@@ -641,4 +676,3 @@ button:hover {
         animation: none;
     }
 }
->>>>>>> judao_tiffany_backend
