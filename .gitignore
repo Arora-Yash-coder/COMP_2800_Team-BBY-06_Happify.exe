@@ -1,0 +1,7 @@
+\node_modules
+\tictactoe\node_modules
+privatekey.pem
+certrequest.csr
+certificate.pem
+package.json
+package-lock.json

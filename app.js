@@ -48,6 +48,7 @@ require('./app/routes/user.route.js')(app);
 var fs = require('fs')
 
 //HTTPS is SSL based server
+<<<<<<< HEAD
 const https = require('https');
 
 //these are the keys:
@@ -65,6 +66,25 @@ var options = {
 https.createServer(options, app).listen(443, function () {
   console.log('Https server listening on port ' + 3011);
 });
+=======
+//const https = require('https');
+//
+////these are the keys:
+////if you dont have those keys and you wanna run 
+////the server, comment out the code in line 55 and
+////the following block of code as well.
+//var options = {
+//  key: fs.readFileSync('./privatekey.pem'),
+//  cert: fs.readFileSync('./certificate.pem')
+//};
+//
+//
+//
+//
+//https.createServer(options, app).listen(443, function () {
+//  console.log('Https server listening on port ' + 3011);
+//});
+>>>>>>> 0cc866f3d2022287c00dd84a723a69bd4280d053
 
 // Create a Server
 var http_server = app.listen(3000, function () {
