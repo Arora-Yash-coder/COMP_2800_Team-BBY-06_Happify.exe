@@ -1,0 +1,159 @@
+/* CSS for landing page. */
+
+/* Styles for body. */
+body {
+    margin: 0;
+    /* background-color: #99F7AB; */
+    background-color: rgb(188, 247, 199);
+}
+
+/* media query for cell phones. */
+@media only screen and (max-width: 330px) {
+    #footer {
+        text-align: center;
+        bottom: 0;
+        margin-bottom: 170px;
+        color: #53131E;
+        clear: both;
+        position: relative;
+
+    }
+
+    #title {
+        padding-top: 12%;
+        text-align: center;
+        color: #53131e;
+        font-size: 20pt;
+    }
+}
+
+/* media query for cell phones. */
+@media only screen and (max-width: 360px) {
+    #footer {
+        text-align: center;
+        bottom: 0;
+        margin-top: 160px;
+        color: #53131E;
+        clear: both;
+        position: relative;
+
+    }
+
+    #title {
+        padding-top: 12%;
+        text-align: center;
+        color: #53131e;
+        font-size: 20pt;
+    }
+}
+
+/* media query for tablets and some cell phones. */
+@media only screen and (min-width: 361px) {
+    #footer {
+        text-align: center;
+        bottom: 0;
+        margin-top: 310px;
+        color: #53131E;
+        clear: both;
+        position: relative;
+    }
+
+    #title {
+        padding-top: 12%;
+        text-align: center;
+        color: #53131e;
+        font-size: 20pt;
+    }
+}
+
+/* media query for tablets. */
+@media only screen and (min-width: 600px) {
+    #footer {
+        text-align: center;
+        bottom: 0;
+        margin-bottom: 250px;
+        color: #53131E;
+        clear: both;
+        position: relative;
+    }
+
+    #title {
+        padding-top: 12%;
+        text-align: center;
+        color: #53131e;
+        font-size: 20pt;
+    }
+}
+
+/* media query for tablets. */
+@media only screen and (min-width: 1024px) {
+    #footer {
+        text-align: center;
+        bottom: 0;
+        margin-bottom: 110px;
+        color: #53131E;
+        clear: both;
+        position: relative;
+    }
+
+    h1 {
+        font-size: 50pt;
+    }
+
+    #title {
+        padding-top: 10%;
+        text-align: center;
+        color: #53131e;
+        font-size: 20pt;
+    }
+}
+
+/* media query for web pages. */
+@media only screen and (min-width: 1200px) {
+    #footer {
+        text-align: center;
+        bottom: 0;
+        margin-top: 200px;
+        color: #53131E;
+        clear: both;
+        position: relative;
+        font-size: 20pt;
+    }
+
+    #title {
+        padding-top: 7%;
+        text-align: center;
+        color: #53131e;
+        font-size: 20pt;
+    }
+}
+
+div {
+    /* background-color: #99F7AB; */
+    background-color: rgb(188, 247, 199);
+
+}
+
+
+
+
+
+/* Styles for buttons.
+I got the inspiration from a personal website.
+
+@author: Frederico Dossena
+@see: https://fdossena.com/?p=html5cool/buttons/i.frag
+*/
+.square_btn_second {
+    display: inline-block;
+    padding: 0.3em 1em;
+    text-decoration: none;
+    color: #53131e;
+    border: solid 2px #53131e;
+    border-radius: 3px;
+    transition: .4s;
+}
+
+.square_btn_second:hover {
+    background: white;
+}

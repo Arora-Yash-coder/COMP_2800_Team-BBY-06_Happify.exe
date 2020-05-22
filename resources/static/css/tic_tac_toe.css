@@ -1,0 +1,422 @@
+ /* CSS for tic tac toe character selection page. */
+
+ /* Some styles for body. */
+ body {
+     text-align: center;
+     margin: 0;
+     height: 100vh;
+     /* background-color: #99F7AB; */
+     color: #53131E;
+     background-color: rgb(188, 247, 199);
+ }
+
+ /* Sticky nav bar. */
+ .sticky {
+     position: fixed;
+     top: 0;
+     width: 100%;
+ }
+
+ /* Media queries for different devices. */
+ @media only screen and (max-width: 369px) {
+     #container {
+         margin-top: 20%;
+     }
+
+     #greeting {
+         color: #EF629F;
+         font-size: 30pt;
+     }
+
+     #container {
+         height: 120vh;
+     }
+
+     #footer {
+         bottom: 0;
+         margin-top: 250px;
+         color: #53131E;
+         clear: both;
+         position: relative;
+     }
+ }
+
+ @media only screen and (min-width: 370px) {
+     #container {
+         margin-top: 20%;
+     }
+
+     #greeting {
+         color: #EF629F;
+         font-size: 30pt;
+     }
+
+     #container {
+         height: 110vh;
+     }
+
+     #footer {
+         bottom: 0;
+         margin-top: 250px;
+         color: #53131E;
+         clear: both;
+         position: relative;
+     }
+ }
+
+ @media only screen and (min-width: 600px) {
+     #container {
+         margin-top: 12%;
+     }
+
+     #inner {
+         font-size: 30pt;
+     }
+
+     #proceed {
+         font-size: 27pt;
+         margin-top: 10px;
+     }
+
+     #stats {
+         font-size: 30pt;
+     }
+
+     #welcome {
+         font-size: 40pt;
+     }
+
+     #greeting {
+         color: #EF629F;
+
+     }
+
+     #container {
+         height: 110vh;
+     }
+
+     #footer {
+         bottom: 0;
+         margin-top: 50px;
+         color: #53131E;
+         clear: both;
+         position: relative;
+     }
+ }
+
+ @media only screen and (min-width: 1024px) {
+     #container {
+         margin-top: 12%;
+     }
+
+     #inner {
+         font-size: 30pt;
+     }
+
+     #proceed {
+         font-size: 27pt;
+         margin-top: 10px;
+     }
+
+     #stats {
+         font-size: 30pt;
+     }
+
+     #welcome {
+         font-size: 40pt;
+     }
+
+     #greeting {
+         color: #EF629F;
+     }
+
+     #container {
+         height: 100vh;
+     }
+
+     #footer {
+         bottom: 0;
+         margin-top: 50px;
+         color: #53131E;
+         clear: both;
+         position: relative;
+     }
+ }
+
+ @media only screen and (min-width: 1200px) {
+     #container {
+         margin-top: 12%;
+     }
+
+     #inner {
+         font-size: 28pt;
+     }
+
+     #proceed {
+         font-size: 27pt;
+         margin-top: 10px;
+     }
+
+     #stats {
+         font-size: 30pt;
+     }
+
+     #welcome {
+         font-size: 40pt;
+     }
+
+     #greeting {
+         color: #EF629F;
+
+     }
+
+     #container {
+
+
+         height: 170vh;
+
+     }
+
+     #footer {
+         bottom: 0;
+         margin-top: 50px;
+         color: #53131E;
+         clear: both;
+         position: relative;
+         font-size: 20pt;
+     }
+ }
+
+
+
+
+ #back {
+     font-size: 20pt;
+ }
+
+ /* Styles for images. */
+ img {
+     object-fit: contain;
+     max-width: 90%;
+     max-height: 95px;
+     display: block;
+     margin-left: auto;
+     margin-right: auto;
+ }
+
+ /* Colors and sizes for different sections. */
+ .first {
+     color: #53131E;
+
+ }
+
+ .second {
+     color: #53131E;
+
+ }
+
+ .top {
+     font-size: 30pt;
+     font-weight: bold;
+ }
+
+ .points {
+     color: #53131E;
+     margin-top: -10px;
+     font-weight: bold;
+     font-size: 13pt;
+ }
+
+ #container {
+     grid-template-rows: 20% 65% 1%;
+ }
+
+ #header {
+     grid-row: 1 / span 1;
+ }
+
+/* Clickable cards and styles for them. */
+ #inner {
+     grid-row: 2 / span 1;
+     display: grid;
+     grid-template-rows: 33.3% 33.3% 33.3%;
+ }
+
+ #first {
+     margin-left: 25px;
+     margin-right: 25px;
+     margin-top: 10px;
+     margin-bottom: 10px;
+     border-radius: 25px;
+     background-color: #D6F9DD;
+     grid-row: 1 / span 1;
+     display: grid;
+     grid-template-columns: 50% 50%;
+     border: solid 2px rgba(83, 19, 30, 0.7);
+
+ }
+
+ #first1 {
+     padding: 15px;
+     margin-top: auto;
+     margin-bottom: auto;
+     border-radius: 25px 0 0 25px;
+
+
+     grid-column: 1 / span 1;
+
+ }
+
+ #selection {
+     margin-top: auto;
+     margin-bottom: auto;
+     border-radius: 0 25px 25px 0;
+
+
+     grid-column: 2 / span 1;
+
+ }
+
+
+ #second {
+     margin-left: 25px;
+     margin-right: 25px;
+     margin-top: 10px;
+     margin-bottom: 10px;
+     border-radius: 25px;
+     background-color: #D6F9DD;
+     grid-row: 2 / span 1;
+     display: grid;
+     grid-template-columns: 50% 50%;
+     border: solid 2px rgba(83, 19, 30, 0.7);
+ }
+
+ #second1 {
+     padding: 15px;
+     margin-top: auto;
+     margin-bottom: auto;
+     border-radius: 25px 0 0 25px;
+
+
+     grid-column: 1 / span 1;
+
+ }
+
+ #selection2 {
+     margin-top: auto;
+     margin-bottom: auto;
+     border-radius: 0 25px 25px 0;
+
+
+     grid-column: 2 / span 1;
+
+ }
+
+ #third {
+     margin-left: 25px;
+     margin-right: 25px;
+     margin-top: 10px;
+     margin-bottom: 10px;
+     border-radius: 25px;
+     background-color: #D6F9DD;
+     grid-row: 3 / span 1;
+     display: grid;
+     grid-template-columns: 50% 50%;
+     border: solid 2px rgba(83, 19, 30, 0.7);
+ }
+
+ #third1 {
+     padding: 15px;
+     margin-top: auto;
+     margin-bottom: auto;
+     border-radius: 25px 0 0 25px;
+
+
+     grid-column: 1 / span 1;
+
+ }
+
+ #selection3 {
+     margin-top: auto;
+     margin-bottom: auto;
+     border-radius: 0 25px 25px 0;
+     grid-column: 2 / span 1;
+
+ }
+
+
+
+ #header {
+     grid-row: 1 / span 1;
+ }
+
+ #greeting {
+     color: #53131E;
+
+ }
+
+ #footer {
+     grid-row: 3 / span 1;
+ }
+
+ /* Styles for nav bar. */
+ .container {
+     list-style-type: none;
+     margin: 0;
+
+     overflow: hidden;
+     background-color: #4B7F52;
+ }
+
+ .list {
+     float: left;
+     font-size: 15pt;
+ }
+
+ .list a {
+     display: block;
+     color: white;
+     text-align: center;
+     padding: 14px 16px;
+     text-decoration: none;
+ }
+
+ .list a:hover {
+     background-color: rgb(65, 134, 125);
+ }
+
+ /* Styles for stats. */
+ #stats {
+     margin-top: 10px;
+     margin-bottom: 10px;
+     grid-row: 2 / span 1;
+     background-color: #7BDFF2;
+     display: grid;
+     grid-template-columns: 50% 50%;
+
+
+ }
+
+ /* Styles for buttons. */
+ button {
+     background-color: transparent;
+     border: #53131E solid 1.5px;
+     color: #53131E;
+     padding: 7px 26px;
+     text-align: center;
+     text-decoration: none;
+     display: inline-block;
+     font-size: 20px;
+     font-weight: bold;
+ }
+
+ button:hover {
+     background-color: white;
+     border: #53131E solid 1.5px;
+     color: #53131E;
+     padding: 7px 26px;
+     text-align: center;
+     text-decoration: none;
+     display: inline-block;
+     font-size: 20px;
+ }

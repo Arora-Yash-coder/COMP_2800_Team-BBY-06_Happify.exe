@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <!-- Allow media queries -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Styles -->
+    <link rel="stylesheet" type="text/css" href="/static/css/navbar<%=css%>.css">
+    <link rel="stylesheet" type="text/css" href="/static/css/coupon.css">
+    <title>Coupon Page</title>
+    
+</head>
+
+<body>
+    <!-- Nav bar -->
+    <div id='navbar'>
+        <%- navbar %></div>
+    <div id="content">
+        <h1>Congratulations! Now you can choose your coupons by clicking on them!</h1>
+        <div id="stats">
+            <h2>All points you earned: </h2>
+            <h2 id='pointsofar'></h2>
+            <h2>You earned today: </h2>
+            <h2 id='pointofday'></h2>
+
+        </div>
+        <!-- bootstrap progress bar -->
+        <%-progress_bar %>
+
+        <div id="search_function"><input id="search_box" type="text" placeholder="Coupon title or description">
+            <button id="search">search</button>
+
+        </div>
+        <%-proceed_button %>
+        <div id='container'>
+
+
+
+            <!-- ejs coupons insertion -->
+            <% for (var i = 0; i < coupons.length;  i++ ) { %>
+            <div class="coupons" id="coupons_<%= i+1 %>">
+                <div class="coupon" id="coupon_<%= i+1 %>">
+
+                    <h1 class="title"><%= coupons[i].title %></h1>
+                    <p class="description" id="description_<%= i+1 %>"><%= coupons[i].description %></p>
+                    <span class="points"><%= coupons[i].points %></span>
+                </div>
+
+                <div class='confirm' id="confirm_<%= i+1 %>">
+                    <span></span>
+                    <a class="square_btn_second yes" id="nth_<%= i+1 %>" name="<%=coupons[i].id%>">Redeem Now?</a>
+                    <a class="square_btn_second no">Redeem Later?</a>
+                </div>
+            </div>
+            <!--    </div>-->
+            <% } %>
+
+
+        </div>
+
+
+
+
+        <!-- ejs footer insertion -->
+        <%- footer %>
+
+    </div>
+    
+    <!-- imported Jquery -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+
+
+    
+
+
+    <!--     //imported js files for this page  -->
+    <script src="/static/js/coupon.js"> </script>
+    <script src="/static/js/get_points.js"> </script>
+    <!-- Share on social media function -->
+    <script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-5ec2cbf0773973c5"></script>
+
+</body>
+
+</html>

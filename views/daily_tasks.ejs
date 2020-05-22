@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <!-- Allow media queries -->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <!-- Styles -->
+  <link rel="stylesheet" type="text/css" href="/static/css/navbar<%=css%>.css">
+  <link rel="stylesheet" type="text/css" href="/static/css/flow_daily_tasks<%=css%>.css">
+  <!-- jquery -->
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+  <!-- bootstrap -->
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+  <title>Daily tasks</title>
+
+
+</head>
+
+<body>
+  <!-- nav bar -->
+  <div id="navbar">
+    <%- navbar%></div>
+  <div id='container'>
+
+    <div id="header">
+    
+      <br>
+      <div id="greeting">
+        <p class='top'>Daily tasks</p>
+        <!-- user stats -->
+        <div id="stats">
+          <h2>All points you earned: </h2>
+          <h2 id='pointsofar'></h2>
+          <h2>You earned today: </h2>
+          <h2 id='pointofday'></h2>
+
+        </div>
+        <p>By reading each item and giving a feedback, you get five points.</p>
+      </div>
+
+    </div>
+
+    <!-- Bootstrap for progress bar -->
+    <div class="progress">
+      <div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" aria-valuenow="75"
+        aria-valuemin="0" aria-valuemax="100" style="width:<%=progress_percentage %>"></div>
+
+    </div>
+
+
+    <!-- daily tasks -->
+    <div id="dailytask">
+      <% if (todo_item != undefined || todo_item != null) { %>
+
+
+      <% for (var i = 0; i < todo_item.length;  i++ ) { %>
+      <% if(todo_item[i]){ %>
+
+      <div class="daily_cards" id='inner_<%= i%>'>
+
+        <span class="taskid" id="taskid<%=todo_item[i].id%>"></span>
+        <img class="daily_tasks_img" src="<%=todo_item[i].img%>" />
+        <span class="to_do_title" data-toggle="collapse" data-target="#Read_content_<%=i%>"
+          id="title_<%=i %>"><%= todo_item[i].title; %></span>
+        <div class="collapse" id="Read_content_<%=i%>">
+
+
+
+          <!-- prints out the paragraphs -->
+          <!-- Using a FOR loop -->
+          <%for(var j = 0; j <todo_item[i].paragraph.length; j++){%>
+
+          <p><%= todo_item[i].paragraph[j]; %></p>
+
+          <% } %>
+
+          <p style="color: rgb(43, 61, 226);"><%= todo_item[i].question; %></p>
+
+          <div style="color:black">
+            <%for(var k = 0; k <todo_item[i].choices.length; k++){%>
+            <div id="<%=todo_item[i].answer %>">
+              <button class="answer_choices <%=todo_item[i].id  %>"
+                id="choice<%=k%>"><%=todo_item[i].choices[k]%></button>
+            </div>
+            <% } %>
+          </div>
+        </div>
+      </div>
+      <br />
+      <%  } %>
+      <% } %>
+      <% }else{ console.log("todo_items[i] not exist" ) } %>
+
+
+    </div>
+
+    <%- proceed_button %>
+
+
+  </div>
+  <!-- footer -->
+  <%- footer %>
+
+  <!-- js files -->
+  <script src='/static/js/navbar_top.js'></script>
+  <script src='/static/js/daily_tasks.js'></script>
+
+  <!-- share on social media -->
+  <script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-5ec2cbf0773973c5"></script>
+  <script>
+
+  </script>
+</body>
+
+</html>

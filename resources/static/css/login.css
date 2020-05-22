@@ -1,0 +1,205 @@
+/* CSS for log in. */
+
+/* Styles for body. */
+body {
+  /* background-color: #99F7AB; */
+  background-color: rgb(188, 247, 199);
+  width: 100%;
+}
+
+/* Media queries for different devices. */
+@media only screen and (max-width: 330px) {
+  #footer {
+    text-align: center;
+    bottom: 0;
+    margin-top: 280px;
+    color: #53131E;
+    clear: both;
+    position: relative;
+
+  }
+}
+
+@media only screen and (max-width: 360px) {
+  #footer {
+    text-align: center;
+    bottom: 0;
+    margin-top: 250px;
+    color: #53131E;
+    clear: both;
+    position: relative;
+
+  }
+}
+
+@media only screen and (min-width: 361px) {
+  #footer {
+    text-align: center;
+    bottom: 0;
+    margin-top: 450px;
+    color: #53131E;
+    clear: both;
+    position: relative;
+
+  }
+}
+
+@media only screen and (min-width: 600px) {
+  #footer {
+    text-align: center;
+    bottom: 0;
+    margin-top: 650px;
+    color: #53131E;
+    clear: both;
+    position: relative;
+    /*    font-size: 20pt;*/
+  }
+}
+
+@media only screen and (min-width: 1024px) {
+  #footer {
+    text-align: center;
+    bottom: 0;
+    margin-top: 1000px;
+    color: #53131E;
+    clear: both;
+    position: relative;
+    /*    font-size: 25pt;*/
+  }
+}
+
+@media only screen and (min-width: 1200px) {
+  #footer {
+    text-align: center;
+    bottom: 0;
+    margin-top: 350px;
+    color: #53131E;
+    clear: both;
+    position: relative;
+    font-size: 18pt;
+    font-weight: normal;
+  }
+}
+
+/* Some styles for buttons. */
+button {
+  background-color: transparent;
+  border: #53131E solid 1.5px;
+  color: #53131E;
+  padding: 7px 26px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+}
+
+button:hover {
+  background-color: white;
+  border: rgb(151, 34, 54) solid 1.5px;
+  color: rgb(170, 67, 84);
+  padding: 7px 26px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+
+}
+
+#login:hover {
+  background-color: white;
+  border: #53131E solid 1.5px;
+  color: #53131E;
+  padding: 7px 26px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+
+}
+
+.container {
+  background-color: hsla(120, 60%, 2%, 0.6);
+  text-align: center;
+  width: 400px;
+  /* filter:alpha(opacity=50); */
+  z-index: -1;
+  /* opacity:0.8; */
+  /*    width: 90%;*/
+  width: 370px;
+  color: white;
+}
+
+#choice_tab {
+  display: inline;
+}
+
+/* Log selection. */
+#log {
+
+  float: right;
+  margin: 0;
+  padding-top: 10px;
+  height: 50px;
+  width: 120px;
+  padding-right: 20px;
+}
+
+/* Registration selection. */
+#reg {
+  float: left;
+  margin: 0;
+  padding-top: 10px;
+  height: 50px;
+  width: 50%;
+  padding-left: 15px;
+  padding-right: 5%;
+  background-color: rgb(0, 0, 0);
+
+}
+
+
+
+
+
+#form-wrapper {
+  padding-top: 10%;
+}
+
+
+/* Some styles for the input. */
+input[type="text"] {
+  margin-top: 20px;
+  margin-bottom: -1px;
+  border-bottom-left-radius: 0;
+  border-bottom-right-radius: 0;
+  font-size: 15pt;
+  height: 48px;
+  width: 340px;
+}
+
+input[type="password"] {
+  margin-bottom: 23px;
+  border-top-left-radius: 0;
+  border-top-right-radius: 0;
+  font-size: 15pt;
+  height: 48px;
+  width: 340px;
+
+}
+
+
+
+/* Align everything in the middle. */
+body {
+  text-align: center;
+}
+
+
+/* Selection for the other UI. */
+#ui_choice_1 {
+  color: #53131E;
+}
+
+#ui_choice_1:hover {
+  background-color: white;
+}

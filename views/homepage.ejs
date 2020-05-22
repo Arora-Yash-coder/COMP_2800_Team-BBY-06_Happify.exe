@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <!-- allow media queries -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- css files -->
+    <link rel="stylesheet" type="text/css" href="/static/css/homepage<%=css%>.css">
+    <link rel="stylesheet" type="text/css" href="/static/css/navbar<%=css%>.css">
+    <link href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap" rel="stylesheet">
+    <title>Welcome to Happify!</title>
+
+
+</head>
+
+<body>
+    <!-- nav bar -->
+    <div id="navbar">
+        <%  if(navbar) { %>
+        <%- navbar %>
+        <% } %> </div>
+    <div id='container'>
+        <div id="header">
+
+            <div id="greeting">
+                <p class='top' id="welcome">Welcome Back,</p>
+                <h1 class='username' id="username"></h1>
+                <p class='top' id="welcome">Redeem your coupon or play a game!</p>
+
+            </div>
+
+        </div>
+        <div id='inner'>
+            <!-- user stats -->
+            <div id="stats">
+                <h2>All points you earned: </h2>
+                <h2 id='pointsofar'></h2>
+                <h2>You earned today: </h2>
+                <h2 id='pointofday'></h2>
+
+            </div>
+            <!-- jquery -->
+            <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+
+
+
+            <div id="covid_intel" class="card">
+
+
+                <h1 id="covid_h1" class="covid_h1 second covid_intel">COVID INTEL</h1>
+                <h1 id="intel_h1" class="second covid_intel">COVID</h1>
+                <h1 id="intel_h1_2" class="second covid_intel">INTEL</h1>
+
+                <div>
+                    <!-- source: https://www.iconfinder.com/icons/240276/details_info_information_more_details_icon -->
+                    <img id="info2" class="covid_h1" src="/static/img/info2.png">
+                </div>
+
+                <div class="Intel card1">
+
+                    <div id="latest_news_container">
+                        <span id="news_title"><b>Latest News:</b></span><br />
+                        <span id="latest_news_title">Latest News title</span><br />
+                        <span id="latest_news_url"><i>Click To Visit</i></span>
+
+                    </div>
+
+
+
+                </div>
+
+                <div class="Intel card2" onclick="window.location.href='/pandemic_info' ">
+                    <div id="info_div">
+
+                        <div>
+                            <!-- source: https://outreach.wikimedia.org/wiki/File:Noun_Project_question_mark_icon_1101884_cc.svg -->
+                            <img id="info_img" src="/img/info1.png">
+                        </div>
+                        <span id="info_span"><i>INFOGRAPHICS IN HERE!</i></span>
+                    </div>
+                </div>
+
+                <div id="CBC_NEWS" class="Intel">
+
+                </div>
+
+
+            </div>
+
+            <div id="games" class="card" onclick="window.location.href = '/minigames' ">
+                <div id="games1" class="games card1">
+                    <h1 class="second">Mini Games</h1>
+                </div>
+                <div id="games2" class="games card2">
+                    <div id='image2'>
+                        <!-- source: https://radiopublic.com/daily-dose-of-games-6pLAVO -->
+                        <img id="game_img" src="img/game.png">
+                    </div>
+                </div>
+            </div>
+
+
+
+
+            <div id="redeem" class="card" onclick="window.location.href = '/coupon';">
+
+                <div id="redeem1">
+                    <h1 class="second">Redeem!</h1>
+                </div>
+                <div id="redeem2">
+                    <div id='image'>
+                        <!-- source: https://www.pinclipart.com/pindetail/TxTxTi_coupon-broken-line-box-png-discount-coupon-icon/ -->
+                        <img id="redeem_img" src="img/coupon1.png">
+                    </div>
+                </div>
+            </div>
+
+            <div id="reminder" class="card" onclick="window.location.href = '/reminder';">
+
+                <div id="reminder1">
+                    <h1 class="second">Daily Reminders</h1>
+                </div>
+                <div id="reminder2">
+                    <div id='image'>
+                        <!-- source: https://www.iconfinder.com/icons/2867693/interface_notification_remainder_ring_sound_user_icon -->
+                        <img id="redeem_img" src="img/reminder1.png">
+                    </div>
+                </div>
+            </div>
+
+
+            <div id="counselling" class="card" onclick="window.location.href = '/counselling';">
+
+                <div id="counselling1">
+                    <h1 class="second">Mental Counselling</h1>
+                </div>
+                <div id="counselling2">
+                    <div id='image'>
+                        <!-- source: https://thenounproject.com/term/mental-health/66159/ -->
+                        <img id="redeem_img" src="img/mental1.png">
+                    </div>
+                </div>
+            </div>
+
+
+        </div>
+    </div>
+    <!-- footer -->
+    <%- footer %>
+
+
+    <!-- js files -->
+    <script src="/static/js/get_points.js"></script>
+    <script src='/static/js/homepage.js'></script>
+    <script src='/static/js/navbar_top.js'></script>
+   
+    <!-- share on social media -->
+    <script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-5ec2cbf0773973c5"></script>
+</body>
+
+</html>

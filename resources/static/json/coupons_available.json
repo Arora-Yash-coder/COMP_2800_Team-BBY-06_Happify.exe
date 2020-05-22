@@ -1,0 +1,16 @@
+{"_id":{"$oid":"5eb3a9c86a38f15bcc393111"},"id":{"$numberInt":"1"},"title":"Superstore 10% off","description":"with this you can ...","points":"50"}
+{"_id":{"$oid":"5eb3aa260342cd5bcc1d07b0"},"id":{"$numberInt":"2"},"title":"Superstore 20% off","description":"with this you can ...","points":"50"}
+{"_id":{"$oid":"5eb3aa320342cd5bcc1d07b1"},"id":{"$numberInt":"3"},"title":"T&T 20% off","description":"with this you can ...","points":"80"}
+{"_id":{"$oid":"5eb3aa6c0342cd5bcc1d07b3"},"id":{"$numberInt":"4"},"title":"costco $5","description":"with this you can ...","points":"80"}
+{"_id":{"$oid":"5eb3aa8f0342cd5bcc1d07b4"},"id":{"$numberInt":"5"},"title":"Mr.Bin Hot Dog $5","description":"with this you can ...","points":"80"}
+{"_id":{"$oid":"5eb4a7a5d14a7acab8b7d108"},"id":{"$numberInt":"9"},"title":"RONA 20% off","description":"with this you can...","points":{"$numberInt":"200"}}
+{"_id":{"$oid":"5eb4a7a5d14a7acab8b7d107"},"id":{"$numberInt":"8"},"title":"RONA 15% off","description":"with this you can...","points":{"$numberInt":"150"}}
+{"_id":{"$oid":"5eb4a7a5d14a7acab8b7d10c"},"id":{"$numberInt":"13"},"title":"London Drugs 5% off","description":"with this you can...","points":{"$numberInt":"50"}}
+{"_id":{"$oid":"5eb4a7a5d14a7acab8b7d10f"},"id":{"$numberInt":"16"},"title":"Walmart 15% off","description":"with this you can...","points":{"$numberInt":"150"}}
+{"_id":{"$oid":"5eb4a7a5d14a7acab8b7d109"},"id":{"$numberInt":"10"},"title":"Staples 5% off","description":"with this you can...","points":{"$numberInt":"50"}}
+{"_id":{"$oid":"5eb4a7a5d14a7acab8b7d10b"},"id":{"$numberInt":"12"},"title":"Whole Foods 5% off","description":"with this you can...","points":{"$numberInt":"50"}}
+{"_id":{"$oid":"5eb4a7a5d14a7acab8b7d105"},"id":{"$numberInt":"6"},"title":"RONA 5% off","description":"with this you can...","points":{"$numberInt":"50"}}
+{"_id":{"$oid":"5eb4a7a5d14a7acab8b7d10a"},"id":{"$numberInt":"11"},"title":"Save on Foods 5% off","description":"with this you can...","points":{"$numberInt":"50"}}
+{"_id":{"$oid":"5eb4a7a5d14a7acab8b7d10d"},"id":{"$numberInt":"14"},"title":"Walmart 5% off","description":"with this you can...","points":{"$numberInt":"50"}}
+{"_id":{"$oid":"5eb4a7a5d14a7acab8b7d106"},"id":{"$numberInt":"7"},"title":"RONA 10% off","description":"with this you can...","points":{"$numberInt":"100"}}
+{"_id":{"$oid":"5eb4a7a5d14a7acab8b7d10e"},"id":{"$numberInt":"15"},"title":"Walmart 10% off","description":"with this you can...","points":{"$numberInt":"100"}}

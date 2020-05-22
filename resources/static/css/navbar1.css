@@ -1,0 +1,30 @@
+/* CSS for nav bar page. */
+
+/* Container styles. */
+.container {
+    list-style-type: none;
+    margin: 0;
+
+    overflow: hidden;
+    background-color: #3AB795;
+}
+
+/* This is the tabs. */
+.list {
+    float: left;
+}
+
+/* This is the tabs with a link. */
+.list a {
+    display: block;
+    color: white;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+}
+
+/* This is the tabs when hover. */
+.list a:hover {
+    background-color: rgb(65, 134, 125);
+}
+
