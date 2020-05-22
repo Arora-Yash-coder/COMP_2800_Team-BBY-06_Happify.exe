@@ -133,7 +133,7 @@
             <div id="counselling" class="card" onclick="window.location.href = '/counselling';">
 
                 <div id="counselling1">
-                    <h1 class="second">Mental counselling</h1>
+                    <h1 class="second">Mental Counselling</h1>
                 </div>
                 <div id="counselling2">
                     <div id='image'>
@@ -149,26 +149,6 @@
     <!-- footer -->
     <%- footer %>
 
-    <script>
-        $.ajax({
-            type: "get",
-            url: "/COVID_NEWS",
-
-            dataType: "json",
-            success: function (response) {
-
-                let title = response[0].title
-                let link = response[0].url
-                $("#latest_news_title").html(title)
-
-
-                $("#latest_news_container").mouseup(() => {
-                    window.location.href = link
-                })
-                console.log(response[0])
-            }
-        });
-    </script>
 
     <!-- js files -->
     <script src="/static/js/get_points.js"></script>
