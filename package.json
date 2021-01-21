@@ -43,7 +43,7 @@
     
     "request": "^2.88.2",
     "serve-favicon": "^2.5.0",
-    "socket.io": "^2.3.0",
+    "socket.io": "^2.4.0",
     "stockfish": "^10.0.2",
     "web-push": "^3.4.3"
   },
